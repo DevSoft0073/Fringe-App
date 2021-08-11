@@ -8,7 +8,7 @@ import UIKit
 import Foundation
 import IQKeyboardManagerSwift
 
-class SignUpVC : BaseVC , UITextViewDelegate,UITextFieldDelegate {
+class SignUpVC : BaseVC , UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var checkUncheckBtn: UIButton!
@@ -22,7 +22,8 @@ class SignUpVC : BaseVC , UITextViewDelegate,UITextFieldDelegate {
     @IBOutlet weak var txtGolfHandicap: FGUsernameTextField!
     @IBOutlet weak var txtPassword: FGPasswordTextField!
     @IBOutlet weak var txtConfirmPassword: FGPasswordTextField!
-    var returnKeyHandler: IQKeyboardReturnKeyHandler
+    var returnKeyHandler: IQKeyboardReturnKeyHandler?
+    var unchecked = Bool()
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -106,64 +107,24 @@ class SignUpVC : BaseVC , UITextViewDelegate,UITextFieldDelegate {
             return false
         }
         
-        if ValidationManager.shared.isEmpty(text: txtEmail.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterEmail) {
-            }
-            return false
-        }
-        
-        if ValidationManager.shared.isValid(text: txtEmail.text!, for: RegularExpressions.email) == false {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidEmail) {
-            }
-            return false
-        }
-        
-        if ValidationManager.shared.isEmpty(text: txtMobileNumber.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterMobileNumber) {
-            }
-            return false
-        }
-        
-        if ValidationManager.shared.isValid(text: txtMobileNumber.text!, for: RegularExpressions.phone) == false {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidMobileNumber) {
-            }
-            return false
-        }
-        
+
         if ValidationManager.shared.isEmpty(text: txtPassword.text) == true {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterPassword) {
             }
             return false
         }
         
-        if ValidationManager.shared.isValid(text: txtPassword.text!, for: RegularExpressions.password8AS) == false {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidPassword) {
-            }
-            return false
-        }
-        
-        if ValidationManager.shared.isEmpty(text: txtConfirmPassword.text) == true {
+        if ValidationManager.shared.isValid(text: txtConfirmPassword.text!, for: RegularExpressions.password8AS) == false {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterRetypePassword) {
             }
             return false
         }
         
-        if ValidationManager.shared.isValid(text: txtPassword.text!, for: RegularExpressions.password8AS) == false {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidRetypePassword) {
-            }
-            return false
-        }
-        
-        if ValidationManager.shared.isValidConfirm(password: txtPassword.text!, confirmPassword: txtConfirmPassword.text!) == false {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.NewRetypePasswordNotMatch) {
-            }
-            return false
-        }
-        
-        if unchecked == false{
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.agreeTermsAndConditions)
-            return false
-        }
+   
+//        if unchecked == false{
+//            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.agreeTermsAndConditions, handlerOK: <#(() -> Void)?#>)
+//            return false
+//        }
         return true
     }
     
@@ -180,4 +141,34 @@ class SignUpVC : BaseVC , UITextViewDelegate,UITextFieldDelegate {
     }
     
     //------------------------------------------------------
+  
+    //MARK: Actions
+    
+    @IBAction func btnProfileImg(_ sender: Any) {
+    }
+    
+    
+    @IBAction func btnCheckUncheck(_ sender: Any) {
+    }
+    
+    @IBAction func btnTermCondition(_ sender: Any) {
+    }
+    
+    @IBAction func btnSignUp(_ sender: Any) {
+    }
+    
+    @IBAction func btnAppleTap(_ sender: Any) {
+    }
+    
+    @IBAction func btnGoogleTap(_ sender: Any) {
+    }
+    
+    @IBAction func btnFacebookTap(_ sender: Any) {
+    }
+    
+    
+    @IBAction func btnLoginTap(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LogInVC") as! LogInVC
+               self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

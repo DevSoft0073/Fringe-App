@@ -34,8 +34,8 @@ struct FGSettings {
 
 struct FGColor {
     
-    static let appBorder = UIColor(named: "appBorder")
-    static let appButton = UIColor(named: "appButton")
+    static let appBorder = UIColor(named: "appBorder")!
+    static let appButton = UIColor(named: "appButton")!
 //    static let darkGray = UIColor.darkGray
 //    static let clear = UIColor.clear
 }

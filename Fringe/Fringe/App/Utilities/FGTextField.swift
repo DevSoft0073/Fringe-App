@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
+import MonthYearPicker
 
 class FGBaseTextField: UITextField {
-
+    public var padding: Double = 8
     var fontDefaultSize : CGFloat {
         return font?.pointSize ?? 0.0
     }
@@ -90,7 +91,7 @@ class FGMediumTextField: FGBaseTextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.font = FGFont.PoppinsMedium(size: <#T##CGFloat?#>)
+        self.font = FGFont.PoppinsMedium(size: fontSize)
     }
 }
 
@@ -98,7 +99,7 @@ class FGMediumTextField: FGBaseTextField {
 class FGEmailTextField: FGRegularTextField {
     
     var leftEmailView: UIView {
-        let imgView = UIImageView(image: UIImage(named: SCImageName.iconEmail))
+        let imgView = UIImageView(image: UIImage(named: ""))
         imgView.contentMode = .scaleAspectFit
         return imgView
     }
@@ -115,7 +116,7 @@ class FGEmailTextField: FGRegularTextField {
         self.keyboardType = .emailAddress
         self.autocorrectionType = .no
         self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: SCColor.appWhite])
+                                                        attributes:[NSAttributedString.Key.foregroundColor: ""])
     }
     
     //------------------------------------------------------
@@ -142,7 +143,7 @@ class FGEmailTextField: FGRegularTextField {
 class FGPasswordTextField: FGRegularTextField {
     
     var leftPasswordView: UIView {
-        let imgView = UIImageView(image: UIImage(named: SCImageName.iconPassword))
+        let imgView = UIImageView(image: UIImage(named: ""))
         imgView.contentMode = .scaleAspectFit
         return imgView
     }
@@ -159,7 +160,7 @@ class FGPasswordTextField: FGRegularTextField {
         self.keyboardType = .default
         self.autocorrectionType = .no
         self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: SCColor.appWhite])
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appBorder])
     }
     
     //------------------------------------------------------
@@ -203,7 +204,7 @@ class FGUsernameTextField: FGMediumTextField {
         self.autocorrectionType = .no
         self.autocapitalizationType = .words
         self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: SCColor.appWhite])
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appBorder])
     }
     
     //------------------------------------------------------
@@ -253,7 +254,7 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
         self.autocorrectionType = .no
         self.autocapitalizationType = .words
         self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: SCColor.appWhite])
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appBorder])
         
         dpDate.datePickerMode = .date
         if #available(iOS 13.4, *) {
@@ -268,7 +269,7 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
         inputView = dpDate
         dpDate.setDate(Date(), animated: false)
         crossButtonView.contentMode = .center
-        crossButtonView.setImage(UIImage(named: SCImageName.iconMessages), for: UIControl.State.normal)
+        crossButtonView.setImage(UIImage(named: ""), for: UIControl.State.normal)
         
     }
     
@@ -288,9 +289,9 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
         return false
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.MMM_DD_COM_yyyy)
-    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.MMM_DD_COM_yyyy)
+//    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
@@ -302,7 +303,7 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.ageMustBeGreaterThen13, handlerOK: nil)
             self.text = ""
         } else {
-            self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.MMM_DD_COM_yyyy)
+//            self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.MMM_DD_COM_yyyy)
             
         }
     }
@@ -358,7 +359,7 @@ class FGGenderTextField: FGRegularTextField, UITextFieldDelegate, UIPickerViewDa
         self.autocorrectionType = .no
         self.autocapitalizationType = .words
         self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: SCColor.appWhite])
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appBorder])
         
         
         pvGender.dataSource = self
@@ -366,7 +367,7 @@ class FGGenderTextField: FGRegularTextField, UITextFieldDelegate, UIPickerViewDa
         inputView = pvGender
         
         crossButtonView.contentMode = .center
-        crossButtonView.setImage(UIImage(named: SCImageName.iconMessages), for: UIControl.State.normal)
+        crossButtonView.setImage(UIImage(named: ""), for: UIControl.State.normal)
     }
     
     //------------------------------------------------------
@@ -455,7 +456,7 @@ class FGMobileNumberTextField: FGRegularTextField {
         self.autocorrectionType = .no
         self.autocapitalizationType = .words
         self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: SCColor.appWhite])
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appBorder])
     }
     
     //------------------------------------------------------

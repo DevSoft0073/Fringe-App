@@ -34,7 +34,7 @@ class PMSFProDisplayRegularButton: FGBaseButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.titleLabel?.font = PMFont.sfProDisplayRegular(size: self.fontSize)
+        self.titleLabel?.font = FGFont.PoppinsRegular(size: self.fontSize)
         self.imageView?.contentMode = .scaleAspectFit
     }
 }
@@ -47,7 +47,7 @@ class PMSFProDisplayBoldButton: FGBaseButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.titleLabel?.font = PMFont.sfProDisplayBold(size: self.fontSize)
+        self.titleLabel?.font = FGFont.PoppinsBold(size: self.fontSize)
         self.imageView?.contentMode = .scaleAspectFit
     }
 }

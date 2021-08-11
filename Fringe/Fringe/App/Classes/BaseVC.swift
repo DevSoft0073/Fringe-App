@@ -123,7 +123,7 @@ class BaseVC : UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = SCColor.appBlack
+//        self.view.backgroundColor = FGColor.appBlack
         
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -134,7 +134,7 @@ class BaseVC : UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NavigationManager.shared.isEnabledBottomMenu = false
+//        NavigationManager.shared.isEnabledBottomMenu = false
     }
     
     //------------------------------------------------------

@@ -28,7 +28,7 @@ class FGSFProDisplayRegularLabel: FGBaseLabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.font = PMFont.sfProDisplayRegular(size: self.fontSize)
+        self.font = FGFont.PoppinsRegular(size: self.fontSize)
     }
 }
 
@@ -37,6 +37,6 @@ class FGSFProDisplayBoldLabel: FGBaseLabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.font = PMFont.sfProDisplayBold(size: self.fontSize)
+        self.font = FGFont.PoppinsBold(size: self.fontSize)
     }
 }

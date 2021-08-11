@@ -28,7 +28,7 @@ open class PMImagePickerVC: NSObject {
         
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = PMColor.black
+//            appearance.backgroundColor = FGColor.black
             appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
             appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
             
@@ -38,7 +38,7 @@ open class PMImagePickerVC: NSObject {
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         } else {
             UINavigationBar.appearance().tintColor = .black
-            UINavigationBar.appearance().barTintColor = PMColor.black
+//            UINavigationBar.appearance().barTintColor = PMColor.black
             UINavigationBar.appearance().isTranslucent = false
         }
     }

@@ -95,6 +95,8 @@ class LogInVC : BaseVC,UITextFieldDelegate,UITextViewDelegate {
     //MARK: Actions
   
     @IBAction func btnForgot(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordVC") as! ForgotPasswordVC
+               self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

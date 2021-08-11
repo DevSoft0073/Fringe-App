@@ -28,6 +28,8 @@
 		7C780F8826C3A80A003F1F12 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780F8726C3A80A003F1F12 /* LogInVC.swift */; };
 		7C780F8C26C3BE75003F1F12 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780F8B26C3BE75003F1F12 /* BaseVC.swift */; };
 		7C780F8F26C3C105003F1F12 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780F8E26C3C105003F1F12 /* SignUpVC.swift */; };
+		7C780F9426C3DF43003F1F12 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C780F9226C3DF43003F1F12 /* Localizable.strings */; };
+		7C780FBB26C3F160003F1F12 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FBA26C3F160003F1F12 /* ForgotPasswordVC.swift */; };
 		7CA24C0326C23D9500437C8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C0226C23D9500437C8A /* ViewController.swift */; };
 		7CA24C0826C23D9600437C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24C0726C23D9600437C8A /* Assets.xcassets */; };
 		7CA24C0B26C23D9600437C8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24C0926C23D9600437C8A /* LaunchScreen.storyboard */; };
@@ -86,6 +88,8 @@
 		7C780F8726C3A80A003F1F12 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		7C780F8B26C3BE75003F1F12 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		7C780F8E26C3C105003F1F12 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		7C780F9326C3DF43003F1F12 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7C780FBA26C3F160003F1F12 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		7CA24BFB26C23D9500437C8A /* Fringe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fringe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA24C0226C23D9500437C8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7CA24C0726C23D9600437C8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -180,8 +184,17 @@
 			children = (
 				7C780F8726C3A80A003F1F12 /* LogInVC.swift */,
 				7C780F8E26C3C105003F1F12 /* SignUpVC.swift */,
+				7C780FBA26C3F160003F1F12 /* ForgotPasswordVC.swift */,
 			);
 			path = "Authentication Controller";
+			sourceTree = "<group>";
+		};
+		7C780F9126C3DF43003F1F12 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				7C780F9226C3DF43003F1F12 /* Localizable.strings */,
+			);
+			path = Localizations;
 			sourceTree = "<group>";
 		};
 		7CA24BF226C23D9500437C8A = {
@@ -344,6 +357,7 @@
 		7CA24C1F26C2403E00437C8A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7C780F9126C3DF43003F1F12 /* Localizations */,
 				7CA24C0726C23D9600437C8A /* Assets.xcassets */,
 				7CA24C2426C240DD00437C8A /* Lottie */,
 				7CA24C2326C240CF00437C8A /* Fonts */,
@@ -453,6 +467,7 @@
 				7C39F15126C3947600AAC277 /* Poppins-Light.ttf in Resources */,
 				7CA24C0826C23D9600437C8A /* Assets.xcassets in Resources */,
 				7C39F15226C3947600AAC277 /* Poppins-SemiBold.ttf in Resources */,
+				7C780F9426C3DF43003F1F12 /* Localizable.strings in Resources */,
 				7C39F15426C3947600AAC277 /* Poppins-Regular.ttf in Resources */,
 				7C39F19226C39A7600AAC277 /* Main.storyboard in Resources */,
 				7C39F15B26C3947600AAC277 /* Poppins-Medium.ttf in Resources */,
@@ -523,6 +538,7 @@
 				7C780F7926C3A6DB003F1F12 /* ESTabBarController.swift in Sources */,
 				7C780F7A26C3A6DB003F1F12 /* ESTabBarItemMoreContentView.swift in Sources */,
 				7C780F8F26C3C105003F1F12 /* SignUpVC.swift in Sources */,
+				7C780FBB26C3F160003F1F12 /* ForgotPasswordVC.swift in Sources */,
 				7CA24C5E26C2426800437C8A /* BaseResponseModal.swift in Sources */,
 				7CA24C5C26C2426800437C8A /* ResponseModal.swift in Sources */,
 				7CA24C5D26C2426800437C8A /* UserModal.swift in Sources */,
@@ -558,6 +574,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		7C780F9226C3DF43003F1F12 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C780F9326C3DF43003F1F12 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		7CA24C0926C23D9600437C8A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

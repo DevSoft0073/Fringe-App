@@ -24,20 +24,20 @@ func getDynamicFontSize(fontDefaultSize: CGFloat ) -> CGFloat {
     } else if device == Version.phone6 || device == Version.phone7 || device == Version.phone6S || device == Version.phone8 {
         fontSize = fontDefaultSize
     } else if device == Version.phone7Plus || device == Version.phone8Plus {
-        fontSize = fontDefaultSize + PMFont.increaseSize
+        fontSize = fontDefaultSize + FGFont.increaseSize
     } else if device == Version.phoneX || device == Version.phoneXR || device == Version.phoneXS || device == Version.phoneXSMax {
-        fontSize = fontDefaultSize + PMFont.increaseSize
+        fontSize = fontDefaultSize + FGFont.increaseSize
     } else
     //7.9 inches
     if device == Version.padMini || device == Version.padMini2 || device == Version.padMini3 || device == Version.padMini4 {
-        fontSize = fontDefaultSize - PMFont.reduceSize
+        fontSize = fontDefaultSize - FGFont.reduceSize
     //9.7 inches
     } else if device == Version.padAir || device == Version.padAir2  || device == Version.pad1 || device == Version.pad2 || device == Version.pad3 || device == Version.pad4 {
         //fontSize = fontDefaultSize + PMFont.increaseSize
         fontSize = fontDefaultSize
     //10.5 and later
     } else if device == Version.padPro {
-        fontSize = fontDefaultSize + PMFont.increaseSize
+        fontSize = fontDefaultSize + FGFont.increaseSize
     } else {
         fontSize = fontDefaultSize
     }
@@ -114,10 +114,10 @@ func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
 
     return newImage!
 }
-func localized(code: Int) -> String {
-    
-    let codeKey = String(format: "error_%d", code)
-    let localizedMessage = codeKey.localized()
-    return localizedMessage
-}
+//func localized(code: Int) -> String {
+//
+//    let codeKey = String(format: "error_%d", code)
+//    let localizedMessage = codeKey.localized()
+//    return localizedMessage
+//}
 

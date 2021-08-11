@@ -52,7 +52,7 @@ struct LocalizableConstants {
         static let enterHomeTown = "enter_home_town"
         static let enterProffession = "enter_proffession"
         static let enterMemberCousre = "enter_member_course"
-        static let enterGolfHandicap = ""
+        static let enterGolfHandicap = "enter_golf_handicap"
         static let enterPassword = "enter_password"
         static let enterValidPassword = "enter_valid_password"
         static let agreeTermsAndConditions = "agree_with_terms_and_conditions"
