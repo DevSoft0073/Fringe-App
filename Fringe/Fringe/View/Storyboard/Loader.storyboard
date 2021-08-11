@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Loading IndicatorVC-->
+        <scene sceneID="oPx-QV-BeV">
+            <objects>
+                <viewController storyboardIdentifier="LoadingIndicatorVC" id="mu2-hc-ZGF" customClass="LoadingIndicatorVC" customModule="Podmany" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aBe-MI-6Jg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNF-kc-ObE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veX-bR-cgf">
+                                <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="veX-bR-cgf" secondAttribute="height" multiplier="1:1" id="3Jl-ob-Kbn"/>
+                                    <constraint firstAttribute="width" constant="100" id="qeC-G0-4bh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BNF-kc-ObE" firstAttribute="bottom" secondItem="aBe-MI-6Jg" secondAttribute="bottom" id="Fon-ID-8Fv"/>
+                            <constraint firstItem="BNF-kc-ObE" firstAttribute="trailing" secondItem="aBe-MI-6Jg" secondAttribute="trailing" id="WNF-3S-4Ea"/>
+                            <constraint firstItem="BNF-kc-ObE" firstAttribute="leading" secondItem="aBe-MI-6Jg" secondAttribute="leading" id="bDC-On-cqe"/>
+                            <constraint firstItem="BNF-kc-ObE" firstAttribute="top" secondItem="aBe-MI-6Jg" secondAttribute="top" id="e4I-Hn-oYv"/>
+                            <constraint firstItem="veX-bR-cgf" firstAttribute="centerX" secondItem="RMQ-wp-2Gy" secondAttribute="centerX" id="sv1-xV-18Y"/>
+                            <constraint firstItem="veX-bR-cgf" firstAttribute="centerY" secondItem="RMQ-wp-2Gy" secondAttribute="centerY" id="tFr-n1-uQT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RMQ-wp-2Gy"/>
+                    </view>
+                    <connections>
+                        <outlet property="indicatorView" destination="veX-bR-cgf" id="9Ye-DN-81L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CPw-a9-Yf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-111.2" y="-213.64317841079463"/>
+        </scene>
+    </scenes>
+</document>
