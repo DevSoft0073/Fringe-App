@@ -81,14 +81,14 @@ class NavigationManager: NSObject ,UITabBarControllerDelegate {
     
         let tabBarController = ESTabBarController()
         tabBarController.delegate = delegate
-//        tabBarController.tabBar.shadowImage = UIImage(named: FGImageName.icontransparent)
-        tabBarController.tabBar.shadowColor = UIColor.clear
-        tabBarController.tabBar.shadowOffset = CGSize.zero
-        tabBarController.tabBar.shadowOpacity = 0.7
-        tabBarController.tabBar.isTranslucent = true
-        //tabBarController.tabBar.backgroundColor = UIColor.white
-        tabBarController.tabBar.barTintColor = FGColor.appBorder
-        //tabBarController.tabBar.backgroundImage = UIImage(named: TFImageName.iconDarkBackground)
+        tabBarController.tabBar.shadowImage = UIImage(named: FGImageName.icontransparent)
+//        tabBarController.tabBar.shadowColor = UIColor.clear
+//        tabBarController.tabBar.shadowOffset = CGSize.zero
+//        tabBarController.tabBar.shadowOpacity = 0.7
+//        tabBarController.tabBar.isTranslucent = true
+//        tabBarController.tabBar.backgroundColor = UIColor.clear
+//        tabBarController.tabBar.barTintColor = FGColor.appBorder
+        tabBarController.tabBar.backgroundColor = UIColor.white
         
         let v1 = homeNC
         let v2 = golfclubsNC
@@ -150,9 +150,11 @@ class NavigationManager: NSObject ,UITabBarControllerDelegate {
     public var loadingIndicatorVC: LoadingIndicatorVC {
         return loaderStoryboard.instantiateViewController(withIdentifier: String(describing: LoadingIndicatorVC.self)) as! LoadingIndicatorVC
     }
+    
     public var logInVC: LogInVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: LogInVC.self)) as! LogInVC
     }
+    
     public var signUpVC: SignUpVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: SignUpVC.self)) as! SignUpVC
     }
@@ -160,15 +162,15 @@ class NavigationManager: NSObject ,UITabBarControllerDelegate {
     public var forgotPasswordVC: ForgotPasswordVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: ForgotPasswordVC.self)) as! ForgotPasswordVC
     }
+    
     public var notificationVC: NotificationVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: NotificationVC.self)) as! NotificationVC
     }
+    
+    public var homeVC: HomeVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: HomeVC.self)) as! HomeVC
+    }
+    
 
-    
-    
-    /*public var signInOptionsVC: SignInOptionsVC {
-        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: SignInOptionsVC.self)) as! SignInOptionsVC
-    }*/
-    
     //------------------------------------------------------
 }

@@ -19,9 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     //------------------------------------------------------
-    
-
-    
+        
     //MARK: Customs
     
     /// keyboard configutation
