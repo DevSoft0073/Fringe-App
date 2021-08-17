@@ -72,9 +72,32 @@ struct LocalizableConstants {
         
         //signout
         static let confirmLogout = "confirm_logout"
-        
     }
+
     
     struct Controller {
+        struct Notifications {
+            
+            static let title = "notifications"
+            static let noRecordsFound = "no_notifications_entry_found"
+        }
+        struct Fringe {
+            
+            static let title = "sessions"
+            static let pending = "pending"
+            static let confirmed = "confirmed"
+            static let moreInfo = "more_info"
+            static let payNow = "pay_now"
+        }
+        struct FringeDataForGolfclub {
+            
+            static let pending = "no_pending_data_found"
+            static let awating = "no_awating_data_found"
+            static let confirmed = "no_confirmed_data_found"
+            static let noSelected = "no_session_selected"
+            static let calendar = "no_data_available_for_this_date"
+            static let blockedDates = "seleceted_dates_are_already_blocked"
+            static let noDateBlocked = "no_date_blocked_for_this_month"
+        }
     }
 }

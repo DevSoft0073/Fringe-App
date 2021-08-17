@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C2917C326C6746B0091F8A1 /* GolfclubsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2917C226C6746B0091F8A1 /* GolfclubsVC.swift */; };
 		7C39F15126C3947600AAC277 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C39F13F26C3947500AAC277 /* Poppins-Light.ttf */; };
 		7C39F15226C3947600AAC277 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C39F14026C3947500AAC277 /* Poppins-SemiBold.ttf */; };
 		7C39F15426C3947600AAC277 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C39F14226C3947500AAC277 /* Poppins-Regular.ttf */; };
@@ -30,7 +31,21 @@
 		7C780F8F26C3C105003F1F12 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780F8E26C3C105003F1F12 /* SignUpVC.swift */; };
 		7C780F9426C3DF43003F1F12 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C780F9226C3DF43003F1F12 /* Localizable.strings */; };
 		7C780FBB26C3F160003F1F12 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FBA26C3F160003F1F12 /* ForgotPasswordVC.swift */; };
-		7CA24C0326C23D9500437C8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C0226C23D9500437C8A /* ViewController.swift */; };
+		7C780FC526C5063B003F1F12 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FC426C5063B003F1F12 /* NotificationVC.swift */; };
+		7C780FCA26C506E5003F1F12 /* NotificationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FC826C506E5003F1F12 /* NotificationTVCell.swift */; };
+		7C780FCB26C506E5003F1F12 /* NotificationTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C780FC926C506E5003F1F12 /* NotificationTVCell.xib */; };
+		7C780FD326C5330A003F1F12 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FD226C5330A003F1F12 /* HomeVC.swift */; };
+		7C780FD626C53346003F1F12 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FD526C53346003F1F12 /* ProfileVC.swift */; };
+		7C780FE926C582C4003F1F12 /* FavouriteTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FE726C582C4003F1F12 /* FavouriteTVCell.swift */; };
+		7C780FEA26C582C4003F1F12 /* FavouriteTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C780FE826C582C4003F1F12 /* FavouriteTVCell.xib */; };
+		7C780FEE26C58B4A003F1F12 /* FavouriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FED26C58B4A003F1F12 /* FavouriteVC.swift */; };
+		7C780FF126C6491D003F1F12 /* SegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FF026C6491B003F1F12 /* SegmentView.swift */; };
+		7C780FF526C64B68003F1F12 /* FringePendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FF326C64B68003F1F12 /* FringePendingCell.swift */; };
+		7C780FF626C64B68003F1F12 /* FringePendingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C780FF426C64B68003F1F12 /* FringePendingCell.xib */; };
+		7C94875726CA49AA00870F54 /* FringeConfirmedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C94875526CA49AA00870F54 /* FringeConfirmedCell.swift */; };
+		7C94875826CA49AA00870F54 /* FringeConfirmedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C94875626CA49AA00870F54 /* FringeConfirmedCell.xib */; };
+		7C94876026CA96CE00870F54 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C94875F26CA96CE00870F54 /* ProfileHeaderView.xib */; };
+		7C94876326CA972C00870F54 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C94876226CA972C00870F54 /* ProfileHeaderView.swift */; };
 		7CA24C0826C23D9600437C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24C0726C23D9600437C8A /* Assets.xcassets */; };
 		7CA24C0B26C23D9600437C8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24C0926C23D9600437C8A /* LaunchScreen.storyboard */; };
 		7CA24C2126C240AB00437C8A /* LoadingIndicatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C2026C240AB00437C8A /* LoadingIndicatorVC.swift */; };
@@ -60,13 +75,13 @@
 		7CA24C6526C2427C00437C8A /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C6226C2427C00437C8A /* JSONNull.swift */; };
 		7CA24C6826C242EE00437C8A /* Loader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24C6726C242EE00437C8A /* Loader.storyboard */; };
 		7CA24C8A26C2537600437C8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C8926C2537600437C8A /* AppDelegate.swift */; };
-		7CA24CB426C2817E00437C8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24CB326C2817E00437C8A /* SceneDelegate.swift */; };
 		F33DF4E0C97AFE699E18A5FB /* Pods_Fringe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fringe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6EA47CE18B85558BA94DF3 /* Pods-Fringe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fringe.debug.xcconfig"; path = "Target Support Files/Pods-Fringe/Pods-Fringe.debug.xcconfig"; sourceTree = "<group>"; };
+		7C2917C226C6746B0091F8A1 /* GolfclubsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfclubsVC.swift; sourceTree = "<group>"; };
 		7C39F13F26C3947500AAC277 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		7C39F14026C3947500AAC277 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		7C39F14226C3947500AAC277 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
@@ -90,8 +105,22 @@
 		7C780F8E26C3C105003F1F12 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7C780F9326C3DF43003F1F12 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7C780FBA26C3F160003F1F12 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		7C780FC426C5063B003F1F12 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		7C780FC826C506E5003F1F12 /* NotificationTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTVCell.swift; sourceTree = "<group>"; };
+		7C780FC926C506E5003F1F12 /* NotificationTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTVCell.xib; sourceTree = "<group>"; };
+		7C780FD226C5330A003F1F12 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		7C780FD526C53346003F1F12 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		7C780FE726C582C4003F1F12 /* FavouriteTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTVCell.swift; sourceTree = "<group>"; };
+		7C780FE826C582C4003F1F12 /* FavouriteTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteTVCell.xib; sourceTree = "<group>"; };
+		7C780FED26C58B4A003F1F12 /* FavouriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteVC.swift; sourceTree = "<group>"; };
+		7C780FF026C6491B003F1F12 /* SegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentView.swift; sourceTree = "<group>"; };
+		7C780FF326C64B68003F1F12 /* FringePendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FringePendingCell.swift; sourceTree = "<group>"; };
+		7C780FF426C64B68003F1F12 /* FringePendingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FringePendingCell.xib; sourceTree = "<group>"; };
+		7C94875526CA49AA00870F54 /* FringeConfirmedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FringeConfirmedCell.swift; sourceTree = "<group>"; };
+		7C94875626CA49AA00870F54 /* FringeConfirmedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FringeConfirmedCell.xib; sourceTree = "<group>"; };
+		7C94875F26CA96CE00870F54 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		7C94876226CA972C00870F54 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		7CA24BFB26C23D9500437C8A /* Fringe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fringe.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CA24C0226C23D9500437C8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7CA24C0726C23D9600437C8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CA24C0A26C23D9600437C8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CA24C0C26C23D9600437C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,7 +151,6 @@
 		7CA24C6226C2427C00437C8A /* JSONNull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
 		7CA24C6726C242EE00437C8A /* Loader.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loader.storyboard; sourceTree = "<group>"; };
 		7CA24C8926C2537600437C8A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7CA24CB326C2817E00437C8A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CFE4CE7EF00B8A63526B1946 /* Pods-Fringe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fringe.release.xcconfig"; path = "Target Support Files/Pods-Fringe/Pods-Fringe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,22 +207,48 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
-		7C780F8626C3A7AC003F1F12 /* Authentication Controller */ = {
-			isa = PBXGroup;
-			children = (
-				7C780F8726C3A80A003F1F12 /* LogInVC.swift */,
-				7C780F8E26C3C105003F1F12 /* SignUpVC.swift */,
-				7C780FBA26C3F160003F1F12 /* ForgotPasswordVC.swift */,
-			);
-			path = "Authentication Controller";
-			sourceTree = "<group>";
-		};
 		7C780F9126C3DF43003F1F12 /* Localizations */ = {
 			isa = PBXGroup;
 			children = (
 				7C780F9226C3DF43003F1F12 /* Localizable.strings */,
 			);
 			path = Localizations;
+			sourceTree = "<group>";
+		};
+		7C780FC126C5054C003F1F12 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7C780FC826C506E5003F1F12 /* NotificationTVCell.swift */,
+				7C780FE726C582C4003F1F12 /* FavouriteTVCell.swift */,
+				7C780FF326C64B68003F1F12 /* FringePendingCell.swift */,
+				7C94875526CA49AA00870F54 /* FringeConfirmedCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7C780FCE26C532A6003F1F12 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				7C780FBA26C3F160003F1F12 /* ForgotPasswordVC.swift */,
+				7CA24C2026C240AB00437C8A /* LoadingIndicatorVC.swift */,
+				7C780F8726C3A80A003F1F12 /* LogInVC.swift */,
+				7C780FC426C5063B003F1F12 /* NotificationVC.swift */,
+				7C780F8E26C3C105003F1F12 /* SignUpVC.swift */,
+				7C780FD226C5330A003F1F12 /* HomeVC.swift */,
+				7C780FD526C53346003F1F12 /* ProfileVC.swift */,
+				7C780FED26C58B4A003F1F12 /* FavouriteVC.swift */,
+				7C2917C226C6746B0091F8A1 /* GolfclubsVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		7C780FD126C532E3003F1F12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C780FF026C6491B003F1F12 /* SegmentView.swift */,
+				7C94876226CA972C00870F54 /* ProfileHeaderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7CA24BF226C23D9500437C8A = {
@@ -247,7 +301,6 @@
 				7C780F8B26C3BE75003F1F12 /* BaseVC.swift */,
 				7CA24C2826C2415C00437C8A /* AppFunctions.swift */,
 				7CA24C2526C2415100437C8A /* LocalizableConstants.swift */,
-				7CA24CB326C2817E00437C8A /* SceneDelegate.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -330,6 +383,11 @@
 		7CA24C1C26C2400100437C8A /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				7C780FC926C506E5003F1F12 /* NotificationTVCell.xib */,
+				7C780FE826C582C4003F1F12 /* FavouriteTVCell.xib */,
+				7C780FF426C64B68003F1F12 /* FringePendingCell.xib */,
+				7C94875626CA49AA00870F54 /* FringeConfirmedCell.xib */,
+				7C94875F26CA96CE00870F54 /* ProfileHeaderView.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -347,9 +405,9 @@
 		7CA24C1E26C2403400437C8A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7C780F8626C3A7AC003F1F12 /* Authentication Controller */,
-				7CA24C2026C240AB00437C8A /* LoadingIndicatorVC.swift */,
-				7CA24C0226C23D9500437C8A /* ViewController.swift */,
+				7C780FD126C532E3003F1F12 /* View */,
+				7C780FC126C5054C003F1F12 /* Cell */,
+				7C780FCE26C532A6003F1F12 /* VC */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -464,14 +522,19 @@
 			files = (
 				7CA24C0B26C23D9600437C8A /* LaunchScreen.storyboard in Resources */,
 				7C39F15D26C3947600AAC277 /* Poppins-Bold.ttf in Resources */,
+				7C780FCB26C506E5003F1F12 /* NotificationTVCell.xib in Resources */,
 				7C39F15126C3947600AAC277 /* Poppins-Light.ttf in Resources */,
+				7C94876026CA96CE00870F54 /* ProfileHeaderView.xib in Resources */,
 				7CA24C0826C23D9600437C8A /* Assets.xcassets in Resources */,
 				7C39F15226C3947600AAC277 /* Poppins-SemiBold.ttf in Resources */,
 				7C780F9426C3DF43003F1F12 /* Localizable.strings in Resources */,
 				7C39F15426C3947600AAC277 /* Poppins-Regular.ttf in Resources */,
 				7C39F19226C39A7600AAC277 /* Main.storyboard in Resources */,
 				7C39F15B26C3947600AAC277 /* Poppins-Medium.ttf in Resources */,
+				7C780FF626C64B68003F1F12 /* FringePendingCell.xib in Resources */,
 				7CA24C6826C242EE00437C8A /* Loader.storyboard in Resources */,
+				7C94875826CA49AA00870F54 /* FringeConfirmedCell.xib in Resources */,
+				7C780FEA26C582C4003F1F12 /* FavouriteTVCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C780F8826C3A80A003F1F12 /* LogInVC.swift in Sources */,
+				7C780FC526C5063B003F1F12 /* NotificationVC.swift in Sources */,
 				7CA24C4426C241D600437C8A /* RequestManager.swift in Sources */,
 				7CA24C6426C2427C00437C8A /* ErrorModal.swift in Sources */,
 				7C780F7D26C3A6DB003F1F12 /* ESTabBarItemContainer.swift in Sources */,
@@ -532,33 +596,41 @@
 				7CA24C3B26C241BA00437C8A /* ValidationManager.swift in Sources */,
 				7CA24C5426C2424100437C8A /* FGTextField.swift in Sources */,
 				7CA24C4726C2422500437C8A /* FGButton.swift in Sources */,
+				7C94876326CA972C00870F54 /* ProfileHeaderView.swift in Sources */,
+				7C780FE926C582C4003F1F12 /* FavouriteTVCell.swift in Sources */,
 				7CA24C4D26C2423500437C8A /* FGLabel.swift in Sources */,
 				7C780F8326C3A6FF003F1F12 /* BouncesContentView.swift in Sources */,
 				7C780F7B26C3A6DB003F1F12 /* ESTabBar.swift in Sources */,
 				7C780F7926C3A6DB003F1F12 /* ESTabBarController.swift in Sources */,
+				7C780FD326C5330A003F1F12 /* HomeVC.swift in Sources */,
 				7C780F7A26C3A6DB003F1F12 /* ESTabBarItemMoreContentView.swift in Sources */,
 				7C780F8F26C3C105003F1F12 /* SignUpVC.swift in Sources */,
+				7C780FD626C53346003F1F12 /* ProfileVC.swift in Sources */,
+				7C2917C326C6746B0091F8A1 /* GolfclubsVC.swift in Sources */,
 				7C780FBB26C3F160003F1F12 /* ForgotPasswordVC.swift in Sources */,
 				7CA24C5E26C2426800437C8A /* BaseResponseModal.swift in Sources */,
 				7CA24C5C26C2426800437C8A /* ResponseModal.swift in Sources */,
+				7C780FCA26C506E5003F1F12 /* NotificationTVCell.swift in Sources */,
 				7CA24C5D26C2426800437C8A /* UserModal.swift in Sources */,
 				7C780F6B26C3A391003F1F12 /* FGTextView.swift in Sources */,
 				7CA24C5626C2424100437C8A /* FGAssistiveTouchView.swift in Sources */,
-				7CA24C0326C23D9500437C8A /* ViewController.swift in Sources */,
 				7C780F8C26C3BE75003F1F12 /* BaseVC.swift in Sources */,
+				7C780FEE26C58B4A003F1F12 /* FavouriteVC.swift in Sources */,
 				7CA24C4126C241CD00437C8A /* DisplayAlertManager.swift in Sources */,
 				7C780F7C26C3A6DB003F1F12 /* ESTabBarItemContentView.swift in Sources */,
 				7CA24C2626C2415100437C8A /* LocalizableConstants.swift in Sources */,
 				7CA24C2926C2415C00437C8A /* AppFunctions.swift in Sources */,
-				7CA24CB426C2817E00437C8A /* SceneDelegate.swift in Sources */,
 				7CA24C3E26C241C300437C8A /* LoadingManager.swift in Sources */,
+				7C780FF126C6491D003F1F12 /* SegmentView.swift in Sources */,
 				7C780F7726C3A6DB003F1F12 /* ESTabBarItem.swift in Sources */,
 				7CA24C2C26C2416300437C8A /* AppConstants.swift in Sources */,
 				7CA24C5526C2424100437C8A /* FGDebouncer.swift in Sources */,
 				7CA24C5326C2424100437C8A /* FGImageView.swift in Sources */,
+				7C94875726CA49AA00870F54 /* FringeConfirmedCell.swift in Sources */,
 				7C780F8226C3A6FF003F1F12 /* IrregularityContentView.swift in Sources */,
 				7CA24C3826C241B200437C8A /* PreferenceManager.swift in Sources */,
 				7C780F7826C3A6DB003F1F12 /* ESTabBarItemBadgeView.swift in Sources */,
+				7C780FF526C64B68003F1F12 /* FringePendingCell.swift in Sources */,
 				7CA24C2126C240AB00437C8A /* LoadingIndicatorVC.swift in Sources */,
 				7CA24C8A26C2537600437C8A /* AppDelegate.swift in Sources */,
 				7C780F8426C3A6FF003F1F12 /* BasicContentView.swift in Sources */,

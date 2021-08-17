@@ -23,7 +23,7 @@ class FGBaseLabel: UILabel {
     }
 }
 
-class FGSFProDisplayRegularLabel: FGBaseLabel {
+class FGRegularLabel: FGBaseLabel {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -32,7 +32,31 @@ class FGSFProDisplayRegularLabel: FGBaseLabel {
     }
 }
 
-class FGSFProDisplayBoldLabel: FGBaseLabel {
+class FGLightLabel: FGBaseLabel {
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.font = FGFont.PoppinsLight(size: self.fontSize)
+    }
+}
+class FGMediumLabel: FGBaseLabel {
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.font = FGFont.PoppinsMedium(size: self.fontSize)
+    }
+}
+class FGSemiboldLabel: FGBaseLabel {
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.font = FGFont.PoppinsSemiBold(size: self.fontSize)
+    }
+}
+class FGBoldLabel: FGBaseLabel {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

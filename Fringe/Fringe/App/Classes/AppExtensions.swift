@@ -287,3 +287,15 @@ extension UITextField {
         self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: attributeString)
     }
 }
+//MARK:  UIImageView
+
+extension UIImageView {
+    
+    func circle() {
+        self.contentMode = .scaleToFill
+        self.layer.cornerRadius = bounds.height/2
+        shadowOffset = .zero
+//        shadowColor = FGColor.appBlack
+        shadowOpacity = FGSettings.shadowOpacity
+    }
+}

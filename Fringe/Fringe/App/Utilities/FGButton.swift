@@ -26,7 +26,7 @@ class FGBaseButton: UIButton {
     }
 }
 
-class PMSFProDisplayRegularButton: FGBaseButton {
+class FGRegularButton: FGBaseButton {
 
     /// common lable layout
     ///
@@ -39,7 +39,7 @@ class PMSFProDisplayRegularButton: FGBaseButton {
     }
 }
 
-class PMSFProDisplayBoldButton: FGBaseButton {
+class FGBoldButton: FGBaseButton {
 
     /// common lable layout
     ///
@@ -49,5 +49,67 @@ class PMSFProDisplayBoldButton: FGBaseButton {
         
         self.titleLabel?.font = FGFont.PoppinsBold(size: self.fontSize)
         self.imageView?.contentMode = .scaleAspectFit
+    }
+}
+class FGLightButton: FGBaseButton {
+
+    /// common lable layout
+    ///
+    /// - Parameter aDecoder: <#aDecoder description#>
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.titleLabel?.font = FGFont.PoppinsLight(size: self.fontSize)
+        self.imageView?.contentMode = .scaleAspectFit
+    }
+}
+class FGMediumButton: FGBaseButton {
+
+    /// common lable layout
+    ///
+    /// - Parameter aDecoder: <#aDecoder description#>
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.titleLabel?.font = FGFont.PoppinsMedium(size: self.fontSize)
+        self.imageView?.contentMode = .scaleAspectFit
+    }
+}
+class FGSemiboldButton: FGBaseButton {
+
+    /// common lable layout
+    ///
+    /// - Parameter aDecoder: <#aDecoder description#>
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.titleLabel?.font = FGFont.PoppinsSemiBold(size: self.fontSize)
+        self.imageView?.contentMode = .scaleAspectFit
+    }
+}
+class FGActiveButton: FGMediumButton {
+
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    func setup() {
+                
+        self.cornerRadius = FGSettings.cornerRadius
+        self.shadowOffset = CGSize.zero
+//        self.shadowOpacity = FGSettings.shadowOpacity
+        
+        self.backgroundColor = FGColor.appGreen
+        //self.setBackgroundImage(UIImage(named: TFImageName.background), for: .normal)
+        self.clipsToBounds = true
+    }
+    
+    /// common lable layout
+    ///
+    /// - Parameter aDecoder: <#aDecoder description#>
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+             
+       setup()
     }
 }

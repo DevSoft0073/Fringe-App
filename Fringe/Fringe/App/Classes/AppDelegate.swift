@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-//        IQKeyboardManager.shared.toolbarTintColor = FGColor.appFont
+        IQKeyboardManager.shared.toolbarTintColor = FGColor.appBorder
 //        IQKeyboardManager.shared.disabledDistanceHandlingClasses = [ChatDetailsVC.self, ChatViewController.self]
         IQKeyboardManager.shared.toolbarPreviousNextAllowedClasses = [UIScrollView.self, UIStackView.self, UIView.self, UISearchBar.self]
     }
@@ -52,17 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
-//            appearance.backgroundColor = FGColor.black
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
             
-            UINavigationBar.appearance().tintColor = .white
+            UINavigationBar.appearance().tintColor = .black
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().compactAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         } else {
-            UINavigationBar.appearance().tintColor = .white
-//            UINavigationBar.appearance().barTintColor = FGColor.black
+            UINavigationBar.appearance().tintColor = .black
             UINavigationBar.appearance().isTranslucent = false
         }
     }
@@ -112,7 +110,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         configureKeboard()
         getCustomFontDetails()
         configureNavigationBar()                       
-        
+//        NavigationManager.shared.setupLanding()
+//        NavigationManager.shared.setupSignIn()
         //RealmManager.shared.save(channelDownload: false)
 //        window?.tintColor = FGColor.black
         

@@ -11,11 +11,60 @@ import UIKit
 import MonthYearPicker
 
 class FGBaseTextField: UITextField {
-    public var padding: Double = 8
-    var fontDefaultSize : CGFloat {
+    
+    public var fontDefaultSize : CGFloat {
         return font?.pointSize ?? 0.0
     }
-    var fontSize : CGFloat = 0.0
+    public var fontSize : CGFloat = 0.0
+    
+    public var padding: Double = 8
+    
+    private var leftEmptyView: UIView {
+        return UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: padding, height: Double.zero)))
+    }
+    
+    private var leftButton : UIButton {
+        return UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: padding, height: Double.zero)))
+    }
+    
+    private var rightEmptyViewForButton : UIView {
+        return leftButton
+    }
+    
+    private var rightEmptyView: UIView {
+        return leftEmptyView
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        return super.becomeFirstResponder()
+    }
+    
+    override func resignFirstResponder() -> Bool {
+        return super.resignFirstResponder()
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    fileprivate func setupDefault() {
+        
+        self.cornerRadius = FGSettings.cornerRadius
+        
+    }
+    
+    private func setup() {
+        
+        fontSize = getDynamicFontSize(fontDefaultSize: fontDefaultSize)
+        
+        leftView = leftEmptyView
+        leftViewMode = .always
+        
+        rightView = rightEmptyView
+        rightViewMode = .always
+        
+        setupDefault()
+    }
     
     /// common text field layout for inputs
     ///
@@ -23,7 +72,7 @@ class FGBaseTextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-       fontSize = getDynamicFontSize(fontDefaultSize: fontDefaultSize)
+        setup()
     }
 }
 
@@ -115,8 +164,7 @@ class FGEmailTextField: FGRegularTextField {
         
         self.keyboardType = .emailAddress
         self.autocorrectionType = .no
-        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: ""])
+        
     }
     
     //------------------------------------------------------
@@ -124,7 +172,7 @@ class FGEmailTextField: FGRegularTextField {
     //MARK: Override
     
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 2)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 4)))
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 0.2)), size: CGSize(width: CGFloat(padding) * 0, height: bounds.height -  CGFloat(padding * 0.1)))
     }
     
     //------------------------------------------------------
@@ -159,8 +207,6 @@ class FGPasswordTextField: FGRegularTextField {
         self.isSecureTextEntry = true
         self.keyboardType = .default
         self.autocorrectionType = .no
-        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appBorder])
     }
     
     //------------------------------------------------------
@@ -168,7 +214,7 @@ class FGPasswordTextField: FGRegularTextField {
     //MARK: Override
     
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 0.2)), size: CGSize(width: CGFloat(padding) * 0, height: bounds.height -  CGFloat(padding * 0.1)))
     }
     
     //------------------------------------------------------
@@ -203,8 +249,6 @@ class FGUsernameTextField: FGMediumTextField {
         self.keyboardType = .default
         self.autocorrectionType = .no
         self.autocapitalizationType = .words
-        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appBorder])
     }
     
     //------------------------------------------------------
@@ -212,7 +256,7 @@ class FGUsernameTextField: FGMediumTextField {
     //MARK: Override
     
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 0.2)), size: CGSize(width: CGFloat(padding) * 0, height: bounds.height -  CGFloat(padding * 0.1)))
     }
     
     //------------------------------------------------------
@@ -230,7 +274,7 @@ class FGUsernameTextField: FGMediumTextField {
 }
 class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
     
-    var leftUserView: UIView {
+    var rightUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: FGImageName.iconCalender))
         imgView.contentMode = .scaleAspectFit
         return imgView
@@ -248,14 +292,11 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
     
     func setup() {
         
-        leftView = leftUserView
+        rightView = rightUserView
         
         self.keyboardType = .default
         self.autocorrectionType = .no
         self.autocapitalizationType = .words
-        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appBorder])
-        
         dpDate.datePickerMode = .date
         if #available(iOS 13.4, *) {
             dpDate.preferredDatePickerStyle = .wheels
@@ -277,8 +318,9 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
     
     //MARK: Override
     
-    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: self.bounds.width - CGFloat(padding * 4), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 2, height: bounds.height -  CGFloat(padding * 3.2)))
+        
     }
     
     //------------------------------------------------------
@@ -329,7 +371,7 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
 }
 class FGGenderTextField: FGRegularTextField, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var leftUserView: UIView {
+    var rightUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: FGImageName.iconDropDown))
         imgView.contentMode = .scaleAspectFit
         return imgView
@@ -353,13 +395,11 @@ class FGGenderTextField: FGRegularTextField, UITextFieldDelegate, UIPickerViewDa
     
     func setup() {
         
-        leftView = leftUserView
+        rightView = rightUserView
         
         self.keyboardType = .default
         self.autocorrectionType = .no
         self.autocapitalizationType = .words
-        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appBorder])
         
         
         pvGender.dataSource = self
@@ -374,8 +414,9 @@ class FGGenderTextField: FGRegularTextField, UITextFieldDelegate, UIPickerViewDa
     
     //MARK: Override
     
-    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: self.bounds.width - CGFloat(padding * 4), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 2, height: bounds.height -  CGFloat(padding * 3.2)))
+        
     }
     
     //------------------------------------------------------
@@ -451,12 +492,9 @@ class FGMobileNumberTextField: FGRegularTextField {
     func setup() {
         
         leftView = leftUserView
-        
         self.keyboardType = .numberPad
         self.autocorrectionType = .no
         self.autocapitalizationType = .words
-        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appBorder])
     }
     
     //------------------------------------------------------
@@ -464,8 +502,9 @@ class FGMobileNumberTextField: FGRegularTextField {
     //MARK: Override
     
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 0.2)), size: CGSize(width: CGFloat(padding) * 0, height: bounds.height -  CGFloat(padding * 0.1)))
     }
+    
     
     //------------------------------------------------------
     

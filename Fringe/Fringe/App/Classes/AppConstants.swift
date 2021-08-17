@@ -20,7 +20,7 @@ let emptyJsonString = "{}"
 
 struct FGSettings {
     
-    static let cornerRadius: CGFloat = 5
+    static let cornerRadius: CGFloat = 3
     static let borderWidth: CGFloat = 1
     static let shadowOpacity: Float = 0.4
     static let tableViewMargin: CGFloat = 50
@@ -36,6 +36,9 @@ struct FGColor {
     
     static let appBorder = UIColor(named: "appBorder")!
     static let appButton = UIColor(named: "appButton")!
+    static let appGreen = UIColor(named: "appGreen")!
+    static let appWhite = UIColor(named: "appWhite")!
+    static let appBackground = UIColor(named: "appBackground")!
 //    static let darkGray = UIColor.darkGray
 //    static let clear = UIColor.clear
 }
@@ -77,7 +80,20 @@ struct FGImageName {
     static let iconProfile = "pf"
     static let iconSplashBackGround = "splash_img"
     static let iconSplashLogo = "splash"
-    
+    static let iconBack = "back"
+    static let iconCheck = "check"
+    static let iconUncheck = "uncheck"
+    static let iconfavouritesel = "favourite_sel"
+    static let icongolfsel = "golf_sel"
+    static let iconhomesel = "home_sel"
+    static let iconinboxsel = "inbox_sel"
+    static let iconprofilesel = "profile_sel"
+    static let iconfavouriteunsel = "favourite_unsel"
+    static let icongolfunsel = "golf_unsel"
+    static let iconhomeunsel = "home_unsel"
+    static let iconinboxunsel = "inbox_unsel"
+    static let iconprofileunsel = "profile_unsel"
+    static let icontransparent = "icon_transparent"
 }
 
 struct FGScreenName {
