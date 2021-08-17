@@ -5,6 +5,7 @@
 //  Created by Dharmesh Avaiya on 22/08/20.
 //  Copyright © 2020 dharmesh. All rights reserved.
 //
+//
 
 import UIKit
 import IQKeyboardManagerSwift
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     //------------------------------------------------------
-        
+    
     //MARK: Customs
     
     /// keyboard configutation
@@ -27,11 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.toolbarTintColor = FGColor.appBorder
+        IQKeyboardManager.shared.toolbarTintColor = FGColor.appWhite
 //        IQKeyboardManager.shared.disabledDistanceHandlingClasses = [ChatDetailsVC.self, ChatViewController.self]
-        IQKeyboardManager.shared.toolbarPreviousNextAllowedClasses = [UIScrollView.self, UIStackView.self, UIView.self, UISearchBar.self]
     }
-    
     
     /// to get custom added font names
     private func getCustomFontDetails() {
@@ -50,69 +49,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+            appearance.backgroundColor = FGColor.appBackground
+            appearance.titleTextAttributes = [.foregroundColor: FGColor.appWhite, .font: FGFont.PoppinsRegular(size: FGFont.defaultRegularFontSize)]
+            appearance.largeTitleTextAttributes = [.foregroundColor: FGColor.appWhite, .font: FGFont.PoppinsRegular(size: FGFont.defaultRegularFontSize)]
             
-            UINavigationBar.appearance().tintColor = .black
+            UINavigationBar.appearance().barTintColor = FGColor.appBackground
+            UINavigationBar.appearance().tintColor = FGColor.appWhite
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().compactAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         } else {
-            UINavigationBar.appearance().tintColor = .black
+            UINavigationBar.appearance().barTintColor = FGColor.appBackground
+            UINavigationBar.appearance().tintColor = FGColor.appWhite
             UINavigationBar.appearance().isTranslucent = false
         }
     }
     
-    func registerRemoteNotificaton(_ application: UIApplication) {
-       
-        if #available(iOS 10.0, *) {
-            
-            UNUserNotificationCenter.current().delegate = self
-            
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
-            
-        } else {
-            
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
-        
-        application.registerForRemoteNotifications()
-    }
-    
-    //------------------------------------------------------
-    
-    //MARK: - UNUserNotificationCenterDelegate
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        
-        PreferenceManager.shared.deviceToken = deviceToken.hexString
-    }
-    
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        debugPrint("didFailToRegisterForRemoteNotificationsWithError: \(error.localizedDescription)")
-        
-        DisplayAlertManager.shared.displayAlert(animated: true, message: error.localizedDescription, handlerOK: nil)
-    }
     
     //------------------------------------------------------
     
     //MARK: UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-         
+        
         configureKeboard()
         getCustomFontDetails()
-        configureNavigationBar()                       
-//        NavigationManager.shared.setupLanding()
-//        NavigationManager.shared.setupSignIn()
+        configureNavigationBar()
         //RealmManager.shared.save(channelDownload: false)
-//        window?.tintColor = FGColor.black
-        
+        window?.tintColor = FGColor.appBackground
         return true
     }
     
@@ -123,4 +87,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     //------------------------------------------------------
 }
-

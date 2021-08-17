@@ -172,10 +172,7 @@
 
 //profile
 "account_information" = "Account Information";
-"payment_method" = "Payment Methods";
 "change_password" = "Change Password";
-"allow_location" = "Allow Location";
-"allow_notification" = "Allow Notification";
 "favourite_studios" = "Favorite Studios";
 "my_bookings" = "My bookings";
 "signup_as_studio" = "Signup as studio";
@@ -185,11 +182,16 @@
 "cancellation_policy" = "Cancellation Policy";
 "privacy_policy" = "Privacy Policy";
 "sign_out" = "Logout";
+"payment_method" = "Add payment method";
+"allow_location" = "Allow Location";
+"allow_notification" = "Allow notification";
+"switch_to_business" = "Switch to business";
+"terms_of_service" = "Terms of Service";
 
 //Profile Studio
 "add_slot_time" = "Add Slot Time";
 "account_information" = "Account Information";
-"payment_method" = "Payment Methods";
+//"payment_method" = "Payment Methods";
 "change_password" = "Change Password";
 "allow_location" = "Allow Location";
 "allow_notification" = "Allow Notification";

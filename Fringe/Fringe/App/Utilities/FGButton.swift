@@ -99,7 +99,7 @@ class FGActiveButton: FGMediumButton {
         self.shadowOffset = CGSize.zero
 //        self.shadowOpacity = FGSettings.shadowOpacity
         
-        self.backgroundColor = FGColor.appGreen
+        self.backgroundColor = FGColor.appWhite
         //self.setBackgroundImage(UIImage(named: TFImageName.background), for: .normal)
         self.clipsToBounds = true
     }

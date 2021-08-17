@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJV-Wf-HHD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJV-Wf-HHD">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -548,6 +548,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NGg-Uo-uc9"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mT5-iG-wMJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -568,13 +569,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golfclubs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbv-oc-EtC">
-                                <rect key="frame" x="12" y="36.5" width="132.5" height="39.5"/>
+                                <rect key="frame" x="12" y="36.5" width="119.5" height="33"/>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-D9-pGe">
-                                <rect key="frame" x="0.0" y="76" width="375" height="13.5"/>
+                                <rect key="frame" x="0.0" y="69.5" width="375" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -586,11 +587,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sgX-s0-4Fp">
-                                <rect key="frame" x="0.0" y="139.5" width="375" height="527.5"/>
+                                <rect key="frame" x="0.0" y="133" width="375" height="534"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffN-fP-P85">
-                                <rect key="frame" x="0.0" y="89.5" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="83" width="375" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3Rq-er-qQx">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -2004,7 +2005,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w2S-tl-Ngi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w2S-tl-Ngi">
                                 <rect key="frame" x="0.0" y="26.5" width="375" height="640.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -2016,13 +2017,16 @@
                             <constraint firstItem="3hj-Ib-CzQ" firstAttribute="width" secondItem="Lac-is-h3j" secondAttribute="width" id="VgW-od-zxp"/>
                             <constraint firstItem="3hj-Ib-CzQ" firstAttribute="centerX" secondItem="3D5-jB-4FF" secondAttribute="centerX" id="XjR-xs-5eH"/>
                             <constraint firstItem="3hj-Ib-CzQ" firstAttribute="height" secondItem="Lac-is-h3j" secondAttribute="height" multiplier="0.04" id="cRA-Rb-AnU"/>
-                            <constraint firstItem="3hj-Ib-CzQ" firstAttribute="top" secondItem="3D5-jB-4FF" secondAttribute="top" id="d1N-Eg-hSr"/>
+                            <constraint firstItem="3hj-Ib-CzQ" firstAttribute="top" secondItem="Lac-is-h3j" secondAttribute="top" id="d1N-Eg-hSr"/>
                             <constraint firstItem="w2S-tl-Ngi" firstAttribute="top" secondItem="3hj-Ib-CzQ" secondAttribute="bottom" id="f1q-lv-p9y"/>
                             <constraint firstItem="3D5-jB-4FF" firstAttribute="trailing" secondItem="w2S-tl-Ngi" secondAttribute="trailing" id="hmF-nR-GD8"/>
                             <constraint firstItem="3D5-jB-4FF" firstAttribute="bottom" secondItem="w2S-tl-Ngi" secondAttribute="bottom" id="tYk-OH-hO8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y6J-U9-uX2"/>
+                    <connections>
+                        <outlet property="tblProfile" destination="w2S-tl-Ngi" id="JAk-dt-Ltf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdg-Lm-DOX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

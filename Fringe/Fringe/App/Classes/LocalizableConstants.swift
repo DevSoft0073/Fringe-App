@@ -99,5 +99,18 @@ struct LocalizableConstants {
             static let blockedDates = "seleceted_dates_are_already_blocked"
             static let noDateBlocked = "no_date_blocked_for_this_month"
         }
+        struct Profile {
+            
+            static let accountInformation = "account_information"
+            static let changePassword = "change_password"
+            static let paymentMethods = "payment_method"
+            static let allowLocation = "allow_location"
+            static let allowNotification = "allow_notification"
+            static let bookingListing = "my_bookings"
+            static let switchToBusiness = "switch_to_business"
+            static let termsOfService = "terms_of_service"
+            static let privacyPolicy = "Privacy"
+            static let logout = "sign_out"
+        }
     }
 }

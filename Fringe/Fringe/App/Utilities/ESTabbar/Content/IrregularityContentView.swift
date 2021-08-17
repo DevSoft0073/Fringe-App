@@ -14,14 +14,14 @@ class IrregularityBasicContentView: BouncesContentView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        textColor = UIColor.black
-        highlightTextColor = FGColor.appGreen
-
+        textColor = FGColor.appBorder
+        highlightTextColor = FGColor.appBorder
+        
         iconColor = FGColor.appBorder
-        highlightIconColor = FGColor.appGreen
-
-        backdropColor = UIColor.clear
-        highlightBackdropColor = UIColor.clear
+        highlightIconColor = FGColor.appBorder
+        
+        backdropColor = FGColor.appBorder
+        highlightBackdropColor = FGColor.appBorder
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -34,7 +34,7 @@ class IrregularityContentView: ESTabBarItemContentView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.imageView.backgroundColor = UIColor.clear
+        self.imageView.backgroundColor = FGColor.appBorder
         self.imageView.layer.borderWidth = 3.0
         self.imageView.layer.borderColor = UIColor.init(white: 235 / 255.0, alpha: 1.0).cgColor
         self.imageView.layer.cornerRadius = 35
@@ -43,11 +43,11 @@ class IrregularityContentView: ESTabBarItemContentView {
         self.imageView.transform = transform
         self.superview?.bringSubviewToFront(self)
 
-//        textColor = UIColor.clear
-//        highlightTextColor = UIColor.clear
-//        iconColor = UIColor.clear
-//        highlightIconColor = UIColor.clear
-
+        textColor = FGColor.appBorder
+        highlightTextColor = FGColor.appBorder
+        iconColor = FGColor.appBorder
+        highlightIconColor = FGColor.appBorder
+        
         backdropColor = .clear
         highlightBackdropColor = .clear
     }
