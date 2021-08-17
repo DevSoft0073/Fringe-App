@@ -38,6 +38,7 @@ struct FGColor {
     static let appButton = UIColor(named: "appButton")!
     static let appGreen = UIColor(named: "appGreen")!
     static let appWhite = UIColor(named: "appWhite")!
+    static let appBlack = UIColor(named: "appBlack")!
     static let appBackground = UIColor(named: "appBackground")!
 //    static let darkGray = UIColor.darkGray
 //    static let clear = UIColor.clear

@@ -14,10 +14,10 @@ class IrregularityBasicContentView: BouncesContentView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        textColor = FGColor.appBorder
+        textColor = FGColor.appBlack
         highlightTextColor = FGColor.appGreen
-//
-        iconColor = FGColor.appBorder
+        
+        iconColor = FGColor.appBlack
         highlightIconColor = FGColor.appGreen
 //
 //        backdropColor = FGColor.appBorder
