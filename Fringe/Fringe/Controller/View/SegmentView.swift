@@ -15,22 +15,21 @@ protocol SegmentViewDelegate {
 
 class SegmentView: UIView {
     
-    @IBOutlet weak var btnn: FGRegularButton!
     
     @IBOutlet weak var separater: UIView!
     @IBOutlet weak var btn: FGRegularButton!
     
-//    var isSelected: Bool = false {
-//        didSet {
-//            if isSelected {
-//                separater.isHidden = false
-//                btn.setTitleColor(FGColor.appGreen, for: UIControl.State.normal)
-//            } else {
-//                separater.isHidden = true
-//                btn.setTitleColor(FGColor.appWhite, for: UIControl.State.normal)
-//            }
-//        }
-//    }
+    var isSelected: Bool = false {
+        didSet {
+            if isSelected {
+                separater.isHidden = false
+                btn.setTitleColor(FGColor.appGreen, for: UIControl.State.normal)
+            } else {
+                separater.isHidden = true
+                btn.setTitleColor(FGColor.appWhite, for: UIControl.State.normal)
+            }
+        }
+    }
     
     var delegate: SegmentViewDelegate?
     
@@ -40,11 +39,11 @@ class SegmentView: UIView {
     
     
     @IBAction func btnTap(_ sender: Any) {
-//        if isSelected {
-//            return
-//        }
-//        isSelected.toggle()
-//        delegate?.segment(view: self, didChange: true)
+        if isSelected {
+            return
+        }
+        isSelected.toggle()
+        delegate?.segment(view: self, didChange: true)
     }
     
     //------------------------------------------------------

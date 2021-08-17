@@ -15,13 +15,13 @@ class IrregularityBasicContentView: BouncesContentView {
         super.init(frame: frame)
         
         textColor = FGColor.appBorder
-        highlightTextColor = FGColor.appBorder
-        
+        highlightTextColor = FGColor.appGreen
+//
         iconColor = FGColor.appBorder
-        highlightIconColor = FGColor.appBorder
-        
-        backdropColor = FGColor.appBorder
-        highlightBackdropColor = FGColor.appBorder
+        highlightIconColor = FGColor.appGreen
+//
+//        backdropColor = FGColor.appBorder
+//        highlightBackdropColor = FGColor.appBorder
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -34,22 +34,22 @@ class IrregularityContentView: ESTabBarItemContentView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.imageView.backgroundColor = FGColor.appBorder
-        self.imageView.layer.borderWidth = 3.0
-        self.imageView.layer.borderColor = UIColor.init(white: 235 / 255.0, alpha: 1.0).cgColor
-        self.imageView.layer.cornerRadius = 35
-        self.insets = UIEdgeInsets.init(top: -32, left: 0, bottom: 0, right: 0)
-        let transform = CGAffineTransform.identity
-        self.imageView.transform = transform
-        self.superview?.bringSubviewToFront(self)
-
-        textColor = FGColor.appBorder
-        highlightTextColor = FGColor.appBorder
-        iconColor = FGColor.appBorder
-        highlightIconColor = FGColor.appBorder
-        
-        backdropColor = .clear
-        highlightBackdropColor = .clear
+//        self.imageView.backgroundColor = FGColor.appBorder
+//        self.imageView.layer.borderWidth = 3.0
+//        self.imageView.layer.borderColor = UIColor.init(white: 235 / 255.0, alpha: 1.0).cgColor
+//        self.imageView.layer.cornerRadius = 35
+//        self.insets = UIEdgeInsets.init(top: -32, left: 0, bottom: 0, right: 0)
+//        let transform = CGAffineTransform.identity
+//        self.imageView.transform = transform
+//        self.superview?.bringSubviewToFront(self)
+//
+//        textColor = FGColor.appBorder
+//        highlightTextColor = FGColor.appBorder
+//        iconColor = FGColor.appBorder
+//        highlightIconColor = FGColor.appBorder
+//
+//        backdropColor = .clear
+//        highlightBackdropColor = .clear
     }
     
     public required init?(coder aDecoder: NSCoder) {
