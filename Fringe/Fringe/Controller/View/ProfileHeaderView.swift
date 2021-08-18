@@ -14,7 +14,7 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblName: FGMediumLabel!
     @IBOutlet weak var lblEmail: FGRegularLabel!
-    @IBOutlet weak var btnEdit: FGActiveButton!
+    @IBOutlet weak var btnEdit: FGActiveButtonEdit!
     
     //------------------------------------------------------
     

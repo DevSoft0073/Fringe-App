@@ -55,7 +55,7 @@
                                 <constraint firstAttribute="width" secondItem="xJA-LT-Y7s" secondAttribute="height" multiplier="1:1" id="bOn-TN-AaX"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKH-7l-BG3" customClass="FGActiveButton" customModule="Fringe" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKH-7l-BG3" customClass="FGActiveButtonEdit" customModule="Fringe" customModuleProvider="target">
                             <rect key="frame" x="336.5" y="11.5" width="52.5" height="52.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="eKH-7l-BG3" secondAttribute="height" multiplier="1:1" id="9j8-4a-3t2"/>
