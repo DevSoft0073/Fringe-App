@@ -40,6 +40,7 @@ struct FGColor {
     static let appWhite = UIColor(named: "appWhite")!
     static let appBlack = UIColor(named: "appBlack")!
     static let appBackground = UIColor(named: "appBackground")!
+    static let appDarkBlack = UIColor(named: "appDarkBlack")!
 //    static let darkGray = UIColor.darkGray
 //    static let clear = UIColor.clear
 }
@@ -97,17 +98,19 @@ struct FGImageName {
     static let iconProfileUnselected = "profile_unsel"
     static let icontransparent = "icon_transparent"
     
-   
-    static let iconAccountInformation = "icon_info"
-    static let iconPaymentMethods = "icon_payment_method"
-    static let iconChangePassword = "icon_change_password"
+    // Profile
+    
+    static let iconEditProfile = "edit_profile"
+    static let iconAccountInformation = "account_info"
+    static let iconPaymentMethods = "add_payment"
+    static let iconChangePassword = "change_password"
     static let iconAllowLocation = "icon_allow_location"
     static let iconAllowNotification = "icon_allow_notification"
-    static let iconBookingListing = "icon_bookings"
-    static let iconSwitchToBusiness = "icon_business"
-    static let iconTermsOfService = "icon_terms_of_service"
-    static let iconPrivacyPolicy = "icon_policy"
-    static let iconLogout = "icon_sign_out"
+    static let iconBookingListing = "my_booking"
+    static let iconSwitchToBusiness = "switch_host"
+    static let iconTermsOfService = "terms_service"
+    static let iconPrivacyPolicy = "privacy_policy"
+    static let iconLogout = "logout"
 }
 
 struct FGScreenName {

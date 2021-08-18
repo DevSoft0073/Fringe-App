@@ -126,7 +126,7 @@ class FGActiveButtonEdit: FGRegularButton {
         self.shadowOffset = CGSize.zero
 //        self.shadowOpacity = FGSettings.shadowOpacity
         
-        self.backgroundColor = FGColor.appWhite
+        self.backgroundColor = UIColor.clear
         //self.setBackgroundImage(UIImage(named: TFImageName.background), for: .normal)
         self.clipsToBounds = true
     }

@@ -79,6 +79,8 @@
 		7CE2E85226CB943900AF882A /* ProfileTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE2E85026CB943900AF882A /* ProfileTBCell.xib */; };
 		7CE2E85726CB9A3200AF882A /* ProfileSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2E85526CB9A3200AF882A /* ProfileSwitchCell.swift */; };
 		7CE2E85826CB9A3200AF882A /* ProfileSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE2E85626CB9A3200AF882A /* ProfileSwitchCell.xib */; };
+		7CE46BED26CCE09B004EC6C7 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE46BEC26CCE09B004EC6C7 /* EditProfileVC.swift */; };
+		7CE46BF026CCFF07004EC6C7 /* AccountInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE46BEF26CCFF07004EC6C7 /* AccountInformationVC.swift */; };
 		F33DF4E0C97AFE699E18A5FB /* Pods_Fringe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +161,8 @@
 		7CE2E85026CB943900AF882A /* ProfileTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTBCell.xib; sourceTree = "<group>"; };
 		7CE2E85526CB9A3200AF882A /* ProfileSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSwitchCell.swift; sourceTree = "<group>"; };
 		7CE2E85626CB9A3200AF882A /* ProfileSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSwitchCell.xib; sourceTree = "<group>"; };
+		7CE46BEC26CCE09B004EC6C7 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		7CE46BEF26CCFF07004EC6C7 /* AccountInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationVC.swift; sourceTree = "<group>"; };
 		CFE4CE7EF00B8A63526B1946 /* Pods-Fringe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fringe.release.xcconfig"; path = "Target Support Files/Pods-Fringe/Pods-Fringe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -248,6 +252,8 @@
 				7C780FD526C53346003F1F12 /* ProfileVC.swift */,
 				7C780FED26C58B4A003F1F12 /* FavouriteVC.swift */,
 				7C2917C226C6746B0091F8A1 /* GolfclubsVC.swift */,
+				7CE46BEC26CCE09B004EC6C7 /* EditProfileVC.swift */,
+				7CE46BEF26CCFF07004EC6C7 /* AccountInformationVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -625,6 +631,7 @@
 				7CE2E85126CB943900AF882A /* ProfileTBCell.swift in Sources */,
 				7CA24C5E26C2426800437C8A /* BaseResponseModal.swift in Sources */,
 				7CA24C5C26C2426800437C8A /* ResponseModal.swift in Sources */,
+				7CE46BF026CCFF07004EC6C7 /* AccountInformationVC.swift in Sources */,
 				7C780FCA26C506E5003F1F12 /* NotificationTVCell.swift in Sources */,
 				7CA24C5D26C2426800437C8A /* UserModal.swift in Sources */,
 				7C780F6B26C3A391003F1F12 /* FGTextView.swift in Sources */,
@@ -647,6 +654,7 @@
 				7CA24C3826C241B200437C8A /* PreferenceManager.swift in Sources */,
 				7C780F7826C3A6DB003F1F12 /* ESTabBarItemBadgeView.swift in Sources */,
 				7C780FF526C64B68003F1F12 /* FringePendingCell.swift in Sources */,
+				7CE46BED26CCE09B004EC6C7 /* EditProfileVC.swift in Sources */,
 				7CA24C2126C240AB00437C8A /* LoadingIndicatorVC.swift in Sources */,
 				7CA24C8A26C2537600437C8A /* AppDelegate.swift in Sources */,
 				7C780F8426C3A6FF003F1F12 /* BasicContentView.swift in Sources */,

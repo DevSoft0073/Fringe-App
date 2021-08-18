@@ -10,10 +10,10 @@ import UIKit
 
 public protocol FGImagePickerDelegate: class {
     
-    func didSelect(controller: PMImagePickerVC, image: UIImage?)
+    func didSelect(controller: ImagePicker, image: UIImage?)
 }
 
-open class PMImagePickerVC: NSObject {
+open class ImagePicker: NSObject {
     
     private let pickerController: UIImagePickerController
     private weak var presentationController: UIViewController?
@@ -103,7 +103,7 @@ open class PMImagePickerVC: NSObject {
     }
 }
 
-extension PMImagePickerVC: UIImagePickerControllerDelegate {
+extension ImagePicker: UIImagePickerControllerDelegate {
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.pickerController(picker, didSelect: nil)
@@ -121,7 +121,7 @@ extension PMImagePickerVC: UIImagePickerControllerDelegate {
     }
 }
 
-extension PMImagePickerVC: UINavigationControllerDelegate {
+extension ImagePicker: UINavigationControllerDelegate {
     
     //Handle UINavigationControllerDelegate
 }

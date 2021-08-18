@@ -400,6 +400,12 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     public var notificationVC: NotificationVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: NotificationVC.self)) as! NotificationVC
     }
+    public var editProfileVC: EditProfileVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: EditProfileVC.self)) as! EditProfileVC
+    }
+    public var accountInformationVC: AccountInformationVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: AccountInformationVC.self)) as! AccountInformationVC
+    }
     
     
     

@@ -107,6 +107,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         tblProfile.reloadData()
     }
     //------------------------------------------------------
+    //MARK: Action
     
     //MARK: UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -148,7 +149,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 65
         
     }
     
@@ -166,10 +167,25 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view: ProfileHeaderView = UIView.fromNib()
 //        view.setupData(currentUser)
+        view.btnEdit.addTarget(self, action: #selector(showEditDetail), for: .touchUpInside)
         view.layoutSubviews()
         return view
     }
+    @objc func showEditDetail(){
+        let controller = NavigationManager.shared.editProfileVC
+                push(controller: controller)
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        let name = item["name"]
+         if name == ProfileItems.accountInformation{
+            let controller = NavigationManager.shared.accountInformationVC
+            controller.textTitle = name?.localized()
+            push(controller: controller)
+            
+         }else{}
+    }
     //MARK: UIViewController
     
     override func viewDidLoad() {

@@ -41,6 +41,7 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
         
     }
     //------------------------------------------------------
+    //MARK: Actions
     @IBAction func btnBack(_ sender: Any) {
         self.pop()
     }

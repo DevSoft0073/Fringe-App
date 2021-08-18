@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import AssistantKit
 
+
 /// This function will retutn font size according to device.
 ///
 /// - Parameter fontDefaultSize: <#fontDefaultSize description#>
@@ -87,6 +88,7 @@ func localized(code: Int) -> String {
     let localizedMessage = codeKey.localized()
     return localizedMessage
 }
+
 
 func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
     

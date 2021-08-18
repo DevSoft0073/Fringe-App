@@ -49,7 +49,7 @@
                                 </label>
                             </subviews>
                         </stackView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xJA-LT-Y7s">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_profile" translatesAutoresizingMaskIntoConstraints="NO" id="xJA-LT-Y7s">
                             <rect key="frame" x="353" y="28" width="19" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="xJA-LT-Y7s" secondAttribute="height" multiplier="1:1" id="bOn-TN-AaX"/>
@@ -116,6 +116,7 @@
         </view>
     </objects>
     <resources>
+        <image name="edit_profile" width="54" height="54"/>
         <image name="golf_img" width="6000" height="4000"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -55,5 +55,7 @@ class ProfileHeaderView: UIView {
     //MARK: Action
     
     @IBAction func btnEdit(_ sender: Any) {
+
+
     }
 }
