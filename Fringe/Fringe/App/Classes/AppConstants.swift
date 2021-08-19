@@ -111,6 +111,17 @@ struct FGImageName {
     static let iconTermsOfService = "terms_service"
     static let iconPrivacyPolicy = "privacy_policy"
     static let iconLogout = "logout"
+    
+    // Add Payment
+    static let iconApplePayment = "apple_payment"
+    static let iconCreditCardPayment = "card_payment"
+    static let iconPayPayment = "pay_payment"
+    static let iconDropDwn = "drop_down"
+    static let iconDropRight = "right"
+    
+    // Rating star
+    static let iconSelectedStar = "rating"
+    static let iconUnselectedStar = "star"
 }
 
 struct FGScreenName {

@@ -109,6 +109,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     //------------------------------------------------------
     //MARK: Action
     
+    //------------------------------------------------------
     //MARK: UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -184,7 +185,18 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             controller.textTitle = name?.localized()
             push(controller: controller)
             
-         }else{}
+         }else if name == ProfileItems.changePassword {
+            let controller = NavigationManager.shared.changePasswordVC
+            controller.textTitle = name?.localized()
+            push(controller: controller)
+         }else if name == ProfileItems.addPayment {
+            let controller = NavigationManager.shared.addPaymentMethodVC
+                        push(controller: controller)
+         }else if name == ProfileItems.myBookings{
+            let controller = NavigationManager.shared.myBookingVC
+                        push(controller: controller)
+         }
+        
     }
     //MARK: UIViewController
     

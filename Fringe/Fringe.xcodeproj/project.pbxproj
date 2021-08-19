@@ -42,6 +42,14 @@
 		7C780FF126C6491D003F1F12 /* SegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FF026C6491B003F1F12 /* SegmentView.swift */; };
 		7C780FF526C64B68003F1F12 /* FringePendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780FF326C64B68003F1F12 /* FringePendingCell.swift */; };
 		7C780FF626C64B68003F1F12 /* FringePendingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C780FF426C64B68003F1F12 /* FringePendingCell.xib */; };
+		7C8F1D5A26CE236B00135C41 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F1D5926CE236B00135C41 /* ChangePasswordVC.swift */; };
+		7C8F1D5E26CE328800135C41 /* AddPaymentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F1D5C26CE328800135C41 /* AddPaymentTVCell.swift */; };
+		7C8F1D5F26CE328800135C41 /* AddPaymentTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C8F1D5D26CE328800135C41 /* AddPaymentTVCell.xib */; };
+		7C8F1D6326CE3B8800135C41 /* AddPaymentMethodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F1D6226CE3B8800135C41 /* AddPaymentMethodVC.swift */; };
+		7C8F1D6726CE4BAB00135C41 /* MyBookingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F1D6526CE4BAB00135C41 /* MyBookingTVCell.swift */; };
+		7C8F1D6826CE4BAB00135C41 /* MyBookingTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C8F1D6626CE4BAB00135C41 /* MyBookingTVCell.xib */; };
+		7C8F1D6D26CE513D00135C41 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F1D6C26CE513D00135C41 /* FloatRatingView.swift */; };
+		7C8F1D7026CE6BB300135C41 /* MyBookingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F1D6F26CE6BB300135C41 /* MyBookingVC.swift */; };
 		7C94875726CA49AA00870F54 /* FringeConfirmedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C94875526CA49AA00870F54 /* FringeConfirmedCell.swift */; };
 		7C94875826CA49AA00870F54 /* FringeConfirmedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C94875626CA49AA00870F54 /* FringeConfirmedCell.xib */; };
 		7C94876026CA96CE00870F54 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C94875F26CA96CE00870F54 /* ProfileHeaderView.xib */; };
@@ -122,6 +130,14 @@
 		7C780FF026C6491B003F1F12 /* SegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentView.swift; sourceTree = "<group>"; };
 		7C780FF326C64B68003F1F12 /* FringePendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FringePendingCell.swift; sourceTree = "<group>"; };
 		7C780FF426C64B68003F1F12 /* FringePendingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FringePendingCell.xib; sourceTree = "<group>"; };
+		7C8F1D5926CE236B00135C41 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
+		7C8F1D5C26CE328800135C41 /* AddPaymentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentTVCell.swift; sourceTree = "<group>"; };
+		7C8F1D5D26CE328800135C41 /* AddPaymentTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPaymentTVCell.xib; sourceTree = "<group>"; };
+		7C8F1D6226CE3B8800135C41 /* AddPaymentMethodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentMethodVC.swift; sourceTree = "<group>"; };
+		7C8F1D6526CE4BAB00135C41 /* MyBookingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookingTVCell.swift; sourceTree = "<group>"; };
+		7C8F1D6626CE4BAB00135C41 /* MyBookingTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyBookingTVCell.xib; sourceTree = "<group>"; };
+		7C8F1D6C26CE513D00135C41 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
+		7C8F1D6F26CE6BB300135C41 /* MyBookingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookingVC.swift; sourceTree = "<group>"; };
 		7C94875526CA49AA00870F54 /* FringeConfirmedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FringeConfirmedCell.swift; sourceTree = "<group>"; };
 		7C94875626CA49AA00870F54 /* FringeConfirmedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FringeConfirmedCell.xib; sourceTree = "<group>"; };
 		7C94875F26CA96CE00870F54 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
@@ -236,6 +252,8 @@
 				7C94875526CA49AA00870F54 /* FringeConfirmedCell.swift */,
 				7CE2E84F26CB943900AF882A /* ProfileTBCell.swift */,
 				7CE2E85526CB9A3200AF882A /* ProfileSwitchCell.swift */,
+				7C8F1D5C26CE328800135C41 /* AddPaymentTVCell.swift */,
+				7C8F1D6526CE4BAB00135C41 /* MyBookingTVCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -254,6 +272,9 @@
 				7C2917C226C6746B0091F8A1 /* GolfclubsVC.swift */,
 				7CE46BEC26CCE09B004EC6C7 /* EditProfileVC.swift */,
 				7CE46BEF26CCFF07004EC6C7 /* AccountInformationVC.swift */,
+				7C8F1D5926CE236B00135C41 /* ChangePasswordVC.swift */,
+				7C8F1D6226CE3B8800135C41 /* AddPaymentMethodVC.swift */,
+				7C8F1D6F26CE6BB300135C41 /* MyBookingVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -265,6 +286,14 @@
 				7C94876226CA972C00870F54 /* ProfileHeaderView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7C8F1D6B26CE513D00135C41 /* Rating View */ = {
+			isa = PBXGroup;
+			children = (
+				7C8F1D6C26CE513D00135C41 /* FloatRatingView.swift */,
+			);
+			path = "Rating View";
 			sourceTree = "<group>";
 		};
 		7CA24BF226C23D9500437C8A = {
@@ -338,6 +367,7 @@
 		7CA24C1626C23F5300437C8A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7C8F1D6B26CE513D00135C41 /* Rating View */,
 				7C780F6D26C3A690003F1F12 /* ESTabbar */,
 				7CA24C5226C2424100437C8A /* FGAssistiveTouchView.swift */,
 				7CA24C5126C2424100437C8A /* FGDebouncer.swift */,
@@ -406,6 +436,8 @@
 				7C94875F26CA96CE00870F54 /* ProfileHeaderView.xib */,
 				7CE2E85026CB943900AF882A /* ProfileTBCell.xib */,
 				7CE2E85626CB9A3200AF882A /* ProfileSwitchCell.xib */,
+				7C8F1D5D26CE328800135C41 /* AddPaymentTVCell.xib */,
+				7C8F1D6626CE4BAB00135C41 /* MyBookingTVCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -539,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA24C0B26C23D9600437C8A /* LaunchScreen.storyboard in Resources */,
+				7C8F1D6826CE4BAB00135C41 /* MyBookingTVCell.xib in Resources */,
 				7C39F15D26C3947600AAC277 /* Poppins-Bold.ttf in Resources */,
 				7C780FCB26C506E5003F1F12 /* NotificationTVCell.xib in Resources */,
 				7C39F15126C3947600AAC277 /* Poppins-Light.ttf in Resources */,
@@ -548,6 +581,7 @@
 				7C780F9426C3DF43003F1F12 /* Localizable.strings in Resources */,
 				7C39F15426C3947600AAC277 /* Poppins-Regular.ttf in Resources */,
 				7CE2E85226CB943900AF882A /* ProfileTBCell.xib in Resources */,
+				7C8F1D5F26CE328800135C41 /* AddPaymentTVCell.xib in Resources */,
 				7C39F19226C39A7600AAC277 /* Main.storyboard in Resources */,
 				7CE2E85826CB9A3200AF882A /* ProfileSwitchCell.xib in Resources */,
 				7C39F15B26C3947600AAC277 /* Poppins-Medium.ttf in Resources */,
@@ -611,10 +645,12 @@
 				7C780FC526C5063B003F1F12 /* NotificationVC.swift in Sources */,
 				7CA24C4426C241D600437C8A /* RequestManager.swift in Sources */,
 				7CA24C6426C2427C00437C8A /* ErrorModal.swift in Sources */,
+				7C8F1D7026CE6BB300135C41 /* MyBookingVC.swift in Sources */,
 				7C780F7D26C3A6DB003F1F12 /* ESTabBarItemContainer.swift in Sources */,
 				7CA24C6526C2427C00437C8A /* JSONNull.swift in Sources */,
 				7CA24C3B26C241BA00437C8A /* ValidationManager.swift in Sources */,
 				7CA24C5426C2424100437C8A /* FGTextField.swift in Sources */,
+				7C8F1D6326CE3B8800135C41 /* AddPaymentMethodVC.swift in Sources */,
 				7CA24C4726C2422500437C8A /* FGButton.swift in Sources */,
 				7C94876326CA972C00870F54 /* ProfileHeaderView.swift in Sources */,
 				7C780FE926C582C4003F1F12 /* FavouriteTVCell.swift in Sources */,
@@ -643,6 +679,7 @@
 				7C780F7C26C3A6DB003F1F12 /* ESTabBarItemContentView.swift in Sources */,
 				7CA24C2626C2415100437C8A /* LocalizableConstants.swift in Sources */,
 				7CA24C2926C2415C00437C8A /* AppFunctions.swift in Sources */,
+				7C8F1D6726CE4BAB00135C41 /* MyBookingTVCell.swift in Sources */,
 				7CA24C3E26C241C300437C8A /* LoadingManager.swift in Sources */,
 				7C780FF126C6491D003F1F12 /* SegmentView.swift in Sources */,
 				7C780F7726C3A6DB003F1F12 /* ESTabBarItem.swift in Sources */,
@@ -650,8 +687,10 @@
 				7CA24C5526C2424100437C8A /* FGDebouncer.swift in Sources */,
 				7CA24C5326C2424100437C8A /* FGImageView.swift in Sources */,
 				7C94875726CA49AA00870F54 /* FringeConfirmedCell.swift in Sources */,
+				7C8F1D5A26CE236B00135C41 /* ChangePasswordVC.swift in Sources */,
 				7C780F8226C3A6FF003F1F12 /* IrregularityContentView.swift in Sources */,
 				7CA24C3826C241B200437C8A /* PreferenceManager.swift in Sources */,
+				7C8F1D5E26CE328800135C41 /* AddPaymentTVCell.swift in Sources */,
 				7C780F7826C3A6DB003F1F12 /* ESTabBarItemBadgeView.swift in Sources */,
 				7C780FF526C64B68003F1F12 /* FringePendingCell.swift in Sources */,
 				7CE46BED26CCE09B004EC6C7 /* EditProfileVC.swift in Sources */,
@@ -663,6 +702,7 @@
 				7CA24C2F26C2418100437C8A /* AppExtensions.swift in Sources */,
 				7C39F19B26C39F1100AAC277 /* FGCustomCameraView.swift in Sources */,
 				7CA24C6326C2427C00437C8A /* JSONAny.swift in Sources */,
+				7C8F1D6D26CE513D00135C41 /* FloatRatingView.swift in Sources */,
 				7CA24C3526C241A500437C8A /* NavigationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -144,12 +144,14 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        NavigationManager.shared.isEnabledBottomMenu = false
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
     
     override func viewDidLayoutSubviews() {

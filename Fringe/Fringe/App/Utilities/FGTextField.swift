@@ -300,8 +300,8 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
         dpDate.datePickerMode = .date
         if #available(iOS 13.4, *) {
             dpDate.preferredDatePickerStyle = .wheels
-            dpDate.backgroundColor = .black
-            dpDate.setValue(UIColor.white, forKeyPath: "textColor")
+            dpDate.backgroundColor = .white
+            dpDate.setValue(UIColor.black, forKeyPath: "textColor")
             dpDate.setValue(false, forKeyPath: "highlightsToday")
             
         } else {

@@ -24,6 +24,15 @@ class HomeVC : BaseVC {
         
     }
     
+  
+    
+    //------------------------------------------------------
+    //MARK: Actions
+    
+    @IBAction func btnNotificationTap(_ sender: Any) {
+        let controller = NavigationManager.shared.notificationVC
+        push(controller: controller)
+    }
     //------------------------------------------------------
     
     //MARK: UIViewController
@@ -36,14 +45,6 @@ class HomeVC : BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    }
-    
-    //------------------------------------------------------
-    //MARK: Actions
-    
-    @IBAction func btnNotificationTap(_ sender: Any) {
-        let controller = NavigationManager.shared.notificationVC
-        push(controller: controller)
     }
     
 }

@@ -251,3 +251,8 @@
 "pay_now" = "Pay Now";
 
 "messages" = "Messages";
+
+// add payment
+"credit_debit_card" = "Credit or Debit card";
+"pay_pal_card" = "PayPal";
+"apple_card" = "Apple Pay";

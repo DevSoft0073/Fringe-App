@@ -47,6 +47,7 @@ class AccountInformationVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NavigationManager.shared.isEnabledBottomMenu = false
     }
     
     //------------------------------------------------------

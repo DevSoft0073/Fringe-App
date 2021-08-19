@@ -36,6 +36,7 @@ class LogInVC : BaseVC,UITextFieldDelegate,UITextViewDelegate {
         
     }
     
+    //------------------------------------------------------
     //MARK: Customs
     
     func setup() {
@@ -72,25 +73,7 @@ class LogInVC : BaseVC,UITextFieldDelegate,UITextViewDelegate {
         
         return true
     }
-    
-    //------------------------------------------------------
-    
-    //MARK: UIViewController
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    //------------------------------------------------------
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    //------------------------------------------------------
-    
-    
-    //------------------------------------------------------
+
     
     //MARK: Actions
   
@@ -122,4 +105,24 @@ class LogInVC : BaseVC,UITextFieldDelegate,UITextViewDelegate {
         let controller = NavigationManager.shared.signUpVC
         push(controller: controller)
     }
+    
+    //------------------------------------------------------
+    
+    //MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+    }
+    
+    //------------------------------------------------------
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    //------------------------------------------------------
+    
+    
+    //------------------------------------------------------
 }

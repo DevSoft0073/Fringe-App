@@ -113,5 +113,12 @@ struct LocalizableConstants {
             static let privacyPolicy = "Privacy"
             static let logout = "sign_out"
         }
+        struct AddPaymentMethod {
+            
+            static let creditDebitCard = "credit_debit_card"
+            static let payPalCard = "pay_pal_card"
+            static let appleCard = "apple_card"
+        }
+        
     }
 }

@@ -27,7 +27,8 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     //MARK: Customs
     
     func setup() {
-        
+        tblNotification.delegate = self
+        tblNotification.dataSource = self
         navigationItem.title = LocalizableConstants.Controller.Notifications.title.localized()
         
 //        let loadMoreView = KRPullLoadView()
@@ -40,6 +41,7 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
         tblNotification.register(nibRequestCell, forCellReuseIdentifier: identifier)
         
     }
+    
     //------------------------------------------------------
     //MARK: Actions
     @IBAction func btnBack(_ sender: Any) {
@@ -76,7 +78,7 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
         super.viewDidLoad()
         
       setup()
-        
+        NavigationManager.shared.isEnabledBottomMenu = false
     }
     
     //------------------------------------------------------

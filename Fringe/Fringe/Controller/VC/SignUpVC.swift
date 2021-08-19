@@ -127,19 +127,8 @@ class SignUpVC : BaseVC , UITextFieldDelegate, UITextViewDelegate {
         //        }
         return true
     }
-    
-    //MARK: UIViewController
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
-    }
-    
-    //------------------------------------------------------
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
+   
+   
     
     //------------------------------------------------------
     
@@ -184,6 +173,20 @@ class SignUpVC : BaseVC , UITextFieldDelegate, UITextViewDelegate {
     
     @IBAction func btnLoginTap(_ sender: Any) {
         self.pop()
+    }
+    
+    //------------------------------------------------------
+    //MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+    }
+    
+    //------------------------------------------------------
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 }
 
