@@ -130,13 +130,14 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        NavigationManager.shared.isEnabledBottomMenu = false
+       
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NavigationManager.shared.isEnabledBottomMenu = false
     }
     
     //------------------------------------------------------

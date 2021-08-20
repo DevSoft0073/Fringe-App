@@ -21,6 +21,10 @@ class MyBookingTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func layoutSublayers(of layer: CALayer) {
+//        imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

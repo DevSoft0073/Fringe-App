@@ -60,7 +60,7 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MyBookingTVCell.self)) as? MyBookingTVCell {
-            cell.imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 15)
+            cell.imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
             return cell
         }
         return UITableViewCell()
@@ -80,13 +80,14 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        NavigationManager.shared.isEnabledBottomMenu = false
+       
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NavigationManager.shared.isEnabledBottomMenu = false
     }
     
     //------------------------------------------------------

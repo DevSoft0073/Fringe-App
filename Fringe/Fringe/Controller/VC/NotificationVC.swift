@@ -78,14 +78,14 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
         super.viewDidLoad()
         
       setup()
-        NavigationManager.shared.isEnabledBottomMenu = false
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        NavigationManager.shared.isEnabledBottomMenu = false
+
         
         }
         
