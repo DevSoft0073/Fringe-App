@@ -69,7 +69,7 @@ class FGBaseTextView: UITextView {
     }
 }
 
-class SCRegularWithoutBorderTextView: UITextView {
+class FGRegularWithoutBorderTextView: UITextView {
 
     public var fontDefaultSize : CGFloat {
         return font?.pointSize ?? 0.0
@@ -86,7 +86,7 @@ class SCRegularWithoutBorderTextView: UITextView {
     }
 }
 
-class SCRegularTextView: FGBaseTextView {
+class FGRegularTextView: FGBaseTextView {
 
     /// common text field layout for inputs
     ///
@@ -98,7 +98,7 @@ class SCRegularTextView: FGBaseTextView {
     }
 }
 
-class SCBoldTextView: FGBaseTextView {
+class FGBoldTextView: FGBaseTextView {
 
     /// common text field layout for inputs
     ///
@@ -110,30 +110,4 @@ class SCBoldTextView: FGBaseTextView {
     }
 }
 
-class SCStudioGenresTextView: SCRegularTextView {
-    
-    //------------------------------------------------------
-    
-    //MARK: Customs
-    
-    //------------------------------------------------------
-    
-    //MARK: Override
-    
-//    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-//        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
-//    }
-    
-    
-//
-    //------------------------------------------------------
-    
-    //MARK: Init
-    
-    /// common text field layout for inputs
-    ///
-    /// - Parameter aDecoder: aDecoder description
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-}
+

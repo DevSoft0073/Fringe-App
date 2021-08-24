@@ -195,6 +195,9 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
          }else if name == ProfileItems.myBookings{
             let controller = NavigationManager.shared.myBookingVC
                         push(controller: controller)
+         }else if name == ProfileItems.switchToBusiness{
+            let controller = NavigationManager.shared.signUpHostVC
+                        push(controller: controller)
          }
         
     }

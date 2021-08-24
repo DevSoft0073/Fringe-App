@@ -73,6 +73,37 @@ struct LocalizableConstants {
         
         //signout
         static let confirmLogout = "confirm_logout"
+        
+        //add payment method
+        
+        static let selectCardType = "select_card_type"
+        static let enterCardNumber = "enter_card_number"
+        static let enterValidCardNumber = "enter_valid_card_number"
+        static let nameOnCard = "name_on_card"
+        static let enterCVV = "enter_CVV"
+        static let enterValidCVV = "enter_valid_CVV"
+        static let enterExpirationDate = "enter_expiration_date"
+        static let enterValidExpirationDate = "enter_valid_expiration_date"
+        static let selectAnCard = "select_an_card"
+        
+        //Fringe GolfCourse Host
+        
+        static let enterGolfCourseName = "enter_golf_course_name"
+        static let enterGolfCourseAddress = "enter_address"
+        static let enterGolfCoursePrice = "enter_golf_course_price"
+        static let enterGolfCourseDescription = "enter_golf_course_description"
+        
+        struct Error {
+            
+            static let noNetworkConnection = "no_network_connection"
+            static let sessionExpired = "session_expired"
+            static let inProgress = "in_progress"
+            static let cardDetailsNotValid = "please_enter_valid_card_details"
+            static let accountDisable = "your_account_has_been_disable_please_contact_with_admin_for_more_detail"
+            static let pendingStripeVerification = "pending_verification"
+            static let maximumLimit = "add_limit"
+        }
+        
     }
 
     

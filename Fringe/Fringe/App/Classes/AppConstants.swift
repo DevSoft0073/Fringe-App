@@ -97,6 +97,8 @@ struct FGImageName {
     static let iconInboxUnselected = "inbox_unsel"
     static let iconProfileUnselected = "profile_unsel"
     static let icontransparent = "icon_transparent"
+    static let iconRight = "right_icon"
+    static let iconLeft = "left_icon"
     
     // Profile
     
@@ -122,6 +124,15 @@ struct FGImageName {
     // Rating star
     static let iconSelectedStar = "rating"
     static let iconUnselectedStar = "star"
+    
+    // details screen
+    static let iconWhiteBack = "white_back"
+    static let iconWhiteHeart = "white_heart"
+    
+    // SignupHost
+    static let iconSignClose = "sign_close"
+    static let iconSignPlus = "sign_plus"
+    static let iconSignAdd = "sign_add"
 }
 
 struct FGScreenName {

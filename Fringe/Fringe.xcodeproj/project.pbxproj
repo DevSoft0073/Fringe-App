@@ -15,6 +15,7 @@
 		7C39F15D26C3947600AAC277 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C39F14B26C3947600AAC277 /* Poppins-Bold.ttf */; };
 		7C39F19226C39A7600AAC277 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C39F19126C39A7600AAC277 /* Main.storyboard */; };
 		7C39F19B26C39F1100AAC277 /* FGCustomCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C39F19A26C39F1100AAC277 /* FGCustomCameraView.swift */; };
+		7C6D5BDC26D38206007F888C /* AddPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D5BDB26D38206007F888C /* AddPaymentVC.swift */; };
 		7C780F6B26C3A391003F1F12 /* FGTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780F6A26C3A391003F1F12 /* FGTextView.swift */; };
 		7C780F7726C3A6DB003F1F12 /* ESTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780F7026C3A6DA003F1F12 /* ESTabBarItem.swift */; };
 		7C780F7826C3A6DB003F1F12 /* ESTabBarItemBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C780F7126C3A6DA003F1F12 /* ESTabBarItemBadgeView.swift */; };
@@ -83,6 +84,20 @@
 		7CA24C6526C2427C00437C8A /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C6226C2427C00437C8A /* JSONNull.swift */; };
 		7CA24C6826C242EE00437C8A /* Loader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24C6726C242EE00437C8A /* Loader.storyboard */; };
 		7CA24C8A26C2537600437C8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C8926C2537600437C8A /* AppDelegate.swift */; };
+		7CD7EAF826D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD7EAF726D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib */; };
+		7CD7EAFC26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EAFB26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift */; };
+		7CD7EB0026D1195700BEDDA2 /* CheckAvailabilityTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */; };
+		7CD7EB0126D1195700BEDDA2 /* CheckAvailabilityTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD7EAFF26D1195700BEDDA2 /* CheckAvailabilityTBCell.xib */; };
+		7CD7EB0526D14E0B00BEDDA2 /* BookingDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EB0426D14E0B00BEDDA2 /* BookingDetailsVC.swift */; };
+		7CD7EB0826D14EA400BEDDA2 /* BookingDetailsRatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EB0726D14EA400BEDDA2 /* BookingDetailsRatingVC.swift */; };
+		7CD7EB0B26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EB0A26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift */; };
+		7CD7EB0E26D35FCF00BEDDA2 /* DetailsScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EB0D26D35FCF00BEDDA2 /* DetailsScreenVC.swift */; };
+		7CE0F63726D4A51900C3AAFB /* SearchTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0F63526D4A51900C3AAFB /* SearchTBCell.swift */; };
+		7CE0F63826D4A51900C3AAFB /* SearchTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE0F63626D4A51900C3AAFB /* SearchTBCell.xib */; };
+		7CE0F63C26D4A71B00C3AAFB /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0F63B26D4A71B00C3AAFB /* SearchVC.swift */; };
+		7CE0F63F26D4B87B00C3AAFB /* ConfirmedPayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0F63E26D4B87B00C3AAFB /* ConfirmedPayVC.swift */; };
+		7CE0F64226D4D41A00C3AAFB /* SignUpHostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0F64126D4D41A00C3AAFB /* SignUpHostVC.swift */; };
+		7CE0F64526D4D9BD00C3AAFB /* GolfProfileAddImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0F64426D4D9BD00C3AAFB /* GolfProfileAddImagesCell.swift */; };
 		7CE2E85126CB943900AF882A /* ProfileTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2E84F26CB943900AF882A /* ProfileTBCell.swift */; };
 		7CE2E85226CB943900AF882A /* ProfileTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE2E85026CB943900AF882A /* ProfileTBCell.xib */; };
 		7CE2E85726CB9A3200AF882A /* ProfileSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2E85526CB9A3200AF882A /* ProfileSwitchCell.swift */; };
@@ -103,6 +118,7 @@
 		7C39F14B26C3947600AAC277 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		7C39F19126C39A7600AAC277 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7C39F19A26C39F1100AAC277 /* FGCustomCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGCustomCameraView.swift; sourceTree = "<group>"; };
+		7C6D5BDB26D38206007F888C /* AddPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentVC.swift; sourceTree = "<group>"; };
 		7C780F6A26C3A391003F1F12 /* FGTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGTextView.swift; sourceTree = "<group>"; };
 		7C780F7026C3A6DA003F1F12 /* ESTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTabBarItem.swift; sourceTree = "<group>"; };
 		7C780F7126C3A6DA003F1F12 /* ESTabBarItemBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTabBarItemBadgeView.swift; sourceTree = "<group>"; };
@@ -173,6 +189,20 @@
 		7CA24C6226C2427C00437C8A /* JSONNull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
 		7CA24C6726C242EE00437C8A /* Loader.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loader.storyboard; sourceTree = "<group>"; };
 		7CA24C8926C2537600437C8A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7CD7EAF726D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckAvailabilityHeaderView.xib; sourceTree = "<group>"; };
+		7CD7EAFB26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityHeaderView.swift; sourceTree = "<group>"; };
+		7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityTBCell.swift; sourceTree = "<group>"; };
+		7CD7EAFF26D1195700BEDDA2 /* CheckAvailabilityTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckAvailabilityTBCell.xib; sourceTree = "<group>"; };
+		7CD7EB0426D14E0B00BEDDA2 /* BookingDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailsVC.swift; sourceTree = "<group>"; };
+		7CD7EB0726D14EA400BEDDA2 /* BookingDetailsRatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailsRatingVC.swift; sourceTree = "<group>"; };
+		7CD7EB0A26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityVC.swift; sourceTree = "<group>"; };
+		7CD7EB0D26D35FCF00BEDDA2 /* DetailsScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsScreenVC.swift; sourceTree = "<group>"; };
+		7CE0F63526D4A51900C3AAFB /* SearchTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTBCell.swift; sourceTree = "<group>"; };
+		7CE0F63626D4A51900C3AAFB /* SearchTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTBCell.xib; sourceTree = "<group>"; };
+		7CE0F63B26D4A71B00C3AAFB /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		7CE0F63E26D4B87B00C3AAFB /* ConfirmedPayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedPayVC.swift; sourceTree = "<group>"; };
+		7CE0F64126D4D41A00C3AAFB /* SignUpHostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpHostVC.swift; sourceTree = "<group>"; };
+		7CE0F64426D4D9BD00C3AAFB /* GolfProfileAddImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfProfileAddImagesCell.swift; sourceTree = "<group>"; };
 		7CE2E84F26CB943900AF882A /* ProfileTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTBCell.swift; sourceTree = "<group>"; };
 		7CE2E85026CB943900AF882A /* ProfileTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTBCell.xib; sourceTree = "<group>"; };
 		7CE2E85526CB9A3200AF882A /* ProfileSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSwitchCell.swift; sourceTree = "<group>"; };
@@ -254,6 +284,9 @@
 				7CE2E85526CB9A3200AF882A /* ProfileSwitchCell.swift */,
 				7C8F1D5C26CE328800135C41 /* AddPaymentTVCell.swift */,
 				7C8F1D6526CE4BAB00135C41 /* MyBookingTVCell.swift */,
+				7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */,
+				7CE0F63526D4A51900C3AAFB /* SearchTBCell.swift */,
+				7CE0F64426D4D9BD00C3AAFB /* GolfProfileAddImagesCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -275,6 +308,14 @@
 				7C8F1D5926CE236B00135C41 /* ChangePasswordVC.swift */,
 				7C8F1D6226CE3B8800135C41 /* AddPaymentMethodVC.swift */,
 				7C8F1D6F26CE6BB300135C41 /* MyBookingVC.swift */,
+				7CD7EB0426D14E0B00BEDDA2 /* BookingDetailsVC.swift */,
+				7CD7EB0726D14EA400BEDDA2 /* BookingDetailsRatingVC.swift */,
+				7CD7EB0A26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift */,
+				7CD7EB0D26D35FCF00BEDDA2 /* DetailsScreenVC.swift */,
+				7C6D5BDB26D38206007F888C /* AddPaymentVC.swift */,
+				7CE0F63B26D4A71B00C3AAFB /* SearchVC.swift */,
+				7CE0F63E26D4B87B00C3AAFB /* ConfirmedPayVC.swift */,
+				7CE0F64126D4D41A00C3AAFB /* SignUpHostVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -284,6 +325,7 @@
 			children = (
 				7C780FF026C6491B003F1F12 /* SegmentView.swift */,
 				7C94876226CA972C00870F54 /* ProfileHeaderView.swift */,
+				7CD7EAFB26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -367,6 +409,7 @@
 		7CA24C1626C23F5300437C8A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7CD7EAB426D1113600BEDDA2 /* Calendar */,
 				7C8F1D6B26CE513D00135C41 /* Rating View */,
 				7C780F6D26C3A690003F1F12 /* ESTabbar */,
 				7CA24C5226C2424100437C8A /* FGAssistiveTouchView.swift */,
@@ -438,6 +481,9 @@
 				7CE2E85626CB9A3200AF882A /* ProfileSwitchCell.xib */,
 				7C8F1D5D26CE328800135C41 /* AddPaymentTVCell.xib */,
 				7C8F1D6626CE4BAB00135C41 /* MyBookingTVCell.xib */,
+				7CD7EAF726D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib */,
+				7CD7EAFF26D1195700BEDDA2 /* CheckAvailabilityTBCell.xib */,
+				7CE0F63626D4A51900C3AAFB /* SearchTBCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -500,6 +546,13 @@
 				7CA24C5A26C2426800437C8A /* UserModal.swift */,
 			);
 			path = Users;
+			sourceTree = "<group>";
+		};
+		7CD7EAB426D1113600BEDDA2 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		D70587536BA943B196965918 /* Pods */ = {
@@ -570,13 +623,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD7EB0126D1195700BEDDA2 /* CheckAvailabilityTBCell.xib in Resources */,
 				7CA24C0B26C23D9600437C8A /* LaunchScreen.storyboard in Resources */,
+				7CD7EAF826D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib in Resources */,
 				7C8F1D6826CE4BAB00135C41 /* MyBookingTVCell.xib in Resources */,
 				7C39F15D26C3947600AAC277 /* Poppins-Bold.ttf in Resources */,
 				7C780FCB26C506E5003F1F12 /* NotificationTVCell.xib in Resources */,
 				7C39F15126C3947600AAC277 /* Poppins-Light.ttf in Resources */,
 				7C94876026CA96CE00870F54 /* ProfileHeaderView.xib in Resources */,
 				7CA24C0826C23D9600437C8A /* Assets.xcassets in Resources */,
+				7CE0F63826D4A51900C3AAFB /* SearchTBCell.xib in Resources */,
 				7C39F15226C3947600AAC277 /* Poppins-SemiBold.ttf in Resources */,
 				7C780F9426C3DF43003F1F12 /* Localizable.strings in Resources */,
 				7C39F15426C3947600AAC277 /* Poppins-Regular.ttf in Resources */,
@@ -646,15 +702,20 @@
 				7CA24C4426C241D600437C8A /* RequestManager.swift in Sources */,
 				7CA24C6426C2427C00437C8A /* ErrorModal.swift in Sources */,
 				7C8F1D7026CE6BB300135C41 /* MyBookingVC.swift in Sources */,
+				7CE0F64526D4D9BD00C3AAFB /* GolfProfileAddImagesCell.swift in Sources */,
 				7C780F7D26C3A6DB003F1F12 /* ESTabBarItemContainer.swift in Sources */,
 				7CA24C6526C2427C00437C8A /* JSONNull.swift in Sources */,
+				7CD7EB0E26D35FCF00BEDDA2 /* DetailsScreenVC.swift in Sources */,
+				7CD7EB0026D1195700BEDDA2 /* CheckAvailabilityTBCell.swift in Sources */,
 				7CA24C3B26C241BA00437C8A /* ValidationManager.swift in Sources */,
 				7CA24C5426C2424100437C8A /* FGTextField.swift in Sources */,
 				7C8F1D6326CE3B8800135C41 /* AddPaymentMethodVC.swift in Sources */,
 				7CA24C4726C2422500437C8A /* FGButton.swift in Sources */,
 				7C94876326CA972C00870F54 /* ProfileHeaderView.swift in Sources */,
 				7C780FE926C582C4003F1F12 /* FavouriteTVCell.swift in Sources */,
+				7CD7EB0B26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift in Sources */,
 				7CA24C4D26C2423500437C8A /* FGLabel.swift in Sources */,
+				7CE0F63726D4A51900C3AAFB /* SearchTBCell.swift in Sources */,
 				7C780F8326C3A6FF003F1F12 /* BouncesContentView.swift in Sources */,
 				7C780F7B26C3A6DB003F1F12 /* ESTabBar.swift in Sources */,
 				7C780F7926C3A6DB003F1F12 /* ESTabBarController.swift in Sources */,
@@ -666,7 +727,9 @@
 				7C780FBB26C3F160003F1F12 /* ForgotPasswordVC.swift in Sources */,
 				7CE2E85126CB943900AF882A /* ProfileTBCell.swift in Sources */,
 				7CA24C5E26C2426800437C8A /* BaseResponseModal.swift in Sources */,
+				7CD7EB0526D14E0B00BEDDA2 /* BookingDetailsVC.swift in Sources */,
 				7CA24C5C26C2426800437C8A /* ResponseModal.swift in Sources */,
+				7CE0F63F26D4B87B00C3AAFB /* ConfirmedPayVC.swift in Sources */,
 				7CE46BF026CCFF07004EC6C7 /* AccountInformationVC.swift in Sources */,
 				7C780FCA26C506E5003F1F12 /* NotificationTVCell.swift in Sources */,
 				7CA24C5D26C2426800437C8A /* UserModal.swift in Sources */,
@@ -677,12 +740,14 @@
 				7CA24C4126C241CD00437C8A /* DisplayAlertManager.swift in Sources */,
 				7CE2E85726CB9A3200AF882A /* ProfileSwitchCell.swift in Sources */,
 				7C780F7C26C3A6DB003F1F12 /* ESTabBarItemContentView.swift in Sources */,
+				7CD7EAFC26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift in Sources */,
 				7CA24C2626C2415100437C8A /* LocalizableConstants.swift in Sources */,
 				7CA24C2926C2415C00437C8A /* AppFunctions.swift in Sources */,
 				7C8F1D6726CE4BAB00135C41 /* MyBookingTVCell.swift in Sources */,
 				7CA24C3E26C241C300437C8A /* LoadingManager.swift in Sources */,
 				7C780FF126C6491D003F1F12 /* SegmentView.swift in Sources */,
 				7C780F7726C3A6DB003F1F12 /* ESTabBarItem.swift in Sources */,
+				7CE0F63C26D4A71B00C3AAFB /* SearchVC.swift in Sources */,
 				7CA24C2C26C2416300437C8A /* AppConstants.swift in Sources */,
 				7CA24C5526C2424100437C8A /* FGDebouncer.swift in Sources */,
 				7CA24C5326C2424100437C8A /* FGImageView.swift in Sources */,
@@ -691,12 +756,15 @@
 				7C780F8226C3A6FF003F1F12 /* IrregularityContentView.swift in Sources */,
 				7CA24C3826C241B200437C8A /* PreferenceManager.swift in Sources */,
 				7C8F1D5E26CE328800135C41 /* AddPaymentTVCell.swift in Sources */,
+				7CE0F64226D4D41A00C3AAFB /* SignUpHostVC.swift in Sources */,
 				7C780F7826C3A6DB003F1F12 /* ESTabBarItemBadgeView.swift in Sources */,
 				7C780FF526C64B68003F1F12 /* FringePendingCell.swift in Sources */,
 				7CE46BED26CCE09B004EC6C7 /* EditProfileVC.swift in Sources */,
 				7CA24C2126C240AB00437C8A /* LoadingIndicatorVC.swift in Sources */,
 				7CA24C8A26C2537600437C8A /* AppDelegate.swift in Sources */,
 				7C780F8426C3A6FF003F1F12 /* BasicContentView.swift in Sources */,
+				7CD7EB0826D14EA400BEDDA2 /* BookingDetailsRatingVC.swift in Sources */,
+				7C6D5BDC26D38206007F888C /* AddPaymentVC.swift in Sources */,
 				7CA24C3226C2419D00437C8A /* DateTimeManager.swift in Sources */,
 				7CA24C4A26C2422D00437C8A /* FGImagePickerVC.swift in Sources */,
 				7CA24C2F26C2418100437C8A /* AppExtensions.swift in Sources */,

@@ -19,8 +19,10 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
     @IBOutlet weak var txtEmail: FGEmailTextField!
     @IBOutlet weak var txtGender: FGGenderTextField!
     @IBOutlet weak var txtMobileNumber: FGMobileNumberTextField!
+    
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var imagePickerVC: ImagePicker?
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method

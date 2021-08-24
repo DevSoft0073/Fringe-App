@@ -46,8 +46,8 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
 //        navigationItem.title = LocalizableConstants.Controller.Fringe.title.localized()
 //        segment1.btn.setTitle(LocalizableConstants.Controller.Fringe.pending.localized(), for: .normal)
 //        segment2.btn.setTitle(LocalizableConstants.Controller.Fringe.confirmed.localized(), for: .normal)
-        segment1.delegate = self
-        segment2.delegate = self
+//        segment1.delegate = self
+//        segment2.delegate = self
 //
 //        segment1.isSelected = true
 //        segment2.isSelected = !segment1.isSelected
@@ -129,6 +129,10 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = NavigationManager.shared.confirmedPayVC
+        push(controller: controller)
+    }
     
     func segment(view: SegmentView, didChange flag: Bool) {
 //        if segment1.isSelected == true {
@@ -150,6 +154,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NavigationManager.shared.isEnabledBottomMenu = true
     }
     
     //------------------------------------------------------

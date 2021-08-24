@@ -65,6 +65,10 @@ class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = NavigationManager.shared.detailsScreenVC
+        push(controller: controller)
+    }
     
     //------------------------------------------------------
     
@@ -79,6 +83,7 @@ class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NavigationManager.shared.isEnabledBottomMenu = true
     }
     
     //------------------------------------------------------

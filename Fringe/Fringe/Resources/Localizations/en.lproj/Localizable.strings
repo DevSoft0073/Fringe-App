@@ -256,3 +256,20 @@
 "credit_debit_card" = "Credit or Debit card";
 "pay_pal_card" = "PayPal";
 "apple_card" = "Apple Pay";
+
+// add payment method
+"select_card_type" = "Please select card type";
+"enter_card_number" = "Please enter card number";
+"enter_valid_card_number" = "Please enter valid card number";
+"name_on_card" = "Please enter name on card";
+"enter_CVV" = "Please enter Cvv";
+"enter_valid_CVV" = "Please enter valid cvv";
+"enter_expiration_date" = "Please enter expiration date";
+"enter_valid_expiration_date" = "Please enter valid expiration date";
+"select_an_card" = "Please select an card";
+
+// Fringe GolfCourse Host
+"enter_golf_course_name" = "Please enter name";
+"enter_address" = "Please enter address";
+"enter_golf_course_price" = "Please enter price";
+"enter_golf_course_description" = "Please enter descriptin";

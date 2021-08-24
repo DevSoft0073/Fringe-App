@@ -1,6 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-Fringe/Pods-Fringe-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AssistantKit/AssistantKit.framework
+${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework
 ${BUILT_PRODUCTS_DIR}/GCCountryPicker/GCCountryPicker.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
 ${BUILT_PRODUCTS_DIR}/KRPullLoader/KRPullLoader.framework

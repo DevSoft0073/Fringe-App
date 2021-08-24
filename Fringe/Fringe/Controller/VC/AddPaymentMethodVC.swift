@@ -96,6 +96,13 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
         return 65
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     
+            let controller = NavigationManager.shared.addPaymentVC
+            push(controller: controller)
+       
+    }
+    
     
     //------------------------------------------------------
     

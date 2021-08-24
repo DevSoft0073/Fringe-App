@@ -18,6 +18,7 @@ target 'Fringe' do
   pod 'Toucan'
   pod "MonthYearPicker", '~> 4.0.2'
   pod 'GCCountryPicker'
+  pod 'FSCalendar'
 
 
 end
