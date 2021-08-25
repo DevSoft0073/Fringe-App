@@ -433,11 +433,14 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     public var searchVC: SearchVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: SearchVC.self)) as! SearchVC
     }
+    public var paymentOptionsVC: PaymentOptionsVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PaymentOptionsVC.self)) as! PaymentOptionsVC
+    }
 
     
 
     
-    
+  
 
 }
 
