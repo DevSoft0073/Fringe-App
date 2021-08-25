@@ -7,7 +7,7 @@
 */
 
 //Backend Errors
-"error_0" = "Something went wrong, Please try after sometimes.";
+"error_0" = "Something went wrong, Please try after sometime.";
 "error_101" = "Email address is empty.";
 "error_102" = "Password is empty.";
 "error_103" = "Device token can not be blank.";
@@ -114,6 +114,7 @@
 "add_description" = "Please add description.";
 "rating_should_not_be_empty." = "Rating should not be empty.";
 "no_message_available" = "No message available";
+"invalid_credentials" = "You have entered incorrect password.";
 
 
 //success

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AssistantKit
+import Toucan
 
 
 /// This function will retutn font size according to device.
@@ -55,6 +56,17 @@ func delay(_ delay: Double = 0.3, closure:@escaping ()->()) {
         let when = DispatchTime.now() + delay
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
+}
+
+func delayInLoading(_ delay: Double = 1, closure:@escaping ()->()) {
+    DispatchQueue.main.async {
+        let when = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+    }
+}
+
+func getPlaceholderImage() -> UIImage? {
+    return Toucan.init(image: UIImage(named: FGImageName.iconPlaceHolder)!).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: FGColor.appGreen).image
 }
 
 // MARK: - Helper functions for creating encoders and decoders

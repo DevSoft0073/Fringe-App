@@ -19,7 +19,7 @@ class PreferenceManager: NSObject {
     //MARK: Settings
     
     var userBaseURL: String {
-        return "https://google.com"
+        return "https://www.dharmani.com/fringe/webservices"
     }
     
     //------------------------------------------------------
@@ -28,6 +28,7 @@ class PreferenceManager: NSObject {
     
     private let keyDeviceToken = "deviceToken"
     private let keyUserId = "userId"
+    private let keyUserData = "keyUserData"
 
     var deviceToken: String? {
         set {
@@ -60,6 +61,31 @@ class PreferenceManager: NSObject {
         get {            
             return userDefault.string(forKey: keyUserId)
         }
+    }
+    
+    var currentUser: String? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: keyUserData)
+            } else {
+                userDefault.removeObject(forKey: keyUserData)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.string(forKey: keyUserData)
+        }
+    }
+    
+    var currentUserModal: UserModal? {
+        if let currentUser = currentUser {
+            do {
+                return try UserModal(currentUser)
+            } catch let error {
+                debugPrint(error.localizedDescription)
+            }
+        }
+        return nil
     }
     
     //------------------------------------------------------

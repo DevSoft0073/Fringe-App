@@ -91,13 +91,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
             }
             return false
         }
-      
-       
         
-        //        if unchecked == false{
-        //            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.agreeTermsAndConditions, handlerOK: <#(() -> Void)?#>)
-        //            return false
-        //        }
         return true
     }
     
@@ -110,7 +104,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
     }
     
     @IBAction func btnProfileImg(_ sender: Any) {
-        self.imagePickerVC?.present(from: sender as? UIView)
+        self.imagePickerVC?.present(from: (sender as? UIView)!)
     }
     @IBAction func btnSave(_ sender: Any) {
         if validate() == false {

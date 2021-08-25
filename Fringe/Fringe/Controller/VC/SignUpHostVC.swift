@@ -12,8 +12,7 @@ import IQKeyboardManagerSwift
 import MapKit
 import GCCountryPicker
 
-class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSource, UITextFieldDelegate & UITextViewDelegate , FGImagePickerDelegate {
-    
+class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSource, UITextFieldDelegate & UITextViewDelegate , ImagePickerDelegate {
     
     @IBOutlet weak var golfDescriptionTxtView: FGRegularWithoutBorderTextView!
     @IBOutlet weak var golfPriceTxtFld: FGGolfCreditsTextField!
@@ -34,7 +33,7 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     var line2 = String()
     var showImage = ["sign_plus"]
     var textTitle: String?
-//    var locations = [Location]()
+    //    var locations = [Location]()
     var studioProfileParameter: [String: Any] = [:]
     var photosInTheCellNow = [UIImage?]()
     var imagePickerVC: ImagePicker?
@@ -69,7 +68,7 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
         
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         returnKeyHandler?.delegate = self
-       
+        
         golfNameTxtFld.delegate = self
         golfAddressTxtFld.delegate = self
         golfPriceTxtFld.delegate = self
@@ -102,9 +101,6 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
             return false
         }
         
-       
-        
-        
         if ValidationManager.shared.isEmpty(text: golfDescriptionTxtView.text) == true {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterGolfCourseDescription) {
             }
@@ -126,23 +122,21 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     }
     
     @IBAction func btnUploadImg(_ sender: Any) {
-//        selectedImage()
+        //        selectedImage()
     }
     
     @IBAction func btnBack(_ sender: Any) {
         self.pop()
     }
     
-    
     //------------------------------------------------------
     
     //MARK: FGImagePickerDelegate
     
-    
-    func didSelect(controller: ImagePicker, image: UIImage?) {
+    func didSelect(image: UIImage?) {
         if let imageData = image?.jpegData(compressionQuality: 0), let compressImage = UIImage(data: imageData) {
             self.selectedImage = Toucan.init(image: compressImage).image
-    }
+        }
     }
     
     //------------------------------------------------------
@@ -179,7 +173,7 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if photosInTheCellNow.count >= 10 {
-//            DisplayAlertManager.shared.displayAlert(message: LocalizableConstants.Error.maximumLimit)
+            //            DisplayAlertManager.shared.displayAlert(message: LocalizableConstants.Error.maximumLimit)
         }else{
             self.imagePickerVC?.present(from: view)
         }

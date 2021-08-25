@@ -9,9 +9,13 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import UIKit
+import FBSDKCoreKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
     
     var window: UIWindow?
     
@@ -28,8 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.toolbarTintColor = FGColor.appWhite
-//        IQKeyboardManager.shared.disabledDistanceHandlingClasses = [ChatDetailsVC.self, ChatViewController.self]
+        IQKeyboardManager.shared.toolbarTintColor = FGColor.appBlack
+        IQKeyboardManager.shared.enableAutoToolbar = true
+       // IQKeyboardManager.shared.disabledDistanceHandlingClasses = [ChatDetailsVC.self, ChatViewController.self]
+        IQKeyboardManager.shared.toolbarPreviousNextAllowedClasses = [UIScrollView.self,UIView.self,UITextField.self,UITextView.self,UIStackView.self]
+        
     }
     
     /// to get custom added font names
@@ -49,18 +56,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = FGColor.appBackground
-            appearance.titleTextAttributes = [.foregroundColor: FGColor.appWhite, .font: FGFont.PoppinsRegular(size: FGFont.defaultRegularFontSize)]
-            appearance.largeTitleTextAttributes = [.foregroundColor: FGColor.appWhite, .font: FGFont.PoppinsRegular(size: FGFont.defaultRegularFontSize)]
+            appearance.backgroundColor = FGColor.appBlack
+            appearance.titleTextAttributes = [.foregroundColor: FGColor.appBlack, .font: FGFont.PoppinsRegular(size: FGFont.defaultRegularFontSize)]
+            appearance.largeTitleTextAttributes = [.foregroundColor: FGColor.appBlack, .font: FGFont.PoppinsRegular(size: FGFont.defaultRegularFontSize)]
             
-            UINavigationBar.appearance().barTintColor = FGColor.appBackground
-            UINavigationBar.appearance().tintColor = FGColor.appWhite
+            UINavigationBar.appearance().barTintColor = FGColor.appBlack
+            UINavigationBar.appearance().tintColor = FGColor.appBlack
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().compactAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         } else {
-            UINavigationBar.appearance().barTintColor = FGColor.appBackground
-            UINavigationBar.appearance().tintColor = FGColor.appWhite
+            UINavigationBar.appearance().barTintColor = FGColor.appBlack
+            UINavigationBar.appearance().tintColor = FGColor.appBlack
             UINavigationBar.appearance().isTranslucent = false
         }
     }
@@ -76,7 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         getCustomFontDetails()
         configureNavigationBar()
         //RealmManager.shared.save(channelDownload: false)
-        window?.tintColor = FGColor.appBackground
+        window?.tintColor = FGColor.appBlack
+        
         return true
     }
     

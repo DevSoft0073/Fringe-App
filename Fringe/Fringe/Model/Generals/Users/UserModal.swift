@@ -10,19 +10,35 @@ import Foundation
 
 // MARK: - UserModal
 struct UserModal: Codable {
-    
-    let userID, firstname, lastname, email: String?
-    let password, image, creationDate, emailVerification: String?
-    let emailAccessToken, userAccessToken, disable: String?
-    
+    var userID, image, userName, golfID: String?
+    var dob, gender, mobileNo, hometown: String?
+    var profession, memberCourse, golfHandicap, password: String?
+    var confirmPassword, email, emailVerification, verificationCode: String?
+    var disable, allowPush, allowLocation, fbToken: String?
+    var googleToken, appleToken, creationAt: String?
+
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
-        case firstname, lastname, email, password, image
-        case creationDate = "creation_date"
+        case image
+        case userName = "user_name"
+        case golfID = "golf_id"
+        case dob, gender
+        case mobileNo = "mobile_no"
+        case hometown, profession
+        case memberCourse = "member_course"
+        case golfHandicap = "golf_handicap"
+        case password
+        case confirmPassword = "confirm_password"
+        case email
         case emailVerification = "email_verification"
-        case emailAccessToken = "email_access_token"
-        case userAccessToken = "user_access_token"
+        case verificationCode = "verification_code"
         case disable
+        case allowPush = "allow_push"
+        case allowLocation = "allow_location"
+        case fbToken = "fb_token"
+        case googleToken = "google_token"
+        case appleToken = "apple_token"
+        case creationAt = "creation_at"
     }
 }
 

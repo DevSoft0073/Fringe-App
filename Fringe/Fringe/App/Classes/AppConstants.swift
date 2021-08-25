@@ -28,8 +28,10 @@ struct FGSettings {
     static let nameLimit = 20
     static let emailLimit = 70
     static let passwordLimit = 20
-    
+
     static let footerMargin: CGFloat = 50
+    static let profileImageSize = CGSize.init(width: 400, height: 400)
+    static let profileBorderWidth: CGFloat = 4    
 }
 
 struct FGColor {
@@ -85,6 +87,7 @@ struct FGImageName {
     static let iconBack = "back"
     static let iconCheck = "check"
     static let iconUncheck = "uncheck"
+    static let iconPlaceHolder = "placeholder-image"
     
     static let iconFavouriteSelected = "favourite_sel"
     static let iconGolfSelected = "golf_sel"
