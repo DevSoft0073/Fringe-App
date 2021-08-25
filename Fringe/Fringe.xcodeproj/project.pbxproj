@@ -87,6 +87,7 @@
 		7CD727DB26D554B800AF660D /* GolfClubProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CD727DA26D554B800AF660D /* GolfClubProfile.storyboard */; };
 		7CD727DF26D6149A00AF660D /* PaymentOptionsTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD727DD26D6149A00AF660D /* PaymentOptionsTBCell.swift */; };
 		7CD727E026D6149A00AF660D /* PaymentOptionsTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD727DE26D6149A00AF660D /* PaymentOptionsTBCell.xib */; };
+		7CD727E426D6179100AF660D /* PaymentOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD727E326D6179100AF660D /* PaymentOptionsVC.swift */; };
 		7CD7EAF826D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD7EAF726D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib */; };
 		7CD7EAFC26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EAFB26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift */; };
 		7CD7EB0026D1195700BEDDA2 /* CheckAvailabilityTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */; };
@@ -195,6 +196,7 @@
 		7CD727DA26D554B800AF660D /* GolfClubProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GolfClubProfile.storyboard; sourceTree = "<group>"; };
 		7CD727DD26D6149A00AF660D /* PaymentOptionsTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsTBCell.swift; sourceTree = "<group>"; };
 		7CD727DE26D6149A00AF660D /* PaymentOptionsTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentOptionsTBCell.xib; sourceTree = "<group>"; };
+		7CD727E326D6179100AF660D /* PaymentOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsVC.swift; sourceTree = "<group>"; };
 		7CD7EAF726D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckAvailabilityHeaderView.xib; sourceTree = "<group>"; };
 		7CD7EAFB26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityHeaderView.swift; sourceTree = "<group>"; };
 		7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityTBCell.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				7CE0F63B26D4A71B00C3AAFB /* SearchVC.swift */,
 				7CE0F63E26D4B87B00C3AAFB /* ConfirmedPayVC.swift */,
 				7CE0F64126D4D41A00C3AAFB /* SignUpHostVC.swift */,
+				7CD727E326D6179100AF660D /* PaymentOptionsVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				7CA24C6426C2427C00437C8A /* ErrorModal.swift in Sources */,
 				7C8F1D7026CE6BB300135C41 /* MyBookingVC.swift in Sources */,
 				7CE0F64526D4D9BD00C3AAFB /* GolfProfileAddImagesCell.swift in Sources */,
+				7CD727E426D6179100AF660D /* PaymentOptionsVC.swift in Sources */,
 				7C780F7D26C3A6DB003F1F12 /* ESTabBarItemContainer.swift in Sources */,
 				7CA24C6526C2427C00437C8A /* JSONNull.swift in Sources */,
 				7CD7EB0E26D35FCF00BEDDA2 /* DetailsScreenVC.swift in Sources */,

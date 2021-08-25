@@ -75,6 +75,7 @@ struct FGImageName {
     static let iconDropDown = "drop"
     static let iconApple = "apple"
     static let iconEye = "eye"
+    static let iconEyeOpen  = "eye_open"
     static let iconFaceBook = "face"
     static let iconGoogle = "google"
     static let iconCalender = "cal"
@@ -99,6 +100,8 @@ struct FGImageName {
     static let icontransparent = "icon_transparent"
     static let iconRight = "right_icon"
     static let iconLeft = "left_icon"
+    static let iconLogo = "logo"
+    static let iconFavourite  = "fav"
     
     // Profile
     
