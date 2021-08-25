@@ -1,8 +1,46 @@
 PODS:
   - Alamofire (4.8.2)
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
+  - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
+  - AppleSignIn (0.0.1)
   - AssistantKit (0.6.1)
+  - FacebookCore (0.9.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FacebookLogin (0.9.0):
+    - FacebookCore (~> 0.9.0)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKLoginKit (~> 5.0)
+  - FacebookShare (0.9.0):
+    - FacebookCore (~> 0.9.0)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKShareKit (~> 5.0)
+  - FBSDKCoreKit (5.15.1):
+    - FBSDKCoreKit/Basics (= 5.15.1)
+    - FBSDKCoreKit/Core (= 5.15.1)
+  - FBSDKCoreKit/Basics (5.15.1)
+  - FBSDKCoreKit/Core (5.15.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.15.1):
+    - FBSDKLoginKit/Login (= 5.15.1)
+  - FBSDKLoginKit/Login (5.15.1):
+    - FBSDKCoreKit (~> 5.0)
+  - FBSDKShareKit (5.15.1):
+    - FBSDKShareKit/Share (= 5.15.1)
+  - FBSDKShareKit/Share (5.15.1):
+    - FBSDKCoreKit (~> 5.0)
   - FSCalendar (2.8.1)
   - GCCountryPicker (2.5.0)
+  - GoogleSignIn (6.0.1):
+    - AppAuth (~> 1.4)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GTMAppAuth (1.2.2):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher/Core (~> 1.5)
+  - GTMSessionFetcher/Core (1.6.1)
   - IQKeyboardManagerSwift (6.5.5)
   - KRPullLoader (1.3.0)
   - Localize-Swift (3.1.0)
@@ -17,9 +55,14 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.8.1)
+  - AppleSignIn
   - AssistantKit (~> 0.6.1)
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare
   - FSCalendar
   - GCCountryPicker
+  - GoogleSignIn
   - IQKeyboardManagerSwift (~> 6.5.1)
   - KRPullLoader
   - Localize-Swift (~> 3.1.0)
@@ -33,9 +76,20 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AppAuth
+    - AppleSignIn
     - AssistantKit
+    - FacebookCore
+    - FacebookLogin
+    - FacebookShare
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
     - FSCalendar
     - GCCountryPicker
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
     - IQKeyboardManagerSwift
     - KRPullLoader
     - Localize-Swift
@@ -48,9 +102,20 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  AppleSignIn: 2cc84bbb7c7bb670d48370e793a86fe0943efa5e
   AssistantKit: 7dd40c019e9a06e93555ed58498a2d212fcb408d
+  FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
+  FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
+  FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
+  FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
+  FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
+  FBSDKShareKit: 259737eab3cc807087374553abdf588b3096ba55
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   GCCountryPicker: b39549253d2daa5dee3414265263d19f7ec39446
+  GoogleSignIn: 1b0c4ec33a6fe282f4fa35d8ac64263230ddaf36
+  GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
+  GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   KRPullLoader: c81594d578c90f46c1fe539b8d9a6a581ce3bdb0
   Localize-Swift: 4bed4f0ccac8be2ec3517ee359da80ba2adb0fae
@@ -61,6 +126,6 @@ SPEC CHECKSUMS:
   Toucan: 8f228fabb21521b9658692df9325fe76e71d74b2
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: cc88470c9b2c4d2da551cc7da1c9f7b917c40148
+PODFILE CHECKSUM: 7bea65aeb22390585fd526b6d2c7fd03165bf2f9
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.2

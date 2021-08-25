@@ -331,9 +331,9 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
         return false
     }
     
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.MMM_DD_COM_yyyy)
-//    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.MMM_DD_COM_yyyy)
+    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
@@ -345,8 +345,7 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.ageMustBeGreaterThen13, handlerOK: nil)
             self.text = ""
         } else {
-//            self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.MMM_DD_COM_yyyy)
-            
+            self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.MMM_DD_COM_yyyy)
         }
     }
     
@@ -992,6 +991,115 @@ class FGGolfCreditsTextField: FGRegularTextField {
         setup()
     }
 }
+
+class FGGolfHandiCap: FGRegularTextField, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    var rightUserView: UIView {
+        let imgView = UIImageView(image: UIImage(named: FGImageName.iconDropDown))
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }
+    
+    private static let height: CGFloat = 20
+    private static let crossButtonSize = CGSize(width: height, height: height)
+    private let crossButtonView = UIButton(frame: CGRect(origin: CGPoint.zero, size: crossButtonSize))
+    
+    let pvGender = UIPickerView()
+    let pvOptions: [String] = ["Yes", "No"]
+    var selectedOption: String? {
+        didSet {
+            self.text = selectedOption
+        }
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    func setup() {
+        
+        rightView = rightUserView
+        self.keyboardType = .default
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .words
+        
+        pvGender.dataSource = self
+        pvGender.delegate = self
+        inputView = pvGender
+        
+        crossButtonView.contentMode = .center
+        crossButtonView.setImage(UIImage(named: ""), for: UIControl.State.normal)
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Override
+    
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: self.bounds.width - CGFloat(padding * 4), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 2, height: bounds.height -  CGFloat(padding * 3.2)))
+        
+    }
+    
+    
+    //------------------------------------------------------
+    
+    //MARK: UITextFieldDelegate
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if selectedOption == nil {
+            selectedOption = pvOptions.first
+        }
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: UIPickerViewDataSource
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pvOptions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pvOptions[row]
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: UIPickerViewDelegate
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedOption = pvOptions[row]
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: aDecoder description
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.delegate = self
+    }
+}
+
 
 
 

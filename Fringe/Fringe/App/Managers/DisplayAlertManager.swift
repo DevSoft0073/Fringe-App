@@ -29,7 +29,7 @@ class DisplayAlertManager : NSObject, UITextFieldDelegate {
     
     //MARK: Customs
     
-    func displayAlert(target : AnyObject? = nil, animated : Bool, message : String, handlerOK:(()->Void)?) {
+    func displayAlert(target : AnyObject? = nil, animated : Bool, message : String, handlerOK:(()->Void)? = nil) {
         
         if let controller : UIViewController = UIApplication.topViewController() {
             

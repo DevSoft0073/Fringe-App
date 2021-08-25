@@ -43,7 +43,7 @@ class LoadingIndicatorVC : UIViewController {
             blurView.backgroundColor = UIColor.black.withAlphaComponent(0.0)
         }
         
-        animationIndicatorView = AnimationView(name: "loading")
+        animationIndicatorView = AnimationView(name: "loader_ring")
         animationIndicatorView?.loopMode = .loop
         self.view.addSubview(animationIndicatorView!)
     }

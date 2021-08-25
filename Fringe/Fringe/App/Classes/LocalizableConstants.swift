@@ -36,6 +36,7 @@ struct LocalizableConstants {
         static let accountDisable = "your_account_has_been_disable_please_contact_with_admin_for_more_detail"
         static let pendingStripeVerification = "pending_verification"
         static let maximumLimit = "add_limit"
+        static let invalidCredentials = "invalid_credentials"
     }
     
     struct ValidationMessage {

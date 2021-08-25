@@ -11,22 +11,22 @@ import Foundation
 
 class BaseVC : UIViewController, UIGestureRecognizerDelegate {
     
-//    var currentUser: UserModal? {
-//        return PreferenceManager.shared.currentUserModal
-//    }
-//    
+    var currentUser: UserModal? {
+        return PreferenceManager.shared.currentUserModal
+    }
+    
 //    var currentStudioUser : StudioUserModal?{
 //        return PreferenceManager.shared.currentStudioUserModal
 //    }
-//    
+//
 //    var favUnfavModal : AddFavUnfavModal?{
 //        return PreferenceManager.shared.addRemoveFav
 //    }
-//    
+//
 //    var studioDetail : StudioModel? {
 //        return PreferenceManager.shared.studioDetails
 //    }
-//    
+//
 //    var sessionDetail : BookingSessionModal? {
 //        return PreferenceManager.shared.sessionDetails
 //    }

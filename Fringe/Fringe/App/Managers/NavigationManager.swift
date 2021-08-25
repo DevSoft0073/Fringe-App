@@ -356,10 +356,10 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
-    func setupLandingForChatForArt() {
+    func setupLandingOnHome() {
         
         tabbarController = landingTC
-        tabbarController?.selectedIndex = 2
+//        tabbarController?.selectedIndex = 2
         AppDelegate.shared.window?.rootViewController = tabbarController
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
@@ -377,6 +377,8 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         AppDelegate.shared.window?.rootViewController = self.homeNC
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
+    
+    
     
     //------------------------------------------------------
     
@@ -433,14 +435,6 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     public var searchVC: SearchVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: SearchVC.self)) as! SearchVC
     }
-    public var paymentOptionsVC: PaymentOptionsVC {
-        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PaymentOptionsVC.self)) as! PaymentOptionsVC
-    }
-
-    
-
-    
-  
 
 }
 
