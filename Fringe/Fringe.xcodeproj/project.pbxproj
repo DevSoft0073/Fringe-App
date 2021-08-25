@@ -84,6 +84,9 @@
 		7CA24C6526C2427C00437C8A /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C6226C2427C00437C8A /* JSONNull.swift */; };
 		7CA24C6826C242EE00437C8A /* Loader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24C6726C242EE00437C8A /* Loader.storyboard */; };
 		7CA24C8A26C2537600437C8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C8926C2537600437C8A /* AppDelegate.swift */; };
+		7CD727DB26D554B800AF660D /* GolfClubProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CD727DA26D554B800AF660D /* GolfClubProfile.storyboard */; };
+		7CD727DF26D6149A00AF660D /* PaymentOptionsTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD727DD26D6149A00AF660D /* PaymentOptionsTBCell.swift */; };
+		7CD727E026D6149A00AF660D /* PaymentOptionsTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD727DE26D6149A00AF660D /* PaymentOptionsTBCell.xib */; };
 		7CD7EAF826D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD7EAF726D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib */; };
 		7CD7EAFC26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EAFB26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift */; };
 		7CD7EB0026D1195700BEDDA2 /* CheckAvailabilityTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */; };
@@ -189,6 +192,9 @@
 		7CA24C6226C2427C00437C8A /* JSONNull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
 		7CA24C6726C242EE00437C8A /* Loader.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loader.storyboard; sourceTree = "<group>"; };
 		7CA24C8926C2537600437C8A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7CD727DA26D554B800AF660D /* GolfClubProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GolfClubProfile.storyboard; sourceTree = "<group>"; };
+		7CD727DD26D6149A00AF660D /* PaymentOptionsTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsTBCell.swift; sourceTree = "<group>"; };
+		7CD727DE26D6149A00AF660D /* PaymentOptionsTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentOptionsTBCell.xib; sourceTree = "<group>"; };
 		7CD7EAF726D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckAvailabilityHeaderView.xib; sourceTree = "<group>"; };
 		7CD7EAFB26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityHeaderView.swift; sourceTree = "<group>"; };
 		7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityTBCell.swift; sourceTree = "<group>"; };
@@ -287,6 +293,7 @@
 				7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */,
 				7CE0F63526D4A51900C3AAFB /* SearchTBCell.swift */,
 				7CE0F64426D4D9BD00C3AAFB /* GolfProfileAddImagesCell.swift */,
+				7CD727DD26D6149A00AF660D /* PaymentOptionsTBCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -484,6 +491,7 @@
 				7CD7EAF726D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib */,
 				7CD7EAFF26D1195700BEDDA2 /* CheckAvailabilityTBCell.xib */,
 				7CE0F63626D4A51900C3AAFB /* SearchTBCell.xib */,
+				7CD727DE26D6149A00AF660D /* PaymentOptionsTBCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -494,6 +502,7 @@
 				7CA24C6726C242EE00437C8A /* Loader.storyboard */,
 				7CA24C0926C23D9600437C8A /* LaunchScreen.storyboard */,
 				7C39F19126C39A7600AAC277 /* Main.storyboard */,
+				7CD727DA26D554B800AF660D /* GolfClubProfile.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -634,11 +643,13 @@
 				7CA24C0826C23D9600437C8A /* Assets.xcassets in Resources */,
 				7CE0F63826D4A51900C3AAFB /* SearchTBCell.xib in Resources */,
 				7C39F15226C3947600AAC277 /* Poppins-SemiBold.ttf in Resources */,
+				7CD727DB26D554B800AF660D /* GolfClubProfile.storyboard in Resources */,
 				7C780F9426C3DF43003F1F12 /* Localizable.strings in Resources */,
 				7C39F15426C3947600AAC277 /* Poppins-Regular.ttf in Resources */,
 				7CE2E85226CB943900AF882A /* ProfileTBCell.xib in Resources */,
 				7C8F1D5F26CE328800135C41 /* AddPaymentTVCell.xib in Resources */,
 				7C39F19226C39A7600AAC277 /* Main.storyboard in Resources */,
+				7CD727E026D6149A00AF660D /* PaymentOptionsTBCell.xib in Resources */,
 				7CE2E85826CB9A3200AF882A /* ProfileSwitchCell.xib in Resources */,
 				7C39F15B26C3947600AAC277 /* Poppins-Medium.ttf in Resources */,
 				7C780FF626C64B68003F1F12 /* FringePendingCell.xib in Resources */,
@@ -706,6 +717,7 @@
 				7C780F7D26C3A6DB003F1F12 /* ESTabBarItemContainer.swift in Sources */,
 				7CA24C6526C2427C00437C8A /* JSONNull.swift in Sources */,
 				7CD7EB0E26D35FCF00BEDDA2 /* DetailsScreenVC.swift in Sources */,
+				7CD727DF26D6149A00AF660D /* PaymentOptionsTBCell.swift in Sources */,
 				7CD7EB0026D1195700BEDDA2 /* CheckAvailabilityTBCell.swift in Sources */,
 				7CA24C3B26C241BA00437C8A /* ValidationManager.swift in Sources */,
 				7CA24C5426C2424100437C8A /* FGTextField.swift in Sources */,

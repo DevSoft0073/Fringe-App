@@ -22,24 +22,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="105" id="KGk-i7-Jjw" customClass="SearchTBCell" customModule="Fringe" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="362" height="105"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="93" id="KGk-i7-Jjw" customClass="SearchTBCell" customModule="Fringe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="93"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="362" height="105"/>
+                <rect key="frame" x="0.0" y="0.0" width="352" height="93"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTR-zP-his">
-                        <rect key="frame" x="8" y="8" width="346" height="68"/>
+                        <rect key="frame" x="8" y="8" width="336" height="77"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WIO-eO-NF9">
-                                <rect key="frame" x="0.0" y="0.0" width="246" height="68"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WIO-eO-NF9">
+                                <rect key="frame" x="0.0" y="6" width="236" height="62"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTB-be-oQA">
-                                        <rect key="frame" x="0.0" y="0.0" width="236" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="226" height="22"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winged GolfClub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWF-Fs-heN" customClass="FGSemiboldLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="2.5" width="122.5" height="19"/>
+                                                <rect key="frame" x="15" y="0.0" width="137.5" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -47,16 +47,16 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="HGq-Wi-0MO"/>
+                                            <constraint firstAttribute="height" constant="22" id="HGq-Wi-0MO"/>
                                             <constraint firstItem="hWF-Fs-heN" firstAttribute="centerY" secondItem="xTB-be-oQA" secondAttribute="centerY" id="If0-0V-LSL"/>
                                             <constraint firstItem="hWF-Fs-heN" firstAttribute="leading" secondItem="xTB-be-oQA" secondAttribute="leading" constant="15" id="cl3-Yd-qkW"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nwo-UB-ewD">
-                                        <rect key="frame" x="0.0" y="24" width="236" height="20"/>
+                                        <rect key="frame" x="0.0" y="22" width="226" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamaroneck, Ontario, Canada.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdI-rH-aFK" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="3" width="216" height="14"/>
+                                                <rect key="frame" x="15" y="0.5" width="206" height="17"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
                                                 <color key="textColor" red="0.39211988450000002" green="0.39218056200000001" blue="0.39210665230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -65,16 +65,16 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="cdI-rH-aFK" firstAttribute="centerY" secondItem="Nwo-UB-ewD" secondAttribute="centerY" id="Dyu-Pa-i0r"/>
-                                            <constraint firstAttribute="height" constant="20" id="E90-ZK-Fkz"/>
+                                            <constraint firstAttribute="height" constant="18" id="E90-ZK-Fkz"/>
                                             <constraint firstItem="cdI-rH-aFK" firstAttribute="leading" secondItem="Nwo-UB-ewD" secondAttribute="leading" constant="15" id="eZw-hO-yfg"/>
                                             <constraint firstAttribute="trailing" secondItem="cdI-rH-aFK" secondAttribute="trailing" constant="5" id="eqq-G3-eh3"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66M-LC-dGw">
-                                        <rect key="frame" x="0.0" y="44" width="236" height="24"/>
+                                        <rect key="frame" x="0.0" y="40" width="226" height="22"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgg-Od-R9m" customClass="FloatRatingView" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="7" width="60" height="10"/>
+                                                <rect key="frame" x="15" y="6.5" width="60" height="9"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="KFo-C5-Jxg"/>
@@ -94,7 +94,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7X-RV-nye" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="85" y="4.5" width="25.5" height="15.5"/>
+                                                <rect key="frame" x="85" y="2" width="27" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                 <color key="textColor" red="0.086262829599999993" green="0.086281977590000003" blue="0.086258627470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -106,7 +106,7 @@
                                             <constraint firstItem="Jgg-Od-R9m" firstAttribute="leading" secondItem="66M-LC-dGw" secondAttribute="leading" constant="15" id="TTv-Bh-UUo"/>
                                             <constraint firstItem="y7X-RV-nye" firstAttribute="leading" secondItem="Jgg-Od-R9m" secondAttribute="trailing" constant="10" id="XBa-IZ-8CD"/>
                                             <constraint firstItem="y7X-RV-nye" firstAttribute="centerY" secondItem="Jgg-Od-R9m" secondAttribute="centerY" id="dlD-Uy-NTY"/>
-                                            <constraint firstAttribute="height" constant="24" id="vVa-mZ-sF7"/>
+                                            <constraint firstAttribute="height" constant="22" id="vVa-mZ-sF7"/>
                                             <constraint firstItem="Jgg-Od-R9m" firstAttribute="height" secondItem="66M-LC-dGw" secondAttribute="height" multiplier="0.4" id="z43-gd-rhE"/>
                                         </constraints>
                                     </view>
@@ -122,17 +122,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mCn-iR-yLY">
-                                <rect key="frame" x="269" y="5" width="67" height="38.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="mCn-iR-yLY">
+                                <rect key="frame" x="259" y="8" width="67" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1052" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOH-gd-C8V" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="67" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="20"/>
                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="per Round" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQS-5t-I61">
-                                        <rect key="frame" x="0.0" y="21.5" width="67" height="17"/>
+                                        <rect key="frame" x="0.0" y="23" width="67" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -151,11 +151,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WIO-eO-NF9" firstAttribute="leading" secondItem="bTR-zP-his" secondAttribute="leading" id="082-xI-f6r"/>
-                            <constraint firstItem="WIO-eO-NF9" firstAttribute="top" secondItem="bTR-zP-his" secondAttribute="top" id="4vP-XT-r8C"/>
+                            <constraint firstItem="WIO-eO-NF9" firstAttribute="top" secondItem="bTR-zP-his" secondAttribute="top" constant="6" id="4vP-XT-r8C"/>
                             <constraint firstAttribute="trailing" secondItem="mCn-iR-yLY" secondAttribute="trailing" constant="10" id="abh-SC-ITa"/>
                             <constraint firstAttribute="trailing" secondItem="WIO-eO-NF9" secondAttribute="trailing" constant="100" id="fo0-D2-sdo"/>
-                            <constraint firstAttribute="bottom" secondItem="WIO-eO-NF9" secondAttribute="bottom" id="h82-HE-4qP"/>
-                            <constraint firstItem="mCn-iR-yLY" firstAttribute="top" secondItem="bTR-zP-his" secondAttribute="top" constant="5" id="y6y-2T-DDD"/>
+                            <constraint firstItem="mCn-iR-yLY" firstAttribute="top" secondItem="bTR-zP-his" secondAttribute="top" constant="8" id="y6y-2T-DDD"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -194,7 +193,7 @@
                 <outlet property="lblRating" destination="y7X-RV-nye" id="CML-zh-dGL"/>
                 <outlet property="ratingView" destination="Jgg-Od-R9m" id="srT-z4-Ezf"/>
             </connections>
-            <point key="canvasLocation" x="165" y="91"/>
+            <point key="canvasLocation" x="156.52173913043478" y="86.71875"/>
         </tableViewCell>
     </objects>
     <resources>
