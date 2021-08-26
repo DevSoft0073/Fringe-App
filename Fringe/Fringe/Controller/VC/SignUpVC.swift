@@ -16,6 +16,7 @@ import AuthenticationServices
 
 class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     
+    @IBOutlet weak var txtLastName: FGUsernameTextField!
     @IBOutlet weak var txtEmail: FGEmailTextField!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var checkUncheckBtn: UIButton!
@@ -29,6 +30,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     @IBOutlet weak var txtGolfHandicap: FGGolfHandiCap!
     @IBOutlet weak var txtPassword: FGPasswordTextField!
     @IBOutlet weak var txtConfirmPassword: FGPasswordTextField!
+    
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var unchecked = Bool()
     var imagePickerVC: ImagePicker?
@@ -39,6 +41,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
             }
         }
     }
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -76,12 +79,16 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
         txtConfirmPassword.delegate = self
     }
     
-    
-    
     func validate() -> Bool {
         
         if ValidationManager.shared.isEmpty(text: txtUserName.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterUserName) {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterFirstName) {
+            }
+            return false
+        }
+        
+        if ValidationManager.shared.isEmpty(text: txtLastName.text) == true {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterLastName) {
             }
             return false
         }
@@ -170,15 +177,19 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
         return true
     }
     
+    //------------------------------------------------------
     
-    private func performEditStudio() {
-        
+    //MARK: Sign Up
+    
+    private func performSignUp() {
+       
         let imageData = selectedImage?.jpegData(compressionQuality: 0.2)
         var imgData = [String : Data]()
         imgData["image"] = imageData
         let deviceTimeZone = TimeZone.current.abbreviation()
         let parameter: [String: Any] = [
             Request.Parameter.fullName: txtUserName?.text ?? String(),
+            
             Request.Parameter.email: txtEmail.text ?? String(),
             Request.Parameter.dob: txtBirthDate?.text ?? String(),
             Request.Parameter.gender: txtGender?.text ?? String(),
@@ -223,6 +234,10 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
             }
         }
     }
+    
+    //------------------------------------------------------
+    
+    //MARK: Apple Login Service Call
     
     func performAppleLogin(_ firstName: String, _ lastName: String, _ appleId: String, _ email: String) {
         
@@ -301,13 +316,14 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     }
     
     @IBAction func btnSignUp(_ sender: UIButton) {
+        
         if validate() == false {
             return
         }
         
         LoadingManager.shared.showLoading()
         
-        self.performEditStudio()
+        self.performSignUp()
     }
     
     @IBAction func btnAppleTap(_ sender: Any) {
@@ -415,6 +431,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     
     
     //------------------------------------------------------
+    
     //MARK: UIViewController
     
     override func viewDidLoad() {

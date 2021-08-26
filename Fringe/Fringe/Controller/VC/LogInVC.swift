@@ -93,6 +93,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                 
                 if let stringUser = try? response.data?.jsonString() {
                     PreferenceManager.shared.currentUser = stringUser
+                    PreferenceManager.shared.loggedUser = true
                     PreferenceManager.shared.userId = response.data?.userID
                     NavigationManager.shared.setupLandingOnHome()
                 }
@@ -165,6 +166,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                     
                     PreferenceManager.shared.currentUser = stringUser
                     PreferenceManager.shared.userId = response.data?.userID
+                    PreferenceManager.shared.loggedUser = true
                     NavigationManager.shared.setupLandingOnHome()
                     
                 }

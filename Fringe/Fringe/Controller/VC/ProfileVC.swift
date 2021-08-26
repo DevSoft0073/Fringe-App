@@ -160,18 +160,19 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         let view: ProfileHeaderView = UIView.fromNib()
-        //        view.setupData(currentUser)
+        view.setupData(currentUser)
         view.layoutSubviews()
         return view.bounds.height
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view: ProfileHeaderView = UIView.fromNib()
-        //        view.setupData(currentUser)
+        view.setupData(currentUser)
         view.btnEdit.addTarget(self, action: #selector(showEditDetail), for: .touchUpInside)
         view.layoutSubviews()
         return view
     }
+    
     @objc func showEditDetail(){
         let controller = NavigationManager.shared.editProfileVC
         push(controller: controller)
@@ -181,23 +182,32 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         let item = items[indexPath.row]
         let name = item["name"]
         if name == ProfileItems.accountInformation{
+            
             let controller = NavigationManager.shared.accountInformationVC
             controller.textTitle = name?.localized()
             push(controller: controller)
             
         }else if name == ProfileItems.changePassword {
+            
             let controller = NavigationManager.shared.changePasswordVC
             controller.textTitle = name?.localized()
             push(controller: controller)
+            
         }else if name == ProfileItems.addPayment {
+            
             let controller = NavigationManager.shared.addPaymentMethodVC
             push(controller: controller)
+            
         }else if name == ProfileItems.myBookings{
+            
             let controller = NavigationManager.shared.myBookingVC
             push(controller: controller)
+            
         }else if name == ProfileItems.switchToBusiness{
+            
             let controller = NavigationManager.shared.signUpHostVC
             push(controller: controller)
+            
         }
         
     }

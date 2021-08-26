@@ -29,6 +29,7 @@ class PreferenceManager: NSObject {
     private let keyDeviceToken = "deviceToken"
     private let keyUserId = "userId"
     private let keyUserData = "keyUserData"
+    private let keyLoggedUser = "keyLoggedUser"
 
     var deviceToken: String? {
         set {
@@ -86,6 +87,16 @@ class PreferenceManager: NSObject {
             }
         }
         return nil
+    }
+    
+    var loggedUser: Bool {
+        set {
+            userDefault.set(newValue, forKey: keyLoggedUser)
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.bool(forKey: keyLoggedUser)
+        }
     }
     
     //------------------------------------------------------

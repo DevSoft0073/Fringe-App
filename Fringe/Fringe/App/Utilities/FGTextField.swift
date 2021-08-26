@@ -319,7 +319,7 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
     //MARK: Override
     
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(origin: CGPoint(x: self.bounds.width - CGFloat(padding * 4), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 2, height: bounds.height -  CGFloat(padding * 3.2)))
+        return CGRect(origin: CGPoint(x: self.bounds.width - CGFloat(padding * 4), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 2.5, height: bounds.height -  CGFloat(padding * 3.2)))
         
     }
     
