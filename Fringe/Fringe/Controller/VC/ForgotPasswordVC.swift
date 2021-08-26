@@ -32,7 +32,7 @@ class ForgotPasswordVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     //MARK: Customs
     
     func setup() {
-
+        
         
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         returnKeyHandler?.delegate = self

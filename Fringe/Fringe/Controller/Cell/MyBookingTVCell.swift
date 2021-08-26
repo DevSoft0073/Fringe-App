@@ -8,7 +8,7 @@
 import UIKit
 
 class MyBookingTVCell: UITableViewCell {
-
+    
     @IBOutlet weak var lblName: FGSemiboldLabel!
     @IBOutlet weak var lblAddress: FGRegularLabel!
     @IBOutlet weak var imgMain: UIImageView!
@@ -23,12 +23,12 @@ class MyBookingTVCell: UITableViewCell {
     }
     
     override func layoutSublayers(of layer: CALayer) {
-//        imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
+        //        imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

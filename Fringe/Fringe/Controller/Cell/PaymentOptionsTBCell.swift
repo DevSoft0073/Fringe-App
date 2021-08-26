@@ -8,7 +8,7 @@
 import UIKit
 
 class PaymentOptionsTBCell: UITableViewCell {
-
+    
     @IBOutlet weak var lblPayment: FGRegularLabel!
     @IBOutlet weak var imgPayment: UIImageView!
     
@@ -21,20 +21,20 @@ class PaymentOptionsTBCell: UITableViewCell {
         imgPayment.image = UIImage(named: image)
         lblPayment.text = name
         
-//        if name == ProfileVC.ProfileItems.logout {
-//            isDisclosureIndicatorVisible = false
-//        } else {
-//            isDisclosureIndicatorVisible = true
-//        }
+        //        if name == ProfileVC.ProfileItems.logout {
+        //            isDisclosureIndicatorVisible = false
+        //        } else {
+        //            isDisclosureIndicatorVisible = true
+        //        }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

@@ -1,18 +1,20 @@
 //
-//  SearchVC.swift
+//  HomeListingVC.swift
 //  Fringe
 //
-//  Created by Dharmani Apps on 24/08/21.
+//  Created by Dharmani Apps on 25/08/21.
 //
 
 import UIKit
 import Foundation
+import IQKeyboardManagerSwift
 
-class SearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
+class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tblSearch: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var txtSearchFld: FGRegularTextField!
+    @IBOutlet weak var tblListing: UITableView!
     
+    var returnKeyHandler: IQKeyboardReturnKeyHandler?
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -26,63 +28,70 @@ class SearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     deinit { //same like dealloc in ObjectiveC
         
     }
+    
     //------------------------------------------------------
     //MARK: Customs
-    
-    func setup() {
-        tblSearch.delegate = self
-        tblSearch.dataSource = self
+    func setup(){
+        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
+        tblListing.delegate = self
+        tblListing.dataSource = self
         
         
-        //        let loadMoreView = KRPullLoadView()
-        //        loadMoreView.delegate = self
-        //        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
-        
-        let identifier = String(describing: SearchTBCell.self)
-        
-        let nibRequestCell = UINib(nibName: identifier, bundle: Bundle.main)
-        tblSearch.register(nibRequestCell, forCellReuseIdentifier: identifier)
+        var identifier = String(describing: HomeListingTBCell.self)
+        var nibProfileCell = UINib(nibName: identifier, bundle: Bundle.main)
+        tblListing.register(nibProfileCell, forCellReuseIdentifier: identifier)
         
     }
+    func updateUI() {
+        
+        tblListing.reloadData()
+    }
     //------------------------------------------------------
-    
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {
         self.pop()
     }
-    
+    @IBAction func btnNotification(_ sender: Any) {
+        let controller = NavigationManager.shared.notificationVC
+        push(controller: controller)
+        
+    }
     //------------------------------------------------------
-    
-    //MARK: UITableViewDataSource, UITableViewDelegate
+    //MARK: UITableViewDataSource , UITableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 8
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SearchTBCell.self)) as? SearchTBCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeListingTBCell.self)) as? HomeListingTBCell {
             
             return cell
         }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 95
+        return 310
     }
     
     //------------------------------------------------------
+    
     //MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        self.updateUI()
+       
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setup()
         NavigationManager.shared.isEnabledBottomMenu = false
+        
     }
     
     //------------------------------------------------------

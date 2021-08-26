@@ -30,14 +30,14 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     func setup() {
         tblBooking.delegate = self
         tblBooking.dataSource = self
-       
         
-//        let loadMoreView = KRPullLoadView()
-//        loadMoreView.delegate = self
-//        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
+        
+        //        let loadMoreView = KRPullLoadView()
+        //        loadMoreView.delegate = self
+        //        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
         
         let identifier = String(describing: MyBookingTVCell.self)
-
+        
         let nibRequestCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblBooking.register(nibRequestCell, forCellReuseIdentifier: identifier)
         
@@ -80,7 +80,7 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-       
+        
     }
     
     //------------------------------------------------------

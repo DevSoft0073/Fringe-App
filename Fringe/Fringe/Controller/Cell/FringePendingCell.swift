@@ -8,7 +8,8 @@
 import UIKit
 
 class FringePendingCell: UITableViewCell {
-
+    
+    @IBOutlet weak var cancelView: UIView!
     @IBOutlet weak var btnCancelation: FGActiveButton!
     @IBOutlet weak var golfClubNameLbl: FGMediumLabel!
     @IBOutlet weak var dateLbl: FGRegularLabel!
@@ -19,10 +20,10 @@ class FringePendingCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

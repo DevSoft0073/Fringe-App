@@ -10,7 +10,7 @@ import Foundation
 import KRPullLoader
 
 class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentViewDelegate {
-   
+    
     @IBOutlet weak var noDataLbl: FGRegularLabel!
     @IBOutlet weak var segment2: SegmentView!
     @IBOutlet weak var segment1: SegmentView!
@@ -18,7 +18,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     
     var needToshowInfoView: Bool = false
     var btnTapped = true
-   
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -40,18 +40,18 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         tblGolf.dataSource = self
         tblGolf.delegate = self
         navigationItem.title = LocalizableConstants.Controller.Notifications.title.localized()
-//
-//        noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.pending.localized()
-//
-//        navigationItem.title = LocalizableConstants.Controller.Fringe.title.localized()
-//        segment1.btn.setTitle(LocalizableConstants.Controller.Fringe.pending.localized(), for: .normal)
-//        segment2.btn.setTitle(LocalizableConstants.Controller.Fringe.confirmed.localized(), for: .normal)
-//        segment1.delegate = self
-//        segment2.delegate = self
-//
-//        segment1.isSelected = true
-//        segment2.isSelected = !segment1.isSelected
-//
+        //
+        //        noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.pending.localized()
+        //
+        //        navigationItem.title = LocalizableConstants.Controller.Fringe.title.localized()
+        //        segment1.btn.setTitle(LocalizableConstants.Controller.Fringe.pending.localized(), for: .normal)
+        //        segment2.btn.setTitle(LocalizableConstants.Controller.Fringe.confirmed.localized(), for: .normal)
+        //        segment1.delegate = self
+        //        segment2.delegate = self
+        //
+        //        segment1.isSelected = true
+        //        segment2.isSelected = !segment1.isSelected
+        //
         var identifier = String(describing: FringePendingCell.self)
         var nibCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
@@ -76,24 +76,38 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringePendingCell.self)) as? FringePendingCell {
-//            if segment1.isSelected {
-//                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringePendingCell.self)) as? FringePendingCell{
-////                    let data = items[indexPath.row]
-////                    cell.setup(name: data.studioDetail?.username ?? "", stName: data.studioDetail?.name ?? "", date: data.studioDetail?.address, time: data.time, specialIns: data.specialInstruction ?? "")
-//                    cell.btnMoreInfo.tag = indexPath.row
-//                    cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
-//                    cell.btnClose.tag = indexPath.row
-//                    if needToshowInfoView {
-////                        cell.requestView.isHidden = true
-////                        cell.instructionView.isHidden = true
-//                        cell.btnClose.isHidden = true
-//                        cell.btnMoreInfo.isHidden = false
-//                    }
-//                    cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
-////                    cell.btnCancelation.addTarget(self, action: #selector(showpopUpView), for: .touchUpInside)
-//                    return cell
-//                }
-//            }
+    
+            cell.btnMoreInfo.tag = indexPath.row
+            cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
+            cell.btnClose.tag = indexPath.row
+            if needToshowInfoView {
+                cell.cancelView.isHidden = true
+                cell.btnClose.isHidden = true
+                cell.btnMoreInfo.isHidden = false
+            }
+            cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
+         
+            //            if segment1.isSelected {
+            //                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringePendingCell.self)) as? FringePendingCell{
+            ////                    let data = items[indexPath.row]
+            ////                    cell.setup(name: data.studioDetail?.username ?? "", stName: data.studioDetail?.name ?? "", date: data.studioDetail?.address, time: data.time, specialIns: data.specialInstruction ?? "")
+            //                    cell.btnMoreInfo.tag = indexPath.row
+            //                    cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
+            //                    cell.btnClose.tag = indexPath.row
+            //                    if needToshowInfoView {
+            ////                        cell.requestView.isHidden = true
+            ////                        cell.instructionView.isHidden = true
+            //                        cell.btnClose.isHidden = true
+            //                        cell.btnMoreInfo.isHidden = false
+            //                    }
+            //                    cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
+            ////                    cell.btnCancelation.addTarget(self, action: #selector(showpopUpView), for: .touchUpInside)
+            //                    return cell
+            //                }
+            //            }
+            return cell
+        }
+        else if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringeConfirmedCell.self)) as? FringeConfirmedCell{
             return cell
         }
         return UITableViewCell()
@@ -103,8 +117,8 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     @objc func showHideView(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringePendingCell{
             self.needToshowInfoView = false
-//            cell.requestView.isHidden = false
-//            cell.instructionView.isHidden = false
+                        cell.cancelView.isHidden = false
+            //            cell.instructionView.isHidden = false
             cell.btnClose.isHidden = false
             cell.btnMoreInfo.isHidden = true
             tblGolf.reloadData()
@@ -114,8 +128,8 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     @objc func showViews(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringePendingCell{
             btnTapped = true
-//            cell.requestView.isHidden = true
-//            cell.instructionView.isHidden = true
+                        cell.cancelView.isHidden = true
+            //            cell.instructionView.isHidden = true
             cell.btnClose.isHidden = true
             cell.btnMoreInfo.isHidden = false
             tblGolf.reloadData()
@@ -135,11 +149,11 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     }
     
     func segment(view: SegmentView, didChange flag: Bool) {
-//        if segment1.isSelected == true {
-//            
-//        } else {
-//            
-//        }
+        //        if segment1.isSelected == true {
+        //            
+        //        } else {
+        //            
+        //        }
     }
     
     

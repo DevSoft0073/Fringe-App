@@ -435,6 +435,11 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     public var searchVC: SearchVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: SearchVC.self)) as! SearchVC
     }
+    public var homeListingVC: HomeListingVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: HomeListingVC.self)) as! HomeListingVC
+    }
+    
 
 }
+
 

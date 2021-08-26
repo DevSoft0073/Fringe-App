@@ -172,7 +172,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     
     
     private func performEditStudio() {
-       
+        
         let imageData = selectedImage?.jpegData(compressionQuality: 0.2)
         var imgData = [String : Data]()
         imgData["image"] = imageData

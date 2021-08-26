@@ -25,12 +25,12 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
             ["name": AddPaymentItems.creditCard, "image": AddPaymentItems.creditCardIcon],
             ["name": AddPaymentItems.payPal, "image": AddPaymentItems.payPalIcon],
             ["name": AddPaymentItems.applePay, "image": AddPaymentItems.applePayIcon],
-         
+            
         ]
     }
     var items: [ [String: String] ] {
-      
-            return itemNormal
+        
+        return itemNormal
     }
     
     //------------------------------------------------------
@@ -54,12 +54,12 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
         tblAddPayment.dataSource = self
         navigationItem.title = LocalizableConstants.Controller.Notifications.title.localized()
         
-//        let loadMoreView = KRPullLoadView()
-//        loadMoreView.delegate = self
-//        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
+        //        let loadMoreView = KRPullLoadView()
+        //        loadMoreView.delegate = self
+        //        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
         
         let identifier = String(describing: AddPaymentTVCell.self)
-
+        
         let nibRequestCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblAddPayment.register(nibRequestCell, forCellReuseIdentifier: identifier)
         
@@ -88,19 +88,19 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
         let image = item["image"]!
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddPaymentTVCell", for: indexPath) as! AddPaymentTVCell
         
-            cell.setup(image: image, name: name?.localized())
+        cell.setup(image: image, name: name?.localized())
         
-            return cell
-        }
+        return cell
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     
-            let controller = NavigationManager.shared.addPaymentVC
-            push(controller: controller)
-       
+        
+        let controller = NavigationManager.shared.addPaymentVC
+        push(controller: controller)
+        
     }
     
     
@@ -126,5 +126,5 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-   
+    
 }

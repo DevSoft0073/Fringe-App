@@ -11,7 +11,7 @@ import SDWebImage
 import Toucan
 
 class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
-   
+    
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var txtFirstName: FGUsernameTextField!
     @IBOutlet weak var txtLastName: FGUsernameTextField!
@@ -41,8 +41,8 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
     //MARK: Customs
     
     func setup() {
-//                imgProfile.image = getPlaceholderImage()
-//                imagePickerVC = ImagePicker(presentationController: self, delegate: self)
+        //                imgProfile.image = getPlaceholderImage()
+        //                imagePickerVC = ImagePicker(presentationController: self, delegate: self)
         
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         returnKeyHandler?.delegate = self
@@ -53,7 +53,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
         txtGender.delegate = self
         txtEmail.delegate = self
         txtMobileNumber.delegate = self
-       
+        
     }
     
     func validate() -> Bool {
@@ -113,9 +113,9 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
         self.pop()
     }
     
-//    func didSelect(controller: ImagePicker, image: UIImage?) {
-//        <#code#>
-//    }
+    //    func didSelect(controller: ImagePicker, image: UIImage?) {
+    //        <#code#>
+    //    }
     
     
     //------------------------------------------------------
@@ -140,7 +140,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-       
+        
     }
     
     //------------------------------------------------------

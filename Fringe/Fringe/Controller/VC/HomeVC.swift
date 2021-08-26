@@ -24,10 +24,14 @@ class HomeVC : BaseVC {
         
     }
     
-  
+    
     
     //------------------------------------------------------
     //MARK: Actions
+    @IBAction func btnSearch(_ sender: Any) {
+        let controller = NavigationManager.shared.homeListingVC
+        push(controller: controller)
+    }
     
     @IBAction func btnNotificationTap(_ sender: Any) {
         let controller = NavigationManager.shared.notificationVC
@@ -39,7 +43,7 @@ class HomeVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     //------------------------------------------------------
@@ -47,7 +51,7 @@ class HomeVC : BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NavigationManager.shared.isEnabledBottomMenu = true
-
+        
     }
     
 }

@@ -10,7 +10,7 @@ import Foundation
 
 class ConfirmedPayVC : BaseVC {
     
-   
+    
     @IBOutlet weak var lblOccupancyTax: FGMediumLabel!
     @IBOutlet weak var lblTotalPrice: FGMediumLabel!
     @IBOutlet weak var lblServiceTax: FGMediumLabel!
@@ -35,6 +35,7 @@ class ConfirmedPayVC : BaseVC {
     deinit { //same like dealloc in ObjectiveC
         
     }
+    
     //------------------------------------------------------
     
     //MARK: Actions
@@ -43,9 +44,13 @@ class ConfirmedPayVC : BaseVC {
         let controller = NavigationManager.shared.searchVC
         push(controller: controller)
     }
+    
     @IBAction func btnEditGuests(_ sender: Any) {
     }
+    
     @IBAction func btnEditDate(_ sender: Any) {
+        let controller = NavigationManager.shared.homeListingVC
+        push(controller: controller)
     }
     @IBAction func btnBack(_ sender: Any) {
         self.pop()

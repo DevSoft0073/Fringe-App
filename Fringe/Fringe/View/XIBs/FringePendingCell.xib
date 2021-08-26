@@ -60,11 +60,12 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ga-DE-l7i">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ga-DE-l7i">
                                                 <rect key="frame" x="376" y="12" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="7ga-DE-l7i" secondAttribute="height" multiplier="1:1" id="aVA-Go-E21"/>
                                                 </constraints>
+                                                <state key="normal" image="close"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,12 +130,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byX-2q-Ucm">
-                                        <rect key="frame" x="0.0" y="75" width="400" height="76"/>
+                                        <rect key="frame" x="0.0" y="75" width="400" height="121"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rs-7E-UmK" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="400" height="66"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamaroneck, Ontarioo,Canada.." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rs-7E-UmK" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="5" width="400" height="111"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <string key="text">Mamaroneck, Ontarioo,Canada..weqwewdasdsadfasdfasdfasbf asdmfghadfjkgharga.dbsfgkjasdfg;axchgadksgkadfgasdfhjkgabcvnxcasdfgasdbnasdblasdfasdhjkxzfbsdf asdkljfhasdbfknasdfasdlbfsd ahgsdhfjvsadfsdlfgsdaifjsdfkasdkfgsadfsda;fjsdagfskadhgfsdfs</string>
                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -148,7 +148,7 @@
                                             <constraint firstAttribute="trailing" secondItem="3Rs-7E-UmK" secondAttribute="trailing" id="Vpr-RI-urU"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0SO-t8-uzP">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0SO-t8-uzP">
                                         <rect key="frame" x="0.0" y="151" width="400" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7y-HH-tT7" customClass="FGActiveButton" customModule="Fringe" customModuleProvider="target">
@@ -205,6 +205,7 @@
                 <outlet property="btnCancelation" destination="j7y-HH-tT7" id="Dfd-FZ-NG4"/>
                 <outlet property="btnClose" destination="7ga-DE-l7i" id="gaF-l8-xrn"/>
                 <outlet property="btnMoreInfo" destination="31L-hm-IHJ" id="DZG-q6-nZf"/>
+                <outlet property="cancelView" destination="0SO-t8-uzP" id="7Cu-dc-KWr"/>
                 <outlet property="dateLbl" destination="8Vv-Bt-dUI" id="NJ2-rS-m1R"/>
                 <outlet property="golfClubNameLbl" destination="3Rs-7E-UmK" id="O3v-k9-StD"/>
                 <outlet property="nameLbl" destination="JeJ-5V-XeU" id="1df-6s-qd9"/>
@@ -214,6 +215,7 @@
     </objects>
     <resources>
         <image name="calendar" width="53" height="53"/>
+        <image name="close" width="28" height="29"/>
         <namedColor name="appBackground">
             <color red="0.94499999284744263" green="0.94499999284744263" blue="0.94499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

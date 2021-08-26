@@ -28,9 +28,51 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+        
+    //------------------------------------------------------
+    
+    deinit { //same like dealloc in ObjectiveC
+        
+    }
     
     //------------------------------------------------------
     
+    //MARK: Customs
+    
+    func setup() {
+        
+        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
+        returnKeyHandler?.delegate = self
+        
+        txtEmail.delegate = self
+        txtPassword.delegate = self
+        //        btnRememberMe.delegate = self
+        
+        
+    }
+    
+    func validate() -> Bool {
+        
+        if ValidationManager.shared.isEmpty(text: txtEmail.text) == true {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterEmail) {
+            }
+            return false
+        }
+        
+        if ValidationManager.shared.isValid(text: txtEmail.text!, for: RegularExpressions.email) == false {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidEmail) {
+            }
+            return false
+        }
+        
+        if ValidationManager.shared.isEmpty(text: txtPassword.text) == true {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterPassword) {
+            }
+            return false
+        }
+        
+        return true
+    }
     
     func performLogin() {
         
@@ -42,7 +84,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
             Request.Parameter.deviceToken: deviceToken,
             Request.Parameter.deviceType: DeviceType.iOS.rawValue,
         ]
-                
+        
         RequestManager.shared.requestPOST(requestMethod: Request.Method.login, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
             
             LoadingManager.shared.hideLoading()
@@ -66,19 +108,19 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                         }, handlerYes: {
                             
                             delay {
-                                                                
+                                
                                 delayInLoading {
                                     
-//                                    self.performResentEmailVerification()
+                                    //                                    self.performResentEmailVerification()
                                 }
                             }
                         })
                         
                     }
-                        else if response.code == Status.Code.notfound {
+                    else if response.code == Status.Code.notfound {
                         
                         DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.Error.invalidCredentials, handlerOK: nil)
-
+                        
                     }
                     else{
                         
@@ -99,7 +141,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
             }
         })
     }
-
+    
     func performAppleLogin(_ firstName: String, _ lastName: String, _ appleId: String, _ email: String) {
         
         let deviceToken = PreferenceManager.shared.deviceToken ?? String()
@@ -149,51 +191,6 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                 DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
             }
         })
-    }    
-    
-    
-    //------------------------------------------------------
-    
-    deinit { //same like dealloc in ObjectiveC
-        
-    }
-    
-    //------------------------------------------------------
-    //MARK: Customs
-    
-    func setup() {
-        
-        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
-        returnKeyHandler?.delegate = self
-        
-        txtEmail.delegate = self
-        txtPassword.delegate = self
-        //        btnRememberMe.delegate = self
-        
-        
-    }
-    
-    func validate() -> Bool {
-        
-        if ValidationManager.shared.isEmpty(text: txtEmail.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterEmail) {
-            }
-            return false
-        }
-        
-        if ValidationManager.shared.isValid(text: txtEmail.text!, for: RegularExpressions.email) == false {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidEmail) {
-            }
-            return false
-        }
-        
-        if ValidationManager.shared.isEmpty(text: txtPassword.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterPassword) {
-            }
-            return false
-        }
-        
-        return true
     }
     
     //------------------------------------------------------
@@ -210,11 +207,12 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
         if validate() == false {
             return
         }
+        NavigationManager.shared.setupLandingOnHome()
         
-        LoadingManager.shared.showLoading()
+//        LoadingManager.shared.showLoading()
         
-        performLogin()
-                
+//        performLogin()
+        
     }
     
     @IBAction func btnEye(_ sender: UIButton) {
@@ -328,6 +326,8 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        txtEmail.text = "dharmaniz.guleria@gmail.com"
+        txtPassword.text = "Qwerty@123"
     }
     
     //------------------------------------------------------

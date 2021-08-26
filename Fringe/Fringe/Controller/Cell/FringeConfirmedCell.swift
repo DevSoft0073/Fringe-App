@@ -8,7 +8,7 @@
 import UIKit
 
 class FringeConfirmedCell: UITableViewCell {
-
+    
     @IBOutlet weak var golfClubNameLbl: FGMediumLabel!
     @IBOutlet weak var dateLbl: FGRegularLabel!
     @IBOutlet weak var btnSeeMore: FGActiveButton!
@@ -17,10 +17,10 @@ class FringeConfirmedCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

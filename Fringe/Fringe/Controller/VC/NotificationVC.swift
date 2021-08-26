@@ -10,8 +10,9 @@ import Foundation
 import KRPullLoader
 
 class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
-   
+    
     @IBOutlet weak var tblNotification: UITableView!
+    
     
     //MARK: Memory Management Method
     
@@ -24,6 +25,9 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     deinit { //same like dealloc in ObjectiveC
         
     }
+    
+    //------------------------------------------------------
+    
     //MARK: Customs
     
     func setup() {
@@ -31,18 +35,19 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
         tblNotification.dataSource = self
         navigationItem.title = LocalizableConstants.Controller.Notifications.title.localized()
         
-//        let loadMoreView = KRPullLoadView()
-//        loadMoreView.delegate = self
-//        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
+        //        let loadMoreView = KRPullLoadView()
+        //        loadMoreView.delegate = self
+        //        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
         
         let identifier = String(describing: NotificationTVCell.self)
-
+        
         let nibRequestCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblNotification.register(nibRequestCell, forCellReuseIdentifier: identifier)
         
     }
     
     //------------------------------------------------------
+    
     //MARK: Actions
     @IBAction func btnBack(_ sender: Any) {
         self.pop()
@@ -70,6 +75,7 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
     //------------------------------------------------------
     
     //MARK: UIViewController
@@ -77,7 +83,7 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      setup()
+        setup()
     }
     
     //------------------------------------------------------
@@ -85,12 +91,7 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NavigationManager.shared.isEnabledBottomMenu = false
-
         
-        }
         
-//        NavigationManager.shared.isEnabledBottomMenu = true
     }
-    
-
-
+}

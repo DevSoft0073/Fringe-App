@@ -63,7 +63,7 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
             }
             return false
         }
-
+        
         if ValidationManager.shared.isEmpty(text: expirationTxtField.text) == true {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterExpirationDate) {
             }
@@ -75,7 +75,7 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
             }
             return false
         }
-                
+        
         return true
     }
     //------------------------------------------------------

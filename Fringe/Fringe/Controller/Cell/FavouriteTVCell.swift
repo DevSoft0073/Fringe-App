@@ -8,7 +8,7 @@
 import UIKit
 
 class FavouriteTVCell: UITableViewCell {
-
+    
     @IBOutlet weak var lblGolfAddress: FGLightLabel!
     @IBOutlet weak var lblGolfName: FGSemiboldLabel!
     @IBOutlet weak var imgGolf: UIImageView!
@@ -16,10 +16,10 @@ class FavouriteTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
