@@ -72,6 +72,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    func chekLoggedUser() {
+        if PreferenceManager.shared.loggedUser == true {
+            NavigationManager.shared.setupLandingOnHome()
+        } else {
+            NavigationManager.shared.setupSingIn()
+        }
+    }
+    
     
     //------------------------------------------------------
     
@@ -82,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         configureKeboard()
         getCustomFontDetails()
         configureNavigationBar()
+        chekLoggedUser()
         //RealmManager.shared.save(channelDownload: false)
         window?.tintColor = FGColor.appBlack
         

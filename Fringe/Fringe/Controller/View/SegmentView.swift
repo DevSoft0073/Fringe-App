@@ -22,11 +22,11 @@ class SegmentView: UIView {
     var isSelected: Bool = false {
         didSet {
             if isSelected {
-                separater.isHidden = false
+                separater.backgroundColor = FGColor.appGreen
                 btn.setTitleColor(FGColor.appGreen, for: UIControl.State.normal)
             } else {
-                separater.isHidden = true
-                btn.setTitleColor(FGColor.appWhite, for: UIControl.State.normal)
+                separater.backgroundColor = FGColor.appBorder
+                btn.setTitleColor(FGColor.appBlack, for: UIControl.State.normal)
             }
         }
     }

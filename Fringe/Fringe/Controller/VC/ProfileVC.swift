@@ -43,11 +43,11 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
             ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
             ["name": ProfileItems.myBookings, "image": ProfileItems.myBookingsIcon],
-//            ["name": PreferenceManager.shared.currentUserModal?.isStudioRegistered == true ? ProfileItems.switchToStudioProfile : ProfileItems.signupToStudioProfile, "image": ProfileItems.switchToStudioProfileIcon],
+            //            ["name": PreferenceManager.shared.currentUserModal?.isStudioRegistered == true ? ProfileItems.switchToStudioProfile : ProfileItems.signupToStudioProfile, "image": ProfileItems.switchToStudioProfileIcon],
             ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
             ["name": ProfileItems.termsOfServices, "image": ProfileItems.termsOfServicesIcon],
             ["name": ProfileItems.privacyPolicy, "image": ProfileItems.privacyPolicyIcon],
-//            ["name": ProfileItems.cancellationPolicy, "image": ProfileItems.cancellationPolicyIcon],
+            //            ["name": ProfileItems.cancellationPolicy, "image": ProfileItems.cancellationPolicyIcon],
             ["name": ProfileItems.logout, "image": ProfileItems.logoutIcon]
         ]
     }
@@ -59,17 +59,17 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
             ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
             ["name": ProfileItems.myBookings, "image": ProfileItems.myBookingsIcon],
-//            ["name": PreferenceManager.shared.currentUserModal?.isStudioRegistered == true ? ProfileItems.switchToStudioProfile : ProfileItems.signupToStudioProfile, "image": ProfileItems.switchToStudioProfileIcon],
+            //            ["name": PreferenceManager.shared.currentUserModal?.isStudioRegistered == true ? ProfileItems.switchToStudioProfile : ProfileItems.signupToStudioProfile, "image": ProfileItems.switchToStudioProfileIcon],
             ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
             ["name": ProfileItems.termsOfServices, "image": ProfileItems.termsOfServicesIcon],
             ["name": ProfileItems.privacyPolicy, "image": ProfileItems.privacyPolicyIcon],
-//            ["name": ProfileItems.cancellationPolicy, "image": ProfileItems.cancellationPolicyIcon],
+            //            ["name": ProfileItems.cancellationPolicy, "image": ProfileItems.cancellationPolicyIcon],
             ["name": ProfileItems.logout, "image": ProfileItems.logoutIcon]
         ]
     }
     var items: [ [String: String] ] {
-      
-            return itemNormal
+        
+        return itemNormal
     }
     
     
@@ -100,7 +100,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         identifier = String(describing: ProfileSwitchCell.self)
         nibProfileCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblProfile.register(nibProfileCell, forCellReuseIdentifier: identifier)
-
+        
     }
     func updateUI() {
         
@@ -120,23 +120,23 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         let image = item["image"]!
         if name == ProfileItems.allowLocation || name == ProfileItems.allowNotification{
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileSwitchCell.self)) as? ProfileSwitchCell{
-//                if name == ProfileItems.allowLocation {
-////                    if currentUser?.allowLocation == "0"
-//                    {
-////                        cell.switchPermission.isOn = true
-//                    }else{
-////                        cell.switchPermission.isOn = false
-//                    }
-//                }else if name == ProfileItems.allowNotification {
-////                    if currentUser?.allowPush == "0"
-//                    {
-////                        cell.switchPermission.isOn = true
-//                    }else{
-////                        cell.switchPermission.isOn = false
-//                    }
-//                }
-//                cell.switchPermission.addTarget(self, action: #selector(switchBtnPressed(sender:)), for: .valueChanged)
-//                cell.switchPermission.tag = indexPath.row
+                //                if name == ProfileItems.allowLocation {
+                ////                    if currentUser?.allowLocation == "0"
+                //                    {
+                ////                        cell.switchPermission.isOn = true
+                //                    }else{
+                ////                        cell.switchPermission.isOn = false
+                //                    }
+                //                }else if name == ProfileItems.allowNotification {
+                ////                    if currentUser?.allowPush == "0"
+                //                    {
+                ////                        cell.switchPermission.isOn = true
+                //                    }else{
+                ////                        cell.switchPermission.isOn = false
+                //                    }
+                //                }
+                //                cell.switchPermission.addTarget(self, action: #selector(switchBtnPressed(sender:)), for: .valueChanged)
+                //                cell.switchPermission.tag = indexPath.row
                 cell.setup(name: name?.localized())
                 
                 return cell
@@ -160,45 +160,55 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         let view: ProfileHeaderView = UIView.fromNib()
-//        view.setupData(currentUser)
+        view.setupData(currentUser)
         view.layoutSubviews()
         return view.bounds.height
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view: ProfileHeaderView = UIView.fromNib()
-//        view.setupData(currentUser)
+        view.setupData(currentUser)
         view.btnEdit.addTarget(self, action: #selector(showEditDetail), for: .touchUpInside)
         view.layoutSubviews()
         return view
     }
+    
     @objc func showEditDetail(){
         let controller = NavigationManager.shared.editProfileVC
-                push(controller: controller)
+        push(controller: controller)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = items[indexPath.row]
         let name = item["name"]
-         if name == ProfileItems.accountInformation{
+        if name == ProfileItems.accountInformation{
+            
             let controller = NavigationManager.shared.accountInformationVC
             controller.textTitle = name?.localized()
             push(controller: controller)
             
-         }else if name == ProfileItems.changePassword {
+        }else if name == ProfileItems.changePassword {
+            
             let controller = NavigationManager.shared.changePasswordVC
             controller.textTitle = name?.localized()
             push(controller: controller)
-         }else if name == ProfileItems.addPayment {
+            
+        }else if name == ProfileItems.addPayment {
+            
             let controller = NavigationManager.shared.addPaymentMethodVC
-                        push(controller: controller)
-         }else if name == ProfileItems.myBookings{
+            push(controller: controller)
+            
+        }else if name == ProfileItems.myBookings{
+            
             let controller = NavigationManager.shared.myBookingVC
-                        push(controller: controller)
-         }else if name == ProfileItems.switchToBusiness{
+            push(controller: controller)
+            
+        }else if name == ProfileItems.switchToBusiness{
+            
             let controller = NavigationManager.shared.signUpHostVC
-                        push(controller: controller)
-         }
+            push(controller: controller)
+            
+        }
         
     }
     //MARK: UIViewController

@@ -295,43 +295,6 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
-    //    func setupPermission() {
-    //
-    //        //1. check notification permission
-    //        AppDelegate.shared.isRequiredToShowNotificationPermissionDialogue { (flag: Bool) in
-    //
-    //            var permissions: [Permissions] = []
-    //
-    //            let isRequiredToShowNotificationPermissionDialogue = flag
-    //
-    //            //2. check if location permission is ON
-    //            let isRequiredToShowPermissionDialogue = SCLocationManager.shared.isRequiredToShowPermissionDialogue()
-    //
-    //            if isRequiredToShowPermissionDialogue {
-    //                permissions.append(.location)
-    //            }
-    //
-    //            if isRequiredToShowNotificationPermissionDialogue {
-    //                permissions.append(.notification)
-    //            }
-    //
-    //            if permissions.count > 0 {
-    //                let permissionNC = self.permissionNC
-    //                if let permissionVC = permissionNC.viewControllers.first as? PermissionsVC {
-    //                    permissionVC.permissions = permissions
-    //                }
-    //                AppDelegate.shared.window?.rootViewController = permissionNC
-    //                AppDelegate.shared.window?.makeKeyAndVisible()
-    //            } else {
-    //                if PreferenceManager.shared.isStudioSignIn {
-    //                    NavigationManager.shared.setupLandingForStudioProfile()
-    //                } else {
-    //                    NavigationManager.shared.setupLanding()
-    //                }
-    //            }
-    //        }
-    //    }
-    //
     func setupLanding(_ isFromRemoteNotification: Bool = false) {
         
         //locally save controller to set their properties

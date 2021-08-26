@@ -5,13 +5,14 @@
 //  Created by Dharmani Apps on 18/08/21.
 //
 import UIKit
+import Toucan
+import SDWebImage
 import Foundation
 import IQKeyboardManagerSwift
-import SDWebImage
-import Toucan
 
-class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
-   
+
+class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePickerDelegate {
+    
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var txtFirstName: FGUsernameTextField!
     @IBOutlet weak var txtLastName: FGUsernameTextField!
@@ -22,6 +23,13 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
     
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var imagePickerVC: ImagePicker?
+    var selectedImage: UIImage? {
+        didSet {
+            if selectedImage != nil {
+                imgProfile.image = selectedImage
+            }
+        }
+    }
     
     //------------------------------------------------------
     
@@ -38,11 +46,12 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
     }
     
     //------------------------------------------------------
+    
     //MARK: Customs
     
     func setup() {
-//                imgProfile.image = getPlaceholderImage()
-//                imagePickerVC = ImagePicker(presentationController: self, delegate: self)
+        imgProfile.image = getPlaceholderImage()
+        imagePickerVC = ImagePicker(presentationController: self, delegate: self)
         
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         returnKeyHandler?.delegate = self
@@ -53,7 +62,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
         txtGender.delegate = self
         txtEmail.delegate = self
         txtMobileNumber.delegate = self
-       
+        
     }
     
     func validate() -> Bool {
@@ -95,6 +104,57 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
         return true
     }
     
+    private func performEditProfile(completion:((_ flag: Bool) -> Void)?) {
+                    
+        let imageData = selectedImage?.jpegData(compressionQuality: 0.2)
+        var imgData = [String : Data]()
+        imgData["image"] = imageData
+        let deviceTimeZone = TimeZone.current.abbreviation()
+        let parameter: [String: Any] = [
+            Request.Parameter.fullName: txtEmail?.text ?? String(),
+//            Request.Parameter.email: txtEmail.text ?? String(),
+//            Request.Parameter.dob: txtBirthDate?.text ?? String(),
+//            Request.Parameter.gender: txtGender?.text ?? String(),
+//            Request.Parameter.mobileNumber: txtMobileNumber?.text ?? String(),
+//            Request.Parameter.homeTown: txtHomeTown?.text ?? String(),
+//            Request.Parameter.profession: txtProffession?.text ?? String(),
+//            Request.Parameter.memberCourse: txtMemberCourse?.text ?? String(),
+//            Request.Parameter.golfHandicap: txtGolfHandicap?.text ?? String(),
+//            Request.Parameter.password: txtPassword?.text ?? String(),
+//            Request.Parameter.confirmPassword: txtConfirmPassword?.text ?? String(),
+//            Request.Parameter.timeZone: deviceTimeZone ?? String(),
+            
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.signup, parameter: parameter, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                delay {
+                    completion?(true)
+                }
+                
+            } else {
+                
+                completion?(false)
+                                
+                delay {
+//                   self.handleError(code: response.code)
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
     //------------------------------------------------------
     
     //MARK: Actions
@@ -106,6 +166,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
     @IBAction func btnProfileImg(_ sender: Any) {
         self.imagePickerVC?.present(from: (sender as? UIView)!)
     }
+    
     @IBAction func btnSave(_ sender: Any) {
         if validate() == false {
             return
@@ -113,10 +174,16 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
         self.pop()
     }
     
-//    func didSelect(controller: ImagePicker, image: UIImage?) {
-//        <#code#>
-//    }
+    //------------------------------------------------------
     
+    //MARK: FGImagePickerDelegate
+    
+    func didSelect(image: UIImage?) {
+        if let imageData = image?.jpegData(compressionQuality: 0), let compressImage = UIImage(data: imageData) {
+            self.selectedImage = Toucan.init(image: compressImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: FGColor.appGreen).image
+            imgProfile.image = selectedImage
+        }
+    }
     
     //------------------------------------------------------
     
@@ -140,7 +207,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate , UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-       
+        
     }
     
     //------------------------------------------------------

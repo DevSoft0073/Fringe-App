@@ -44,13 +44,13 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
 //        noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.pending.localized()
 //
 //        navigationItem.title = LocalizableConstants.Controller.Fringe.title.localized()
-//        segment1.btn.setTitle(LocalizableConstants.Controller.Fringe.pending.localized(), for: .normal)
-//        segment2.btn.setTitle(LocalizableConstants.Controller.Fringe.confirmed.localized(), for: .normal)
-//        segment1.delegate = self
-//        segment2.delegate = self
-//
-//        segment1.isSelected = true
-//        segment2.isSelected = !segment1.isSelected
+        segment1.btn.setTitle(LocalizableConstants.Controller.Fringe.pending.localized(), for: .normal)
+        segment2.btn.setTitle(LocalizableConstants.Controller.Fringe.confirmed.localized(), for: .normal)
+        segment1.delegate = self
+        segment2.delegate = self
+
+        segment1.isSelected = true
+        segment2.isSelected = !segment1.isSelected
 //
         var identifier = String(describing: FringePendingCell.self)
         var nibCell = UINib(nibName: identifier, bundle: Bundle.main)
@@ -134,14 +134,40 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         push(controller: controller)
     }
     
+    //------------------------------------------------------
+    
+    //MARK: SegmentViewDelegate
+    
     func segment(view: SegmentView, didChange flag: Bool) {
-//        if segment1.isSelected == true {
-//            
-//        } else {
-//            
-//        }
+        
+        self.needToshowInfoView = true
+        
+        if view == segment1 {
+            
+//            LoadingManager.shared.showLoading()
+//
+//            delay {
+//
+//
+//            }
+            
+            segment2.isSelected = false
+            
+        } else if view == segment2 {
+            
+            
+//            LoadingManager.shared.showLoading()
+//
+//            delay {
+//
+//            }
+            
+            segment1.isSelected = false
+            
+        }
     }
     
+    //------------------------------------------------------
     
     //MARK: UIViewController
     
