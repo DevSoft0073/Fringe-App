@@ -76,26 +76,6 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringePendingCell.self)) as? FringePendingCell {
-<<<<<<< Updated upstream
-//            if segment1.isSelected {
-//                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringePendingCell.self)) as? FringePendingCell{
-////                    let data = items[indexPath.row]
-////                    cell.setup(name: data.studioDetail?.username ?? "", stName: data.studioDetail?.name ?? "", date: data.studioDetail?.address, time: data.time, specialIns: data.specialInstruction ?? "")
-//                    cell.btnMoreInfo.tag = indexPath.row
-//                    cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
-//                    cell.btnClose.tag = indexPath.row
-//                    if needToshowInfoView {
-////                        cell.requestView.isHidden = true
-////                        cell.instructionView.isHidden = true
-//                        cell.btnClose.isHidden = true
-//                        cell.btnMoreInfo.isHidden = false
-//                    }
-//                    cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
-////                    cell.btnCancelation.addTarget(self, action: #selector(showpopUpView), for: .touchUpInside)
-//                    return cell
-//                }
-//            }
-=======
             
             cell.btnMoreInfo.tag = indexPath.row
             cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
@@ -128,7 +108,13 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             return cell
         }
         else if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringeConfirmedCell.self)) as? FringeConfirmedCell{
->>>>>>> Stashed changes
+            cell.btnPay.tag = indexPath.row
+            cell.btnPay.addTarget(self, action: #selector(showPayView), for: .touchUpInside)
+            if needToshowInfoView {
+                cell.refundRequestView.isHidden = true
+                cell.btnPay.isHidden = false
+            }
+            cell.btnRefundRequest.addTarget(self, action: #selector(showRequestView), for: .touchUpInside)
             return cell
         }
         return UITableViewCell()
@@ -138,13 +124,8 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     @objc func showHideView(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringePendingCell{
             self.needToshowInfoView = false
-<<<<<<< Updated upstream
-//            cell.requestView.isHidden = false
-//            cell.instructionView.isHidden = false
-=======
             cell.cancelView.isHidden = false
             //            cell.instructionView.isHidden = false
->>>>>>> Stashed changes
             cell.btnClose.isHidden = false
             cell.btnMoreInfo.isHidden = true
             tblGolf.reloadData()
@@ -154,15 +135,29 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     @objc func showViews(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringePendingCell{
             btnTapped = true
-<<<<<<< Updated upstream
-//            cell.requestView.isHidden = true
-//            cell.instructionView.isHidden = true
-=======
             cell.cancelView.isHidden = true
             //            cell.instructionView.isHidden = true
->>>>>>> Stashed changes
             cell.btnClose.isHidden = true
             cell.btnMoreInfo.isHidden = false
+            tblGolf.reloadData()
+        }
+    }
+    @objc func showPayView(sender : UIButton) {
+        if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringeConfirmedCell{
+            btnTapped = true
+            cell.refundRequestView.isHidden = true
+            //            cell.instructionView.isHidden = true
+            
+            tblGolf.reloadData()
+        }
+    }
+    @objc func showRequestView(sender : UIButton) {
+        if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringeConfirmedCell{
+            btnTapped = true
+            cell.refundRequestView.isHidden = false
+            
+            //            cell.instructionView.isHidden = true
+            
             tblGolf.reloadData()
         }
     }

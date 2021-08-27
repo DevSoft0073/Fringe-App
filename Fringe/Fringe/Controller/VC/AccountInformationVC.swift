@@ -19,7 +19,6 @@ class AccountInformationVC : BaseVC {
     
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var textTitle: String?
-    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -36,19 +35,19 @@ class AccountInformationVC : BaseVC {
     
     //------------------------------------------------------
     
+    
+    //------------------------------------------------------
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {
         self.pop()
     }
     
-    //------------------------------------------------------
-    
     //MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
     }
     
     //------------------------------------------------------

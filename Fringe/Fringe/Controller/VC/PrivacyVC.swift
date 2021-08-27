@@ -1,14 +1,14 @@
 //
-//  HomeVC.swift
+//  PrivacyVC.swift
 //  Fringe
 //
-//  Created by Dharmani Apps on 12/08/21.
+//  Created by Dharmani Apps on 27/08/21.
 //
 
 import UIKit
 import Foundation
 
-class HomeVC : BaseVC {
+class PrivacyVC : BaseVC {
     
     //------------------------------------------------------
     
@@ -24,37 +24,19 @@ class HomeVC : BaseVC {
         
     }
     
-    
-    
-    //------------------------------------------------------
-    //MARK: Actions
-    
-    @IBAction func btnSearch(_ sender: Any) {
-        let controller = NavigationManager.shared.homeListingVC
-        push(controller: controller)
-    }
-    
-    @IBAction func btnNotificationTap(_ sender: Any) {
-        let controller = NavigationManager.shared.notificationVC
-        push(controller: controller)
-    }
-    
     //------------------------------------------------------
     
     //MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NavigationManager.shared.isEnabledBottomMenu = true
-        
     }
     
+    //------------------------------------------------------
 }
-

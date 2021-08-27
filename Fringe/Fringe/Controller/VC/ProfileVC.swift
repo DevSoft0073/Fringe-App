@@ -72,6 +72,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         return itemNormal
     }
     
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -85,7 +86,6 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     deinit { //same like dealloc in ObjectiveC
         
     }
-    
     //------------------------------------------------------
     
     //MARK: Customs
@@ -106,16 +106,11 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         
         tblProfile.reloadData()
     }
-    
     //------------------------------------------------------
-    
     //MARK: Action
     
-    
     //------------------------------------------------------
-    
     //MARK: UITableViewDataSource
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -160,7 +155,6 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     }
     
     //------------------------------------------------------
-    
     //MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -211,15 +205,25 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             
         }else if name == ProfileItems.switchToBusiness{
             
+//            NavigationManager.shared.setupLandingOnHomeForHost()
             let controller = NavigationManager.shared.signUpHostVC
+            push(controller: controller)
+            
+        }else if name == ProfileItems.termsOfServices{
+            
+            let controller = NavigationManager.shared.serviceTermsVC
+            push(controller: controller)
+            
+        }
+        else if name == ProfileItems.privacyPolicy{
+            
+            let controller = NavigationManager.shared.privacyVC
             push(controller: controller)
             
         }
         
+        
     }
-    
-    //------------------------------------------------------
-    
     //MARK: UIViewController
     
     override func viewDidLoad() {
@@ -227,7 +231,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         self.updateUI()
     }
     
-    
+    //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

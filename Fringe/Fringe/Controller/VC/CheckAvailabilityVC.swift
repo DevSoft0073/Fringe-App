@@ -14,7 +14,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var myCalendar: FSCalendar!
     @IBOutlet weak var tblAvailability: UITableView!
-    
+ 
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     
     //------------------------------------------------------
@@ -33,7 +33,6 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
     //------------------------------------------------------
     //MARK: Customs
-    
     func setup(){
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         tblAvailability.delegate = self
@@ -66,15 +65,15 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         print("left")
         myCalendar.setCurrentPage(getPreviousMonth(date: myCalendar.currentPage), animated: true)
     }
-    
-    
+  
+      
     
     @IBAction func btnNextMonth(_ sender: Any) {
         print("right")
-        //        myCalendar.setCurrentPage(getNextMonth(date: myCalendar.currentPage), animated: true)
+//        myCalendar.setCurrentPage(getNextMonth(date: myCalendar.currentPage), animated: true)
         let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: myCalendar.currentPage)
         myCalendar.setCurrentPage(nextMonth!, animated: true)
-        print(myCalendar.currentPage)
+          print(myCalendar.currentPage)
     }
     func getNextMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
@@ -82,17 +81,16 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     func getPreviousMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
     }
-    
+
     //------------------------------------------------------
     //MARK: UITableViewDataSource , UITableViewDelegate
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CheckAvailabilityTBCell.self)) as? CheckAvailabilityTBCell {
-            
+           
             return cell
         }
         return UITableViewCell()
@@ -123,5 +121,5 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     }
     
     //------------------------------------------------------
-}
+    }
 

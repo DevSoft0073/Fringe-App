@@ -16,7 +16,9 @@ class DetailsScreenVC : BaseVC {
     @IBOutlet weak var ratingView: FloatRatingView!
     @IBOutlet weak var lblGolfClubAddress: FGMediumLabel!
     @IBOutlet weak var lblGolfClubName: FGSemiboldLabel!
+    @IBOutlet weak var btnHeart: UIButton!
     
+    var check = true
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -36,6 +38,13 @@ class DetailsScreenVC : BaseVC {
     //MARK: Actions
     
     @IBAction func btnHeart(_ sender: Any) {
+        check = !check
+        
+        if check == true {
+            btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
+                } else {
+                    btnHeart.setImage(UIImage(named: ""), for: .normal)
+                }
     }
     
     @IBAction func btnBack(_ sender: Any) {

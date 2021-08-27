@@ -31,30 +31,21 @@
                         <color key="textColor" red="0.41564732789999997" green="0.41571116450000001" blue="0.41563338039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right" translatesAutoresizingMaskIntoConstraints="NO" id="hYz-dm-gi1">
-                        <rect key="frame" x="312" y="30" width="12" height="12"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="hYz-dm-gi1" secondAttribute="height" multiplier="1:1" id="36P-QD-Re6"/>
-                        </constraints>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="right" translatesAutoresizingMaskIntoConstraints="NO" id="hYz-dm-gi1">
+                        <rect key="frame" x="163" y="30" width="12" height="12"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="RMm-JA-CGJ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.16" id="CHF-Xk-Hdh"/>
-                    <constraint firstItem="hYz-dm-gi1" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.035" id="F1L-Wj-Dao"/>
                     <constraint firstItem="RMm-JA-CGJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kvn-Tg-ynZ"/>
                     <constraint firstItem="RMm-JA-CGJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="RUg-3y-LYU"/>
                     <constraint firstItem="cXe-Wr-hQf" firstAttribute="centerY" secondItem="RMm-JA-CGJ" secondAttribute="centerY" id="lrX-I3-J3y"/>
-                    <constraint firstAttribute="trailing" secondItem="hYz-dm-gi1" secondAttribute="trailing" constant="15" id="u0I-Iw-e9i"/>
                     <constraint firstItem="cXe-Wr-hQf" firstAttribute="leading" secondItem="RMm-JA-CGJ" secondAttribute="trailing" constant="25" id="uHj-68-vxa"/>
-                    <constraint firstItem="hYz-dm-gi1" firstAttribute="centerY" secondItem="cXe-Wr-hQf" secondAttribute="centerY" id="xpG-Q2-JXM"/>
                     <constraint firstItem="RMm-JA-CGJ" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.4" id="z9h-Mq-BmE"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <connections>
-                <outlet property="imgPayment" destination="RMm-JA-CGJ" id="gNW-PQ-QA8"/>
-                <outlet property="lblPayment" destination="cXe-Wr-hQf" id="fkO-vd-vBO"/>
-            </connections>
             <point key="canvasLocation" x="154.34782608695653" y="83.035714285714278"/>
         </tableViewCell>
     </objects>

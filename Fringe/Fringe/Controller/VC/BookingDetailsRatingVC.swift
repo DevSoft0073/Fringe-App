@@ -35,6 +35,7 @@ class BookingDetailsRatingVC : BaseVC {
         self.pop()
     }
     @IBAction func btnSubmit(_ sender: Any) {
+        self.popBack(3)
     }
     
     //------------------------------------------------------
@@ -53,3 +54,4 @@ class BookingDetailsRatingVC : BaseVC {
     
     //------------------------------------------------------
 }
+

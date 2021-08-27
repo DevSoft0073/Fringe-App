@@ -11,7 +11,6 @@ import Foundation
 class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
     
     @IBOutlet weak var tblFavourite: UITableView!
-    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -32,12 +31,12 @@ class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
         tblFavourite.delegate = self
         navigationItem.title = LocalizableConstants.Controller.Notifications.title.localized()
         
-        //        let loadMoreView = KRPullLoadView()
-        //        loadMoreView.delegate = self
-        //        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
+//        let loadMoreView = KRPullLoadView()
+//        loadMoreView.delegate = self
+//        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
         
         let identifier = String(describing: FavouriteTVCell.self)
-        
+
         let nibRequestCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblFavourite.register(nibRequestCell, forCellReuseIdentifier: identifier)
         

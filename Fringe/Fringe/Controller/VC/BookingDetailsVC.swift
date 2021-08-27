@@ -40,6 +40,8 @@ class BookingDetailsVC : BaseVC {
     }
     
     @IBAction func btnSubmit(_ sender: Any) {
+        let controller = NavigationManager.shared.bookingDetailsRatingVC
+        push(controller: controller)
     }
     
     //------------------------------------------------------
@@ -58,3 +60,4 @@ class BookingDetailsVC : BaseVC {
     
     //------------------------------------------------------
 }
+

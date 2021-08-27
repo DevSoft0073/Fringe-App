@@ -12,9 +12,7 @@ import IQKeyboardManagerSwift
 class ForgotPasswordVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var txtEmail: FGEmailTextField!
-    
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
-    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -34,7 +32,7 @@ class ForgotPasswordVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     //MARK: Customs
     
     func setup() {
-        
+
         
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         returnKeyHandler?.delegate = self

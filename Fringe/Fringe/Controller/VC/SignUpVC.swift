@@ -264,9 +264,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
                     PreferenceManager.shared.userId = response.data?.userID
                     NavigationManager.shared.setupLandingOnHome()
                     
-                }
-                
-                NavigationManager.shared.setupLanding()
+                }                
                 
             } else {
                 
@@ -317,13 +315,14 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     
     @IBAction func btnSignUp(_ sender: UIButton) {
         
-        if validate() == false {
-            return
-        }
-        
-        LoadingManager.shared.showLoading()
-        
-        self.performSignUp()
+//        if validate() == false {
+//            return
+//        }
+//
+//        LoadingManager.shared.showLoading()
+//
+//        self.performSignUp()
+        NavigationManager.shared.setupLandingOnHome()
     }
     
     @IBAction func btnAppleTap(_ sender: Any) {

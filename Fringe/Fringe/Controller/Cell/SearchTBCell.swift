@@ -8,8 +8,8 @@
 import UIKit
 
 class SearchTBCell: UITableViewCell {
-    
-    
+
+
     @IBOutlet weak var lblRate: FGMediumLabel!
     @IBOutlet weak var lblRating: FGRegularLabel!
     @IBOutlet weak var ratingView: FloatRatingView!
@@ -19,10 +19,10 @@ class SearchTBCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
     

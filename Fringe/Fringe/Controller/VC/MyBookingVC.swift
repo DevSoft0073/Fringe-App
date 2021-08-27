@@ -11,7 +11,6 @@ import Foundation
 class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     
     @IBOutlet weak var tblBooking: UITableView!
-    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -25,22 +24,20 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     deinit { //same like dealloc in ObjectiveC
         
     }
-    
     //------------------------------------------------------
-    
     //MARK: Customs
     
     func setup() {
         tblBooking.delegate = self
         tblBooking.dataSource = self
+       
         
-        
-        //        let loadMoreView = KRPullLoadView()
-        //        loadMoreView.delegate = self
-        //        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
+//        let loadMoreView = KRPullLoadView()
+//        loadMoreView.delegate = self
+//        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
         
         let identifier = String(describing: MyBookingTVCell.self)
-        
+
         let nibRequestCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblBooking.register(nibRequestCell, forCellReuseIdentifier: identifier)
         
@@ -57,7 +54,6 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     //------------------------------------------------------
     
     //MARK: UITableViewDataSource, UITableViewDelegate
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -76,6 +72,10 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = NavigationManager.shared.bookingDetailsVC
+        push(controller: controller)
+    }
     
     //------------------------------------------------------
     
@@ -84,7 +84,7 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
+       
     }
     
     //------------------------------------------------------

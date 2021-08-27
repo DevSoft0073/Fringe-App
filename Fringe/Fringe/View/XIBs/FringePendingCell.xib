@@ -205,7 +205,7 @@
                 <outlet property="btnCancelation" destination="j7y-HH-tT7" id="Dfd-FZ-NG4"/>
                 <outlet property="btnClose" destination="7ga-DE-l7i" id="gaF-l8-xrn"/>
                 <outlet property="btnMoreInfo" destination="31L-hm-IHJ" id="DZG-q6-nZf"/>
-                <outlet property="cancelView" destination="0SO-t8-uzP" id="7Cu-dc-KWr"/>
+                <outlet property="cancelView" destination="0SO-t8-uzP" id="W05-sj-cUA"/>
                 <outlet property="dateLbl" destination="8Vv-Bt-dUI" id="NJ2-rS-m1R"/>
                 <outlet property="golfClubNameLbl" destination="3Rs-7E-UmK" id="O3v-k9-StD"/>
                 <outlet property="nameLbl" destination="JeJ-5V-XeU" id="1df-6s-qd9"/>

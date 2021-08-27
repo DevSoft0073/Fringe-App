@@ -63,6 +63,6 @@ class LoadingIndicatorVC : UIViewController {
         
         animationIndicatorView?.frame = indicatorView.frame
     }
-    
+        
     //------------------------------------------------------
 }

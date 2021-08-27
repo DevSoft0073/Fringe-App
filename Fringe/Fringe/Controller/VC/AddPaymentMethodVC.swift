@@ -131,3 +131,4 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
     }
     
 }
+

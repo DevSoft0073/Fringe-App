@@ -8,7 +8,7 @@
 import UIKit
 
 class CheckAvailabilityTBCell: UITableViewCell {
-    
+
     @IBOutlet weak var lblRate: FGMediumLabel!
     
     @IBOutlet weak var lblGuestDetails: FGMediumLabel!
@@ -20,10 +20,10 @@ class CheckAvailabilityTBCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
     

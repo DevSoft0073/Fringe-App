@@ -28,7 +28,130 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    //------------------------------------------------------
+    
+    
+    func performLogin() {
         
+        let deviceToken = PreferenceManager.shared.deviceToken ?? String()
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.email: txtEmail.text ?? String(),
+            Request.Parameter.password: txtPassword.text ?? String(),
+            Request.Parameter.deviceToken: deviceToken,
+            Request.Parameter.deviceType: DeviceType.iOS.rawValue,
+        ]
+                
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.login, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    PreferenceManager.shared.currentUser = stringUser
+                    PreferenceManager.shared.loggedUser = true
+                    PreferenceManager.shared.userId = response.data?.userID
+                    NavigationManager.shared.setupLandingOnHome()
+                }
+                
+            }else{
+                
+                delay {
+                    
+                    if response.code == Status.Code.emailNotVerified {
+                        
+                        DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: LocalizableConstants.SuccessMessage.mailNotVerifiedYet, handlerNo: {
+                            
+                        }, handlerYes: {
+                            
+                            delay {
+                                                                
+                                delayInLoading {
+                                    
+//                                    self.performResentEmailVerification()
+                                }
+                            }
+                        })
+                        
+                    }
+                        else if response.code == Status.Code.notfound {
+                        
+                        DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.Error.invalidCredentials, handlerOK: nil)
+
+                    }
+                    else{
+                        
+                        delay {
+                            
+                            self.handleError(code: response.code)
+                        }
+                    }
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+
+    func performAppleLogin(_ firstName: String, _ lastName: String, _ appleId: String, _ email: String) {
+        
+        let deviceToken = PreferenceManager.shared.deviceToken ?? String()
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.firstName: firstName,
+            Request.Parameter.lastName: lastName,
+            Request.Parameter.email:email,
+            Request.Parameter.appleToken: appleId,
+            Request.Parameter.deviceToken: deviceToken,
+            Request.Parameter.deviceType: DeviceType.iOS.rawValue
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.aLogin, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+            
+            if response.code == Status.Code.success {
+                
+                LoadingManager.shared.hideLoading()
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    
+                    PreferenceManager.shared.currentUser = stringUser
+                    PreferenceManager.shared.userId = response.data?.userID
+                    PreferenceManager.shared.loggedUser = true
+                    NavigationManager.shared.setupLandingOnHome()
+                    
+                }
+                                
+            } else {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    self.handleError(code: response.code)
+                    
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }    
+    
+    
     //------------------------------------------------------
     
     deinit { //same like dealloc in ObjectiveC
@@ -36,7 +159,6 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     }
     
     //------------------------------------------------------
-    
     //MARK: Customs
     
     func setup() {
@@ -74,127 +196,6 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
         return true
     }
     
-    func performLogin() {
-        
-        let deviceToken = PreferenceManager.shared.deviceToken ?? String()
-        
-        let parameter: [String: Any] = [
-            Request.Parameter.email: txtEmail.text ?? String(),
-            Request.Parameter.password: txtPassword.text ?? String(),
-            Request.Parameter.deviceToken: deviceToken,
-            Request.Parameter.deviceType: DeviceType.iOS.rawValue,
-        ]
-        
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.login, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
-            
-            LoadingManager.shared.hideLoading()
-            
-            if response.code == Status.Code.success {
-                
-                if let stringUser = try? response.data?.jsonString() {
-                    PreferenceManager.shared.currentUser = stringUser
-                    PreferenceManager.shared.loggedUser = true
-                    PreferenceManager.shared.userId = response.data?.userID
-                    NavigationManager.shared.setupLandingOnHome()
-                }
-                
-            }else{
-                
-                delay {
-                    
-                    if response.code == Status.Code.emailNotVerified {
-                        
-                        DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: LocalizableConstants.SuccessMessage.mailNotVerifiedYet, handlerNo: {
-                            
-                        }, handlerYes: {
-                            
-                            delay {
-                                
-                                delayInLoading {
-                                    
-                                    //                                    self.performResentEmailVerification()
-                                }
-                            }
-                        })
-                        
-                    }
-                    else if response.code == Status.Code.notfound {
-                        
-                        DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.Error.invalidCredentials, handlerOK: nil)
-                        
-                    }
-                    else{
-                        
-                        delay {
-                            
-                            self.handleError(code: response.code)
-                        }
-                    }
-                }
-            }
-            
-        }, failureBlock: { (error: ErrorModal) in
-            
-            LoadingManager.shared.hideLoading()
-            
-            delay {
-                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
-            }
-        })
-    }
-    
-    func performAppleLogin(_ firstName: String, _ lastName: String, _ appleId: String, _ email: String) {
-        
-        let deviceToken = PreferenceManager.shared.deviceToken ?? String()
-        
-        let parameter: [String: Any] = [
-            Request.Parameter.firstName: firstName,
-            Request.Parameter.lastName: lastName,
-            Request.Parameter.email:email,
-            Request.Parameter.appleToken: appleId,
-            Request.Parameter.deviceToken: deviceToken,
-            Request.Parameter.deviceType: DeviceType.iOS.rawValue
-        ]
-        
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.aLogin, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
-            
-            if response.code == Status.Code.success {
-                
-                LoadingManager.shared.hideLoading()
-                
-                if let stringUser = try? response.data?.jsonString() {
-                    
-                    PreferenceManager.shared.currentUser = stringUser
-                    PreferenceManager.shared.userId = response.data?.userID
-                    PreferenceManager.shared.loggedUser = true
-                    NavigationManager.shared.setupLandingOnHome()
-                    
-                }
-                
-                NavigationManager.shared.setupLanding()
-                
-            } else {
-                
-                LoadingManager.shared.hideLoading()
-                
-                delay {
-                    
-                    self.handleError(code: response.code)
-                    
-                }
-            }
-            
-        }, failureBlock: { (error: ErrorModal) in
-            
-            LoadingManager.shared.hideLoading()
-            
-            delay {
-                
-                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
-            }
-        })
-    }
-    
     //------------------------------------------------------
     
     //MARK: Actions
@@ -206,15 +207,16 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     }
     
     @IBAction func btnLogInTapped(_ sender: Any) {
-        if validate() == false {
-            return
-        }
-        NavigationManager.shared.setupLandingOnHome()
+//        if validate() == false {
+//            return
+//        }
         
 //        LoadingManager.shared.showLoading()
-        
+//
 //        performLogin()
         
+        NavigationManager.shared.setupLandingOnHome()
+                
     }
     
     @IBAction func btnEye(_ sender: UIButton) {
@@ -327,9 +329,9 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
         txtEmail.text = "dharmaniz.guleria@gmail.com"
         txtPassword.text = "Qwerty@123"
+        setup()
     }
     
     //------------------------------------------------------

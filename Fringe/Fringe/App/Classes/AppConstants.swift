@@ -77,7 +77,6 @@ struct FGImageName {
     static let iconDropDown = "drop"
     static let iconApple = "apple"
     static let iconEye = "eye"
-    static let iconEyeOpen  = "eye_open"
     static let iconFaceBook = "face"
     static let iconGoogle = "google"
     static let iconCalender = "cal"
@@ -103,12 +102,7 @@ struct FGImageName {
     static let icontransparent = "icon_transparent"
     static let iconRight = "right_icon"
     static let iconLeft = "left_icon"
-    static let iconLogo = "logo"
-    static let iconFavourite  = "fav"
-    static let iconCalendr  = "calendar"
-    static let iconClose  = "close"
-    static let iconFav  = "fav"
-    static let iconNotificationn  = "notification"
+    
     // Profile
     
     static let iconEditProfile = "edit_profile"
@@ -122,7 +116,6 @@ struct FGImageName {
     static let iconTermsOfService = "terms_service"
     static let iconPrivacyPolicy = "privacy_policy"
     static let iconLogout = "logout"
-    static let iconNotification = "notifiy"
     
     // Add Payment
     static let iconApplePayment = "apple_payment"
