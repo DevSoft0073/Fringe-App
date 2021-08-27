@@ -12,6 +12,7 @@ class BookingDetailsRatingVC : BaseVC {
     
     @IBOutlet weak var ratingView: FloatRatingView!
     @IBOutlet weak var textViewQuery: UITextView!
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -35,6 +36,7 @@ class BookingDetailsRatingVC : BaseVC {
     }
     @IBAction func btnSubmit(_ sender: Any) {
     }
+    
     //------------------------------------------------------
     
     //MARK: UIViewController

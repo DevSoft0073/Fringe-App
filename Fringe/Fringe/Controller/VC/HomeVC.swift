@@ -28,6 +28,7 @@ class HomeVC : BaseVC {
     
     //------------------------------------------------------
     //MARK: Actions
+    
     @IBAction func btnSearch(_ sender: Any) {
         let controller = NavigationManager.shared.homeListingVC
         push(controller: controller)
@@ -37,6 +38,7 @@ class HomeVC : BaseVC {
         let controller = NavigationManager.shared.notificationVC
         push(controller: controller)
     }
+    
     //------------------------------------------------------
     
     //MARK: UIViewController

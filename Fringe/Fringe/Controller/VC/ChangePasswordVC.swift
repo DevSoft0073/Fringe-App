@@ -17,6 +17,7 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     
     var textTitle: String?
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -92,7 +93,6 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
         return true
     }
     
-    
     //------------------------------------------------------
     
     //MARK: Actions
@@ -109,6 +109,7 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
         
         self.view.endEditing(true)
     }
+    
     //------------------------------------------------------
     
     //MARK: UITextFieldDelegate

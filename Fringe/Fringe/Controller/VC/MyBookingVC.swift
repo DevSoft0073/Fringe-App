@@ -11,6 +11,7 @@ import Foundation
 class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     
     @IBOutlet weak var tblBooking: UITableView!
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -24,7 +25,9 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     deinit { //same like dealloc in ObjectiveC
         
     }
+    
     //------------------------------------------------------
+    
     //MARK: Customs
     
     func setup() {
@@ -54,6 +57,7 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     //------------------------------------------------------
     
     //MARK: UITableViewDataSource, UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }

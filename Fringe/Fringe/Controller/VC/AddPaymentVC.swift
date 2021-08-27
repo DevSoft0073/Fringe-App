@@ -35,6 +35,7 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
     }
     
     //------------------------------------------------------
+    
     //MARK: Custome
     
     
@@ -78,7 +79,9 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
         
         return true
     }
+    
     //------------------------------------------------------
+    
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {

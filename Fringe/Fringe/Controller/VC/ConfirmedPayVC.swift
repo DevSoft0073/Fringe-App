@@ -10,7 +10,6 @@ import Foundation
 
 class ConfirmedPayVC : BaseVC {
     
-    
     @IBOutlet weak var lblOccupancyTax: FGMediumLabel!
     @IBOutlet weak var lblTotalPrice: FGMediumLabel!
     @IBOutlet weak var lblServiceTax: FGMediumLabel!
@@ -22,6 +21,8 @@ class ConfirmedPayVC : BaseVC {
     @IBOutlet weak var lblAddress: FGRegularLabel!
     @IBOutlet weak var lblName: FGSemiboldLabel!
     @IBOutlet weak var imgMain: UIImageView!
+    
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method

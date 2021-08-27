@@ -47,6 +47,8 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
         
     }
     
+    //------------------------------------------------------
+    
     //MARK: Customs
     
     func setup() {
@@ -79,6 +81,7 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
     
     //------------------------------------------------------
     //MARK: UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }

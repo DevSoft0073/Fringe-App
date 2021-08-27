@@ -26,6 +26,7 @@ class SearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     deinit { //same like dealloc in ObjectiveC
         
     }
+    
     //------------------------------------------------------
     //MARK: Customs
     
@@ -44,6 +45,7 @@ class SearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         tblSearch.register(nibRequestCell, forCellReuseIdentifier: identifier)
         
     }
+    
     //------------------------------------------------------
     
     //MARK: Actions
@@ -55,6 +57,7 @@ class SearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     //------------------------------------------------------
     
     //MARK: UITableViewDataSource, UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -71,6 +74,7 @@ class SearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     }
     
     //------------------------------------------------------
+    
     //MARK: UIViewController
     
     override func viewDidLoad() {

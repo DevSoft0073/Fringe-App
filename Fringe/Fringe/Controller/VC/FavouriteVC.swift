@@ -11,6 +11,7 @@ import Foundation
 class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
     
     @IBOutlet weak var tblFavourite: UITableView!
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method

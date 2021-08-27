@@ -72,7 +72,6 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         return itemNormal
     }
     
-    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -86,6 +85,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     deinit { //same like dealloc in ObjectiveC
         
     }
+    
     //------------------------------------------------------
     
     //MARK: Customs
@@ -106,11 +106,16 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         
         tblProfile.reloadData()
     }
-    //------------------------------------------------------
-    //MARK: Action
     
     //------------------------------------------------------
+    
+    //MARK: Action
+    
+    
+    //------------------------------------------------------
+    
     //MARK: UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -155,6 +160,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     }
     
     //------------------------------------------------------
+    
     //MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -211,6 +217,9 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         }
         
     }
+    
+    //------------------------------------------------------
+    
     //MARK: UIViewController
     
     override func viewDidLoad() {
@@ -218,7 +227,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         self.updateUI()
     }
     
-    //------------------------------------------------------
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

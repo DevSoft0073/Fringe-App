@@ -16,6 +16,7 @@ class DetailsScreenVC : BaseVC {
     @IBOutlet weak var ratingView: FloatRatingView!
     @IBOutlet weak var lblGolfClubAddress: FGMediumLabel!
     @IBOutlet weak var lblGolfClubName: FGSemiboldLabel!
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method

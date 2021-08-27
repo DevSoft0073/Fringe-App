@@ -33,6 +33,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
     //------------------------------------------------------
     //MARK: Customs
+    
     func setup(){
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         tblAvailability.delegate = self
@@ -84,6 +85,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
     //------------------------------------------------------
     //MARK: UITableViewDataSource , UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }

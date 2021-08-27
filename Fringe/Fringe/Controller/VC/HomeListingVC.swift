@@ -15,6 +15,7 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tblListing: UITableView!
     
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -30,7 +31,9 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     }
     
     //------------------------------------------------------
+    
     //MARK: Customs
+    
     func setup(){
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         tblListing.delegate = self
@@ -46,7 +49,9 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         
         tblListing.reloadData()
     }
+    
     //------------------------------------------------------
+    
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {
@@ -57,8 +62,11 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         push(controller: controller)
         
     }
+    
     //------------------------------------------------------
+    
     //MARK: UITableViewDataSource , UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
     }
@@ -82,7 +90,7 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUI()
-       
+        
     }
     
     //------------------------------------------------------

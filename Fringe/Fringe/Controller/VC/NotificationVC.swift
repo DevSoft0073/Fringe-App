@@ -13,6 +13,7 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     
     @IBOutlet weak var tblNotification: UITableView!
     
+    //------------------------------------------------------
     
     //MARK: Memory Management Method
     
@@ -49,6 +50,7 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     //------------------------------------------------------
     
     //MARK: Actions
+    
     @IBAction func btnBack(_ sender: Any) {
         self.pop()
     }
