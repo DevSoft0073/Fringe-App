@@ -116,9 +116,10 @@ struct LocalizableConstants {
         }
         struct Fringe {
             
-            static let title = "sessions"
+            static let title = "fringe"
             static let pending = "pending"
             static let confirmed = "confirmed"
+            static let awaiting = "awaiting"
             static let moreInfo = "more_info"
             static let payNow = "pay_now"
         }

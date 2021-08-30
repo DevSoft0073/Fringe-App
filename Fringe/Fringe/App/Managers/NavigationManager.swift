@@ -12,6 +12,7 @@ struct FGStoryboard {
     
     public static let main: String = "Main"
     public static let loader: String = "Loader"
+    public static let golf: String = "GolfClubProfile"
 }
 
 struct FGNavigation {
@@ -23,6 +24,15 @@ struct FGNavigation {
     public static let favourite: String = "navigationFavourite"
     public static let inbox: String = "navigationInbox"
     public static let profile: String = "navigationProfile"
+    
+    //identifier for host storyboard's
+    
+    public static let homeHost: String = "navigationHostHome"
+    public static let calendarHost: String = "navigationHostCalendar"
+    public static let notificationHost: String = "navigationHostNotification"
+    public static let profileHost: String = "navigationHostProfile"
+    
+    
     
     //Location search
     public static let locationSearch: String = "navigationLocationSearchVC"
@@ -39,6 +49,7 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     //MARK: Storyboards
     
     let mainStoryboard = UIStoryboard(name: FGStoryboard.main, bundle: Bundle.main)
+    let golfStoryboard = UIStoryboard(name: FGStoryboard.golf, bundle: Bundle.main)
     let loaderStoryboard = UIStoryboard(name: FGStoryboard.loader, bundle: Bundle.main)
     
     //------------------------------------------------------
@@ -78,6 +89,29 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         return mainStoryboard.instantiateViewController(withIdentifier: FGNavigation.profile) as! UINavigationController
     }
     
+    //MARK: UINavigationController for host
+    
+    
+    var homeNCHost: UINavigationController {
+        return golfStoryboard.instantiateViewController(withIdentifier: FGNavigation.homeHost) as! UINavigationController
+    }
+    
+    var calendarNCHost: UINavigationController {
+        return golfStoryboard.instantiateViewController(withIdentifier: FGNavigation.calendarHost) as! UINavigationController
+    }
+    
+    var notificationNCHost: UINavigationController {
+        return golfStoryboard.instantiateViewController(withIdentifier: FGNavigation.notificationHost) as! UINavigationController
+    }
+    
+    var profileNCHost: UINavigationController {
+        return golfStoryboard.instantiateViewController(withIdentifier: FGNavigation.profileHost) as! UINavigationController
+    }
+    
+    
+    
+    
+    
     //------------------------------------------------------
     
     //MARK: UITabbarController
@@ -95,11 +129,11 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         tabBarController.tabBar.barTintColor = FGColor.appBackground
         //tabBarController.tabBar.backgroundImage = UIImage(named: TFImageName.iconDarkBackground)
         
-        let v1 = homeNC
-        let v2 = golfclubsNC
-        let v3 = favouriteNC
-        let v4 = inboxNC
-        let v5 = profileNC
+        let v1 = homeNCHost
+        let v2 = calendarNCHost
+        let v3 = inboxNC
+        let v4 = notificationNCHost
+        let v5 = profileNCHost
         
         /*tabBarController.shouldHijackHandler = {
          tabbarController, viewController, index in

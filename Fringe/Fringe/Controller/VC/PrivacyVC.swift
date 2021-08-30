@@ -26,6 +26,13 @@ class PrivacyVC : BaseVC {
     
     //------------------------------------------------------
     
+    //MARK: Actions
+    
+    @IBAction func btnBack(_ sender: Any) {
+        self.pop()
+    }
+    //------------------------------------------------------
+    
     //MARK: UIViewController
     
     override func viewDidLoad() {
@@ -36,6 +43,8 @@ class PrivacyVC : BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NavigationManager.shared.isEnabledBottomMenu = false
+
     }
     
     //------------------------------------------------------

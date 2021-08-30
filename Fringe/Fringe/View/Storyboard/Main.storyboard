@@ -764,7 +764,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QVe-bd-725">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feedback" translatesAutoresizingMaskIntoConstraints="NO" id="QVe-bd-725">
                                                 <rect key="frame" x="65.5" y="588" width="244" height="133.5"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDI-fH-8Ov" customClass="FGActiveButton" customModule="Fringe" customModuleProvider="target">
@@ -3955,7 +3955,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yAt-dO-awA">
-                                                        <rect key="frame" x="20" y="36" width="340" height="110"/>
+                                                        <rect key="frame" x="20" y="36" width="340" height="130"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="130" translatesAutoresizingMaskIntoConstraints="NO" id="GDf-pW-7Dp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="340" height="20"/>
@@ -3991,17 +3991,17 @@
                                                                     </label>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="P77-MP-6yt">
-                                                                <rect key="frame" x="0.0" y="60" width="340" height="20"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="P77-MP-6yt">
+                                                                <rect key="frame" x="0.0" y="60" width="340" height="40"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Occupancy taxes and fees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7N-G6-p4B">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="202.5" height="20"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Occupancy taxes and fees" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7N-G6-p4B">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
                                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="17"/>
                                                                         <color key="textColor" red="0.64700073000000002" green="0.64709597829999999" blue="0.64697992800000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvD-7i-E33" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                                                        <rect key="frame" x="302.5" y="0.0" width="37.5" height="20"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvD-7i-E33" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
+                                                                        <rect key="frame" x="180" y="0.0" width="160" height="40"/>
                                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="17"/>
                                                                         <color key="textColor" red="0.64700073000000002" green="0.64709597829999999" blue="0.64697992800000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -4009,7 +4009,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="130" translatesAutoresizingMaskIntoConstraints="NO" id="xV0-eA-76d">
-                                                                <rect key="frame" x="0.0" y="90" width="340" height="20"/>
+                                                                <rect key="frame" x="0.0" y="110" width="340" height="20"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwD-hz-GIA">
                                                                         <rect key="frame" x="0.0" y="0.0" width="36" height="20"/>
@@ -4028,7 +4028,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpM-ys-RW0">
-                                                        <rect key="frame" x="288" y="151" width="72" height="20.5"/>
+                                                        <rect key="frame" x="288" y="171" width="72" height="20.5"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="More info">
                                                                 <attributes>
@@ -6654,10 +6654,10 @@
             </objects>
             <point key="canvasLocation" x="9149.6000000000004" y="2318.5907046476764"/>
         </scene>
-        <!--View Controller-->
+        <!--Service TermsVC-->
         <scene sceneID="HwV-mA-56I">
             <objects>
-                <viewController id="u5M-GD-dru" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ServiceTermsVC" id="u5M-GD-dru" customClass="ServiceTermsVC" customModule="Fringe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WnP-4O-Q4F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6682,6 +6682,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="635-M2-eap" secondAttribute="height" multiplier="1:1" id="Ke5-gv-ccA"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="btnBack:" destination="u5M-GD-dru" eventType="touchUpInside" id="HJ0-LQ-1HS"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44L-r1-zsU">
                                         <rect key="frame" x="66.5" y="11.5" width="158" height="27"/>
@@ -7062,7 +7065,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golf Clubs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdC-s1-RYQ">
-                                        <rect key="frame" x="66.5" y="14" width="90" height="22.5"/>
+                                        <rect key="frame" x="66.5" y="11.5" width="98.5" height="27"/>
                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="19"/>
                                         <color key="textColor" red="0.031366318460000001" green="0.031376536939999998" blue="0.031364083289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7279,7 +7282,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gd4-fC-Z8E">
                                                 <rect key="frame" x="226" y="32" width="135" height="59.5"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pgh-1c-R7L">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sub" translatesAutoresizingMaskIntoConstraints="NO" id="pgh-1c-R7L">
                                                         <rect key="frame" x="12" y="13" width="33.5" height="33.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="pgh-1c-R7L" secondAttribute="height" multiplier="1:1" id="w7V-Wr-QRx"/>
@@ -7297,7 +7300,7 @@
                                                         <color key="textColor" name="appButton"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XGD-xg-yuA">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pluSel" translatesAutoresizingMaskIntoConstraints="NO" id="XGD-xg-yuA">
                                                         <rect key="frame" x="90" y="13" width="33" height="33"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="XGD-xg-yuA" secondAttribute="height" multiplier="1:1" id="zYF-mV-m17"/>
@@ -7472,10 +7475,10 @@
             </objects>
             <point key="canvasLocation" x="11394" y="1659"/>
         </scene>
-        <!--View Controller-->
+        <!--PrivacyVC-->
         <scene sceneID="C2m-HX-x3r">
             <objects>
-                <viewController id="2qJ-S8-gbv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivacyVC" id="2qJ-S8-gbv" customClass="PrivacyVC" customModule="Fringe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qZc-ge-gzh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7500,6 +7503,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="hWk-qL-5rx" secondAttribute="height" multiplier="1:1" id="RV5-ja-suA"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="btnBack:" destination="2qJ-S8-gbv" eventType="touchUpInside" id="LQL-rL-WYT"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqv-5P-ddk">
                                         <rect key="frame" x="66.5" y="11.5" width="70" height="27"/>
@@ -7574,7 +7580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3O-lb-So0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10754" y="2319"/>
+            <point key="canvasLocation" x="10719" y="2334"/>
         </scene>
     </scenes>
     <resources>
@@ -7585,12 +7591,14 @@
         <image name="eye" width="28" height="21"/>
         <image name="face" width="134" height="133"/>
         <image name="favourite_sel" width="78" height="64"/>
+        <image name="feedback" width="607" height="245"/>
         <image name="golf_img" width="6000" height="4000"/>
         <image name="google" width="134" height="133"/>
         <image name="left_icon" width="32" height="55"/>
         <image name="logo" width="246" height="168"/>
         <image name="notifiy" width="175" height="175"/>
         <image name="pf" width="371" height="381"/>
+        <image name="pluSel" width="96" height="96"/>
         <image name="rating" width="30" height="28"/>
         <image name="right_icon" width="32" height="55"/>
         <image name="searchh" width="23" height="23"/>
@@ -7598,6 +7606,7 @@
         <image name="sign_close" width="41" height="37"/>
         <image name="sign_plus" width="269" height="269"/>
         <image name="star" width="30" height="28"/>
+        <image name="sub" width="96" height="96"/>
         <image name="uncheck" width="28" height="27"/>
         <image name="white_back" width="145" height="145"/>
         <image name="white_heart" width="145" height="145"/>

@@ -118,6 +118,7 @@ struct FGImageName {
     static let iconLogout = "logout"
     
     // Add Payment
+    
     static let iconApplePayment = "apple_payment"
     static let iconCreditCardPayment = "card_payment"
     static let iconPayPayment = "pay_payment"
@@ -125,17 +126,32 @@ struct FGImageName {
     static let iconDropRight = "right"
     
     // Rating star
+    
     static let iconSelectedStar = "rating"
     static let iconUnselectedStar = "star"
     
     // details screen
+    
     static let iconWhiteBack = "white_back"
     static let iconWhiteHeart = "white_heart"
     
     // SignupHost
+    
     static let iconSignClose = "sign_close"
     static let iconSignPlus = "sign_plus"
     static let iconSignAdd = "sign_add"
+    
+    // PopUp
+    
+    static let iconPlusWhite = "plus_white"
+    static let iconPlus = "plus"
+    static let iconPlusSelected = "plusSel"
+    static let iconSub = "sub"
+    static let iconSubSelected = "subsel"
+    static let iconFeedback = "feedback"
+    static let iconRadio = "radio"
+    static let iconRadioUnselect = "radioun"
+    
 }
 
 struct FGScreenName {

@@ -63,7 +63,6 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     }
     
     
-    
     //------------------------------------------------------
     
     //MARK: UITableViewDataSource,UITableViewDelegate
