@@ -65,6 +65,49 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
         
     }
     
+    func setupData() {
+        
+        //image
+        imgProfile.sd_addActivityIndicator()
+        imgProfile.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+        imgProfile.sd_showActivityIndicatorView()
+        if let image = currentUser?.image, image.isEmpty == false {
+            let imgURL = URL(string: image)
+            imgProfile.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                if let serverImage = serverImage {
+                    self.selectedImage = serverImage
+                    self.imgProfile.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: FGColor.appGreen).image
+                }
+                self.imgProfile.sd_removeActivityIndicator()
+            }
+        } else {
+            self.imgProfile.sd_removeActivityIndicator()
+        }
+        
+        //firstname
+        txtFirstName.text = currentUser?.firstName
+        
+        //firstname
+       // txtFirstName.text = currentUser?.name
+        
+        //lastName
+        txtLastName.text = currentUser?.lastName
+        
+        //dob
+        txtBirthDate.text = currentUser?.dob
+        
+        //gender
+        txtGender.text = currentUser?.gender
+        
+        //email
+        txtEmail.text = currentUser?.email
+        
+        //phone
+        txtMobileNumber.text = currentUser?.mobileNo
+        
+    }
+
+    
     func validate() -> Bool {
         
         if ValidationManager.shared.isEmpty(text: txtFirstName.text) == true {
@@ -111,48 +154,47 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
         imgData["image"] = imageData
         let deviceTimeZone = TimeZone.current.abbreviation()
         let parameter: [String: Any] = [
-            Request.Parameter.fullName: txtEmail?.text ?? String(),
-//            Request.Parameter.email: txtEmail.text ?? String(),
-//            Request.Parameter.dob: txtBirthDate?.text ?? String(),
-//            Request.Parameter.gender: txtGender?.text ?? String(),
-//            Request.Parameter.mobileNumber: txtMobileNumber?.text ?? String(),
-//            Request.Parameter.homeTown: txtHomeTown?.text ?? String(),
-//            Request.Parameter.profession: txtProffession?.text ?? String(),
-//            Request.Parameter.memberCourse: txtMemberCourse?.text ?? String(),
-//            Request.Parameter.golfHandicap: txtGolfHandicap?.text ?? String(),
-//            Request.Parameter.password: txtPassword?.text ?? String(),
-//            Request.Parameter.confirmPassword: txtConfirmPassword?.text ?? String(),
-//            Request.Parameter.timeZone: deviceTimeZone ?? String(),
+            Request.Parameter.userID: currentUser?.userID ?? String(),
+            Request.Parameter.firstName: txtFirstName?.text ?? String(),
+            Request.Parameter.lastName: txtLastName.text ?? String(),
+            Request.Parameter.dob: txtBirthDate?.text ?? String(),
+            Request.Parameter.gender: txtGender?.text ?? String(),
+            Request.Parameter.homeTown: txtEmail?.text ?? String(),
+            Request.Parameter.profession: txtMobileNumber?.text ?? String(),
+            Request.Parameter.timeZone: deviceTimeZone ?? String(),
             
         ]
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.signup, parameter: parameter, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+        RequestManager.shared.multipartImageRequestForSingleImage(parameter: parameter, profileImagesData: imgData, keyName: "image[]", profileKeyName: "image", urlString: PreferenceManager.shared.userBaseURL + Request.Method.edit) { (response, error) in
             
-            LoadingManager.shared.hideLoading()
-            
-            if response.code == Status.Code.success {
+            if error == nil{
                 
-                delay {
-                    completion?(true)
-                }
-                
-            } else {
-                
-                completion?(false)
-                                
-                delay {
-//                   self.handleError(code: response.code)
+                if let data = response {
+                    
+                    LoadingManager.shared.hideLoading()
+                    
+                    let status = data["code"] as? Int ?? 0
+                    let jsonStudio = data["studio_detail"] as? [String: Any]
+                    if status == Status.Code.success {
+                        PreferenceManager.shared.currentUser = jsonStudio?.dict2json()
+                        delay {
+                            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.profileUpdated.localized()) {
+                                self.pop()
+                            }
+
+                        }
+                        
+                    }else{
+                        
+                        delay {
+                            
+                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
+                            
+                        }
+                    }
                 }
             }
-            
-        }, failureBlock: { (error: ErrorModal) in
-            
-            LoadingManager.shared.hideLoading()
-            
-            delay {
-                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
-            }
-        })
+        }
     }
     
     //------------------------------------------------------
@@ -171,7 +213,11 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
         if validate() == false {
             return
         }
-        self.pop()
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performEditProfile { (flag) in
+        }
     }
     
     //------------------------------------------------------
@@ -207,7 +253,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
+        setupData()
     }
     
     //------------------------------------------------------

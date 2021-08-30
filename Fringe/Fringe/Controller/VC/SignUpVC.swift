@@ -188,8 +188,8 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
         imgData["image"] = imageData
         let deviceTimeZone = TimeZone.current.abbreviation()
         let parameter: [String: Any] = [
-            Request.Parameter.fullName: txtUserName?.text ?? String(),
-            
+            Request.Parameter.firstName: txtUserName?.text ?? String(),
+            Request.Parameter.lastName: txtLastName?.text ?? String(),
             Request.Parameter.email: txtEmail.text ?? String(),
             Request.Parameter.dob: txtBirthDate?.text ?? String(),
             Request.Parameter.gender: txtGender?.text ?? String(),

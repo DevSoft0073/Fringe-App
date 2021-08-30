@@ -10,17 +10,21 @@ import Foundation
 
 // MARK: - UserModal
 struct UserModal: Codable {
-    var userID, image, userName, golfID: String?
-    var dob, gender, mobileNo, hometown: String?
-    var profession, memberCourse, golfHandicap, password: String?
-    var confirmPassword, email, emailVerification, verificationCode: String?
-    var disable, allowPush, allowLocation, fbToken: String?
-    var googleToken, appleToken, creationAt: String?
+    var userID, image, userName, firstName: String?
+    var lastName, timeZone, golfID, dob: String?
+    var gender, mobileNo, hometown, profession: String?
+    var memberCourse, golfHandicap, password, confirmPassword: String?
+    var email, emailVerification, verificationCode, disable: String?
+    var allowPush, allowLocation, fbToken, googleToken: String?
+    var appleToken, creationAt, authorizationToken: String?
 
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
         case image
         case userName = "user_name"
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case timeZone = "time_zone"
         case golfID = "golf_id"
         case dob, gender
         case mobileNo = "mobile_no"
@@ -39,6 +43,7 @@ struct UserModal: Codable {
         case googleToken = "google_token"
         case appleToken = "apple_token"
         case creationAt = "creation_at"
+        case authorizationToken = "authorization_token"
     }
 }
 

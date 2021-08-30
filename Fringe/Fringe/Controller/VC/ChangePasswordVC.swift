@@ -92,6 +92,49 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
         return true
     }
     
+    private func performUpdatePassword(completion:((_ flag: Bool) -> Void)?) {
+
+        let parameter: [String: Any] = [
+            Request.Parameter.userID: currentUser?.userID ?? String(),
+            Request.Parameter.oldPassword: txtOldPassword.text ?? String(),
+            Request.Parameter.newPassword: txtNewPassword.text ?? String()
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.changePassword, parameter: parameter, showLoader: true, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+
+                delay {
+
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: LocalizableConstants.SuccessMessage.passwordChanged) {
+
+                        self.pop()
+                        completion?(true)
+                    }
+                }
+
+            } else {
+
+                completion?(false)
+
+                delay {
+//                    self.handleError(code: response.code)
+                }
+            }
+
+        }, failureBlock: { (error: ErrorModal) in
+
+            completion?(false)
+
+            delay {
+
+                self.handleError(code: error.code)
+            }
+        })
+    }
+    
     
     //------------------------------------------------------
     
@@ -108,7 +151,15 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
         }
         
         self.view.endEditing(true)
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performUpdatePassword { (flag : Bool) in
+            
+        }
     }
+    
+    
     //------------------------------------------------------
     
     //MARK: UITextFieldDelegate

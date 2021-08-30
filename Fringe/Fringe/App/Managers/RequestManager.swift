@@ -1,3 +1,4 @@
+
 //
 //  RequestManager.swift
 //  NewProject
@@ -14,12 +15,13 @@ struct Request {
     struct Parameter {
         
         static let id = "id"
-        static let firstName = "firstname"
-        static let lastName = "lastname"
+        static let firstName = "first_name"
+        static let lastName = "last_name"
         static let email = "email"
         static let password = "password"
         static let deviceToken = "device_token"
         static let deviceType = "device_type" //ios/android
+        static let userID = "user_id"
         
         // Sign up as player
         
@@ -37,14 +39,20 @@ struct Request {
         static let long = "longitude"
         static let appleToken = "apple_token"
         
+        // chnage password
+        static let newPassword = "new_password"
+        static let oldPassword = "old_password"
     }
     
     struct Method {
-    
+        
         static let signup = "/SignUp.php"
         static let login = "/Login.php"
         static let aLogin = "/appleLogin.php"
-    }    
+        static let edit = "/editProfile.php"
+        static let changePassword = "/ChangePassword.php"
+    }
+    
 }
 
 class RequestManager: NSObject {
@@ -62,7 +70,7 @@ class RequestManager: NSObject {
     //MARK: Background Task
     
     var backgroundTask = UIBackgroundTaskIdentifier.invalid
-   
+    
     fileprivate func backgroundFetch(_ requestMethod: String) {
         let app = UIApplication.shared
         let endBackgroundTask = {
@@ -78,9 +86,9 @@ class RequestManager: NSObject {
     
     //------------------------------------------------------
     
-    //MARK: GENERAL       
+    //MARK: GENERAL
     
-    fileprivate func requestREST<T: Decodable>(type: HTTPMethod, requestMethod : String, parameter : [String : Any], showLoader : Bool, decodingType: T.Type, successBlock:@escaping ((_ response: T)->Void), failureBlock:@escaping ((_ error : ErrorModal) -> Void)) {
+    fileprivate func requestREST<T: Decodable>(type: HTTPMethod, requestMethod : String, parameter : [String : Any], showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
         
         guard isReachable == true else {
             LoadingManager.shared.hideLoading()
@@ -89,13 +97,13 @@ class RequestManager: NSObject {
             }
             return
         }
-          
+        
         var requestURL: String = String()
         var headers: HTTPHeaders = [:]
         headers["content-type"] = "application/json"
         /*if type == .post {
-            headers["content-type"] = "application/x-www-form-urlencoded"
-        }*/
+         headers["content-type"] = "application/x-www-form-urlencoded"
+         }*/
         requestURL = PreferenceManager.shared.userBaseURL.appending(requestMethod)
         
         debugPrint("----------- \(requestMethod) ---------")
@@ -164,7 +172,7 @@ class RequestManager: NSObject {
     
     //MARK: GET
     
-    func requestGET<T: Decodable>(requestMethod : String, parameter : [String : Any], showLoader : Bool, decodingType: T.Type, successBlock:@escaping ((_ response: T)->Void), failureBlock:@escaping ((_ error : ErrorModal) -> Void)) {
+    func requestGET<T: Decodable>(requestMethod : String, parameter : [String : Any], showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
         
         requestREST(type: HTTPMethod.get, requestMethod: requestMethod, parameter: parameter, showLoader: showLoader, decodingType: decodingType, successBlock: { (response: T) in
             
@@ -179,8 +187,8 @@ class RequestManager: NSObject {
     //------------------------------------------------------
     
     //MARK: POST
-   
-    func requestPOST<T: Decodable>(requestMethod : String, parameter : [String : Any], headers : [String : String]? = nil, showLoader : Bool, decodingType: T.Type, successBlock:@escaping ((_ response: T)->Void), failureBlock:@escaping ((_ error : ErrorModal) -> Void)) {
+    
+    func requestPOST<T: Decodable>(requestMethod : String, parameter : [String : Any], headers : [String : String]? = nil, showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
         
         requestREST(type: HTTPMethod.post, requestMethod: requestMethod, parameter: parameter, showLoader: showLoader, decodingType: decodingType, successBlock: { (response: T) in
             
@@ -210,14 +218,14 @@ class RequestManager: NSObject {
         Alamofire.upload(multipartFormData: { (MultipartFormData) in
             for imageData in imagesData {
                 // set key name as array if array contains more than 1 pics
-//                let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
+                //                let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
                 // append data
                 MultipartFormData.append(imageData.value, withName: keyName ?? String(), fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
             }
             
             for imageData in profileImagesData {
                 // set key name as array if array contains more than 1 pics
-//                let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
+                //                let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
                 // append data
                 MultipartFormData.append(imageData.value, withName: profileKeyName ?? String(), fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
             }
@@ -266,7 +274,7 @@ class RequestManager: NSObject {
             
             for imageData in profileImagesData {
                 // set key name as array if array contains more than 1 pics
-//                let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
+                //                let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
                 // append data
                 MultipartFormData.append(imageData.value, withName: profileKeyName ?? String(), fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
             }
@@ -313,4 +321,3 @@ struct Status {
         static let sessionExpired = 500
     }
 }
-

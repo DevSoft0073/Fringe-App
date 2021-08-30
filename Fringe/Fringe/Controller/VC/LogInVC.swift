@@ -64,6 +64,8 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                         
                         DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: LocalizableConstants.SuccessMessage.mailNotVerifiedYet, handlerNo: {
                             
+                            NavigationManager.shared.setupLandingOnHome()
+                            
                         }, handlerYes: {
                             
                             delay {
@@ -207,16 +209,14 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     }
     
     @IBAction func btnLogInTapped(_ sender: Any) {
-//        if validate() == false {
-//            return
-//        }
+        if validate() == false {
+            return
+        }
         
-//        LoadingManager.shared.showLoading()
-//
-//        performLogin()
-        
-        NavigationManager.shared.setupLandingOnHome()
-                
+        LoadingManager.shared.showLoading()
+
+        performLogin()
+                        
     }
     
     @IBAction func btnEye(_ sender: UIButton) {
