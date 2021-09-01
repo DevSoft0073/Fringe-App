@@ -33,6 +33,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
     //------------------------------------------------------
     //MARK: Customs
+    
     func setup(){
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         tblAvailability.delegate = self

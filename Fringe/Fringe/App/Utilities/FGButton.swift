@@ -114,6 +114,33 @@ class FGActiveButton: FGMediumButton {
     }
 }
 
+class FGActiveWhiteButton: FGMediumButton {
+
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    func setup() {
+                
+        self.cornerRadius = FGSettings.cornerRadius
+        self.shadowOffset = CGSize.zero
+//        self.shadowOpacity = FGSettings.shadowOpacity
+        
+        self.backgroundColor = FGColor.appWhite
+        //self.setBackgroundImage(UIImage(named: TFImageName.background), for: .normal)
+        self.clipsToBounds = true
+    }
+    
+    /// common lable layout
+    ///
+    /// - Parameter aDecoder: <#aDecoder description#>
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+             
+       setup()
+    }
+}
+
 class FGActiveButtonEdit: FGRegularButton {
 
     //------------------------------------------------------

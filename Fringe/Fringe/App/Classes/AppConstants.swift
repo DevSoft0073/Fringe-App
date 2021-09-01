@@ -145,6 +145,7 @@ struct FGImageName {
     
     static let iconPlusWhite = "plus_white"
     static let iconPlus = "plus"
+    static let iconPlusHost =  "plus_host"
     static let iconPlusSelected = "plusSel"
     static let iconSub = "sub"
     static let iconSubSelected = "subsel"

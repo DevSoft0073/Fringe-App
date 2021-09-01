@@ -1,14 +1,14 @@
 //
-//  ProfileTBCell.swift
+//  HostProfileTBCell.swift
 //  Fringe
 //
-//  Created by Dharmani Apps on 17/08/21.
+//  Created by Dharmani Apps on 31/08/21.
 //
 
 import UIKit
 
-class ProfileTBCell: UITableViewCell {
-    
+class HostProfileTBCell: UITableViewCell {
+
     @IBOutlet weak var imgIcon: UIImageView!
     @IBOutlet weak var lblName: FGMediumLabel!
     
@@ -21,23 +21,12 @@ class ProfileTBCell: UITableViewCell {
         imgIcon.image = UIImage(named: image)
         lblName.text = name
         
-//        if name == ProfileVC.ProfileItems.logout {
-//            isDisclosureIndicatorVisible = false
-//        } else {
-//            isDisclosureIndicatorVisible = true
-//        }
     }
-    func setupForStudioProfile(image: String, name: String?) {
+    
+    func setupForHostProfile(image: String, name: String?) {
         
         imgIcon.image = UIImage(named: image)
         lblName.text = name
-//        isDisclosureIndicatorVisible = true
-
-//        if name == ProfileVCForStudioProfile.ProfileItems.logout {
-//            isDisclosureIndicatorVisible = false
-//        } else {
-//            isDisclosureIndicatorVisible = true
-//        }
     }
     
     func setupForSupportItems(image: String, name: String?) {
@@ -45,13 +34,8 @@ class ProfileTBCell: UITableViewCell {
         imgIcon.image = UIImage(named: image)
         lblName.text = name
         
-//        if name == ProfileVCForStudioProfile.ProfileItemsForSupport.logout {
-//            isDisclosureIndicatorVisible = false
-//        } else {
-//            isDisclosureIndicatorVisible = true
-//        }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

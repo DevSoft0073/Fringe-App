@@ -212,8 +212,8 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
         if validate() == false {
             return
         }
-        
-        LoadingManager.shared.showLoading()
+        NavigationManager.shared.setupLandingOnHome()
+//        LoadingManager.shared.showLoading()
 
         performLogin()
                         
@@ -332,6 +332,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
         txtEmail.text = "dharmaniz.guleria@gmail.com"
         txtPassword.text = "Qwerty@123"
         setup()
+        NavigationManager.shared.setupLandingOnHome()
     }
     
     //------------------------------------------------------

@@ -12,7 +12,7 @@ class HostPendingCell: UITableViewCell {
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var btnMoreInfo: FGActiveButton!
     @IBOutlet weak var cancelView: UIView!
-    @IBOutlet weak var btnReject: FGActiveButton!
+    @IBOutlet weak var btnReject: FGActiveWhiteButton!
     @IBOutlet weak var btnAccept: FGActiveButton!
     @IBOutlet weak var golfClubNameLbl: FGMediumLabel!
     @IBOutlet weak var dateLbl: FGRegularLabel!

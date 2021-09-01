@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="61" id="KGk-i7-Jjw" customClass="HostProfileSwitchCell" customModule="Fringe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="316" height="61"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="316" height="61"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovy-1H-ykn" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
+                        <rect key="frame" x="15" y="21.5" width="120" height="18.5"/>
+                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="13"/>
+                        <color key="textColor" red="0.43133229020000002" green="0.43139830229999998" blue="0.43131789570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2SR-Lo-7xl">
+                        <rect key="frame" x="252" y="15" width="51" height="31"/>
+                        <connections>
+                            <action selector="valueDidChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="UVL-rc-Uos"/>
+                        </connections>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ovy-1H-ykn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="JUR-Js-fpM"/>
+                    <constraint firstAttribute="trailing" secondItem="2SR-Lo-7xl" secondAttribute="trailing" constant="15" id="O8R-4C-lJ1"/>
+                    <constraint firstItem="ovy-1H-ykn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="m6O-NV-aRJ"/>
+                    <constraint firstItem="2SR-Lo-7xl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ovy-1H-ykn" secondAttribute="trailing" constant="15" id="qJe-r9-ddw"/>
+                    <constraint firstItem="2SR-Lo-7xl" firstAttribute="centerY" secondItem="ovy-1H-ykn" secondAttribute="centerY" id="rS4-Wn-VTH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblName" destination="ovy-1H-ykn" id="wmX-5l-wFr"/>
+                <outlet property="switchPermission" destination="2SR-Lo-7xl" id="cCE-1t-Tah"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="92.075892857142847"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -146,6 +146,19 @@ struct LocalizableConstants {
             static let privacyPolicy = "Privacy"
             static let logout = "sign_out"
         }
+        struct HostProfile {
+            
+            static let accountInformation = "account_information"
+            static let changePassword = "change_password"
+            static let paymentMethods = "payment_method"
+            static let allowLocation = "allow_location"
+            static let allowNotification = "allow_notification"
+            static let bookingListing = "my_bookings"
+            static let switchToPlayer = "switch_to_player"
+            static let termsOfService = "terms_of_service"
+            static let privacyPolicy = "Privacy"
+            static let logout = "sign_out"
+        }
         struct AddPaymentMethod {
             
             static let creditDebitCard = "credit_debit_card"

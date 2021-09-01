@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HostProfileHeaderView" customModule="Fringe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSg-f1-Llu">
+                    <rect key="frame" x="10" y="10" width="380" height="75"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="golf_img" translatesAutoresizingMaskIntoConstraints="NO" id="LwO-Un-Ir4">
+                            <rect key="frame" x="0.0" y="7" width="61" height="61"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="LwO-Un-Ir4" secondAttribute="height" multiplier="1:1" id="ZLc-eu-MAN"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0by-05-vrN">
+                            <rect key="frame" x="79" y="18" width="152.5" height="39.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jomer Verg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95L-W4-r03" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="152.5" height="22.5"/>
+                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jomerverg78@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ab8-hi-Bm2" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="22.5" width="152.5" height="17"/>
+                                    <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                    <color key="textColor" red="0.1176327839" green="0.1176561788" blue="0.117627643" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_profile" translatesAutoresizingMaskIntoConstraints="NO" id="csr-P9-Nqo">
+                            <rect key="frame" x="353" y="28" width="19" height="19"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="csr-P9-Nqo" secondAttribute="height" multiplier="1:1" id="FOo-x4-Jrt"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdb-Su-3UR" customClass="FGActiveButtonEdit" customModule="Fringe" customModuleProvider="target">
+                            <rect key="frame" x="336.5" y="11.5" width="52.5" height="52.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="tdb-Su-3UR" secondAttribute="height" multiplier="1:1" id="3rB-01-YgF"/>
+                            </constraints>
+                            <connections>
+                                <action selector="btnEdit:" destination="iN0-l3-epB" eventType="touchUpInside" id="YCQ-iY-hbC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="tdb-Su-3UR" firstAttribute="centerX" secondItem="csr-P9-Nqo" secondAttribute="centerX" id="0bU-q5-3CO"/>
+                        <constraint firstAttribute="trailing" secondItem="csr-P9-Nqo" secondAttribute="trailing" constant="8" id="IhW-yp-5L4"/>
+                        <constraint firstItem="LwO-Un-Ir4" firstAttribute="leading" secondItem="lSg-f1-Llu" secondAttribute="leading" id="Min-az-cdv"/>
+                        <constraint firstItem="csr-P9-Nqo" firstAttribute="centerY" secondItem="0by-05-vrN" secondAttribute="centerY" id="O13-YC-EdD"/>
+                        <constraint firstItem="csr-P9-Nqo" firstAttribute="width" secondItem="lSg-f1-Llu" secondAttribute="width" multiplier="0.05" id="Ocb-U0-T7K"/>
+                        <constraint firstItem="LwO-Un-Ir4" firstAttribute="width" secondItem="lSg-f1-Llu" secondAttribute="width" multiplier="0.16" id="UZX-20-8BO"/>
+                        <constraint firstItem="0by-05-vrN" firstAttribute="leading" secondItem="LwO-Un-Ir4" secondAttribute="trailing" constant="18" id="e9l-9D-xXY"/>
+                        <constraint firstItem="0by-05-vrN" firstAttribute="centerY" secondItem="LwO-Un-Ir4" secondAttribute="centerY" id="fJ6-kx-Njq"/>
+                        <constraint firstItem="csr-P9-Nqo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0by-05-vrN" secondAttribute="trailing" constant="10" id="lj3-BK-V7P"/>
+                        <constraint firstItem="tdb-Su-3UR" firstAttribute="height" secondItem="lSg-f1-Llu" secondAttribute="height" multiplier="0.7" id="oFp-zP-GU7"/>
+                        <constraint firstItem="LwO-Un-Ir4" firstAttribute="centerY" secondItem="lSg-f1-Llu" secondAttribute="centerY" id="r9n-TF-MVR"/>
+                        <constraint firstItem="tdb-Su-3UR" firstAttribute="centerY" secondItem="csr-P9-Nqo" secondAttribute="centerY" id="zb2-hA-mLi"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5G-NX-kAG">
+                    <rect key="frame" x="0.0" y="89" width="400" height="3"/>
+                    <color key="backgroundColor" red="0.96070033310000003" green="0.96083813910000004" blue="0.96067017320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="sZm-GS-Ak9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="W5G-NX-kAG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="L7I-ee-sGL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lSg-f1-Llu" secondAttribute="bottom" constant="15" id="LXS-MB-rpp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="W5G-NX-kAG" secondAttribute="bottom" constant="8" id="VXI-Eu-MSD"/>
+                <constraint firstItem="W5G-NX-kAG" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="bqH-eQ-zgS"/>
+                <constraint firstItem="lSg-f1-Llu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="oBs-ac-N8v"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lSg-f1-Llu" secondAttribute="trailing" constant="10" id="qC1-Pn-u8k"/>
+                <constraint firstItem="lSg-f1-Llu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="ykT-Pw-Ag2"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnEdit" destination="tdb-Su-3UR" id="2KM-Jp-Gd3"/>
+                <outlet property="imgProfile" destination="LwO-Un-Ir4" id="jLB-00-1Pj"/>
+                <outlet property="lblEmail" destination="Ab8-hi-Bm2" id="Bf9-Ut-4tE"/>
+                <outlet property="lblName" destination="95L-W4-r03" id="6yw-mM-GRS"/>
+            </connections>
+            <point key="canvasLocation" x="407.24637681159425" y="-160.71428571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="edit_profile" width="54" height="54"/>
+        <image name="golf_img" width="6000" height="4000"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
