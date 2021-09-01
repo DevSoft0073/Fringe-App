@@ -129,8 +129,8 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         tabBarController.tabBar.barTintColor = FGColor.appBackground
         //tabBarController.tabBar.backgroundImage = UIImage(named: TFImageName.iconDarkBackground)
         
-        let v1 = homeNCHost
-        let v2 = calendarNCHost
+        let v1 = homeNC
+        let v2 = golfclubsNC
         let v3 = inboxNC
         let v4 = notificationNCHost
         let v5 = profileNCHost
@@ -175,11 +175,11 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         tabBarControllerForHost.tabBar.isTranslucent = true
         tabBarControllerForHost.tabBar.barTintColor = FGColor.appBackground
         
-        let v1 = golfclubsNC
-        let v2 = homeNC
-        let v3 = favouriteNC
-        let v4 = inboxNC
-        let v5 = profileNC
+        let v1 = homeNCHost
+        let v2 = calendarNCHost
+        let v3 = inboxNC
+        let v4 = notificationNCHost
+        let v5 = profileNCHost
         
         /*tabBarController.shouldHijackHandler = {
          tabbarController, viewController, index in

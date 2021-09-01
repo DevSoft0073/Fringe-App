@@ -132,6 +132,8 @@
 		7CD7EB0E26D35FCF00BEDDA2 /* DetailsScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EB0D26D35FCF00BEDDA2 /* DetailsScreenVC.swift */; };
 		7CDA847926D8FCA00096FA0F /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA847826D8FCA00096FA0F /* PrivacyVC.swift */; };
 		7CDA847C26D8FCBE0096FA0F /* ServiceTermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA847B26D8FCBE0096FA0F /* ServiceTermsVC.swift */; };
+		7CE0419E26DF4CBB0036EEA0 /* ProfileViewForTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0419D26DF4CBB0036EEA0 /* ProfileViewForTitle.swift */; };
+		7CE041A126DF4FCC0036EEA0 /* ProfileViewForTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE041A026DF4FCC0036EEA0 /* ProfileViewForTitle.xib */; };
 		7CE0F63726D4A51900C3AAFB /* SearchTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0F63526D4A51900C3AAFB /* SearchTBCell.swift */; };
 		7CE0F63826D4A51900C3AAFB /* SearchTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE0F63626D4A51900C3AAFB /* SearchTBCell.xib */; };
 		7CE0F63C26D4A71B00C3AAFB /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0F63B26D4A71B00C3AAFB /* SearchVC.swift */; };
@@ -278,6 +280,8 @@
 		7CD7EB0D26D35FCF00BEDDA2 /* DetailsScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsScreenVC.swift; sourceTree = "<group>"; };
 		7CDA847826D8FCA00096FA0F /* PrivacyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
 		7CDA847B26D8FCBE0096FA0F /* ServiceTermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTermsVC.swift; sourceTree = "<group>"; };
+		7CE0419D26DF4CBB0036EEA0 /* ProfileViewForTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewForTitle.swift; sourceTree = "<group>"; };
+		7CE041A026DF4FCC0036EEA0 /* ProfileViewForTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewForTitle.xib; sourceTree = "<group>"; };
 		7CE0F63526D4A51900C3AAFB /* SearchTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTBCell.swift; sourceTree = "<group>"; };
 		7CE0F63626D4A51900C3AAFB /* SearchTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTBCell.xib; sourceTree = "<group>"; };
 		7CE0F63B26D4A71B00C3AAFB /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
@@ -343,6 +347,7 @@
 				7C52985326DCA8D200A3606D /* HostPendingCell.xib */,
 				7C52986C26DD04BC00A3606D /* HostNotificationCell.xib */,
 				7C52987E26DDEF5400A3606D /* HostProfileTBCell.xib */,
+				7CE041A026DF4FCC0036EEA0 /* ProfileViewForTitle.xib */,
 				7C52988326DDEF8600A3606D /* HostProfileSwitchCell.xib */,
 				7C52988726DDEFE100A3606D /* HostProfileHeaderView.xib */,
 				7C52989226DDFD7800A3606D /* CollectionViewCellForShowImages.xib */,
@@ -494,6 +499,7 @@
 				7C780FF026C6491B003F1F12 /* SegmentView.swift */,
 				7C94876226CA972C00870F54 /* ProfileHeaderView.swift */,
 				7CD7EAFB26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift */,
+				7CE0419D26DF4CBB0036EEA0 /* ProfileViewForTitle.swift */,
 				7C52988A26DDF2E600A3606D /* HostProfileHeaderView.swift */,
 			);
 			path = View;
@@ -818,6 +824,7 @@
 				7C52985B26DCB01900A3606D /* HostAwaitingCell.xib in Resources */,
 				7CA24C6826C242EE00437C8A /* Loader.storyboard in Resources */,
 				7C94875826CA49AA00870F54 /* FringeConfirmedCell.xib in Resources */,
+				7CE041A126DF4FCC0036EEA0 /* ProfileViewForTitle.xib in Resources */,
 				7C52986226DCB3E400A3606D /* HostConfirmedCell.xib in Resources */,
 				7C780FEA26C582C4003F1F12 /* FavouriteTVCell.xib in Resources */,
 				7C5E41B426D8B9B800D63728 /* Assets.xcassets in Resources */,
@@ -906,6 +913,7 @@
 				7C780F8326C3A6FF003F1F12 /* BouncesContentView.swift in Sources */,
 				7C780F7B26C3A6DB003F1F12 /* ESTabBar.swift in Sources */,
 				7C780F7926C3A6DB003F1F12 /* ESTabBarController.swift in Sources */,
+				7CE0419E26DF4CBB0036EEA0 /* ProfileViewForTitle.swift in Sources */,
 				7C780FD326C5330A003F1F12 /* HomeVC.swift in Sources */,
 				7C780F7A26C3A6DB003F1F12 /* ESTabBarItemMoreContentView.swift in Sources */,
 				7C780F8F26C3C105003F1F12 /* SignUpVC.swift in Sources */,

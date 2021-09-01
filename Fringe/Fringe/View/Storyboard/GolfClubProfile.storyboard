@@ -2129,7 +2129,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwh-su-aIr">
-                                                <rect key="frame" x="337.5" y="0.0" width="37.5" height="37.5"/>
+                                                <rect key="frame" x="327.5" y="0.0" width="37.5" height="37.5"/>
                                                 <color key="backgroundColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="vwh-su-aIr" secondAttribute="height" multiplier="1:1" id="s1d-8p-ADY"/>
@@ -2139,7 +2139,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ph-xw-ONT">
-                                                <rect key="frame" x="0.0" y="0.0" width="37.5" height="37.5"/>
+                                                <rect key="frame" x="10" y="0.0" width="37.5" height="37.5"/>
                                                 <color key="backgroundColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="0Ph-xw-ONT" secondAttribute="height" multiplier="1:1" id="Vmp-K7-Db6"/>
@@ -2149,10 +2149,10 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left_icon" translatesAutoresizingMaskIntoConstraints="NO" id="aoI-zx-t1c">
-                                                <rect key="frame" x="7.5" y="7.5" width="22.5" height="22.5"/>
+                                                <rect key="frame" x="17.5" y="7.5" width="22.5" height="22.5"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_icon" translatesAutoresizingMaskIntoConstraints="NO" id="gft-UL-yf0">
-                                                <rect key="frame" x="345" y="7.5" width="22.5" height="22.5"/>
+                                                <rect key="frame" x="335" y="7.5" width="22.5" height="22.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golfclub Dates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQl-Lu-pdJ" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="300.5" width="133" height="23.5"/>
@@ -2177,7 +2177,7 @@
                                             <constraint firstItem="aoI-zx-t1c" firstAttribute="centerY" secondItem="0Ph-xw-ONT" secondAttribute="centerY" id="A9h-J9-M9f"/>
                                             <constraint firstItem="gft-UL-yf0" firstAttribute="width" secondItem="vwh-su-aIr" secondAttribute="width" multiplier="0.6" id="B14-o0-eKf"/>
                                             <constraint firstItem="gft-UL-yf0" firstAttribute="centerY" secondItem="vwh-su-aIr" secondAttribute="centerY" id="DsT-8t-U8K"/>
-                                            <constraint firstItem="0Ph-xw-ONT" firstAttribute="leading" secondItem="Vlt-6L-w22" secondAttribute="leading" id="HJW-me-Rnc"/>
+                                            <constraint firstItem="0Ph-xw-ONT" firstAttribute="leading" secondItem="Vlt-6L-w22" secondAttribute="leading" constant="10" id="HJW-me-Rnc"/>
                                             <constraint firstItem="gft-UL-yf0" firstAttribute="centerX" secondItem="vwh-su-aIr" secondAttribute="centerX" id="Pvz-vG-KH1"/>
                                             <constraint firstItem="vwh-su-aIr" firstAttribute="width" secondItem="Vlt-6L-w22" secondAttribute="width" multiplier="0.1" id="RCv-GO-I7H"/>
                                             <constraint firstAttribute="trailing" secondItem="GXY-2O-LE4" secondAttribute="trailing" id="a3k-fm-3AS"/>
@@ -2190,7 +2190,7 @@
                                             <constraint firstItem="eQl-Lu-pdJ" firstAttribute="leading" secondItem="Vlt-6L-w22" secondAttribute="leading" constant="25" id="h3F-5e-dFI"/>
                                             <constraint firstItem="vH8-cW-chc" firstAttribute="top" secondItem="Vlt-6L-w22" secondAttribute="top" id="hqq-Po-H0B"/>
                                             <constraint firstItem="vH8-cW-chc" firstAttribute="centerX" secondItem="Vlt-6L-w22" secondAttribute="centerX" id="kqt-jO-DBA"/>
-                                            <constraint firstAttribute="trailing" secondItem="vwh-su-aIr" secondAttribute="trailing" id="oVM-HA-jZy"/>
+                                            <constraint firstAttribute="trailing" secondItem="vwh-su-aIr" secondAttribute="trailing" constant="10" id="oVM-HA-jZy"/>
                                             <constraint firstItem="vwh-su-aIr" firstAttribute="width" secondItem="0Ph-xw-ONT" secondAttribute="width" id="uhy-vf-UAF"/>
                                             <constraint firstItem="eQl-Lu-pdJ" firstAttribute="top" secondItem="vH8-cW-chc" secondAttribute="bottom" constant="20" id="vs8-fd-E93"/>
                                         </constraints>

@@ -43,7 +43,7 @@ class DetailsScreenVC : BaseVC {
         if check == true {
             btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
                 } else {
-                    btnHeart.setImage(UIImage(named: ""), for: .normal)
+                    btnHeart.setImage(UIImage(named: FGImageName.iconUnFavWhiteHeart), for: .normal)
                 }
     }
     

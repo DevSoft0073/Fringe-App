@@ -205,9 +205,9 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             
         }else if name == ProfileItems.switchToBusiness{
             
-//            NavigationManager.shared.setupLandingOnHomeForHost()
-            let controller = NavigationManager.shared.signUpHostVC
-            push(controller: controller)
+            NavigationManager.shared.setupLandingOnHomeForHost()
+//            let controller = NavigationManager.shared.signUpHostVC
+//            push(controller: controller)
             
         }else if name == ProfileItems.termsOfServices{
             
@@ -221,9 +221,9 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             push(controller: controller)
             
         }
-        
-        
     }
+    
+    
     //MARK: UIViewController
     
     override func viewDidLoad() {

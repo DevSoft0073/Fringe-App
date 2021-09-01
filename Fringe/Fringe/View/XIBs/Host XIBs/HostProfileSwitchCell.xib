@@ -23,7 +23,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovy-1H-ykn" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                        <rect key="frame" x="15" y="21.5" width="120" height="18.5"/>
+                        <rect key="frame" x="15" y="21.5" width="119.5" height="18.5"/>
                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="13"/>
                         <color key="textColor" red="0.43133229020000002" green="0.43139830229999998" blue="0.43131789570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -34,11 +34,24 @@
                             <action selector="valueDidChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="UVL-rc-Uos"/>
                         </connections>
                     </switch>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnH-Dl-Px6">
+                        <rect key="frame" x="15" y="59" width="286" height="2"/>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.91764705882352937" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="18S-ZS-qVc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="gnH-Dl-Px6" firstAttribute="trailing" secondItem="2SR-Lo-7xl" secondAttribute="trailing" id="5hZ-iR-2Ba"/>
+                    <constraint firstItem="gnH-Dl-Px6" firstAttribute="leading" secondItem="ovy-1H-ykn" secondAttribute="leading" id="9wo-rx-itu"/>
                     <constraint firstItem="ovy-1H-ykn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="JUR-Js-fpM"/>
                     <constraint firstAttribute="trailing" secondItem="2SR-Lo-7xl" secondAttribute="trailing" constant="15" id="O8R-4C-lJ1"/>
                     <constraint firstItem="ovy-1H-ykn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="m6O-NV-aRJ"/>
+                    <constraint firstAttribute="bottom" secondItem="gnH-Dl-Px6" secondAttribute="bottom" id="ngZ-SG-tTw"/>
                     <constraint firstItem="2SR-Lo-7xl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ovy-1H-ykn" secondAttribute="trailing" constant="15" id="qJe-r9-ddw"/>
                     <constraint firstItem="2SR-Lo-7xl" firstAttribute="centerY" secondItem="ovy-1H-ykn" secondAttribute="centerY" id="rS4-Wn-VTH"/>
                 </constraints>
