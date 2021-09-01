@@ -272,6 +272,49 @@ class FGUsernameTextField: FGMediumTextField {
         setup()
     }
 }
+
+class FGAddressTextField: FGMediumTextField {
+    
+    var leftUserView: UIView {
+        let imgView = UIImageView(image: UIImage(named:""))
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    func setup() {
+        
+        leftView = leftUserView
+        
+        self.keyboardType = .default
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .words
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Override
+    
+    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 0.2)), size: CGSize(width: CGFloat(padding) * 0, height: bounds.height -  CGFloat(padding * 0.1)))
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: aDecoder description
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+}
 class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
     
     var rightUserView: UIView {

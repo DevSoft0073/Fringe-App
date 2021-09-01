@@ -11,11 +11,13 @@ import FSCalendar
 import IQKeyboardManagerSwift
 
 
-class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
+class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCalendarDelegate, FSCalendarDataSource {
     
+    @IBOutlet weak var lblNow: FGBaseLabel!
     @IBOutlet weak var myCalendar: FSCalendar!
     @IBOutlet weak var tblCalendar: UITableView!
     
+    var todayDate = Date()
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     
 
@@ -47,8 +49,10 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         identifier = String(describing: HostCalendarTBCell.self)
         nibProfileCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblCalendar.register(nibProfileCell, forCellReuseIdentifier: identifier)
-        
+        myCalendar.clipsToBounds = true
         myCalendar.appearance.headerMinimumDissolvedAlpha = 0
+        myCalendar.delegate = self
+        myCalendar.dataSource = self
     }
     func updateUI() {
         
@@ -59,6 +63,9 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Actions
     
+    @IBAction func btnAdd(_ sender: Any) {
+        
+    }
     @IBAction func btnNextMonth(_ sender: Any) {
         
         let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: myCalendar.currentPage)
@@ -76,6 +83,14 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     func getPreviousMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
     }
+    
+    //------------------------------------------------------
+    
+    //MARK: Calendar delegates
+
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return todayDate
+     }
     
     //------------------------------------------------------
     
@@ -100,13 +115,33 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
     //------------------------------------------------------
     
+    //MARK: Attributed Text
+    
+    func decorateText(sub:String, des:String)->NSAttributedString{
+        let textAttributesOne = [NSAttributedString.Key.foregroundColor: FGColor.appBlack, NSAttributedString.Key.font: FGFont.PoppinsSemiBold(size: 14)]
+        let textAttributesTwo = [NSAttributedString.Key.foregroundColor: FGColor.appBlack, NSAttributedString.Key.font: FGFont.PoppinsRegular(size: 12)]
+        
+        let textPartOne = NSMutableAttributedString(string: sub, attributes: textAttributesOne)
+        let textPartTwo = NSMutableAttributedString(string: des, attributes: textAttributesTwo)
+        
+        let textCombination = NSMutableAttributedString()
+        textCombination.append(textPartOne)
+        textCombination.append(textPartTwo)
+        lblNow.attributedText = textCombination
+        return textCombination
+    }
+    
+    //------------------------------------------------------
+    
     //MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lblNow.attributedText = decorateText(sub: "Please note ", des: "Fringe collects an 18% service fee on all transactions. Clubs funds are released after each golfclub session is completed.")
+        
         setup()
         self.updateUI()
-        myCalendar.clipsToBounds = true
     }
     
     //------------------------------------------------------

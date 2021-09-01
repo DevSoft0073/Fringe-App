@@ -188,9 +188,9 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
          }*/
         
         v1.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Home", image: UIImage(named: FGImageName.iconHomeUnselected), selectedImage: UIImage(named: FGImageName.iconHomeSelected))
-        v2.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Golfclubs", image: UIImage(named: FGImageName.iconGolfUnselected), selectedImage: UIImage(named: FGImageName.iconGolfSelected))
-        v3.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Favourites", image: UIImage(named: FGImageName.iconFavouriteUnselected), selectedImage: UIImage(named: FGImageName.iconFavouriteSelected))
-        v4.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Inbox", image: UIImage(named: FGImageName.iconInboxUnselected), selectedImage: UIImage(named: FGImageName.iconInboxSelected))
+        v2.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Calendar", image: UIImage(named: FGImageName.iconCalendarUnselected), selectedImage: UIImage(named: FGImageName.iconCalendarSelected))
+        v3.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Inbox", image: UIImage(named: FGImageName.iconInboxUnselected), selectedImage: UIImage(named: FGImageName.iconInboxSelected))
+        v4.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Notification", image: UIImage(named: FGImageName.iconNotificationUnselected), selectedImage: UIImage(named: FGImageName.iconNotificationSelected))
         v5.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Profile", image: UIImage(named: FGImageName.iconProfileUnselected), selectedImage: UIImage(named: FGImageName.iconProfileSelected))
         
         tabBarControllerForHost.viewControllers = [v1, v2, v3, v4, v5]
@@ -325,6 +325,20 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     
     public var serviceTermsVC : ServiceTermsVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: ServiceTermsVC.self)) as! ServiceTermsVC
+    }
+    
+    
+    // HostNavigation
+    
+    public var hostAccountInformationVC: HostAccountInformationVC {
+        return golfStoryboard.instantiateViewController(withIdentifier: String(describing: HostAccountInformationVC.self)) as! HostAccountInformationVC
+    }
+    
+    public var hostAddPaymentMethodVC: HostAddPaymentMethodVC {
+        return golfStoryboard.instantiateViewController(withIdentifier: String(describing: HostAddPaymentMethodVC.self)) as! HostAddPaymentMethodVC
+    }
+    public var hostEditProfileVC: HostEditProfileVC {
+        return golfStoryboard.instantiateViewController(withIdentifier: String(describing: HostEditProfileVC.self)) as! HostEditProfileVC
     }
 }
 

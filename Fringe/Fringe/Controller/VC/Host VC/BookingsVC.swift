@@ -10,10 +10,7 @@ import Foundation
 
 class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentViewDelegate {
     
-    
-    
     @IBOutlet weak var noDataLbl: FGRegularLabel!
-    
     @IBOutlet weak var segment3: SegmentView!
     @IBOutlet weak var segment2: SegmentView!
     @IBOutlet weak var segment1: SegmentView!
@@ -40,6 +37,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     //------------------------------------------------------
     
     //MARK: Custom
+    
     func setup() {
         tblBooking.dataSource = self
         tblBooking.delegate = self
@@ -130,20 +128,22 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             }
         } else if segment2.isSelected {
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HostAwaitingCell.self)) as? HostAwaitingCell {
-                
-                
-                
+                if items.count > 0 {
+
+             
                 return cell
-            }else{
-                
+                }
             }
-            
+    
         }
         
         else if segment3.isSelected {
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HostConfirmedCell.self)) as? HostConfirmedCell {
-                
-                
+                if items.count > 0 {
+
+                return cell
+                }
+             
             }
         }
         return UITableViewCell()

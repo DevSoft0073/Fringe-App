@@ -19,6 +19,7 @@ class AccountInformationVC : BaseVC {
     
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var textTitle: String?
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method

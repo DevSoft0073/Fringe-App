@@ -10,6 +10,10 @@ import Foundation
 
 class HostAddPaymentMethodVC : BaseVC {
     
+    @IBOutlet weak var lblAccountNumber: FGBaseLabel!
+    @IBOutlet weak var lblName: FGBaseLabel!
+    @IBOutlet weak var lblRoutingNumber: FGBaseLabel!
+    @IBOutlet weak var lblSSN: FGBaseLabel!
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -24,6 +28,18 @@ class HostAddPaymentMethodVC : BaseVC {
         
     }
     
+    //------------------------------------------------------
+    
+    //MARK: Actions
+    
+    @IBAction func btnBack(_ sender: Any) {
+        self.pop()
+        
+    }
+    
+    @IBAction func btnEdit(_ sender: Any) {
+        
+    }
     //------------------------------------------------------
     
     //MARK: UIViewController

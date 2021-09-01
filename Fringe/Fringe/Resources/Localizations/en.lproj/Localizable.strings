@@ -60,6 +60,7 @@
 "enter_last_name" = "Please enter last name.";
 "select_birth_date" = "Please select D.O.B.";
 "select_gender" = "Please select gender.";
+"select_address" = "Please enter address.";
 "enter_mobile" = "Please enter mobile number.";
 "enter_valid_mobile" = "Please enter valid mobile number.";
 "enter_home_town" = "Please enter home town.";

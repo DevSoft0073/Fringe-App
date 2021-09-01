@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJV-Wf-HHD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJV-Wf-HHD">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -4221,11 +4221,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qXM-fP-liW">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L1Z-42-pNz">
-                                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                                                <rect key="frame" x="0.0" y="71" width="375" height="596"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                         </subviews>
@@ -5462,7 +5462,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrC-GY-PzP">
-                                                <rect key="frame" x="337.5" y="0.0" width="37.5" height="37.5"/>
+                                                <rect key="frame" x="327.5" y="0.0" width="37.5" height="37.5"/>
                                                 <color key="backgroundColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="QrC-GY-PzP" secondAttribute="height" multiplier="1:1" id="3u5-HT-P2a"/>
@@ -5472,7 +5472,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZu-Ht-L9i">
-                                                <rect key="frame" x="0.0" y="0.0" width="37.5" height="37.5"/>
+                                                <rect key="frame" x="10" y="0.0" width="37.5" height="37.5"/>
                                                 <color key="backgroundColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="eZu-Ht-L9i" secondAttribute="height" multiplier="1:1" id="cn4-Zu-QDX"/>
@@ -5482,10 +5482,10 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left_icon" translatesAutoresizingMaskIntoConstraints="NO" id="n5U-A2-ivL">
-                                                <rect key="frame" x="7.5" y="7.5" width="22.5" height="22.5"/>
+                                                <rect key="frame" x="17.5" y="7.5" width="22.5" height="22.5"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_icon" translatesAutoresizingMaskIntoConstraints="NO" id="E1E-Y0-L80">
-                                                <rect key="frame" x="345" y="7.5" width="22.5" height="22.5"/>
+                                                <rect key="frame" x="335" y="7.5" width="22.5" height="22.5"/>
                                             </imageView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6tD-Zx-MBK">
                                                 <rect key="frame" x="0.0" y="233.5" width="375" height="300"/>
@@ -5523,7 +5523,7 @@
                                             <constraint firstItem="eZu-Ht-L9i" firstAttribute="top" secondItem="WHN-Rg-Zkh" secondAttribute="top" id="CDd-Uq-bOc"/>
                                             <constraint firstAttribute="trailing" secondItem="6tD-Zx-MBK" secondAttribute="trailing" id="CdW-6J-QHt"/>
                                             <constraint firstItem="QrC-GY-PzP" firstAttribute="width" secondItem="eZu-Ht-L9i" secondAttribute="width" id="DwZ-aB-HhC"/>
-                                            <constraint firstAttribute="trailing" secondItem="QrC-GY-PzP" secondAttribute="trailing" id="Juj-9p-ByE"/>
+                                            <constraint firstAttribute="trailing" secondItem="QrC-GY-PzP" secondAttribute="trailing" constant="10" id="Juj-9p-ByE"/>
                                             <constraint firstItem="E1E-Y0-L80" firstAttribute="centerY" secondItem="QrC-GY-PzP" secondAttribute="centerY" id="L68-Tx-Ee1"/>
                                             <constraint firstItem="UFW-cb-xkr" firstAttribute="top" secondItem="WHN-Rg-Zkh" secondAttribute="top" id="UwQ-9f-TCu"/>
                                             <constraint firstItem="K8X-Oa-D29" firstAttribute="width" secondItem="WHN-Rg-Zkh" secondAttribute="width" multiplier="0.92" id="Xrd-CI-97q"/>
@@ -5539,7 +5539,7 @@
                                             <constraint firstItem="n5U-A2-ivL" firstAttribute="centerX" secondItem="eZu-Ht-L9i" secondAttribute="centerX" id="ucP-EL-3Rq"/>
                                             <constraint firstItem="n5U-A2-ivL" firstAttribute="centerY" secondItem="eZu-Ht-L9i" secondAttribute="centerY" id="wR7-bT-H61"/>
                                             <constraint firstItem="n5U-A2-ivL" firstAttribute="width" secondItem="eZu-Ht-L9i" secondAttribute="width" multiplier="0.6" id="yW6-cm-fL2"/>
-                                            <constraint firstItem="eZu-Ht-L9i" firstAttribute="leading" secondItem="WHN-Rg-Zkh" secondAttribute="leading" id="yzb-QY-GVH"/>
+                                            <constraint firstItem="eZu-Ht-L9i" firstAttribute="leading" secondItem="WHN-Rg-Zkh" secondAttribute="leading" constant="10" id="yzb-QY-GVH"/>
                                             <constraint firstItem="UFW-cb-xkr" firstAttribute="width" secondItem="WHN-Rg-Zkh" secondAttribute="width" multiplier="0.96" id="zAI-5g-YU2"/>
                                         </constraints>
                                     </view>
@@ -7607,7 +7607,7 @@
         <image name="sign_plus" width="269" height="269"/>
         <image name="star" width="30" height="28"/>
         <image name="sub" width="96" height="96"/>
-        <image name="uncheck" width="28" height="27"/>
+        <image name="uncheck" width="50" height="50"/>
         <image name="white_back" width="145" height="145"/>
         <image name="white_heart" width="145" height="145"/>
         <namedColor name="appButton">

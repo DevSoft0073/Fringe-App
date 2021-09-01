@@ -7,8 +7,18 @@
 
 import UIKit
 import Foundation
+import IQKeyboardManagerSwift
 
 class HostAccountInformationVC : BaseVC {
+    
+    
+    @IBOutlet weak var lblAccountName: FGBaseLabel!
+    @IBOutlet weak var lblAccountEmail: FGBaseLabel!
+    @IBOutlet weak var lblMobileNumber: FGBaseLabel!
+    @IBOutlet weak var lblAccountAddress: FGBaseLabel!
+    
+    var returnKeyHandler: IQKeyboardReturnKeyHandler?
+    var textTitle: String?
     
     //------------------------------------------------------
     
@@ -24,6 +34,13 @@ class HostAccountInformationVC : BaseVC {
         
     }
     
+    //------------------------------------------------------
+    
+    //MARK: Actions
+    
+    @IBAction func btnBack(_ sender: Any) {
+        self.pop()
+    }
     //------------------------------------------------------
     
     //MARK: UIViewController

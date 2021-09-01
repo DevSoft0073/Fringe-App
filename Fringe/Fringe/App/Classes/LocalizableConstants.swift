@@ -46,6 +46,7 @@ struct LocalizableConstants {
         static let enterLastName = "enter_last_name"
         static let selectBirthDate = "select_birth_date"
         static let selectGender = "select_gender"
+        static let selectAddress = "select_address"
         static let enterEmail = "enter_email"
         static let enterFirstName = "enter_first_name"
         static let enterValidEmail = "enter_valid_email"

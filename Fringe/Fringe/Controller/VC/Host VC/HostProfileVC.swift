@@ -208,6 +208,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             let view: HostProfileHeaderView = UIView.fromNib()
             view.setupData(currentUser)
+            view.btnEdit.addTarget(self, action: #selector(showEditDetail), for: .touchUpInside)
             view.layoutSubviews()
             return view
             
@@ -227,6 +228,11 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         return view
     }
     
+    @objc func showEditDetail(){
+        let controller = NavigationManager.shared.hostEditProfileVC
+        push(controller: controller)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 {
             return 65
@@ -240,7 +246,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         let name = item["name"]
         if name == ProfileItems.accountInformation{
             
-            let controller = NavigationManager.shared.accountInformationVC
+            let controller = NavigationManager.shared.hostAccountInformationVC
             controller.textTitle = name?.localized()
             push(controller: controller)
             
@@ -252,7 +258,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
             
         }else if name == ProfileItems.addPayment {
             
-            let controller = NavigationManager.shared.addPaymentMethodVC
+            let controller = NavigationManager.shared.hostAddPaymentMethodVC
             push(controller: controller)
             
         }else if name == ProfileItems.switchToPlayer{
