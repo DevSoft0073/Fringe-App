@@ -206,8 +206,6 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         }else if name == ProfileItems.switchToBusiness{
             
             NavigationManager.shared.setupLandingOnHomeForHost()
-//            let controller = NavigationManager.shared.signUpHostVC
-//            push(controller: controller)
             
         }else if name == ProfileItems.termsOfServices{
             

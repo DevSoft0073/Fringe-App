@@ -31,10 +31,9 @@ struct FGNavigation {
     public static let calendarHost: String = "navigationHostCalendar"
     public static let notificationHost: String = "navigationHostNotification"
     public static let profileHost: String = "navigationHostProfile"
-    
-    
-    
+        
     //Location search
+    
     public static let locationSearch: String = "navigationLocationSearchVC"
 }
 
@@ -57,10 +56,6 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     //MARK: Shared
     
     static let shared = NavigationManager()
-    
-    //------------------------------------------------------
-    
-    //    MARK: UINavigationController
     
     //------------------------------------------------------
     
@@ -90,7 +85,6 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     }
     
     //MARK: UINavigationController for host
-    
     
     var homeNCHost: UINavigationController {
         return golfStoryboard.instantiateViewController(withIdentifier: FGNavigation.homeHost) as! UINavigationController
@@ -128,8 +122,8 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         let v1 = homeNC
         let v2 = golfclubsNC
         let v3 = inboxNC
-        let v4 = notificationNCHost
-        let v5 = profileNCHost
+        let v4 = notificationVC
+        let v5 = profileNC
         
         /*tabBarController.shouldHijackHandler = {
          tabbarController, viewController, index in
@@ -211,7 +205,7 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     }
     
     var landingTCForHost: ESTabBarController {
-        return customIrregularityStyle(delegate: self)
+        return customIrregularityStyleForHost(delegate: self)
     }
     
     public var isEnabledBottomMenu: Bool = false {
@@ -243,19 +237,17 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
-//    func setupLandingOnHomeForHost() {
-//        tabbarControllerForHost = landingTCForHost
-//        AppDelegate.shared.window?.rootViewController = tabbarControllerForHost
-//        AppDelegate.shared.window?.makeKeyAndVisible()
-//    }
+    func setupLandingOnHomeForHost() {
+        tabbarControllerForHost = landingTCForHost
+        AppDelegate.shared.window?.rootViewController = tabbarControllerForHost
+        AppDelegate.shared.window?.makeKeyAndVisible()
+    }
     
     func setupGuest() {
         
         AppDelegate.shared.window?.rootViewController = self.homeNC
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
-    
-    
     
     //------------------------------------------------------
     
@@ -334,6 +326,5 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     public var serviceTermsVC : ServiceTermsVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: ServiceTermsVC.self)) as! ServiceTermsVC
     }
-    
 }
 

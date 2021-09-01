@@ -229,7 +229,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 {
-            return 50
+            return 65
         }else {
             return 170
         }
