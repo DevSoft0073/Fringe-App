@@ -43,7 +43,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
             Request.Parameter.deviceType: DeviceType.iOS.rawValue,
         ]
                 
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.login, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.login, parameter: parameter, headers: nil, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
             
             LoadingManager.shared.hideLoading()
             
@@ -116,7 +116,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
             Request.Parameter.deviceType: DeviceType.iOS.rawValue
         ]
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.aLogin, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.aLogin, parameter: parameter, headers: [:] ,showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
             
             if response.code == Status.Code.success {
                 

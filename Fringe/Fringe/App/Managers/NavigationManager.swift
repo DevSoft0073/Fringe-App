@@ -108,10 +108,6 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         return golfStoryboard.instantiateViewController(withIdentifier: FGNavigation.profileHost) as! UINavigationController
     }
     
-    
-    
-    
-    
     //------------------------------------------------------
     
     //MARK: UITabbarController
@@ -247,11 +243,11 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
-    func setupLandingOnHomeForHost() {
-        tabbarControllerForHost = landingTCForHost
-        AppDelegate.shared.window?.rootViewController = tabbarControllerForHost
-        AppDelegate.shared.window?.makeKeyAndVisible()
-    }
+//    func setupLandingOnHomeForHost() {
+//        tabbarControllerForHost = landingTCForHost
+//        AppDelegate.shared.window?.rootViewController = tabbarControllerForHost
+//        AppDelegate.shared.window?.makeKeyAndVisible()
+//    }
     
     func setupGuest() {
         

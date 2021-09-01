@@ -88,7 +88,7 @@ class RequestManager: NSObject {
     
     //MARK: GENERAL
     
-    fileprivate func requestREST<T: Decodable>(type: HTTPMethod, requestMethod : String, parameter : [String : Any], showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
+    fileprivate func requestREST<T: Decodable>(type: HTTPMethod, requestMethod : String, parameter : [String : Any], header : [String:Any],showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
         
         guard isReachable == true else {
             LoadingManager.shared.hideLoading()
@@ -172,9 +172,9 @@ class RequestManager: NSObject {
     
     //MARK: GET
     
-    func requestGET<T: Decodable>(requestMethod : String, parameter : [String : Any], showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
+    func requestGET<T: Decodable>(requestMethod : String, parameter : [String : Any],header : [String : Any], showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
         
-        requestREST(type: HTTPMethod.get, requestMethod: requestMethod, parameter: parameter, showLoader: showLoader, decodingType: decodingType, successBlock: { (response: T) in
+        requestREST(type: HTTPMethod.get, requestMethod: requestMethod, parameter: parameter, header: header, showLoader: showLoader, decodingType: decodingType, successBlock: { (response: T) in
             
             successBlock(response)
             
@@ -188,9 +188,9 @@ class RequestManager: NSObject {
     
     //MARK: POST
     
-    func requestPOST<T: Decodable>(requestMethod : String, parameter : [String : Any], headers : [String : String]? = nil, showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
+    func requestPOST<T: Decodable>(requestMethod : String, parameter : [String : Any], headers : [String : Any]? = nil, showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
         
-        requestREST(type: HTTPMethod.post, requestMethod: requestMethod, parameter: parameter, showLoader: showLoader, decodingType: decodingType, successBlock: { (response: T) in
+        requestREST(type: HTTPMethod.post, requestMethod: requestMethod, parameter: parameter, header: headers ?? [:], showLoader: showLoader, decodingType: decodingType, successBlock: { (response: T) in
             
             successBlock(response)
             
@@ -259,7 +259,7 @@ class RequestManager: NSObject {
     }
     
     
-    func multipartImageRequestForSingleImage( parameter: Parameters, profileImagesData:[String: Data] = [String: Data]() , keyName : String? = nil , profileKeyName : String? = nil , urlString: String, completion: @escaping(([String: Any]?,  _ error: Error?)->())) {
+    func multipartImageRequestForSingleImage( parameter: Parameters, headers : [String : Any]? = nil, profileImagesData:[String: Data] = [String: Data]() , keyName : String? = nil , profileKeyName : String? = nil , urlString: String, completion: @escaping(([String: Any]?,  _ error: Error?)->())) {
         guard isReachable == true else {
             LoadingManager.shared.hideLoading()
             delay {

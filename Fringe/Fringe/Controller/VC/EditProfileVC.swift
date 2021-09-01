@@ -153,6 +153,9 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
         var imgData = [String : Data]()
         imgData["image"] = imageData
         let deviceTimeZone = TimeZone.current.abbreviation()
+        let headers = [
+            "Token": currentUser?.authorizationToken,
+           ]
         let parameter: [String: Any] = [
             Request.Parameter.userID: currentUser?.userID ?? String(),
             Request.Parameter.firstName: txtFirstName?.text ?? String(),
@@ -165,7 +168,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
             
         ]
         
-        RequestManager.shared.multipartImageRequestForSingleImage(parameter: parameter, profileImagesData: imgData, keyName: "image[]", profileKeyName: "image", urlString: PreferenceManager.shared.userBaseURL + Request.Method.edit) { (response, error) in
+        RequestManager.shared.multipartImageRequestForSingleImage(parameter: parameter, headers: headers as [String : Any], profileImagesData: imgData, keyName: "image[]", profileKeyName: "image", urlString: PreferenceManager.shared.userBaseURL + Request.Method.edit) { (response, error) in
             
             if error == nil{
                 

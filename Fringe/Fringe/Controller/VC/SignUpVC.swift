@@ -204,7 +204,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
             
         ]
         
-        RequestManager.shared.multipartImageRequestForSingleImage(parameter: parameter, profileImagesData: imgData, keyName: "image[]", profileKeyName: "image", urlString: PreferenceManager.shared.userBaseURL + Request.Method.signup) { (response, error) in
+        RequestManager.shared.multipartImageRequestForSingleImage(parameter: parameter, headers: [:], profileImagesData: imgData, keyName: "image[]", profileKeyName: "image", urlString: PreferenceManager.shared.userBaseURL + Request.Method.signup) { (response, error) in
             
             if error == nil{
                 
