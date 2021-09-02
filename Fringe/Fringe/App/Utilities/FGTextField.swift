@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import MonthYearPicker
 
+
+protocol UploadImages {
+    func pickImage (tag : Int)
+}
+
 class FGBaseTextField: UITextField {
     
     public var fontDefaultSize : CGFloat {
@@ -711,7 +716,143 @@ class FGCardNumberTextField: FGRegularTextField {
         setup()
     }
 }
-class FgAccountHolderNameTextField: FGRegularTextField {
+class FGAccountNumberTextField: FGRegularTextField {
+    
+    var leftUserView: UIView {
+        let imgView = UIImageView(image: UIImage(named: ""))
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    func setup() {
+        
+        leftView = leftUserView
+        
+        self.keyboardType = .numberPad
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .words
+        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appWhite])
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Override
+    
+    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 0.2)), size: CGSize(width: CGFloat(padding) * 0, height: bounds.height -  CGFloat(padding * 0.1)))
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: aDecoder description
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+}
+
+class FGRoutingNumberTextField: FGRegularTextField {
+    
+    var leftUserView: UIView {
+        let imgView = UIImageView(image: UIImage(named: ""))
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    func setup() {
+        
+        leftView = leftUserView
+        
+        self.keyboardType = .numberPad
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .words
+        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appWhite])
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Override
+    
+    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 0.2)), size: CGSize(width: CGFloat(padding) * 0, height: bounds.height -  CGFloat(padding * 0.1)))
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: aDecoder description
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+}
+
+
+class FGSSNTextField: FGRegularTextField {
+    
+    var leftUserView: UIView {
+        let imgView = UIImageView(image: UIImage(named: ""))
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    func setup() {
+        
+        leftView = leftUserView
+        
+        self.keyboardType = .numberPad
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .words
+        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appWhite])
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Override
+    
+    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 0.2)), size: CGSize(width: CGFloat(padding) * 0, height: bounds.height -  CGFloat(padding * 0.1)))
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: aDecoder description
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+}
+
+class FGAccountHolderNameTextField: FGRegularTextField {
     
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -750,6 +891,76 @@ class FgAccountHolderNameTextField: FGRegularTextField {
         setup()
     }
 }
+
+class FGAddImagesTextField: FGRegularTextField {
+    
+    var leftButton : UIButton {
+        let image = UIImage(named: "")
+        let button   = UIButton(type: UIButton.ButtonType.custom) as UIButton
+        button.setImage(image, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageView?.cornerRadius = 5
+        button.addTarget(self, action: #selector(addImages), for: .allEvents)
+        return button
+    }
+    
+    @objc func addImages(sender : UIButton){
+        self.uploadDelegate?.pickImage(tag: 0)
+    }
+    var uploadDelegate : UploadImages?
+    
+    //------------------------------------------------------
+    
+    func setup() {
+        
+        leftView = leftButton
+        leftView?.center.y = leftButton.center.y
+        self.keyboardType = .default
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .words
+        self.rightView?.isUserInteractionEnabled = false
+        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appWhite])
+    }
+    
+    
+    //------------------------------------------------------
+    
+    //MARK: Override
+    
+    let paddingV = UIEdgeInsets(top: 0, left: 10 * 8, bottom: 0, right: 5)
+    
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: paddingV)
+    }
+    
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: paddingV)
+    }
+    
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: paddingV)
+    }
+    
+    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding)), size: CGSize(width: CGFloat(padding) * 8, height: bounds.height -  CGFloat(padding * 2)))
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: aDecoder description
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+}
+
+
 class FGPickMonthYear: FGRegularTextField, UITextFieldDelegate , UIPickerViewDelegate , UIPickerViewDataSource {
     
     var rightUserView: UIView {

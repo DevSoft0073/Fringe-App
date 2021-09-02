@@ -212,12 +212,15 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             let controller = NavigationManager.shared.serviceTermsVC
             push(controller: controller)
             
-        }
-        else if name == ProfileItems.privacyPolicy{
+        }else if name == ProfileItems.privacyPolicy{
             
             let controller = NavigationManager.shared.privacyVC
             push(controller: controller)
             
+        }else if name == ProfileItems.logout {
+            PreferenceManager.shared.currentUser = nil
+            PreferenceManager.shared.loggedUser = false
+            NavigationManager.shared.setupSingIn()
         }
     }
     

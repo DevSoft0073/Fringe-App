@@ -64,6 +64,9 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     //MARK: Actions
     
     @IBAction func btnAdd(_ sender: Any) {
+        let controller = NavigationManager.shared.addCalendarPopUpVC
+        controller.modalPresentationStyle = .formSheet
+        self.present(controller, animated: true)
         
     }
     @IBAction func btnNextMonth(_ sender: Any) {

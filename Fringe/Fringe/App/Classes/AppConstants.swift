@@ -147,7 +147,7 @@ struct FGImageName {
     static let iconSignAdd = "sign_add"
     
     // PopUp
-    
+    static let iconPopImage = "Popup"
     static let iconPlusWhite = "plus_white"
     static let iconPlus = "plus"
     static let iconPlusHost =  "plus_host"

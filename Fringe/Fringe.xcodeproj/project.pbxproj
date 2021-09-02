@@ -139,6 +139,8 @@
 		7CE041AB26E090A20036EEA0 /* InboxTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE041A926E090A20036EEA0 /* InboxTVCell.swift */; };
 		7CE041AC26E090A20036EEA0 /* InboxTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE041AA26E090A20036EEA0 /* InboxTVCell.xib */; };
 		7CE041B026E0AACD0036EEA0 /* PaymentSuccessfullyPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE041AF26E0AACD0036EEA0 /* PaymentSuccessfullyPopUpVC.swift */; };
+		7CE041B326E0BBA20036EEA0 /* HostServiceTermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE041B226E0BBA10036EEA0 /* HostServiceTermsVC.swift */; };
+		7CE041B626E0BBEA0036EEA0 /* HostPrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE041B526E0BBEA0036EEA0 /* HostPrivacyVC.swift */; };
 		7CE0F63726D4A51900C3AAFB /* SearchTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0F63526D4A51900C3AAFB /* SearchTBCell.swift */; };
 		7CE0F63826D4A51900C3AAFB /* SearchTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE0F63626D4A51900C3AAFB /* SearchTBCell.xib */; };
 		7CE0F63C26D4A71B00C3AAFB /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0F63B26D4A71B00C3AAFB /* SearchVC.swift */; };
@@ -292,6 +294,8 @@
 		7CE041A926E090A20036EEA0 /* InboxTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTVCell.swift; sourceTree = "<group>"; };
 		7CE041AA26E090A20036EEA0 /* InboxTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboxTVCell.xib; sourceTree = "<group>"; };
 		7CE041AF26E0AACD0036EEA0 /* PaymentSuccessfullyPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessfullyPopUpVC.swift; sourceTree = "<group>"; };
+		7CE041B226E0BBA10036EEA0 /* HostServiceTermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostServiceTermsVC.swift; sourceTree = "<group>"; };
+		7CE041B526E0BBEA0036EEA0 /* HostPrivacyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostPrivacyVC.swift; sourceTree = "<group>"; };
 		7CE0F63526D4A51900C3AAFB /* SearchTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTBCell.swift; sourceTree = "<group>"; };
 		7CE0F63626D4A51900C3AAFB /* SearchTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTBCell.xib; sourceTree = "<group>"; };
 		7CE0F63B26D4A71B00C3AAFB /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
@@ -408,17 +412,19 @@
 		7C52985126DCA78700A3606D /* Host VC */ = {
 			isa = PBXGroup;
 			children = (
+				7C73149626DE4D2900BBFE09 /* AddCalendarPopUpVC.swift */,
 				7C52986526DCB5D800A3606D /* BookingsVC.swift */,
 				7C52986826DCEAC100A3606D /* BusinessHomeRejectionVC.swift */,
-				7C52987126DD094400A3606D /* HostNotificationVC.swift */,
-				7C52987426DD0D2500A3606D /* HostCalendarVC.swift */,
-				7C52987726DD0D5500A3606D /* HostInboxVC.swift */,
-				7C52987A26DD0D7E00A3606D /* HostProfileVC.swift */,
-				7C5298A126DE07F600A3606D /* HostAddPaymentMethodVC.swift */,
 				7C5298A426DE086200A3606D /* HostAccountInformationVC.swift */,
+				7C5298A126DE07F600A3606D /* HostAddPaymentMethodVC.swift */,
+				7C52987426DD0D2500A3606D /* HostCalendarVC.swift */,
 				7C5298A726DE092400A3606D /* HostConfirmedVC.swift */,
 				7C5298AA26DE174F00A3606D /* HostEditProfileVC.swift */,
-				7C73149626DE4D2900BBFE09 /* AddCalendarPopUpVC.swift */,
+				7C52987726DD0D5500A3606D /* HostInboxVC.swift */,
+				7C52987126DD094400A3606D /* HostNotificationVC.swift */,
+				7CE041B526E0BBEA0036EEA0 /* HostPrivacyVC.swift */,
+				7C52987A26DD0D7E00A3606D /* HostProfileVC.swift */,
+				7CE041B226E0BBA10036EEA0 /* HostServiceTermsVC.swift */,
 			);
 			path = "Host VC";
 			sourceTree = "<group>";
@@ -492,18 +498,18 @@
 				7C2917C226C6746B0091F8A1 /* GolfclubsVC.swift */,
 				7C5E41B826D8BF5900D63728 /* HomeListingVC.swift */,
 				7C780FD226C5330A003F1F12 /* HomeVC.swift */,
+				7CE041A626E08F360036EEA0 /* InboxVC.swift */,
 				7CA24C2026C240AB00437C8A /* LoadingIndicatorVC.swift */,
 				7C780F8726C3A80A003F1F12 /* LogInVC.swift */,
 				7C8F1D6F26CE6BB300135C41 /* MyBookingVC.swift */,
 				7C780FC426C5063B003F1F12 /* NotificationVC.swift */,
+				7CE041AF26E0AACD0036EEA0 /* PaymentSuccessfullyPopUpVC.swift */,
 				7CDA847826D8FCA00096FA0F /* PrivacyVC.swift */,
 				7C780FD526C53346003F1F12 /* ProfileVC.swift */,
 				7CE0F63B26D4A71B00C3AAFB /* SearchVC.swift */,
 				7CDA847B26D8FCBE0096FA0F /* ServiceTermsVC.swift */,
 				7CE0F64126D4D41A00C3AAFB /* SignUpHostVC.swift */,
 				7C780F8E26C3C105003F1F12 /* SignUpVC.swift */,
-				7CE041A626E08F360036EEA0 /* InboxVC.swift */,
-				7CE041AF26E0AACD0036EEA0 /* PaymentSuccessfullyPopUpVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -923,6 +929,7 @@
 				7C5298A226DE07F600A3606D /* HostAddPaymentMethodVC.swift in Sources */,
 				7CD7EB0B26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift in Sources */,
 				7CE041A726E08F360036EEA0 /* InboxVC.swift in Sources */,
+				7CE041B326E0BBA20036EEA0 /* HostServiceTermsVC.swift in Sources */,
 				7C52987826DD0D5500A3606D /* HostInboxVC.swift in Sources */,
 				7CA24C4D26C2423500437C8A /* FGLabel.swift in Sources */,
 				7CDA847C26D8FCBE0096FA0F /* ServiceTermsVC.swift in Sources */,
@@ -990,6 +997,7 @@
 				7CE46BED26CCE09B004EC6C7 /* EditProfileVC.swift in Sources */,
 				7CA24C2126C240AB00437C8A /* LoadingIndicatorVC.swift in Sources */,
 				7C73149726DE4D2900BBFE09 /* AddCalendarPopUpVC.swift in Sources */,
+				7CE041B626E0BBEA0036EEA0 /* HostPrivacyVC.swift in Sources */,
 				7CA24C8A26C2537600437C8A /* AppDelegate.swift in Sources */,
 				7C780F8426C3A6FF003F1F12 /* BasicContentView.swift in Sources */,
 				7CD7EB0826D14EA400BEDDA2 /* BookingDetailsRatingVC.swift in Sources */,
@@ -1152,7 +1160,7 @@
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1177,7 +1185,7 @@
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

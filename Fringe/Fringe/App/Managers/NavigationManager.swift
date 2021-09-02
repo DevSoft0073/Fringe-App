@@ -142,8 +142,8 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
          }*/
         
         v1.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Home", image: UIImage(named: FGImageName.iconHomeUnselected), selectedImage: UIImage(named: FGImageName.iconHomeSelected))
-        v2.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Golfclubs", image: UIImage(named: FGImageName.iconGolfUnselected), selectedImage: UIImage(named: FGImageName.iconGolfSelected))
-        v3.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Favourites", image: UIImage(named: FGImageName.iconFavouriteUnselected), selectedImage: UIImage(named: FGImageName.iconFavouriteSelected))
+        v2.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Rounds", image: UIImage(named: FGImageName.iconGolfUnselected), selectedImage: UIImage(named: FGImageName.iconGolfSelected))
+        v3.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Favorite", image: UIImage(named: FGImageName.iconFavouriteUnselected), selectedImage: UIImage(named: FGImageName.iconFavouriteSelected))
         v4.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Inbox", image: UIImage(named: FGImageName.iconInboxUnselected), selectedImage: UIImage(named: FGImageName.iconInboxSelected))
         v5.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Profile", image: UIImage(named: FGImageName.iconProfileUnselected), selectedImage: UIImage(named: FGImageName.iconProfileSelected))
         
@@ -340,5 +340,18 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     public var hostEditProfileVC: HostEditProfileVC {
         return golfStoryboard.instantiateViewController(withIdentifier: String(describing: HostEditProfileVC.self)) as! HostEditProfileVC
     }
+    
+    public var hostServiceTermsVC: HostServiceTermsVC {
+        return golfStoryboard.instantiateViewController(withIdentifier: String(describing: HostServiceTermsVC.self)) as! HostServiceTermsVC
+    }
+    
+    public var hostPrivacyVC: HostPrivacyVC {
+        return golfStoryboard.instantiateViewController(withIdentifier: String(describing: HostPrivacyVC.self)) as! HostPrivacyVC
+    }
+    
+    public var addCalendarPopUpVC: AddCalendarPopUpVC {
+        return golfStoryboard.instantiateViewController(withIdentifier: String(describing: AddCalendarPopUpVC.self)) as! AddCalendarPopUpVC
+    }
+    
 }
 

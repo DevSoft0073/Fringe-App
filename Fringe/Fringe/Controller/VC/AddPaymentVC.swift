@@ -13,7 +13,7 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
     
     @IBOutlet weak var cardTypeTxtField: FGCardTypeTextField!
     @IBOutlet weak var cardNumberTxtField: FGCardNumberTextField!
-    @IBOutlet weak var nameOnCardTxtField: FgAccountHolderNameTextField!
+    @IBOutlet weak var nameOnCardTxtField: FGAccountHolderNameTextField!
     @IBOutlet weak var expirationTxtField: FGPickMonthYear!
     @IBOutlet weak var cvvTxtField: FGCardNumberTextField!
     @IBOutlet weak var btnSubmit: FGActiveButton!

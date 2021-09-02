@@ -315,14 +315,13 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     
     @IBAction func btnSignUp(_ sender: UIButton) {
         
-//        if validate() == false {
-//            return
-//        }
-//
-//        LoadingManager.shared.showLoading()
-//
-//        self.performSignUp()
-        NavigationManager.shared.setupLandingOnHome()
+        if validate() == false {
+            return
+        }
+
+        LoadingManager.shared.showLoading()
+
+        self.performSignUp()
     }
     
     @IBAction func btnAppleTap(_ sender: Any) {
