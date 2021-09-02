@@ -121,8 +121,8 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         
         let v1 = homeNC
         let v2 = golfclubsNC
-        let v3 = inboxNC
-        let v4 = notificationVC
+        let v3 = favouriteNC
+        let v4 = inboxNC
         let v5 = profileNC
         
         /*tabBarController.shouldHijackHandler = {

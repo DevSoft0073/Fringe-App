@@ -24,6 +24,9 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     deinit { //same like dealloc in ObjectiveC
         
     }
+    
+    //------------------------------------------------------
+    
     //MARK: Customs
     
     func setup() {
@@ -43,10 +46,14 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     }
     
     //------------------------------------------------------
+    
     //MARK: Actions
+    
     @IBAction func btnBack(_ sender: Any) {
         self.pop()
     }
+    
+    //------------------------------------------------------
     
     //MARK: UITableViewDataSource,UITableViewDelegate
     
@@ -79,6 +86,7 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
         super.viewDidLoad()
         
       setup()
+        
     }
     
     //------------------------------------------------------
