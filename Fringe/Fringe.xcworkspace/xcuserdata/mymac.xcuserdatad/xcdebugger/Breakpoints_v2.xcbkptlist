@@ -7,144 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "942C467C-7BFF-4A5E-9B83-68F7CEF1FBC6"
+            uuid = "00DEB9A6-8AB6-4CFA-8837-BD0D225E3481"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/LogInVC.swift"
+            filePath = "Fringe/App/Classes/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "performAppleLogin(_:_:_:_:)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B522206E-3FFE-4705-83FE-A9E109742CF7"
+            uuid = "4EAA8409-24B1-4002-96A8-D0F7A8DF9C26"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/DetailsScreenVC.swift"
+            filePath = "Fringe/App/Classes/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "performFavUnfavStudio(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B522206E-3FFE-4705-83FE-A9E109742CF7 - fdcbb016b1a933e0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Fringe.ResponseModal&lt;Fringe.FavUnfvModal&gt;) -&gt; () in Fringe.DetailsScreenVC.performFavUnfavStudio(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "Fringe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/DetailsScreenVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "2388">
-               </Location>
-               <Location
-                  uuid = "B522206E-3FFE-4705-83FE-A9E109742CF7 - d7e7462de063501a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Fringe.ErrorModal) -&gt; () in Fringe.DetailsScreenVC.performFavUnfavStudio(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "Fringe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/DetailsScreenVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B7A45C2B-CDAB-472F-B63B-CAD0DE48305C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/FavouriteVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "performGetFavStudios(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B7A45C2B-CDAB-472F-B63B-CAD0DE48305C - 10112bc4c0784e0a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Fringe.FavouriteVC.performGetFavStudios(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "Fringe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/FavouriteVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "864">
-               </Location>
-               <Location
-                  uuid = "B7A45C2B-CDAB-472F-B63B-CAD0DE48305C - deae3c6638af3cd1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Fringe.ResponseModal&lt;Swift.Array&lt;Fringe.FavoriteListing&gt;&gt;) -&gt; () in Fringe.FavouriteVC.performGetFavStudios(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "Fringe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/FavouriteVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BA1CBA64-DD2E-4E08-A079-198DCCF89077"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/FavouriteVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "performGetFavStudios(completion:)"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "chekLoggedUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ABD8F3EE-848D-4DBC-8DF5-231B7D29D898"
+            uuid = "36BADF00-4FF9-4715-A169-A8FDFC03FDD3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/FavouriteVC.swift"
+            filePath = "Fringe/App/Classes/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "performGetFavStudios(completion:)"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "chekLoggedUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
