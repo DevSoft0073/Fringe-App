@@ -84,6 +84,8 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         return mainStoryboard.instantiateViewController(withIdentifier: FGNavigation.profile) as! UINavigationController
     }
     
+    
+    
     //MARK: UINavigationController for host
     
     var homeNCHost: UINavigationController {
@@ -325,6 +327,10 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     
     public var serviceTermsVC : ServiceTermsVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: ServiceTermsVC.self)) as! ServiceTermsVC
+    }
+    
+    public var addGuestVC : AddGuestVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: AddGuestVC.self)) as! AddGuestVC
     }
     
     

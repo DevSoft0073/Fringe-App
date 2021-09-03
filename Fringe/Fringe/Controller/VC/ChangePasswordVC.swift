@@ -100,7 +100,7 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
             Request.Parameter.newPassword: txtNewPassword.text ?? String()
         ]
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.changePassword, parameter: parameter, headers: nil, showLoader: true, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.changePassword, parameter: parameter, headers: [:], showLoader: true, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
 
             LoadingManager.shared.hideLoading()
             
