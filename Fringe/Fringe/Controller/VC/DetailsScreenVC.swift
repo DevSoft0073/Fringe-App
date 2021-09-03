@@ -90,6 +90,7 @@ class DetailsScreenVC : BaseVC {
 
                 if let stringUser = try? response.data?.jsonString() {
                     print(stringUser)
+                    self.favUnfav = response.data
                     DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? "") {
                     }
                     if self.favUnfav?.isFav == "1"{
