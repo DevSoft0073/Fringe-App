@@ -107,9 +107,16 @@ struct LocalizableConstants {
         }
         
     }
-
     
     struct Controller {
+        
+        struct Pages {
+            
+            static let pullMore = "pull_more"
+            static let releaseToRefresh = "release_to_refresh"
+            static let updating = "updating"
+        }
+        
         struct Notifications {
             
             static let title = "notifications"

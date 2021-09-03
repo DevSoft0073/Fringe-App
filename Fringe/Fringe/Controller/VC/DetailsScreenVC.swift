@@ -5,6 +5,8 @@
 //  Created by Dharmani Apps on 23/08/21.
 //
 import UIKit
+import Alamofire
+import SDWebImage
 import Foundation
 
 class DetailsScreenVC : BaseVC {
@@ -18,6 +20,8 @@ class DetailsScreenVC : BaseVC {
     @IBOutlet weak var lblGolfClubName: FGSemiboldLabel!
     @IBOutlet weak var btnHeart: UIButton!
     
+    var golfCourseDetails: FavoriteListing?
+    var favUnfav: FavUnfvModal?
     var check = true
     //------------------------------------------------------
     
@@ -33,23 +37,104 @@ class DetailsScreenVC : BaseVC {
         
     }
     
+    
+    //------------------------------------------------------
+    
+    //MARK: Custome
+    
+    func setup() {
+        lblGolfClubName.text = golfCourseDetails?.golfCourseName
+        lblGolfClubAddress.text = golfCourseDetails?.location
+        lblRate.text = golfCourseDetails?.rating
+        lblRating.text = golfCourseDetails?.rating
+        lblDetails.text = golfCourseDetails?.favoriteListingDescription
+        ratingView.rating = Double(golfCourseDetails?.rating ?? String()) ?? 0.0
+        imgGolfClub.sd_addActivityIndicator()
+        imgGolfClub.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+        imgGolfClub.sd_showActivityIndicatorView()
+        if let image = golfCourseDetails?.image, image.isEmpty == false {
+            let imgURL = URL(string: image)
+            imgGolfClub.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                self.imgGolfClub.sd_removeActivityIndicator()
+            }
+        } else {
+            self.imgGolfClub.sd_removeActivityIndicator()
+        }
+        if golfCourseDetails?.image?.isEmpty == true{
+            self.imgGolfClub.image = UIImage(named: "placeholder-image-1")
+        }
+        if golfCourseDetails?.isFav == "1" {
+            self.btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
+        }else{
+            self.btnHeart.setImage(UIImage(named: FGImageName.iconUnFavWhiteHeart), for: .normal)
+        }
+    }
+    
+    func performFavUnfavStudio(completion:((_ flag: Bool) -> Void)?) {
+
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": currentUser?.authorizationToken ?? String(),
+          ]
+
+        let parameter: [String: Any] = [
+            Request.Parameter.golfID: golfCourseDetails?.golfID ?? String(),
+        ]
+
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.favUnfav, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<FavUnfvModal>.self, successBlock: { (response: ResponseModal<FavUnfvModal>) in
+            print(response)
+
+            LoadingManager.shared.hideLoading()
+
+            if response.code == Status.Code.success {
+
+                if let stringUser = try? response.data?.jsonString() {
+                    print(stringUser)
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? "") {
+                    }
+                    if self.favUnfav?.isFav == "1"{
+                        self.btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
+                    }else{
+                        self.btnHeart.setImage(UIImage(named: FGImageName.iconUnFavWhiteHeart), for: .normal)
+                    }
+                }
+            } else {
+
+                delay {
+
+//                    self.handleError(code: response.code)
+                }
+            }
+
+        }, failureBlock: { (error: ErrorModal) in
+
+            LoadingManager.shared.hideLoading()
+
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
     //------------------------------------------------------
     
     //MARK: Actions
     
     @IBAction func btnHeart(_ sender: Any) {
-        check = !check
         
-        if check == true {
-            btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
-                } else {
-                    btnHeart.setImage(UIImage(named: FGImageName.iconUnFavWhiteHeart), for: .normal)
-                }
+//        check = !check
+//        if check == true {
+//            btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
+//        } else {
+//            btnHeart.setImage(UIImage(named: FGImageName.iconUnFavWhiteHeart), for: .normal)
+//        }
+        
+        performFavUnfavStudio { (flag : Bool) in
+        }
     }
     
     @IBAction func btnBack(_ sender: Any) {
         self.pop()
-        
     }
     
     @IBAction func btnChat(_ sender: Any) {
@@ -66,6 +151,7 @@ class DetailsScreenVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
     }
     
     //------------------------------------------------------

@@ -100,37 +100,42 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
             Request.Parameter.newPassword: txtNewPassword.text ?? String()
         ]
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.changePassword, parameter: parameter, headers: nil, showLoader: true, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.changePassword, parameter: parameter, headers: [:], showLoader: true, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
 
             LoadingManager.shared.hideLoading()
             
             if response.code == Status.Code.success {
 
+                LoadingManager.shared.hideLoading()
+                
                 delay {
 
                     DisplayAlertManager.shared.displayAlert(animated: true, message: LocalizableConstants.SuccessMessage.passwordChanged) {
-
-                        self.pop()
                         completion?(true)
                     }
                 }
 
             } else {
-
+                
+                LoadingManager.shared.hideLoading()
+                
                 completion?(false)
 
                 delay {
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String())
 //                    self.handleError(code: response.code)
                 }
             }
 
         }, failureBlock: { (error: ErrorModal) in
 
+            LoadingManager.shared.hideLoading()
+            
             completion?(false)
 
             delay {
 
-                self.handleError(code: error.code)
+//                self.handleError(code: error.code)
             }
         })
     }
@@ -146,13 +151,14 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
     
     
     @IBAction func btnSave(_ sender: Any) {
+        
         if validate() == false {
             return
         }
         
         self.view.endEditing(true)
         
-        LoadingManager.shared.showLoading()
+//        LoadingManager.shared.showLoading()
         
         self.performUpdatePassword { (flag : Bool) in
             

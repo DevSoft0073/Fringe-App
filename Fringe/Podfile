@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'Fringe' do
+  target 'Fringe' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
@@ -30,8 +30,5 @@ target 'Fringe' do
   
   #apple sign in
   pod 'AppleSignIn'
-
-  
-  
 
 end

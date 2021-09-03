@@ -6,11 +6,17 @@
 //
 
 import UIKit
+import Alamofire
+import KRPullLoader
 import Foundation
 
-class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
+class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLoadViewDelegate{
     
     @IBOutlet weak var tblFavourite: UITableView!
+    
+    var items: [FavoriteListing] = []
+    var isRequesting: Bool = false
+    var lastRequestId: String = String()
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -24,6 +30,9 @@ class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
     deinit { //same like dealloc in ObjectiveC
         
     }
+    
+    //------------------------------------------------------
+    
     //MARK: Customs
     
     func setup() {
@@ -31,9 +40,9 @@ class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
         tblFavourite.delegate = self
         navigationItem.title = LocalizableConstants.Controller.Notifications.title.localized()
         
-//        let loadMoreView = KRPullLoadView()
-//        loadMoreView.delegate = self
-//        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
+        let loadMoreView = KRPullLoadView()
+        loadMoreView.delegate = self
+        tblFavourite.addPullLoadableView(loadMoreView, type: .refresh)
         
         let identifier = String(describing: FavouriteTVCell.self)
 
@@ -41,18 +50,76 @@ class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
         tblFavourite.register(nibRequestCell, forCellReuseIdentifier: identifier)
         
     }
+    
+    func updateUI() {
+//        noDataLbl.text = LocalizableConstants.Controller.FavoriteStudios.noFavDataFound.localized()
+//        noDataLbl.isHidden = items.count != .zero
+        tblFavourite.reloadData()
+    }
+    
+    func performGetFavStudios(completion:((_ flag: Bool) -> Void)?) {
+
+        isRequesting = true
+
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": currentUser?.authorizationToken ?? String(),
+          ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.lastID: lastRequestId,
+        ]
+
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.favoriteListing, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[FavoriteListing]>.self, successBlock: { (response: ResponseModal<[FavoriteListing]>) in
+
+            LoadingManager.shared.hideLoading()
+
+            self.isRequesting = false
+            print(response)
+            if response.code == Status.Code.success {
+                if self.lastRequestId.isEmpty {
+                    self.items.removeAll()
+                }
+                self.items.append(contentsOf: response.data ?? [])
+                self.items = self.items.removingDuplicates()
+                self.lastRequestId = response.data?.first?.favID ?? String()
+                completion?(true)
+                self.updateUI()
+                
+            } else {
+                completion?(true)
+            }
+
+        }, failureBlock: { (error: ErrorModal) in
+
+            LoadingManager.shared.hideLoading()
+            self.isRequesting = false
+
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
     //------------------------------------------------------
     
     //MARK: UITableViewDataSource,UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if items.count == 0 {
+            self.tblFavourite.setEmptyMessage("No data found.")
+        } else {
+            self.tblFavourite.restore()
+        }
+        return items.count
         
-        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FavouriteTVCell.self)) as? FavouriteTVCell {
+            let request = items[indexPath.row]
+            cell.setup(favouriteData: request)
             return cell
         }
         return UITableViewCell()
@@ -65,9 +132,56 @@ class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = items[indexPath.row]
         let controller = NavigationManager.shared.detailsScreenVC
+        controller.golfCourseDetails = data
         push(controller: controller)
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: KRPullLoadViewDelegate
+    
+    func pullLoadView(_ pullLoadView: KRPullLoadView, didChangeState state: KRPullLoaderState, viewType type: KRPullLoaderType) {
+        
+        if type == .refresh {
+            switch state {
+            case .none:
+                pullLoadView.messageLabel.text = String()
+            case let .pulling(offset, threshould):
+                if offset.y > threshould {
+                    pullLoadView.messageLabel.text = LocalizableConstants.Controller.Pages.pullMore.localized()
+                } else {
+                    pullLoadView.messageLabel.text = LocalizableConstants.Controller.Pages.releaseToRefresh.localized()
+                }
+            case let .loading(completionHandler):
+                pullLoadView.messageLabel.text = LocalizableConstants.Controller.Pages.updating.localized()
+                if isRequesting == false {
+                    performGetFavStudios { (flag: Bool) in
+                        self.updateUI()
+                        completionHandler()
+                    }
+                } else {
+                    completionHandler()
+                }
+            }
+        } else if type == .loadMore {
+            switch state {
+            case let .loading(completionHandler):
+                if isRequesting == false {
+                    performGetFavStudios { (flag: Bool) in
+                        self.updateUI()
+                        completionHandler()
+                    }
+                } else {
+                    completionHandler()
+                }
+            default: break
+            }
+            return
+        }
     }
     
     //------------------------------------------------------
@@ -77,12 +191,21 @@ class FavouriteVC : BaseVC ,UITableViewDelegate,UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        tblFavourite.separatorStyle = .none
+        tblFavourite.separatorColor = .clear
+        
+        LoadingManager.shared.showLoading()
+
+        self.performGetFavStudios { (flag : Bool) in
+            
+        }
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
         NavigationManager.shared.isEnabledBottomMenu = true
     }
     

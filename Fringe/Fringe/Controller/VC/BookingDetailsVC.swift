@@ -16,8 +16,9 @@ class BookingDetailsVC : BaseVC {
     @IBOutlet weak var lblRating: FGRegularLabel!
     @IBOutlet weak var lblRate: FGMediumLabel!
     @IBOutlet weak var lblDate: FGRegularLabel!
-    
+        
     //------------------------------------------------------
+    
     //MARK: Memory Management Method
     
     override func didReceiveMemoryWarning() {
@@ -33,7 +34,6 @@ class BookingDetailsVC : BaseVC {
     //------------------------------------------------------
     
     //MARK: Actions
-    
     
     @IBAction func btnBack(_ sender: Any) {
         self.pop()

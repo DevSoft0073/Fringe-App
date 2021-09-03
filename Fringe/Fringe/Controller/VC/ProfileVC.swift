@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 import Foundation
 
 class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
@@ -102,18 +103,70 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         tblProfile.register(nibProfileCell, forCellReuseIdentifier: identifier)
         
     }
+    
     func updateUI() {
         
         tblProfile.reloadData()
     }
+    
+    private func performGetUserProfile(completion:((_ flag: Bool) -> Void)?) {
+        
+         let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": currentUser?.authorizationToken ?? String(),
+           ]
+        
+        RequestManager.shared.requestGET(requestMethod: Request.Method.profile, parameter: [:], header: headers, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    
+                    PreferenceManager.shared.currentUser = stringUser
+                    self.setup()
+
+                }
+                delay {
+                    completion?(true)
+                }
+                self.updateUI()
+                
+            } else {
+                
+                delay {
+                                            
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
+                          
+                    }
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            completion?(false)
+            
+            delay {
+                
+            }
+        })
+    }
+    
     //------------------------------------------------------
+    
     //MARK: Action
     
     //------------------------------------------------------
+    
     //MARK: UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.row]
         let name = item["name"]
@@ -149,6 +202,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
         

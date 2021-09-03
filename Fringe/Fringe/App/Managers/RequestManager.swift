@@ -38,10 +38,12 @@ struct Request {
         static let lat = "latitude"
         static let long = "longitude"
         static let appleToken = "apple_token"
+        static let golfID = "golf_id"
         
         // chnage password
         static let newPassword = "new_password"
         static let oldPassword = "old_password"
+        static let lastID = "last_id"
     }
     
     struct Method {
@@ -51,6 +53,10 @@ struct Request {
         static let aLogin = "/appleLogin.php"
         static let edit = "/editProfile.php"
         static let changePassword = "/ChangePassword.php"
+        static let profile = "/GetProfileDetails.php"
+        static let forgotPassword = "/Forgotpassword.php"
+        static let favoriteListing = "/favouriteListing.php"
+        static let favUnfav = "/GolfFavouriteUnfavourite.php"
     }
     
 }
@@ -88,7 +94,7 @@ class RequestManager: NSObject {
     
     //MARK: GENERAL
     
-    fileprivate func requestREST<T: Decodable>(type: HTTPMethod, requestMethod : String, parameter : [String : Any], header : [String:Any],showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
+    fileprivate func requestREST<T: Decodable>(type: HTTPMethod, requestMethod : String, parameter : [String : Any], header : HTTPHeaders,showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
         
         guard isReachable == true else {
             LoadingManager.shared.hideLoading()
@@ -99,8 +105,8 @@ class RequestManager: NSObject {
         }
         
         var requestURL: String = String()
-        var headers: HTTPHeaders = [:]
-        headers["content-type"] = "application/json"
+        // var headers: HTTPHeaders = [:]
+        // headers["content-type"] = "application/json"
         /*if type == .post {
          headers["content-type"] = "application/x-www-form-urlencoded"
          }*/
@@ -108,7 +114,7 @@ class RequestManager: NSObject {
         
         debugPrint("----------- \(requestMethod) ---------")
         debugPrint("requestURL:\(requestURL)")
-        debugPrint("requestHeader:\(headers)")
+        // debugPrint("requestHeader:\(headers)")
         print("parameter:\(parameter.dict2json())")
         
         if showLoader == true {
@@ -121,7 +127,7 @@ class RequestManager: NSObject {
         manager.session.configuration.timeoutIntervalForRequest = 60
         
         let encodingType: ParameterEncoding = (type == HTTPMethod.post) ? JSONEncoding.default : URLEncoding.default
-        request(requestURL, method: type, parameters: parameter, encoding: encodingType, headers: headers).responseData { (response: DataResponse<Data>) in
+        request(requestURL, method: type, parameters: parameter, encoding: encodingType, headers: header).responseData { (response: DataResponse<Data>) in
             switch response.result {
             case .success:
                 if showLoader == true {
@@ -172,7 +178,7 @@ class RequestManager: NSObject {
     
     //MARK: GET
     
-    func requestGET<T: Decodable>(requestMethod : String, parameter : [String : Any],header : [String : Any], showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
+    func requestGET<T: Decodable>(requestMethod : String, parameter : [String : Any], header : HTTPHeaders, showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
         
         requestREST(type: HTTPMethod.get, requestMethod: requestMethod, parameter: parameter, header: header, showLoader: showLoader, decodingType: decodingType, successBlock: { (response: T) in
             
@@ -188,9 +194,9 @@ class RequestManager: NSObject {
     
     //MARK: POST
     
-    func requestPOST<T: Decodable>(requestMethod : String, parameter : [String : Any], headers : [String : Any]? = nil, showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
+    func requestPOST<T: Decodable>(requestMethod : String, parameter : [String : Any], headers : HTTPHeaders , showLoader : Bool, decodingType: T.Type, successBlock:@escaping (( _ response: T)->Void), failureBlock:@escaping (( _ error : ErrorModal) -> Void)) {
         
-        requestREST(type: HTTPMethod.post, requestMethod: requestMethod, parameter: parameter, header: headers ?? [:], showLoader: showLoader, decodingType: decodingType, successBlock: { (response: T) in
+        requestREST(type: HTTPMethod.post, requestMethod: requestMethod, parameter: parameter, header: headers , showLoader: showLoader, decodingType: decodingType, successBlock: { (response: T) in
             
             successBlock(response)
             
@@ -204,7 +210,7 @@ class RequestManager: NSObject {
     
     //MARK: Form Data
     
-    func multipartImageRequest( parameter: Parameters, imagesData:[String: Data] = [String: Data](), profileImagesData:[String: Data] = [String: Data]() , keyName : String? = nil , profileKeyName : String? = nil , urlString: String, completion: @escaping(([String: Any]?,  _ error: Error?)->())) {
+    func multipartImageRequest( parameter: Parameters, imagesData:[String: Data] = [String: Data](), profileImagesData:[String: Data] = [String: Data]() , keyName : String? = nil , profileKeyName : String? = nil , urlString: String, completion: @escaping(([String: Any]?, _ error: Error?)->())) {
         guard isReachable == true else {
             LoadingManager.shared.hideLoading()
             delay {
@@ -218,14 +224,14 @@ class RequestManager: NSObject {
         Alamofire.upload(multipartFormData: { (MultipartFormData) in
             for imageData in imagesData {
                 // set key name as array if array contains more than 1 pics
-                //                let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
+                // let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
                 // append data
                 MultipartFormData.append(imageData.value, withName: keyName ?? String(), fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
             }
             
             for imageData in profileImagesData {
                 // set key name as array if array contains more than 1 pics
-                //                let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
+                // let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
                 // append data
                 MultipartFormData.append(imageData.value, withName: profileKeyName ?? String(), fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
             }
@@ -258,8 +264,7 @@ class RequestManager: NSObject {
         }
     }
     
-    
-    func multipartImageRequestForSingleImage( parameter: Parameters, headers : [String : Any]? = nil, profileImagesData:[String: Data] = [String: Data]() , keyName : String? = nil , profileKeyName : String? = nil , urlString: String, completion: @escaping(([String: Any]?,  _ error: Error?)->())) {
+    func multipartImageRequestForSingleImage( parameter: Parameters, headers : HTTPHeaders , profileImagesData:[String: Data] = [String: Data]() , keyName : String? = nil , profileKeyName : String? = nil , urlString: String, completion: @escaping(([String: Any]?, _ error: Error?)->())) {
         guard isReachable == true else {
             LoadingManager.shared.hideLoading()
             delay {
@@ -270,11 +275,12 @@ class RequestManager: NSObject {
         let url = URL(string: urlString)!
         debugPrint("API Url ->\(url.absoluteString)")
         debugPrint("API Payload -> \(parameter)")
+        // debugPrint("requestHeader:\(headers)")
         Alamofire.upload(multipartFormData: { (MultipartFormData) in
             
             for imageData in profileImagesData {
                 // set key name as array if array contains more than 1 pics
-                //                let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
+                // let keyName = imagesData.count > 1 ? "\(imageData.key)[]" : "\(imageData.key)"
                 // append data
                 MultipartFormData.append(imageData.value, withName: profileKeyName ?? String(), fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
             }
@@ -282,7 +288,7 @@ class RequestManager: NSObject {
             for (key, value) in parameter {
                 MultipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
             }
-        }, to: url) { (encodingResult) in
+        }, to: url, headers: headers) { (encodingResult) in
             switch encodingResult {
             case .success(request: let request, streamingFromDisk: let streamingFromDisk, streamFileURL: let streamFileURL):
                 request.responseJSON { response in
@@ -319,5 +325,6 @@ struct Status {
         static let unauthorized = 401
         static let notfound = 404
         static let sessionExpired = 500
+        static let notRegistered = 107
     }
 }
