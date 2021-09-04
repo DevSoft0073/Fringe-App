@@ -154,6 +154,8 @@
 		7CE2E85226CB943900AF882A /* ProfileTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE2E85026CB943900AF882A /* ProfileTBCell.xib */; };
 		7CE2E85726CB9A3200AF882A /* ProfileSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2E85526CB9A3200AF882A /* ProfileSwitchCell.swift */; };
 		7CE2E85826CB9A3200AF882A /* ProfileSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE2E85626CB9A3200AF882A /* ProfileSwitchCell.xib */; };
+		7CE3666026E33310008D231A /* PaymentMethodTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE3665F26E33310008D231A /* PaymentMethodTVC.xib */; };
+		7CE3666326E33340008D231A /* PaymentMethodTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE3666226E33340008D231A /* PaymentMethodTVC.swift */; };
 		7CE46BED26CCE09B004EC6C7 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE46BEC26CCE09B004EC6C7 /* EditProfileVC.swift */; };
 		7CE46BF026CCFF07004EC6C7 /* AccountInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE46BEF26CCFF07004EC6C7 /* AccountInformationVC.swift */; };
 		F33DF4E0C97AFE699E18A5FB /* Pods_Fringe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */; };
@@ -312,6 +314,8 @@
 		7CE2E85026CB943900AF882A /* ProfileTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTBCell.xib; sourceTree = "<group>"; };
 		7CE2E85526CB9A3200AF882A /* ProfileSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSwitchCell.swift; sourceTree = "<group>"; };
 		7CE2E85626CB9A3200AF882A /* ProfileSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSwitchCell.xib; sourceTree = "<group>"; };
+		7CE3665F26E33310008D231A /* PaymentMethodTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentMethodTVC.xib; sourceTree = "<group>"; };
+		7CE3666226E33340008D231A /* PaymentMethodTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTVC.swift; sourceTree = "<group>"; };
 		7CE46BEC26CCE09B004EC6C7 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		7CE46BEF26CCFF07004EC6C7 /* AccountInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationVC.swift; sourceTree = "<group>"; };
 		CFE4CE7EF00B8A63526B1946 /* Pods-Fringe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fringe.release.xcconfig"; path = "Target Support Files/Pods-Fringe/Pods-Fringe.release.xcconfig"; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 				7CE2E85626CB9A3200AF882A /* ProfileSwitchCell.xib */,
 				7CE2E85026CB943900AF882A /* ProfileTBCell.xib */,
 				7CE0F63626D4A51900C3AAFB /* SearchTBCell.xib */,
+				7CE3665F26E33310008D231A /* PaymentMethodTVC.xib */,
 				7CE041AA26E090A20036EEA0 /* InboxTVCell.xib */,
 			);
 			path = "Player XIBs";
@@ -391,6 +396,7 @@
 			children = (
 				7C8F1D5C26CE328800135C41 /* AddPaymentTVCell.swift */,
 				7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */,
+				7CE3666226E33340008D231A /* PaymentMethodTVC.swift */,
 				7C780FE726C582C4003F1F12 /* FavouriteTVCell.swift */,
 				7C94875526CA49AA00870F54 /* FringeConfirmedCell.swift */,
 				7C780FF326C64B68003F1F12 /* FringePendingCell.swift */,
@@ -866,6 +872,7 @@
 				7CE041A126DF4FCC0036EEA0 /* ProfileViewForTitle.xib in Resources */,
 				7C52986226DCB3E400A3606D /* HostConfirmedCell.xib in Resources */,
 				7C780FEA26C582C4003F1F12 /* FavouriteTVCell.xib in Resources */,
+				7CE3666026E33310008D231A /* PaymentMethodTVC.xib in Resources */,
 				7C5E41B426D8B9B800D63728 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1012,6 +1019,7 @@
 				7CE0F64226D4D41A00C3AAFB /* SignUpHostVC.swift in Sources */,
 				7C52988B26DDF2E600A3606D /* HostProfileHeaderView.swift in Sources */,
 				7C780F7826C3A6DB003F1F12 /* ESTabBarItemBadgeView.swift in Sources */,
+				7CE3666326E33340008D231A /* PaymentMethodTVC.swift in Sources */,
 				7C780FF526C64B68003F1F12 /* FringePendingCell.swift in Sources */,
 				7CE46BED26CCE09B004EC6C7 /* EditProfileVC.swift in Sources */,
 				7C3EC18326E1EAF5006D8310 /* AddGuestVC.swift in Sources */,

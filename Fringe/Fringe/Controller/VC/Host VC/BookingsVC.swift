@@ -118,7 +118,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
                         cell.btnMoreInfo.isHidden = false
                     }
                     cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
-                    //                    cell.btnReject.addTarget(self, action: #selector(showpopUpView), for: .touchUpInside)
+                                        cell.btnReject.addTarget(self, action: #selector(showpopUpView), for: .touchUpInside)
                     //                    cell.btnAccept.addTarget(self, action: #selector(requestAccept), for: .touchUpInside)
                     return cell
                 }else{
@@ -172,6 +172,26 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             cell.btnClose.isHidden = true
             cell.btnMoreInfo.isHidden = false
             tblBooking.reloadData()
+        }
+    }
+    
+    @objc func showpopUpView(sender : UIButton) {
+        let controller = NavigationManager.shared.businessHomeRejectionVC
+//        let data = items[sender.tag]
+//        controller.requestID = data.id ?? ""
+        controller.modalPresentationStyle = .overFullScreen
+//        controller.updateTblViewData = {
+//
+//            DispatchQueue.main.async {
+//                self.lastRequestId = ""
+//                self.needToshowInfoView = true
+//                self.performGetSessionData { (flag: Bool) in
+//                    self.updateUI()
+//                }
+//            }
+//        }
+        
+        self.present(controller, animated: true) {
         }
     }
     

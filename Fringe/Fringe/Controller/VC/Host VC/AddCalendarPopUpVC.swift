@@ -9,6 +9,12 @@ import Foundation
 
 class AddCalendarPopUpVC : BaseVC {
     
+    @IBOutlet weak var addSlot: UIButton!
+    @IBOutlet weak var blockDay: UIButton!
+    @IBOutlet weak var dataView: UIView!
+    @IBOutlet weak var selectSlotBtn: UIButton!
+    @IBOutlet weak var blockDateBtn: UIButton!
+    @IBOutlet weak var mainView: UIView!
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -23,6 +29,16 @@ class AddCalendarPopUpVC : BaseVC {
         
     }
     
+    //------------------------------------------------------
+    
+    //MARK: Actions
+    
+    @IBAction func btnBlock(_ sender: Any) {
+    }
+    
+    
+    @IBAction func btnSave(_ sender: Any) {
+    }
     //------------------------------------------------------
     
     //MARK: UIViewController

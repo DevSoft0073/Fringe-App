@@ -187,7 +187,7 @@
 "payment_method" = "Add payment method";
 "allow_location" = "Allow Location";
 "allow_notification" = "Allow notification";
-"switch_to_business" = "Switch to business";
+"switch_to_business" = "Switch to host";
 "switch_to_player" = "Switch to player";
 "terms_of_service" = "Terms of Service";
 

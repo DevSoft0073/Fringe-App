@@ -359,5 +359,9 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         return golfStoryboard.instantiateViewController(withIdentifier: String(describing: AddCalendarPopUpVC.self)) as! AddCalendarPopUpVC
     }
     
+    public var businessHomeRejectionVC: BusinessHomeRejectionVC {
+        return golfStoryboard.instantiateViewController(withIdentifier: String(describing: BusinessHomeRejectionVC.self)) as! BusinessHomeRejectionVC
+    }
+    
 }
 
