@@ -30,6 +30,8 @@ class PreferenceManager: NSObject {
     private let keyUserId = "userId"
     private let keyUserData = "keyUserData"
     private let keyLoggedUser = "keyLoggedUser"
+    private let keyLat = "lat"
+    private let keyLong = "long"
 
     var deviceToken: String? {
         set {
@@ -96,6 +98,34 @@ class PreferenceManager: NSObject {
         }
         get {
             return userDefault.bool(forKey: keyLoggedUser)
+        }
+    }
+    
+    var lat: Double? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: keyLat)
+            } else {
+                userDefault.removeObject(forKey: keyLat)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.double(forKey: keyLat)
+        }
+    }
+    
+    var long: Double? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: keyLong)
+            } else {
+                userDefault.removeObject(forKey: keyLong)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.double(forKey: keyLong)
         }
     }
     

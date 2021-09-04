@@ -40,11 +40,17 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         tblListing.dataSource = self
         
         
-        var identifier = String(describing: HomeListingTBCell.self)
-        var nibProfileCell = UINib(nibName: identifier, bundle: Bundle.main)
+        let identifier = String(describing: HomeListingTBCell.self)
+        let nibProfileCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblListing.register(nibProfileCell, forCellReuseIdentifier: identifier)
         
     }
+    
+    static func instantiate() -> HomeListingVC {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        return storyBoard.instantiateViewController(withIdentifier: "HomeListingVC") as! HomeListingVC
+    }
+    
     func updateUI() {
         
         tblListing.reloadData()
@@ -98,8 +104,7 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setup()
-        NavigationManager.shared.isEnabledBottomMenu = false
-        
+//        NavigationManager.shared.isEnabledBottomMenu = false
     }
     
     //------------------------------------------------------

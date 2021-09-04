@@ -9,7 +9,6 @@
 
 import UIKit
 import GoogleSignIn
-import FBSDKCoreKit
 import UserNotifications
 import IQKeyboardManagerSwift
 

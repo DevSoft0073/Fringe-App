@@ -19,14 +19,12 @@
   pod "MonthYearPicker", '~> 4.0.2'
   pod 'GCCountryPicker'
   pod 'FSCalendar'
-  
-  #facebook sign in
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
-  pod 'FacebookShare'
 
   #google sign in
   pod 'GoogleSignIn'
+
+  #Home Screen pull up
+   pod 'FittedSheets'
   
   #apple sign in
   pod 'AppleSignIn'

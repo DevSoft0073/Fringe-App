@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F33172326E37BF500D7D466 /* FGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33172226E37BF500D7D466 /* FGLocationManager.swift */; };
 		1F5DF83326E2075D00EA7327 /* FavoriteListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5DF83226E2075D00EA7327 /* FavoriteListing.swift */; };
 		1F5DF83526E23D7D00EA7327 /* FavUnfavModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */; };
 		1F72DA0B26D631680073FC7E /* loader_ring.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F72DA0A26D631680073FC7E /* loader_ring.json */; };
@@ -165,6 +166,7 @@
 /* Begin PBXFileReference section */
 		08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fringe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6EA47CE18B85558BA94DF3 /* Pods-Fringe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fringe.debug.xcconfig"; path = "Target Support Files/Pods-Fringe/Pods-Fringe.debug.xcconfig"; sourceTree = "<group>"; };
+		1F33172226E37BF500D7D466 /* FGLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGLocationManager.swift; sourceTree = "<group>"; };
 		1F5DF83226E2075D00EA7327 /* FavoriteListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListing.swift; sourceTree = "<group>"; };
 		1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavUnfavModal.swift; sourceTree = "<group>"; };
 		1F72DA0A26D631680073FC7E /* loader_ring.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_ring.json; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 				7C780F8B26C3BE75003F1F12 /* BaseVC.swift */,
 				7CA24C2826C2415C00437C8A /* AppFunctions.swift */,
 				7CA24C2526C2415100437C8A /* LocalizableConstants.swift */,
+				1F33172226E37BF500D7D466 /* FGLocationManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -980,6 +983,7 @@
 				7CA24C5C26C2426800437C8A /* ResponseModal.swift in Sources */,
 				7CE0F63F26D4B87B00C3AAFB /* ConfirmedPayVC.swift in Sources */,
 				7CE46BF026CCFF07004EC6C7 /* AccountInformationVC.swift in Sources */,
+				1F33172326E37BF500D7D466 /* FGLocationManager.swift in Sources */,
 				7C52988426DDEF8600A3606D /* HostProfileSwitchCell.swift in Sources */,
 				7C780FCA26C506E5003F1F12 /* NotificationTVCell.swift in Sources */,
 				7CA24C5D26C2426800437C8A /* UserModal.swift in Sources */,

@@ -8,8 +8,6 @@ import UIKit
 import Toucan
 import Foundation
 import IQKeyboardManagerSwift
-import FacebookLogin
-import FBSDKLoginKit
 import GoogleSignIn
 import AppleSignIn
 import AuthenticationServices
