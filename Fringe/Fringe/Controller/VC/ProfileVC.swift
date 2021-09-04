@@ -291,7 +291,8 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setup()
-        
+        self.performGetUserProfile { (flag : Bool) in
+        }
         NavigationManager.shared.isEnabledBottomMenu = true
     }
     
