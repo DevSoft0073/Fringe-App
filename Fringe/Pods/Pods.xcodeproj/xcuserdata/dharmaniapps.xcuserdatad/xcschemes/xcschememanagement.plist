@@ -14,7 +14,7 @@
 		<key>AppAuth.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>24</integer>
+			<integer>18</integer>
 		</dict>
 		<key>AppleSignIn.xcscheme_^#shared#^_</key>
 		<dict>
@@ -65,6 +65,11 @@
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
+		<key>FittedSheets.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 		<key>GCCountryPicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -80,17 +85,17 @@
 		<key>GTMSessionFetcher.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>20</integer>
 		</dict>
 		<key>GoogleSignIn-GoogleSignIn.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>23</integer>
+			<integer>17</integer>
 		</dict>
 		<key>GoogleSignIn.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>21</integer>
+			<integer>15</integer>
 		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
