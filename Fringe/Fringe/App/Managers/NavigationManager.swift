@@ -333,6 +333,11 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: AddGuestVC.self)) as! AddGuestVC
     }
     
+    public var paymentMethodVC : PaymentMethodVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PaymentMethodVC.self)) as! PaymentMethodVC
+    }
+    
+    
     
     // HostNavigation
     

@@ -156,6 +156,7 @@
 		7CE2E85826CB9A3200AF882A /* ProfileSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE2E85626CB9A3200AF882A /* ProfileSwitchCell.xib */; };
 		7CE3666026E33310008D231A /* PaymentMethodTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE3665F26E33310008D231A /* PaymentMethodTVC.xib */; };
 		7CE3666326E33340008D231A /* PaymentMethodTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE3666226E33340008D231A /* PaymentMethodTVC.swift */; };
+		7CE3666626E35BFF008D231A /* PaymentMethodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE3666526E35BFF008D231A /* PaymentMethodVC.swift */; };
 		7CE46BED26CCE09B004EC6C7 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE46BEC26CCE09B004EC6C7 /* EditProfileVC.swift */; };
 		7CE46BF026CCFF07004EC6C7 /* AccountInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE46BEF26CCFF07004EC6C7 /* AccountInformationVC.swift */; };
 		F33DF4E0C97AFE699E18A5FB /* Pods_Fringe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */; };
@@ -316,6 +317,7 @@
 		7CE2E85626CB9A3200AF882A /* ProfileSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSwitchCell.xib; sourceTree = "<group>"; };
 		7CE3665F26E33310008D231A /* PaymentMethodTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentMethodTVC.xib; sourceTree = "<group>"; };
 		7CE3666226E33340008D231A /* PaymentMethodTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTVC.swift; sourceTree = "<group>"; };
+		7CE3666526E35BFF008D231A /* PaymentMethodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodVC.swift; sourceTree = "<group>"; };
 		7CE46BEC26CCE09B004EC6C7 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		7CE46BEF26CCFF07004EC6C7 /* AccountInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationVC.swift; sourceTree = "<group>"; };
 		CFE4CE7EF00B8A63526B1946 /* Pods-Fringe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fringe.release.xcconfig"; path = "Target Support Files/Pods-Fringe/Pods-Fringe.release.xcconfig"; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 				7CE0F64126D4D41A00C3AAFB /* SignUpHostVC.swift */,
 				7C780F8E26C3C105003F1F12 /* SignUpVC.swift */,
 				7C3EC18226E1EAF5006D8310 /* AddGuestVC.swift */,
+				7CE3666526E35BFF008D231A /* PaymentMethodVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1026,6 +1029,7 @@
 				7CA24C2126C240AB00437C8A /* LoadingIndicatorVC.swift in Sources */,
 				7C73149726DE4D2900BBFE09 /* AddCalendarPopUpVC.swift in Sources */,
 				7CE041B626E0BBEA0036EEA0 /* HostPrivacyVC.swift in Sources */,
+				7CE3666626E35BFF008D231A /* PaymentMethodVC.swift in Sources */,
 				7CA24C8A26C2537600437C8A /* AppDelegate.swift in Sources */,
 				7C780F8426C3A6FF003F1F12 /* BasicContentView.swift in Sources */,
 				7CD7EB0826D14EA400BEDDA2 /* BookingDetailsRatingVC.swift in Sources */,

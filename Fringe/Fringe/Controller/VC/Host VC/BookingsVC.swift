@@ -124,8 +124,8 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
                 }else{
                     
                 }
-                
             }
+            
         } else if segment2.isSelected {
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HostAwaitingCell.self)) as? HostAwaitingCell {
                 if items.count > 0 {
@@ -209,6 +209,8 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     //MARK: SegmentViewDelegate
     
     func segment(view: SegmentView, didChange flag: Bool) {
+        
+        tblBooking.reloadData()
         
         self.needToshowInfoView = true
         

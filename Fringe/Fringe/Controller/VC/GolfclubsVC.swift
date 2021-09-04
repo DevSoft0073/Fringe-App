@@ -46,12 +46,13 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
 //        navigationItem.title = LocalizableConstants.Controller.Fringe.title.localized()
         segment1.btn.setTitle(LocalizableConstants.Controller.Fringe.pending.localized(), for: .normal)
         segment2.btn.setTitle(LocalizableConstants.Controller.Fringe.confirmed.localized(), for: .normal)
+        
         segment1.delegate = self
         segment2.delegate = self
 
         segment1.isSelected = true
         segment2.isSelected = !segment1.isSelected
-//
+        
         var identifier = String(describing: FringePendingCell.self)
         var nibCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
@@ -62,101 +63,88 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         
     }
     
-    
     //------------------------------------------------------
     
-    //MARK: UITableViewDataSource,UITableViewDelegate
+    //MARK: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringePendingCell.self)) as? FringePendingCell {
+        if segment1.isSelected {
             
-            cell.btnMoreInfo.tag = indexPath.row
-            cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
-            cell.btnClose.tag = indexPath.row
-            if needToshowInfoView {
-                cell.cancelView.isHidden = true
-                cell.btnClose.isHidden = true
-                cell.btnMoreInfo.isHidden = false
+            if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringePendingCell.self)) as? FringePendingCell {
+                
+                cell.btnMoreInfo.tag = indexPath.row
+                cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
+                cell.btnClose.tag = indexPath.row
+                if needToshowInfoView {
+                    cell.cancelView.isHidden = true
+                    cell.btnClose.isHidden = true
+                    cell.btnMoreInfo.isHidden = false
+                }
+                cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
+                return cell
             }
-            cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
+        } else if segment2.isSelected {
             
-            //            if segment1.isSelected {
-            //                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringePendingCell.self)) as? FringePendingCell{
-            ////                    let data = items[indexPath.row]
-            ////                    cell.setup(name: data.studioDetail?.username ?? "", stName: data.studioDetail?.name ?? "", date: data.studioDetail?.address, time: data.time, specialIns: data.specialInstruction ?? "")
-            //                    cell.btnMoreInfo.tag = indexPath.row
-            //                    cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
-            //                    cell.btnClose.tag = indexPath.row
-            //                    if needToshowInfoView {
-            ////                        cell.requestView.isHidden = true
-            ////                        cell.instructionView.isHidden = true
-            //                        cell.btnClose.isHidden = true
-            //                        cell.btnMoreInfo.isHidden = false
-            //                    }
-            //                    cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
-            ////                    cell.btnCancelation.addTarget(self, action: #selector(showpopUpView), for: .touchUpInside)
-            //                    return cell
-            //                }
-            //            }
-            return cell
-        }
-        else if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringeConfirmedCell.self)) as? FringeConfirmedCell{
-            cell.btnPay.tag = indexPath.row
-            cell.btnPay.addTarget(self, action: #selector(showPayView), for: .touchUpInside)
-            if needToshowInfoView {
-                cell.refundRequestView.isHidden = true
-                cell.btnPay.isHidden = false
+           if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringeConfirmedCell.self)) as? FringeConfirmedCell{
+                cell.btnPay.tag = indexPath.row
+                cell.btnPay.addTarget(self, action: #selector(showPayView), for: .touchUpInside)
+                if needToshowInfoView {
+                    cell.refundRequestView.isHidden = true
+                    cell.btnPay.isHidden = false
+                }
+                cell.btnRefundRequest.addTarget(self, action: #selector(showRequestView), for: .touchUpInside)
+                return cell
             }
-            cell.btnRefundRequest.addTarget(self, action: #selector(showRequestView), for: .touchUpInside)
-            return cell
+            
+        } else {
+            
         }
+        
         return UITableViewCell()
     }
-    //    MARK:- Actions
+    
+    //------------------------------------------------------
+    
+    //  MARK: Actions
     
     @objc func showHideView(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringePendingCell{
             self.needToshowInfoView = false
             cell.cancelView.isHidden = false
-            //            cell.instructionView.isHidden = false
             cell.btnClose.isHidden = false
             cell.btnMoreInfo.isHidden = true
             tblGolf.reloadData()
             btnTapped = false
         }
     }
+    
     @objc func showViews(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringePendingCell{
             btnTapped = true
             cell.cancelView.isHidden = true
-            //            cell.instructionView.isHidden = true
             cell.btnClose.isHidden = true
             cell.btnMoreInfo.isHidden = false
             tblGolf.reloadData()
         }
     }
+    
     @objc func showPayView(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringeConfirmedCell{
             btnTapped = true
             cell.refundRequestView.isHidden = true
-            //            cell.instructionView.isHidden = true
-            
             tblGolf.reloadData()
         }
     }
+    
     @objc func showRequestView(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringeConfirmedCell{
             btnTapped = true
             cell.refundRequestView.isHidden = false
-            
-            //            cell.instructionView.isHidden = true
-            
             tblGolf.reloadData()
         }
     }
@@ -168,6 +156,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = NavigationManager.shared.confirmedPayVC
         push(controller: controller)
@@ -179,28 +168,16 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     
     func segment(view: SegmentView, didChange flag: Bool) {
         
+        tblGolf.reloadData()
+        
         self.needToshowInfoView = true
         
         if view == segment1 {
-            
-//            LoadingManager.shared.showLoading()
-//
-//            delay {
-//
-//
-//            }
-            
+                        
             segment2.isSelected = false
             
         } else if view == segment2 {
-            
-            
-//            LoadingManager.shared.showLoading()
-//
-//            delay {
-//
-//            }
-            
+
             segment1.isSelected = false
             
         }

@@ -9,6 +9,8 @@ import UIKit
 
 class PaymentMethodTVC: UITableViewCell {
 
+    @IBOutlet weak var checkUncheckBtn: UIButton!
+    @IBOutlet weak var selectUnselectImg: UIImageView!
     @IBOutlet weak var cardDetails: FGRegularLabel!
     @IBOutlet weak var nameLbl: FGSemiboldLabel!
     @IBOutlet weak var iconImage: UIImageView!
@@ -16,6 +18,27 @@ class PaymentMethodTVC: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    //------------------------------------------------------
+    
+    //MARK: Custome
+    
+    func setup(details: String , name : String) {
+        cardDetails.text = details
+        nameLbl.text = name
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        selectionStyle = .none
+    }
+    
+    //------------------------------------------------------
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
