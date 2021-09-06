@@ -30,10 +30,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUN-kH-dXT">
-                        <rect key="frame" x="15" y="10" width="317" height="88"/>
+                        <rect key="frame" x="15" y="12" width="317" height="88"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="CCO-70-Mic">
-                                <rect key="frame" x="10" y="10" width="302" height="66"/>
+                                <rect key="frame" x="10" y="11" width="302" height="66"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVt-WI-cC0">
                                         <rect key="frame" x="0.0" y="0.0" width="302" height="22"/>
@@ -133,9 +133,9 @@
                         <color key="backgroundColor" name="appBackground"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CCO-70-Mic" secondAttribute="trailing" constant="5" id="9oS-7B-vd3"/>
-                            <constraint firstItem="CCO-70-Mic" firstAttribute="top" secondItem="YUN-kH-dXT" secondAttribute="top" constant="10" id="Ub3-4E-ktk"/>
+                            <constraint firstItem="CCO-70-Mic" firstAttribute="top" secondItem="YUN-kH-dXT" secondAttribute="top" constant="11" id="Ub3-4E-ktk"/>
                             <constraint firstItem="CCO-70-Mic" firstAttribute="leading" secondItem="YUN-kH-dXT" secondAttribute="leading" constant="10" id="hKO-Mo-ovv"/>
-                            <constraint firstAttribute="bottom" secondItem="CCO-70-Mic" secondAttribute="bottom" constant="12" id="vu8-Hl-s5x"/>
+                            <constraint firstAttribute="bottom" secondItem="CCO-70-Mic" secondAttribute="bottom" constant="11" id="vu8-Hl-s5x"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -145,8 +145,8 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="YUN-kH-dXT" secondAttribute="bottom" constant="15" id="2gH-kT-XUe"/>
-                    <constraint firstItem="YUN-kH-dXT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="3Ww-Wf-4tJ"/>
+                    <constraint firstAttribute="bottom" secondItem="YUN-kH-dXT" secondAttribute="bottom" constant="12" id="2gH-kT-XUe"/>
+                    <constraint firstItem="YUN-kH-dXT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="3Ww-Wf-4tJ"/>
                     <constraint firstItem="YUN-kH-dXT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ASf-qF-GkT"/>
                     <constraint firstAttribute="trailing" secondItem="YUN-kH-dXT" secondAttribute="trailing" constant="20" id="onB-JB-vt0"/>
                 </constraints>

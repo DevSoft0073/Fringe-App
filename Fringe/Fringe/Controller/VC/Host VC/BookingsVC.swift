@@ -180,6 +180,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
 //        let data = items[sender.tag]
 //        controller.requestID = data.id ?? ""
         controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .flipHorizontal
 //        controller.updateTblViewData = {
 //
 //            DispatchQueue.main.async {

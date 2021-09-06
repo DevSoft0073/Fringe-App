@@ -11,7 +11,7 @@ import IQKeyboardManagerSwift
 
 class BusinessHomeRejectionVC : BaseVC {
     
-
+    
     @IBOutlet weak var btnCancel: FGActiveButton!
     @IBOutlet weak var btnReject: FGActiveButton!
     @IBOutlet weak var reasonTextView: FGRegularTextView!
@@ -66,40 +66,47 @@ class BusinessHomeRejectionVC : BaseVC {
     
     //MARK: Validation
     
-//    func validate() -> Bool {
-//
-//        if ValidationManager.shared.isEmpty(text: resonTxtView.text) == true {
-//            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.rejectReason) {
-//            }
-//            return false
-//        }
-//        return true
-//    }
+    //    func validate() -> Bool {
+    //
+    //        if ValidationManager.shared.isEmpty(text: resonTxtView.text) == true {
+    //            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.rejectReason) {
+    //            }
+    //            return false
+    //        }
+    //        return true
+    //    }
     
     //------------------------------------------------------
     
     //MARK: Actions
     
     @IBAction func btnReject(_ sender: Any) {
+        self.dismiss(animated: true) {
+        }
     }
     
     @IBAction func btnCancel(_ sender: Any) {
+        self.dismiss(animated: true) {
+        }
     }
     
     //------------------------------------------------------
     
     //MARK:  Dismiss Popup
     
-//    @objc func handleTap(_ sender:UITapGestureRecognizer){
-//        self.dismiss(animated: true) {
-//        }
-//    }
+    @objc func handleTap(_ sender:UITapGestureRecognizer){
+        self.dismiss(animated: true) {
+        }
+    }
     //------------------------------------------------------
     
     //MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let mytapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        self.view.addGestureRecognizer(mytapGestureRecognizer)
+        
     }
     
     //------------------------------------------------------

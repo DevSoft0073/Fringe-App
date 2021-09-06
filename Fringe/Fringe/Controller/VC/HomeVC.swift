@@ -82,7 +82,7 @@ class HomeVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationManager.shared.isEnabledBottomMenu = true
+       
         setMarkers(lat: 30.704649, Long: 76.717873)
     }
     
@@ -90,6 +90,8 @@ class HomeVC : BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NavigationManager.shared.isEnabledBottomMenu = true
     }
+
 }
 

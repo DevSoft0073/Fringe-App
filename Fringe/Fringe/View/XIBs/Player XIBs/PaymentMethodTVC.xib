@@ -29,7 +29,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I04-SJ-5cR">
                         <rect key="frame" x="0.0" y="5" width="340" height="74"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mastercard" translatesAutoresizingMaskIntoConstraints="NO" id="cZ4-Ck-IZS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="amex" translatesAutoresizingMaskIntoConstraints="NO" id="cZ4-Ck-IZS">
                                 <rect key="frame" x="10" y="11.5" width="51" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cZ4-Ck-IZS" secondAttribute="height" multiplier="1:1" id="Rxr-1J-4q4"/>
@@ -113,7 +113,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="mastercard" width="145" height="145"/>
+        <image name="amex" width="145" height="92"/>
         <image name="radioun" width="73" height="73"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

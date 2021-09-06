@@ -141,6 +141,14 @@ struct FGImageName {
     static let iconUnFavWhiteHeart = "un_fav"
     static let iconUpload = "upload"
     
+    // payment cards
+    
+    static let iconAmericanExpress = "amex"
+    static let iconMaestro = "Maestro"
+    static let iconMastercard = "mastercard"
+    static let iconUnionpay = "unionpay"
+    static let iconVisa = "visa"
+    
     // SignupHost
     
     static let iconSignClose = "sign_close"

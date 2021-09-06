@@ -22,21 +22,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FringePendingCell" rowHeight="248" id="KGk-i7-Jjw" customClass="FringePendingCell" customModule="Fringe" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="466" height="248"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FringePendingCell" rowHeight="212" id="KGk-i7-Jjw" customClass="FringePendingCell" customModule="Fringe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="459" height="230"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="466" height="248"/>
+                <rect key="frame" x="0.0" y="0.0" width="459" height="230"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1p-4S-ujq">
-                        <rect key="frame" x="16" y="16" width="434" height="216"/>
+                        <rect key="frame" x="16" y="8" width="427" height="214"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="A21-G1-Tck">
-                                <rect key="frame" x="16" y="10" width="402" height="196"/>
+                                <rect key="frame" x="16" y="14" width="395" height="186"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6nn-Qk-84J">
-                                        <rect key="frame" x="0.0" y="0.0" width="402" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="395" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winged Golfclub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeJ-5V-XeU" customClass="FGSemiboldLabel" customModule="Fringe" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="5" width="127" height="30"/>
@@ -45,7 +45,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31L-hm-IHJ" customClass="FGActiveButton" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="297.5" y="7.5" width="96.5" height="25"/>
+                                                <rect key="frame" x="292" y="7.5" width="95" height="25"/>
                                                 <color key="backgroundColor" red="0.135158211" green="0.28729230169999997" blue="0.1231569275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="3eP-zM-QKI"/>
@@ -61,7 +61,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ga-DE-l7i">
-                                                <rect key="frame" x="378" y="12" width="16" height="16"/>
+                                                <rect key="frame" x="371" y="12" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="7ga-DE-l7i" secondAttribute="height" multiplier="1:1" id="aVA-Go-E21"/>
                                                 </constraints>
@@ -84,7 +84,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBu-Nj-Mgz">
-                                        <rect key="frame" x="0.0" y="40" width="402" height="35"/>
+                                        <rect key="frame" x="0.0" y="40" width="395" height="35"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6FX-po-J0H">
                                                 <rect key="frame" x="0.0" y="0.0" width="147" height="35"/>
@@ -130,10 +130,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byX-2q-Ucm">
-                                        <rect key="frame" x="0.0" y="75" width="402" height="121"/>
+                                        <rect key="frame" x="0.0" y="75" width="395" height="111"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamaroneck, Ontario, Canada.." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rs-7E-UmK" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="402" height="111"/>
+                                                <rect key="frame" x="0.0" y="5" width="395" height="101"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -149,7 +149,7 @@
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0SO-t8-uzP">
-                                        <rect key="frame" x="0.0" y="151" width="402" height="45"/>
+                                        <rect key="frame" x="0.0" y="141" width="395" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7y-HH-tT7" customClass="FGActiveButton" customModule="Fringe" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="6.5" width="160" height="30"/>
@@ -181,9 +181,9 @@
                         </subviews>
                         <color key="backgroundColor" name="appBackground"/>
                         <constraints>
-                            <constraint firstItem="A21-G1-Tck" firstAttribute="top" secondItem="k1p-4S-ujq" secondAttribute="top" constant="10" id="WIQ-he-jbk"/>
+                            <constraint firstItem="A21-G1-Tck" firstAttribute="top" secondItem="k1p-4S-ujq" secondAttribute="top" constant="14" id="WIQ-he-jbk"/>
                             <constraint firstItem="A21-G1-Tck" firstAttribute="leading" secondItem="k1p-4S-ujq" secondAttribute="leading" constant="16" id="WNC-yy-U1y"/>
-                            <constraint firstAttribute="bottom" secondItem="A21-G1-Tck" secondAttribute="bottom" constant="10" id="kPQ-TW-IYp"/>
+                            <constraint firstAttribute="bottom" secondItem="A21-G1-Tck" secondAttribute="bottom" constant="14" id="kPQ-TW-IYp"/>
                             <constraint firstAttribute="trailing" secondItem="A21-G1-Tck" secondAttribute="trailing" constant="16" id="xtU-AM-YAp"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -195,9 +195,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="k1p-4S-ujq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="8vC-aT-kmF"/>
-                    <constraint firstItem="k1p-4S-ujq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="IFm-7D-NEc"/>
+                    <constraint firstItem="k1p-4S-ujq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="IFm-7D-NEc"/>
                     <constraint firstAttribute="trailing" secondItem="k1p-4S-ujq" secondAttribute="trailing" constant="16" id="bym-po-BDT"/>
-                    <constraint firstAttribute="bottom" secondItem="k1p-4S-ujq" secondAttribute="bottom" constant="16" id="kDe-Vo-v7l"/>
+                    <constraint firstAttribute="bottom" secondItem="k1p-4S-ujq" secondAttribute="bottom" constant="8" id="kDe-Vo-v7l"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -210,7 +210,7 @@
                 <outlet property="golfClubNameLbl" destination="3Rs-7E-UmK" id="O3v-k9-StD"/>
                 <outlet property="nameLbl" destination="JeJ-5V-XeU" id="1df-6s-qd9"/>
             </connections>
-            <point key="canvasLocation" x="146.37681159420291" y="85.714285714285708"/>
+            <point key="canvasLocation" x="140" y="77.361319340329842"/>
         </tableViewCell>
     </objects>
     <resources>

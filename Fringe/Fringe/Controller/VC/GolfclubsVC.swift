@@ -136,6 +136,8 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     @objc func showPayView(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringeConfirmedCell{
             btnTapped = true
+            let controller = NavigationManager.shared.confirmedPayVC
+            push(controller: controller)
             cell.refundRequestView.isHidden = true
             tblGolf.reloadData()
         }
@@ -157,10 +159,6 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = NavigationManager.shared.confirmedPayVC
-        push(controller: controller)
-    }
     
     //------------------------------------------------------
     

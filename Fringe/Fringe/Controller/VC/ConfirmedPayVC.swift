@@ -44,6 +44,10 @@ class ConfirmedPayVC : BaseVC {
         push(controller: controller)
     }
     @IBAction func btnEditGuests(_ sender: Any) {
+        let controller = NavigationManager.shared.addGuestVC
+        controller.modalPresentationStyle = .overFullScreen
+        self.present(controller, animated: true) {
+        }
     }
     @IBAction func btnEditDate(_ sender: Any) {
     }

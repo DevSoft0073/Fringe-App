@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "amex.png",
+      "filename" : "amex@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "amex@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "amex@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

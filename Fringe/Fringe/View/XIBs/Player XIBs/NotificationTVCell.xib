@@ -37,7 +37,7 @@
                                 <color key="textColor" red="0.39996230599999999" green="0.40002405639999999" blue="0.39994883539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="August 12,2021" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHa-bB-hTq" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="August 12, 2021" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHa-bB-hTq" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="43" width="293.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Vbx-dN-qT9"/>

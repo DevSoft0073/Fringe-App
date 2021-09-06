@@ -30,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wlt-tl-6Gx">
-                        <rect key="frame" x="12" y="15" width="332" height="92"/>
+                        <rect key="frame" x="12" y="13.5" width="332" height="92"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2CK-q5-Qng">
                                 <rect key="frame" x="0.0" y="8" width="232" height="82"/>
@@ -197,10 +197,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="wlt-tl-6Gx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="37l-UB-k3j"/>
+                    <constraint firstItem="wlt-tl-6Gx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13.5" id="37l-UB-k3j"/>
                     <constraint firstItem="wlt-tl-6Gx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="6A2-ay-d73"/>
                     <constraint firstAttribute="trailing" secondItem="wlt-tl-6Gx" secondAttribute="trailing" constant="12" id="e4h-xd-lvY"/>
-                    <constraint firstAttribute="bottom" secondItem="wlt-tl-6Gx" secondAttribute="bottom" constant="12" id="ksp-xy-fui"/>
+                    <constraint firstAttribute="bottom" secondItem="wlt-tl-6Gx" secondAttribute="bottom" constant="13.5" id="ksp-xy-fui"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

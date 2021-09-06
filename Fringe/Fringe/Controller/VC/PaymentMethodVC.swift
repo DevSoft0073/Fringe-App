@@ -60,6 +60,8 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func btnAdd(_ sender: Any) {
+        let controller = NavigationManager.shared.addPaymentVC
+        push(controller: controller)
     }
     
     //------------------------------------------------------
@@ -83,10 +85,10 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = NavigationManager.shared.addPaymentVC
-        push(controller: controller)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let controller = NavigationManager.shared.addPaymentVC
+//        push(controller: controller)
+//    }
     
     
     //------------------------------------------------------

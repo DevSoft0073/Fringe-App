@@ -30,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSZ-2w-fO1">
-                        <rect key="frame" x="15" y="12" width="400" height="115"/>
+                        <rect key="frame" x="15" y="10" width="400" height="115"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="golf_img" translatesAutoresizingMaskIntoConstraints="NO" id="0r9-mf-agc">
                                 <rect key="frame" x="0.0" y="0.0" width="144" height="115"/>
@@ -179,8 +179,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="PSZ-2w-fO1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Ooc-Oy-dz1"/>
-                    <constraint firstAttribute="bottom" secondItem="PSZ-2w-fO1" secondAttribute="bottom" constant="8" id="P9K-Pp-Rr1"/>
-                    <constraint firstItem="PSZ-2w-fO1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="XLb-cd-nBP"/>
+                    <constraint firstAttribute="bottom" secondItem="PSZ-2w-fO1" secondAttribute="bottom" constant="10" id="P9K-Pp-Rr1"/>
+                    <constraint firstItem="PSZ-2w-fO1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="XLb-cd-nBP"/>
                     <constraint firstAttribute="trailing" secondItem="PSZ-2w-fO1" secondAttribute="trailing" constant="15" id="pSh-nH-0U5"/>
                 </constraints>
             </tableViewCellContentView>
