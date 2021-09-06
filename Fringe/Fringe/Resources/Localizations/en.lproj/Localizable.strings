@@ -219,10 +219,23 @@
 "enter_valid_routing_number" = "Enter valid routing number.";
 "enter_valid_SSN_number" = "Enter valid SSN number.";
 
+//account Details
+
+"enter_account_holder_name" = "Enter account holder name.";
+"enter_account_number" = "Enter account number.";
+"routing_number" = "Enter routing number.";
+"enter_SSN_number" = "Enter SSN number.";
+"upload_front_inmage" = "Upload front inmage.";
+"upload_back_image" = "Upload back image.";
+"enter_valid_account_number" = "Enter valid account number.";
+"enter_valid_routing_number" = "Enter valid routing number.";
+"enter_valid_SSN_number" = "Enter valid SSN number.";
+
 "enter_first_name_studio" = "Enter studio first name.";
 "enter_last_name_studio" = "Enter studio last name.";
 
 //Calendar
+
 "Sessions" = "Sessions";
 
 //cancellation request

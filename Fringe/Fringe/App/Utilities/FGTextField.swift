@@ -895,8 +895,8 @@ class FGAccountHolderNameTextField: FGRegularTextField {
 class FGAddImagesTextField: FGRegularTextField {
     
     var leftButton : UIButton {
-        let image = UIImage(named: "")
-        let button   = UIButton(type: UIButton.ButtonType.custom) as UIButton
+        let image = UIImage(named: FGImageName.iconUpload)
+        let button = UIButton(type: UIButton.ButtonType.custom) as UIButton
         button.setImage(image, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.imageView?.cornerRadius = 5
@@ -944,7 +944,75 @@ class FGAddImagesTextField: FGRegularTextField {
     
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
         
-        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding)), size: CGSize(width: CGFloat(padding) * 8, height: bounds.height -  CGFloat(padding * 2)))
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 2)))
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: aDecoder description
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+}
+
+class FGAddBackImagesTextField: FGRegularTextField {
+    
+    var leftButton : UIButton {
+        let image = UIImage(named: FGImageName.iconUpload)
+        let button = UIButton(type: UIButton.ButtonType.custom) as UIButton
+        button.setImage(image, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageView?.cornerRadius = 5
+        button.addTarget(self, action: #selector(addImages), for: .allEvents)
+        return button
+    }
+    
+    @objc func addImages(sender : UIButton){
+        self.uploadDelegate?.pickImage(tag: 0)
+    }
+    var uploadDelegate : UploadImages?
+    
+    //------------------------------------------------------
+    
+    func setup() {
+        
+        leftView = leftButton
+        leftView?.center.y = leftButton.center.y
+        self.keyboardType = .default
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .words
+        self.rightView?.isUserInteractionEnabled = false
+        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appWhite])
+    }
+    
+    
+    //------------------------------------------------------
+    
+    //MARK: Override
+    
+    let paddingV = UIEdgeInsets(top: 0, left: 10 * 8, bottom: 0, right: 5)
+    
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: paddingV)
+    }
+    
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: paddingV)
+    }
+    
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: paddingV)
+    }
+    
+    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 2)))
     }
     
     //------------------------------------------------------

@@ -38,6 +38,8 @@ class HostAddPaymentMethodVC : BaseVC {
     }
     
     @IBAction func btnEdit(_ sender: Any) {
+        let controller = NavigationManager.shared.businessAddPaymentMethodVC
+        push(controller: controller)
         
     }
     //------------------------------------------------------

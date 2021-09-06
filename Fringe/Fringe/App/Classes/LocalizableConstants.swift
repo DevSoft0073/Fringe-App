@@ -95,6 +95,18 @@ struct LocalizableConstants {
         static let enterGolfCoursePrice = "enter_golf_course_price"
         static let enterGolfCourseDescription = "enter_golf_course_description"
         
+        //account Details
+        
+        static let enterAccountHolderName = "enter_account_holder_name"
+        static let enterAccountNumber = "enter_account_number"
+        static let enterRoutingNumber = "routing_number"
+        static let enterSSN = "enter_SSN_number"
+        static let enterFrontImage = "upload_front_image"
+        static let enterBackImage = "upload_back_image"
+        static let enterValidAccountNumber = "enter_valid_account_number"
+        static let enterValidRoutingNumber = "enter_valid_routing_number"
+        static let enterValidSSNNumber = "enter_valid_SSN_number"
+        
         struct Error {
             
             static let noNetworkConnection = "no_network_connection"
@@ -167,12 +179,25 @@ struct LocalizableConstants {
             static let privacyPolicy = "Privacy"
             static let logout = "sign_out"
         }
+        
         struct AddPaymentMethod {
             
             static let creditDebitCard = "credit_debit_card"
             static let payPalCard = "pay_pal_card"
             static let appleCard = "apple_card"
         }
+        
+        //account Details
+        
+        static let enterAccountHolderName = "enter_account_holder_name"
+        static let enterAccountNumber = "enter_account_number"
+        static let enterRoutingNumber = "routing_number"
+        static let enterSSN = "enter_SSN_number"
+        static let enterFrontImage = "upload_front_image"
+        static let enterBackImage = "upload_back_image"
+        static let enterValidAccountNumber = "enter_valid_account_number"
+        static let enterValidRoutingNumber = "enter_valid_routing_number"
+        static let enterValidSSNNumber = "enter_valid_SSN_number"
         
     }
 }

@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="144" height="115"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="yaZ-bk-UUB">
-                                <rect key="frame" x="144" y="5" width="246" height="97"/>
+                                <rect key="frame" x="144" y="9" width="246" height="97"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yx6-yA-Cab">
                                         <rect key="frame" x="0.0" y="0.0" width="236" height="24"/>
@@ -148,11 +148,11 @@
                         <constraints>
                             <constraint firstItem="0r9-mf-agc" firstAttribute="leading" secondItem="PSZ-2w-fO1" secondAttribute="leading" id="5YG-5P-isS"/>
                             <constraint firstItem="0r9-mf-agc" firstAttribute="centerY" secondItem="PSZ-2w-fO1" secondAttribute="centerY" id="AUW-c2-ens"/>
-                            <constraint firstItem="yaZ-bk-UUB" firstAttribute="top" secondItem="PSZ-2w-fO1" secondAttribute="top" constant="5" id="DUL-FG-AFJ"/>
+                            <constraint firstItem="yaZ-bk-UUB" firstAttribute="top" secondItem="PSZ-2w-fO1" secondAttribute="top" constant="9" id="DUL-FG-AFJ"/>
                             <constraint firstItem="0r9-mf-agc" firstAttribute="width" secondItem="PSZ-2w-fO1" secondAttribute="width" multiplier="0.36" id="EC3-tG-v1R"/>
                             <constraint firstItem="0r9-mf-agc" firstAttribute="height" secondItem="PSZ-2w-fO1" secondAttribute="height" id="Ugb-JU-yAu"/>
                             <constraint firstAttribute="trailing" secondItem="yaZ-bk-UUB" secondAttribute="trailing" constant="10" id="iED-Fh-wew"/>
-                            <constraint firstAttribute="bottom" secondItem="yaZ-bk-UUB" secondAttribute="bottom" constant="13" id="kdX-22-Dbb"/>
+                            <constraint firstAttribute="bottom" secondItem="yaZ-bk-UUB" secondAttribute="bottom" constant="9" id="kdX-22-Dbb"/>
                             <constraint firstItem="yaZ-bk-UUB" firstAttribute="leading" secondItem="0r9-mf-agc" secondAttribute="trailing" id="v8U-Ih-2I5"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

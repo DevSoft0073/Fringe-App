@@ -97,6 +97,7 @@
 		7C94875826CA49AA00870F54 /* FringeConfirmedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C94875626CA49AA00870F54 /* FringeConfirmedCell.xib */; };
 		7C94876026CA96CE00870F54 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C94875F26CA96CE00870F54 /* ProfileHeaderView.xib */; };
 		7C94876326CA972C00870F54 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C94876226CA972C00870F54 /* ProfileHeaderView.swift */; };
+		7C97C92026E5E14B0090F7C7 /* BusinessAddPaymentMethodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97C91F26E5E14B0090F7C7 /* BusinessAddPaymentMethodVC.swift */; };
 		7CA24C0B26C23D9600437C8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA24C0926C23D9600437C8A /* LaunchScreen.storyboard */; };
 		7CA24C2126C240AB00437C8A /* LoadingIndicatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C2026C240AB00437C8A /* LoadingIndicatorVC.swift */; };
 		7CA24C2626C2415100437C8A /* LocalizableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA24C2526C2415100437C8A /* LocalizableConstants.swift */; };
@@ -257,6 +258,7 @@
 		7C94875626CA49AA00870F54 /* FringeConfirmedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FringeConfirmedCell.xib; sourceTree = "<group>"; };
 		7C94875F26CA96CE00870F54 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		7C94876226CA972C00870F54 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		7C97C91F26E5E14B0090F7C7 /* BusinessAddPaymentMethodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessAddPaymentMethodVC.swift; sourceTree = "<group>"; };
 		7CA24BFB26C23D9500437C8A /* Fringe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fringe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA24C0A26C23D9600437C8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CA24C0C26C23D9600437C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				7CE041B526E0BBEA0036EEA0 /* HostPrivacyVC.swift */,
 				7C52987A26DD0D7E00A3606D /* HostProfileVC.swift */,
 				7CE041B226E0BBA10036EEA0 /* HostServiceTermsVC.swift */,
+				7C97C91F26E5E14B0090F7C7 /* BusinessAddPaymentMethodVC.swift */,
 			);
 			path = "Host VC";
 			sourceTree = "<group>";
@@ -1018,6 +1021,7 @@
 				7CA24C5526C2424100437C8A /* FGDebouncer.swift in Sources */,
 				7CA24C5326C2424100437C8A /* FGImageView.swift in Sources */,
 				7C94875726CA49AA00870F54 /* FringeConfirmedCell.swift in Sources */,
+				7C97C92026E5E14B0090F7C7 /* BusinessAddPaymentMethodVC.swift in Sources */,
 				7C8F1D5A26CE236B00135C41 /* ChangePasswordVC.swift in Sources */,
 				7C780F8226C3A6FF003F1F12 /* IrregularityContentView.swift in Sources */,
 				7CA24C3826C241B200437C8A /* PreferenceManager.swift in Sources */,

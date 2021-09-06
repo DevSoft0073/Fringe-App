@@ -139,6 +139,7 @@ struct FGImageName {
     static let iconWhiteBack = "white_back"
     static let iconWhiteHeart = "white_heart"
     static let iconUnFavWhiteHeart = "un_fav"
+    static let iconUpload = "upload"
     
     // SignupHost
     

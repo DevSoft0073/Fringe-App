@@ -17,6 +17,12 @@ enum RegularExpressions: String {
     case cvv = "[0-3]"
     case expiryDate = "[0-5]"
 
+    case accountNumber = "[0-9]{9,18}"
+    case cardNumber = "[0-20]"
+    case routingNumber = "[0-9]"
+    case ssnNumber = "^\\d{3}-\\d{2}-\\d{4}$"
+    
+
 }
 
 class ValidationManager: NSObject {

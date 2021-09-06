@@ -365,8 +365,13 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     }
     
     public var businessHomeRejectionVC: BusinessHomeRejectionVC {
+
         return golfStoryboard.instantiateViewController(withIdentifier: String(describing: BusinessHomeRejectionVC.self)) as! BusinessHomeRejectionVC
     }
     
+    public var businessAddPaymentMethodVC: BusinessAddPaymentMethodVC {
+
+        return golfStoryboard.instantiateViewController(withIdentifier: String(describing: BusinessAddPaymentMethodVC.self)) as! BusinessAddPaymentMethodVC
+    }
 }
 

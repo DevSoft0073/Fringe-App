@@ -39,16 +39,27 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         self.updateUI()
         
-        let identifier = String(describing: AddPaymentTVCell.self)
-
+        let identifier = String(describing: PaymentMethodTVC.self)
+        
         let nibRequestCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblPayment.register(nibRequestCell, forCellReuseIdentifier: identifier)
     }
     
     func updateUI() {
         
-     
+        
         tblPayment.reloadData()
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Actions
+    
+    @IBAction func btnBack(_ sender: Any) {
+        self.pop()
+    }
+    
+    @IBAction func btnAdd(_ sender: Any) {
     }
     
     //------------------------------------------------------
@@ -61,7 +72,7 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddPaymentTVCell.self)) as? AddPaymentTVCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PaymentMethodTVC.self)) as? PaymentMethodTVC {
             DispatchQueue.main.async {
                 self.heightContraint.constant = self.tblPayment.contentSize.height
             }
@@ -70,7 +81,7 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         return 100
+        return 100
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = NavigationManager.shared.addPaymentVC

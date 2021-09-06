@@ -2834,10 +2834,10 @@
             </objects>
             <point key="canvasLocation" x="2991" y="1565"/>
         </scene>
-        <!--View Controller-->
+        <!--Business Add Payment MethodVC-->
         <scene sceneID="9lk-el-abr">
             <objects>
-                <viewController id="GnQ-hX-Ndh" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BusinessAddPaymentMethodVC" id="GnQ-hX-Ndh" customClass="BusinessAddPaymentMethodVC" customModule="Fringe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8el-gJ-5iR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2862,6 +2862,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="RPh-uR-Qjh" secondAttribute="height" multiplier="1:1" id="hC1-M3-OqG"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="btnBack:" destination="GnQ-hX-Ndh" eventType="touchUpInside" id="hg3-3a-G5E"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Payment Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wj-UZ-aZm">
                                         <rect key="frame" x="66.5" y="14" width="186" height="22.5"/>
@@ -3179,6 +3182,9 @@
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Front Image" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QiM-02-RBM" customClass="FGAddImagesTextField" customModule="Fringe" customModuleProvider="target">
                                                                                 <rect key="frame" x="10" y="0.0" width="315" height="60"/>
+                                                                                <accessibility key="accessibilityConfiguration">
+                                                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                                                </accessibility>
                                                                                 <color key="textColor" red="0.023524740709999999" green="0.023532401769999999" blue="0.023523066190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                                                 <textInputTraits key="textInputTraits"/>
@@ -3237,8 +3243,11 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvP-e2-NiC">
                                                                         <rect key="frame" x="5" y="5" width="335" height="60"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Back Image" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWF-Zw-bWu" customClass="FGAddImagesTextField" customModule="Fringe" customModuleProvider="target">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Back Image" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWF-Zw-bWu" customClass="FGAddBackImagesTextField" customModule="Fringe" customModuleProvider="target">
                                                                                 <rect key="frame" x="10" y="0.0" width="315" height="60"/>
+                                                                                <accessibility key="accessibilityConfiguration">
+                                                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                                                </accessibility>
                                                                                 <color key="textColor" red="0.023524740709999999" green="0.023532401769999999" blue="0.023523066190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                                                 <textInputTraits key="textInputTraits"/>
@@ -3326,6 +3335,9 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="btnSubmit:" destination="GnQ-hX-Ndh" eventType="touchUpInside" id="qGG-Zn-fT4"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3381,6 +3393,14 @@
                             <constraint firstItem="bdF-jn-Vz6" firstAttribute="trailing" secondItem="RAO-OQ-KG6" secondAttribute="trailing" id="uOX-aT-eIx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="accountHoldrNameTxt" destination="DNC-i2-Zm6" id="jMo-k6-Eon"/>
+                        <outlet property="accountNumberTxt" destination="D7h-Wp-EaW" id="I68-ZO-FV1"/>
+                        <outlet property="addBackImageTxtField" destination="CWF-Zw-bWu" id="1Yw-DB-Zes"/>
+                        <outlet property="addImageTxtField" destination="QiM-02-RBM" id="cn8-dl-P4b"/>
+                        <outlet property="routingNumberTxt" destination="rgP-B4-iDp" id="gG0-BW-ITw"/>
+                        <outlet property="ssnNumberTxt" destination="2ww-o8-6x4" id="h6z-Bx-cz1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaM-vp-Qam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
