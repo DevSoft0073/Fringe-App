@@ -22,14 +22,26 @@ class MyBookingTVCell: UITableViewCell {
         // Initialization code
     }
     
-    override func layoutSublayers(of layer: CALayer) {
-//        imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func setup(bookingData : BookingModal)  {
+        //image
+        imgMain.sd_addActivityIndicator()
+        imgMain.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+        imgMain.sd_showActivityIndicatorView()
+        imgMain.image = getPlaceholderImage()
+//        if let image = bookingData.image, image.isEmpty == false {
+//            let imgURL = URL(string: image)
+//            imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+//                self.mainImg.sd_removeActivityIndicator()
+//            }
+//        } else {
+//            self.imgMain.sd_removeActivityIndicator()
+//        }
+        
+        lblName.text = bookingData.specialInstruction
+        lblAddress.text = bookingData.specialInstruction
+//        lblPrice.text = bookingData.specialInstruction
+//        lblRating.text = homeData.rating
+//        ratingView.rating = Double(homeData.rating ?? String()) ?? Double()
     }
     
 }

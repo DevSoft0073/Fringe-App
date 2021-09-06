@@ -63,6 +63,7 @@ struct Request {
         static let favoriteListing = "/favouriteListing.php"
         static let favUnfav = "/GolfFavouriteUnfavourite.php"
         static let home = "/Home.php"
+        static let myBooking = "/GetAllHistoryBooking.php"
     }
     
 }

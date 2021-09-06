@@ -43,8 +43,6 @@ struct FGColor {
     static let appBlack = UIColor(named: "appBlack")!
     static let appBackground = UIColor(named: "appBackground")!
     static let appDarkBlack = UIColor(named: "appDarkBlack")!
-//    static let darkGray = UIColor.darkGray
-//    static let clear = UIColor.clear
 }
 
 struct FGFont {

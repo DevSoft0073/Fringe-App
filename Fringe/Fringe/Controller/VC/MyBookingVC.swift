@@ -7,10 +7,18 @@
 
 import UIKit
 import Foundation
+import Alamofire
+import KRPullLoader
+import IQKeyboardManagerSwift
 
-class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
+class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource, KRPullLoadViewDelegate{
     
     @IBOutlet weak var tblBooking: UITableView!
+    
+    var returnKeyHandler: IQKeyboardReturnKeyHandler?
+    var items: [BookingModal] = []
+    var isRequesting: Bool = false
+    var lastRequestId: String = String()
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -25,16 +33,16 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
         
     }
     //------------------------------------------------------
+    
     //MARK: Customs
     
     func setup() {
         tblBooking.delegate = self
         tblBooking.dataSource = self
        
-        
-//        let loadMoreView = KRPullLoadView()
-//        loadMoreView.delegate = self
-//        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
+        let loadMoreView = KRPullLoadView()
+        loadMoreView.delegate = self
+        tblBooking.addPullLoadableView(loadMoreView, type: .refresh)
         
         let identifier = String(describing: MyBookingTVCell.self)
 
@@ -43,28 +51,91 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
         
     }
     
+    func updateUI() {
+//        noDataLbl.text = LocalizableConstants.Controller.NearByGolfClubs.noSessionDataFound.localized()
+//        noDataLbl.isHidden = items.count != .zero
+        tblBooking.reloadData()
+    }
+    
+    func performBokkings(completion:((_ flag: Bool) -> Void)?) {
+        
+        isRequesting = true
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": "IB6WSFnebwuDro5mhQxP5Lai4bW8ZZ9laDQbdU1vpvrk8F9HO9"
+        ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.lastID: lastRequestId,
+            Request.Parameter.userID: "11",
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.myBooking, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[BookingModal]>.self, successBlock: { (response: ResponseModal<[BookingModal]>) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            self.isRequesting = false
+            
+            if response.code == Status.Code.success {
+                
+                delay {
+                    
+                    if self.lastRequestId.isEmpty {
+                        
+                        self.items.removeAll()
+                    }
+                    self.items.append(contentsOf: response.data ?? [])
+                    self.items = self.items.removingDuplicates()
+                    self.lastRequestId = response.data?.last?.golfID ?? String()
+                    self.updateUI()
+                }
+            }
+            else {
+                
+                completion?(true)
+            }
+            
+            LoadingManager.shared.hideLoading()
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            self.isRequesting = false
+            
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
     //------------------------------------------------------
     
     //MARK: Action
     
-    
     @IBAction func btnBack(_ sender: Any) {
         self.pop()
     }
+    
     //------------------------------------------------------
     
     //MARK: UITableViewDataSource, UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return items.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MyBookingTVCell.self)) as? MyBookingTVCell {
+            let data = items[indexPath.row]
+            cell.setup(bookingData: data)
             cell.imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
             return cell
         }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -72,10 +143,57 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = NavigationManager.shared.bookingDetailsVC
         push(controller: controller)
     }
+    
+    
+    //------------------------------------------------------
+    
+    //MARK: KRPullLoadViewDelegate
+    
+    func pullLoadView(_ pullLoadView: KRPullLoadView, didChangeState state: KRPullLoaderState, viewType type: KRPullLoaderType) {
+        
+        if type == .refresh {
+            switch state {
+            case .none:
+                pullLoadView.messageLabel.text = String()
+            case let .pulling(offset, threshould):
+                if offset.y > threshould {
+                    pullLoadView.messageLabel.text = LocalizableConstants.Controller.Pages.pullMore.localized()
+                } else {
+                    pullLoadView.messageLabel.text = LocalizableConstants.Controller.Pages.releaseToRefresh.localized()
+                }
+            case let .loading(completionHandler):
+                pullLoadView.messageLabel.text = LocalizableConstants.Controller.Pages.updating.localized()
+                if isRequesting == false {
+                    performBokkings { (flag: Bool) in
+                        self.updateUI()
+                        completionHandler()
+                    }
+                } else {
+                    completionHandler()
+                }
+            }
+        } else if type == .loadMore {
+            switch state {
+            case let .loading(completionHandler):
+                if isRequesting == false {
+                    performBokkings { (flag: Bool) in
+                        self.updateUI()
+                        completionHandler()
+                    }
+                } else {
+                    completionHandler()
+                }
+            default: break
+            }
+            return
+        }
+    }
+    
     
     //------------------------------------------------------
     
@@ -83,6 +201,11 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoadingManager.shared.showLoading()
+        
+        performBokkings { (flag : Bool) in
+            
+        }
         setup()
        
     }
