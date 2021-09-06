@@ -10,6 +10,7 @@
 		1F33172326E37BF500D7D466 /* FGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33172226E37BF500D7D466 /* FGLocationManager.swift */; };
 		1F5DF83326E2075D00EA7327 /* FavoriteListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5DF83226E2075D00EA7327 /* FavoriteListing.swift */; };
 		1F5DF83526E23D7D00EA7327 /* FavUnfavModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */; };
+		1F64699326E5F584007D41DE /* HomeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F64699226E5F584007D41DE /* HomeModal.swift */; };
 		1F72DA0B26D631680073FC7E /* loader_ring.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F72DA0A26D631680073FC7E /* loader_ring.json */; };
 		1F72DA0D26D646000073FC7E /* FGImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA0C26D646000073FC7E /* FGImagePicker.swift */; };
 		7C2917C326C6746B0091F8A1 /* GolfclubsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2917C226C6746B0091F8A1 /* GolfclubsVC.swift */; };
@@ -170,6 +171,7 @@
 		1F33172226E37BF500D7D466 /* FGLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGLocationManager.swift; sourceTree = "<group>"; };
 		1F5DF83226E2075D00EA7327 /* FavoriteListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListing.swift; sourceTree = "<group>"; };
 		1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavUnfavModal.swift; sourceTree = "<group>"; };
+		1F64699226E5F584007D41DE /* HomeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModal.swift; sourceTree = "<group>"; };
 		1F72DA0A26D631680073FC7E /* loader_ring.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_ring.json; sourceTree = "<group>"; };
 		1F72DA0C26D646000073FC7E /* FGImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGImagePicker.swift; sourceTree = "<group>"; };
 		1FF82EE426D6642F002B303B /* Fringe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fringe.entitlements; sourceTree = "<group>"; };
@@ -354,6 +356,14 @@
 				1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */,
 			);
 			path = FavoriteListing;
+			sourceTree = "<group>";
+		};
+		1F64699126E5F56F007D41DE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1F64699226E5F584007D41DE /* HomeModal.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		7C52984C26DCA61900A3606D /* Player XIBs */ = {
@@ -666,6 +676,7 @@
 		7CA24C1826C23F8800437C8A /* Generals */ = {
 			isa = PBXGroup;
 			children = (
+				1F64699126E5F56F007D41DE /* Home */,
 				1F5DF83026E206F100EA7327 /* FavoriteListing */,
 				7CA24C5826C2425200437C8A /* Users */,
 			);
@@ -995,6 +1006,7 @@
 				7CA24C5626C2424100437C8A /* FGAssistiveTouchView.swift in Sources */,
 				7C73149226DE2DE600BBFE09 /* HostCalendarTBCell.swift in Sources */,
 				7C780F8C26C3BE75003F1F12 /* BaseVC.swift in Sources */,
+				1F64699326E5F584007D41DE /* HomeModal.swift in Sources */,
 				7C52987226DD094400A3606D /* HostNotificationVC.swift in Sources */,
 				7C52987526DD0D2500A3606D /* HostCalendarVC.swift in Sources */,
 				7C780FEE26C58B4A003F1F12 /* FavouriteVC.swift in Sources */,

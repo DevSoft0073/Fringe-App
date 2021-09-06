@@ -129,6 +129,11 @@ struct LocalizableConstants {
             static let updating = "updating"
         }
         
+        struct NearByGolfClubs {
+            
+            static let noSessionDataFound = "no_near_by_golf_clubs_available"
+        }
+        
         struct Notifications {
             
             static let title = "notifications"

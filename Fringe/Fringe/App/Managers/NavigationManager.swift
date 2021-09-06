@@ -232,6 +232,11 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
+    func setupDetails() {
+        AppDelegate.shared.window?.rootViewController = detailsScreenVC
+        AppDelegate.shared.window?.makeKeyAndVisible()
+    }
+    
     func setupLandingOnHome() {
         
         tabbarController = landingTC

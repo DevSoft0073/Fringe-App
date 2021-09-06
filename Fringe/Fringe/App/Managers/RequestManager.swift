@@ -44,6 +44,11 @@ struct Request {
         static let newPassword = "new_password"
         static let oldPassword = "old_password"
         static let lastID = "last_id"
+        
+        //home
+        static let search = "search"
+        static let lats = "Latitude"
+        static let longs = "Longitude"
     }
     
     struct Method {
@@ -57,6 +62,7 @@ struct Request {
         static let forgotPassword = "/Forgotpassword.php"
         static let favoriteListing = "/favouriteListing.php"
         static let favUnfav = "/GolfFavouriteUnfavourite.php"
+        static let home = "/Home.php"
     }
     
 }

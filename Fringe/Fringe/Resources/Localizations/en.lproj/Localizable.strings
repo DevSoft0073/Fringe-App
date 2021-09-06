@@ -106,7 +106,7 @@
 "enter_expiration_date" = "Please enter expiration date.";
 "enter_valid_expiration_date" = "Enter valid expiration date.";
 "select_day" = "Please select day.";
-"no_near_by_studio_available" = "No near by studios available.";
+"no_near_by_golf_clubs_available" = "No near by golf club available.";
 "no_data_found" = "No data found.";
 "agree_with_terms_and_conditions" = "Please agree with terms and conditions.";
 "no_session_selected" = "Please select any section for see session request.";

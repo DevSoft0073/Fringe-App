@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,7 +50,7 @@
                                 <rect key="frame" x="300" y="8" width="33.5" height="34"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jwf-s3-ENH">
-                                <rect key="frame" x="5" y="175" width="232" height="62"/>
+                                <rect key="frame" x="5" y="175" width="232" height="70"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69T-ne-Pkg">
                                         <rect key="frame" x="0.0" y="0.0" width="222" height="20"/>
@@ -88,10 +88,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJU-i8-Esc">
-                                        <rect key="frame" x="0.0" y="40" width="222" height="22"/>
+                                        <rect key="frame" x="0.0" y="40" width="222" height="30"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GL-7L-dmz" customClass="FloatRatingView" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="6.5" width="60" height="9"/>
+                                                <rect key="frame" x="0.0" y="7.5" width="60" height="15"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="KJd-Al-53d"/>
@@ -111,7 +111,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sK5-jQ-j7J" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="70" y="2" width="27" height="18.5"/>
+                                                <rect key="frame" x="70" y="6" width="27" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                 <color key="textColor" red="0.086262829599999993" green="0.086281977590000003" blue="0.086258627470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -119,10 +119,10 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="2OD-5V-q80"/>
+                                            <constraint firstAttribute="height" constant="30" id="2OD-5V-q80"/>
                                             <constraint firstItem="6GL-7L-dmz" firstAttribute="leading" secondItem="vJU-i8-Esc" secondAttribute="leading" id="4lp-nZ-5L7"/>
                                             <constraint firstItem="6GL-7L-dmz" firstAttribute="centerY" secondItem="vJU-i8-Esc" secondAttribute="centerY" id="Knp-6g-b3A"/>
-                                            <constraint firstItem="6GL-7L-dmz" firstAttribute="height" secondItem="vJU-i8-Esc" secondAttribute="height" multiplier="0.4" id="Nrf-oB-yod"/>
+                                            <constraint firstItem="6GL-7L-dmz" firstAttribute="height" secondItem="vJU-i8-Esc" secondAttribute="height" multiplier="0.5" id="Nrf-oB-yod"/>
                                             <constraint firstItem="sK5-jQ-j7J" firstAttribute="centerY" secondItem="6GL-7L-dmz" secondAttribute="centerY" id="P6f-eO-At0"/>
                                             <constraint firstItem="sK5-jQ-j7J" firstAttribute="leading" secondItem="6GL-7L-dmz" secondAttribute="trailing" constant="10" id="VmZ-N2-ggS"/>
                                         </constraints>
@@ -196,7 +196,7 @@
             <connections>
                 <outlet property="lblAddress" destination="U6h-U0-Dn3" id="6jk-7Z-Km5"/>
                 <outlet property="lblGolfClubName" destination="lO6-fP-Oj9" id="d1A-hq-1mY"/>
-                <outlet property="lblRate" destination="cDp-S3-wfw" id="yMo-ba-ULp"/>
+                <outlet property="lblPrice" destination="cDp-S3-wfw" id="bkL-2o-jre"/>
                 <outlet property="lblRating" destination="sK5-jQ-j7J" id="AIV-kR-JQl"/>
                 <outlet property="mainImg" destination="O9k-W8-asG" id="QEY-yl-6PI"/>
                 <outlet property="ratingView" destination="6GL-7L-dmz" id="lMD-hy-hK9"/>
