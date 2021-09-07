@@ -13,6 +13,8 @@ struct FGStoryboard {
     public static let main: String = "Main"
     public static let loader: String = "Loader"
     public static let golf: String = "GolfClubProfile"
+    public static let locationSearch: String = "LocationSearch"
+
 }
 
 struct FGNavigation {
@@ -50,6 +52,7 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     let mainStoryboard = UIStoryboard(name: FGStoryboard.main, bundle: Bundle.main)
     let golfStoryboard = UIStoryboard(name: FGStoryboard.golf, bundle: Bundle.main)
     let loaderStoryboard = UIStoryboard(name: FGStoryboard.loader, bundle: Bundle.main)
+    let locationSearchStoryboard = UIStoryboard(name: FGStoryboard.locationSearch, bundle: Bundle.main)
     
     //------------------------------------------------------
     
@@ -342,7 +345,9 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PaymentMethodVC.self)) as! PaymentMethodVC
     }
     
-    
+    public var locationSearchVC: LocationSearchVC {
+        return locationSearchStoryboard.instantiateViewController(withIdentifier: String(describing: LocationSearchVC.self)) as! LocationSearchVC
+    }
     
     // HostNavigation
     

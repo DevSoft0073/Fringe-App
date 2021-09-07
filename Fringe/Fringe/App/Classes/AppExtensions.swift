@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+import Accelerate
+import MapKit
+import Contacts
 //------------------------------------------------------
 
 //MARK:  UIApplication
@@ -309,5 +311,22 @@ extension UIImageView {
         let shape = CAShapeLayer()
         shape.path = maskPath.cgPath
         layer.mask = shape
+    }
+}
+
+//------------------------------------------------------
+
+//MARK:  MKPlacemark
+
+extension MKPlacemark {
+    
+    var formattedAddress: String? {
+        guard let postalAddress = postalAddress else { return nil }
+        let address = CNPostalAddressFormatter.string(from: postalAddress, style: .mailingAddress).replacingOccurrences(of: "\n", with: " ")
+        if address.isEmpty {
+            return nil
+        } else {
+            return address
+        }
     }
 }

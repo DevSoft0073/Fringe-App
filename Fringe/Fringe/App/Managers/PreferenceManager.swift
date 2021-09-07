@@ -32,6 +32,7 @@ class PreferenceManager: NSObject {
     private let keyLoggedUser = "keyLoggedUser"
     private let keyLat = "lat"
     private let keyLong = "long"
+    private let keyAuth = "auth"
 
     var deviceToken: String? {
         set {
@@ -63,6 +64,20 @@ class PreferenceManager: NSObject {
         }
         get {            
             return userDefault.string(forKey: keyUserId)
+        }
+    }
+    
+    var authToken: String? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: keyAuth)
+            } else {
+                userDefault.removeObject(forKey: keyAuth)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.string(forKey: keyAuth)
         }
     }
     

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AssistantKit
 import Toucan
-
+import CoreLocation
 
 /// This function will retutn font size according to device.
 ///
@@ -169,4 +169,15 @@ extension Array where Element: Hashable {
     mutating func removeDuplicates() {
         self = self.removingDuplicates()
     }
+}
+
+func getDistanceInKm(from coordinate0: CLLocationCoordinate2D?, coordinate1: CLLocationCoordinate2D?) -> String {
+    let location1 = CLLocation(latitude: coordinate0?.latitude ?? .zero, longitude: coordinate0?.latitude ?? .zero)
+    let location2 = CLLocation(latitude: coordinate1?.latitude ?? .zero, longitude: coordinate1?.latitude ?? .zero)
+    let distance = location1.distance(from: location2)
+    let km = Measurement(value: distance, unit: UnitLength.meters).converted(to: UnitLength.miles)
+    let formatter = MeasurementFormatter()
+    formatter.unitOptions = .providedUnit
+    formatter.unitStyle = .short
+    return formatter.string(from: km)
 }

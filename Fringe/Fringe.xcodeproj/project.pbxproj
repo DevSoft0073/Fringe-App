@@ -10,6 +10,9 @@
 		1F33172326E37BF500D7D466 /* FGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33172226E37BF500D7D466 /* FGLocationManager.swift */; };
 		1F5DF83326E2075D00EA7327 /* FavoriteListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5DF83226E2075D00EA7327 /* FavoriteListing.swift */; };
 		1F5DF83526E23D7D00EA7327 /* FavUnfavModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */; };
+		1F640FD126E77E860064F35E /* LocationSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F640FD026E77E860064F35E /* LocationSearch.storyboard */; };
+		1F640FD326E77EC90064F35E /* LocationSearchSuggestionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F640FD226E77EC90064F35E /* LocationSearchSuggestionsVC.swift */; };
+		1F640FD926E7808E0064F35E /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F640FD826E7808E0064F35E /* LocationSearchVC.swift */; };
 		1F64699326E5F584007D41DE /* HomeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F64699226E5F584007D41DE /* HomeModal.swift */; };
 		1F64699626E64877007D41DE /* BookingModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F64699526E64877007D41DE /* BookingModal.swift */; };
 		1F72DA0B26D631680073FC7E /* loader_ring.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F72DA0A26D631680073FC7E /* loader_ring.json */; };
@@ -172,6 +175,9 @@
 		1F33172226E37BF500D7D466 /* FGLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGLocationManager.swift; sourceTree = "<group>"; };
 		1F5DF83226E2075D00EA7327 /* FavoriteListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListing.swift; sourceTree = "<group>"; };
 		1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavUnfavModal.swift; sourceTree = "<group>"; };
+		1F640FD026E77E860064F35E /* LocationSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationSearch.storyboard; sourceTree = "<group>"; };
+		1F640FD226E77EC90064F35E /* LocationSearchSuggestionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchSuggestionsVC.swift; sourceTree = "<group>"; };
+		1F640FD826E7808E0064F35E /* LocationSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		1F64699226E5F584007D41DE /* HomeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModal.swift; sourceTree = "<group>"; };
 		1F64699526E64877007D41DE /* BookingModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingModal.swift; sourceTree = "<group>"; };
 		1F72DA0A26D631680073FC7E /* loader_ring.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_ring.json; sourceTree = "<group>"; };
@@ -549,6 +555,8 @@
 				7C780FD226C5330A003F1F12 /* HomeVC.swift */,
 				7CE041A626E08F360036EEA0 /* InboxVC.swift */,
 				7CA24C2026C240AB00437C8A /* LoadingIndicatorVC.swift */,
+				1F640FD226E77EC90064F35E /* LocationSearchSuggestionsVC.swift */,
+				1F640FD826E7808E0064F35E /* LocationSearchVC.swift */,
 				7C780F8726C3A80A003F1F12 /* LogInVC.swift */,
 				7C8F1D6F26CE6BB300135C41 /* MyBookingVC.swift */,
 				7C780FC426C5063B003F1F12 /* NotificationVC.swift */,
@@ -736,6 +744,7 @@
 				7CA24C0926C23D9600437C8A /* LaunchScreen.storyboard */,
 				7C39F19126C39A7600AAC277 /* Main.storyboard */,
 				7C5E41B026D8B96C00D63728 /* GolfClubProfile.storyboard */,
+				1F640FD026E77E860064F35E /* LocationSearch.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -897,6 +906,7 @@
 				7C780FF626C64B68003F1F12 /* FringePendingCell.xib in Resources */,
 				7C5E41B126D8B96C00D63728 /* GolfClubProfile.storyboard in Resources */,
 				1F72DA0B26D631680073FC7E /* loader_ring.json in Resources */,
+				1F640FD126E77E860064F35E /* LocationSearch.storyboard in Resources */,
 				7C52985B26DCB01900A3606D /* HostAwaitingCell.xib in Resources */,
 				7CA24C6826C242EE00437C8A /* Loader.storyboard in Resources */,
 				7C94875826CA49AA00870F54 /* FringeConfirmedCell.xib in Resources */,
@@ -984,6 +994,7 @@
 				7C5298A226DE07F600A3606D /* HostAddPaymentMethodVC.swift in Sources */,
 				7CD7EB0B26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift in Sources */,
 				7CE041A726E08F360036EEA0 /* InboxVC.swift in Sources */,
+				1F640FD326E77EC90064F35E /* LocationSearchSuggestionsVC.swift in Sources */,
 				7CE041B326E0BBA20036EEA0 /* HostServiceTermsVC.swift in Sources */,
 				7C52987826DD0D5500A3606D /* HostInboxVC.swift in Sources */,
 				7CA24C4D26C2423500437C8A /* FGLabel.swift in Sources */,
@@ -1004,6 +1015,7 @@
 				7CE2E85126CB943900AF882A /* ProfileTBCell.swift in Sources */,
 				7CA24C5E26C2426800437C8A /* BaseResponseModal.swift in Sources */,
 				7C5298A526DE086200A3606D /* HostAccountInformationVC.swift in Sources */,
+				1F640FD926E7808E0064F35E /* LocationSearchVC.swift in Sources */,
 				7CD7EB0526D14E0B00BEDDA2 /* BookingDetailsVC.swift in Sources */,
 				7CA24C5C26C2426800437C8A /* ResponseModal.swift in Sources */,
 				7CE0F63F26D4B87B00C3AAFB /* ConfirmedPayVC.swift in Sources */,

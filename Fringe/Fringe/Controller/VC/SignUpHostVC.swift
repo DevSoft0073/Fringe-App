@@ -6,13 +6,15 @@
 //
 
 import UIKit
-import Foundation
-import Toucan
-import IQKeyboardManagerSwift
 import MapKit
+import Toucan
+import MapKit
+import Alamofire
+import Foundation
 import GCCountryPicker
+import IQKeyboardManagerSwift
 
-class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSource, UITextFieldDelegate & UITextViewDelegate , ImagePickerDelegate {
+class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSource, UITextFieldDelegate & UITextViewDelegate , ImagePickerDelegate, LocationSearchDelegate {
     
     @IBOutlet weak var golfDescriptionTxtView: FGRegularWithoutBorderTextView!
     @IBOutlet weak var golfPriceTxtFld: FGGolfCreditsTextField!
@@ -110,76 +112,78 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
         return true
     }
     
-//    private func performAddStudio(completion:((_ flag: Bool) -> Void)?) {
-//        
-//        let imageData = selectedImage?.jpegData(compressionQuality: 0.2)
-//        var imgData = [String : Data]()
-//        imgData["profile_image"] = imageData
-//        
-//        let parameter: [String: Any] = [
-//            Request.Parameter.golfName: golfNameTxtFld.text ?? String(),
-//            Request.Parameter.price: golfPriceTxtFld.text ?? String(),
-//            Request.Parameter.location: golfAddressTxtFld.text ?? String(),
-//            Request.Parameter.description: golfDescriptionTxtView.text ?? String(),
-//        ]
-//        var imgDataa = [String : Data]()
-//        for i in photosInTheCellNow {
-//            let imgData = i?.jpegData(compressionQuality: 0.2)
-//            imgDataa["\(Date().timeIntervalSince1970)"] = imgData
-//        }
-//        
-//        RequestManager.shared.multipartImageRequest(parameter: parameter, imagesData: imgDataa, profileImagesData: imgData, keyName: "image[]", profileKeyName: "", urlString: PreferenceManager.shared.userBaseURL + Request.Method.signUpAsHost) { (response, error) in
-//      
-//            LoadingManager.shared.hideLoading()
-//
-//            if error == nil{
-//                
-//                if let data = response {
-//                    
-//                    
-//                    let status = data["code"] as? Int ?? 0
-//                    let jsonStudio = data["studio_detail"] as? [String: Any]
-//                    if status == Status.Code.success {
-//                        
-////                        delay {
-////
-////                            PreferenceManager.shared.currentStudioUser = jsonStudio?.dict2json()
-////                            let controller = NavigationManager.shared.submitVC
-////                            controller.modalPresentationStyle = .overFullScreen
-////                            self.present(controller, animated: false) {
-////
-////                            }
-////                        }
-//                        
-////                    } else if status == Status.Code.stripeIssue{
-////
-////                        delay {
-////
-////                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
-////
-////                        }
-//                    }
-//                    else {
-//                        
+    private func performAddGolfCourse(completion:((_ flag: Bool) -> Void)?) {
+        
+        let imageData = selectedImage?.jpegData(compressionQuality: 0.2)
+        var imgData = [String : Data]()
+        imgData["profile_image"] = imageData
+        let headers: HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+           ]
+        let parameter: [String: Any] = [
+            Request.Parameter.golfName: golfNameTxtFld.text ?? String(),
+            Request.Parameter.price: golfPriceTxtFld.text ?? String(),
+            Request.Parameter.location: golfAddressTxtFld.text ?? String(),
+            Request.Parameter.description: golfDescriptionTxtView.text ?? String(),
+        ]
+        var imgDataa = [String : Data]()
+        for i in photosInTheCellNow {
+            let imgData = i?.jpegData(compressionQuality: 0.2)
+            imgDataa["\(Date().timeIntervalSince1970)"] = imgData
+        }
+        
+        RequestManager.shared.multipartImageRequest(parameter: parameter, imagesData: imgDataa, headers: headers, profileImagesData: imgData, keyName: "golf_images[]", profileKeyName: "image", urlString: PreferenceManager.shared.userBaseURL + Request.Method.signUpAsHost) { (response, error) in
+      
+            LoadingManager.shared.hideLoading()
+
+            if error == nil{
+                
+                if let data = response {
+                    
+                    let status = data["code"] as? Int ?? 0
+                    let jsonStudio = data["data"] as? [String: Any]
+                    if status == Status.Code.success {
+                        
 //                        delay {
-//                            
-//                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
-//                            
-//                        }
-//                        
-//                    }
-//                }
-//            } else{
-//                
-//                delay {
-//                    
-//                    DisplayAlertManager.shared.displayAlert(animated: true, message: error?.localizedDescription ?? String())
 //
-//                }
-//                print(error?.localizedDescription ?? String())
-//            }
-//        }
-//    }
+//                            PreferenceManager.shared.currentStudioUser = jsonStudio?.dict2json()
+//                            let controller = NavigationManager.shared.submitVC
+//                            controller.modalPresentationStyle = .overFullScreen
+//                            self.present(controller, animated: false) {
+//
+//                            }
+//                        }
+                        
+//                    } else if status == Status.Code.stripeIssue{
+//
+//                        delay {
+//
+//                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
+//
+//                        }
+                    }
+                    else {
+                        
+                        delay {
+                            
+                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
+                            
+                        }
+                        
+                    }
+                }
+            } else{
+                
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: error?.localizedDescription ?? String())
+
+                }
+                print(error?.localizedDescription ?? String())
+            }
+        }
+    }
 
     
     //------------------------------------------------------
@@ -190,10 +194,14 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
         if validate() == false {
             return
         }
+        LoadingManager.shared.showLoading()
+        
+        performAddGolfCourse { (flag : Bool) in
+            
+        }
     }
     
     @IBAction func btnUploadImg(_ sender: Any) {
-        //        selectedImage()
     }
     
     @IBAction func btnBack(_ sender: Any) {
@@ -249,6 +257,64 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
         }else{
             self.imagePickerVC?.present(from: view)
         }
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: UITextFieldDelegate
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        if textField == golfAddressTxtFld {
+            self.view.endEditing(true)
+            let controller = NavigationManager.shared.locationSearchVC
+            controller.delegate = self
+            push(controller: controller)
+            return false
+        }
+        return true
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: LocationSearchDelegate
+    
+    func locationSearch(controller: LocationSearchVC, didSelect location: MKPlacemark) {
+        self.golfAddressTxtFld.text = location.name ?? String()
+//        self.countyCode = location.countryCode ?? String()
+//        let fullAddress = String(format: "%@ %@", location.name ?? String(), location.formattedAddress ?? location.name ?? String())
+//        let stateName = fullAddress.components(separatedBy: " ")
+//        //self.line2 = "\(stateName![1]) " + ("\(stateName![2]) ") + ("\(stateName![3])")
+//        let count = stateName.count
+//        let midCount = count / 2
+//        var index: Int = .zero
+//        line1.removeAll()
+//        line2.removeAll()
+//        for word in stateName {
+//            if index < midCount {
+//                line1 = line1.appending(word).appending(" ")
+//            } else {
+//                line2 = line2.appending(word).appending(" ")
+//            }
+//            index = index + 1
+//        }
+//        self.stateName = location.administrativeArea ?? String()
+//        self.cityName = location.locality ?? String()
+//        self.postlaCode = location.postalCode ?? String()
+//        self.lat = "\(location.coordinate.latitude)"
+//        self.long = "\(location.coordinate.longitude)"
+//        let location = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude )
+//        let geoCoder = CLGeocoder()
+//        geoCoder.reverseGeocodeLocation(location) { (placemarks, err) in
+//            if let placemark = placemarks?[0] {
+//                self.selectedTimeZone = "\(String(describing: placemark.timeZone))"
+//                self.selectedCountry = "\(String(describing: placemark.isoCountryCode))"
+//            }
+//        }
+        if IQKeyboardManager.shared.canGoNext {
+            IQKeyboardManager.shared.goNext()
+        }
+        navigationController?.popToViewController(self, animated: true)
     }
     
     //------------------------------------------------------

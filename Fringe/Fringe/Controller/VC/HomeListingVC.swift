@@ -74,7 +74,6 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
         let headers:HTTPHeaders = [
             "content-type": "application/json",
             "Token": currentUser?.authorizationToken ?? String(),
-//            "Token": "IB6WSFnebwuDro5mhQxP5Lai4bW8ZZ9laDQbdU1vpvrk8F9HO9"
         ]
         
         let parameter: [String: Any] = [
@@ -85,9 +84,7 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.home, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[HomeModal]>.self, successBlock: { (response: ResponseModal<[HomeModal]>) in
-            
-            //            LoadingManager.shared.hideLoading()
-            
+                        
             self.isRequesting = false
             
             if response.code == Status.Code.success {

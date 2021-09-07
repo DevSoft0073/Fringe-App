@@ -113,10 +113,10 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         
          let headers:HTTPHeaders = [
             "content-type": "application/json",
-            "Token": currentUser?.authorizationToken ?? String(),
+            "Token": PreferenceManager.shared.authToken ?? String(),
            ]
         
-        RequestManager.shared.requestGET(requestMethod: Request.Method.profile, parameter: [:], header: headers, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.profile, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
             
             LoadingManager.shared.hideLoading()
             
@@ -153,6 +153,50 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                 
             }
         })
+    }
+    
+    private func performSignOut(completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+       
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.logout, parameter: [:], headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                PreferenceManager.shared.loggedUser = false
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    completion?(true)
+                    
+                }
+                
+            } else {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            completion?(false)
+            
+            delay {
+                //                self.handleError(code: error.code)
+            }
+        })
+        
     }
     
     //------------------------------------------------------
@@ -259,7 +303,9 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             
         }else if name == ProfileItems.switchToBusiness{
             
-            NavigationManager.shared.setupLandingOnHomeForHost()
+            let controller = NavigationManager.shared.signUpHostVC
+            push(controller: controller)
+//            NavigationManager.shared.setupLandingOnHomeForHost()
             
         }else if name == ProfileItems.termsOfServices{
             
@@ -272,9 +318,30 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             push(controller: controller)
             
         }else if name == ProfileItems.logout {
-            PreferenceManager.shared.currentUser = nil
-            PreferenceManager.shared.loggedUser = false
-            NavigationManager.shared.setupSingIn()
+            
+            
+            DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: LocalizableConstants.ValidationMessage.confirmLogout.localized()) {
+                
+                //Nothing to handle
+                
+            } handlerYes: {
+                
+                LoadingManager.shared.showLoading()
+                
+                delayInLoading {
+                    
+                    LoadingManager.shared.hideLoading()
+                    self.performSignOut { (flag: Bool) in
+                        if flag {
+                            PreferenceManager.shared.currentUser = nil
+                            PreferenceManager.shared.loggedUser = false
+                            NavigationManager.shared.setupSingIn()
+                        }
+                    }
+                }
+            }
+            
+           
         }
     }
     

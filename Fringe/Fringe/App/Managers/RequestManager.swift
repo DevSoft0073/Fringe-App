@@ -76,6 +76,7 @@ struct Request {
         static let myBooking = "/GetAllHistoryBooking.php"
         static let signUpAsHost = "/signUp_asHost.php"
         static let addRating = "/AddGolfrating.php"
+        static let logout = "/LogOut.php"
     }
     
 }
@@ -229,7 +230,7 @@ class RequestManager: NSObject {
     
     //MARK: Form Data
     
-    func multipartImageRequest( parameter: Parameters, imagesData:[String: Data] = [String: Data](), profileImagesData:[String: Data] = [String: Data]() , keyName : String? = nil , profileKeyName : String? = nil , urlString: String, completion: @escaping(([String: Any]?, _ error: Error?)->())) {
+    func multipartImageRequest( parameter: Parameters, imagesData:[String: Data] = [String: Data](), headers : HTTPHeaders , profileImagesData:[String: Data] = [String: Data]() , keyName : String? = nil , profileKeyName : String? = nil , urlString: String, completion: @escaping(([String: Any]?, _ error: Error?)->())) {
         guard isReachable == true else {
             LoadingManager.shared.hideLoading()
             delay {
@@ -258,7 +259,7 @@ class RequestManager: NSObject {
             for (key, value) in parameter {
                 MultipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
             }
-        }, to: url) { (encodingResult) in
+        }, to: url , headers: headers) { (encodingResult) in
             switch encodingResult {
             case .success(request: let request, streamingFromDisk: let streamingFromDisk, streamFileURL: let streamFileURL):
                 request.responseJSON { response in
