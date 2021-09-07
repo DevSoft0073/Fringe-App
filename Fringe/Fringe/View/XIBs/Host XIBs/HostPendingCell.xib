@@ -30,10 +30,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-A1-ySr">
-                        <rect key="frame" x="16" y="16" width="414" height="232"/>
+                        <rect key="frame" x="16" y="10" width="414" height="244"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-vE-whE">
-                                <rect key="frame" x="16" y="10" width="382" height="212"/>
+                                <rect key="frame" x="16" y="10" width="382" height="224"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7N-gl-Odh">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
@@ -130,10 +130,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPd-QE-ayU">
-                                        <rect key="frame" x="0.0" y="75" width="382" height="137"/>
+                                        <rect key="frame" x="0.0" y="75" width="382" height="149"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamaroneck, Ontarioo,Canada.." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rb-Dy-UtE" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="382" height="127"/>
+                                                <rect key="frame" x="0.0" y="5" width="382" height="139"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -149,7 +149,7 @@
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udr-Vu-Bop">
-                                        <rect key="frame" x="0.0" y="212" width="382" height="35"/>
+                                        <rect key="frame" x="0.0" y="224" width="382" height="35"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="ntu-iZ-6Pp">
                                                 <rect key="frame" x="0.0" y="4.5" width="244" height="26"/>
@@ -218,10 +218,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="ei9-A1-ySr" secondAttribute="bottom" constant="16" id="36T-ru-mFO"/>
+                    <constraint firstAttribute="bottom" secondItem="ei9-A1-ySr" secondAttribute="bottom" constant="10" id="36T-ru-mFO"/>
                     <constraint firstAttribute="trailing" secondItem="ei9-A1-ySr" secondAttribute="trailing" constant="16" id="AnR-5F-nGx"/>
                     <constraint firstItem="ei9-A1-ySr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="GGY-TK-xah"/>
-                    <constraint firstItem="ei9-A1-ySr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Jkq-IW-K53"/>
+                    <constraint firstItem="ei9-A1-ySr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Jkq-IW-K53"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

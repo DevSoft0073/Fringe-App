@@ -30,10 +30,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uk-RU-Gzw">
-                        <rect key="frame" x="16" y="16" width="394" height="132"/>
+                        <rect key="frame" x="16" y="10" width="394" height="144"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="owh-rN-Rlt">
-                                <rect key="frame" x="16" y="10" width="362" height="112"/>
+                                <rect key="frame" x="16" y="10" width="362" height="124"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Coy-SM-s6L">
                                         <rect key="frame" x="0.0" y="0.0" width="362" height="40"/>
@@ -100,10 +100,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fw-KX-fGV">
-                                        <rect key="frame" x="0.0" y="75" width="362" height="37"/>
+                                        <rect key="frame" x="0.0" y="75" width="362" height="49"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamaroneck, Ontarioo,Canada.." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oht-l8-iDa" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="362" height="27"/>
+                                                <rect key="frame" x="0.0" y="5" width="362" height="39"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -141,8 +141,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="5uk-RU-Gzw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Lf2-tl-h0x"/>
-                    <constraint firstAttribute="bottom" secondItem="5uk-RU-Gzw" secondAttribute="bottom" constant="16" id="MdE-BG-tyR"/>
-                    <constraint firstItem="5uk-RU-Gzw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="RJl-uV-Mnx"/>
+                    <constraint firstAttribute="bottom" secondItem="5uk-RU-Gzw" secondAttribute="bottom" constant="10" id="MdE-BG-tyR"/>
+                    <constraint firstItem="5uk-RU-Gzw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="RJl-uV-Mnx"/>
                     <constraint firstAttribute="trailing" secondItem="5uk-RU-Gzw" secondAttribute="trailing" constant="16" id="g3a-yR-yFH"/>
                 </constraints>
             </tableViewCellContentView>
