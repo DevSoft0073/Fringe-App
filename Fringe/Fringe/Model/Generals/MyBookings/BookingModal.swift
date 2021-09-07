@@ -4,16 +4,18 @@
 //
 //  Created by MyMac on 9/6/21.
 //
-
 import Foundation
 
 // MARK: - BookingModal
-struct BookingModal: Codable , Hashable{
+struct BookingModal: Codable ,Hashable{
     var id, userID, golfID, requestID: String?
     var dates, specialInstruction, rejectReson, bookedStatus: String?
     var cancelStatus, paymentStatus, golfPaymentStatus, refundRequest: String?
     var sessionComplete, paymentPending, amountToBePaid, refundPayment: String?
     var refundStatus, refundReason, creationAt: String?
+    var image: String?
+    var golfCourseName, location, price, bookingModalDescription: String?
+    var latitude, longitude, rating: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -35,6 +37,13 @@ struct BookingModal: Codable , Hashable{
         case refundStatus = "refund_status"
         case refundReason = "refund_reason"
         case creationAt = "creation_at"
+        case image
+        case golfCourseName = "golf_course_name"
+        case location, price
+        case bookingModalDescription = "description"
+        case latitude = "Latitude"
+        case longitude = "Longitude"
+        case rating
     }
 }
 

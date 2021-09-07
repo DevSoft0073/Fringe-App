@@ -145,7 +145,9 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource, KRPull
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = items[indexPath.row]
         let controller = NavigationManager.shared.bookingDetailsVC
+        controller.bookingDetails = data
         push(controller: controller)
     }
     

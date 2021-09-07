@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJV-Wf-HHD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJV-Wf-HHD">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -881,11 +881,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imgMain" destination="Dr3-DZ-hfn" id="S8a-h6-lD5"/>
                         <outlet property="lblAddress" destination="Ihr-ra-zpR" id="Pgk-Ef-UJS"/>
                         <outlet property="lblDate" destination="e9N-Gf-hvB" id="yfz-eR-Dp0"/>
                         <outlet property="lblName" destination="5nD-1O-YaD" id="bb7-Q8-jvW"/>
                         <outlet property="lblRate" destination="QaS-6A-gy8" id="3Mm-5y-PWO"/>
                         <outlet property="lblRating" destination="Jcw-yY-0vh" id="5oU-dN-CW8"/>
+                        <outlet property="lblStatus" destination="RGX-qv-rWd" id="tr5-cB-SaB"/>
                         <outlet property="ratingView" destination="cpf-jf-CQS" id="ulv-vt-JZY"/>
                     </connections>
                 </viewController>
@@ -984,7 +986,7 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                                                <real key="value" value="5"/>
+                                                                <real key="value" value="0.0"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
@@ -4326,11 +4328,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qXM-fP-liW">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L1Z-42-pNz">
-                                                <rect key="frame" x="0.0" y="71" width="375" height="596"/>
+                                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfd-zc-jgs">

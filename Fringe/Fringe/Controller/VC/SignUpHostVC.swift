@@ -107,9 +107,80 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
             return false
         }
         
-        
         return true
     }
+    
+//    private func performAddStudio(completion:((_ flag: Bool) -> Void)?) {
+//        
+//        let imageData = selectedImage?.jpegData(compressionQuality: 0.2)
+//        var imgData = [String : Data]()
+//        imgData["profile_image"] = imageData
+//        
+//        let parameter: [String: Any] = [
+//            Request.Parameter.golfName: golfNameTxtFld.text ?? String(),
+//            Request.Parameter.price: golfPriceTxtFld.text ?? String(),
+//            Request.Parameter.location: golfAddressTxtFld.text ?? String(),
+//            Request.Parameter.description: golfDescriptionTxtView.text ?? String(),
+//        ]
+//        var imgDataa = [String : Data]()
+//        for i in photosInTheCellNow {
+//            let imgData = i?.jpegData(compressionQuality: 0.2)
+//            imgDataa["\(Date().timeIntervalSince1970)"] = imgData
+//        }
+//        
+//        RequestManager.shared.multipartImageRequest(parameter: parameter, imagesData: imgDataa, profileImagesData: imgData, keyName: "image[]", profileKeyName: "", urlString: PreferenceManager.shared.userBaseURL + Request.Method.signUpAsHost) { (response, error) in
+//      
+//            LoadingManager.shared.hideLoading()
+//
+//            if error == nil{
+//                
+//                if let data = response {
+//                    
+//                    
+//                    let status = data["code"] as? Int ?? 0
+//                    let jsonStudio = data["studio_detail"] as? [String: Any]
+//                    if status == Status.Code.success {
+//                        
+////                        delay {
+////
+////                            PreferenceManager.shared.currentStudioUser = jsonStudio?.dict2json()
+////                            let controller = NavigationManager.shared.submitVC
+////                            controller.modalPresentationStyle = .overFullScreen
+////                            self.present(controller, animated: false) {
+////
+////                            }
+////                        }
+//                        
+////                    } else if status == Status.Code.stripeIssue{
+////
+////                        delay {
+////
+////                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
+////
+////                        }
+//                    }
+//                    else {
+//                        
+//                        delay {
+//                            
+//                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
+//                            
+//                        }
+//                        
+//                    }
+//                }
+//            } else{
+//                
+//                delay {
+//                    
+//                    DisplayAlertManager.shared.displayAlert(animated: true, message: error?.localizedDescription ?? String())
+//
+//                }
+//                print(error?.localizedDescription ?? String())
+//            }
+//        }
+//    }
+
     
     //------------------------------------------------------
     
@@ -165,6 +236,7 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
         }
         return cell
     }
+    
     @objc func deleteAddedImages(sender : UIButton) {
         let dltImg = sender.tag
         photosInTheCellNow.remove(at: dltImg)

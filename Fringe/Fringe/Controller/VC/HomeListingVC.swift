@@ -73,8 +73,8 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
         
         let headers:HTTPHeaders = [
             "content-type": "application/json",
-//            "Token": currentUser?.authorizationToken ?? String(),
-            "Token": "IB6WSFnebwuDro5mhQxP5Lai4bW8ZZ9laDQbdU1vpvrk8F9HO9"
+            "Token": currentUser?.authorizationToken ?? String(),
+//            "Token": "IB6WSFnebwuDro5mhQxP5Lai4bW8ZZ9laDQbdU1vpvrk8F9HO9"
         ]
         
         let parameter: [String: Any] = [

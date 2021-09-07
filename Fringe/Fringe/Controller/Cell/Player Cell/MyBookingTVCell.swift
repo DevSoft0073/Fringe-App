@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MyBookingTVCell: UITableViewCell {
 
@@ -28,19 +29,19 @@ class MyBookingTVCell: UITableViewCell {
         imgMain.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         imgMain.sd_showActivityIndicatorView()
         imgMain.image = getPlaceholderImage()
-//        if let image = bookingData.image, image.isEmpty == false {
-//            let imgURL = URL(string: image)
-//            imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
-//                self.mainImg.sd_removeActivityIndicator()
-//            }
-//        } else {
-//            self.imgMain.sd_removeActivityIndicator()
-//        }
-        
-        lblName.text = bookingData.specialInstruction
-        lblAddress.text = bookingData.specialInstruction
-//        lblPrice.text = bookingData.specialInstruction
-//        lblRating.text = homeData.rating
+        if let image = bookingData.image, image.isEmpty == false {
+            let imgURL = URL(string: image)
+            imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                self.imgMain.sd_removeActivityIndicator()
+            }
+        } else {
+            self.imgMain.sd_removeActivityIndicator()
+        }
+//
+        lblName.text = bookingData.golfCourseName
+        lblAddress.text = bookingData.location
+        lblRate.text = bookingData.price
+//        lblRating.text = bookingData.
 //        ratingView.rating = Double(homeData.rating ?? String()) ?? Double()
     }
     

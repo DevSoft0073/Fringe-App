@@ -49,6 +49,16 @@ struct Request {
         static let search = "search"
         static let lats = "Latitude"
         static let longs = "Longitude"
+        
+        //sign up as host
+        static let golfName = "golf_course_name"
+        static let location = "location"
+        static let price = "price"
+        static let description = "description"
+        
+        //feedback
+        static let rating = "rating"
+        static let review = "review"
     }
     
     struct Method {
@@ -64,6 +74,8 @@ struct Request {
         static let favUnfav = "/GolfFavouriteUnfavourite.php"
         static let home = "/Home.php"
         static let myBooking = "/GetAllHistoryBooking.php"
+        static let signUpAsHost = "/signUp_asHost.php"
+        static let addRating = "/AddGolfrating.php"
     }
     
 }
