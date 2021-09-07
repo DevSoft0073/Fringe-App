@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "golfc@1x.png",
+      "filename" : "golfsel@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "golfc@2x.png",
+      "filename" : "golfsel@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "golfc@3x.png",
+      "filename" : "golfsel@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

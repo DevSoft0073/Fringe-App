@@ -11,7 +11,7 @@ import Foundation
 class BookingDetailsRatingVC : BaseVC {
     
     @IBOutlet weak var ratingView: FloatRatingView!
-    @IBOutlet weak var textViewQuery: UITextView!
+    @IBOutlet weak var txtViewQuery: UITextView!
     
     var golfID = String()
     //------------------------------------------------------
@@ -30,7 +30,7 @@ class BookingDetailsRatingVC : BaseVC {
     
     func validate() -> Bool {
         
-        if ValidationManager.shared.isEmpty(text: textViewQuery.text) == true {
+        if ValidationManager.shared.isEmpty(text: txtViewQuery.text) == true {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterPassword) {
             }
             return false
@@ -45,7 +45,7 @@ class BookingDetailsRatingVC : BaseVC {
             Request.Parameter.userID: currentUser?.userID ?? String(),
             Request.Parameter.golfID: "",
             Request.Parameter.rating: "",
-            Request.Parameter.review: textViewQuery.text ?? String(),
+            Request.Parameter.review: txtViewQuery.text ?? String(),
             
         ]
         
@@ -105,7 +105,7 @@ class BookingDetailsRatingVC : BaseVC {
             if flag {
                 DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.submitFeedback.localized()) {
                     self.ratingView.rating = 0
-                    self.textViewQuery.text = ""
+                    self.txtViewQuery.text = ""
                     self.popWithoutAnimate()
                 }
             }

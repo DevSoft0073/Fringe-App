@@ -13,6 +13,7 @@ import IQKeyboardManagerSwift
 
 class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource, KRPullLoadViewDelegate{
     
+    @IBOutlet weak var noDataLbl: FGRegularLabel!
     @IBOutlet weak var tblBooking: UITableView!
     
     var returnKeyHandler: IQKeyboardReturnKeyHandler?

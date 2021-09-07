@@ -22,6 +22,8 @@ class ConfirmedPayVC : BaseVC {
     @IBOutlet weak var lblAddress: FGRegularLabel!
     @IBOutlet weak var lblName: FGSemiboldLabel!
     @IBOutlet weak var imgMain: UIImageView!
+    @IBOutlet weak var lblGuest: UILabel!
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -48,6 +50,10 @@ class ConfirmedPayVC : BaseVC {
         controller.modalPresentationStyle = .overFullScreen
         self.present(controller, animated: true) {
         }
+    }
+    @IBAction func btnPlus(_ sender: Any) {
+    }
+    @IBAction func btnMinus(_ sender: Any) {
     }
     @IBAction func btnEditDate(_ sender: Any) {
     }

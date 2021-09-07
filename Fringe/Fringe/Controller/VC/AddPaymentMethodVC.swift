@@ -11,6 +11,8 @@ import Foundation
 class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     
     @IBOutlet weak var tblAddPayment: UITableView!
+    @IBOutlet weak var noDataLbl: FGRegularLabel!
+    
     struct AddPaymentItems {
         static let creditCard = LocalizableConstants.Controller.AddPaymentMethod.creditDebitCard
         static let creditCardIcon = FGImageName.iconCreditCardPayment

@@ -330,3 +330,14 @@ extension MKPlacemark {
         }
     }
 }
+extension UIViewController {
+    func convertTimeStampToDate(dateVal : Double) -> String{
+        let timeinterval = TimeInterval(dateVal)
+        let dateFromServer = Date(timeIntervalSince1970:timeinterval)
+        print(dateFromServer)
+        let dateFormater = DateFormatter()
+        dateFormater.timeZone = .current
+        dateFormater.dateFormat = "d MMM yyyy"
+        return dateFormater.string(from: dateFromServer)
+    }
+}

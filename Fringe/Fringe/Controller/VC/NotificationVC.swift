@@ -11,6 +11,7 @@ import KRPullLoader
 
 class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
    
+    @IBOutlet weak var noDataLbl: FGRegularLabel!
     @IBOutlet weak var tblNotification: UITableView!
     
     //MARK: Memory Management Method

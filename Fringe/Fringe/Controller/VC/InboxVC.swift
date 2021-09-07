@@ -11,7 +11,7 @@ import Foundation
 class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tblInbox: UITableView!
-    
+    @IBOutlet weak var noDataLbl: FGRegularLabel!
     
     //------------------------------------------------------
     

@@ -36,7 +36,11 @@ class BookingDetailsVC : BaseVC {
         lblRating.text = bookingDetails?.rating
         lblRate.text = bookingDetails?.price
         ratingView.rating = Double(bookingDetails?.rating ?? String()) ?? Double()
-        lblDate.text = bookingDetails?.dates
+//      lblDate.text = "\(stringToDate(string: bookingDetails?.dates ?? String(), dateFormat: "dd-MM-yyyy") ?? )"
+//      lblDate.text = bookingDetails?.dates ?? String()
+        let dateValue = bookingDetails?.dates ?? String()
+        let dateVal = NumberFormatter().number(from: dateValue)?.doubleValue ?? 0.0
+        lblDate.text = convertTimeStampToDate(dateVal: dateVal)
         imgMain.sd_addActivityIndicator()
         imgMain.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         imgMain.sd_showActivityIndicatorView()

@@ -265,7 +265,8 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NavigationManager.shared.isEnabledBottomMenu = false
-        
+        txtGender.tintColor = .clear
+        txtBirthDate.tintColor = .clear
     }
     
     override func viewDidLayoutSubviews() {

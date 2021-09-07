@@ -13,7 +13,7 @@ import IQKeyboardManagerSwift
 
 class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullLoadViewDelegate{
     
-    @IBOutlet weak var noDataLbl: FGMediumLabel!
+    @IBOutlet weak var noDataLbl: FGRegularLabel!
     @IBOutlet weak var txtSearchFld: FGRegularTextField!
     @IBOutlet weak var tblListing: UITableView!
     

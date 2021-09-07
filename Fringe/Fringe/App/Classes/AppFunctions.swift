@@ -20,7 +20,7 @@ func getDynamicFontSize(fontDefaultSize: CGFloat ) -> CGFloat {
     
     var fontSize : CGFloat = 0.0
     let device = Device.version
-       
+    
     if device == Version.phone4 || device == Version.phone5 {
         fontSize = fontDefaultSize
     } else if device == Version.phone6 || device == Version.phone7 || device == Version.phone6S || device == Version.phone8 {
@@ -33,11 +33,11 @@ func getDynamicFontSize(fontDefaultSize: CGFloat ) -> CGFloat {
     //7.9 inches
     if device == Version.padMini || device == Version.padMini2 || device == Version.padMini3 || device == Version.padMini4 {
         fontSize = fontDefaultSize - FGFont.reduceSize
-    //9.7 inches
+        //9.7 inches
     } else if device == Version.padAir || device == Version.padAir2  || device == Version.pad1 || device == Version.pad2 || device == Version.pad3 || device == Version.pad4 {
         //fontSize = fontDefaultSize + PMFont.increaseSize
         fontSize = fontDefaultSize
-    //10.5 and later
+        //10.5 and later
     } else if device == Version.padPro {
         fontSize = fontDefaultSize + FGFont.increaseSize
     } else {
@@ -105,10 +105,10 @@ func localized(code: Int) -> String {
 func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
     
     let size = image.size
-
+    
     let widthRatio  = targetSize.width  / size.width
     let heightRatio = targetSize.height / size.height
-
+    
     // Figure out what our orientation is, and use that to form the rectangle
     var newSize: CGSize
     if(widthRatio > heightRatio) {
@@ -116,16 +116,16 @@ func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
     } else {
         newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
     }
-
+    
     // This is the rect that we've calculated out and this is what is actually used below
     let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-
+    
     // Actually do the resizing to the rect using the ImageContext stuff
     UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
     image.draw(in: rect)
     let newImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-
+    
     return newImage!
 }
 //func localized(code: Int) -> String {
@@ -137,7 +137,7 @@ func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
 
 
 extension UITableView {
-
+    
     func setEmptyMessage(_ message: String) {
         let messageLabel = UILabel(frame: CGRect(x: 80, y: 200, width: 290, height: 70))
         messageLabel.text = message
@@ -146,11 +146,11 @@ extension UITableView {
         messageLabel.textAlignment = .center
         messageLabel.font = UIFont(name: "Roboto-Medium", size: 20)
         messageLabel.sizeToFit()
-
+        
         self.backgroundView = messageLabel
         self.separatorStyle = .none
     }
-
+    
     func restore() {
         self.backgroundView = nil
         self.separatorStyle = .singleLine
@@ -160,12 +160,12 @@ extension UITableView {
 extension Array where Element: Hashable {
     func removingDuplicates() -> [Element] {
         var addedDict = [Element: Bool]()
-
+        
         return filter {
             addedDict.updateValue(true, forKey: $0) == nil
         }
     }
-
+    
     mutating func removeDuplicates() {
         self = self.removingDuplicates()
     }
@@ -180,4 +180,10 @@ func getDistanceInKm(from coordinate0: CLLocationCoordinate2D?, coordinate1: CLL
     formatter.unitOptions = .providedUnit
     formatter.unitStyle = .short
     return formatter.string(from: km)
+}
+
+func stringToDate(string: String, dateFormat: String) -> Date? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = dateFormat
+    return dateFormatter.date(from: string)
 }

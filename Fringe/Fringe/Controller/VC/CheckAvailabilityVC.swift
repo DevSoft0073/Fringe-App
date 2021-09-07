@@ -56,6 +56,8 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Actions
     
+    
+    
     @IBAction func btnBooking(_ sender: Any) {
     }
     @IBAction func btnBack(_ sender: Any) {

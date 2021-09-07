@@ -201,7 +201,8 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
         }
     }
     
-    @IBAction func btnUploadImg(_ sender: Any) {
+    @IBAction func btnUploadImg(_ sender: UIButton) {
+        self.imagePickerVC?.present(from: sender)
     }
     
     @IBAction func btnBack(_ sender: Any) {
