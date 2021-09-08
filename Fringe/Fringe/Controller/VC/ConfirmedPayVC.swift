@@ -42,8 +42,8 @@ class ConfirmedPayVC : BaseVC {
     //MARK: Actions
     
     @IBAction func btnAddPayment(_ sender: Any) {
-        let controller = NavigationManager.shared.searchVC
-        push(controller: controller)
+//        let controller = NavigationManager.shared.searchVC
+//        push(controller: controller)
     }
     @IBAction func btnEditGuests(_ sender: Any) {
         let controller = NavigationManager.shared.addGuestVC
