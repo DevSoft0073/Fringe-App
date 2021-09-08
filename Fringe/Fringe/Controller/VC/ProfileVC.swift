@@ -343,12 +343,11 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                         }
                     }
                 }
-            }
-            
-           
+            }            
         }
     }
     
+    //------------------------------------------------------
     
     //MARK: UIViewController
     
@@ -368,6 +367,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     }
     
     //------------------------------------------------------
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
