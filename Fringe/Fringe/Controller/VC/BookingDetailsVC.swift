@@ -33,7 +33,7 @@ class BookingDetailsVC : BaseVC {
     func setup() {
         lblName.text = bookingDetails?.golfCourseName
         lblAddress.text = bookingDetails?.location
-        lblRating.text = bookingDetails?.rating
+        lblRating.text = "5"
         lblRate.text = bookingDetails?.price
         ratingView.rating = Double(bookingDetails?.rating ?? String()) ?? Double()
 //      lblDate.text = "\(stringToDate(string: bookingDetails?.dates ?? String(), dateFormat: "dd-MM-yyyy") ?? )"
