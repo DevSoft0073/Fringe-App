@@ -187,3 +187,32 @@ func stringToDate(string: String, dateFormat: String) -> Date? {
     dateFormatter.dateFormat = dateFormat
     return dateFormatter.date(from: string)
 }
+
+extension Collection {
+    public func chunk(n: IndexDistance) -> [SubSequence] {
+        var res: [SubSequence] = []
+        var i = startIndex
+        var j: Index
+        while i != endIndex {
+            j = index(i, offsetBy: n, limitedBy: endIndex) ?? endIndex
+            res.append(self[i..<j])
+            i = j
+        }
+        return res
+    }
+}
+
+extension String {
+    func chunkFormatted(withChunkSize chunkSize: Int = 4,
+                        withSeparator separator: Character = "-") -> String {
+        return self.filter { $0 != separator }.chunk(n: chunkSize)
+            .map{ String($0) }.joined(separator: String(separator))
+    }
+    var trimWhiteSpace: String{
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    var htmlStripped : String{
+        let tagFree = self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        return tagFree.replacingOccurrences(of: "&[^;]+;", with: "", options: String.CompareOptions.regularExpression, range: nil)
+    }
+}

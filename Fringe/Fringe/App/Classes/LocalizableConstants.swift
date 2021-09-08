@@ -167,6 +167,7 @@ struct LocalizableConstants {
             static let allowNotification = "allow_notification"
             static let bookingListing = "my_bookings"
             static let switchToBusiness = "switch_to_business"
+            static let signUpToBusiness = "sign_up_to_business"
             static let termsOfService = "terms_of_service"
             static let privacyPolicy = "Privacy"
             static let logout = "sign_out"

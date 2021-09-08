@@ -10,13 +10,14 @@ import Foundation
 
 // MARK: - UserModal
 struct UserModal: Codable {
-    var userID, image, userName, firstName: String?
-    var lastName, timeZone, golfID, dob: String?
-    var gender, mobileNo, hometown, profession: String?
-    var memberCourse, golfHandicap, password, confirmPassword: String?
-    var email, emailVerification, verificationCode, disable: String?
-    var allowPush, allowLocation, fbToken, googleToken: String?
-    var appleToken, creationAt, authorizationToken: String?
+    var userID: String?
+    var image: String?
+    var userName, firstName, lastName, timeZone: String?
+    var isgolfRegistered, dob, gender, mobileNo: String?
+    var hometown, profession, memberCourse, golfHandicap: String?
+    var password, confirmPassword, email, emailVerification, authorizationToken: String?
+    var verificationCode, disable, allowPush, allowLocation: String?
+    var fbToken, googleToken, appleToken, creationAt: String?
 
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
@@ -25,7 +26,7 @@ struct UserModal: Codable {
         case firstName = "first_name"
         case lastName = "last_name"
         case timeZone = "time_zone"
-        case golfID = "golf_id"
+        case isgolfRegistered = "isgolf_registered"
         case dob, gender
         case mobileNo = "mobile_no"
         case hometown, profession
@@ -44,6 +45,12 @@ struct UserModal: Codable {
         case appleToken = "apple_token"
         case creationAt = "creation_at"
         case authorizationToken = "authorization_token"
+    }
+    var isClubRegistered: Bool {
+        if isgolfRegistered == "2" {
+            return false
+        }
+        return isgolfRegistered == "1" ? true : false
     }
 }
 

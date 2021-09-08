@@ -27,6 +27,13 @@ PODS:
   - SDWebImage (4.4.8):
     - SDWebImage/Core (= 4.4.8)
   - SDWebImage/Core (4.4.8)
+  - Stripe (21.8.1):
+    - Stripe/Stripe3DS2 (= 21.8.1)
+    - StripeCore (= 21.8.1)
+  - Stripe/Stripe3DS2 (21.8.1):
+    - StripeCore (= 21.8.1)
+  - StripeCore (21.8.1)
+  - TimeZoneLocate (0.5.0)
   - Toucan (1.1.0)
   - "UITextView+Placeholder (1.4.0)"
 
@@ -45,6 +52,8 @@ DEPENDENCIES:
   - MonthYearPicker (~> 4.0.2)
   - pop (~> 1.0.12)
   - SDWebImage (~> 4.4.5)
+  - Stripe
+  - TimeZoneLocate
   - Toucan
   - "UITextView+Placeholder (~> 1.4.0)"
 
@@ -67,6 +76,9 @@ SPEC REPOS:
     - MonthYearPicker
     - pop
     - SDWebImage
+    - Stripe
+    - StripeCore
+    - TimeZoneLocate
     - Toucan
     - "UITextView+Placeholder"
 
@@ -88,9 +100,12 @@ SPEC CHECKSUMS:
   MonthYearPicker: 91f77106e6806d8c93c69e943ab0795fd420657f
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
+  Stripe: 57c6997c64042a3f5aedae9b76e331942f8b75d2
+  StripeCore: a6e50d58119a0c7601773b56f274db2d394dcdac
+  TimeZoneLocate: 8536d7435a408ac14b6e0190ffcca2c2bb91aff8
   Toucan: 8f228fabb21521b9658692df9325fe76e71d74b2
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 1d5b63dfd5a34a88d9e64efc35224f0b1ab2fffe
+PODFILE CHECKSUM: 3fc748daebd735c0003d31d60afd1128b8fea495
 
 COCOAPODS: 1.10.2

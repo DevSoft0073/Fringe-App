@@ -29,4 +29,8 @@
   #apple sign in
   pod 'AppleSignIn'
 
+  # payment
+  pod 'Stripe'
+  pod "TimeZoneLocate"
+
 end

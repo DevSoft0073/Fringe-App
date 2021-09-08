@@ -27,6 +27,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         static let myBookings = LocalizableConstants.Controller.Profile.bookingListing
         static let myBookingsIcon = FGImageName.iconBookingListing
         static let switchToBusiness = LocalizableConstants.Controller.Profile.switchToBusiness
+        static let signUpToBusiness = LocalizableConstants.Controller.Profile.signUpToBusiness
         static let switchToBusinessIcon = FGImageName.iconSwitchToBusiness
         static let termsOfServices = LocalizableConstants.Controller.Profile.termsOfService
         static let termsOfServicesIcon = FGImageName.iconTermsOfService
@@ -44,11 +45,10 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
             ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
             ["name": ProfileItems.myBookings, "image": ProfileItems.myBookingsIcon],
-            //            ["name": PreferenceManager.shared.currentUserModal?.isStudioRegistered == true ? ProfileItems.switchToStudioProfile : ProfileItems.signupToStudioProfile, "image": ProfileItems.switchToStudioProfileIcon],
-            ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
+            ["name": PreferenceManager.shared.currentUserModal?.isClubRegistered == true ? ProfileItems.switchToBusiness : ProfileItems.signUpToBusiness, "image": ProfileItems.switchToBusinessIcon],
+//            ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
             ["name": ProfileItems.termsOfServices, "image": ProfileItems.termsOfServicesIcon],
             ["name": ProfileItems.privacyPolicy, "image": ProfileItems.privacyPolicyIcon],
-            //            ["name": ProfileItems.cancellationPolicy, "image": ProfileItems.cancellationPolicyIcon],
             ["name": ProfileItems.logout, "image": ProfileItems.logoutIcon]
         ]
     }
@@ -60,8 +60,8 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
             ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
             ["name": ProfileItems.myBookings, "image": ProfileItems.myBookingsIcon],
-            //            ["name": PreferenceManager.shared.currentUserModal?.isStudioRegistered == true ? ProfileItems.switchToStudioProfile : ProfileItems.signupToStudioProfile, "image": ProfileItems.switchToStudioProfileIcon],
-            ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
+            ["name": PreferenceManager.shared.currentUserModal?.isClubRegistered == true ? ProfileItems.switchToBusiness : ProfileItems.signUpToBusiness, "image": ProfileItems.switchToBusinessIcon],
+//            ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
             ["name": ProfileItems.termsOfServices, "image": ProfileItems.termsOfServicesIcon],
             ["name": ProfileItems.privacyPolicy, "image": ProfileItems.privacyPolicyIcon],
             //            ["name": ProfileItems.cancellationPolicy, "image": ProfileItems.cancellationPolicyIcon],
@@ -126,7 +126,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                     
                     PreferenceManager.shared.currentUser = stringUser
                     self.setup()
-
+                    self.updateUI()
                 }
                 delay {
                     completion?(true)
@@ -301,11 +301,15 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             let controller = NavigationManager.shared.myBookingVC
             push(controller: controller)
             
-        }else if name == ProfileItems.switchToBusiness{
+        }else if name == ProfileItems.switchToBusiness || name == ProfileItems.signUpToBusiness{
             
-            let controller = NavigationManager.shared.signUpHostVC
-            push(controller: controller)
-//            NavigationManager.shared.setupLandingOnHomeForHost()
+            if currentUser?.isClubRegistered == false {
+                let controller = NavigationManager.shared.signUpHostVC
+                push(controller: controller)
+            } else {
+                NavigationManager.shared.setupLandingOnHomeForHost()
+
+            }
             
         }else if name == ProfileItems.termsOfServices{
             

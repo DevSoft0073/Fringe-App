@@ -212,6 +212,9 @@ class LocationSearchVC: UITableViewController, UISearchBarDelegate, FGLocationMa
             let selectedObject = places![indexPath.row]
            // delegate?.locationSearch(controller: self, didSelect: selectedObject.placemark.formattedAddress ?? selectedObject.name ?? String())
             delegate?.locationSearch(controller: self, didSelect: selectedObject.placemark)
+            self.dismiss(animated: true) {
+                
+            }
         }
     }
     

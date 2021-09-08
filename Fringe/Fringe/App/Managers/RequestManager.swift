@@ -76,6 +76,7 @@ struct Request {
         static let myBooking = "/GetAllHistoryBooking.php"
         static let signUpAsHost = "/signUp_asHost.php"
         static let addRating = "/AddGolfrating.php"
+        static let addedRequestListing = "/GetHostBookingDetails.php"
         static let logout = "/LogOut.php"
     }
     

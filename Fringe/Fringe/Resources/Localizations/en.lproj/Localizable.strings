@@ -187,8 +187,9 @@
 "payment_method" = "Add payment method";
 "allow_location" = "Allow Location";
 "allow_notification" = "Allow notification";
-"switch_to_business" = "Signup as host";
+"switch_to_business" = "Switch to host";
 "switch_to_player" = "Switch to player";
+"sign_up_to_business" = "Signup as host";
 "terms_of_service" = "Terms of Service";
 
 //Profile Studio

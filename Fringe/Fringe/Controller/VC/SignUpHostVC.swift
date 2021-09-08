@@ -25,16 +25,9 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var countryCode = String()
-    var lat = String()
-    var long = String()
-    var countyCode = String()
-    var stateName = String()
-    var cityName = String()
-    var postlaCode = String()
-    var line1 = String()
-    var line2 = String()
     var showImage = ["sign_plus"]
     var textTitle: String?
+    var checkPickerVal = Bool()
     //    var locations = [Location]()
     var studioProfileParameter: [String: Any] = [:]
     var photosInTheCellNow = [UIImage?]()
@@ -44,6 +37,14 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
             if selectedImage != nil {
                 photosInTheCellNow.append(selectedImage)
                 uploadImageCollectionView.reloadData()
+            }
+        }
+    }
+    
+    var selectedImages: UIImage? {
+        didSet {
+            if selectedImages != nil {
+                profileImg.image = selectedImages
             }
         }
     }
@@ -114,7 +115,7 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     
     private func performAddGolfCourse(completion:((_ flag: Bool) -> Void)?) {
         
-        let imageData = selectedImage?.jpegData(compressionQuality: 0.2)
+        let imageData = selectedImages?.jpegData(compressionQuality: 0.2)
         var imgData = [String : Data]()
         imgData["profile_image"] = imageData
         let headers: HTTPHeaders = [
@@ -142,18 +143,23 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
                 if let data = response {
                     
                     let status = data["code"] as? Int ?? 0
+                    let messgae = data["message"] as? String ?? ""
                     let jsonStudio = data["data"] as? [String: Any]
                     if status == Status.Code.success {
+                        print(jsonStudio ?? [:])
                         
-//                        delay {
-//
+                        delay {
+
+                            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: messgae) {
+                                NavigationManager.shared.setupLandingOnHomeForHost()
+                            }
 //                            PreferenceManager.shared.currentStudioUser = jsonStudio?.dict2json()
 //                            let controller = NavigationManager.shared.submitVC
 //                            controller.modalPresentationStyle = .overFullScreen
 //                            self.present(controller, animated: false) {
 //
 //                            }
-//                        }
+                        }
                         
 //                    } else if status == Status.Code.stripeIssue{
 //
@@ -202,6 +208,7 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     }
     
     @IBAction func btnUploadImg(_ sender: UIButton) {
+        checkPickerVal = true
         self.imagePickerVC?.present(from: sender)
     }
     
@@ -215,7 +222,13 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     
     func didSelect(image: UIImage?) {
         if let imageData = image?.jpegData(compressionQuality: 0), let compressImage = UIImage(data: imageData) {
-            self.selectedImage = Toucan.init(image: compressImage).image
+            
+            if checkPickerVal == true {
+                self.selectedImages = Toucan.init(image: compressImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: FGColor.appGreen).image
+                profileImg.image = selectedImages
+            }else{
+                self.selectedImage = Toucan.init(image: compressImage).image
+            }
         }
     }
     
@@ -254,8 +267,8 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if photosInTheCellNow.count >= 10 {
-            //            DisplayAlertManager.shared.displayAlert(message: LocalizableConstants.Error.maximumLimit)
         }else{
+            checkPickerVal = false
             self.imagePickerVC?.present(from: view)
         }
     }
@@ -265,12 +278,15 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     //MARK: UITextFieldDelegate
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
+
         if textField == golfAddressTxtFld {
             self.view.endEditing(true)
             let controller = NavigationManager.shared.locationSearchVC
             controller.delegate = self
-            push(controller: controller)
+            let nvc = UINavigationController(rootViewController: controller)
+            self.present(nvc, animated: true) {
+                
+            }
             return false
         }
         return true
@@ -282,36 +298,6 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     
     func locationSearch(controller: LocationSearchVC, didSelect location: MKPlacemark) {
         self.golfAddressTxtFld.text = location.name ?? String()
-//        self.countyCode = location.countryCode ?? String()
-//        let fullAddress = String(format: "%@ %@", location.name ?? String(), location.formattedAddress ?? location.name ?? String())
-//        let stateName = fullAddress.components(separatedBy: " ")
-//        //self.line2 = "\(stateName![1]) " + ("\(stateName![2]) ") + ("\(stateName![3])")
-//        let count = stateName.count
-//        let midCount = count / 2
-//        var index: Int = .zero
-//        line1.removeAll()
-//        line2.removeAll()
-//        for word in stateName {
-//            if index < midCount {
-//                line1 = line1.appending(word).appending(" ")
-//            } else {
-//                line2 = line2.appending(word).appending(" ")
-//            }
-//            index = index + 1
-//        }
-//        self.stateName = location.administrativeArea ?? String()
-//        self.cityName = location.locality ?? String()
-//        self.postlaCode = location.postalCode ?? String()
-//        self.lat = "\(location.coordinate.latitude)"
-//        self.long = "\(location.coordinate.longitude)"
-//        let location = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude )
-//        let geoCoder = CLGeocoder()
-//        geoCoder.reverseGeocodeLocation(location) { (placemarks, err) in
-//            if let placemark = placemarks?[0] {
-//                self.selectedTimeZone = "\(String(describing: placemark.timeZone))"
-//                self.selectedCountry = "\(String(describing: placemark.isoCountryCode))"
-//            }
-//        }
         if IQKeyboardManager.shared.canGoNext {
             IQKeyboardManager.shared.goNext()
         }

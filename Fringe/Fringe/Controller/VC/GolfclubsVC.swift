@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 import Foundation
 import KRPullLoader
 
@@ -16,6 +17,9 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     @IBOutlet weak var segment1: SegmentView!
     @IBOutlet weak var tblGolf: UITableView!
     
+    var items : [RequestListingModal] = []
+    var isRequesting: Bool = false
+    var lastRequestId: String = String()
     var needToshowInfoView: Bool = false
     var btnTapped = true
    
@@ -62,6 +66,95 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
         
     }
+    
+    func updateUI()  {
+        tblGolf.reloadData()
+    }
+    
+    func performGetSessionData(completion:((_ flag: Bool) -> Void)?) {
+        
+        var parameter: [String: Any] = [:]
+        
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+           "Token": currentUser?.authorizationToken ?? String(),
+          ]
+        
+        
+        self.noDataLbl.isHidden = true
+        
+        if segment1.isSelected == true {
+            
+            parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
+                         Request.Parameter.lat: "0",
+                         Request.Parameter.lastID: lastRequestId,]
+            
+        }else if segment2.isSelected == true {
+            
+            parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
+                         Request.Parameter.lat: "1",
+                         Request.Parameter.lastID: lastRequestId,]
+            
+        }else{
+            
+            segment1.isSelected = true
+            
+            parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
+                         Request.Parameter.lat: "0",
+                         Request.Parameter.lastID: lastRequestId,]
+            
+        }
+        
+        isRequesting = true
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.addedRequestListing, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[RequestListingModal]>.self, successBlock: { (response: ResponseModal<[RequestListingModal]>) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            self.isRequesting = false
+            
+            if response.code == Status.Code.success {
+                
+                delay {
+                    
+                    if self.lastRequestId.isEmpty {
+                        self.items.removeAll()
+                        self.updateUI()
+                        
+                    }
+                    
+                    self.items.append(contentsOf: response.data ?? [])
+                    self.items = self.items.removingDuplicates()
+                    self.lastRequestId = response.data?.last?.id ?? String()
+                    self.updateUI()
+                }
+                
+            } else if response.code == Status.Code.notfound {
+                
+                    
+                    self.items.removeAll()
+                    
+                    LoadingManager.shared.hideLoading()
+                    
+                    self.updateUI()
+                    
+                    self.noDataLbl.isHidden = false
+                    
+             }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                LoadingManager.shared.hideLoading()
+                self.noDataLbl.isHidden = false
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
+
     
     //------------------------------------------------------
     
