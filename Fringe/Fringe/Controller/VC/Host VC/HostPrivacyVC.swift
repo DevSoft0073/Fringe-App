@@ -45,6 +45,7 @@ class HostPrivacyVC : BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NavigationManager.shared.isEnabledBottomMenuForHost = false
     }
     
     //------------------------------------------------------

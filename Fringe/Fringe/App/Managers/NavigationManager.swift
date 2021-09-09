@@ -6,6 +6,7 @@
 //  Copyright © 2020 dharmesh. All rights reserved.
 //
 
+
 import UIKit
 
 struct FGStoryboard {
@@ -221,7 +222,7 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     
     public var isEnabledBottomMenuForHost: Bool = false {
         didSet {
-            self.tabbarControllerForHost?.tabBar.isHidden = !isEnabledBottomMenu
+            self.tabbarControllerForHost?.tabBar.isHidden = !isEnabledBottomMenuForHost
         }
     }
     
@@ -345,11 +346,20 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PaymentMethodVC.self)) as! PaymentMethodVC
     }
     
+    public var paymentOptionsVC : PaymentOptionsVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PaymentOptionsVC.self)) as! PaymentOptionsVC
+    }
+    
+    public var paymentSuccessfullyPopUpVC : PaymentSuccessfullyPopUpVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PaymentSuccessfullyPopUpVC.self)) as! PaymentSuccessfullyPopUpVC
+    }
+
+    
     public var locationSearchVC: LocationSearchVC {
         return locationSearchStoryboard.instantiateViewController(withIdentifier: String(describing: LocationSearchVC.self)) as! LocationSearchVC
     }
     
-    // HostNavigation
+    // HostGolfStoryboardNavigation
     
     public var hostAccountInformationVC: HostAccountInformationVC {
         return golfStoryboard.instantiateViewController(withIdentifier: String(describing: HostAccountInformationVC.self)) as! HostAccountInformationVC
@@ -384,4 +394,6 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         return golfStoryboard.instantiateViewController(withIdentifier: String(describing: BusinessAddPaymentMethodVC.self)) as! BusinessAddPaymentMethodVC
     }
 }
+
+
 

@@ -27,7 +27,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         static let myBookings = LocalizableConstants.Controller.Profile.bookingListing
         static let myBookingsIcon = FGImageName.iconBookingListing
         static let switchToBusiness = LocalizableConstants.Controller.Profile.switchToBusiness
-        static let signUpToBusiness = LocalizableConstants.Controller.Profile.signUpToBusiness
+        static let signUpToBusiness = LocalizableConstants.Controller.Profile.switchToBusiness
         static let switchToBusinessIcon = FGImageName.iconSwitchToBusiness
         static let termsOfServices = LocalizableConstants.Controller.Profile.termsOfService
         static let termsOfServicesIcon = FGImageName.iconTermsOfService
@@ -303,13 +303,13 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             
         }else if name == ProfileItems.switchToBusiness || name == ProfileItems.signUpToBusiness{
             
-            if currentUser?.isClubRegistered == false {
-                let controller = NavigationManager.shared.signUpHostVC
-                push(controller: controller)
-            } else {
+//            if currentUser?.isClubRegistered == false {
+//                let controller = NavigationManager.shared.signUpHostVC
+//                push(controller: controller)
+//            } else {
                 NavigationManager.shared.setupLandingOnHomeForHost()
 
-            }
+//            }
             
         }else if name == ProfileItems.termsOfServices{
             

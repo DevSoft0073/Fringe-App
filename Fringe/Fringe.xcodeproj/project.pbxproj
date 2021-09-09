@@ -60,6 +60,7 @@
 		7C5E41B926D8BF5900D63728 /* HomeListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5E41B826D8BF5900D63728 /* HomeListingVC.swift */; };
 		7C5E41BC26D8C1EC00D63728 /* HomeListingTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5E41BB26D8C1EC00D63728 /* HomeListingTBCell.xib */; };
 		7C5E41BF26D8C20100D63728 /* HomeListingTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5E41BE26D8C20100D63728 /* HomeListingTBCell.swift */; };
+		7C64AAE826E8F04C0024D06B /* PaymentOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64AAE726E8F04C0024D06B /* PaymentOptionsVC.swift */; };
 		7C6D5BDC26D38206007F888C /* AddPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D5BDB26D38206007F888C /* AddPaymentVC.swift */; };
 		7C73149226DE2DE600BBFE09 /* HostCalendarTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73149026DE2DE600BBFE09 /* HostCalendarTBCell.swift */; };
 		7C73149326DE2DE600BBFE09 /* HostCalendarTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C73149126DE2DE600BBFE09 /* HostCalendarTBCell.xib */; };
@@ -227,6 +228,7 @@
 		7C5E41B826D8BF5900D63728 /* HomeListingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListingVC.swift; sourceTree = "<group>"; };
 		7C5E41BB26D8C1EC00D63728 /* HomeListingTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeListingTBCell.xib; sourceTree = "<group>"; };
 		7C5E41BE26D8C20100D63728 /* HomeListingTBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListingTBCell.swift; sourceTree = "<group>"; };
+		7C64AAE726E8F04C0024D06B /* PaymentOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentOptionsVC.swift; sourceTree = "<group>"; };
 		7C6D5BDB26D38206007F888C /* AddPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentVC.swift; sourceTree = "<group>"; };
 		7C73149026DE2DE600BBFE09 /* HostCalendarTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCalendarTBCell.swift; sourceTree = "<group>"; };
 		7C73149126DE2DE600BBFE09 /* HostCalendarTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HostCalendarTBCell.xib; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				7CDA847B26D8FCBE0096FA0F /* ServiceTermsVC.swift */,
 				7CE0F64126D4D41A00C3AAFB /* SignUpHostVC.swift */,
 				7C780F8E26C3C105003F1F12 /* SignUpVC.swift */,
+				7C64AAE726E8F04C0024D06B /* PaymentOptionsVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1061,6 +1064,7 @@
 				7C780F7726C3A6DB003F1F12 /* ESTabBarItem.swift in Sources */,
 				7CDA847926D8FCA00096FA0F /* PrivacyVC.swift in Sources */,
 				7CE041A426DF8F4B0036EEA0 /* HostProfileAddImageCell.swift in Sources */,
+				7C64AAE826E8F04C0024D06B /* PaymentOptionsVC.swift in Sources */,
 				7C52985426DCA8D200A3606D /* HostPendingCell.swift in Sources */,
 				1F5DF83326E2075D00EA7327 /* FavoriteListing.swift in Sources */,
 				7CE0F63C26D4A71B00C3AAFB /* SearchVC.swift in Sources */,
@@ -1246,8 +1250,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
@@ -1258,7 +1262,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fringe.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = fringe_dev_27_aug_2021;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1271,8 +1275,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
@@ -1283,7 +1287,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fringe.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = fringe_dev_27_aug_2021;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -64,12 +64,18 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         push(controller: controller)
     }
     
+    @IBAction func btnPayment(_ sender: Any) {
+        let controller = NavigationManager.shared.paymentSuccessfullyPopUpVC
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .coverVertical
+        self.present(controller, animated: true)
+    }
     //------------------------------------------------------
     
     //MARK: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,10 +91,17 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let controller = NavigationManager.shared.addPaymentVC
-//        push(controller: controller)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? PaymentMethodTVC{
+            cell.selectUnselectImg.image = UIImage(named: FGImageName.iconRadio)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? PaymentMethodTVC{
+            cell.selectUnselectImg.image = UIImage(named: FGImageName.iconRadioUnselect)
+        }
+    }
     
     
     //------------------------------------------------------

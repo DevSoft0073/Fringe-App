@@ -269,6 +269,9 @@
 
 "messages" = "Messages";
 
+"enter_add_guest_limit" = "Add guest limit is 4 only";
+"enter_remove_guest_limit" = "Minimum 2 guests are necessary";
+
 // add payment
 "credit_debit_card" = "Credit or Debit card";
 "pay_pal_card" = "PayPal";

@@ -107,6 +107,11 @@ struct LocalizableConstants {
         static let enterValidRoutingNumber = "enter_valid_routing_number"
         static let enterValidSSNNumber = "enter_valid_SSN_number"
         
+        // Confirm pay
+        
+        static let enterAddGuestLimit = "enter_add_guest_limit"
+        static let enterRemoveGuestLimit =  "enter_remove_guest_limit"
+        
         struct Error {
             
             static let noNetworkConnection = "no_network_connection"
@@ -167,7 +172,6 @@ struct LocalizableConstants {
             static let allowNotification = "allow_notification"
             static let bookingListing = "my_bookings"
             static let switchToBusiness = "switch_to_business"
-            static let signUpToBusiness = "sign_up_to_business"
             static let termsOfService = "terms_of_service"
             static let privacyPolicy = "Privacy"
             static let logout = "sign_out"

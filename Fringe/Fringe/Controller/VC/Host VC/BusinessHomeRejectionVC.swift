@@ -14,7 +14,7 @@ class BusinessHomeRejectionVC : BaseVC {
     
     @IBOutlet weak var btnCancel: FGActiveButton!
     @IBOutlet weak var btnReject: FGActiveButton!
-    @IBOutlet weak var reasonTextView: FGRegularTextView!
+    @IBOutlet weak var reasonTextView: UITextView!
     @IBOutlet weak var dataView: UIView!
     @IBOutlet weak var popUpView: UIView!
     

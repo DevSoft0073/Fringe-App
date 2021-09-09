@@ -59,17 +59,7 @@ class BusinessAddPaymentMethodVC : BaseVC, UITextFieldDelegate, UploadImages, Im
         routingNumberTxt.delegate = self
         accountNumberTxt.delegate = self
         accountHoldrNameTxt.delegate = self
-//        ssnNumberTxtFld.placeholder = "000000000"
         
-    }
-    
-    func pickImage(tag: Int) {
-        tagValue = tag
-        if tag == 0{
-            self.imagePickerVC?.present(from: view)
-        }else if tag == 1{
-            self.imagePickerVC?.present(from: view)
-        }
     }
     
     func validate() -> Bool {
@@ -163,26 +153,35 @@ class BusinessAddPaymentMethodVC : BaseVC, UITextFieldDelegate, UploadImages, Im
         return true
     }
     
+    func pickImage(tag: Int) {
+        tagValue = tag
+        if tag == 0{
+            self.imagePickerVC?.present(from: view)
+        }else if tag == 1{
+            self.imagePickerVC?.present(from: view)
+        }
+    }
+    
     //------------------------------------------------------
     
     //MARK: FGImagePickerDelegate
         
     func didSelect(image: UIImage?) {
-//        if tagValue == 0{
+        if tagValue == 0{
 //            LoadingManager.shared.showLoading()
 //            delay {
 //                self.performFrontImgDocument(selectedImg: image ?? UIImage())
 //            }
-//        }else if tagValue == 1{
+        }else if tagValue == 1{
 //            LoadingManager.shared.showLoading()
 //            delay {
 //                self.performBackImgDocument(selectedImg: image ?? UIImage())
 //            }
-//        }
-//        if let imageData = image?.jpegData(compressionQuality: 0), let compressImage = UIImage(data: imageData) {
-//            self.selectedImage = Toucan.init(image: compressImage).image
-//
-//        }
+        }
+        if let imageData = image?.jpegData(compressionQuality: 0), let compressImage = UIImage(data: imageData) {
+            self.selectedImage = Toucan.init(image: compressImage).image
+
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -212,12 +211,17 @@ class BusinessAddPaymentMethodVC : BaseVC, UITextFieldDelegate, UploadImages, Im
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+        addImageTxtField.uploadDelegate = self
+        addBackImageTxtField.uploadDelegate = self
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NavigationManager.shared.isEnabledBottomMenuForHost = false
+        
     }
     
     //------------------------------------------------------

@@ -223,6 +223,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NavigationManager.shared.isEnabledBottomMenuForHost = false
         setup()
     }
     

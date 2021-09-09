@@ -24,6 +24,13 @@ class ConfirmedPayVC : BaseVC {
     @IBOutlet weak var imgMain: UIImageView!
     @IBOutlet weak var lblGuest: UILabel!
     
+    var isSelected : Bool = true
+    var someValue: Int = 2 {
+        didSet {
+            lblGuest.text = "\(someValue)"
+        }
+    }
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -42,8 +49,8 @@ class ConfirmedPayVC : BaseVC {
     //MARK: Actions
     
     @IBAction func btnAddPayment(_ sender: Any) {
-//        let controller = NavigationManager.shared.searchVC
-//        push(controller: controller)
+        let controller = NavigationManager.shared.paymentOptionsVC
+        push(controller: controller)
     }
     @IBAction func btnEditGuests(_ sender: Any) {
         let controller = NavigationManager.shared.addGuestVC
@@ -52,8 +59,21 @@ class ConfirmedPayVC : BaseVC {
         }
     }
     @IBAction func btnPlus(_ sender: Any) {
+        if lblGuest.text ?? "" >= "4"{
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterAddGuestLimit)
+        }else if lblGuest.text ?? "" >= "2" {
+            someValue  = someValue+1
+        }
+        lblGuest.text = "\(someValue)"
     }
     @IBAction func btnMinus(_ sender: Any) {
+        if lblGuest.text == "2" {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterRemoveGuestLimit)
+           
+        }else if lblGuest.text ?? "" >= "2" {
+            someValue  = someValue-1
+        }
+        lblGuest.text = "\(someValue)"
     }
     @IBAction func btnEditDate(_ sender: Any) {
     }

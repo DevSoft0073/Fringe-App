@@ -973,7 +973,7 @@ class FGAddBackImagesTextField: FGRegularTextField {
     }
     
     @objc func addImages(sender : UIButton){
-        self.uploadDelegate?.pickImage(tag: 0)
+        self.uploadDelegate?.pickImage(tag: 1)
     }
     var uploadDelegate : UploadImages?
     
