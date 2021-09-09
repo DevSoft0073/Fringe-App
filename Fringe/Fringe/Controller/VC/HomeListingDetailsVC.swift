@@ -125,12 +125,13 @@ class HomeListingDetailsVC : BaseVC {
     }
     
     @IBAction func btnBack(_ sender: Any) {
-        self.pop()
+        NavigationManager.shared.setupLandingOnHome()
     }
     
     @IBAction func btnRequest(_ sender: Any) {
         
         let controller = NavigationManager.shared.checkAvailabilityVC
+        controller.golfDetails = detailsData
         push(controller: controller)
     }
     

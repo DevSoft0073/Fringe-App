@@ -236,9 +236,13 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
-    func setupDetails() {
-        AppDelegate.shared.window?.rootViewController = detailsScreenVC
-        AppDelegate.shared.window?.makeKeyAndVisible()
+    func setupDetails(detailsData : HomeModal) {
+        let controller = NavigationManager.shared.homeListingDetailsVC
+        controller.detailsData = detailsData
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let nav = UINavigationController(rootViewController: controller)
+        nav.navigationBar.isHidden = true
+        appdelegate.window?.rootViewController = nav
     }
     
     func setupLandingOnHome() {

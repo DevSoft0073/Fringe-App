@@ -14,7 +14,13 @@ class HomeVC : BaseVC {
     
     
     @IBOutlet weak var locationsMap: MKMapView!
-    
+    @IBOutlet weak var lblPrice: FGMediumLabel!
+    @IBOutlet weak var lblRating: FGRegularLabel!
+    @IBOutlet weak var ratingView: FloatRatingView!
+    @IBOutlet weak var lblAddress: FGRegularLabel!
+    @IBOutlet weak var imgFavUnfav: UIImageView!
+    @IBOutlet weak var lblName: FGSemiboldLabel!
+    @IBOutlet weak var imgMain: UIImageView!
     var annotation = MKPointAnnotation()
     
     //------------------------------------------------------
@@ -82,7 +88,7 @@ class HomeVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
         setMarkers(lat: 30.704649, Long: 76.717873)
     }
     
@@ -92,6 +98,5 @@ class HomeVC : BaseVC {
         super.viewWillAppear(animated)
         NavigationManager.shared.isEnabledBottomMenu = true
     }
-
 }
 

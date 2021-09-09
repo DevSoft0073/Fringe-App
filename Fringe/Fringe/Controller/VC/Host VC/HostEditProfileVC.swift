@@ -32,8 +32,8 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         didSet {
             if selectedImage != nil {
                 imgProfile.image = selectedImage
-//                photosInTheCellNow.append(selectedImage)
-//                uploadImageCollectionView.reloadData()
+                //                photosInTheCellNow.append(selectedImage)
+                //                uploadImageCollectionView.reloadData()
             }
         }
     }
@@ -83,6 +83,67 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         uploadImageCollectionView.delegate = self
         uploadImageCollectionView.dataSource = self
         
+    }
+    
+    func setupData() {
+        
+        //image
+        imgProfile.sd_addActivityIndicator()
+        imgProfile.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+        imgProfile.sd_showActivityIndicatorView()
+        if let image = currentUserHost?.image, image.isEmpty == false {
+            let imgURL = URL(string: image)
+            imgProfile.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                if let serverImage = serverImage {
+                    self.selectedImage = serverImage
+                    self.imgProfile.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: FGColor.appGreen).image
+                }
+                self.imgProfile.sd_removeActivityIndicator()
+            }
+        } else {
+            self.imgProfile.sd_removeActivityIndicator()
+        }
+        
+        //firstname
+        txtFirstName.text = currentUserHost?.firstName
+        
+        //address
+        txtLastName.text = currentUserHost?.lastName
+        
+        //email
+        txtEmail.text = currentUserHost?.email
+        
+        //studio credits
+        txtBirthDate.text = currentUserHost?.dob
+        
+        //genres
+        txtAddress.text = currentUserHost?.location
+        
+        //phone
+        txtMobileNumber.text = currentUserHost?.mobileNo
+        
+        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getVal"), object: nil, userInfo: ["country": self.currentUserHost?.phoneCode ?? "+1"])
+        //        print(self.allImages)
+        
+        //        DispatchQueue.global(qos: .background).async {
+        //            for i in self.currentUserHost?.hostImage ?? [""] {
+        //                let image = i
+        //                var imgArray = [String]()
+        //                imgArray.removeAll()
+        //                if image != ""{imgArray.append(image)}
+        //                for img in imgArray{
+        //                    let imageUrl = URL(string: img)
+        //                    if let data = try? Data(contentsOf: imageUrl ?? URL(fileURLWithPath: ""))
+        //                    {
+        //                        let image: UIImage = UIImage(data: data)!
+        //                        self.photosInTheCellNow.append(image)
+        //                    }
+        //                }
+        //                DispatchQueue.main.async {
+        //                    self.imgCollectionView.reloadData()
+        //                }
+        //            }
+        //        }
     }
     
     
@@ -152,8 +213,8 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         if let imageData = image?.jpegData(compressionQuality: 0), let compressImage = UIImage(data: imageData) {
             
             if checkPickerVal == true {
-            self.selectedImage = Toucan.init(image: compressImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: FGColor.appGreen).image
-            imgProfile.image = selectedImage
+                self.selectedImage = Toucan.init(image: compressImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: FGColor.appGreen).image
+                imgProfile.image = selectedImage
             }else{
                 self.selectedImageForClub = Toucan.init(image: compressImage).image
             }
@@ -214,7 +275,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         }
         return true
     }
-
+    
     
     
     //------------------------------------------------------
@@ -225,6 +286,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         super.viewDidLoad()
         NavigationManager.shared.isEnabledBottomMenuForHost = false
         setup()
+        setupData()
     }
     
     //------------------------------------------------------

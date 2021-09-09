@@ -33,6 +33,7 @@ class PreferenceManager: NSObject {
     private let keyLat = "lat"
     private let keyLong = "long"
     private let keyAuth = "auth"
+    private let keyUserDataForHost = "keyUserDataForHost"
 
     var deviceToken: String? {
         set {
@@ -93,6 +94,31 @@ class PreferenceManager: NSObject {
         get {
             return userDefault.string(forKey: keyUserData)
         }
+    }
+    
+    var currentUserHost: String? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: keyUserDataForHost)
+            } else {
+                userDefault.removeObject(forKey: keyUserDataForHost)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.string(forKey: keyUserDataForHost)
+        }
+    }
+    
+    var currentUserModalForHost: HostModal? {
+        if let currentUser = currentUser {
+            do {
+                return try HostModal(currentUser)
+            } catch let error {
+                debugPrint(error.localizedDescription)
+            }
+        }
+        return nil
     }
     
     var currentUserModal: UserModal? {

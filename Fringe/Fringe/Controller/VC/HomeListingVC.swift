@@ -156,10 +156,7 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = items[indexPath.row]
-        let controller = NavigationManager.shared.homeListingDetailsVC
-        controller.detailsData = data
-        push(controller: controller)
-        
+        NavigationManager.shared.setupDetails(detailsData: data)
     }
     
     //------------------------------------------------------

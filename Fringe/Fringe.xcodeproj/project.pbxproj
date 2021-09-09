@@ -10,6 +10,7 @@
 		1F33172326E37BF500D7D466 /* FGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33172226E37BF500D7D466 /* FGLocationManager.swift */; };
 		1F4CF3F926E9F2DC008B2965 /* HomeListingDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */; };
 		1F4CF3FB26E9FE06008B2965 /* CheckModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CF3FA26E9FE06008B2965 /* CheckModal.swift */; };
+		1F4CF3FD26EA3AA5008B2965 /* HostModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CF3FC26EA3AA5008B2965 /* HostModal.swift */; };
 		1F5DF83326E2075D00EA7327 /* FavoriteListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5DF83226E2075D00EA7327 /* FavoriteListing.swift */; };
 		1F5DF83526E23D7D00EA7327 /* FavUnfavModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */; };
 		1F640FD126E77E860064F35E /* LocationSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F640FD026E77E860064F35E /* LocationSearch.storyboard */; };
@@ -179,6 +180,7 @@
 		1F33172226E37BF500D7D466 /* FGLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGLocationManager.swift; sourceTree = "<group>"; };
 		1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListingDetailsVC.swift; sourceTree = "<group>"; };
 		1F4CF3FA26E9FE06008B2965 /* CheckModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckModal.swift; sourceTree = "<group>"; };
+		1F4CF3FC26EA3AA5008B2965 /* HostModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostModal.swift; sourceTree = "<group>"; };
 		1F5DF83226E2075D00EA7327 /* FavoriteListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListing.swift; sourceTree = "<group>"; };
 		1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavUnfavModal.swift; sourceTree = "<group>"; };
 		1F640FD026E77E860064F35E /* LocationSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationSearch.storyboard; sourceTree = "<group>"; };
@@ -816,6 +818,7 @@
 				7CA24C5B26C2426800437C8A /* BaseResponseModal.swift */,
 				7CA24C5926C2426800437C8A /* ResponseModal.swift */,
 				7CA24C5A26C2426800437C8A /* UserModal.swift */,
+				1F4CF3FC26EA3AA5008B2965 /* HostModal.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -1040,6 +1043,7 @@
 				7CD7EB0526D14E0B00BEDDA2 /* BookingDetailsVC.swift in Sources */,
 				7CA24C5C26C2426800437C8A /* ResponseModal.swift in Sources */,
 				7CE0F63F26D4B87B00C3AAFB /* ConfirmedPayVC.swift in Sources */,
+				1F4CF3FD26EA3AA5008B2965 /* HostModal.swift in Sources */,
 				7CE46BF026CCFF07004EC6C7 /* AccountInformationVC.swift in Sources */,
 				1F33172326E37BF500D7D466 /* FGLocationManager.swift in Sources */,
 				7C52988426DDEF8600A3606D /* HostProfileSwitchCell.swift in Sources */,

@@ -285,7 +285,6 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
             controller.delegate = self
             let nvc = UINavigationController(rootViewController: controller)
             self.present(nvc, animated: true) {
-                
             }
             return false
         }

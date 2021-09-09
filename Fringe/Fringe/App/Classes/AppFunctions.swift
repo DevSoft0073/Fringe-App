@@ -216,3 +216,5 @@ extension String {
         return tagFree.replacingOccurrences(of: "&[^;]+;", with: "", options: String.CompareOptions.regularExpression, range: nil)
     }
 }
+
+

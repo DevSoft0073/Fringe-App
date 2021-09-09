@@ -16,7 +16,10 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     @IBOutlet weak var myCalendar: FSCalendar!
     @IBOutlet weak var tblAvailability: UITableView!
     
-    var checkData: CheckModal?
+    var golfDetails: HomeModal?
+    var items: [CheckModal] = []
+    var todayDate = Date()
+    var sendingDate = String()
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     
     //------------------------------------------------------
@@ -64,16 +67,23 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             "Token": PreferenceManager.shared.authToken ?? String(),
           ]
         
+        if sendingDate.isEmpty == true {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d ,yyyy"
+            sendingDate = formatter.string(from: todayDate)
+        }
+        
         let parameter: [String: Any] = [
-            Request.Parameter.lastID: "lastRequestId",
+            Request.Parameter.golfID: golfDetails?.golfID ?? String(),
+            Request.Parameter.dates: sendingDate,
         ]
 
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.favoriteListing, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<CheckModal>.self, successBlock: { (response: ResponseModal<CheckModal>) in
-
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.checkRequest, parameter: parameter,headers: headers, showLoader: false, decodingType: ResponseModal<[CheckModal]>.self, successBlock: { (response: ResponseModal<[CheckModal]>) in
+            
             LoadingManager.shared.hideLoading()
 
             if response.code == Status.Code.success {
-                self.checkData = response.data
+                self.items.append(contentsOf: response.data ?? [])
                 completion?(true)
                 self.setup()
                 self.updateUI()
@@ -123,9 +133,14 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        let result = formatter.string(from: date)
-        print(result)
+        formatter.dateFormat = "MMM d ,yyyy"
+        sendingDate = formatter.string(from: date)
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performGetRequestListing { (flag : Bool) in
+            
+        }
     }
 
     //------------------------------------------------------
@@ -133,12 +148,14 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     //MARK: UITableViewDataSource , UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CheckAvailabilityTBCell.self)) as? CheckAvailabilityTBCell {
+            let data = items[indexPath.row]
+            cell.setup(bookingData: data)
             return cell
         }
         return UITableViewCell()

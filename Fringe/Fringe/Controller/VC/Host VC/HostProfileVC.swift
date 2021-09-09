@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import Alamofire
 
 class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
@@ -112,6 +113,52 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     func updateUI() {
         
         tblProfile.reloadData()
+    }
+    
+    private func performGetUserProfile(completion:((_ flag: Bool) -> Void)?) {
+        
+         let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+           ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.profile, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    
+                    PreferenceManager.shared.currentUserHost = stringUser
+                    self.setup()
+                    self.updateUI()
+                }
+                delay {
+                    completion?(true)
+                }
+                self.updateUI()
+                
+            } else {
+                
+                delay {
+                                            
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
+                          
+                    }
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            completion?(false)
+            
+            delay {
+                
+            }
+        })
     }
     
     //------------------------------------------------------
