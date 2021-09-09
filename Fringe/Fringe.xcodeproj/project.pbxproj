@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1F33172326E37BF500D7D466 /* FGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33172226E37BF500D7D466 /* FGLocationManager.swift */; };
+		1F4CF3F926E9F2DC008B2965 /* HomeListingDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */; };
+		1F4CF3FB26E9FE06008B2965 /* CheckModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CF3FA26E9FE06008B2965 /* CheckModal.swift */; };
 		1F5DF83326E2075D00EA7327 /* FavoriteListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5DF83226E2075D00EA7327 /* FavoriteListing.swift */; };
 		1F5DF83526E23D7D00EA7327 /* FavUnfavModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */; };
 		1F640FD126E77E860064F35E /* LocationSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F640FD026E77E860064F35E /* LocationSearch.storyboard */; };
@@ -175,6 +177,8 @@
 		08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fringe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6EA47CE18B85558BA94DF3 /* Pods-Fringe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fringe.debug.xcconfig"; path = "Target Support Files/Pods-Fringe/Pods-Fringe.debug.xcconfig"; sourceTree = "<group>"; };
 		1F33172226E37BF500D7D466 /* FGLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGLocationManager.swift; sourceTree = "<group>"; };
+		1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListingDetailsVC.swift; sourceTree = "<group>"; };
+		1F4CF3FA26E9FE06008B2965 /* CheckModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckModal.swift; sourceTree = "<group>"; };
 		1F5DF83226E2075D00EA7327 /* FavoriteListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListing.swift; sourceTree = "<group>"; };
 		1F5DF83426E23D7D00EA7327 /* FavUnfavModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavUnfavModal.swift; sourceTree = "<group>"; };
 		1F640FD026E77E860064F35E /* LocationSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationSearch.storyboard; sourceTree = "<group>"; };
@@ -390,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				1FE9483026E8E68F00961BE2 /* RequestModal.swift */,
+				1F4CF3FA26E9FE06008B2965 /* CheckModal.swift */,
 			);
 			path = "Request Listing";
 			sourceTree = "<group>";
@@ -581,6 +586,7 @@
 				7CE0F64126D4D41A00C3AAFB /* SignUpHostVC.swift */,
 				7C780F8E26C3C105003F1F12 /* SignUpVC.swift */,
 				7C64AAE726E8F04C0024D06B /* PaymentOptionsVC.swift */,
+				1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1076,6 +1082,7 @@
 				7C8F1D5A26CE236B00135C41 /* ChangePasswordVC.swift in Sources */,
 				7C780F8226C3A6FF003F1F12 /* IrregularityContentView.swift in Sources */,
 				7CA24C3826C241B200437C8A /* PreferenceManager.swift in Sources */,
+				1F4CF3F926E9F2DC008B2965 /* HomeListingDetailsVC.swift in Sources */,
 				7C8F1D5E26CE328800135C41 /* AddPaymentTVCell.swift in Sources */,
 				7C52986D26DD04BC00A3606D /* HostNotificationCell.swift in Sources */,
 				7CE0F64226D4D41A00C3AAFB /* SignUpHostVC.swift in Sources */,
@@ -1093,6 +1100,7 @@
 				7CA24C8A26C2537600437C8A /* AppDelegate.swift in Sources */,
 				7C780F8426C3A6FF003F1F12 /* BasicContentView.swift in Sources */,
 				7CD7EB0826D14EA400BEDDA2 /* BookingDetailsRatingVC.swift in Sources */,
+				1F4CF3FB26E9FE06008B2965 /* CheckModal.swift in Sources */,
 				7C5298AB26DE174F00A3606D /* HostEditProfileVC.swift in Sources */,
 				7C6D5BDC26D38206007F888C /* AddPaymentVC.swift in Sources */,
 				7CA24C3226C2419D00437C8A /* DateTimeManager.swift in Sources */,

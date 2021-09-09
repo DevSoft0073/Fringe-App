@@ -44,35 +44,35 @@ class DetailsScreenVC : BaseVC {
     
     //MARK: Custome
     
-    func setup() {
-        lblGolfClubName.text = detailsData?.golfCourseName
-        lblGolfClubAddress.text = detailsData?.location
-        lblRate.text = detailsData?.rating
-        lblRating.text = detailsData?.rating
-        lblDetails.text = detailsData?.homeModalDescription
-        ratingView.rating = Double(detailsData?.rating ?? String()) ?? 0.0
-        imgGolfClub.sd_addActivityIndicator()
-        imgGolfClub.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
-        imgGolfClub.sd_showActivityIndicatorView()
-        if let image = detailsData?.image, image.isEmpty == false {
-            let imgURL = URL(string: image)
-            imgGolfClub.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
-                self.imgGolfClub.sd_removeActivityIndicator()
-            }
-        } else {
-            self.imgGolfClub.sd_removeActivityIndicator()
-        }
-        if detailsData?.image?.isEmpty == true{
-            self.imgGolfClub.image = UIImage(named: "placeholder-image-1")
-        }
-        if detailsData?.isFav == "1" {
-            self.btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
-        }else{
-            self.btnHeart.setImage(UIImage(named: FGImageName.iconUnFavWhiteHeart), for: .normal)
-        }
-    }
+//    func setup() {
+//        lblGolfClubName.text = detailsData?.golfCourseName
+//        lblGolfClubAddress.text = detailsData?.location
+//        lblRate.text = detailsData?.price
+//        lblRating.text = detailsData?.rating
+//        lblDetails.text = detailsData?.golfCourseName
+//        ratingView.rating = Double(detailsData?.rating ?? String()) ?? 0.0
+//        imgGolfClub.sd_addActivityIndicator()
+//        imgGolfClub.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+//        imgGolfClub.sd_showActivityIndicatorView()
+//        if let image = detailsData?.image, image.isEmpty == false {
+//            let imgURL = URL(string: image)
+//            imgGolfClub.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+//                self.imgGolfClub.sd_removeActivityIndicator()
+//            }
+//        } else {
+//            self.imgGolfClub.sd_removeActivityIndicator()
+//        }
+//        if detailsData?.image?.isEmpty == true{
+//            self.imgGolfClub.image = UIImage(named: "placeholder-image-1")
+//        }
+//        if detailsData?.isFav == "1" {
+//            self.btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
+//        }else{
+//            self.btnHeart.setImage(UIImage(named: FGImageName.iconUnFavWhiteHeart), for: .normal)
+//        }
+//    }
     
-    func setup1() {
+    func setup() {
         lblGolfClubName.text = golfCourseDetails?.golfCourseName
         lblGolfClubAddress.text = golfCourseDetails?.location
         lblRate.text = golfCourseDetails?.rating
@@ -98,9 +98,7 @@ class DetailsScreenVC : BaseVC {
         }else{
             self.btnHeart.setImage(UIImage(named: FGImageName.iconUnFavWhiteHeart), for: .normal)
         }
-    }
-    
-    
+    }    
     
     func performFavUnfavStudio(completion:((_ flag: Bool) -> Void)?) {
 
@@ -135,7 +133,6 @@ class DetailsScreenVC : BaseVC {
 
                 delay {
 
-//                    self.handleError(code: response.code)
                 }
             }
 
@@ -185,7 +182,6 @@ class DetailsScreenVC : BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        setup1()
     }
     
     //------------------------------------------------------

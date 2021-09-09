@@ -71,28 +71,27 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         tblGolf.reloadData()
     }
     
-    func performGetSessionData(completion:((_ flag: Bool) -> Void)?) {
+    func performGetBookingListing(completion:((_ flag: Bool) -> Void)?) {
         
         var parameter: [String: Any] = [:]
         
         let headers:HTTPHeaders = [
            "content-type": "application/json",
-           "Token": currentUser?.authorizationToken ?? String(),
+            "Token": PreferenceManager.shared.authToken ?? String(),
           ]
-        
         
         self.noDataLbl.isHidden = true
         
         if segment1.isSelected == true {
             
             parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
-                         Request.Parameter.lat: "0",
+                         Request.Parameter.bookedStatus: "0",
                          Request.Parameter.lastID: lastRequestId,]
             
         }else if segment2.isSelected == true {
             
             parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
-                         Request.Parameter.lat: "1",
+                         Request.Parameter.bookedStatus: "1",
                          Request.Parameter.lastID: lastRequestId,]
             
         }else{
@@ -100,14 +99,14 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             segment1.isSelected = true
             
             parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
-                         Request.Parameter.lat: "0",
+                         Request.Parameter.bookedStatus: "0",
                          Request.Parameter.lastID: lastRequestId,]
             
         }
         
         isRequesting = true
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.addedRequestListing, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[RequestListingModal]>.self, successBlock: { (response: ResponseModal<[RequestListingModal]>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.bookingListForPlayer, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[RequestListingModal]>.self, successBlock: { (response: ResponseModal<[RequestListingModal]>) in
             
             LoadingManager.shared.hideLoading()
             
@@ -127,6 +126,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
                     self.items = self.items.removingDuplicates()
                     self.lastRequestId = response.data?.last?.id ?? String()
                     self.updateUI()
+                    self.setup()
                 }
                 
             } else if response.code == Status.Code.notfound {
@@ -161,7 +161,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     //MARK: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -169,7 +169,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         if segment1.isSelected {
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringePendingCell.self)) as? FringePendingCell {
-                
+                let data = items[indexPath.row]
                 cell.btnMoreInfo.tag = indexPath.row
                 cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
                 cell.btnClose.tag = indexPath.row
@@ -178,18 +178,21 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
                     cell.btnClose.isHidden = true
                     cell.btnMoreInfo.isHidden = false
                 }
+                cell.setup(bookingData: data)
                 cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
                 return cell
             }
         } else if segment2.isSelected {
             
            if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringeConfirmedCell.self)) as? FringeConfirmedCell{
+                let data = items[indexPath.row]
                 cell.btnPay.tag = indexPath.row
                 cell.btnPay.addTarget(self, action: #selector(showPayView), for: .touchUpInside)
                 if needToshowInfoView {
                     cell.refundRequestView.isHidden = true
                     cell.btnPay.isHidden = false
                 }
+                cell.setup(bookingData: data)
                 cell.btnRefundRequest.addTarget(self, action: #selector(showRequestView), for: .touchUpInside)
                 return cell
             }
@@ -264,11 +267,23 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         self.needToshowInfoView = true
         
         if view == segment1 {
-                        
+                    
+            LoadingManager.shared.showLoading()
+            
+            self.performGetBookingListing { (flag : Bool) in
+                
+            }
+            
             segment2.isSelected = false
             
         } else if view == segment2 {
 
+            LoadingManager.shared.showLoading()
+            
+            self.performGetBookingListing { (flag : Bool) in
+                
+            }
+            
             segment1.isSelected = false
             
         }
@@ -281,6 +296,13 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performGetBookingListing { (flag : Bool) in
+            
+        }
+        
     }
     
     //------------------------------------------------------

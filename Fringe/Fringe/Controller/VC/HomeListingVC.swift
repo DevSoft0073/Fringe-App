@@ -73,7 +73,7 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
         
         let headers:HTTPHeaders = [
             "content-type": "application/json",
-            "Token": currentUser?.authorizationToken ?? String(),
+            "Token": PreferenceManager.shared.authToken ?? String(),
         ]
         
         let parameter: [String: Any] = [
@@ -156,7 +156,7 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = items[indexPath.row]
-        let controller = NavigationManager.shared.detailsScreenVC
+        let controller = NavigationManager.shared.homeListingDetailsVC
         controller.detailsData = data
         push(controller: controller)
         

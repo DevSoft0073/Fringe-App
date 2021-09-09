@@ -64,7 +64,7 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
 
         let headers:HTTPHeaders = [
            "content-type": "application/json",
-            "Token": currentUser?.authorizationToken ?? String(),
+            "Token": PreferenceManager.shared.authToken ?? String(),
           ]
         
         let parameter: [String: Any] = [

@@ -59,6 +59,10 @@ struct Request {
         //feedback
         static let rating = "rating"
         static let review = "review"
+        
+        //Booking listing
+        static let bookedStatus = "booked_status"
+
     }
     
     struct Method {
@@ -77,6 +81,7 @@ struct Request {
         static let signUpAsHost = "/signUp_asHost.php"
         static let addRating = "/AddGolfrating.php"
         static let addedRequestListing = "/GetHostBookingDetails.php"
+        static let bookingListForPlayer = "/GetHostBookingDetails.php"
         static let logout = "/LogOut.php"
     }
     

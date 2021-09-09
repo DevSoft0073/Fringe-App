@@ -291,20 +291,29 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     public var changePasswordVC: ChangePasswordVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: ChangePasswordVC.self)) as! ChangePasswordVC
     }
+    
     public var addPaymentMethodVC: AddPaymentMethodVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: AddPaymentMethodVC.self)) as! AddPaymentMethodVC
     }
+    
     public var myBookingVC: MyBookingVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: MyBookingVC.self)) as! MyBookingVC
     }
+    
     public var addPaymentVC: AddPaymentVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: AddPaymentVC.self)) as! AddPaymentVC
     }
+    
     public var detailsScreenVC: DetailsScreenVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: DetailsScreenVC.self)) as! DetailsScreenVC
     }
+    
     public var checkAvailabilityVC: CheckAvailabilityVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: CheckAvailabilityVC.self)) as! CheckAvailabilityVC
+    }
+    
+    public var homeListingDetailsVC: HomeListingDetailsVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: HomeListingDetailsVC.self)) as! HomeListingDetailsVC
     }
     
     public var signUpHostVC: SignUpHostVC {
