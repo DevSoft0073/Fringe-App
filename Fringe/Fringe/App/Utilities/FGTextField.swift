@@ -15,6 +15,10 @@ protocol UploadImages {
     func pickImage (tag : Int)
 }
 
+public var todaysDate = Date()
+public var selectedDatess = Date()
+public var selectedDatesssssss = Date()
+
 class FGBaseTextField: UITextField {
     
     public var fontDefaultSize : CGFloat {
@@ -81,6 +85,89 @@ class FGBaseTextField: UITextField {
     }
 }
 
+class FGBaseTextFieldForBBloks: UITextField {
+    
+    public var fontDefaultSize : CGFloat {
+        return font?.pointSize ?? 0.0
+    }
+    public var fontSize : CGFloat = 0.0
+    
+    public var padding: Double = 8
+    
+    private var leftEmptyView: UIView {
+        return UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: padding, height: Double.zero)))
+    }
+    
+    private var leftButton : UIButton {
+        return UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: padding, height: Double.zero)))
+    }
+    
+    private var rightEmptyViewForButton : UIView {
+        return leftButton
+    }
+    
+    private var rightEmptyView: UIView {
+        return leftEmptyView
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        HighlightLayer()
+        return super.becomeFirstResponder()
+    }
+    
+    override func resignFirstResponder() -> Bool {
+        resetLayer()
+        return super.resignFirstResponder()
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    fileprivate func setupDefault() {
+        
+        self.cornerRadius = FGSettings.cornerRadius
+//        self.borderWidth = SCSettings.borderWidth
+//        self.borderColor = SCColor.appWhite
+//        self.shadowColor = FGColor.appWhite
+        self.shadowOffset = CGSize.zero
+//        self.shadowOpacity = SCSettings.shadowOpacity
+//        self.tintColor = SCColor.appWhite
+//        self.textColor = SCColor.appWhite
+    }
+    
+    fileprivate func HighlightLayer() {
+//        self.borderColor = SCColor.appOrange
+//        self.tintColor = SCColor.appOrange
+    }
+    
+    fileprivate func resetLayer() {
+//        self.borderColor = SCColor.appWhite
+//        self.tintColor = SCColor.appWhite
+    }
+    
+    private func setup() {
+        
+        fontSize = getDynamicFontSize(fontDefaultSize: fontDefaultSize)
+        
+        leftView = leftEmptyView
+        leftViewMode = .always
+        
+        rightView = rightEmptyView
+        rightViewMode = .always
+        
+        setupDefault()
+    }
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: <#aDecoder description#>
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+}
 class FGProDisplayRegularTextField: FGBaseTextField {
 
     /// common text field layout for inputs
@@ -889,6 +976,101 @@ class FGAccountHolderNameTextField: FGRegularTextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+}
+class FGSelectDateTextFieldForBooking: FGBaseTextFieldForBBloks, UITextFieldDelegate , SendSelectedDate {
+  
+
+    var leftUserView: UIView {
+        let imgView = UIImageView(image: UIImage(named: FGImageName.iconCalender))
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }
+    
+    private static let height: CGFloat = 20
+    private static let crossButtonSize = CGSize(width: height, height: height)
+    private let crossButtonView = UIButton(frame: CGRect(origin: CGPoint.zero, size: crossButtonSize))
+    
+    let dpDate = UIDatePicker()
+    var datess = Date()
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    func setup() {
+        
+        leftView = leftUserView
+        
+        self.keyboardType = .default
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .words
+        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appWhite])
+        
+        dpDate.datePickerMode = .date
+        let todaysDate = Date()
+        dpDate.minimumDate = todaysDate
+        if #available(iOS 13.4, *) {
+            dpDate.preferredDatePickerStyle = .wheels
+            dpDate.backgroundColor = FGColor.appWhite
+            dpDate.setValue(FGColor.appBlack, forKeyPath: "textColor")
+            dpDate.setValue(false, forKeyPath: "highlightsToday")
+            
+        } else {
+            // Fallback on earlier versions
+        }
+        inputView = dpDate
+        dpDate.setDate(Date(), animated: false)
+        crossButtonView.contentMode = .center
+        crossButtonView.setImage(UIImage(named: ""), for: UIControl.State.normal)
+    }
+    
+    func sendSelectedDate(date: Date) {
+        datess = date
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Override
+    
+    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: CGFloat( ), y: CGFloat(padding * 0.18)), size: CGSize(width: CGFloat(padding) * 4.8, height:  CGFloat(padding * 2.6)))
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: UITextFieldDelegate
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.dayName)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        selectedDatesssssss = dpDate.date
+        self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.dayName)
+        
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: aDecoder description
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.delegate = self
     }
 }
 

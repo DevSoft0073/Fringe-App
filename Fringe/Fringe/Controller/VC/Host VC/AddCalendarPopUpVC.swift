@@ -8,8 +8,13 @@ import UIKit
 import Foundation
 import IQKeyboardManagerSwift
 
+protocol SendSelectedDate {
+    func sendSelectedDate (date : Date)
+}
+
 class AddCalendarPopUpVC : BaseVC {
     
+    @IBOutlet weak var txtCalendar: FGSelectDateTextFieldForBooking!
     @IBOutlet weak var addSlot: UIButton!
     @IBOutlet weak var blockDay: UIButton!
     @IBOutlet weak var dataView: UIView!
@@ -20,6 +25,7 @@ class AddCalendarPopUpVC : BaseVC {
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var centerFrame : CGRect!
     var selected: Bool = Bool()
+    var selectedDateDelegate : SendSelectedDate?
     
     //------------------------------------------------------
     
@@ -85,6 +91,7 @@ class AddCalendarPopUpVC : BaseVC {
     }
     
     @IBAction func btnSave(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     //------------------------------------------------------
     
