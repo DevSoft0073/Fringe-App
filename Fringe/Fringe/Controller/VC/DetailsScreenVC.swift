@@ -75,10 +75,10 @@ class DetailsScreenVC : BaseVC {
     func setup() {
         lblGolfClubName.text = golfCourseDetails?.golfCourseName
         lblGolfClubAddress.text = golfCourseDetails?.location
-        lblRate.text = golfCourseDetails?.rating
-        lblRating.text = golfCourseDetails?.rating
+//        lblRate.text = "5"
+        lblRating.text = "5"
         lblDetails.text = golfCourseDetails?.favoriteListingDescription
-        ratingView.rating = Double(golfCourseDetails?.rating ?? String()) ?? 0.0
+        ratingView.rating = 5.0
         imgGolfClub.sd_addActivityIndicator()
         imgGolfClub.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         imgGolfClub.sd_showActivityIndicatorView()

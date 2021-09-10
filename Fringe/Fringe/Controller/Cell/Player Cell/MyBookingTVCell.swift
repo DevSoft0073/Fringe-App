@@ -21,6 +21,8 @@ class MyBookingTVCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
+        
     }
     
     func setup(bookingData : BookingModal)  {
@@ -43,6 +45,10 @@ class MyBookingTVCell: UITableViewCell {
         lblRate.text = bookingData.price
 //        lblRating.text = bookingData.
 //        ratingView.rating = Double(homeData.rating ?? String()) ?? Double()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
     }
     
 }

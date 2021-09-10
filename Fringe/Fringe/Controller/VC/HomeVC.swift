@@ -69,7 +69,7 @@ class HomeVC : BaseVC {
     //MARK: Actions
     
     @IBAction func btnSearch(_ sender: UIButton) {
-        let controller = NavigationManager.shared.homeListingVC
+        let controller = NavigationManager.shared.clubSearchVC
         push(controller: controller)
     }
     

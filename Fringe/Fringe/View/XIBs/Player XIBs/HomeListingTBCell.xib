@@ -30,10 +30,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTg-9l-ug7">
-                        <rect key="frame" x="12" y="12" width="345" height="220"/>
+                        <rect key="frame" x="12" y="8" width="345" height="224"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="golf_img" translatesAutoresizingMaskIntoConstraints="NO" id="O9k-W8-asG">
-                                <rect key="frame" x="5" y="0.0" width="335" height="165"/>
+                                <rect key="frame" x="5" y="0.0" width="335" height="168"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="12"/>
@@ -49,8 +49,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqE-FA-gvR">
                                 <rect key="frame" x="300" y="8" width="33.5" height="34"/>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jwf-s3-ENH">
-                                <rect key="frame" x="5" y="175" width="232" height="70"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jwf-s3-ENH">
+                                <rect key="frame" x="5" y="178" width="232" height="66"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69T-ne-Pkg">
                                         <rect key="frame" x="0.0" y="0.0" width="222" height="20"/>
@@ -88,17 +88,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJU-i8-Esc">
-                                        <rect key="frame" x="0.0" y="40" width="222" height="30"/>
+                                        <rect key="frame" x="0.0" y="40" width="222" height="26"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GL-7L-dmz" customClass="FloatRatingView" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="7.5" width="60" height="15"/>
+                                                <rect key="frame" x="0.0" y="4" width="111" height="18"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="KJd-Al-53d"/>
-                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="minRating">
                                                         <integer key="value" value="1"/>
@@ -107,14 +104,14 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                                        <real key="value" value="5"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="rating"/>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sK5-jQ-j7J" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="70" y="6" width="27" height="18.5"/>
+                                                <rect key="frame" x="121" y="4" width="31" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                 <color key="textColor" red="0.086262829599999993" green="0.086281977590000003" blue="0.086258627470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -122,12 +119,14 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="2OD-5V-q80"/>
+                                            <constraint firstAttribute="height" constant="26" id="2OD-5V-q80"/>
                                             <constraint firstItem="6GL-7L-dmz" firstAttribute="leading" secondItem="vJU-i8-Esc" secondAttribute="leading" id="4lp-nZ-5L7"/>
-                                            <constraint firstItem="6GL-7L-dmz" firstAttribute="centerY" secondItem="vJU-i8-Esc" secondAttribute="centerY" id="Knp-6g-b3A"/>
-                                            <constraint firstItem="6GL-7L-dmz" firstAttribute="height" secondItem="vJU-i8-Esc" secondAttribute="height" multiplier="0.5" id="Nrf-oB-yod"/>
+                                            <constraint firstAttribute="trailing" secondItem="sK5-jQ-j7J" secondAttribute="trailing" constant="70" id="MxI-6t-DrT"/>
+                                            <constraint firstItem="6GL-7L-dmz" firstAttribute="height" secondItem="vJU-i8-Esc" secondAttribute="height" multiplier="0.7" id="Nrf-oB-yod"/>
                                             <constraint firstItem="sK5-jQ-j7J" firstAttribute="centerY" secondItem="6GL-7L-dmz" secondAttribute="centerY" id="P6f-eO-At0"/>
                                             <constraint firstItem="sK5-jQ-j7J" firstAttribute="leading" secondItem="6GL-7L-dmz" secondAttribute="trailing" constant="10" id="VmZ-N2-ggS"/>
+                                            <constraint firstItem="6GL-7L-dmz" firstAttribute="width" secondItem="vJU-i8-Esc" secondAttribute="width" multiplier="0.5" id="X7w-u2-v7U"/>
+                                            <constraint firstItem="6GL-7L-dmz" firstAttribute="centerY" secondItem="vJU-i8-Esc" secondAttribute="centerY" id="xlR-lo-9ws"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -143,7 +142,7 @@
                                 </userDefinedRuntimeAttributes>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="bWM-qL-YRj">
-                                <rect key="frame" x="277" y="175" width="63" height="40"/>
+                                <rect key="frame" x="277" y="178" width="63" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1052" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDp-S3-wfw" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="63" height="20"/>
@@ -190,7 +189,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="kTg-9l-ug7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="QA7-tN-yWX"/>
-                    <constraint firstItem="kTg-9l-ug7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="isb-lN-Fl2"/>
+                    <constraint firstItem="kTg-9l-ug7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="isb-lN-Fl2"/>
                     <constraint firstAttribute="trailing" secondItem="kTg-9l-ug7" secondAttribute="trailing" constant="12" id="nSg-rX-voG"/>
                     <constraint firstAttribute="bottom" secondItem="kTg-9l-ug7" secondAttribute="bottom" constant="12" id="uHE-p8-2S1"/>
                 </constraints>

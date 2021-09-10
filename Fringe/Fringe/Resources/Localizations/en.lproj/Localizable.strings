@@ -270,7 +270,7 @@
 "messages" = "Messages";
 
 "enter_add_guest_limit" = "Add guest limit is 4 only";
-"enter_remove_guest_limit" = "Minimum 2 guests are necessary";
+"enter_remove_guest_limit" = "Minimum 1 guest are necessary";
 
 // add payment
 "credit_debit_card" = "Credit or Debit card";

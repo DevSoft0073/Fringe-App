@@ -77,14 +77,11 @@
                                         <rect key="frame" x="0.0" y="50" width="236" height="24"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vvn-Dt-FnJ" customClass="FloatRatingView" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="7" width="60" height="10"/>
+                                                <rect key="frame" x="15" y="5" width="104" height="14"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="p5t-7c-582"/>
-                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="minRating">
                                                         <integer key="value" value="1"/>
@@ -93,14 +90,14 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                                        <real key="value" value="5"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="rating"/>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFs-BY-Vpj" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="85" y="3" width="27" height="18.5"/>
+                                                <rect key="frame" x="129" y="3" width="27" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                 <color key="textColor" red="0.086262829599999993" green="0.086281977590000003" blue="0.086258627470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -111,7 +108,8 @@
                                             <constraint firstItem="nFs-BY-Vpj" firstAttribute="centerY" secondItem="vvn-Dt-FnJ" secondAttribute="centerY" id="6vD-8U-5dF"/>
                                             <constraint firstItem="nFs-BY-Vpj" firstAttribute="leading" secondItem="vvn-Dt-FnJ" secondAttribute="trailing" constant="10" id="AGJ-hF-5Ep"/>
                                             <constraint firstItem="vvn-Dt-FnJ" firstAttribute="leading" secondItem="Qcg-77-IoS" secondAttribute="leading" constant="15" id="Ok4-cD-ATB"/>
-                                            <constraint firstItem="vvn-Dt-FnJ" firstAttribute="height" secondItem="Qcg-77-IoS" secondAttribute="height" multiplier="0.4" id="Vkj-dV-OQv"/>
+                                            <constraint firstAttribute="trailing" secondItem="nFs-BY-Vpj" secondAttribute="trailing" constant="80" id="Or0-kb-e00"/>
+                                            <constraint firstItem="vvn-Dt-FnJ" firstAttribute="height" secondItem="Qcg-77-IoS" secondAttribute="height" multiplier="0.6" id="Vkj-dV-OQv"/>
                                             <constraint firstAttribute="height" constant="24" id="dj0-Wc-xvY"/>
                                             <constraint firstItem="vvn-Dt-FnJ" firstAttribute="centerY" secondItem="Qcg-77-IoS" secondAttribute="centerY" id="iQZ-TC-fsO"/>
                                         </constraints>

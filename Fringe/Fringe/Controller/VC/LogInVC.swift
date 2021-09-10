@@ -14,6 +14,7 @@ import IQKeyboardManagerSwift
 class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     
     
+    @IBOutlet weak var eyeIcon: UIImageView!
     @IBOutlet weak var txtEmail: FGEmailTextField!
     @IBOutlet weak var txtPassword: FGPasswordTextField!
     
@@ -225,8 +226,10 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     @IBAction func btnEye(_ sender: UIButton) {
         if(iconClick == true) {
             txtPassword.isSecureTextEntry = false
+            eyeIcon.image = UIImage(named: FGImageName.iconOpenEye)
         } else {
             txtPassword.isSecureTextEntry = true
+            eyeIcon.image = UIImage(named: FGImageName.iconEye)
         }
         iconClick = !iconClick
     }

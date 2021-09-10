@@ -131,7 +131,10 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource, KRPull
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MyBookingTVCell.self)) as? MyBookingTVCell {
             let data = items[indexPath.row]
             cell.setup(bookingData: data)
-            cell.imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
+            DispatchQueue.main.async {
+                cell.imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
+            }
+           
             return cell
         }
         return UITableViewCell()

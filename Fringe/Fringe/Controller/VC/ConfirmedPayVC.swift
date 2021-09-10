@@ -61,16 +61,16 @@ class ConfirmedPayVC : BaseVC {
     @IBAction func btnPlus(_ sender: Any) {
         if lblGuest.text ?? "" >= "4"{
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterAddGuestLimit)
-        }else if lblGuest.text ?? "" >= "2" {
+        }else if lblGuest.text ?? "" >= "1" {
             someValue  = someValue+1
         }
         lblGuest.text = "\(someValue)"
     }
     @IBAction func btnMinus(_ sender: Any) {
-        if lblGuest.text == "2" {
+        if lblGuest.text == "1" {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterRemoveGuestLimit)
            
-        }else if lblGuest.text ?? "" >= "2" {
+        }else if lblGuest.text ?? "" >= "1" {
             someValue  = someValue-1
         }
         lblGuest.text = "\(someValue)"

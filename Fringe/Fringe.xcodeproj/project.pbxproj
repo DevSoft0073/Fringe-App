@@ -64,6 +64,7 @@
 		7C5E41BC26D8C1EC00D63728 /* HomeListingTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5E41BB26D8C1EC00D63728 /* HomeListingTBCell.xib */; };
 		7C5E41BF26D8C20100D63728 /* HomeListingTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5E41BE26D8C20100D63728 /* HomeListingTBCell.swift */; };
 		7C64AAE826E8F04C0024D06B /* PaymentOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64AAE726E8F04C0024D06B /* PaymentOptionsVC.swift */; };
+		7C64AB9426EB1C5B0024D06B /* ClubSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64AB9326EB1C5B0024D06B /* ClubSearchVC.swift */; };
 		7C6D5BDC26D38206007F888C /* AddPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D5BDB26D38206007F888C /* AddPaymentVC.swift */; };
 		7C73149226DE2DE600BBFE09 /* HostCalendarTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73149026DE2DE600BBFE09 /* HostCalendarTBCell.swift */; };
 		7C73149326DE2DE600BBFE09 /* HostCalendarTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C73149126DE2DE600BBFE09 /* HostCalendarTBCell.xib */; };
@@ -235,6 +236,7 @@
 		7C5E41BB26D8C1EC00D63728 /* HomeListingTBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeListingTBCell.xib; sourceTree = "<group>"; };
 		7C5E41BE26D8C20100D63728 /* HomeListingTBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListingTBCell.swift; sourceTree = "<group>"; };
 		7C64AAE726E8F04C0024D06B /* PaymentOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentOptionsVC.swift; sourceTree = "<group>"; };
+		7C64AB9326EB1C5B0024D06B /* ClubSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubSearchVC.swift; sourceTree = "<group>"; };
 		7C6D5BDB26D38206007F888C /* AddPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentVC.swift; sourceTree = "<group>"; };
 		7C73149026DE2DE600BBFE09 /* HostCalendarTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCalendarTBCell.swift; sourceTree = "<group>"; };
 		7C73149126DE2DE600BBFE09 /* HostCalendarTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HostCalendarTBCell.xib; sourceTree = "<group>"; };
@@ -447,7 +449,6 @@
 			children = (
 				7C8F1D5C26CE328800135C41 /* AddPaymentTVCell.swift */,
 				7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */,
-				7CE3666226E33340008D231A /* PaymentMethodTVC.swift */,
 				7C780FE726C582C4003F1F12 /* FavouriteTVCell.swift */,
 				7C94875526CA49AA00870F54 /* FringeConfirmedCell.swift */,
 				7C780FF326C64B68003F1F12 /* FringePendingCell.swift */,
@@ -456,6 +457,7 @@
 				7CE041A926E090A20036EEA0 /* InboxTVCell.swift */,
 				7C8F1D6526CE4BAB00135C41 /* MyBookingTVCell.swift */,
 				7C780FC826C506E5003F1F12 /* NotificationTVCell.swift */,
+				7CE3666226E33340008D231A /* PaymentMethodTVC.swift */,
 				7CD727DD26D6149A00AF660D /* PaymentOptionsTBCell.swift */,
 				7CE2E85526CB9A3200AF882A /* ProfileSwitchCell.swift */,
 				7CE2E84F26CB943900AF882A /* ProfileTBCell.swift */,
@@ -467,16 +469,16 @@
 		7C52985026DCA6A900A3606D /* Host Cell */ = {
 			isa = PBXGroup;
 			children = (
-				7C73149026DE2DE600BBFE09 /* HostCalendarTBCell.swift */,
+				7C52989126DDFD7800A3606D /* CollectionViewCellForShowImages.swift */,
 				7C52985826DCB01900A3606D /* HostAwaitingCell.swift */,
+				7C73149026DE2DE600BBFE09 /* HostCalendarTBCell.swift */,
 				7C52985F26DCB3E400A3606D /* HostConfirmedCell.swift */,
 				7C52986B26DD04BC00A3606D /* HostNotificationCell.swift */,
 				7C52985226DCA8D200A3606D /* HostPendingCell.swift */,
-				7C52989E26DE01AE00A3606D /* ShowImagesCell.swift */,
+				7CE041A326DF8F4B0036EEA0 /* HostProfileAddImageCell.swift */,
 				7C52988226DDEF8600A3606D /* HostProfileSwitchCell.swift */,
 				7C52987D26DDEF5400A3606D /* HostProfileTBCell.swift */,
-				7C52989126DDFD7800A3606D /* CollectionViewCellForShowImages.swift */,
-				7CE041A326DF8F4B0036EEA0 /* HostProfileAddImageCell.swift */,
+				7C52989E26DE01AE00A3606D /* ShowImagesCell.swift */,
 			);
 			path = "Host Cell";
 			sourceTree = "<group>";
@@ -564,12 +566,14 @@
 				7CD7EB0426D14E0B00BEDDA2 /* BookingDetailsVC.swift */,
 				7C8F1D5926CE236B00135C41 /* ChangePasswordVC.swift */,
 				7CD7EB0A26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift */,
+				7C64AB9326EB1C5B0024D06B /* ClubSearchVC.swift */,
 				7CE0F63E26D4B87B00C3AAFB /* ConfirmedPayVC.swift */,
 				7CD7EB0D26D35FCF00BEDDA2 /* DetailsScreenVC.swift */,
 				7CE46BEC26CCE09B004EC6C7 /* EditProfileVC.swift */,
 				7C780FED26C58B4A003F1F12 /* FavouriteVC.swift */,
 				7C780FBA26C3F160003F1F12 /* ForgotPasswordVC.swift */,
 				7C2917C226C6746B0091F8A1 /* GolfclubsVC.swift */,
+				1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */,
 				7C5E41B826D8BF5900D63728 /* HomeListingVC.swift */,
 				7C780FD226C5330A003F1F12 /* HomeVC.swift */,
 				7CE041A626E08F360036EEA0 /* InboxVC.swift */,
@@ -580,6 +584,7 @@
 				7C8F1D6F26CE6BB300135C41 /* MyBookingVC.swift */,
 				7C780FC426C5063B003F1F12 /* NotificationVC.swift */,
 				7CE3666526E35BFF008D231A /* PaymentMethodVC.swift */,
+				7C64AAE726E8F04C0024D06B /* PaymentOptionsVC.swift */,
 				7CE041AF26E0AACD0036EEA0 /* PaymentSuccessfullyPopUpVC.swift */,
 				7CDA847826D8FCA00096FA0F /* PrivacyVC.swift */,
 				7C780FD526C53346003F1F12 /* ProfileVC.swift */,
@@ -587,8 +592,6 @@
 				7CDA847B26D8FCBE0096FA0F /* ServiceTermsVC.swift */,
 				7CE0F64126D4D41A00C3AAFB /* SignUpHostVC.swift */,
 				7C780F8E26C3C105003F1F12 /* SignUpVC.swift */,
-				7C64AAE726E8F04C0024D06B /* PaymentOptionsVC.swift */,
-				1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -596,11 +599,11 @@
 		7C780FD126C532E3003F1F12 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7C780FF026C6491B003F1F12 /* SegmentView.swift */,
-				7C94876226CA972C00870F54 /* ProfileHeaderView.swift */,
 				7CD7EAFB26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift */,
-				7CE0419D26DF4CBB0036EEA0 /* ProfileViewForTitle.swift */,
 				7C52988A26DDF2E600A3606D /* HostProfileHeaderView.swift */,
+				7C94876226CA972C00870F54 /* ProfileHeaderView.swift */,
+				7CE0419D26DF4CBB0036EEA0 /* ProfileViewForTitle.swift */,
+				7C780FF026C6491B003F1F12 /* SegmentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -658,13 +661,13 @@
 		7CA24C1426C23F2900437C8A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7CA24C8926C2537600437C8A /* AppDelegate.swift */,
 				7CA24C2B26C2416300437C8A /* AppConstants.swift */,
+				7CA24C8926C2537600437C8A /* AppDelegate.swift */,
 				7CA24C2E26C2418100437C8A /* AppExtensions.swift */,
-				7C780F8B26C3BE75003F1F12 /* BaseVC.swift */,
 				7CA24C2826C2415C00437C8A /* AppFunctions.swift */,
-				7CA24C2526C2415100437C8A /* LocalizableConstants.swift */,
+				7C780F8B26C3BE75003F1F12 /* BaseVC.swift */,
 				1F33172226E37BF500D7D466 /* FGLocationManager.swift */,
+				7CA24C2526C2415100437C8A /* LocalizableConstants.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -672,13 +675,13 @@
 		7CA24C1526C23F3B00437C8A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				7CA24C4326C241D600437C8A /* RequestManager.swift */,
+				7CA24C3126C2419D00437C8A /* DateTimeManager.swift */,
 				7CA24C4026C241CD00437C8A /* DisplayAlertManager.swift */,
 				7CA24C3D26C241C300437C8A /* LoadingManager.swift */,
-				7CA24C3A26C241BA00437C8A /* ValidationManager.swift */,
-				7CA24C3726C241B200437C8A /* PreferenceManager.swift */,
 				7CA24C3426C241A400437C8A /* NavigationManager.swift */,
-				7CA24C3126C2419D00437C8A /* DateTimeManager.swift */,
+				7CA24C3726C241B200437C8A /* PreferenceManager.swift */,
+				7CA24C4326C241D600437C8A /* RequestManager.swift */,
+				7CA24C3A26C241BA00437C8A /* ValidationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -687,17 +690,17 @@
 			isa = PBXGroup;
 			children = (
 				7CD7EAB426D1113600BEDDA2 /* Calendar */,
-				7C8F1D6B26CE513D00135C41 /* Rating View */,
 				7C780F6D26C3A690003F1F12 /* ESTabbar */,
 				7CA24C5226C2424100437C8A /* FGAssistiveTouchView.swift */,
-				7CA24C5126C2424100437C8A /* FGDebouncer.swift */,
-				7CA24C4F26C2424100437C8A /* FGImageView.swift */,
-				7CA24C5026C2424100437C8A /* FGTextField.swift */,
-				7CA24C4C26C2423500437C8A /* FGLabel.swift */,
 				7CA24C4626C2422500437C8A /* FGButton.swift */,
 				7C39F19A26C39F1100AAC277 /* FGCustomCameraView.swift */,
-				7C780F6A26C3A391003F1F12 /* FGTextView.swift */,
+				7CA24C5126C2424100437C8A /* FGDebouncer.swift */,
 				1F72DA0C26D646000073FC7E /* FGImagePicker.swift */,
+				7CA24C4F26C2424100437C8A /* FGImageView.swift */,
+				7CA24C4C26C2423500437C8A /* FGLabel.swift */,
+				7CA24C5026C2424100437C8A /* FGTextField.swift */,
+				7C780F6A26C3A391003F1F12 /* FGTextView.swift */,
+				7C8F1D6B26CE513D00135C41 /* Rating View */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -715,10 +718,10 @@
 		7CA24C1826C23F8800437C8A /* Generals */ = {
 			isa = PBXGroup;
 			children = (
-				1FE9482F26E8E67C00961BE2 /* Request Listing */,
-				1F64699426E64859007D41DE /* MyBookings */,
-				1F64699126E5F56F007D41DE /* Home */,
 				1F5DF83026E206F100EA7327 /* FavoriteListing */,
+				1F64699126E5F56F007D41DE /* Home */,
+				1F64699426E64859007D41DE /* MyBookings */,
+				1FE9482F26E8E67C00961BE2 /* Request Listing */,
 				7CA24C5826C2425200437C8A /* Users */,
 			);
 			path = Generals;
@@ -762,11 +765,11 @@
 		7CA24C1D26C2401000437C8A /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				7CA24C6726C242EE00437C8A /* Loader.storyboard */,
-				7CA24C0926C23D9600437C8A /* LaunchScreen.storyboard */,
-				7C39F19126C39A7600AAC277 /* Main.storyboard */,
 				7C5E41B026D8B96C00D63728 /* GolfClubProfile.storyboard */,
+				7CA24C0926C23D9600437C8A /* LaunchScreen.storyboard */,
+				7CA24C6726C242EE00437C8A /* Loader.storyboard */,
 				1F640FD026E77E860064F35E /* LocationSearch.storyboard */,
+				7C39F19126C39A7600AAC277 /* Main.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -774,9 +777,9 @@
 		7CA24C1E26C2403400437C8A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7C780FD126C532E3003F1F12 /* View */,
 				7C780FC126C5054C003F1F12 /* Cell */,
 				7C780FCE26C532A6003F1F12 /* VC */,
+				7C780FD126C532E3003F1F12 /* View */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -784,10 +787,10 @@
 		7CA24C1F26C2403E00437C8A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7C780F9126C3DF43003F1F12 /* Localizations */,
 				7C5E41B326D8B9B700D63728 /* Assets.xcassets */,
-				7CA24C2426C240DD00437C8A /* Lottie */,
 				7CA24C2326C240CF00437C8A /* Fonts */,
+				7C780F9126C3DF43003F1F12 /* Localizations */,
+				7CA24C2426C240DD00437C8A /* Lottie */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1032,6 +1035,7 @@
 				7C780FD326C5330A003F1F12 /* HomeVC.swift in Sources */,
 				7C780F7A26C3A6DB003F1F12 /* ESTabBarItemMoreContentView.swift in Sources */,
 				7C780F8F26C3C105003F1F12 /* SignUpVC.swift in Sources */,
+				7C64AB9426EB1C5B0024D06B /* ClubSearchVC.swift in Sources */,
 				7C780FD626C53346003F1F12 /* ProfileVC.swift in Sources */,
 				7C2917C326C6746B0091F8A1 /* GolfclubsVC.swift in Sources */,
 				1F72DA0D26D646000073FC7E /* FGImagePicker.swift in Sources */,

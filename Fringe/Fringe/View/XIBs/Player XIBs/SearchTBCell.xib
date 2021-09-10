@@ -74,14 +74,11 @@
                                         <rect key="frame" x="0.0" y="40" width="226" height="22"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgg-Od-R9m" customClass="FloatRatingView" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="6.5" width="60" height="9"/>
+                                                <rect key="frame" x="15" y="6.5" width="74" height="9"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                                 </accessibility>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="KFo-C5-Jxg"/>
-                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="minRating">
                                                         <integer key="value" value="1"/>
@@ -97,7 +94,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7X-RV-nye" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="85" y="2" width="27" height="18.5"/>
+                                                <rect key="frame" x="99" y="2" width="27" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                 <color key="textColor" red="0.086262829599999993" green="0.086281977590000003" blue="0.086258627470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -106,6 +103,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Jgg-Od-R9m" firstAttribute="centerY" secondItem="66M-LC-dGw" secondAttribute="centerY" id="KLq-c2-5xx"/>
+                                            <constraint firstAttribute="trailing" secondItem="y7X-RV-nye" secondAttribute="trailing" constant="100" id="NdD-z0-utl"/>
                                             <constraint firstItem="Jgg-Od-R9m" firstAttribute="leading" secondItem="66M-LC-dGw" secondAttribute="leading" constant="15" id="TTv-Bh-UUo"/>
                                             <constraint firstItem="y7X-RV-nye" firstAttribute="leading" secondItem="Jgg-Od-R9m" secondAttribute="trailing" constant="10" id="XBa-IZ-8CD"/>
                                             <constraint firstItem="y7X-RV-nye" firstAttribute="centerY" secondItem="Jgg-Od-R9m" secondAttribute="centerY" id="dlD-Uy-NTY"/>
