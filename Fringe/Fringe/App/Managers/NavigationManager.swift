@@ -252,6 +252,14 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
+    func setupLandingOnGOlfVC() {
+        
+        tabbarController = landingTC
+        tabbarController?.selectedIndex = 1
+        AppDelegate.shared.window?.rootViewController = tabbarController
+        AppDelegate.shared.window?.makeKeyAndVisible()
+    }
+    
     func setupLandingOnHomeForHost() {
         tabbarControllerForHost = landingTCForHost
         AppDelegate.shared.window?.rootViewController = tabbarControllerForHost

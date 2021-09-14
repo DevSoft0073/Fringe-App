@@ -8,22 +8,26 @@
 import Foundation
 
 // MARK: - HostModal
-struct HostModal: Codable , Hashable{
-    var userID: String?
+struct HostModal: Codable {
+    var userID, golfID: String?
     var image: String?
-    var userName, firstName, lastName, timeZone: String?
-    var isgolfRegistered, dob, gender, mobileNo: String?
-    var hometown, profession, memberCourse, golfHandicap: String?
-    var password, confirmPassword, email, emailVerification: String?
-    var verificationCode, disable, allowPush, allowLocation: String?
-    var fbToken, googleToken, appleToken, creationAt: String?
+    var userName, accountID, customerID, firstName: String?
+    var lastName, timeZone, isgolfRegistered, dob: String?
+    var gender, mobileNo, hometown, profession: String?
+    var memberCourse, golfHandicap, password, confirmPassword: String?
+    var email, emailVerification, verificationCode, disable: String?
+    var allowPush, allowLocation, fbToken, googleToken: String?
+    var appleToken, creationAt: String?
     var hostImage: String?
     var golfCourseName, price, hostModalDescription, location: String?
 
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
+        case golfID = "golf_id"
         case image
         case userName = "user_name"
+        case accountID = "account_id"
+        case customerID = "customer_id"
         case firstName = "first_name"
         case lastName = "last_name"
         case timeZone = "time_zone"

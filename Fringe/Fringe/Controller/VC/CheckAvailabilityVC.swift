@@ -18,8 +18,10 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     
     var golfDetails: HomeModal?
     var items: [CheckModal] = []
+    var addRequaet: BookingRequestModal?
     var todayDate = Date()
     var sendingDate = String()
+    var requestDate = String()
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     
     //------------------------------------------------------
@@ -102,11 +104,76 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
         })
     }
     
+    func performAddRequest(completion:((_ flag: Bool) -> Void)?) {
+
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+        let deviceTimeZone = TimeZone.current.abbreviation()
+        if requestDate.isEmpty == true {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yyyy"
+            requestDate = formatter.string(from: todayDate)
+            
+            requestDate = sendingDate.convertDatetring_TopreferredFormat(currentFormat: "MMM d ,yyyy", toFormat: "dd-MM-yyyy")
+        }
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.golfID: golfDetails?.golfID ?? String(),
+            Request.Parameter.dates: sendingDate,
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+            Request.Parameter.timeZone: deviceTimeZone ?? String(),
+            
+        ]
+
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.bookingRequest, parameter: parameter,headers: headers, showLoader: false, decodingType: ResponseModal<BookingRequestModal>.self, successBlock: { (response: ResponseModal<BookingRequestModal>) in
+            
+            LoadingManager.shared.hideLoading()
+
+            if response.code == Status.Code.success {
+                delay {
+                    completion?(true)
+                }
+
+            } else if response.code == Status.Code.alreadyAdded{
+                DispatchQueue.main.async {
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
+                    }
+                }
+                
+                completion?(false)
+                
+            } else {
+                
+                completion?(true)
+                
+            }
+
+        }, failureBlock: { (error: ErrorModal) in
+
+            LoadingManager.shared.hideLoading()
+
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
     //------------------------------------------------------
     
     //MARK: Actions
     
     @IBAction func btnBooking(_ sender: Any) {
+        
+        LoadingManager.shared.showLoading()
+        
+        performAddRequest { (flag : Bool) in
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.addRequestSent.localized()) {
+                LoadingManager.shared.hideLoading()
+                NavigationManager.shared.setupLandingOnGOlfVC()
+            }
+        }
     }
     
     @IBAction func btnBack(_ sender: Any) {

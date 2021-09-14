@@ -154,6 +154,58 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         })
     }
     
+    private func performRequestCancelation(golfID : String,completion:((_ flag: Bool) -> Void)?) {
+                
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+        
+        let parameterr: [String: Any] = [
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+            Request.Parameter.id: golfID,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.cancleRequest, parameter: parameterr, headers: headers, showLoader: false, decodingType: BaseResponseModal.self.self, successBlock: { (response: BaseResponseModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.cancellationRequestSubmit.localized()) {
+                        self.lastRequestId = ""
+                        self.items.removeAll()
+                        
+                        LoadingManager.shared.showLoading()
+                        
+                        self.performGetBookingListing { (flag: Bool) in
+                        }
+                    }
+                    
+                    completion?(true)
+                }
+                
+            } else {
+                
+                completion?(false)
+                
+                delay {
+                    
+                    //                    self.handleError(code: response.code)
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
 
     
     //------------------------------------------------------
@@ -180,6 +232,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
                 }
                 cell.setup(bookingData: data)
                 cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
+                cell.btnCancelation.addTarget(self, action: #selector(cancelBooking), for: .touchUpInside)
                 return cell
             }
         } else if segment2.isSelected {
@@ -236,6 +289,16 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             push(controller: controller)
             cell.refundRequestView.isHidden = true
             tblGolf.reloadData()
+        }
+    }
+    
+    @objc func cancelBooking(sender : UIButton) {
+        let data = items[sender.tag]
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performRequestCancelation(golfID: data.id ?? String()) { (flag : Bool) in
+            
         }
     }
     

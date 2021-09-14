@@ -66,6 +66,9 @@ struct Request {
         //Add request
         static let dates = "dates"
         
+        //Add account
+        static let imgType = "image_type"
+        
     }
     
     struct Method {
@@ -83,9 +86,12 @@ struct Request {
         static let myBooking = "/GetAllHistoryBooking.php"
         static let signUpAsHost = "/signUp_asHost.php"
         static let addRating = "/AddGolfrating.php"
-        static let addedRequestListing = "/GetHostBookingDetails.php"
         static let bookingListForPlayer = "/GetHostBookingDetails.php"
         static let checkRequest = "/CheckAvaliablity.php"
+        static let bookingRequest = "/BookingRequest.php"
+        static let cancleRequest = "/Bookingcancel.php"
+        static let notification = "/GetNotificationDetails.php"
+        static let uploadDocument = "/UploadstripeDocument.php"
         static let logout = "/LogOut.php"
     }
     
@@ -356,5 +362,6 @@ struct Status {
         static let notfound = 404
         static let sessionExpired = 500
         static let notRegistered = 107
+        static let alreadyAdded = 420
     }
 }

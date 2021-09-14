@@ -151,14 +151,6 @@ class DetailsScreenVC : BaseVC {
     //MARK: Actions
     
     @IBAction func btnHeart(_ sender: Any) {
-        
-//        check = !check
-//        if check == true {
-//            btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
-//        } else {
-//            btnHeart.setImage(UIImage(named: FGImageName.iconUnFavWhiteHeart), for: .normal)
-//        }
-        
         performFavUnfavStudio { (flag : Bool) in
         }
     }

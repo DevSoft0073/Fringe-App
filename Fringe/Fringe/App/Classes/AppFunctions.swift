@@ -217,4 +217,14 @@ extension String {
     }
 }
 
+extension String {
 
+    func convertDatetring_TopreferredFormat(currentFormat: String, toFormat : String) ->  String {
+        let dateFormator = DateFormatter()
+        dateFormator.dateFormat = currentFormat
+        let resultDate = dateFormator.date(from: self)
+        dateFormator.dateFormat = toFormat
+        return dateFormator.string(from: resultDate!)
+    }
+
+}

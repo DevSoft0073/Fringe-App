@@ -1224,7 +1224,6 @@ class FGPickMonthYear: FGRegularTextField, UITextFieldDelegate , UIPickerViewDel
     private let crossButtonView = UIButton(frame: CGRect(origin: CGPoint.zero, size: crossButtonSize))
     
     let pvMonthYear = UIPickerView()
-    //    let pvOptions: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
     let pvOptions: [Months] = Months.allCases
     let currentYear = Calendar.current.component(.year, from: Date())
     var selectedMonth: String? {

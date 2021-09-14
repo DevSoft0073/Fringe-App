@@ -25,7 +25,7 @@ class CheckAvailabilityTBCell: UITableViewCell {
         lblName.text = bookingData.golfCourseName
         lblGuestDetails.text = bookingData.golfCourseName
 //        lblRating.text = bookingData.ra
-        lblAddress.text = bookingData.creationAt
+        lblAddress.text = bookingData.location
         lblRate.text = bookingData.price
     }
     

@@ -120,6 +120,37 @@ class BusinessAddPaymentMethodVC : BaseVC, UITextFieldDelegate, UploadImages, Im
         return true
     }
     
+    private func performFrontImgDocument(selectedImg : UIImage) {
+
+        let parameter: [String: Any] = [
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+            Request.Parameter.imgType: "front",
+            Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
+        ]
+
+        let imgData = selectedImg.jpegData(compressionQuality: 0.4)
+        var imgDataa = [String : Data]()
+        imgDataa["image"] = imgData
+        RequestManager.shared.multipartImageRequest(parameter: parameter, imagesData: imgDataa,keyName: "image", urlString: PreferenceManager.shared.userBaseURL + Request.Method.uploadDocument) { (response, error) in
+            if error == nil{
+                if let data = response {
+
+                    LoadingManager.shared.hideLoading()
+
+                    let status = data["code"] as? Int ?? 0
+                    if status == Status.Code.success {
+                        LoadingManager.shared.hideLoading()
+                        self.frontImageID = data["file_id"] as? String ?? ""
+                        self.addFrontImageTxtFld.text = data["file_id"] as? String ?? ""
+                    }else{
+                        DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
+                    }
+                }
+            }
+            LoadingManager.shared.hideLoading()
+            print(error?.localizedDescription ?? String())
+        }
+    }
    
     //------------------------------------------------------
     
