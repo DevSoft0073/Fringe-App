@@ -176,7 +176,7 @@ class FGProDisplayRegularTextField: FGBaseTextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.font = FGFont.PoppinsBold(size: fontSize)
+        self.font = FGFont.PoppinsRegular(size: fontSize)
     }
 }
 

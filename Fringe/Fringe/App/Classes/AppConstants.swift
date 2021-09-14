@@ -12,8 +12,8 @@ let kAppName : String = Bundle.main.object(forInfoDictionaryKey: "CFBundleDispla
 let kAppBundleIdentifier : String = Bundle.main.bundleIdentifier ?? String()
 
 enum DeviceType: String {
-    case iOS = "1"
-    case android = "2"
+    case iOS = "iOS"
+    case android = "android"
 }
 
 let emptyJsonString = "{}"
