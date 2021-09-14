@@ -10,6 +10,8 @@ import Foundation
 
 class HostAddPaymentMethodVC : BaseVC {
     
+    @IBOutlet weak var imgEdit: UIImageView!
+    @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var lblAccountNumber: FGBaseLabel!
     @IBOutlet weak var lblName: FGBaseLabel!
     @IBOutlet weak var lblRoutingNumber: FGBaseLabel!
@@ -25,6 +27,14 @@ class HostAddPaymentMethodVC : BaseVC {
     //------------------------------------------------------
     
     deinit { //same like dealloc in ObjectiveC
+        
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Custome
+    
+    func setupUI()  {
         
     }
     
@@ -48,6 +58,10 @@ class HostAddPaymentMethodVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if currentUserHost?.customerID == "0" {
+            btnEdit.isHidden = false
+            imgEdit.isHidden = false
+        }
     }
     
     //------------------------------------------------------

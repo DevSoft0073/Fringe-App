@@ -122,7 +122,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
             "Token": PreferenceManager.shared.authToken ?? String(),
            ]
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.profile, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.hostProfile, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<HostModal>.self, successBlock: { (response: ResponseModal<HostModal>) in
             
             LoadingManager.shared.hideLoading()
             
@@ -337,6 +337,9 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         tblProfile.separatorStyle = .none
         tblProfile.separatorColor = .clear
         setup()
+        self.performGetUserProfile { (flag : Bool) in
+            
+        }
     }
     
     //------------------------------------------------------

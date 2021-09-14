@@ -69,6 +69,23 @@ struct Request {
         //Add account
         static let imgType = "image_type"
         
+        //add studio
+        
+        static let country = "country"
+        static let address = "address"
+        static let city = "city"
+        static let state = "state"
+        static let postal_code = "postal_code"
+        static let line1 = "line1"
+        static let line2 = "line2"
+        static let ssnLast4 = "ssn_last_4"
+        static let accountHolderName = "account_holder_name"
+        static let routingNumber = "routing_number"
+        static let accountNumber = "account_number"
+        static let idNumber = "id_number"
+        static let back = "back"
+        static let front = "front"
+        
     }
     
     struct Method {
@@ -92,6 +109,8 @@ struct Request {
         static let cancleRequest = "/Bookingcancel.php"
         static let notification = "/GetNotificationDetails.php"
         static let uploadDocument = "/UploadstripeDocument.php"
+        static let addAccountDetails = "/ConnectedStripeToHost.php"
+        static let hostProfile = "/getHostDetails.php"
         static let logout = "/LogOut.php"
     }
     
@@ -363,5 +382,6 @@ struct Status {
         static let sessionExpired = 500
         static let notRegistered = 107
         static let alreadyAdded = 420
+        static let stripeIssue = 507
     }
 }

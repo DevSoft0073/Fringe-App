@@ -23,47 +23,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "13A1DEE6-AB81-463F-893C-44F41742077D"
+            uuid = "D08F2C66-B6D6-42E4-A85D-5C8E3DEF372A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/Host VC/HostProfileVC.swift"
+            filePath = "Fringe/Controller/VC/Host VC/BusinessAddPaymentMethodVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "performGetUserProfile(completion:)"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "performBackImgDocument(selectedImg:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "13A1DEE6-AB81-463F-893C-44F41742077D - 886b2cf5985d97d2"
+                  uuid = "D08F2C66-B6D6-42E4-A85D-5C8E3DEF372A - 4843eb8f3aec7d61"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Fringe.HostProfileVC.performGetUserProfile(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  symbolName = "Fringe.BusinessAddPaymentMethodVC.performBackImgDocument(selectedImg: __C.UIImage) -&gt; ()"
                   moduleName = "Fringe"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/Host%20VC/HostProfileVC.swift"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/Host%20VC/BusinessAddPaymentMethodVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "125"
-                  endingLineNumber = "125"
-                  offsetFromSymbolStart = "649">
+                  startingLineNumber = "196"
+                  endingLineNumber = "196"
+                  offsetFromSymbolStart = "2337">
                </Location>
                <Location
-                  uuid = "13A1DEE6-AB81-463F-893C-44F41742077D - d2b31b34e3fd7115"
+                  uuid = "D08F2C66-B6D6-42E4-A85D-5C8E3DEF372A - eff2fd219d9f546"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Fringe.ResponseModal&lt;Fringe.UserModal&gt;) -&gt; () in Fringe.HostProfileVC.performGetUserProfile(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Fringe.BusinessAddPaymentMethodVC.performBackImgDocument(selectedImg: __C.UIImage) -&gt; ()"
                   moduleName = "Fringe"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/Host%20VC/HostProfileVC.swift"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/Host%20VC/BusinessAddPaymentMethodVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "127"
-                  endingLineNumber = "127"
-                  offsetFromSymbolStart = "222">
+                  startingLineNumber = "197"
+                  endingLineNumber = "197"
+                  offsetFromSymbolStart = "207">
                </Location>
             </Locations>
          </BreakpointContent>

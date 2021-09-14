@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import Stripe
 import GoogleSignIn
 import UserNotifications
 import IQKeyboardManagerSwift
@@ -33,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.toolbarTintColor = FGColor.appBlack
         IQKeyboardManager.shared.enableAutoToolbar = true
-//        IQKeyboardManager.shared.disabledDistanceHandlingClasses = [ChatDetailsVC.self, ChatViewController.self]
+        //        IQKeyboardManager.shared.disabledDistanceHandlingClasses = [ChatDetailsVC.self, ChatViewController.self]
         IQKeyboardManager.shared.toolbarPreviousNextAllowedClasses = [UIScrollView.self,UIView.self,UITextField.self,UITextView.self,UIStackView.self]
         
     }
@@ -114,6 +115,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         registerRemoteNotificaton(application)
         //RealmManager.shared.save(channelDownload: false)
         window?.tintColor = FGColor.appBlack
+        
+        
+        // stripe publishable key For live
+        
+        //        StripeAPI.defaultPublishableKey = "pk_test_51JUS7iJ3XoLMRYVnKpR01bRRdE11rfnPrp5HJQrC6aUcRZTrY911Vvj5z3QWTACUjt55diQLeresblgaCv2qdGoO00u4MzXpuN"
+        
+        // stripe publishable key For testing
+        
+        StripeAPI.defaultPublishableKey = "sk_test_51JUS7iJ3XoLMRYVne26o0RcRXQtMgliZktPIihg7TRR8rEqcIpa8USR9g6out0i593Vt5cSGmiivcNs0rbbb3fon00Az943rmZ"
+        
         return true
     }
     
