@@ -168,11 +168,8 @@ internal class FGLocationManager: NSObject, CLLocationManagerDelegate {
         lat = locations.last?.coordinate.latitude ?? 0.0
         long = locations.last?.coordinate.longitude ?? 0.0
         delegate?.locationManager?(self, didUpdateLocations: locations)
-        //        AppDelegate.shared.performUpdateLocation(lat: "\(locations.last?.coordinate.latitude ?? .zero)", long:  "\(locations.last?.coordinate.longitude ?? .zero)") { (flag : Bool) in
-        //            print("locationupdatedsuccessfully",flag)
-        
-        
-        //        }
+        AppDelegate.shared.performUpdateLocation(lat: "\(locations.last?.coordinate.latitude ?? .zero)", long:  "\(locations.last?.coordinate.longitude ?? .zero)") { (flag : Bool) in
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

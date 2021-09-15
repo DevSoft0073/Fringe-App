@@ -141,18 +141,57 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
                     self.btnSubmit.isUserInteractionEnabled = true
                     delayInLoading {
                         
-                        //                        self.performAddCardDetails { (flag: Bool) in
-                        //                            if flag {
-                        //                                DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.addedCard.localized()) {
-                        //                                    self.pop()
-                        //                                }
-                        //                            }
-                        //                        }
+                        self.performAddCardDetails { (flag: Bool) in
+                            if flag {
+                                DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.addedCard.localized()) {
+                                    self.pop()
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
     }
+    
+    private func performAddCardDetails(completion:((_ flag: Bool) -> Void)?) {
+
+        let parameter: [String: Any] = [
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+            Request.Parameter.stripeToken: tokenID,
+//            Request.Parameter.card_type: cardTypeTxtFld.text ?? String(),
+//            Request.Parameter.name: nameOnCardTxtFld.text ?? String(),
+        ]
+        
+
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.addCardDetails, parameter: parameter, showLoader: false, decodingType: ResponseModal<[AddCardDetailsModal]>.self, successBlock: { (response: ResponseModal<[AddCardDetailsModal]>) in
+
+            LoadingManager.shared.hideLoading()
+
+            if response.code == Status.Code.success {
+                delay {
+                    completion?(true)
+                }
+                
+            } else {
+                
+                if response.code == Status.Code.alredayUsedToken{
+                    delay {
+                        DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
+                    }
+                }
+            }
+
+        }, failureBlock: { (error: ErrorModal) in
+
+            LoadingManager.shared.hideLoading()
+
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
     
     //------------------------------------------------------
     

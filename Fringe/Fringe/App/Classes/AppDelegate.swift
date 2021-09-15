@@ -9,6 +9,7 @@
 
 import UIKit
 import Stripe
+import Alamofire
 import GoogleSignIn
 import UserNotifications
 import IQKeyboardManagerSwift
@@ -101,6 +102,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    func performUpdateLocation(lat : String , long : String ,completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.lat: lat,
+            Request.Parameter.long: long,
+        ]
+
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.updateLocation, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+            
+            if response.code == Status.Code.success {
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    print(stringUser)
+                }
+                
+                delay {
+                    
+                    completion?(true)
+                    
+                }
+                
+            } else {
+                
+                completion?(false)
+                
+                delay {
+                    
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            completion?(false)
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                
+            }
+        })
+    }
     
     //------------------------------------------------------
     

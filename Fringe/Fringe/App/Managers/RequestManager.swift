@@ -69,6 +69,9 @@ struct Request {
         //Add account
         static let imgType = "image_type"
         
+        //Add card
+        static let stripeToken = "stripeToken"
+        
         //add studio
         
         static let country = "country"
@@ -111,6 +114,9 @@ struct Request {
         static let uploadDocument = "/UploadstripeDocument.php"
         static let addAccountDetails = "/ConnectedStripeToHost.php"
         static let hostProfile = "/getHostDetails.php"
+        static let updateLocation = "/UpdateUserLocation.php"
+        static let editHostProfile = "/EditHostProfile.php"
+        static let cardListing = "/GetAllCardDetailsBYuserid.php"
         static let logout = "/LogOut.php"
     }
     

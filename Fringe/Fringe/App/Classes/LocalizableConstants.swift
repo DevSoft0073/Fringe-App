@@ -197,6 +197,11 @@ struct LocalizableConstants {
             static let appleCard = "apple_card"
         }
         
+        struct CardListing {
+            
+            static let noCard = "no_card_added"
+        }
+        
         //account Details
         
         static let enterAccountHolderName = "enter_account_holder_name"

@@ -6,12 +6,15 @@
 //
 
 import UIKit
-import Foundation
 import Toucan
+import MapKit
+import Alamofire
 import SDWebImage
+import Foundation
+import CoreLocation
 import IQKeyboardManagerSwift
 
-class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  ImagePickerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  ImagePickerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, LocationSearchDelegate {
     
     @IBOutlet weak var uploadImageCollectionView: UICollectionView!
     @IBOutlet weak var txtMobileNumber: FGMobileNumberTextField!
@@ -32,8 +35,6 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         didSet {
             if selectedImage != nil {
                 imgProfile.image = selectedImage
-                //                photosInTheCellNow.append(selectedImage)
-                //                uploadImageCollectionView.reloadData()
             }
         }
     }
@@ -41,7 +42,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
     var selectedImageForClub: UIImage? {
         didSet {
             if selectedImageForClub != nil {
-                imgProfile.image = selectedImageForClub
+//                imgProfile.image = selectedImageForClub
                 photosInTheCellNow.append(selectedImageForClub)
                 uploadImageCollectionView.reloadData()
             }
@@ -186,6 +187,63 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         return true
     }
     
+    private func performEditStudio() {
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+        
+        
+        let imageData = selectedImage?.jpegData(compressionQuality: 0.2)
+        var imgData = [String : Data]()
+        imgData["image"] = imageData
+        let parameter: [String: Any] = [
+            Request.Parameter.firstName: txtFirstName?.text ?? String(),
+            Request.Parameter.lastName: txtLastName?.text ?? String(),
+            Request.Parameter.homeTown: txtAddress.text ?? String(),
+            Request.Parameter.dob: txtBirthDate.text ?? String(),
+            Request.Parameter.email: txtEmail.text ?? String(),
+            Request.Parameter.mobileNumber: txtMobileNumber.text ?? String(),
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+        ]
+        var imgDataa = [String : Data]()
+        for i in photosInTheCellNow {
+            let imgData = i?.jpegData(compressionQuality: 0.2)
+            imgDataa["\(Date().timeIntervalSince1970)"] = imgData
+        }
+        
+        RequestManager.shared.multipartImageRequest(parameter: parameter, imagesData: imgDataa, headers: headers, profileImagesData: imgData, keyName: "golf_images[]", profileKeyName: "image", urlString: PreferenceManager.shared.userBaseURL + Request.Method.editHostProfile) { (response, error) in
+            
+            if error == nil{
+                
+                if let data = response {
+                    
+                    LoadingManager.shared.hideLoading()
+                    
+                    let status = data["code"] as? Int ?? 0
+                    let jsonStudio = data["studio_detail"] as? [String: Any]
+                    if status == Status.Code.success {
+                        delay {
+                            
+                            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.profileUpdated.localized()) {
+                                self.pop()
+                            }
+                        }
+                        
+                    }else{
+                        
+                        delay {
+                            
+                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     //------------------------------------------------------
     
     //MARK: Actions
@@ -202,6 +260,13 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
     @IBAction func btnSave(_ sender: Any) {
         if validate() == false {
             return
+        }
+        self.view.endEditing(true)
+        
+        LoadingManager.shared.showLoading()
+        
+        delay {
+            self.performEditStudio()
         }
     }
     
@@ -277,6 +342,35 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
     }
     
     
+    //------------------------------------------------------
+    
+    //MARK: UITextFieldDelegate
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+
+        if textField == txtAddress {
+            self.view.endEditing(true)
+            let controller = NavigationManager.shared.locationSearchVC
+            controller.delegate = self
+            let nvc = UINavigationController(rootViewController: controller)
+            self.present(nvc, animated: true) {
+            }
+            return false
+        }
+        return true
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: LocationSearchDelegate
+    
+    func locationSearch(controller: LocationSearchVC, didSelect location: MKPlacemark) {
+        self.txtAddress.text = location.name ?? String()
+        if IQKeyboardManager.shared.canGoNext {
+            IQKeyboardManager.shared.goNext()
+        }
+        navigationController?.popToViewController(self, animated: true)
+    }
     
     //------------------------------------------------------
     

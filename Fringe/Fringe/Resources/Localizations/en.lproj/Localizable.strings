@@ -293,3 +293,5 @@
 "enter_address" = "Please enter address";
 "enter_golf_course_price" = "Please enter price";
 "enter_golf_course_description" = "Please enter descriptin";
+
+"no_card_added" = "No card added, add debit or credit card to book a session";

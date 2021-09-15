@@ -7,10 +7,12 @@
 
 import UIKit
 import MapKit
+import Alamofire
 import Foundation
+import CoreLocation
 import FittedSheets
 
-class HomeVC : BaseVC {
+class HomeVC : BaseVC, FGLocationManagerDelegate{
     
     
     @IBOutlet weak var locationsMap: MKMapView!
@@ -21,6 +23,8 @@ class HomeVC : BaseVC {
     @IBOutlet weak var imgFavUnfav: UIImageView!
     @IBOutlet weak var lblName: FGSemiboldLabel!
     @IBOutlet weak var imgMain: UIImageView!
+    
+    var manager = FGLocationManager()
     var annotation = MKPointAnnotation()
     
     //------------------------------------------------------
@@ -55,8 +59,7 @@ class HomeVC : BaseVC {
     //MARK: Set marker on mapview
     
     func setMarkers(lat :Double, Long : Double) {
-        
-        let center = CLLocationCoordinate2D(latitude: lat, longitude: Long)
+        let center = CLLocationCoordinate2D(latitude: Double(PreferenceManager.shared.lat ?? 0.0), longitude: Double(PreferenceManager.shared.lat ?? 0.0))
         annotation.coordinate = center
         locationsMap.addAnnotation(annotation)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.12, longitudeDelta: 0.12))
@@ -88,6 +91,10 @@ class HomeVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        manager.delegate = self
+        manager.startMonitoring()
+        
         imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
         setMarkers(lat: 30.704649, Long: 76.717873)
     }
