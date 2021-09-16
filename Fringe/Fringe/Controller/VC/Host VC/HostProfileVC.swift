@@ -245,7 +245,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 2 {
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ShowImagesCell.self)) as? ShowImagesCell {
-                //            cell.setup(images: currentUser?.image)
+                cell.setup(images: currentUserHost?.golfImages ?? [])
                 return cell
             }
             

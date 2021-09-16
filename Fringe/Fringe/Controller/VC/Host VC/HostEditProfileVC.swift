@@ -42,7 +42,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
     var selectedImageForClub: UIImage? {
         didSet {
             if selectedImageForClub != nil {
-//                imgProfile.image = selectedImageForClub
+                //                imgProfile.image = selectedImageForClub
                 photosInTheCellNow.append(selectedImageForClub)
                 uploadImageCollectionView.reloadData()
             }
@@ -123,28 +123,28 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         //phone
         txtMobileNumber.text = currentUserHost?.mobileNo
         
-        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getVal"), object: nil, userInfo: ["country": self.currentUserHost?.phoneCode ?? "+1"])
-        //        print(self.allImages)
-        
-        //        DispatchQueue.global(qos: .background).async {
-        //            for i in self.currentUserHost?.hostImage ?? [""] {
-        //                let image = i
-        //                var imgArray = [String]()
-        //                imgArray.removeAll()
-        //                if image != ""{imgArray.append(image)}
-        //                for img in imgArray{
-        //                    let imageUrl = URL(string: img)
-        //                    if let data = try? Data(contentsOf: imageUrl ?? URL(fileURLWithPath: ""))
-        //                    {
-        //                        let image: UIImage = UIImage(data: data)!
-        //                        self.photosInTheCellNow.append(image)
-        //                    }
-        //                }
-        //                DispatchQueue.main.async {
-        //                    self.imgCollectionView.reloadData()
-        //                }
-        //            }
-        //        }
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getVal"), object: nil, userInfo: ["country": self.currentUserHost?.phoneCode ?? "+1"])
+//        print(self.allImages)
+//
+        DispatchQueue.global(qos: .background).async {
+            for i in self.currentUserHost?.golfImages ?? [] {
+                let image = i
+                var imgArray = [String]()
+                imgArray.removeAll()
+                if image != ""{imgArray.append(image)}
+                for img in imgArray{
+                    let imageUrl = URL(string: img)
+                    if let data = try? Data(contentsOf: imageUrl ?? URL(fileURLWithPath: ""))
+                    {
+                        let image: UIImage = UIImage(data: data)!
+                        self.photosInTheCellNow.append(image)
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.uploadImageCollectionView.reloadData()
+                }
+            }
+        }
     }
     
     
@@ -222,7 +222,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
                     LoadingManager.shared.hideLoading()
                     
                     let status = data["code"] as? Int ?? 0
-                    let jsonStudio = data["studio_detail"] as? [String: Any]
+                    _ = data["studio_detail"] as? [String: Any]
                     if status == Status.Code.success {
                         delay {
                             
@@ -351,7 +351,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
     //MARK: UITextFieldDelegate
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-
+        
         if textField == txtAddress {
             self.view.endEditing(true)
             let controller = NavigationManager.shared.locationSearchVC

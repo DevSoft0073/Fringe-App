@@ -186,10 +186,10 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
             delay {
                 
                 DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
-                    PreferenceManager.shared.userId = nil
-                    PreferenceManager.shared.currentUser = nil
-                    PreferenceManager.shared.authToken = nil
-                    NavigationManager.shared.setupSingIn()
+//                    PreferenceManager.shared.userId = nil
+//                    PreferenceManager.shared.currentUser = nil
+//                    PreferenceManager.shared.authToken = nil
+//                    NavigationManager.shared.setupSingIn()
                 }
             }
 
