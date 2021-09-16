@@ -101,8 +101,15 @@ class HostNotificationVC : BaseVC, UITableViewDelegate, UITableViewDataSource, K
             completion?(false)
             
             delay {
-                self.handleError(code: error.code)
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription ?? "") {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
             }
+
         })
     }
     

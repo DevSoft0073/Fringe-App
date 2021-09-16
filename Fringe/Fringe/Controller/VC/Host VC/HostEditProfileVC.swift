@@ -235,8 +235,12 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
                         
                         delay {
                             
-                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
-                            
+                            DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error?.localizedDescription ?? "") {
+                                PreferenceManager.shared.userId = nil
+                                PreferenceManager.shared.currentUser = nil
+                                PreferenceManager.shared.authToken = nil
+                                NavigationManager.shared.setupSingIn()
+                            }
                         }
                     }
                 }

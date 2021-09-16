@@ -27,7 +27,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         static let myBookings = LocalizableConstants.Controller.Profile.bookingListing
         static let myBookingsIcon = FGImageName.iconBookingListing
         static let switchToBusiness = LocalizableConstants.Controller.Profile.switchToBusiness
-        static let signUpToBusiness = LocalizableConstants.Controller.Profile.switchToBusiness
+        static let signUpToBusiness = LocalizableConstants.Controller.Profile.signUpAsHost
         static let switchToBusinessIcon = FGImageName.iconSwitchToBusiness
         static let termsOfServices = LocalizableConstants.Controller.Profile.termsOfService
         static let termsOfServicesIcon = FGImageName.iconTermsOfService
@@ -52,7 +52,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             ["name": ProfileItems.logout, "image": ProfileItems.logoutIcon]
         ]
     }
-    var itemNormal: [ [String:String] ] {
+    var itemNormal1: [ [String:String] ] {
         return [
             ["name": ProfileItems.accountInformation, "image": ProfileItems.accountInformationIcon],
             ["name": ProfileItems.changePassword, "image": ProfileItems.changePasswordIcon],
@@ -60,17 +60,57 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
             ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
             ["name": ProfileItems.myBookings, "image": ProfileItems.myBookingsIcon],
-            ["name": PreferenceManager.shared.currentUserModal?.isClubRegistered == true ? ProfileItems.switchToBusiness : ProfileItems.signUpToBusiness, "image": ProfileItems.switchToBusinessIcon],
-//            ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
+//            ["name": PreferenceManager.shared.currentUserModal?.isClubRegistered == true ? ProfileItems.switchToBusiness : ProfileItems.signUpToBusiness, "image": ProfileItems.switchToBusinessIcon],
+            ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
             ["name": ProfileItems.termsOfServices, "image": ProfileItems.termsOfServicesIcon],
             ["name": ProfileItems.privacyPolicy, "image": ProfileItems.privacyPolicyIcon],
             //            ["name": ProfileItems.cancellationPolicy, "image": ProfileItems.cancellationPolicyIcon],
             ["name": ProfileItems.logout, "image": ProfileItems.logoutIcon]
         ]
     }
+    
+    var itemNormal2: [ [String:String] ] {
+        return [
+            ["name": ProfileItems.accountInformation, "image": ProfileItems.accountInformationIcon],
+            ["name": ProfileItems.changePassword, "image": ProfileItems.changePasswordIcon],
+            ["name": ProfileItems.addPayment, "image": ProfileItems.addPaymentIcon],
+            ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
+            ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
+            ["name": ProfileItems.myBookings, "image": ProfileItems.myBookingsIcon],
+//            ["name": PreferenceManager.shared.currentUserModal?.isClubRegistered == true ? ProfileItems.switchToBusiness : ProfileItems.signUpToBusiness, "image": ProfileItems.switchToBusinessIcon],
+            ["name": ProfileItems.signUpToBusiness, "image": ProfileItems.switchToBusinessIcon],
+            ["name": ProfileItems.termsOfServices, "image": ProfileItems.termsOfServicesIcon],
+            ["name": ProfileItems.privacyPolicy, "image": ProfileItems.privacyPolicyIcon],
+            //            ["name": ProfileItems.cancellationPolicy, "image": ProfileItems.cancellationPolicyIcon],
+            ["name": ProfileItems.logout, "image": ProfileItems.logoutIcon]
+        ]
+    }
+    
+//    var itemNormal: [ [String:String] ] {
+//        return [
+//            ["name": ProfileItems.accountInformation, "image": ProfileItems.accountInformationIcon],
+//            ["name": ProfileItems.changePassword, "image": ProfileItems.changePasswordIcon],
+//            ["name": ProfileItems.addPayment, "image": ProfileItems.addPaymentIcon],
+//            ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
+//            ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
+//            ["name": ProfileItems.myBookings, "image": ProfileItems.myBookingsIcon],
+//            ["name": PreferenceManager.shared.currentUserModal?.isClubRegistered == true ? ProfileItems.switchToBusiness : ProfileItems.signUpToBusiness, "image": ProfileItems.switchToBusinessIcon],
+////            ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
+//            ["name": ProfileItems.termsOfServices, "image": ProfileItems.termsOfServicesIcon],
+//            ["name": ProfileItems.privacyPolicy, "image": ProfileItems.privacyPolicyIcon],
+//            //            ["name": ProfileItems.cancellationPolicy, "image": ProfileItems.cancellationPolicyIcon],
+//            ["name": ProfileItems.logout, "image": ProfileItems.logoutIcon]
+//        ]
+//    }
+    
+    
+    
     var items: [ [String: String] ] {
-        
-        return itemNormal
+        if currentUser?.isgolfRegistered == "1" {
+            return itemNormal1
+        }else {
+            return itemNormal2
+        }
     }
     
     
@@ -136,9 +176,12 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             } else {
                 
                 delay {
-                                            
-                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
-                          
+                    
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: response.message ?? String()) {
+                        PreferenceManager.shared.userId = nil
+                        PreferenceManager.shared.currentUser = nil
+                        PreferenceManager.shared.authToken = nil
+                        NavigationManager.shared.setupSingIn()
                     }
                 }
             }
@@ -151,7 +194,14 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             
             delay {
                 
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
             }
+
         })
     }
     
@@ -193,8 +243,15 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             completion?(false)
             
             delay {
-                //                self.handleError(code: error.code)
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
             }
+
         })
         
     }
@@ -300,16 +357,16 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             
             let controller = NavigationManager.shared.myBookingVC
             push(controller: controller)
-            
+                        
         }else if name == ProfileItems.switchToBusiness || name == ProfileItems.signUpToBusiness{
             
-//            if currentUser?.isClubRegistered == false {
-//                let controller = NavigationManager.shared.signUpHostVC
-//                push(controller: controller)
-//            } else {
+            if currentUser?.isClubRegistered == false {
+                let controller = NavigationManager.shared.signUpHostVC
+                push(controller: controller)
+            } else {
                 NavigationManager.shared.setupLandingOnHomeForHost()
 
-//            }
+            }
             
         }else if name == ProfileItems.termsOfServices{
             

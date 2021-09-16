@@ -13,7 +13,7 @@ class HomeListingDetailsVC : BaseVC {
     
     @IBOutlet weak var lblDetails: FGRegularLabel!
     @IBOutlet weak var btnFav: UIButton!
-    @IBOutlet weak var lblPrice: FGMediumLabel!
+    @IBOutlet weak var lblPrice: FGSemiboldLabel!
     @IBOutlet weak var lblRating: FGRegularLabel!
     @IBOutlet weak var ratingView: FloatRatingView!
     @IBOutlet weak var lblAddress: FGMediumLabel!
@@ -110,8 +110,15 @@ class HomeListingDetailsVC : BaseVC {
             LoadingManager.shared.hideLoading()
 
             delay {
-                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
             }
+
         })
     }
     

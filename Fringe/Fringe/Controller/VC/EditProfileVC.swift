@@ -155,7 +155,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
         let deviceTimeZone = TimeZone.current.abbreviation()
         let headers: HTTPHeaders = [
             "content-type": "application/json",
-            "Token": currentUser?.authorizationToken ?? String(),
+            "Token": PreferenceManager.shared.authToken ?? String(),
            ]
         let parameter: [String: Any] = [
             Request.Parameter.userID: currentUser?.userID ?? String(),
@@ -192,9 +192,14 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
                         
                         delay {
                             
-                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
-                            
+                            DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error?.localizedDescription ?? "") {
+                                PreferenceManager.shared.userId = nil
+                                PreferenceManager.shared.currentUser = nil
+                                PreferenceManager.shared.authToken = nil
+                                NavigationManager.shared.setupSingIn()
+                            }
                         }
+
                     }
                 }
             }

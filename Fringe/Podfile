@@ -24,7 +24,7 @@
   pod 'GoogleSignIn'
 
   #Home Screen pull up
-   pod 'FittedSheets'
+  pod 'FittedSheets'
   
   #apple sign in
   pod 'AppleSignIn'
@@ -32,5 +32,9 @@
   # payment
   pod 'Stripe'
   pod "TimeZoneLocate"
+  
+  # Firebase
+  pod 'Firebase'
+  pod 'Firebase/Crashlytics'
 
 end

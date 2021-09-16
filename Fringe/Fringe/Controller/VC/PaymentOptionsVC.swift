@@ -12,6 +12,7 @@ class PaymentOptionsVC : BaseVC, UITableViewDataSource , UITableViewDelegate {
     
     @IBOutlet weak var tblPyament: UITableView!
     
+    var detailsData: RequestListingModal?
     struct AddPaymentItems {
         static let creditCard = LocalizableConstants.Controller.AddPaymentMethod.creditDebitCard
         static let creditCardIcon = FGImageName.iconCreditCardPayment
@@ -100,6 +101,7 @@ class PaymentOptionsVC : BaseVC, UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let controller = NavigationManager.shared.paymentMethodVC
+        controller.isComesFrom = false
         push(controller: controller)
         
     }

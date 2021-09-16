@@ -183,10 +183,14 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
                 
                 delay {
                     
-                    DisplayAlertManager.shared.displayAlert(animated: true, message: error?.localizedDescription ?? String())
-
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error?.localizedDescription ?? "") {
+                        PreferenceManager.shared.userId = nil
+                        PreferenceManager.shared.currentUser = nil
+                        PreferenceManager.shared.authToken = nil
+                        NavigationManager.shared.setupSingIn()
+                    }
                 }
-                print(error?.localizedDescription ?? String())
+
             }
         }
     }

@@ -104,6 +104,7 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let controller = NavigationManager.shared.paymentMethodVC
+        controller.isComesFrom = true
         push(controller: controller)
         
     }

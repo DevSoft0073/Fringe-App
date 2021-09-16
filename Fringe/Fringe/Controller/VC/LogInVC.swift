@@ -336,7 +336,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     override func viewDidLoad() {
         super.viewDidLoad()
         txtEmail.text = "dharmaniz.guleria@gmail.com"
-        txtPassword.text = "Qwerty@12"
+        txtPassword.text = "Qwerty@123"
         setup()
     }
     

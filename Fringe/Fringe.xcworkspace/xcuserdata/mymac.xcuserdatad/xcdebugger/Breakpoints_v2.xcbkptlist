@@ -71,63 +71,111 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9D7C69F3-94B4-43BF-A0DA-3392B82D5FDA"
+            uuid = "248DCA0E-F51C-4C11-A822-0CE72ECB5156"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/App/Classes/FGLocationManager.swift"
+            filePath = "Fringe/Model/Generals/Payment/AddCardDataModal.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "jsonString(encoding:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "248DCA0E-F51C-4C11-A822-0CE72ECB5156 - 30778827ad75397b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 0 of Fringe.AddCardDataModal.jsonString(encoding: Swift.String.Encoding) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "Fringe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Model/Generals/Payment/AddCardDataModal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "248DCA0E-F51C-4C11-A822-0CE72ECB5156 - bb316c55df337523"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fringe.AddCardDataModal.jsonString(encoding: Swift.String.Encoding) throws -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "Fringe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Model/Generals/Payment/AddCardDataModal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "97">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D8A2E582-955E-461D-B841-544BEFE36B4D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fringe/Controller/VC/AddPaymentVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "performValidateCardDetails()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "15C2531A-3544-45FE-BC40-D46B6A8765AF"
+            uuid = "7850C490-1FF1-4AD1-8569-D146611C6B0D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/App/Classes/FGLocationManager.swift"
+            filePath = "Fringe/Controller/VC/EditProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "performEditProfile(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "15C2531A-3544-45FE-BC40-D46B6A8765AF - 9162c38855b49f8d"
+                  uuid = "7850C490-1FF1-4AD1-8569-D146611C6B0D - 556587ef1e32b655"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Fringe.FGLocationManager.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
+                  symbolName = "Fringe.EditProfileVC.performEditProfile(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
                   moduleName = "Fringe"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/App/Classes/FGLocationManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
-                  offsetFromSymbolStart = "2548">
-               </Location>
-               <Location
-                  uuid = "15C2531A-3544-45FE-BC40-D46B6A8765AF - f94be3b89a7dc600"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in Fringe.FGLocationManager.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
-                  moduleName = "Fringe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/App/Classes/FGLocationManager.swift"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/EditProfileVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "172"
                   endingLineNumber = "172"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "6127">
+               </Location>
+               <Location
+                  uuid = "7850C490-1FF1-4AD1-8569-D146611C6B0D - b7a12b5186d2a274"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Fringe.EditProfileVC.performEditProfile(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Fringe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/EditProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "235">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -135,79 +183,79 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CE2BD46D-AE8D-4D3D-87FB-8345C38BE330"
+            uuid = "882F94BF-17A5-4CC2-8C31-A802E8B3917E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/App/Classes/FGLocationManager.swift"
+            filePath = "Fringe/Controller/VC/EditProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "performEditProfile(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CA0D06CF-51D5-4D3E-B612-8F18250DD7CA"
+            uuid = "D3B20826-9373-4CC1-8591-89B4A6BC944E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/App/Classes/FGLocationManager.swift"
+            filePath = "Fringe/Controller/VC/EditProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "performEditProfile(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "49A6BE2E-338B-4E9C-8C7E-73E8B8107E87"
+            uuid = "6293AF0B-8B19-4E55-9588-4782168E7298"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/App/Classes/AppDelegate.swift"
+            filePath = "Fringe/Controller/VC/EditProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "performUpdateLocation(lat:long:completion:)"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "performEditProfile(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "49A6BE2E-338B-4E9C-8C7E-73E8B8107E87 - c037d709e6608bfd"
+                  uuid = "6293AF0B-8B19-4E55-9588-4782168E7298 - b7a12b5186d2afe7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Fringe.AppDelegate.performUpdateLocation(lat: Swift.String, long: Swift.String, completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Fringe.EditProfileVC.performEditProfile(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
                   moduleName = "Fringe"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/App/Classes/AppDelegate.swift"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/EditProfileVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "1191">
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "1693">
                </Location>
                <Location
-                  uuid = "49A6BE2E-338B-4E9C-8C7E-73E8B8107E87 - 1ff84a41b97c6adf"
+                  uuid = "6293AF0B-8B19-4E55-9588-4782168E7298 - 68fc1faaea0b8e2e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Fringe.ResponseModal&lt;Fringe.UserModal&gt;) -&gt; () in Fringe.AppDelegate.performUpdateLocation(lat: Swift.String, long: Swift.String, completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  symbolName = "closure #2 () -&gt; () in closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Fringe.EditProfileVC.performEditProfile(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
                   moduleName = "Fringe"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/App/Classes/AppDelegate.swift"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/EditProfileVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "161">
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "99">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -215,32 +263,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4AAA9266-C1F9-4E8C-A6B8-A1A3D4265ACE"
+            uuid = "C21CF28F-B7A8-4E84-8F67-1258FBDCABEA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/App/Classes/AppDelegate.swift"
+            filePath = "Fringe/Controller/VC/EditProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "performUpdateLocation(lat:long:completion:)"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "performEditProfile(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "550B3594-757A-4C18-84A1-7FB88115AD55"
+            uuid = "62086145-4E8A-4426-92E0-1EC120B471C8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/App/Classes/AppDelegate.swift"
+            filePath = "Fringe/Controller/VC/EditProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "performUpdateLocation(lat:long:completion:)"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "performEditProfile(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -17,6 +17,9 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var heightContraint: NSLayoutConstraint!
     @IBOutlet weak var tblPayment: UITableView!
     
+    var selectedCategories: [String] = []
+    var cardId = String()
+    var isComesFrom = Bool()
     var isRequesting: Bool = false
     var lastRequestId: String = String()
     var textTitle: String?
@@ -85,6 +88,7 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
                     }
                     
                     self.items.append(contentsOf: response.data ?? [])
+                    self.items = self.items.removingDuplicates()
                     self.setup()
                     self.updateUI()
                 }
@@ -110,11 +114,60 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
             self.isRequesting = false
             
             delay {
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
+            }
+
+        })
+    }
+    
+    private func performSendPayment(completion:((_ flag: Bool) -> Void)?) {
+
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+            Request.Parameter.golfID: "",
+            Request.Parameter.id: "",
+            Request.Parameter.token: "",
+            Request.Parameter.totalAmount: "",
+        ]
+
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.payNow, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+
+            LoadingManager.shared.hideLoading()
+
+            if response.code == Status.Code.success {
+
+                delay {
+                    completion?(true)
+                }
+                
+            } else {
+
+                delay {
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
+                }
+
+            }
+
+        }, failureBlock: { (error: ErrorModal) in
+
+            LoadingManager.shared.hideLoading()
+
+            delay {
                 DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
             }
         })
     }
-
     
     //------------------------------------------------------
     
@@ -130,10 +183,19 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func btnPayment(_ sender: Any) {
-        let controller = NavigationManager.shared.paymentSuccessfullyPopUpVC
-        controller.modalPresentationStyle = .overFullScreen
-        controller.modalTransitionStyle = .coverVertical
-        self.present(controller, animated: true)
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performSendPayment { (flag : Bool) in
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.paymentDone.localized()) {
+                let controller = NavigationManager.shared.paymentSuccessfullyPopUpVC
+                controller.modalPresentationStyle = .overFullScreen
+                controller.modalTransitionStyle = .flipHorizontal
+                self.present(controller, animated: true)
+            }
+        }
+        
+       
     }
     
     //------------------------------------------------------
@@ -147,6 +209,8 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PaymentMethodTVC.self)) as? PaymentMethodTVC {
+            let data = items[indexPath.row]
+            cell.setup(cardData: data)
             DispatchQueue.main.async {
                 self.heightContraint.constant = self.tblPayment.contentSize.height
             }
@@ -160,14 +224,27 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? PaymentMethodTVC{
-            cell.selectUnselectImg.image = UIImage(named: FGImageName.iconRadio)
+        let name = items[indexPath.row].cardHolderName
+        if selectedCategories.contains(name ?? "") == false {
+            selectedCategories.append(name ?? "")
+            if let cell = tableView.cellForRow(at: indexPath) as? PaymentMethodTVC {
+                cell.selectUnselectImg.image = UIImage(named: FGImageName.iconCheck)
+                self.cardId = items[indexPath.row].cardID ?? String()
+            }
         }
+
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? PaymentMethodTVC{
-            cell.selectUnselectImg.image = UIImage(named: FGImageName.iconRadioUnselect)
+        let name = items[indexPath.row].cardHolderName
+        if selectedCategories.contains(name ?? "") == true {
+            selectedCategories.removeAll { (arg0: String) -> Bool in
+                return arg0 == name
+            }
+            if let cell = tableView.cellForRow(at: indexPath) as? PaymentMethodTVC {
+                cell.selectUnselectImg.image = UIImage(named: FGImageName.iconUncheck)
+                self.cardId = ""
+            }
         }
     }
     
@@ -181,10 +258,10 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         noDataLbl.isHidden = true
         setup()
         
-        LoadingManager.shared.showLoading()
-        
-        self.performGetCardListing { (flag : Bool) in
-            
+        if isComesFrom == true {
+            self.addPayBtn.isHidden = true
+        } else {
+            self.addPayBtn.isHidden = false
         }
     }
     
@@ -192,6 +269,13 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performGetCardListing { (flag : Bool) in
+            
+        }
+        
     }
     
     //------------------------------------------------------

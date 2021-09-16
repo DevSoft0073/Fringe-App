@@ -23,9 +23,9 @@ class PaymentMethodTVC: UITableViewCell {
     
     //MARK: Custome
     
-    func setup(details: String , name : String) {
-        cardDetails.text = details
-        nameLbl.text = name
+    func setup(cardData : PaymentDataModel) {
+        cardDetails.text = "XXXX-XXXX-XXXX-\(cardData.last4 ?? "")"
+        nameLbl.text = cardData.cardHolderName
     }
     
     //------------------------------------------------------
@@ -37,13 +37,4 @@ class PaymentMethodTVC: UITableViewCell {
         
         selectionStyle = .none
     }
-    
-    //------------------------------------------------------
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

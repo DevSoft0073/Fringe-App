@@ -130,6 +130,7 @@
 "added_card_details" = "You have added card information successfully.";
 "feedback_submit" = "Your feedback added successfully.";
 "blok_day" = "You have block studio session successfully.";
+"payment_done" = "You have successfully pay for your booked session.";
 
 //request status
 "requests" = "Requests";
@@ -295,3 +296,10 @@
 "enter_golf_course_description" = "Please enter descriptin";
 
 "no_card_added" = "No card added, add debit or credit card to book a session";
+"pending" = "No pending data";
+"no_awating_data_found" = "No awating data";
+"confirmed" = "No confirmed data";
+"no_data_available_for_this_date" = "Click on + button to unblock day or add Studio Availability.";
+"seleceted_dates_are_already_blocked" = "Selected dates are already blocked";
+"no_data_found" = "No data found";
+"signup_as_host" = "Sign up as host";

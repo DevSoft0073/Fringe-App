@@ -43,13 +43,9 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     func setup() {
         tblGolf.dataSource = self
         tblGolf.delegate = self
-        navigationItem.title = LocalizableConstants.Controller.Notifications.title.localized()
-//
-//        noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.pending.localized()
-//
-//        navigationItem.title = LocalizableConstants.Controller.Fringe.title.localized()
-        segment1.btn.setTitle(LocalizableConstants.Controller.Fringe.pending.localized(), for: .normal)
-        segment2.btn.setTitle(LocalizableConstants.Controller.Fringe.confirmed.localized(), for: .normal)
+        noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.pending.localized()
+        segment1.btn.setTitle("Pending", for: .normal)
+        segment2.btn.setTitle("Confirmed", for: .normal)
         
         segment1.delegate = self
         segment2.delegate = self
@@ -68,6 +64,25 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     }
     
     func updateUI()  {
+        
+        if items.count == 0{
+            self.noDataLbl.isHidden = false
+        }else{
+            self.noDataLbl.isHidden = true
+        }
+        
+        if segment1.isSelected == true {
+            
+            noDataLbl.text = LocalizableConstants.Controller.GolfClubs.pending.localized()
+            noDataLbl.isHidden = items.count != .zero
+            
+        }else{
+            
+            noDataLbl.text = LocalizableConstants.Controller.GolfClubs.confirmed.localized()
+            noDataLbl.isHidden = items.count != .zero
+            
+        }
+        
         tblGolf.reloadData()
     }
     
@@ -88,18 +103,10 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
                          Request.Parameter.bookedStatus: "0",
                          Request.Parameter.lastID: lastRequestId,]
             
-        }else if segment2.isSelected == true {
+        } else if segment2.isSelected == true {
             
             parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
                          Request.Parameter.bookedStatus: "1",
-                         Request.Parameter.lastID: lastRequestId,]
-            
-        }else{
-            
-            segment1.isSelected = true
-            
-            parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
-                         Request.Parameter.bookedStatus: "0",
                          Request.Parameter.lastID: lastRequestId,]
             
         }
@@ -126,12 +133,10 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
                     self.items = self.items.removingDuplicates()
                     self.lastRequestId = response.data?.last?.id ?? String()
                     self.updateUI()
-                    self.setup()
                 }
                 
-            } else if response.code == Status.Code.notfound {
+            } else if response.code == Status.Code.nofoundDat {
                 
-                    
                     self.items.removeAll()
                     
                     LoadingManager.shared.hideLoading()
@@ -147,10 +152,15 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             LoadingManager.shared.hideLoading()
             
             delay {
-                LoadingManager.shared.hideLoading()
-                self.noDataLbl.isHidden = false
-                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
             }
+
         })
     }
     
@@ -187,7 +197,11 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
                     completion?(true)
                 }
                 
-            } else {
+            } else if response.code == Status.Code.notfound {
+                
+                self.noDataLbl.isHidden = false
+                
+            }else {
                 
                 completion?(false)
                 
@@ -203,6 +217,10 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             
             delay {
                 DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+                PreferenceManager.shared.userId = nil
+                PreferenceManager.shared.currentUser = nil
+                PreferenceManager.shared.authToken = nil
+                NavigationManager.shared.setupSingIn()
             }
         })
     }
@@ -285,7 +303,9 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     @objc func showPayView(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringeConfirmedCell{
             btnTapped = true
+            let data = items[sender.tag]
             let controller = NavigationManager.shared.confirmedPayVC
+            controller.detailsData = data
             push(controller: controller)
             cell.refundRequestView.isHidden = true
             tblGolf.reloadData()
@@ -327,6 +347,8 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         
         tblGolf.reloadData()
         
+        self.lastRequestId = ""
+        
         self.needToshowInfoView = true
         
         if view == segment1 {
@@ -338,6 +360,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             }
             
             segment2.isSelected = false
+            
             
         } else if view == segment2 {
 
@@ -358,6 +381,9 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        noDataLbl.isHidden = false
+        
         setup()
         
         LoadingManager.shared.showLoading()

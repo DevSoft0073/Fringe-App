@@ -24,6 +24,7 @@ class ConfirmedPayVC : BaseVC {
     @IBOutlet weak var imgMain: UIImageView!
     @IBOutlet weak var lblGuest: UILabel!
     
+    var detailsData: RequestListingModal?
     var isSelected : Bool = true
     var someValue: Int = 2 {
         didSet {
@@ -50,14 +51,17 @@ class ConfirmedPayVC : BaseVC {
     
     @IBAction func btnAddPayment(_ sender: Any) {
         let controller = NavigationManager.shared.paymentOptionsVC
+        controller.detailsData = detailsData
         push(controller: controller)
     }
+    
     @IBAction func btnEditGuests(_ sender: Any) {
         let controller = NavigationManager.shared.addGuestVC
         controller.modalPresentationStyle = .overFullScreen
         self.present(controller, animated: true) {
         }
     }
+    
     @IBAction func btnPlus(_ sender: Any) {
         if lblGuest.text ?? "" >= "4"{
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterAddGuestLimit)
@@ -66,6 +70,7 @@ class ConfirmedPayVC : BaseVC {
         }
         lblGuest.text = "\(someValue)"
     }
+    
     @IBAction func btnMinus(_ sender: Any) {
         if lblGuest.text == "1" {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterRemoveGuestLimit)
@@ -75,8 +80,10 @@ class ConfirmedPayVC : BaseVC {
         }
         lblGuest.text = "\(someValue)"
     }
+    
     @IBAction func btnEditDate(_ sender: Any) {
     }
+    
     @IBAction func btnBack(_ sender: Any) {
         self.pop()
     }

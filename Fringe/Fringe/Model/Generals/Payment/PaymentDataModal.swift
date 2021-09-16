@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - PaymentDataModel
-struct PaymentDataModel: Codable {
+struct PaymentDataModel: Codable , Hashable {
     var cardID, brand, expMonth, expYear: String?
     var last4, cardHolderName, selected: String?
 

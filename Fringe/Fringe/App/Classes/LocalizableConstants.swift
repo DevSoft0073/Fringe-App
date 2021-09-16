@@ -25,6 +25,7 @@ struct LocalizableConstants {
         static let addedCard = "added_card_details"
         static let submitFeedback = "feedback_submit"
         static let blokDay = "blok_day"
+        static let paymentDone = "payment_done"
     }
     
     struct Error {
@@ -139,6 +140,11 @@ struct LocalizableConstants {
             static let noSessionDataFound = "no_near_by_golf_clubs_available"
         }
         
+        struct GolfClubs {
+            static let pending = "pending"
+            static let confirmed = "confirmed"
+        }
+        
         struct Notifications {
             
             static let title = "notifications"
@@ -172,6 +178,7 @@ struct LocalizableConstants {
             static let allowNotification = "allow_notification"
             static let bookingListing = "my_bookings"
             static let switchToBusiness = "switch_to_business"
+            static let signUpAsHost = "signup_as_host"
             static let termsOfService = "terms_of_service"
             static let privacyPolicy = "Privacy"
             static let logout = "sign_out"

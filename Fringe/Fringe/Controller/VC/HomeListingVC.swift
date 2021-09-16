@@ -78,8 +78,8 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
         
         let parameter: [String: Any] = [
             Request.Parameter.lastID: lastRequestId,
-            Request.Parameter.lats : "30.723539",
-            Request.Parameter.longs: "76.787277",
+            Request.Parameter.lats : PreferenceManager.shared.lat ?? String(),
+            Request.Parameter.longs: PreferenceManager.shared.long ?? String(),
             Request.Parameter.search: "",
         ]
         
@@ -114,8 +114,15 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
             self.isRequesting = false
             
             delay {
-                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
             }
+
         })
     }
     
@@ -211,7 +218,9 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUI()
-                
+        
+        noDataLbl.text = "Loading..."
+        
         self.performGetNearByGolfClubs { (flag : Bool) in
             
         }

@@ -9,6 +9,7 @@
 
 import UIKit
 import Stripe
+import Firebase
 import Alamofire
 import GoogleSignIn
 import UserNotifications
@@ -161,6 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         getCustomFontDetails()
         configureNavigationBar()
         chekLoggedUser()
+        FirebaseApp.configure()
         registerRemoteNotificaton(application)
         //RealmManager.shared.save(channelDownload: false)
         window?.tintColor = FGColor.appBlack

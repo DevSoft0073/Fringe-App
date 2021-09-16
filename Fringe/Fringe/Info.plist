@@ -26,12 +26,12 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) wants to access your camera to upload profile picture, upload images of golf course and documents images for account verification.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app needs to access your location to show nearby golf clubs</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs to access your location to show nearby golf clubs</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) wants to access your photo library to upload profile picture, upload images of golf course and documents images for account verification.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>This app needs to access your location to show nearby golf clubs</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This app needs to access your location to show nearby golf clubs</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Bold.ttf</string>

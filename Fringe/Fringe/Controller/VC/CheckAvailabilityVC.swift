@@ -63,11 +63,11 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     }
     
     func performGetRequestListing(completion:((_ flag: Bool) -> Void)?) {
-
+        
         let headers:HTTPHeaders = [
-           "content-type": "application/json",
+            "content-type": "application/json",
             "Token": PreferenceManager.shared.authToken ?? String(),
-          ]
+        ]
         
         if sendingDate.isEmpty == true {
             let formatter = DateFormatter()
@@ -79,37 +79,48 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             Request.Parameter.golfID: golfDetails?.golfID ?? String(),
             Request.Parameter.dates: sendingDate,
         ]
-
+        
         RequestManager.shared.requestPOST(requestMethod: Request.Method.checkRequest, parameter: parameter,headers: headers, showLoader: false, decodingType: ResponseModal<[CheckModal]>.self, successBlock: { (response: ResponseModal<[CheckModal]>) in
             
             LoadingManager.shared.hideLoading()
-
+            
             if response.code == Status.Code.success {
                 self.items.append(contentsOf: response.data ?? [])
+                self.items = self.items.removingDuplicates()
                 completion?(true)
                 self.setup()
                 self.updateUI()
-
+                
             } else {
+                
+                self.items.removeAll()
+                
                 completion?(true)
             }
-
+            
         }, failureBlock: { (error: ErrorModal) in
-
+            
             LoadingManager.shared.hideLoading()
-
+            
             delay {
-                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
             }
+            
         })
     }
     
     func performAddRequest(completion:((_ flag: Bool) -> Void)?) {
-
+        
         let headers:HTTPHeaders = [
-           "content-type": "application/json",
+            "content-type": "application/json",
             "Token": PreferenceManager.shared.authToken ?? String(),
-          ]
+        ]
         let deviceTimeZone = TimeZone.current.abbreviation()
         if requestDate.isEmpty == true {
             let formatter = DateFormatter()
@@ -126,16 +137,16 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             Request.Parameter.timeZone: deviceTimeZone ?? String(),
             
         ]
-
+        
         RequestManager.shared.requestPOST(requestMethod: Request.Method.bookingRequest, parameter: parameter,headers: headers, showLoader: false, decodingType: ResponseModal<BookingRequestModal>.self, successBlock: { (response: ResponseModal<BookingRequestModal>) in
             
             LoadingManager.shared.hideLoading()
-
+            
             if response.code == Status.Code.success {
                 delay {
                     completion?(true)
                 }
-
+                
             } else if response.code == Status.Code.alreadyAdded{
                 DispatchQueue.main.async {
                     DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
@@ -149,13 +160,17 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
                 completion?(true)
                 
             }
-
+            
         }, failureBlock: { (error: ErrorModal) in
-
+            
             LoadingManager.shared.hideLoading()
-
+            
             delay {
                 DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+                PreferenceManager.shared.userId = nil
+                PreferenceManager.shared.currentUser = nil
+                PreferenceManager.shared.authToken = nil
+                NavigationManager.shared.setupSingIn()
             }
         })
     }
@@ -187,7 +202,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     @IBAction func btnNextMonth(_ sender: Any) {
         let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: myCalendar.currentPage)
         myCalendar.setCurrentPage(nextMonth!, animated: true)
-          print(myCalendar.currentPage)
+        print(myCalendar.currentPage)
     }
     
     func getNextMonth(date:Date)->Date {
@@ -209,7 +224,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             
         }
     }
-
+    
     //------------------------------------------------------
     
     //MARK: UITableViewDataSource , UITableViewDelegate
@@ -239,7 +254,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUI()
-        
+        tblAvailability.isScrollEnabled = false
         LoadingManager.shared.showLoading()
         
         self.performGetRequestListing { (flag : Bool) in
@@ -258,5 +273,5 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     }
     
     //------------------------------------------------------
-    }
+}
 

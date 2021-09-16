@@ -42,9 +42,13 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         tblBooking.dataSource = self
         tblBooking.delegate = self
         navigationItem.title = LocalizableConstants.Controller.Notifications.title.localized()
-        segment1.btn.setTitle(LocalizableConstants.Controller.Fringe.pending.localized(), for: .normal)
-        segment2.btn.setTitle(LocalizableConstants.Controller.Fringe.awaiting.localized(), for: .normal)
-        segment3.btn.setTitle(LocalizableConstants.Controller.Fringe.confirmed.localized(), for: .normal)
+//        segment1.btn.setTitle(LocalizableConstants.Controller.Fringe.pending.localized(), for: .normal)
+//        segment2.btn.setTitle(LocalizableConstants.Controller.Fringe.awaiting.localized(), for: .normal)
+//        segment3.btn.setTitle(LocalizableConstants.Controller.Fringe.confirmed.localized(), for: .normal)
+        
+        segment1.btn.setTitle("Pending", for: .normal)
+        segment2.btn.setTitle("Confirmed", for: .normal)
+        segment3.btn.setTitle("Awaiting", for: .normal)
         
         segment1.delegate = self
         segment2.delegate = self

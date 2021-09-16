@@ -89,6 +89,10 @@ struct Request {
         static let back = "back"
         static let front = "front"
         
+        //Payment
+        static let token = "stripe_token"
+        static let totalAmount = "total_amount"
+       
     }
     
     struct Method {
@@ -117,6 +121,8 @@ struct Request {
         static let updateLocation = "/UpdateUserLocation.php"
         static let editHostProfile = "/EditHostProfile.php"
         static let cardListing = "/GetAllCardDetailsBYuserid.php"
+        static let addcard = "/SaveUserCardDetails.php"
+        static let payNow = "/PayForGolf.php"
         static let logout = "/LogOut.php"
     }
     
@@ -389,5 +395,7 @@ struct Status {
         static let notRegistered = 107
         static let alreadyAdded = 420
         static let stripeIssue = 507
+        static let alreadyAddedCard = 518
+        static let nofoundDat = 503
     }
 }

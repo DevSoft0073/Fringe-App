@@ -157,9 +157,68 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
             
             delay {
                 
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
             }
+
         })
     }
+    
+    private func performSignOut(completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+       
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.logout, parameter: [:], headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                PreferenceManager.shared.loggedUser = false
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    completion?(true)
+                    
+                }
+                
+            } else {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            completion?(false)
+            
+            delay {
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
+            }
+
+        })
+        
+    }
+
     
     //------------------------------------------------------
     
@@ -319,12 +378,33 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
             let controller = NavigationManager.shared.serviceTermsVC
             push(controller: controller)
             
-        }
-        else if name == ProfileItems.privacyPolicy{
+        }else if name == ProfileItems.privacyPolicy{
             
             let controller = NavigationManager.shared.privacyVC
             push(controller: controller)
             
+        } else if name == ProfileItems.logout {
+            
+            DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: LocalizableConstants.ValidationMessage.confirmLogout.localized()) {
+                
+                //Nothing to handle
+                
+            } handlerYes: {
+                
+                LoadingManager.shared.showLoading()
+                
+                delayInLoading {
+                    
+                    LoadingManager.shared.hideLoading()
+                    self.performSignOut { (flag: Bool) in
+                        if flag {
+                            PreferenceManager.shared.currentUser = nil
+                            PreferenceManager.shared.loggedUser = false
+                            NavigationManager.shared.setupSingIn()
+                        }
+                    }
+                }
+            }            
         }
     }
     

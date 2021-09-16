@@ -59,7 +59,7 @@ class HomeVC : BaseVC, FGLocationManagerDelegate{
     //MARK: Set marker on mapview
     
     func setMarkers(lat :Double, Long : Double) {
-        let center = CLLocationCoordinate2D(latitude: Double(PreferenceManager.shared.lat ?? 0.0), longitude: Double(PreferenceManager.shared.lat ?? 0.0))
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: Long)
         annotation.coordinate = center
         locationsMap.addAnnotation(annotation)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.12, longitudeDelta: 0.12))
@@ -94,15 +94,16 @@ class HomeVC : BaseVC, FGLocationManagerDelegate{
         
         manager.delegate = self
         manager.startMonitoring()
-        
+//        fatalError()
         imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
-        setMarkers(lat: 30.704649, Long: 76.717873)
+       
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
         NavigationManager.shared.isEnabledBottomMenu = true
     }
 }

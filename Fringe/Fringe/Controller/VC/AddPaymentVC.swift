@@ -7,6 +7,7 @@
 
 import UIKit
 import Stripe
+import Alamofire
 import Foundation
 import MonthYearPicker
 
@@ -104,17 +105,11 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
                 }
             }
         }
-        //            LoadingManager.shared.hideLoading()
         if STPCardValidator.validationState(forCard: stripeCard) == .invalid{
             self.btnSubmit.isUserInteractionEnabled = true
             DisplayAlertManager.shared.displayAlert(animated: true, message: LocalizableConstants.Error.cardDetailsNotValid.localized())
             return
         }
-        //        DispatchQueue.main.async {
-        //
-        //            LoadingManager.shared.showLoading()
-        //
-        //        }
         STPAPIClient.shared.createToken(withCard: stripeCard) { (token, error) in
             
             if error != nil{
@@ -156,15 +151,17 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
     
     private func performAddCardDetails(completion:((_ flag: Bool) -> Void)?) {
 
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+        
         let parameter: [String: Any] = [
             Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
             Request.Parameter.stripeToken: tokenID,
-//            Request.Parameter.card_type: cardTypeTxtFld.text ?? String(),
-//            Request.Parameter.name: nameOnCardTxtFld.text ?? String(),
         ]
-        
 
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.addCardDetails, parameter: parameter, showLoader: false, decodingType: ResponseModal<[AddCardDetailsModal]>.self, successBlock: { (response: ResponseModal<[AddCardDetailsModal]>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.addcard, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[AddCardDataModal]>.self, successBlock: { (response: ResponseModal<[AddCardDataModal]>) in
 
             LoadingManager.shared.hideLoading()
 
@@ -172,10 +169,10 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
                 delay {
                     completion?(true)
                 }
-                
+
             } else {
-                
-                if response.code == Status.Code.alredayUsedToken{
+
+                if response.code == Status.Code.alreadyAddedCard{
                     delay {
                         DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
                     }
@@ -187,8 +184,15 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
             LoadingManager.shared.hideLoading()
 
             delay {
-                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
             }
+
         })
     }
     
@@ -242,7 +246,9 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
             return
             
         }
-//        btnSubmit.isUserInteractionEnabled = false
+        
+        btnSubmit.isUserInteractionEnabled = false
+        
         self.view.endEditing(true)
         
         self.performValidateCardDetails()

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - CheckModal
-struct CheckModal: Codable {
+struct CheckModal: Codable , Hashable {
     var golfID, latitude, image, status: String?
     var userID, golfCourseName, location, price: String?
     var checkModalDescription, golfRequest, allowLocation, allowNotification: String?
