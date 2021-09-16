@@ -26,9 +26,9 @@ class ConfirmedPayVC : BaseVC {
     
     var detailsData: RequestListingModal?
     var isSelected : Bool = true
-    var someValue: Int = 2 {
+    var addGuestVal: Int = 2 {
         didSet {
-            lblGuest.text = "\(someValue)"
+            lblGuest.text = "\(addGuestVal)"
         }
     }
     
@@ -45,13 +45,29 @@ class ConfirmedPayVC : BaseVC {
     deinit { //same like dealloc in ObjectiveC
         
     }
+    
+    //------------------------------------------------------
+    
+    //MARK: Custome
+    
+    func setupData() {
+        lblGuests.text = "\(addGuestVal)"
+        lblGolfclubPrice.text = "$\(detailsData?.golfPrice ?? String())"
+        guard let price = Int(detailsData?.golfPrice ?? String()) else { return }
+        let totalPrice = addGuestVal * price
+        lblTotalPrice.text = "$\(totalPrice)"
+        
+    }
+    
     //------------------------------------------------------
     
     //MARK: Actions
     
     @IBAction func btnAddPayment(_ sender: Any) {
         let controller = NavigationManager.shared.paymentOptionsVC
+        controller.totalGuest = lblGuest.text ?? String()
         controller.detailsData = detailsData
+        controller.totalAmmount = lblTotalPrice.text ?? String()
         push(controller: controller)
     }
     
@@ -66,9 +82,10 @@ class ConfirmedPayVC : BaseVC {
         if lblGuest.text ?? "" >= "4"{
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterAddGuestLimit)
         }else if lblGuest.text ?? "" >= "1" {
-            someValue  = someValue+1
+            addGuestVal  = addGuestVal+1
         }
-        lblGuest.text = "\(someValue)"
+        lblGuest.text = "\(addGuestVal)"
+        self.setupData()
     }
     
     @IBAction func btnMinus(_ sender: Any) {
@@ -76,9 +93,10 @@ class ConfirmedPayVC : BaseVC {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterRemoveGuestLimit)
            
         }else if lblGuest.text ?? "" >= "1" {
-            someValue  = someValue-1
+            addGuestVal  = addGuestVal-1
         }
-        lblGuest.text = "\(someValue)"
+        lblGuest.text = "\(addGuestVal)"
+        self.setupData()
     }
     
     @IBAction func btnEditDate(_ sender: Any) {
@@ -93,6 +111,7 @@ class ConfirmedPayVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupData()
     }
     
     //------------------------------------------------------

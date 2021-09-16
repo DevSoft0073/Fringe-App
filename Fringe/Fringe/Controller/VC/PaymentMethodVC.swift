@@ -17,6 +17,9 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var heightContraint: NSLayoutConstraint!
     @IBOutlet weak var tblPayment: UITableView!
     
+    var totalGuest = String()
+    var totalAmmount = String()
+    var detailsData: RequestListingModal?
     var selectedCategories: [String] = []
     var cardId = String()
     var isComesFrom = Bool()
@@ -135,10 +138,11 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         
         let parameter: [String: Any] = [
             Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
-            Request.Parameter.golfID: "",
-            Request.Parameter.id: "",
-            Request.Parameter.token: "",
-            Request.Parameter.totalAmount: "",
+            Request.Parameter.golfID: detailsData?.golfID ?? String(),
+            Request.Parameter.id: detailsData?.id ?? String(),
+            Request.Parameter.token: cardId,
+            Request.Parameter.totalAmount: totalAmmount,
+            Request.Parameter.totalGuest: totalGuest,
         ]
 
         RequestManager.shared.requestPOST(requestMethod: Request.Method.payNow, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
@@ -187,15 +191,11 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         LoadingManager.shared.showLoading()
         
         self.performSendPayment { (flag : Bool) in
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.paymentDone.localized()) {
-                let controller = NavigationManager.shared.paymentSuccessfullyPopUpVC
-                controller.modalPresentationStyle = .overFullScreen
-                controller.modalTransitionStyle = .flipHorizontal
-                self.present(controller, animated: true)
-            }
+            let controller = NavigationManager.shared.paymentSuccessfullyPopUpVC
+            controller.modalPresentationStyle = .overFullScreen
+            controller.modalTransitionStyle = .flipHorizontal
+            self.present(controller, animated: true)
         }
-        
-       
     }
     
     //------------------------------------------------------
@@ -211,6 +211,7 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PaymentMethodTVC.self)) as? PaymentMethodTVC {
             let data = items[indexPath.row]
             cell.setup(cardData: data)
+            cell.iconImage.setRounded()
             DispatchQueue.main.async {
                 self.heightContraint.constant = self.tblPayment.contentSize.height
             }

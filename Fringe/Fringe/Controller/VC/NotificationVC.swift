@@ -82,14 +82,12 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource, KRPu
             if response.code == Status.Code.success {
                 if self.lastRequestId.isEmpty {
                     self.items.removeAll()
-                    self.setup()
                     self.updateUI()
                 }
                 
                 self.items.append(contentsOf: response.data ?? [])
                 self.items = self.items.removingDuplicates()
                 self.lastRequestId = response.data?.first?.notificationID ?? String()
-                self.setup()
                 self.updateUI()
                 completion?(true)
                 

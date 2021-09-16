@@ -24,7 +24,7 @@ class PaymentMethodTVC: UITableViewCell {
     //MARK: Custome
     
     func setup(cardData : PaymentDataModel) {
-        cardDetails.text = "XXXX-XXXX-XXXX-\(cardData.last4 ?? "")"
+        cardDetails.text = "Card Number Ending with \(cardData.last4 ?? "")"
         nameLbl.text = cardData.cardHolderName
     }
     
@@ -34,7 +34,6 @@ class PaymentMethodTVC: UITableViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
         selectionStyle = .none
     }
 }

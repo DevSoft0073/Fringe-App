@@ -92,6 +92,7 @@ struct Request {
         //Payment
         static let token = "stripe_token"
         static let totalAmount = "total_amount"
+        static let totalGuest = "totalGuest"
        
     }
     

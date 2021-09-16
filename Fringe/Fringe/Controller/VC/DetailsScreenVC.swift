@@ -13,7 +13,7 @@ class DetailsScreenVC : BaseVC {
     
     @IBOutlet weak var imgGolfClub: UIImageView!
     @IBOutlet weak var lblDetails: FGRegularLabel!
-    @IBOutlet weak var lblRate: FGMediumLabel!
+    @IBOutlet weak var lblRate: FGSemiboldLabel!
     @IBOutlet weak var lblRating: FGRegularLabel!
     @IBOutlet weak var ratingView: FloatRatingView!
     @IBOutlet weak var lblGolfClubAddress: FGMediumLabel!

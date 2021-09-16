@@ -11,7 +11,8 @@ import Foundation
 class PaymentOptionsVC : BaseVC, UITableViewDataSource , UITableViewDelegate {
     
     @IBOutlet weak var tblPyament: UITableView!
-    
+    var totalGuest = String()
+    var totalAmmount = String()
     var detailsData: RequestListingModal?
     struct AddPaymentItems {
         static let creditCard = LocalizableConstants.Controller.AddPaymentMethod.creditDebitCard
@@ -101,6 +102,9 @@ class PaymentOptionsVC : BaseVC, UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let controller = NavigationManager.shared.paymentMethodVC
+        controller.detailsData = detailsData
+        controller.totalGuest = totalGuest
+        controller.totalAmmount = totalAmmount
         controller.isComesFrom = false
         push(controller: controller)
         
