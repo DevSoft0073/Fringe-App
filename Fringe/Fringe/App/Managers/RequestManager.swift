@@ -129,6 +129,8 @@ struct Request {
         static let addcard = "/SaveUserCardDetails.php"
         static let payNow = "/PayForGolf.php"
         static let abbBlockDate = "/AddBlockAvalibleDate.php"
+        static let acceptReject = "/AcceptRejectBooking.php"
+        static let playersBooking = "/GetAllBookingListingByUserid.php"
         static let logout = "/LogOut.php"
     }
     

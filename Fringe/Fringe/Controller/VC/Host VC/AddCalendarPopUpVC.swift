@@ -19,6 +19,7 @@ class AddCalendarPopUpVC : BaseVC {
     @IBOutlet weak var blockDateBtn: UIButton!
     @IBOutlet weak var mainView: UIView!
     
+    var sendDate = String()
     var parameter: [String: Any] = [:]
     var selectedDate = String()
     var updateTblViewData:(()->Void)?
@@ -89,7 +90,7 @@ class AddCalendarPopUpVC : BaseVC {
             "content-type": "application/json",
             "Token": PreferenceManager.shared.authToken ?? String(),
         ]
-        
+        print(parameter)
         RequestManager.shared.requestPOST(requestMethod: Request.Method.abbBlockDate, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<AddBlockDate>.self, successBlock: { (response: ResponseModal<AddBlockDate>) in
             
             LoadingManager.shared.hideLoading()
@@ -149,7 +150,7 @@ class AddCalendarPopUpVC : BaseVC {
             parameter =  [
                 Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
                 Request.Parameter.isBlock: "0",
-                Request.Parameter.dates: txtCalendar.text ?? String(),
+                Request.Parameter.dates: txtCalendar.text ?? selectedDate,
             ]
             blockDay.setImage(UIImage(named: FGImageName.iconRadioUnselect), for: .normal)
             addSlot.setImage(UIImage(named: FGImageName.iconRadio), for: .normal)
@@ -158,7 +159,7 @@ class AddCalendarPopUpVC : BaseVC {
             parameter =  [
                 Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
                 Request.Parameter.isBlock: "1",
-                Request.Parameter.dates: txtCalendar.text ?? String(),
+                Request.Parameter.dates: txtCalendar.text ?? selectedDate,
             ]
             blockDay.setImage(UIImage(named: FGImageName.iconRadio), for: .normal)
             addSlot.setImage(UIImage(named: FGImageName.iconRadioUnselect), for: .normal)
@@ -186,8 +187,9 @@ class AddCalendarPopUpVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtCalendar.text = selectedDate
+        txtCalendar.tintColor = .clear
 //        txtCalendar.text = selectedDate.convertDatetring_TopreferredFormat(currentFormat: "dd-MM-yyyy", toFormat: "EEEE, MMM d, yyyy")
+        txtCalendar.text = selectedDate
         let mytapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         self.view.addGestureRecognizer(mytapGestureRecognizer)
     }

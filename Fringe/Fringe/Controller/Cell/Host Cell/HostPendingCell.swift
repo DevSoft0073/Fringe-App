@@ -21,11 +21,26 @@ class HostPendingCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    //------------------------------------------------------
+    
+    //MARK: Custome
+    
+    func setup(bookingData : AddPlayerRequestModal) {
+        
+        nameLbl.text = bookingData.golfCourseName
+        golfClubNameLbl.text = bookingData.golfCourseName
+        dateLbl.text = bookingData.date
+        dateLbl.text = bookingData.date
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        selectionStyle = .none
     }
     
 }

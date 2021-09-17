@@ -21,6 +21,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     @IBOutlet weak var tblCalendar: UITableView!
     
     var selectedDate = String()
+    var selectedDates = String()
     var selectedDateDelegate : SendSelectedDate?
     var todayDate = Date()
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
@@ -72,9 +73,14 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         let selectedDate = dateFormatter.string(from: date)
         self.selectedDate = selectedDate
+        let dateFormatters = DateFormatter()
+        dateFormatters.dateFormat = "dd-MM-yyyy"
+        let selectedDatess = dateFormatter.string(from: date)
+        self.selectedDates = selectedDatess
+        
     }
     
     func getNextMonth(date:Date)->Date {

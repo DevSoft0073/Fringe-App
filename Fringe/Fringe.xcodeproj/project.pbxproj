@@ -24,6 +24,7 @@
 		1F8961AA26F0840000E08E3C /* NotificationListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961A926F0840000E08E3C /* NotificationListing.swift */; };
 		1F8961AC26F0B93300E08E3C /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961AB26F0B93300E08E3C /* Locations.swift */; };
 		1F9ACE0626F479A600AB2E27 /* AddBlockModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */; };
+		1F9ACE0926F4BA3A00AB2E27 /* PlayerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */; };
 		1FBACAB126F305070051642D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FBACAB026F305070051642D /* GoogleService-Info.plist */; };
 		1FE9483126E8E68F00961BE2 /* RequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9483026E8E68F00961BE2 /* RequestModal.swift */; };
 		1FF9FF6726F1E12F00006AB0 /* PaymentDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9FF6626F1E12F00006AB0 /* PaymentDataModal.swift */; };
@@ -202,6 +203,7 @@
 		1F8961A926F0840000E08E3C /* NotificationListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListing.swift; sourceTree = "<group>"; };
 		1F8961AB26F0B93300E08E3C /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlockModal.swift; sourceTree = "<group>"; };
+		1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequest.swift; sourceTree = "<group>"; };
 		1FBACAB026F305070051642D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FE9483026E8E68F00961BE2 /* RequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModal.swift; sourceTree = "<group>"; };
 		1FF82EE426D6642F002B303B /* Fringe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fringe.entitlements; sourceTree = "<group>"; };
@@ -422,6 +424,14 @@
 				1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */,
 			);
 			path = "Add Request";
+			sourceTree = "<group>";
+		};
+		1F9ACE0726F4BA2800AB2E27 /* Player Request */ = {
+			isa = PBXGroup;
+			children = (
+				1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */,
+			);
+			path = "Player Request";
 			sourceTree = "<group>";
 		};
 		1FE9482F26E8E67C00961BE2 /* Request Listing */ = {
@@ -759,6 +769,7 @@
 		7CA24C1826C23F8800437C8A /* Generals */ = {
 			isa = PBXGroup;
 			children = (
+				1F9ACE0726F4BA2800AB2E27 /* Player Request */,
 				1F9ACE0426F4798600AB2E27 /* Add Request */,
 				1FF9FF6526F1E0F300006AB0 /* Payment */,
 				1F8961A826F083F000E08E3C /* Notification */,
@@ -1075,6 +1086,7 @@
 				1F8961A726F0753D00E08E3C /* BookingModal.swift in Sources */,
 				1F8961A526F0700700E08E3C /* BookingRequestModal.swift in Sources */,
 				7CD7EB0026D1195700BEDDA2 /* CheckAvailabilityTBCell.swift in Sources */,
+				1F9ACE0926F4BA3A00AB2E27 /* PlayerRequest.swift in Sources */,
 				1F8961AA26F0840000E08E3C /* NotificationListing.swift in Sources */,
 				7C52986126DCB3E400A3606D /* HostConfirmedCell.swift in Sources */,
 				7C52986626DCB5D800A3606D /* BookingsVC.swift in Sources */,
