@@ -93,8 +93,10 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     //MARK: Customs
     
     func setup() {
+        
         tblProfile.delegate = self
         tblProfile.dataSource = self
+        
         var identifier = String(describing: HostProfileTBCell.self)
         var nibProfileCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblProfile.register(nibProfileCell, forCellReuseIdentifier: identifier)
@@ -106,21 +108,20 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         identifier = String(describing: ShowImagesCell.self)
         nibProfileCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblProfile.register(nibProfileCell, forCellReuseIdentifier: identifier)
-        
-        updateUI()
-        
+                
     }
+    
     func updateUI() {
         
         tblProfile.reloadData()
     }
     
-    private func performGetUserProfile(completion:((_ flag: Bool) -> Void)?) {
+    func performGetUserProfile() {
         
-         let headers:HTTPHeaders = [
+        let headers:HTTPHeaders = [
             "content-type": "application/json",
             "Token": PreferenceManager.shared.authToken ?? String(),
-           ]
+        ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.hostProfile, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<HostModal>.self, successBlock: { (response: ResponseModal<HostModal>) in
             
@@ -131,29 +132,20 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
                 if let stringUser = try? response.data?.jsonString() {
                     
                     PreferenceManager.shared.currentUserHost = stringUser
-                    self.setup()
                     self.updateUI()
                 }
-                delay {
-                    completion?(true)
-                }
-                self.updateUI()
-                
+                                
             } else {
                 
                 delay {
-                                            
-                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
-                          
-                    }
+                    
+                    
                 }
             }
             
         }, failureBlock: { (error: ErrorModal) in
             
             LoadingManager.shared.hideLoading()
-            
-            completion?(false)
             
             delay {
                 
@@ -164,7 +156,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
                     NavigationManager.shared.setupSingIn()
                 }
             }
-
+            
         })
     }
     
@@ -235,7 +227,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         } else if section == 1 {
             return items.count
         } else if section == 2 {
-            return 0
+            return 1
         }
         return items.count
     }
@@ -289,7 +281,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         
         if section == 0{
             let view: HostProfileHeaderView = UIView.fromNib()
-            view.setupData(currentUser)
+            view.setupData(currentUserHost)
             view.layoutSubviews()
             return view.bounds.height
             
@@ -313,7 +305,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         
         if section == 0 {
             let view: HostProfileHeaderView = UIView.fromNib()
-            view.setupData(currentUser)
+            view.setupData(currentUserHost)
             view.btnEdit.addTarget(self, action: #selector(showEditDetail), for: .touchUpInside)
             view.layoutSubviews()
             return view
@@ -346,6 +338,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
             return 170
         }
     }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = items[indexPath.row]
@@ -417,15 +410,15 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         tblProfile.separatorStyle = .none
         tblProfile.separatorColor = .clear
         setup()
-        self.performGetUserProfile { (flag : Bool) in
-            
-        }
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+       performGetUserProfile()
+        
         NavigationManager.shared.isEnabledBottomMenuForHost = true
         
     }

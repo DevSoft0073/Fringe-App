@@ -111,9 +111,9 @@ class PreferenceManager: NSObject {
     }
     
     var currentUserModalForHost: HostModal? {
-        if let currentUser = currentUser {
+        if let currentUserHost = currentUserHost {
             do {
-                return try HostModal(currentUser)
+                return try HostModal(currentUserHost)
             } catch let error {
                 debugPrint(error.localizedDescription)
             }

@@ -303,3 +303,5 @@
 "seleceted_dates_are_already_blocked" = "Selected dates are already blocked";
 "no_data_found" = "No data found";
 "signup_as_host" = "Sign up as host";
+"enter_query" = "Please add your query";
+"select_date" = "Please select date";

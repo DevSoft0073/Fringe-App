@@ -93,6 +93,10 @@ struct Request {
         static let token = "stripe_token"
         static let totalAmount = "total_amount"
         static let totalGuest = "totalGuest"
+        
+        //Add slot
+        
+        static let isBlock = "isblock"
        
     }
     
@@ -124,6 +128,7 @@ struct Request {
         static let cardListing = "/GetAllCardDetailsBYuserid.php"
         static let addcard = "/SaveUserCardDetails.php"
         static let payNow = "/PayForGolf.php"
+        static let abbBlockDate = "/AddBlockAvalibleDate.php"
         static let logout = "/LogOut.php"
     }
     

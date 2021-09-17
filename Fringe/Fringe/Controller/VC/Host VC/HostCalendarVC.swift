@@ -10,6 +10,9 @@ import Foundation
 import FSCalendar
 import IQKeyboardManagerSwift
 
+protocol SendSelectedDate {
+    func sendSelectedDate (date : Date)
+}
 
 class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCalendarDelegate, FSCalendarDataSource {
     
@@ -17,9 +20,10 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     @IBOutlet weak var myCalendar: FSCalendar!
     @IBOutlet weak var tblCalendar: UITableView!
     
+    var selectedDate = String()
+    var selectedDateDelegate : SendSelectedDate?
     var todayDate = Date()
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
-    
 
     //------------------------------------------------------
     
@@ -36,6 +40,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     }
     
     //------------------------------------------------------
+    
     //MARK: Customs
     
     func setup(){
@@ -53,11 +58,36 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
         myCalendar.appearance.headerMinimumDissolvedAlpha = 0
         myCalendar.delegate = self
         myCalendar.dataSource = self
+        myCalendar.today = Date()
     }
+    
     func updateUI() {
         
         tblCalendar.reloadData()
     }
+    
+    //------------------------------------------------------
+    
+    //MARK: Calendar delegates
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+        let selectedDate = dateFormatter.string(from: date)
+        self.selectedDate = selectedDate
+    }
+    
+    func getNextMonth(date:Date)->Date {
+        return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
+    }
+    
+    func getPreviousMonth(date:Date)->Date {
+        return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
+    }
+
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return todayDate
+     }
     
     //------------------------------------------------------
     
@@ -66,6 +96,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     @IBAction func btnAdd(_ sender: Any) {
         let controller = NavigationManager.shared.addCalendarPopUpVC
         controller.modalPresentationStyle = .formSheet
+        controller.selectedDate = selectedDate
         self.present(controller, animated: true)
         
     }
@@ -79,21 +110,6 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     @IBAction func btnPreviousMonth(_ sender: Any) {
         myCalendar.setCurrentPage(getPreviousMonth(date: myCalendar.currentPage), animated: true)
     }
-    
-    func getNextMonth(date:Date)->Date {
-        return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
-    }
-    func getPreviousMonth(date:Date)->Date {
-        return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
-    }
-    
-    //------------------------------------------------------
-    
-    //MARK: Calendar delegates
-
-    func minimumDate(for calendar: FSCalendar) -> Date {
-        return todayDate
-     }
     
     //------------------------------------------------------
     

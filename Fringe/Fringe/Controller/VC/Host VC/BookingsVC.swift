@@ -16,6 +16,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     @IBOutlet weak var segment1: SegmentView!
     @IBOutlet weak var tblBooking: UITableView!
     
+    var selectedDateDelegate : SendSelectedDate?
     var needToshowInfoView: Bool = false
     var btnTapped = true
     var items = [""]

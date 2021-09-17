@@ -23,6 +23,7 @@
 		1F8961A726F0753D00E08E3C /* BookingModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961A626F0753D00E08E3C /* BookingModal.swift */; };
 		1F8961AA26F0840000E08E3C /* NotificationListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961A926F0840000E08E3C /* NotificationListing.swift */; };
 		1F8961AC26F0B93300E08E3C /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961AB26F0B93300E08E3C /* Locations.swift */; };
+		1F9ACE0626F479A600AB2E27 /* AddBlockModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */; };
 		1FBACAB126F305070051642D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FBACAB026F305070051642D /* GoogleService-Info.plist */; };
 		1FE9483126E8E68F00961BE2 /* RequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9483026E8E68F00961BE2 /* RequestModal.swift */; };
 		1FF9FF6726F1E12F00006AB0 /* PaymentDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9FF6626F1E12F00006AB0 /* PaymentDataModal.swift */; };
@@ -200,6 +201,7 @@
 		1F8961A626F0753D00E08E3C /* BookingModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingModal.swift; sourceTree = "<group>"; };
 		1F8961A926F0840000E08E3C /* NotificationListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListing.swift; sourceTree = "<group>"; };
 		1F8961AB26F0B93300E08E3C /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlockModal.swift; sourceTree = "<group>"; };
 		1FBACAB026F305070051642D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FE9483026E8E68F00961BE2 /* RequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModal.swift; sourceTree = "<group>"; };
 		1FF82EE426D6642F002B303B /* Fringe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fringe.entitlements; sourceTree = "<group>"; };
@@ -412,6 +414,14 @@
 				1F8961A926F0840000E08E3C /* NotificationListing.swift */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		1F9ACE0426F4798600AB2E27 /* Add Request */ = {
+			isa = PBXGroup;
+			children = (
+				1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */,
+			);
+			path = "Add Request";
 			sourceTree = "<group>";
 		};
 		1FE9482F26E8E67C00961BE2 /* Request Listing */ = {
@@ -749,6 +759,7 @@
 		7CA24C1826C23F8800437C8A /* Generals */ = {
 			isa = PBXGroup;
 			children = (
+				1F9ACE0426F4798600AB2E27 /* Add Request */,
 				1FF9FF6526F1E0F300006AB0 /* Payment */,
 				1F8961A826F083F000E08E3C /* Notification */,
 				1F5DF83026E206F100EA7327 /* FavoriteListing */,
@@ -1128,6 +1139,7 @@
 				7C5E41B926D8BF5900D63728 /* HomeListingVC.swift in Sources */,
 				7C780F7C26C3A6DB003F1F12 /* ESTabBarItemContentView.swift in Sources */,
 				7CD7EAFC26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift in Sources */,
+				1F9ACE0626F479A600AB2E27 /* AddBlockModal.swift in Sources */,
 				7CA24C2626C2415100437C8A /* LocalizableConstants.swift in Sources */,
 				7CA24C2926C2415C00437C8A /* AppFunctions.swift in Sources */,
 				7C8F1D6726CE4BAB00135C41 /* MyBookingTVCell.swift in Sources */,

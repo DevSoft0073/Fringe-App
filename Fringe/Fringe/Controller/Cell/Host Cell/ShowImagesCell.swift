@@ -31,12 +31,6 @@ class ShowImagesCell: UITableViewCell ,UICollectionViewDelegate , UICollectionVi
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-//        if images.count == 0{
-//            self.imagesCollectionView.setEmptyMessage("No images added by Studio")
-//        } else {
-//            return images.count
-//        }
         return images.count
     }
     

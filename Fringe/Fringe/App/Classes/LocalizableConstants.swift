@@ -61,6 +61,8 @@ struct LocalizableConstants {
         static let enterValidPassword = "enter_valid_password"
         static let agreeTermsAndConditions = "agree_with_terms_and_conditions"
         static let ageMustBeGreaterThen13 = "age_should_be_greater_then_13"
+        static let enterQuery = "enter_query"
+        static let selecteDate = "select_date"
         
         //change password
         static let enterNewPassword = "enter_new_password"

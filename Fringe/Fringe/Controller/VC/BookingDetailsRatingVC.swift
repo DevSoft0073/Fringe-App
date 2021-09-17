@@ -31,7 +31,7 @@ class BookingDetailsRatingVC : BaseVC {
     func validate() -> Bool {
         
         if ValidationManager.shared.isEmpty(text: txtViewQuery.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterPassword) {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterQuery) {
             }
             return false
         }
@@ -43,8 +43,8 @@ class BookingDetailsRatingVC : BaseVC {
         
         let parameter: [String: Any] = [
             Request.Parameter.userID: currentUser?.userID ?? String(),
-            Request.Parameter.golfID: "",
-            Request.Parameter.rating: "",
+            Request.Parameter.golfID: golfID,
+            Request.Parameter.rating: ratingView.rating,
             Request.Parameter.review: txtViewQuery.text ?? String(),
             
         ]

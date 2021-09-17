@@ -33,6 +33,7 @@ class CollectionViewCellForShowImages: UICollectionViewCell {
             self.showImages.sd_removeActivityIndicator()
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
