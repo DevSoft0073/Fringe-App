@@ -97,6 +97,7 @@ struct Request {
         //Add slot
         
         static let isBlock = "isblock"
+        static let type = "type"
        
     }
     

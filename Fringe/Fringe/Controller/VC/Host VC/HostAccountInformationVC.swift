@@ -36,6 +36,14 @@ class HostAccountInformationVC : BaseVC {
     
     //------------------------------------------------------
     
+    //MARK: Custome
+    
+    func setupData()  {
+//        lblAccountName.text = currentUserHost.
+    }
+    
+    //------------------------------------------------------
+    
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {

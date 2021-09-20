@@ -8,15 +8,14 @@
 import Foundation
 
 // MARK: - CheckModal
-struct CheckModal: Codable , Hashable {
-    var golfID, latitude, image, status: String?
-    var userID, golfCourseName, location, price: String?
-    var checkModalDescription, golfRequest, allowLocation, allowNotification: String?
-    var disable, longitude, creationAt: String?
+struct CheckModal: Codable, Hashable {
+    var golfID, image, status, userID: String?
+    var golfCourseName, location, price, checkModalDescription: String?
+    var golfRequest, allowLocation, allowNotification, disable: String?
+    var latitude, longitude, createdAt, date: String?
 
     enum CodingKeys: String, CodingKey {
         case golfID = "golf_id"
-        case latitude = "Latitude"
         case image, status
         case userID = "user_id"
         case golfCourseName = "golf_course_name"
@@ -26,8 +25,10 @@ struct CheckModal: Codable , Hashable {
         case allowLocation = "allow_location"
         case allowNotification = "allow_notification"
         case disable
+        case latitude = "Latitude"
         case longitude = "Longitude"
-        case creationAt = "creation_at"
+        case createdAt = "created_at"
+        case date
     }
 }
 

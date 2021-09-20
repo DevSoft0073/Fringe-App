@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 import Foundation
 import IQKeyboardManagerSwift
 
@@ -66,22 +67,79 @@ class BusinessHomeRejectionVC : BaseVC {
     
     //MARK: Validation
     
-    //    func validate() -> Bool {
-    //
-    //        if ValidationManager.shared.isEmpty(text: resonTxtView.text) == true {
-    //            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.rejectReason) {
-    //            }
-    //            return false
-    //        }
-    //        return true
-    //    }
+    func validate() -> Bool {
+        
+        if ValidationManager.shared.isEmpty(text: reasonTextView.text) == true {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.rejectResn) {
+            }
+            return false
+        }
+        return true
+    }
+    
+    private func performRequestAccept(completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.id: requestID,
+            Request.Parameter.type: "0",
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.acceptReject, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
+                    }
+                    
+                    completion?(true)
+                }
+                
+            } else {
+                
+                completion?(false)
+                
+                delay {
+                    
+                    // self.handleError(code: response.code)
+                    
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
     
     //------------------------------------------------------
     
     //MARK: Actions
     
     @IBAction func btnReject(_ sender: Any) {
-        self.dismiss(animated: true) {
+        
+        if validate() == false {
+            return
+        }
+        
+        self.view.endEditing(true)
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performRequestAccept { (flag : Bool) in
+            
         }
     }
     

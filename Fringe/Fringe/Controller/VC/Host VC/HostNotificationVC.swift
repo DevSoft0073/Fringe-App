@@ -12,8 +12,10 @@ import KRPullLoader
 
 class HostNotificationVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLoadViewDelegate{
     
+    @IBOutlet weak var lblNoData: FGSemiboldLabel!
     @IBOutlet weak var tblNotification: UITableView!
     
+   
     var items: [NotificationModal] = []
     var isRequesting: Bool = false
     var lastRequestId: String = String()
@@ -52,6 +54,8 @@ class HostNotificationVC : BaseVC, UITableViewDelegate, UITableViewDataSource, K
     }
     
     func updateUI() {
+        lblNoData.text = LocalizableConstants.Controller.Pages.noDataFound.localized()
+        lblNoData.isHidden = items.count != .zero
         tblNotification.reloadData()
     }
     
@@ -61,11 +65,11 @@ class HostNotificationVC : BaseVC, UITableViewDelegate, UITableViewDataSource, K
         
         let headers:HTTPHeaders = [
             "content-type": "application/json",
-            "Token": PreferenceManager.shared.authToken ?? String(),
+//            "Token": PreferenceManager.shared.authToken ?? String(),
         ]
         
         let parameter: [String: Any] = [
-            Request.Parameter.userID: "2",
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
             Request.Parameter.lastID: self.lastRequestId,
         ]
         
@@ -102,7 +106,7 @@ class HostNotificationVC : BaseVC, UITableViewDelegate, UITableViewDataSource, K
             
             delay {
                 
-                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription ?? "") {
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
                     PreferenceManager.shared.userId = nil
                     PreferenceManager.shared.currentUser = nil
                     PreferenceManager.shared.authToken = nil

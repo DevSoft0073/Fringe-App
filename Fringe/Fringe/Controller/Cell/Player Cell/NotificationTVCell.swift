@@ -32,7 +32,7 @@ class NotificationTVCell: UITableViewCell {
         } else {
             self.imgGolfer.sd_removeActivityIndicator()
         }
-        if notificationData.image?.isEmpty == true{
+        if notificationData.image == ""{
             self.imgGolfer.image = UIImage(named: "placeholder-image")
         }
         lblName.text = notificationData.message

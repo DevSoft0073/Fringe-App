@@ -17,6 +17,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     @IBOutlet weak var segment1: SegmentView!
     @IBOutlet weak var tblGolf: UITableView!
     
+    var isSelected = "0"
     var items : [RequestListingModal] = []
     var isRequesting: Bool = false
     var lastRequestId: String = String()
@@ -40,7 +41,9 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     //------------------------------------------------------
     
     //MARK: Custom
+    
     func setup() {
+        
         tblGolf.dataSource = self
         tblGolf.delegate = self
         noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.pending.localized()
@@ -91,25 +94,34 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         var parameter: [String: Any] = [:]
         
         let headers:HTTPHeaders = [
-           "content-type": "application/json",
+            "content-type": "application/json",
             "Token": PreferenceManager.shared.authToken ?? String(),
-          ]
+        ]
         
         self.noDataLbl.isHidden = true
         
         if segment1.isSelected == true {
             
             parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
-                         Request.Parameter.bookedStatus: "0",
+                         Request.Parameter.bookedStatus: isSelected,
                          Request.Parameter.lastID: lastRequestId,]
             
         } else if segment2.isSelected == true {
             
             parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
-                         Request.Parameter.bookedStatus: "1",
+                         Request.Parameter.bookedStatus: isSelected,
+                         Request.Parameter.lastID: lastRequestId,]
+            
+        }  else {
+            
+            segment1.isSelected = true
+            
+            parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
+                         Request.Parameter.bookedStatus: isSelected,
                          Request.Parameter.lastID: lastRequestId,]
             
         }
+        
         
         isRequesting = true
         
@@ -137,15 +149,15 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
                 
             } else if response.code == Status.Code.nofoundDat {
                 
-                    self.items.removeAll()
-                    
-                    LoadingManager.shared.hideLoading()
-                    
-                    self.updateUI()
-                    
-                    self.noDataLbl.isHidden = false
-                    
-             }
+                self.items.removeAll()
+                
+                LoadingManager.shared.hideLoading()
+                
+                self.updateUI()
+                
+                self.noDataLbl.isHidden = false
+                
+            }
             
         }, failureBlock: { (error: ErrorModal) in
             
@@ -160,7 +172,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
                     NavigationManager.shared.setupSingIn()
                 }
             }
-
+            
         })
     }
     
@@ -239,33 +251,41 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         if segment1.isSelected {
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringePendingCell.self)) as? FringePendingCell {
-                let data = items[indexPath.row]
-                cell.btnMoreInfo.tag = indexPath.row
-                cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
-                cell.btnClose.tag = indexPath.row
-                if needToshowInfoView {
-                    cell.cancelView.isHidden = true
-                    cell.btnClose.isHidden = true
-                    cell.btnMoreInfo.isHidden = false
+                if items.count > 0{
+                    let data = items[indexPath.row]
+                    cell.btnMoreInfo.tag = indexPath.row
+                    cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
+                    cell.btnClose.tag = indexPath.row
+                    if needToshowInfoView {
+                        cell.cancelView.isHidden = true
+                        cell.btnClose.isHidden = true
+                        cell.btnMoreInfo.isHidden = false
+                    }
+                    cell.setup(bookingData: data)
+                    cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
+                    cell.btnCancelation.addTarget(self, action: #selector(cancelBooking), for: .touchUpInside)
+                    return cell
+                } else {
+                    
                 }
-                cell.setup(bookingData: data)
-                cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
-                cell.btnCancelation.addTarget(self, action: #selector(cancelBooking), for: .touchUpInside)
-                return cell
             }
         } else if segment2.isSelected {
             
-           if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringeConfirmedCell.self)) as? FringeConfirmedCell{
-                let data = items[indexPath.row]
-                cell.btnPay.tag = indexPath.row
-                cell.btnPay.addTarget(self, action: #selector(showPayView), for: .touchUpInside)
-                if needToshowInfoView {
-                    cell.refundRequestView.isHidden = true
-                    cell.btnPay.isHidden = false
+            if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FringeConfirmedCell.self)) as? FringeConfirmedCell{
+                if items.count > 0{
+                    let data = items[indexPath.row]
+                    cell.btnPay.tag = indexPath.row
+                    cell.btnPay.addTarget(self, action: #selector(showPayView), for: .touchUpInside)
+                    if needToshowInfoView {
+                        cell.refundRequestView.isHidden = true
+                        cell.btnPay.isHidden = false
+                    }
+                    cell.setup(bookingData: data)
+                    cell.btnRefundRequest.addTarget(self, action: #selector(showRequestView), for: .touchUpInside)
+                    return cell
+                }else{
+                    
                 }
-                cell.setup(bookingData: data)
-                cell.btnRefundRequest.addTarget(self, action: #selector(showRequestView), for: .touchUpInside)
-                return cell
             }
             
         } else {
@@ -347,12 +367,16 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         
         tblGolf.reloadData()
         
+        self.items.removeAll()
+        
         self.lastRequestId = ""
         
         self.needToshowInfoView = true
         
         if view == segment1 {
                     
+            isSelected = "0"
+            
             LoadingManager.shared.showLoading()
             
             self.performGetBookingListing { (flag : Bool) in
@@ -361,8 +385,9 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             
             segment2.isSelected = false
             
-            
         } else if view == segment2 {
+            
+            isSelected = "1"
 
             LoadingManager.shared.showLoading()
             
@@ -371,7 +396,6 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             }
             
             segment1.isSelected = false
-            
         }
     }
     
@@ -382,6 +406,13 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    //------------------------------------------------------
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         noDataLbl.isHidden = false
         
         setup()
@@ -391,13 +422,6 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         self.performGetBookingListing { (flag : Bool) in
             
         }
-        
-    }
-    
-    //------------------------------------------------------
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         NavigationManager.shared.isEnabledBottomMenu = true
     }
     

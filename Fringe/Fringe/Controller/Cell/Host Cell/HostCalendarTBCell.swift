@@ -16,11 +16,15 @@ class HostCalendarTBCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    
+    func setup(bookingData : CheckModal) {
+        
+        lblGolfClubName.text = bookingData.golfCourseName
+        lblAddress.text = bookingData.location
+//        lblRating.text = bookingData.ra
+        lblDate.text = bookingData.date
     }
+    
     
 }

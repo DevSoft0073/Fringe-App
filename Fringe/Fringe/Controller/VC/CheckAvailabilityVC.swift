@@ -13,8 +13,10 @@ import IQKeyboardManagerSwift
 
 class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCalendarDelegate, FSCalendarDataSource {
     
+    @IBOutlet weak var btnRequest: UIButton!
     @IBOutlet weak var myCalendar: FSCalendar!
     @IBOutlet weak var tblAvailability: UITableView!
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     
     var golfDetails: HomeModal?
     var items: [CheckModal] = []
@@ -58,10 +60,10 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     }
     
     func updateUI() {
-        
+        noDataLbl.isHidden = items.count != .zero
         tblAvailability.reloadData()
     }
-    
+        
     func performGetRequestListing(completion:((_ flag: Bool) -> Void)?) {
         
         let headers:HTTPHeaders = [
@@ -71,7 +73,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
         
         if sendingDate.isEmpty == true {
             let formatter = DateFormatter()
-            formatter.dateFormat = "MMM d ,yyyy"
+            formatter.dateFormat = "MMMM d ,yyyy"
             sendingDate = formatter.string(from: todayDate)
         }
         
@@ -85,16 +87,17 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             LoadingManager.shared.hideLoading()
             
             if response.code == Status.Code.success {
+                self.btnRequest.isHidden = false
                 self.items.append(contentsOf: response.data ?? [])
                 self.items = self.items.removingDuplicates()
                 completion?(true)
-                self.setup()
                 self.updateUI()
                 
             } else {
                 
                 self.items.removeAll()
-                
+                self.updateUI()
+                self.btnRequest.isHidden = true
                 completion?(true)
             }
             
@@ -143,17 +146,18 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             LoadingManager.shared.hideLoading()
             
             if response.code == Status.Code.success {
-                delay {
-                    completion?(true)
-                }
+                
+                completion?(true)
                 
             } else if response.code == Status.Code.alreadyAdded{
-                DispatchQueue.main.async {
-                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
-                    }
+                
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String())
+
                 }
                 
-                completion?(false)
+                completion?(true)
                 
             } else {
                 
@@ -173,6 +177,33 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
                 NavigationManager.shared.setupSingIn()
             }
         })
+    }
+    
+    func getNextMonth(date:Date)->Date {
+        return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
+    }
+    
+    func getPreviousMonth(date:Date)->Date {
+        return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
+    }
+    
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d ,yyyy"
+        sendingDate = formatter.string(from: todayDate)
+        return todayDate
+     }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d ,yyyy"
+        sendingDate = formatter.string(from: date)
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performGetRequestListing { (flag : Bool) in
+            
+        }
     }
     
     //------------------------------------------------------
@@ -205,40 +236,24 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
         print(myCalendar.currentPage)
     }
     
-    func getNextMonth(date:Date)->Date {
-        return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
-    }
-    
-    func getPreviousMonth(date:Date)->Date {
-        return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
-    }
-    
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d ,yyyy"
-        sendingDate = formatter.string(from: date)
-        
-        LoadingManager.shared.showLoading()
-        
-        self.performGetRequestListing { (flag : Bool) in
-            
-        }
-    }
-    
     //------------------------------------------------------
     
     //MARK: UITableViewDataSource , UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CheckAvailabilityTBCell.self)) as? CheckAvailabilityTBCell {
-            let data = items[indexPath.row]
-            cell.setup(bookingData: data)
-            return cell
+            if items.count > 0{
+                let data = items[indexPath.row]
+                cell.setup(bookingData: data)
+                return cell
+            } else {
+                
+            }
         }
         return UITableViewCell()
     }
@@ -253,6 +268,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.updateUI()
         tblAvailability.isScrollEnabled = false
         LoadingManager.shared.showLoading()

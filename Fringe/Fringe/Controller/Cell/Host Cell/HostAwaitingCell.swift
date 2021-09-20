@@ -21,11 +21,10 @@ class HostAwaitingCell: UITableViewCell {
     
     //MARK: Custome
     
-    func setup(bookingData : AddPlayerRequestModal) {
+    func setup(bookingData : PlayerRequestModal) {
         
         nameLbl.text = bookingData.golfCourseName
         golfClubNameLbl.text = bookingData.golfCourseName
-        dateLbl.text = bookingData.date
         dateLbl.text = bookingData.date
     }
     

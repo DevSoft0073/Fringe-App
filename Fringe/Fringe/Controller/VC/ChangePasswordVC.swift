@@ -11,11 +11,15 @@ import IQKeyboardManagerSwift
 
 class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
     
+    @IBOutlet weak var imgConfirmPassword: UIImageView!
+    @IBOutlet weak var imgNewPassword: UIImageView!
     @IBOutlet weak var txtOldPassword: FGPasswordTextField!
     @IBOutlet weak var txtNewPassword: FGPasswordTextField!
     @IBOutlet weak var txtConfirmPassword: FGPasswordTextField!
-    var returnKeyHandler: IQKeyboardReturnKeyHandler?
     
+    var returnKeyHandler: IQKeyboardReturnKeyHandler?
+    var iconClick = true
+    var iconClick2 = true
     var textTitle: String?
     //------------------------------------------------------
     
@@ -170,6 +174,27 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
         }
     }
     
+    @IBAction func btnNewPassword(_ sender: Any) {
+        if(iconClick == true) {
+            txtNewPassword.isSecureTextEntry = false
+            imgNewPassword.image = UIImage(named: FGImageName.iconOpenEye)
+        } else {
+            txtNewPassword.isSecureTextEntry = true
+            imgNewPassword.image = UIImage(named: FGImageName.iconEye)
+        }
+        iconClick = !iconClick
+    }
+    
+    @IBAction func btnConfirmPassword(_ sender: Any) {
+        if(iconClick2 == true) {
+            txtConfirmPassword.isSecureTextEntry = false
+            imgConfirmPassword.image = UIImage(named: FGImageName.iconOpenEye)
+        } else {
+            txtConfirmPassword.isSecureTextEntry = true
+            imgConfirmPassword.image = UIImage(named: FGImageName.iconEye)
+        }
+        iconClick2 = !iconClick2
+    }
     
     //------------------------------------------------------
     

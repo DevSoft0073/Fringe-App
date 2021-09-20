@@ -36,6 +36,9 @@ class HomeListingTBCell: UITableViewCell {
         if let image = homeData.image, image.isEmpty == false {
             let imgURL = URL(string: image)
             mainImg.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                if let serverImage = serverImage {
+                    self.mainImg.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+                }
                 self.mainImg.sd_removeActivityIndicator()
             }
         } else {

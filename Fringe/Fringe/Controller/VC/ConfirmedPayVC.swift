@@ -10,7 +10,7 @@ import Foundation
 
 class ConfirmedPayVC : BaseVC {
     
-   
+    
     @IBOutlet weak var lblOccupancyTax: FGMediumLabel!
     @IBOutlet weak var lblTotalPrice: FGMediumLabel!
     @IBOutlet weak var lblServiceTax: FGMediumLabel!
@@ -55,9 +55,17 @@ class ConfirmedPayVC : BaseVC {
         lblGolfclubPrice.text = "$\(detailsData?.golfPrice ?? String())"
         guard let price = Int(detailsData?.golfPrice ?? String()) else { return }
         let totalPrice = addGuestVal * price
-        lblTotalPrice.text = "$\(totalPrice)"
-        
+        var total = serviceCalculation(price: totalPrice)
+        total += Double(totalPrice)
+        lblTotalPrice.text = "$\(total)"
     }
+    
+    func serviceCalculation(price:Int)->Double{
+           let priceDouble = Double(price)
+           let tk =  priceDouble * 0.029
+           let sdf = tk + 0.3
+           return sdf.rounded(toPlaces: 2)
+       }
     
     //------------------------------------------------------
     
@@ -91,7 +99,7 @@ class ConfirmedPayVC : BaseVC {
     @IBAction func btnMinus(_ sender: Any) {
         if lblGuest.text == "1" {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterRemoveGuestLimit)
-           
+            
         }else if lblGuest.text ?? "" >= "1" {
             addGuestVal  = addGuestVal-1
         }

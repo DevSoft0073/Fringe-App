@@ -158,7 +158,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
             "Token": PreferenceManager.shared.authToken ?? String(),
            ]
         let parameter: [String: Any] = [
-            Request.Parameter.userID: currentUser?.userID ?? String(),
+//            Request.Parameter.userID: currentUser?.userID ?? String(),
             Request.Parameter.firstName: txtFirstName?.text ?? String(),
             Request.Parameter.lastName: txtLastName.text ?? String(),
             Request.Parameter.dob: txtBirthDate?.text ?? String(),

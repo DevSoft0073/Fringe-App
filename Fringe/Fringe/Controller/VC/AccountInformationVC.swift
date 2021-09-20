@@ -36,8 +36,18 @@ class AccountInformationVC : BaseVC {
     
     //------------------------------------------------------
     
+    //MARK: Custome
+    
+    func setupData()  {
+        lblName.text = "\(currentUser?.firstName ?? "")" + "\(currentUser?.lastName ?? "")"
+        lblEmail.text = currentUser?.email
+        lblDateOfBirth.text = currentUser?.dob
+        lblMobileNumber.text = currentUser?.mobileNo
+        lblPassword.text = "*******"
+    }
     
     //------------------------------------------------------
+    
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {
@@ -48,7 +58,7 @@ class AccountInformationVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        setupData()
     }
     
     //------------------------------------------------------

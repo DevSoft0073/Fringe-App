@@ -5,6 +5,7 @@
 //  Created by MyMac on 9/9/21.
 //
 import UIKit
+import Toucan
 import SDWebImage
 import Foundation
 import Alamofire
@@ -48,17 +49,24 @@ class HomeListingDetailsVC : BaseVC {
         lblRating.text = detailsData?.rating
         lblDetails.text = detailsData?.golfCourseName
         ratingView.rating = Double(detailsData?.rating ?? String()) ?? 0.0
+        
+        //image
         imgMain.sd_addActivityIndicator()
         imgMain.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         imgMain.sd_showActivityIndicatorView()
+        imgMain.image = getPlaceholderImage()
         if let image = detailsData?.image, image.isEmpty == false {
             let imgURL = URL(string: image)
             imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                if let serverImage = serverImage {
+                    self.imgMain.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+                }
                 self.imgMain.sd_removeActivityIndicator()
             }
         } else {
             self.imgMain.sd_removeActivityIndicator()
         }
+        
         if detailsData?.image?.isEmpty == true{
             self.imgMain.image = UIImage(named: "placeholder-image-1")
         }
@@ -73,7 +81,7 @@ class HomeListingDetailsVC : BaseVC {
 
         let headers:HTTPHeaders = [
            "content-type": "application/json",
-            "Token": currentUser?.authorizationToken ?? String(),
+            "Token": PreferenceManager.shared.authToken ?? String(),
           ]
 
         let parameter: [String: Any] = [
@@ -127,6 +135,7 @@ class HomeListingDetailsVC : BaseVC {
     //MARK: Actions
     
     @IBAction func btnFavUnFav(_ sender: Any) {
+        
         performFavUnfavStudio { (flag : Bool) in
         }
     }

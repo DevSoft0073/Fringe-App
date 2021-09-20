@@ -53,8 +53,8 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource, KRPull
     }
     
     func updateUI() {
-//        noDataLbl.text = LocalizableConstants.Controller.NearByGolfClubs.noSessionDataFound.localized()
-//        noDataLbl.isHidden = items.count != .zero
+        noDataLbl.text = LocalizableConstants.Controller.Pages.noDataFound.localized()
+        noDataLbl.isHidden = items.count != .zero
         tblBooking.reloadData()
     }
     

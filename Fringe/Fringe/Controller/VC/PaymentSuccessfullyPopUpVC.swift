@@ -13,6 +13,7 @@ class PaymentSuccessfullyPopUpVC : BaseVC {
     @IBOutlet weak var dataView: UIView!
     @IBOutlet weak var popView: UIView!
     
+    
     var centerFrame : CGRect!
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     
@@ -60,7 +61,8 @@ class PaymentSuccessfullyPopUpVC : BaseVC {
     //MARK: Actions
     
     @IBAction func btnOkay(_ sender: Any) {
-        self.dismiss(animated: true) {
+        self.dismiss(animated: false) {
+            NavigationManager.shared.setupLandingOnHome()
         }
     }
     

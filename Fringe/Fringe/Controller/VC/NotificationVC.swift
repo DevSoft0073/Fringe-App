@@ -54,6 +54,8 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource, KRPu
     }
     
     func updateUI() {
+        noDataLbl.text = LocalizableConstants.Controller.Pages.noDataFound.localized()
+        noDataLbl.isHidden = items.count != .zero
         tblNotification.reloadData()
     }
     
@@ -63,11 +65,11 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource, KRPu
         
         let headers:HTTPHeaders = [
            "content-type": "application/json",
-            "Token": PreferenceManager.shared.authToken ?? String(),
+//            "Token": PreferenceManager.shared.authToken ?? String(),
           ]
         
         let parameter: [String: Any] = [
-            Request.Parameter.userID: "2",
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
             Request.Parameter.lastID: self.lastRequestId,
         ]
         

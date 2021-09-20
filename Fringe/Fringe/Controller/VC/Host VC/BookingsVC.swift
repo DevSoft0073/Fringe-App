@@ -20,9 +20,9 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     var selectedDateDelegate : SendSelectedDate?
     var needToshowInfoView: Bool = false
     var btnTapped = true
-    
+    var isSelected = "0"
     var userId = String()
-    var items: [AddPlayerRequestModal] = []
+    var items: [PlayerRequestModal] = []
     var requestID = String()
     var isRequesting: Bool = false
     var lastRequestId: String = String()
@@ -48,14 +48,9 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     func setup() {
         tblBooking.dataSource = self
         tblBooking.delegate = self
-        navigationItem.title = LocalizableConstants.Controller.Notifications.title.localized()
-        //        segment1.btn.setTitle(LocalizableConstants.Controller.Fringe.pending.localized(), for: .normal)
-        //        segment2.btn.setTitle(LocalizableConstants.Controller.Fringe.awaiting.localized(), for: .normal)
-        //        segment3.btn.setTitle(LocalizableConstants.Controller.Fringe.confirmed.localized(), for: .normal)
-        
         segment1.btn.setTitle("Pending", for: .normal)
-        segment2.btn.setTitle("Confirmed", for: .normal)
-        segment3.btn.setTitle("Awaiting", for: .normal)
+        segment2.btn.setTitle("Awaiting", for: .normal)
+        segment3.btn.setTitle("Confirmed", for: .normal)
         
         segment1.delegate = self
         segment2.delegate = self
@@ -105,54 +100,57 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         tblBooking.reloadData()
     }
     
-    //    private func performRequestAccept(completion:((_ flag: Bool) -> Void)?) {
-    //
-    //        let parameter: [String: Any] = [
-    //            Request.Parameter.userId: currentUser?.userID ?? String(),
-    //            Request.Parameter.requestID: self.requestID,
-    //            Request.Parameter.rejectReson: "",
-    //            Request.Parameter.bookedStatus: "1",
-    //        ]
-    //
-    //        RequestManager.shared.requestPOST(requestMethod: Request.Method.acceptRejectBooking, parameter: parameter, showLoader: false, decodingType: ResponseModal<AddrequestModal>.self, successBlock: { (response: ResponseModal<AddrequestModal>) in
-    //            LoadingManager.shared.hideLoading()
-    //
-    //            if response.code == Status.Code.success {
-    //
-    //                if let stringUser = try? response.data?.jsonString() {
-    //                    print(stringUser)
-    //
-    //                }
-    //                delay {
-    //                    completion?(true)
-    //                }
-    //
-    //            } else {
-    //
-    //                completion?(false)
-    //
-    //                delay {
-    //
-    //                    // self.handleError(code: response.code)
-    //
-    //                }
-    //            }
-    //
-    //        }, failureBlock: { (error: ErrorModal) in
-    //
-    //            LoadingManager.shared.hideLoading()
-    //
-    //            delay {
-    //                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
-    //            }
-    //        })
-    //    }
+    private func performRequestAccept(id : String,completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.id: id,
+            Request.Parameter.type: "1",
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.acceptReject, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
+                    }
+                    
+                    completion?(true)
+                }
+                
+            } else {
+                
+                completion?(false)
+                
+                delay {
+                    
+                    // self.handleError(code: response.code)
+                    
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
     
     func performGetRequestData(completion:((_ flag: Bool) -> Void)?) {
         
         let headers:HTTPHeaders = [
             "content-type": "application/json",
-//            "Token": PreferenceManager.shared.authToken ?? String(),
+            "Token": PreferenceManager.shared.authToken ?? String(),
         ]
         
         self.noDataLbl.isHidden = true
@@ -167,35 +165,34 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         
         if segment1.isSelected == true{
             
-            parameter = [Request.Parameter.userID: PreferenceManager.shared.authToken ?? String(),
-                         Request.Parameter.bookedStatus: "0",
+            parameter = [Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+                         Request.Parameter.bookedStatus: isSelected,
                          Request.Parameter.lastID: lastRequestId,
             ]
             
         }else if segment2.isSelected == true{
             
-            parameter = [Request.Parameter.userID: PreferenceManager.shared.authToken ?? String(),
-                         Request.Parameter.bookedStatus: "1",
+            parameter = [Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+                         Request.Parameter.bookedStatus: isSelected,
                          Request.Parameter.lastID: lastRequestId,
             ]
             
         }else if segment3.isSelected == true {
             
-            parameter = [Request.Parameter.userID: PreferenceManager.shared.authToken ?? String(),
-                         Request.Parameter.bookedStatus: "2",
+            parameter = [Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+                         Request.Parameter.bookedStatus: isSelected,
                          Request.Parameter.lastID: lastRequestId,
             ]
             
         }else{
             
-            parameter = [Request.Parameter.userID: PreferenceManager.shared.authToken ?? String(),
-                         Request.Parameter.bookedStatus: "0",
+            parameter = [Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+                         Request.Parameter.bookedStatus: isSelected,
                          Request.Parameter.lastID: lastRequestId,
             ]
-            
         }
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.bookingListForPlayer, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[AddPlayerRequestModal]>.self, successBlock: { (response: ResponseModal<[AddPlayerRequestModal]>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.playersBooking, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[PlayerRequestModal]>.self, successBlock: { (response: ResponseModal<[PlayerRequestModal]>) in
             
             LoadingManager.shared.hideLoading()
             
@@ -268,7 +265,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
                     cell.setup(bookingData: data)
                     cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
                     cell.btnReject.addTarget(self, action: #selector(showpopUpView), for: .touchUpInside)
-                    //                    cell.btnAccept.addTarget(self, action: #selector(requestAccept), for: .touchUpInside)
+                    cell.btnAccept.addTarget(self, action: #selector(requestAccept), for: .touchUpInside)
                     return cell
                 }else{
                     
@@ -344,6 +341,27 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         }
     }
     
+    @objc func requestAccept(sender : UIButton) {
+        let data = items[sender.tag]
+        self.requestID = data.id ?? ""
+        LoadingManager.shared.showLoading()
+        
+        delayInLoading {
+            
+            LoadingManager.shared.hideLoading()
+            self.performRequestAccept(id: data.id ?? String()) { (flag: Bool) in
+                if flag {
+                    
+                    //                    self.dismiss(animated: true, completion: nil)
+                    self.needToshowInfoView = true
+                    self.lastRequestId = ""
+                    self.performGetRequestData { (flag: Bool) in
+                    }
+                }
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -367,6 +385,8 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         
         if view == segment1 {
             
+            isSelected = "0"
+            
             LoadingManager.shared.showLoading()
             
             self.performGetRequestData { (flag : Bool) in
@@ -378,6 +398,8 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             
         } else if view == segment2 {
             
+            isSelected = "1"
+            
             LoadingManager.shared.showLoading()
             
             self.performGetRequestData { (flag : Bool) in
@@ -388,6 +410,8 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             segment3.isSelected = false
         }
         else if view == segment3 {
+            
+            isSelected = "2"
             
             LoadingManager.shared.showLoading()
             

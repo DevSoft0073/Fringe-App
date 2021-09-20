@@ -14,6 +14,10 @@ import AuthenticationServices
 
 class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     
+    @IBOutlet weak var btnPassword: UIButton!
+    @IBOutlet weak var imgPassword: UIImageView!
+    @IBOutlet weak var btnConfirmPassword: UIButton!
+    @IBOutlet weak var imgConfirmPassword: UIImageView!
     @IBOutlet weak var txtLastName: FGUsernameTextField!
     @IBOutlet weak var txtEmail: FGEmailTextField!
     @IBOutlet weak var imgProfile: UIImageView!
@@ -29,6 +33,8 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     @IBOutlet weak var txtPassword: FGPasswordTextField!
     @IBOutlet weak var txtConfirmPassword: FGPasswordTextField!
     
+    var iconClick = true
+    var iconClick2 = true
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var unchecked = Bool()
     var imagePickerVC: ImagePicker?
@@ -294,6 +300,27 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
         self.imagePickerVC?.present(from: sender)
     }
     
+    @IBAction func btnPassword(_ sender: Any) {
+        if(iconClick == true) {
+            txtPassword.isSecureTextEntry = false
+            imgPassword.image = UIImage(named: FGImageName.iconOpenEye)
+        } else {
+            txtPassword.isSecureTextEntry = true
+            imgPassword.image = UIImage(named: FGImageName.iconEye)
+        }
+        iconClick = !iconClick
+    }
+    
+    @IBAction func btnConfirmPassword(_ sender: Any) {
+        if(iconClick2 == true) {
+            txtConfirmPassword.isSecureTextEntry = false
+            imgConfirmPassword.image = UIImage(named: FGImageName.iconOpenEye)
+        } else {
+            txtConfirmPassword.isSecureTextEntry = true
+            imgConfirmPassword.image = UIImage(named: FGImageName.iconEye)
+        }
+        iconClick2 = !iconClick2
+    }
     
     @IBAction func btnCheckUncheck(_ sender: Any) {
         if (unchecked == false)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 import Foundation
 import FSCalendar
 import IQKeyboardManagerSwift
@@ -16,10 +17,14 @@ protocol SendSelectedDate {
 
 class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCalendarDelegate, FSCalendarDataSource {
     
+    @IBOutlet weak var noDataLbl: UILabel!
+    @IBOutlet weak var lblHeader: FGMediumLabel!
     @IBOutlet weak var lblNow: FGBaseLabel!
     @IBOutlet weak var myCalendar: FSCalendar!
     @IBOutlet weak var tblCalendar: UITableView!
     
+    var items: [CheckModal] = []
+    var sendingDate = String()
     var selectedDate = String()
     var selectedDates = String()
     var selectedDateDelegate : SendSelectedDate?
@@ -63,7 +68,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     }
     
     func updateUI() {
-        
+        noDataLbl.isHidden = items.count != .zero
         tblCalendar.reloadData()
     }
     
@@ -76,11 +81,16 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
         dateFormatter.dateFormat = "dd-MM-yyyy"
         let selectedDate = dateFormatter.string(from: date)
         self.selectedDate = selectedDate
-        let dateFormatters = DateFormatter()
-        dateFormatters.dateFormat = "dd-MM-yyyy"
-        let selectedDatess = dateFormatter.string(from: date)
-        self.selectedDates = selectedDatess
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d ,yyyy"
+        sendingDate = formatter.string(from: date)
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performGetRequestListing { (flag : Bool) in
+            
+        }
     }
     
     func getNextMonth(date:Date)->Date {
@@ -93,7 +103,63 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
 
     func minimumDate(for calendar: FSCalendar) -> Date {
         return todayDate
-     }
+    }
+    
+    func performGetRequestListing(completion:((_ flag: Bool) -> Void)?) {
+
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+
+        if sendingDate.isEmpty == true {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMMM d ,yyyy"
+            sendingDate = formatter.string(from: todayDate)
+        }
+
+        let parameter: [String: Any] = [
+            Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
+            Request.Parameter.dates: sendingDate,
+        ]
+
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.checkRequest, parameter: parameter,headers: headers, showLoader: false, decodingType: ResponseModal<[CheckModal]>.self, successBlock: { (response: ResponseModal<[CheckModal]>) in
+
+            self.items.removeAll()
+            
+            LoadingManager.shared.hideLoading()
+
+            if response.code == Status.Code.success {
+                self.lblHeader.isHidden = false
+                self.items.append(contentsOf: response.data ?? [])
+                self.items = self.items.removingDuplicates()
+                completion?(true)
+                self.updateUI()
+
+            } else {
+                
+                self.lblHeader.isHidden = true
+                self.items.removeAll()
+                self.updateUI()
+                completion?(true)
+            }
+
+        }, failureBlock: { (error: ErrorModal) in
+
+            LoadingManager.shared.hideLoading()
+
+            delay {
+
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
+            }
+
+        })
+    }
     
     //------------------------------------------------------
     
@@ -104,13 +170,13 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
         controller.modalPresentationStyle = .formSheet
         controller.selectedDate = selectedDate
         self.present(controller, animated: true)
-        
     }
+    
     @IBAction func btnNextMonth(_ sender: Any) {
         
         let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: myCalendar.currentPage)
         myCalendar.setCurrentPage(nextMonth!, animated: true)
-          print(myCalendar.currentPage)
+        print(myCalendar.currentPage)
     }
     
     @IBAction func btnPreviousMonth(_ sender: Any) {
@@ -122,20 +188,21 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     //MARK: UITableViewDataSource , UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HostCalendarTBCell.self)) as? HostCalendarTBCell {
-           
+            let data = items[indexPath.row]
+            cell.setup(bookingData: data)
             return cell
         }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 125
-        
     }
     
     //------------------------------------------------------
@@ -167,12 +234,20 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
         
         setup()
         self.updateUI()
+
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performGetRequestListing { (flag : Bool) in
+            
+        }
+        
     }
     
     //------------------------------------------------------

@@ -25,6 +25,7 @@
 		1F8961AC26F0B93300E08E3C /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961AB26F0B93300E08E3C /* Locations.swift */; };
 		1F9ACE0626F479A600AB2E27 /* AddBlockModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */; };
 		1F9ACE0926F4BA3A00AB2E27 /* PlayerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */; };
+		1F9ACE0B26F6019800AB2E27 /* PlayerRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */; };
 		1FBACAB126F305070051642D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FBACAB026F305070051642D /* GoogleService-Info.plist */; };
 		1FE9483126E8E68F00961BE2 /* RequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9483026E8E68F00961BE2 /* RequestModal.swift */; };
 		1FF9FF6726F1E12F00006AB0 /* PaymentDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9FF6626F1E12F00006AB0 /* PaymentDataModal.swift */; };
@@ -204,6 +205,7 @@
 		1F8961AB26F0B93300E08E3C /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlockModal.swift; sourceTree = "<group>"; };
 		1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequest.swift; sourceTree = "<group>"; };
+		1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequestModal.swift; sourceTree = "<group>"; };
 		1FBACAB026F305070051642D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FE9483026E8E68F00961BE2 /* RequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModal.swift; sourceTree = "<group>"; };
 		1FF82EE426D6642F002B303B /* Fringe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fringe.entitlements; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */,
+				1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */,
 			);
 			path = "Player Request";
 			sourceTree = "<group>";
@@ -1122,6 +1125,7 @@
 				7C780FD626C53346003F1F12 /* ProfileVC.swift in Sources */,
 				7C2917C326C6746B0091F8A1 /* GolfclubsVC.swift in Sources */,
 				1F72DA0D26D646000073FC7E /* FGImagePicker.swift in Sources */,
+				1F9ACE0B26F6019800AB2E27 /* PlayerRequestModal.swift in Sources */,
 				7C780FBB26C3F160003F1F12 /* ForgotPasswordVC.swift in Sources */,
 				7CE2E85126CB943900AF882A /* ProfileTBCell.swift in Sources */,
 				7CA24C5E26C2426800437C8A /* BaseResponseModal.swift in Sources */,
@@ -1350,9 +1354,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1362,7 +1366,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fringe.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = fringe_dist_27_aug_2021;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1375,9 +1379,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1387,7 +1391,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fringe.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = fringe_dist_27_aug_2021;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

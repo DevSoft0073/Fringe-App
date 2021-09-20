@@ -63,6 +63,7 @@ struct LocalizableConstants {
         static let ageMustBeGreaterThen13 = "age_should_be_greater_then_13"
         static let enterQuery = "enter_query"
         static let selecteDate = "select_date"
+        static let rejectResn = "reject_resn"
         
         //change password
         static let enterNewPassword = "enter_new_password"
@@ -135,6 +136,7 @@ struct LocalizableConstants {
             static let pullMore = "pull_more"
             static let releaseToRefresh = "release_to_refresh"
             static let updating = "updating"
+            static let noDataFound = "nodata"
         }
         
         struct NearByGolfClubs {

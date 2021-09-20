@@ -19,6 +19,8 @@ class AddCalendarPopUpVC : BaseVC {
     @IBOutlet weak var blockDateBtn: UIButton!
     @IBOutlet weak var mainView: UIView!
     
+    var isTapped = 0
+    var isAddBlock = "0"
     var sendDate = String()
     var parameter: [String: Any] = [:]
     var selectedDate = String()
@@ -81,6 +83,7 @@ class AddCalendarPopUpVC : BaseVC {
     
     @objc func handleTap(_ sender:UITapGestureRecognizer){
         self.dismiss(animated: true) {
+            self.isTapped = 0
         }
     }
     
@@ -145,26 +148,28 @@ class AddCalendarPopUpVC : BaseVC {
     //MARK: Actions
     
     @IBAction func btnBlock(_ sender: Any) {
+        isTapped = 1
         if selected == true {
+            self.isAddBlock = "0"
             selected = false
             parameter =  [
                 Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
-                Request.Parameter.isBlock: "0",
+                Request.Parameter.isBlock: isAddBlock,
                 Request.Parameter.dates: txtCalendar.text ?? selectedDate,
             ]
             blockDay.setImage(UIImage(named: FGImageName.iconRadioUnselect), for: .normal)
             addSlot.setImage(UIImage(named: FGImageName.iconRadio), for: .normal)
         }else{
             selected = true
+            self.isAddBlock = "1"
             parameter =  [
                 Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
-                Request.Parameter.isBlock: "1",
+                Request.Parameter.isBlock: isAddBlock,
                 Request.Parameter.dates: txtCalendar.text ?? selectedDate,
             ]
             blockDay.setImage(UIImage(named: FGImageName.iconRadio), for: .normal)
             addSlot.setImage(UIImage(named: FGImageName.iconRadioUnselect), for: .normal)
         }
-        
     }
     
     @IBAction func btnSave(_ sender: Any) {
@@ -174,6 +179,14 @@ class AddCalendarPopUpVC : BaseVC {
         }
         self.view.endEditing(true)
        
+        if isTapped == 0 {
+            parameter =  [
+                Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
+                Request.Parameter.isBlock: isAddBlock,
+                Request.Parameter.dates: txtCalendar.text ?? selectedDate,
+            ]
+        }
+        
         LoadingManager.shared.showLoading()
         
         self.performAddStudioBlokDate { (flag : Bool) in

@@ -66,7 +66,7 @@ func delayInLoading(_ delay: Double = 1, closure:@escaping ()->()) {
 }
 
 func getPlaceholderImage() -> UIImage? {
-    return Toucan.init(image: UIImage(named: FGImageName.iconPlaceHolder)!).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: FGColor.appGreen).image
+    return Toucan.init(image: UIImage(named: FGImageName.iconPlaceHolder)!).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
 }
 
 // MARK: - Helper functions for creating encoders and decoders
@@ -256,4 +256,12 @@ extension UIImageView {
       self.layer.cornerRadius = radius
       self.layer.masksToBounds = true
    }
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
 }

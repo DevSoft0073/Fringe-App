@@ -94,9 +94,8 @@ class HomeVC : BaseVC, FGLocationManagerDelegate{
         
         manager.delegate = self
         manager.startMonitoring()
-//        fatalError()
+        setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
         imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
-       
     }
     
     //------------------------------------------------------
