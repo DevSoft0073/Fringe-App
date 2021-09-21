@@ -417,7 +417,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-       performGetUserProfile()
+        performGetUserProfile()
         
         NavigationManager.shared.isEnabledBottomMenuForHost = true
         

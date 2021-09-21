@@ -35,7 +35,10 @@ class HostAddPaymentMethodVC : BaseVC {
     //MARK: Custome
     
     func setupUI()  {
-        
+        lblAccountNumber.text = currentUserHost?.accountNumber
+        lblName.text = currentUserHost?.accountHolderName
+        lblRoutingNumber.text = currentUserHost?.routingNumber
+        lblSSN.text = currentUserHost?.ssnLast4
     }
     
     //------------------------------------------------------
@@ -58,7 +61,8 @@ class HostAddPaymentMethodVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if currentUserHost?.customerID == "0" {
+        setupUI()
+        if currentUserHost?.stripeAccountStatus == "0" {
             btnEdit.isHidden = false
             imgEdit.isHidden = false
         }

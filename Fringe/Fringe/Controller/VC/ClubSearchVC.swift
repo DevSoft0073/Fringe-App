@@ -11,7 +11,7 @@ import Foundation
 import KRPullLoader
 import IQKeyboardManagerSwift
 
-class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullLoadViewDelegate{
+class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullLoadViewDelegate , UISearchBarDelegate ,UITextFieldDelegate, UITextViewDelegate{
     
     @IBOutlet weak var noDataLbl: FGRegularLabel!
     @IBOutlet weak var txtSearchFld: FGRegularTextField!
@@ -21,7 +21,7 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
     var items: [HomeModal] = []
     var isRequesting: Bool = false
     var lastRequestId: String = String()
-    
+    var debounce: FGDebouncer?
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -41,6 +41,7 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
     //MARK: Customs
     
     func setup(){
+        
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         tblListing.delegate = self
         tblListing.dataSource = self
@@ -48,7 +49,12 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
         let loadMoreView = KRPullLoadView()
         loadMoreView.delegate = self
         tblListing.addPullLoadableView(loadMoreView, type: .loadMore)
-        
+        debounce = FGDebouncer.init(delay: 0.2, callback: {
+            self.lastRequestId = ""
+            self.performGetNearByStudios { (flag: Bool) in
+                self.updateUI()
+            }
+        })
         
         let identifier = String(describing: HomeListingTBCell.self)
         let nibProfileCell = UINib(nibName: identifier, bundle: Bundle.main)
@@ -56,18 +62,16 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
         
     }
     
+    func updateUI()  {
+        tblListing.reloadData()
+    }
+    
     static func instantiate() -> HomeListingVC {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         return storyBoard.instantiateViewController(withIdentifier: "HomeListingVC") as! HomeListingVC
     }
     
-    func updateUI() {
-        noDataLbl.text = LocalizableConstants.Controller.NearByGolfClubs.noSessionDataFound.localized()
-        noDataLbl.isHidden = items.count != .zero
-        tblListing.reloadData()
-    }
-    
-    func performGetNearByGolfClubs(completion:((_ flag: Bool) -> Void)?) {
+    func performGetNearByStudios(completion:((_ flag: Bool) -> Void)?) {
         
         isRequesting = true
         
@@ -78,13 +82,14 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
         
         let parameter: [String: Any] = [
             Request.Parameter.lastID: lastRequestId,
-            Request.Parameter.lats : "30.723539",
-            Request.Parameter.longs: "76.787277",
-            Request.Parameter.search: "",
+            Request.Parameter.lats : PreferenceManager.shared.lat ?? String(),
+            Request.Parameter.longs: PreferenceManager.shared.long ?? String(),
+            Request.Parameter.search: txtSearchFld.text ?? String(),
         ]
-        
         RequestManager.shared.requestPOST(requestMethod: Request.Method.home, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[HomeModal]>.self, successBlock: { (response: ResponseModal<[HomeModal]>) in
-                        
+            
+            LoadingManager.shared.hideLoading()
+            
             self.isRequesting = false
             
             if response.code == Status.Code.success {
@@ -95,13 +100,22 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
                         
                         self.items.removeAll()
                     }
+                    
                     self.items.append(contentsOf: response.data ?? [])
                     self.items = self.items.removingDuplicates()
                     self.lastRequestId = response.data?.last?.golfID ?? String()
                     self.updateUI()
                 }
-            }
-            else {
+                
+            } else if response.code == Status.Code.notfound {
+                
+                self.items.removeAll()
+                
+                self.updateUI()
+                
+            } else {
+                                
+                self.items.removeAll()
                 
                 completion?(true)
             }
@@ -159,6 +173,8 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
         NavigationManager.shared.setupDetails(detailsData: data)
     }
     
+    
+    
     //------------------------------------------------------
     
     //MARK: KRPullLoadViewDelegate
@@ -178,7 +194,7 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
             case let .loading(completionHandler):
                 pullLoadView.messageLabel.text = LocalizableConstants.Controller.Pages.updating.localized()
                 if isRequesting == false {
-                    performGetNearByGolfClubs { (flag: Bool) in
+                    performGetNearByStudios { (flag: Bool) in
                         self.updateUI()
                         completionHandler()
                     }
@@ -190,7 +206,7 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
             switch state {
             case let .loading(completionHandler):
                 if isRequesting == false {
-                    performGetNearByGolfClubs { (flag: Bool) in
+                    performGetNearByStudios { (flag: Bool) in
                         self.updateUI()
                         completionHandler()
                     }
@@ -202,7 +218,23 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
             return
         }
     }
+//    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if textField == txtSearchFld {
+//            self.performGetNearByStudios { (flag : Bool) in
+//                
+//            }
+//        }
+//        return true
+//    }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == txtSearchFld {
+            self.performGetNearByStudios { (flag : Bool) in
+                
+            }
+        }
+    }
     
     //------------------------------------------------------
     
@@ -210,9 +242,9 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtSearchFld.delegate = self
         self.updateUI()
-                
-        self.performGetNearByGolfClubs { (flag : Bool) in
+        self.performGetNearByStudios { (flag : Bool) in
             
         }
     }

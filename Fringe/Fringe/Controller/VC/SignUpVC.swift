@@ -7,9 +7,9 @@
 import UIKit
 import Toucan
 import Foundation
-import IQKeyboardManagerSwift
-import GoogleSignIn
 import AppleSignIn
+import GoogleSignIn
+import IQKeyboardManagerSwift
 import AuthenticationServices
 
 class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
@@ -366,7 +366,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
         authorizationController.performRequests()
     }
     
-    @IBAction func btnGoogleTap(_ sender: Any) {
+    @IBAction func btnGoogleTap(_ sender: UIButton) {
     }
     
     @IBAction func btnFacebookTap(_ sender: Any) {
@@ -443,6 +443,37 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     
     //------------------------------------------------------
     
+    //MARK: GIDSignInDelegate
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        guard error == nil else { return }
+        guard let user = user else { return }
+        
+        let emailAddress = user.profile?.email
+        
+        let fullName = user.profile?.name
+        let givenName = user.profile?.givenName
+        let familyName = user.profile?.familyName
+        let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+        
+        //        delay {
+        //
+        //            LoadingManager.shared.showLoading()
+        //
+        //            delayInLoading {
+        //                self.performGoogleSignIn(firstName, lastName, googleId, email, image?.absoluteString ?? String())
+        //            }
+        //        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        
+        // Perform any operations when the user disconnects from app here.
+    }
+    
+    //------------------------------------------------------
+    
     //MARK: FGImagePickerDelegate
     
     func didSelect(image: UIImage?) {
@@ -460,6 +491,16 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        
+        #if DEBUG
+        
+        //     txtEmail.text = "dharmesh.avaiya@mailinator.com"
+        //     txtPassword.text = "!Test@123"
+        
+        #endif
+        
+//        GIDSignIn.sharedInstance.
+        
     }
     
     //------------------------------------------------------

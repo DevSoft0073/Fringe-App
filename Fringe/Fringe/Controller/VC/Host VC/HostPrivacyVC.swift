@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 import WebKit
 
-class HostPrivacyVC : BaseVC {
+class HostPrivacyVC : BaseVC, WKNavigationDelegate {
     
     @IBOutlet weak var privacyWebView: WKWebView!
     //------------------------------------------------------
@@ -28,6 +28,21 @@ class HostPrivacyVC : BaseVC {
     
     //------------------------------------------------------
     
+    //MARK: Custome
+    
+    func openLinks()  {
+        privacyWebView.frame = view.bounds
+        privacyWebView.navigationDelegate = self
+        
+        let url = URL(string: "https://www.dharmani.com/fringe/webservices/Privacy.html")!
+        let urlRequest = URLRequest(url: url)
+        
+        privacyWebView.load(urlRequest)
+        privacyWebView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+    }
+    
+    //------------------------------------------------------
+    
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {
@@ -39,6 +54,7 @@ class HostPrivacyVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        openLinks()
     }
     
     //------------------------------------------------------

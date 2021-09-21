@@ -102,6 +102,7 @@ class HomeVC : BaseVC, FGLocationManagerDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        bottomSheetView()
         setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
         NavigationManager.shared.isEnabledBottomMenu = true
     }

@@ -36,7 +36,7 @@ class NotificationTVCell: UITableViewCell {
             self.imgGolfer.image = UIImage(named: "placeholder-image")
         }
         lblName.text = notificationData.message
-        lblData.text = notificationData.date
+        lblData.text = notificationData.createdAt
     }
    
     override func layoutSubviews() {

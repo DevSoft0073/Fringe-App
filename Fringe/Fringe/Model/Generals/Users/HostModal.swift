@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - HostModal
 struct HostModal: Codable {
-    var userID, golfID, stripeAccountStatus: String?
+    var userID, isRequest, golfID, stripeAccountStatus: String?
     var image: String?
     var userName, accountID, customerID, firstName: String?
     var lastName, timeZone, isgolfRegistered, dob: String?
@@ -21,9 +21,11 @@ struct HostModal: Codable {
     var golfImages: [String]?
     var hostImage: String?
     var golfCourseName, price, hostModalDescription, location: String?
+    var accountHolderName, accountNumber, routingNumber, ssnLast4: String?
 
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
+        case isRequest = "is_request"
         case golfID = "golf_id"
         case stripeAccountStatus = "stripe_account_status"
         case image
@@ -57,6 +59,10 @@ struct HostModal: Codable {
         case price
         case hostModalDescription = "description"
         case location
+        case accountHolderName = "account_holder_name"
+        case accountNumber = "account_number"
+        case routingNumber = "routing_number"
+        case ssnLast4 = "ssn_last_4"
     }
 }
 

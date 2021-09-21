@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import WebKit
 import Foundation
 
-class ServiceTermsVC : BaseVC {
+class ServiceTermsVC : BaseVC, WKNavigationDelegate{
     
+    @IBOutlet weak var termsWebView: WKWebView!
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -26,6 +28,21 @@ class ServiceTermsVC : BaseVC {
     
     //------------------------------------------------------
     
+    //MARK: Custome
+    
+    func openLinks()  {
+        termsWebView.frame = view.bounds
+        termsWebView.navigationDelegate = self
+        
+        let url = URL(string: "https://www.dharmani.com/fringe/webservices/terms&conditions.html")!
+        let urlRequest = URLRequest(url: url)
+        
+        termsWebView.load(urlRequest)
+        termsWebView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+    }
+    
+    //------------------------------------------------------
+    
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {
@@ -38,6 +55,7 @@ class ServiceTermsVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        openLinks()
     }
     
     //------------------------------------------------------

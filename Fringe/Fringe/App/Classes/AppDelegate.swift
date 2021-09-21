@@ -106,15 +106,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func performUpdateLocation(lat : String , long : String ,completion:((_ flag: Bool) -> Void)?) {
         
         let headers:HTTPHeaders = [
-           "content-type": "application/json",
+            "content-type": "application/json",
             "Token": PreferenceManager.shared.authToken ?? String(),
-          ]
+        ]
         
         let parameter: [String: Any] = [
             Request.Parameter.lat: lat,
             Request.Parameter.long: long,
         ]
-
+        
         RequestManager.shared.requestPOST(requestMethod: Request.Method.updateLocation, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
             
             if response.code == Status.Code.success {
@@ -166,12 +166,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         registerRemoteNotificaton(application)
         //RealmManager.shared.save(channelDownload: false)
         window?.tintColor = FGColor.appBlack
-        
-        
-        // google sign-in
-//        GIDSignIn.sharedInstance.clientID = "929112962841-9qvjehvnruco3u9nfc7l4g27aeqmt3dc.apps.googleusercontent.com"
-//        GIDSignIn.sharedInstance.delegate = self
-        
+        let signInConfig = GIDConfiguration.init(clientID: "61420739781-bmmv00lkgd1ens54q6l8ei7n5iveop4k.apps.googleusercontent.com")
+        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+            if error != nil || user == nil {
+                // Show the app's signed-out state.
+            } else {
+                // Show the app's signed-in state.
+            }
+        }
+                
         // stripe publishable key For live
         
         //        StripeAPI.defaultPublishableKey = "pk_test_51JUS7iJ3XoLMRYVnKpR01bRRdE11rfnPrp5HJQrC6aUcRZTrY911Vvj5z3QWTACUjt55diQLeresblgaCv2qdGoO00u4MzXpuN"
@@ -183,18 +186,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    func application(_ app: UIApplication,open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        var handled: Bool
         
-        let googleSignIN = GIDSignIn.sharedInstance.handle(url)
-//        let facebookSignIn = ApplicationDelegate.shared.application(
-//            UIApplication.shared,
-//            open: url,
-//            sourceApplication: nil,
-//            annotation: [UIApplication.OpenURLOptionsKey.annotation]
-//        )
-        
-//        return googleSignIN || facebookSignIn
-        return googleSignIN
+        handled = GIDSignIn.sharedInstance.handle(url)
+        if handled {
+            return true
+        }
+        return false
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
@@ -214,50 +213,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         debugPrint("didFailToRegisterForRemoteNotificationsWithError: \(error.localizedDescription)")
-        //DisplayAlertManager.shared.displayAlert(animated: true, message: error.localizedDescription, handlerOK: nil)
-        //        NavigationManager.shared.setupLanding()
+        DisplayAlertManager.shared.displayAlert(animated: true, message: error.localizedDescription, handlerOK: nil)
+//        NavigationManager.shared.setupLanding()
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
-        
-    //------------------------------------------------------
-    
-    //MARK: GIDSignInDelegate
-    
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-//
-//        if let error = error {
-//            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-//                print("The user has not signed in before or they have since signed out.")
-//            } else {
-//                print("\(error.localizedDescription)")
-//            }
-//            return
-//        }
-//
-//        let googleId = user.userID ?? String()
-//        //let idToken = user.authentication.idToken
-//        let firstName = user.profile?.givenName ?? String()
-//        let lastName = user.profile?.familyName ?? String()
-//        let email = user.profile?.email ?? String()
-//        let image = user.profile?.imageURL(withDimension: 300)
-//
-////        delay {
-////
-////            LoadingManager.shared.showLoading()
-////
-////            delayInLoading {
-////                self.performGoogleSignIn(firstName, lastName, googleId, email, image?.absoluteString ?? String())
-////            }
-////        }
-//    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        
-        // Perform any operations when the user disconnects from app here.
-    }
-
-    
 }

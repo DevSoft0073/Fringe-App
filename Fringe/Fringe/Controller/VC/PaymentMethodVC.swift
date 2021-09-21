@@ -133,7 +133,7 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
 
         let headers:HTTPHeaders = [
            "content-type": "application/json",
-            "Token": PreferenceManager.shared.authToken ?? String(),
+//            "Token": PreferenceManager.shared.authToken ?? String(),
           ]
         
         let parameter: [String: Any] = [

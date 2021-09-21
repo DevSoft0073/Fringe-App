@@ -88,12 +88,12 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             
         } else if segment2.isSelected == true {
             
-            noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.confirmed.localized()
+            noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.awating.localized()
             noDataLbl.isHidden = items.count != .zero
             
         } else if segment3.isSelected == true {
             
-            noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.awating.localized()
+            noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.confirmed.localized()
             noDataLbl.isHidden = items.count != .zero
             
         }

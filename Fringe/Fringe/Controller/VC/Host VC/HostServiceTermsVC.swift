@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 import WebKit
 
-class HostServiceTermsVC : BaseVC {
+class HostServiceTermsVC : BaseVC , WKNavigationDelegate{
     
     @IBOutlet weak var serviceWebView: WKWebView!
     
@@ -29,6 +29,21 @@ class HostServiceTermsVC : BaseVC {
     
     //------------------------------------------------------
     
+    //MARK: Custome
+    
+    func openLinks()  {
+        serviceWebView.frame = view.bounds
+        serviceWebView.navigationDelegate = self
+        
+        let url = URL(string: "https://www.dharmani.com/fringe/webservices/terms&conditions.html")!
+        let urlRequest = URLRequest(url: url)
+        
+        serviceWebView.load(urlRequest)
+        serviceWebView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+    }
+    
+    //------------------------------------------------------
+    
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {
@@ -41,6 +56,7 @@ class HostServiceTermsVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        openLinks()
     }
     
     //------------------------------------------------------

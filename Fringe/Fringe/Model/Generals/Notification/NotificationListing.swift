@@ -4,17 +4,17 @@
 //
 //  Created by MyMac on 9/14/21.
 //
+// NotificationModal.swift
 
 import Foundation
 
 // MARK: - NotificationModal
-struct NotificationModal: Codable, Hashable {
+struct NotificationModal: Codable , Hashable{
     var notificationID, title, message, userID: String?
     var senderID, golfID, requestID, senderRole: String?
     var requestStatus, notificationType, roomID, seen: String?
-    var creationAt, golfCourseName, notificationModalDescription: String?
-    var image: String?
-    var date: String?
+    var creationAt, golfCourseName, notificationModalDescription, image: String?
+    var createdAt: String?
 
     enum CodingKeys: String, CodingKey {
         case notificationID = "notification_id"
@@ -31,7 +31,8 @@ struct NotificationModal: Codable, Hashable {
         case creationAt = "creation_at"
         case golfCourseName = "golf_course_name"
         case notificationModalDescription = "description"
-        case image, date
+        case image
+        case createdAt = "created_at"
     }
 }
 

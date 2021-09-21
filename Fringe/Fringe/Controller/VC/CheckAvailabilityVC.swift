@@ -140,11 +140,10 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             Request.Parameter.timeZone: deviceTimeZone ?? String(),
             
         ]
-        
         RequestManager.shared.requestPOST(requestMethod: Request.Method.bookingRequest, parameter: parameter,headers: headers, showLoader: false, decodingType: ResponseModal<BookingRequestModal>.self, successBlock: { (response: ResponseModal<BookingRequestModal>) in
             
             LoadingManager.shared.hideLoading()
-            
+            print("respnse here",response)
             if response.code == Status.Code.success {
                 
                 completion?(true)

@@ -39,7 +39,11 @@ class HostAccountInformationVC : BaseVC {
     //MARK: Custome
     
     func setupData()  {
-//        lblAccountName.text = currentUserHost.
+        lblAccountName.text = currentUserHost?.accountHolderName
+        lblAccountEmail.text = currentUserHost?.email
+        lblMobileNumber.text = currentUserHost?.mobileNo
+        lblAccountAddress.text = currentUserHost?.location
+
     }
     
     //------------------------------------------------------
@@ -55,6 +59,7 @@ class HostAccountInformationVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupData()
     }
     
     //------------------------------------------------------

@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import WebKit
 import Foundation
 
-class PrivacyVC : BaseVC {
+class PrivacyVC : BaseVC, WKNavigationDelegate{
     
+    @IBOutlet weak var privacyPolicyView: WKWebView!
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -26,6 +28,21 @@ class PrivacyVC : BaseVC {
     
     //------------------------------------------------------
     
+    //MARK: Custome
+    
+    func openLinks()  {
+        privacyPolicyView.frame = view.bounds
+        privacyPolicyView.navigationDelegate = self
+        
+        let url = URL(string: "https://www.dharmani.com/fringe/webservices/Privacy.html")!
+        let urlRequest = URLRequest(url: url)
+        
+        privacyPolicyView.load(urlRequest)
+        privacyPolicyView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+    }
+    
+    //------------------------------------------------------
+    
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {
@@ -37,6 +54,7 @@ class PrivacyVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        openLinks()
     }
     
     //------------------------------------------------------

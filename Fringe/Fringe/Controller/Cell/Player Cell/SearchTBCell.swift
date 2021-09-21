@@ -19,11 +19,35 @@ class SearchTBCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    //------------------------------------------------------
+    
+    //MARK: Custome
+    
+    func setup(homeData : HomeModal) {
+        
+//        //image
+//        mainImg.sd_addActivityIndicator()
+//        mainImg.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+//        mainImg.sd_showActivityIndicatorView()
+//        mainImg.image = getPlaceholderImage()
+//        if let image = homeData.image, image.isEmpty == false {
+//            let imgURL = URL(string: image)
+//            mainImg.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+//                if let serverImage = serverImage {
+//                    self.mainImg.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+//                }
+//                self.mainImg.sd_removeActivityIndicator()
+//            }
+//        } else {
+//            self.mainImg.sd_removeActivityIndicator()
+//        }
+//
+        lblName.text = homeData.golfCourseName
+        lblAddress.text = homeData.location
+        lblRate.text = homeData.price
+        lblRating.text = homeData.rating
+        ratingView.rating = Double(homeData.rating ?? String()) ?? Double()
     }
     
 }
