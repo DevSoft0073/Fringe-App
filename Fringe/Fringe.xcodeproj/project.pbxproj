@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F18387E26F9AF2500A0B663 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18387D26F9AF2500A0B663 /* ChatViewController.swift */; };
+		1F18388026F9B02200A0B663 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18387F26F9B02200A0B663 /* BasicAudioController.swift */; };
+		1F18388726F9B12100A0B663 /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18388226F9B12000A0B663 /* MockSocket.swift */; };
+		1F18388826F9B12100A0B663 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18388326F9B12000A0B663 /* Lorem.swift */; };
+		1F18388926F9B12100A0B663 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18388426F9B12100A0B663 /* SampleData.swift */; };
+		1F18388A26F9B12100A0B663 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18388526F9B12100A0B663 /* MockUser.swift */; };
+		1F18388B26F9B12100A0B663 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18388626F9B12100A0B663 /* MockMessage.swift */; };
+		1F18388D26F9B36800A0B663 /* ChatDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18388C26F9B36800A0B663 /* ChatDetailsVC.swift */; };
 		1F33172326E37BF500D7D466 /* FGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33172226E37BF500D7D466 /* FGLocationManager.swift */; };
 		1F4CF3F926E9F2DC008B2965 /* HomeListingDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */; };
 		1F4CF3FB26E9FE06008B2965 /* CheckModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CF3FA26E9FE06008B2965 /* CheckModal.swift */; };
@@ -187,6 +195,15 @@
 /* Begin PBXFileReference section */
 		08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fringe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6EA47CE18B85558BA94DF3 /* Pods-Fringe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fringe.debug.xcconfig"; path = "Target Support Files/Pods-Fringe/Pods-Fringe.debug.xcconfig"; sourceTree = "<group>"; };
+		1F18387D26F9AF2500A0B663 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		1F18387F26F9B02200A0B663 /* BasicAudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
+		1F18388226F9B12000A0B663 /* MockSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSocket.swift; sourceTree = "<group>"; };
+		1F18388326F9B12000A0B663 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
+		1F18388426F9B12100A0B663 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		1F18388526F9B12100A0B663 /* MockUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
+		1F18388626F9B12100A0B663 /* MockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
+		1F18388C26F9B36800A0B663 /* ChatDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailsVC.swift; sourceTree = "<group>"; };
+		1F18388E26F9CAC500A0B663 /* GoogleSignIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F33172226E37BF500D7D466 /* FGLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGLocationManager.swift; sourceTree = "<group>"; };
 		1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListingDetailsVC.swift; sourceTree = "<group>"; };
 		1F4CF3FA26E9FE06008B2965 /* CheckModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckModal.swift; sourceTree = "<group>"; };
@@ -382,9 +399,22 @@
 		0AA297AB4A70B4665FE669D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F18388E26F9CAC500A0B663 /* GoogleSignIn.framework */,
 				08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F18388126F9B0E700A0B663 /* Data Generation */ = {
+			isa = PBXGroup;
+			children = (
+				1F18388326F9B12000A0B663 /* Lorem.swift */,
+				1F18388626F9B12100A0B663 /* MockMessage.swift */,
+				1F18388226F9B12000A0B663 /* MockSocket.swift */,
+				1F18388526F9B12100A0B663 /* MockUser.swift */,
+				1F18388426F9B12100A0B663 /* SampleData.swift */,
+			);
+			path = "Data Generation";
 			sourceTree = "<group>";
 		};
 		1F5DF83026E206F100EA7327 /* FavoriteListing */ = {
@@ -615,9 +645,12 @@
 				7C3EC18226E1EAF5006D8310 /* AddGuestVC.swift */,
 				7C8F1D6226CE3B8800135C41 /* AddPaymentMethodVC.swift */,
 				7C6D5BDB26D38206007F888C /* AddPaymentVC.swift */,
+				1F18387F26F9B02200A0B663 /* BasicAudioController.swift */,
 				7CD7EB0726D14EA400BEDDA2 /* BookingDetailsRatingVC.swift */,
 				7CD7EB0426D14E0B00BEDDA2 /* BookingDetailsVC.swift */,
 				7C8F1D5926CE236B00135C41 /* ChangePasswordVC.swift */,
+				1F18387D26F9AF2500A0B663 /* ChatViewController.swift */,
+				1F18388C26F9B36800A0B663 /* ChatDetailsVC.swift */,
 				7CD7EB0A26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift */,
 				7C64AB9326EB1C5B0024D06B /* ClubSearchVC.swift */,
 				7CE0F63E26D4B87B00C3AAFB /* ConfirmedPayVC.swift */,
@@ -765,6 +798,7 @@
 				7CA24C1826C23F8800437C8A /* Generals */,
 				7CA24C1926C23F9B00437C8A /* JSONParsing */,
 				7CA24C1A26C23FAF00437C8A /* Realm */,
+				1F18388126F9B0E700A0B663 /* Data Generation */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -920,6 +954,8 @@
 			dependencies = (
 			);
 			name = Fringe;
+			packageProductDependencies = (
+			);
 			productName = Fringe;
 			productReference = 7CA24BFB26C23D9500437C8A /* Fringe.app */;
 			productType = "com.apple.product-type.application";
@@ -947,6 +983,8 @@
 				Base,
 			);
 			mainGroup = 7CA24BF226C23D9500437C8A;
+			packageReferences = (
+			);
 			productRefGroup = 7CA24BFC26C23D9500437C8A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1075,6 +1113,7 @@
 			files = (
 				7C780F8826C3A80A003F1F12 /* LogInVC.swift in Sources */,
 				7C780FC526C5063B003F1F12 /* NotificationVC.swift in Sources */,
+				1F18388A26F9B12100A0B663 /* MockUser.swift in Sources */,
 				7CE041B026E0AACD0036EEA0 /* PaymentSuccessfullyPopUpVC.swift in Sources */,
 				7CA24C4426C241D600437C8A /* RequestManager.swift in Sources */,
 				7CA24C6426C2427C00437C8A /* ErrorModal.swift in Sources */,
@@ -1087,6 +1126,7 @@
 				1FE9483126E8E68F00961BE2 /* RequestModal.swift in Sources */,
 				7CD727DF26D6149A00AF660D /* PaymentOptionsTBCell.swift in Sources */,
 				1F8961A726F0753D00E08E3C /* BookingModal.swift in Sources */,
+				1F18388726F9B12100A0B663 /* MockSocket.swift in Sources */,
 				1F8961A526F0700700E08E3C /* BookingRequestModal.swift in Sources */,
 				7CD7EB0026D1195700BEDDA2 /* CheckAvailabilityTBCell.swift in Sources */,
 				1F9ACE0926F4BA3A00AB2E27 /* PlayerRequest.swift in Sources */,
@@ -1104,6 +1144,7 @@
 				7C94876326CA972C00870F54 /* ProfileHeaderView.swift in Sources */,
 				7C780FE926C582C4003F1F12 /* FavouriteTVCell.swift in Sources */,
 				7C5298A226DE07F600A3606D /* HostAddPaymentMethodVC.swift in Sources */,
+				1F18388D26F9B36800A0B663 /* ChatDetailsVC.swift in Sources */,
 				7CD7EB0B26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift in Sources */,
 				7CE041A726E08F360036EEA0 /* InboxVC.swift in Sources */,
 				1F640FD326E77EC90064F35E /* LocationSearchSuggestionsVC.swift in Sources */,
@@ -1117,6 +1158,7 @@
 				7C780F8326C3A6FF003F1F12 /* BouncesContentView.swift in Sources */,
 				7C780F7B26C3A6DB003F1F12 /* ESTabBar.swift in Sources */,
 				7C780F7926C3A6DB003F1F12 /* ESTabBarController.swift in Sources */,
+				1F18387E26F9AF2500A0B663 /* ChatViewController.swift in Sources */,
 				7CE0419E26DF4CBB0036EEA0 /* ProfileViewForTitle.swift in Sources */,
 				7C780FD326C5330A003F1F12 /* HomeVC.swift in Sources */,
 				7C780F7A26C3A6DB003F1F12 /* ESTabBarItemMoreContentView.swift in Sources */,
@@ -1161,6 +1203,7 @@
 				7C8F1D6726CE4BAB00135C41 /* MyBookingTVCell.swift in Sources */,
 				7CA24C3E26C241C300437C8A /* LoadingManager.swift in Sources */,
 				7CE041AB26E090A20036EEA0 /* InboxTVCell.swift in Sources */,
+				1F18388B26F9B12100A0B663 /* MockMessage.swift in Sources */,
 				1FF9FF6926F1FE1D00006AB0 /* AddCardDataModal.swift in Sources */,
 				1F5DF83526E23D7D00EA7327 /* FavUnfavModal.swift in Sources */,
 				7C780FF126C6491D003F1F12 /* SegmentView.swift in Sources */,
@@ -1172,6 +1215,8 @@
 				1F5DF83326E2075D00EA7327 /* FavoriteListing.swift in Sources */,
 				7CE0F63C26D4A71B00C3AAFB /* SearchVC.swift in Sources */,
 				7CA24C2C26C2416300437C8A /* AppConstants.swift in Sources */,
+				1F18388026F9B02200A0B663 /* BasicAudioController.swift in Sources */,
+				1F18388826F9B12100A0B663 /* Lorem.swift in Sources */,
 				7CA24C5526C2424100437C8A /* FGDebouncer.swift in Sources */,
 				7CA24C5326C2424100437C8A /* FGImageView.swift in Sources */,
 				7C94875726CA49AA00870F54 /* FringeConfirmedCell.swift in Sources */,
@@ -1184,6 +1229,7 @@
 				7C52986D26DD04BC00A3606D /* HostNotificationCell.swift in Sources */,
 				7CE0F64226D4D41A00C3AAFB /* SignUpHostVC.swift in Sources */,
 				7C52988B26DDF2E600A3606D /* HostProfileHeaderView.swift in Sources */,
+				1F18388926F9B12100A0B663 /* SampleData.swift in Sources */,
 				7C780F7826C3A6DB003F1F12 /* ESTabBarItemBadgeView.swift in Sources */,
 				7CE3666326E33340008D231A /* PaymentMethodTVC.swift in Sources */,
 				7C780FF526C64B68003F1F12 /* FringePendingCell.swift in Sources */,

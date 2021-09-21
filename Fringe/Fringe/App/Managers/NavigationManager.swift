@@ -384,6 +384,10 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         return locationSearchStoryboard.instantiateViewController(withIdentifier: String(describing: LocationSearchVC.self)) as! LocationSearchVC
     }
     
+    public var chatDetailsVC : ChatDetailsVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: ChatDetailsVC.self)) as! ChatDetailsVC
+    }
+    
     // HostGolfStoryboardNavigation
     
     public var hostAccountInformationVC: HostAccountInformationVC {

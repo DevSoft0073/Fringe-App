@@ -36,5 +36,14 @@
   # Firebase
   pod 'Firebase'
   pod 'Firebase/Crashlytics'
+   
+  # Messages
+  pod 'MessageKit', '~> 3.6.0' #Swift 4.2
+  pod 'MessageInputBar', '~> 0.4.1'
+  pod 'Kingfisher'
+  
+  # Socket
+  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
+
 
 end

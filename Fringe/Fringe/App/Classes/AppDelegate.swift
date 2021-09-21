@@ -17,7 +17,7 @@ import IQKeyboardManagerSwift
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
     
@@ -168,6 +168,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         window?.tintColor = FGColor.appBlack
         
         
+        // google sign-in
+//        GIDSignIn.sharedInstance.clientID = "929112962841-9qvjehvnruco3u9nfc7l4g27aeqmt3dc.apps.googleusercontent.com"
+//        GIDSignIn.sharedInstance.delegate = self
+        
         // stripe publishable key For live
         
         //        StripeAPI.defaultPublishableKey = "pk_test_51JUS7iJ3XoLMRYVnKpR01bRRdE11rfnPrp5HJQrC6aUcRZTrY911Vvj5z3QWTACUjt55diQLeresblgaCv2qdGoO00u4MzXpuN"
@@ -177,6 +181,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         StripeAPI.defaultPublishableKey = "sk_test_51JUS7iJ3XoLMRYVne26o0RcRXQtMgliZktPIihg7TRR8rEqcIpa8USR9g6out0i593Vt5cSGmiivcNs0rbbb3fon00Az943rmZ"
         
         return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        let googleSignIN = GIDSignIn.sharedInstance.handle(url)
+//        let facebookSignIn = ApplicationDelegate.shared.application(
+//            UIApplication.shared,
+//            open: url,
+//            sourceApplication: nil,
+//            annotation: [UIApplication.OpenURLOptionsKey.annotation]
+//        )
+        
+//        return googleSignIN || facebookSignIn
+        return googleSignIN
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
@@ -203,6 +221,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
-    
+        
     //------------------------------------------------------
+    
+    //MARK: GIDSignInDelegate
+    
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//
+//        if let error = error {
+//            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+//                print("The user has not signed in before or they have since signed out.")
+//            } else {
+//                print("\(error.localizedDescription)")
+//            }
+//            return
+//        }
+//
+//        let googleId = user.userID ?? String()
+//        //let idToken = user.authentication.idToken
+//        let firstName = user.profile?.givenName ?? String()
+//        let lastName = user.profile?.familyName ?? String()
+//        let email = user.profile?.email ?? String()
+//        let image = user.profile?.imageURL(withDimension: 300)
+//
+////        delay {
+////
+////            LoadingManager.shared.showLoading()
+////
+////            delayInLoading {
+////                self.performGoogleSignIn(firstName, lastName, googleId, email, image?.absoluteString ?? String())
+////            }
+////        }
+//    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        
+        // Perform any operations when the user disconnects from app here.
+    }
+
+    
 }

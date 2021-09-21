@@ -257,7 +257,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
     }
     
     @IBAction func btnProfileImg(_ sender: Any) {
-        
+        checkPickerVal = true
         self.imagePickerVC?.present(from: (sender as? UIView)!)
     }
     
@@ -327,6 +327,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         if photosInTheCellNow.count >= 10 {
             //            DisplayAlertManager.shared.displayAlert(message: LocalizableConstants.Error.maximumLimit)
         }else{
+            checkPickerVal = false
             self.imagePickerVC?.present(from: view)
         }
     }

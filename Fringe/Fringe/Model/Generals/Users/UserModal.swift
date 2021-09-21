@@ -19,6 +19,20 @@ struct UserModal: Codable {
     var verificationCode, disable, allowPush, allowLocation: String?
     var fbToken, googleToken, appleToken, creationAt: String?
 
+    
+    func toMockUser() -> MockUser {
+//        if studio == "1" {
+//            return MockUser(senderId: studioID ??  String(), displayName: fullName)
+//        } else {
+//            return MockUser(senderId: userID ??  String(), displayName: fullName)
+//        }
+        if PreferenceManager.shared.curretMode == "1"{
+            return MockUser(senderId: userID ??  String(), displayName: userName ?? String())
+        }else{
+            return MockUser(senderId: userID ??  String(), displayName: userName ?? String())
+        }
+    }
+    
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
         case image

@@ -68,7 +68,10 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         return 75
     }
     
-   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = NavigationManager.shared.chatDetailsVC
+        push(controller: controller)
+    }
     
     
     //------------------------------------------------------
