@@ -20,6 +20,11 @@
   pod 'GCCountryPicker'
   pod 'FSCalendar'
 
+  #facebook sign in
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
+
   #google sign in
   pod 'GoogleSignIn'
 

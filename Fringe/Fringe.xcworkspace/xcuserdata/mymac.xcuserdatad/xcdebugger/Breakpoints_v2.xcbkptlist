@@ -32,7 +32,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "148"
                   endingLineNumber = "148"
-                  offsetFromSymbolStart = "1600">
+                  offsetFromSymbolStart = "2213">
                </Location>
                <Location
                   uuid = "052CAC15-82F0-4FE5-A12D-B09E3F9E1516 - e71e42a31c579c7a"
@@ -47,7 +47,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "150"
                   endingLineNumber = "150"
-                  offsetFromSymbolStart = "72">
+                  offsetFromSymbolStart = "96">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -103,65 +103,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7972C60A-F367-4B56-A282-694FA818C30D"
+            uuid = "4282C07E-9264-4A22-A41F-02C5DA1E1A74"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/ClubSearchVC.swift"
+            filePath = "Fringe/Controller/VC/Host VC/HostNotificationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "textFieldDidEndEditing(_:)"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "performToGetAllNotificationListing(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0F825EB6-977A-49E0-8335-622F8756E354"
+            uuid = "551DCA8E-6057-4500-A5A9-6DB7977AB9EF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/ClubSearchVC.swift"
+            filePath = "Fringe/Controller/VC/ProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
-            landmarkName = "textFieldDidEndEditing(_:)"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "performGetUserProfile(completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0F825EB6-977A-49E0-8335-622F8756E354 - 6be66649c2a5100d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Fringe.ClubSearchVC.textFieldDidEndEditing(__C.UITextField) -&gt; ()"
-                  moduleName = "Fringe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/ClubSearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "240">
-               </Location>
-               <Location
-                  uuid = "0F825EB6-977A-49E0-8335-622F8756E354 - c12c129611bb3eb5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in Fringe.ClubSearchVC.textFieldDidEndEditing(__C.UITextField) -&gt; ()"
-                  moduleName = "Fringe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/ClubSearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "235"
-                  endingLineNumber = "235"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

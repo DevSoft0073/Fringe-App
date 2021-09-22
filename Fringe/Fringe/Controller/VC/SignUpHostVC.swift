@@ -151,7 +151,7 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
                         delay {
 
                             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: messgae) {
-                                NavigationManager.shared.setupLandingOnHomeForHost()
+                                NavigationManager.shared.setupLandingOnHome()
                             }
 //                            PreferenceManager.shared.currentStudioUser = jsonStudio?.dict2json()
 //                            let controller = NavigationManager.shared.submitVC

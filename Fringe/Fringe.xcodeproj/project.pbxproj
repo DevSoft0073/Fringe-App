@@ -34,6 +34,10 @@
 		1F9ACE0626F479A600AB2E27 /* AddBlockModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */; };
 		1F9ACE0926F4BA3A00AB2E27 /* PlayerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */; };
 		1F9ACE0B26F6019800AB2E27 /* PlayerRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */; };
+		1FA73FBC26FAFAFA008604AA /* FacebookModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FB926FAFAFA008604AA /* FacebookModal.swift */; };
+		1FA73FBD26FAFAFA008604AA /* PictureModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FBA26FAFAFA008604AA /* PictureModal.swift */; };
+		1FA73FBE26FAFAFA008604AA /* FacebookDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FBB26FAFAFA008604AA /* FacebookDataModal.swift */; };
+		1FA73FC026FB0FC3008604AA /* PopUpViewForAddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */; };
 		1FBACAB126F305070051642D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FBACAB026F305070051642D /* GoogleService-Info.plist */; };
 		1FE9483126E8E68F00961BE2 /* RequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9483026E8E68F00961BE2 /* RequestModal.swift */; };
 		1FF9FF6726F1E12F00006AB0 /* PaymentDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9FF6626F1E12F00006AB0 /* PaymentDataModal.swift */; };
@@ -223,6 +227,10 @@
 		1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlockModal.swift; sourceTree = "<group>"; };
 		1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequest.swift; sourceTree = "<group>"; };
 		1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequestModal.swift; sourceTree = "<group>"; };
+		1FA73FB926FAFAFA008604AA /* FacebookModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookModal.swift; path = ../../../../../../../FacebookModal.swift; sourceTree = "<group>"; };
+		1FA73FBA26FAFAFA008604AA /* PictureModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureModal.swift; path = ../../../../../../../PictureModal.swift; sourceTree = "<group>"; };
+		1FA73FBB26FAFAFA008604AA /* FacebookDataModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookDataModal.swift; path = ../../../../../../../FacebookDataModal.swift; sourceTree = "<group>"; };
+		1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewForAddAccountVC.swift; sourceTree = "<group>"; };
 		1FBACAB026F305070051642D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FE9483026E8E68F00961BE2 /* RequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModal.swift; sourceTree = "<group>"; };
 		1FF82EE426D6642F002B303B /* Fringe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fringe.entitlements; sourceTree = "<group>"; };
@@ -467,6 +475,16 @@
 			path = "Player Request";
 			sourceTree = "<group>";
 		};
+		1FA73FB526FAFAB8008604AA /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				1FA73FBB26FAFAFA008604AA /* FacebookDataModal.swift */,
+				1FA73FB926FAFAFA008604AA /* FacebookModal.swift */,
+				1FA73FBA26FAFAFA008604AA /* PictureModal.swift */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
 		1FE9482F26E8E67C00961BE2 /* Request Listing */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +601,7 @@
 				7C52987A26DD0D7E00A3606D /* HostProfileVC.swift */,
 				7CE041B226E0BBA10036EEA0 /* HostServiceTermsVC.swift */,
 				7C97C91F26E5E14B0090F7C7 /* BusinessAddPaymentMethodVC.swift */,
+				1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */,
 			);
 			path = "Host VC";
 			sourceTree = "<group>";
@@ -806,6 +825,7 @@
 		7CA24C1826C23F8800437C8A /* Generals */ = {
 			isa = PBXGroup;
 			children = (
+				1FA73FB526FAFAB8008604AA /* Facebook */,
 				1F9ACE0726F4BA2800AB2E27 /* Player Request */,
 				1F9ACE0426F4798600AB2E27 /* Add Request */,
 				1FF9FF6526F1E0F300006AB0 /* Payment */,
@@ -1126,6 +1146,7 @@
 				1FE9483126E8E68F00961BE2 /* RequestModal.swift in Sources */,
 				7CD727DF26D6149A00AF660D /* PaymentOptionsTBCell.swift in Sources */,
 				1F8961A726F0753D00E08E3C /* BookingModal.swift in Sources */,
+				1FA73FBC26FAFAFA008604AA /* FacebookModal.swift in Sources */,
 				1F18388726F9B12100A0B663 /* MockSocket.swift in Sources */,
 				1F8961A526F0700700E08E3C /* BookingRequestModal.swift in Sources */,
 				7CD7EB0026D1195700BEDDA2 /* CheckAvailabilityTBCell.swift in Sources */,
@@ -1156,11 +1177,13 @@
 				7CE0F63726D4A51900C3AAFB /* SearchTBCell.swift in Sources */,
 				1FF9FF6726F1E12F00006AB0 /* PaymentDataModal.swift in Sources */,
 				7C780F8326C3A6FF003F1F12 /* BouncesContentView.swift in Sources */,
+				1FA73FC026FB0FC3008604AA /* PopUpViewForAddAccountVC.swift in Sources */,
 				7C780F7B26C3A6DB003F1F12 /* ESTabBar.swift in Sources */,
 				7C780F7926C3A6DB003F1F12 /* ESTabBarController.swift in Sources */,
 				1F18387E26F9AF2500A0B663 /* ChatViewController.swift in Sources */,
 				7CE0419E26DF4CBB0036EEA0 /* ProfileViewForTitle.swift in Sources */,
 				7C780FD326C5330A003F1F12 /* HomeVC.swift in Sources */,
+				1FA73FBE26FAFAFA008604AA /* FacebookDataModal.swift in Sources */,
 				7C780F7A26C3A6DB003F1F12 /* ESTabBarItemMoreContentView.swift in Sources */,
 				7C780F8F26C3C105003F1F12 /* SignUpVC.swift in Sources */,
 				7C64AB9426EB1C5B0024D06B /* ClubSearchVC.swift in Sources */,
@@ -1215,6 +1238,7 @@
 				1F5DF83326E2075D00EA7327 /* FavoriteListing.swift in Sources */,
 				7CE0F63C26D4A71B00C3AAFB /* SearchVC.swift in Sources */,
 				7CA24C2C26C2416300437C8A /* AppConstants.swift in Sources */,
+				1FA73FBD26FAFAFA008604AA /* PictureModal.swift in Sources */,
 				1F18388026F9B02200A0B663 /* BasicAudioController.swift in Sources */,
 				1F18388826F9B12100A0B663 /* Lorem.swift in Sources */,
 				7CA24C5526C2424100437C8A /* FGDebouncer.swift in Sources */,

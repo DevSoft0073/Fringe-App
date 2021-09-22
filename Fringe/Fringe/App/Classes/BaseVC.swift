@@ -19,21 +19,21 @@ class BaseVC : UIViewController, UIGestureRecognizerDelegate {
         return PreferenceManager.shared.currentUserModalForHost
     }
     
-//    var currentStudioUser : StudioUserModal?{
-//        return PreferenceManager.shared.currentStudioUserModal
-//    }
-//
-//    var favUnfavModal : AddFavUnfavModal?{
-//        return PreferenceManager.shared.addRemoveFav
-//    }
-//
-//    var studioDetail : StudioModel? {
-//        return PreferenceManager.shared.studioDetails
-//    }
-//
-//    var sessionDetail : BookingSessionModal? {
-//        return PreferenceManager.shared.sessionDetails
-//    }
+    //    var currentStudioUser : StudioUserModal?{
+    //        return PreferenceManager.shared.currentStudioUserModal
+    //    }
+    //
+    //    var favUnfavModal : AddFavUnfavModal?{
+    //        return PreferenceManager.shared.addRemoveFav
+    //    }
+    //
+    //    var studioDetail : StudioModel? {
+    //        return PreferenceManager.shared.studioDetails
+    //    }
+    //
+    //    var sessionDetail : BookingSessionModal? {
+    //        return PreferenceManager.shared.sessionDetails
+    //    }
     
     //------------------------------------------------------
     
@@ -95,6 +95,13 @@ class BaseVC : UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    func popWithHandler(completion: @escaping ()->()) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        self.pop()
+        CATransaction.commit()
+    }
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -127,7 +134,7 @@ class BaseVC : UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.view.backgroundColor = FGColor.appBlack
+        //        self.view.backgroundColor = FGColor.appBlack
         
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -138,7 +145,7 @@ class BaseVC : UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        NavigationManager.shared.isEnabledBottomMenu = false
+        //        NavigationManager.shared.isEnabledBottomMenu = false
     }
     
     //------------------------------------------------------

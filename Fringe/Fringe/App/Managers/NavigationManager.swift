@@ -378,7 +378,10 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     public var paymentSuccessfullyPopUpVC : PaymentSuccessfullyPopUpVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PaymentSuccessfullyPopUpVC.self)) as! PaymentSuccessfullyPopUpVC
     }
-
+    
+    public var popUpViewForAddAccountVC : PopUpViewForAddAccountVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PopUpViewForAddAccountVC.self)) as! PopUpViewForAddAccountVC
+    }
     
     public var locationSearchVC: LocationSearchVC {
         return locationSearchStoryboard.instantiateViewController(withIdentifier: String(describing: LocationSearchVC.self)) as! LocationSearchVC

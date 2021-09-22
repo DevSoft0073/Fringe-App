@@ -117,7 +117,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             segment1.isSelected = true
             
             parameter = [Request.Parameter.userID: currentUser?.userID ?? String(),
-                         Request.Parameter.bookedStatus: isSelected,
+                         Request.Parameter.bookedStatus: "0",
                          Request.Parameter.lastID: lastRequestId,]
             
         }
@@ -333,6 +333,9 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             let data = items[sender.tag]
             let controller = NavigationManager.shared.confirmedPayVC
             controller.detailsData = data
+            controller.isUpdate = {
+                self.isSelected = "0"
+            }
             push(controller: controller)
             cell.refundRequestView.isHidden = true
             tblGolf.reloadData()
@@ -423,7 +426,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         noDataLbl.isHidden = false
         
         setup()
-        
+                
         LoadingManager.shared.showLoading()
         
         self.performGetBookingListing { (flag : Bool) in
@@ -433,4 +436,5 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     }
     
     //------------------------------------------------------
+    
 }

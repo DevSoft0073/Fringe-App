@@ -8,6 +8,8 @@
 import UIKit
 import Foundation
 import AppleSignIn
+import FBSDKLoginKit
+import FacebookLogin
 import AuthenticationServices
 import IQKeyboardManagerSwift
 
@@ -21,6 +23,9 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     var iconClick = true
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     
+    //facebook
+    let fbManager = LoginManager()
+    let permissionEmail = "email"
     
     //------------------------------------------------------
     
@@ -234,7 +239,6 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
         iconClick = !iconClick
     }
     
-    
     @IBAction func btnAppleTap(_ sender: Any) {
         /*guard let window = view.window else { return }
          
@@ -257,6 +261,32 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     }
     
     @IBAction func btnFaceBookTap(_ sender: Any) {
+        fbManager.logIn(permissions: [permissionEmail], from: self) { (result: LoginManagerLoginResult?, error: Error?) in
+            if let error = error {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.localizedDescription)
+            } else if let result = result {
+                debugPrint(result)
+                guard result.grantedPermissions.count != .zero else { return }
+                GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start { (graphRequstCnnection: GraphRequestConnection?, response: Any?, graphError: Error?) in
+                    if let error = graphError {
+                        LoadingManager.shared.hideLoading()
+                        delay {
+                            DisplayAlertManager.shared.displayAlert(animated: true, message: error.localizedDescription)
+                        }
+                    } else if let dict = response as? [String: Any] {
+                        let fbModal = FacebookModal.init(fromDictionary: dict)
+                        debugPrint(fbModal.toDictionary())
+                        delay {
+                            LoadingManager.shared.showLoading()
+                            delayInLoading {
+//                                self.performFacebookLogin(fbModal.firstName, fbModal.lastName, fbModal.facebookId, fbModal.email, fbModal.picture?.data.url ?? String())
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
     
     @IBAction func btnSignUpTap(_ sender: Any) {

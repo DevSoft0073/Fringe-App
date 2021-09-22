@@ -440,6 +440,15 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         }
         
         setup()
+        
+        if currentUserHost?.stripeAccountStatus == "0" {
+            let controller = NavigationManager.shared.businessHomeRejectionVC
+            controller.modalPresentationStyle = .overFullScreen
+            controller.modalTransitionStyle = .flipHorizontal
+            self.present(controller, animated: true) {
+            }
+        }
+        
         updateUI()
     }
     

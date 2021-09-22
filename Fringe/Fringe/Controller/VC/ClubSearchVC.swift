@@ -48,7 +48,7 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
         
         let loadMoreView = KRPullLoadView()
         loadMoreView.delegate = self
-        tblListing.addPullLoadableView(loadMoreView, type: .loadMore)
+        tblListing.addPullLoadableView(loadMoreView, type: .refresh)
         debounce = FGDebouncer.init(delay: 0.2, callback: {
             self.lastRequestId = ""
             self.performGetNearByStudios { (flag: Bool) in
@@ -63,6 +63,8 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
     }
     
     func updateUI()  {
+        
+        noDataLbl.isHidden = items.count != .zero
         tblListing.reloadData()
     }
     
@@ -103,20 +105,16 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
                     
                     self.items.append(contentsOf: response.data ?? [])
                     self.items = self.items.removingDuplicates()
-                    self.lastRequestId = response.data?.last?.golfID ?? String()
+                    self.lastRequestId = response.data?.first?.golfID ?? String()
                     self.updateUI()
                 }
                 
             } else if response.code == Status.Code.notfound {
-                
-                self.items.removeAll()
-                
+                                                
                 self.updateUI()
                 
             } else {
-                                
-                self.items.removeAll()
-                
+                                                
                 completion?(true)
             }
             
@@ -230,6 +228,13 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == txtSearchFld {
+            
+            items.removeAll()
+            
+            self.lastRequestId = ""
+            
+            LoadingManager.shared.showLoading()
+            
             self.performGetNearByStudios { (flag : Bool) in
                 
             }
@@ -244,6 +249,7 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
         super.viewDidLoad()
         txtSearchFld.delegate = self
         self.updateUI()
+        self.setup()
         self.performGetNearByStudios { (flag : Bool) in
             
         }

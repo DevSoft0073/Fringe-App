@@ -24,6 +24,7 @@ class ConfirmedPayVC : BaseVC {
     @IBOutlet weak var imgMain: UIImageView!
     @IBOutlet weak var lblGuest: UILabel!
     
+    var isUpdate:(()->Void)?
     var detailsData: RequestListingModal?
     var isSelected : Bool = true
     var addGuestVal: Int = 2 {
@@ -61,11 +62,13 @@ class ConfirmedPayVC : BaseVC {
     }
     
     func serviceCalculation(price:Int)->Double{
-           let priceDouble = Double(price)
-           let tk =  priceDouble * 0.029
-           let sdf = tk + 0.3
-           return sdf.rounded(toPlaces: 2)
-       }
+        let priceDouble = Double(price)
+        let serviceFee =  priceDouble * 0.029
+        lblServiceTax.text = "\(serviceFee)"
+        let occupancyTax = serviceFee + 0.3
+        lblOccupancyTax.text = "\(occupancyTax)"
+        return occupancyTax.rounded(toPlaces: 2)
+    }
     
     //------------------------------------------------------
     
@@ -111,7 +114,9 @@ class ConfirmedPayVC : BaseVC {
     }
     
     @IBAction func btnBack(_ sender: Any) {
-        self.pop()
+        self.popWithHandler {
+            self.isUpdate?()
+        }
     }
     //------------------------------------------------------
     

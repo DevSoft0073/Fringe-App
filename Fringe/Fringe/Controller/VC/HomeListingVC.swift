@@ -100,8 +100,11 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
                     self.lastRequestId = response.data?.last?.golfID ?? String()
                     self.updateUI()
                 }
-            }
-            else {
+            } else if response.code == Status.Code.notfound{
+                
+                self.updateUI()
+                
+            } else {
                 
                 completion?(true)
             }

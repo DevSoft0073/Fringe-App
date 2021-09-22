@@ -12,6 +12,7 @@ import Stripe
 import Firebase
 import Alamofire
 import GoogleSignIn
+import FBSDKCoreKit
 import UserNotifications
 import IQKeyboardManagerSwift
 
