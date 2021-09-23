@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toucan
 import SDWebImage
 
 class MyBookingTVCell: UITableViewCell {
@@ -27,19 +28,29 @@ class MyBookingTVCell: UITableViewCell {
     
     func setup(bookingData : BookingModal)  {
         //image
+        
         imgMain.sd_addActivityIndicator()
         imgMain.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         imgMain.sd_showActivityIndicatorView()
         imgMain.image = getPlaceholderImage()
-        if let image = bookingData.image, image.isEmpty == false {
-            let imgURL = URL(string: image)
-            imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+        if bookingData.golfImages?.count ?? 0 > 0{
+            if let image = bookingData.golfImages?[0], image.isEmpty == false {
+                let imgURL = URL(string: image)
+                imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                    if let serverImage = serverImage {
+                        self.imgMain.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+                    }
+                    self.imgMain.sd_removeActivityIndicator()
+                }
+            } else {
                 self.imgMain.sd_removeActivityIndicator()
             }
         } else {
             self.imgMain.sd_removeActivityIndicator()
+            imgMain.image = UIImage(named: FGImageName.imgPlaceHolder)
         }
-//
+        
+//        imgMain.sd_setImage(with: URL(string: bookingData.golfImages?[1] ?? String()), placeholderImage: UIImage(named: FGImageName.imgPlaceHolder))
         lblName.text = bookingData.golfCourseName
         lblAddress.text = bookingData.location
         lblRate.text = bookingData.price

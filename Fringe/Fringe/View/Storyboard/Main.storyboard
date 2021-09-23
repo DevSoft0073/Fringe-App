@@ -1165,6 +1165,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnSubmit" destination="eXJ-Lp-pAT" id="60e-a5-EPh"/>
                         <outlet property="ratingView" destination="MXf-FW-tAX" id="2KF-rG-aba"/>
                         <outlet property="txtViewQuery" destination="rf9-ES-gAz" id="VYt-5k-1T8"/>
                     </connections>

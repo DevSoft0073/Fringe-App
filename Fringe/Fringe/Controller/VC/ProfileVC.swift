@@ -260,7 +260,6 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     
     func checkAllowPush() {
         let current = UNUserNotificationCenter.current()
-        
         current.getNotificationSettings(completionHandler: { (settings) in
             if settings.authorizationStatus == .notDetermined {
                 if let bundle = Bundle.main.bundleIdentifier,
@@ -271,7 +270,6 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                 }
                 
             } else if settings.authorizationStatus == .denied {
-                
                 
                 if let bundle = Bundle.main.bundleIdentifier,
                    let settings = URL(string: UIApplication.openSettingsURLString + bundle) {

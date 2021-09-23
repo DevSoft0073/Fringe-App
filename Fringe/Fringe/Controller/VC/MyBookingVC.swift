@@ -64,12 +64,12 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource, KRPull
         
         let headers:HTTPHeaders = [
             "content-type": "application/json",
-            "Token": "IB6WSFnebwuDro5mhQxP5Lai4bW8ZZ9laDQbdU1vpvrk8F9HO9"
+            "Token": PreferenceManager.shared.authToken ?? String(),
         ]
         
         let parameter: [String: Any] = [
             Request.Parameter.lastID: lastRequestId,
-            Request.Parameter.userID: "11",
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.myBooking, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[BookingModal]>.self, successBlock: { (response: ResponseModal<[BookingModal]>) in
@@ -88,7 +88,7 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource, KRPull
                     }
                     self.items.append(contentsOf: response.data ?? [])
                     self.items = self.items.removingDuplicates()
-                    self.lastRequestId = response.data?.last?.golfID ?? String()
+                    self.lastRequestId = response.data?.first?.id ?? String()
                     self.updateUI()
                 }
             }

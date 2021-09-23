@@ -34,6 +34,7 @@
 		1F9A468126FC3D45007DF1A8 /* FacebookModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A467E26FC3D45007DF1A8 /* FacebookModal.swift */; };
 		1F9A468226FC3D45007DF1A8 /* PictureModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A467F26FC3D45007DF1A8 /* PictureModal.swift */; };
 		1F9A468326FC3D45007DF1A8 /* FacebookDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A468026FC3D45007DF1A8 /* FacebookDataModal.swift */; };
+		1F9A468526FCA2FF007DF1A8 /* FeedbackDetailModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A468426FCA2FF007DF1A8 /* FeedbackDetailModal.swift */; };
 		1F9ACE0626F479A600AB2E27 /* AddBlockModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */; };
 		1F9ACE0926F4BA3A00AB2E27 /* PlayerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */; };
 		1F9ACE0B26F6019800AB2E27 /* PlayerRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */; };
@@ -228,6 +229,7 @@
 		1F9A467E26FC3D45007DF1A8 /* FacebookModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookModal.swift; sourceTree = "<group>"; };
 		1F9A467F26FC3D45007DF1A8 /* PictureModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureModal.swift; sourceTree = "<group>"; };
 		1F9A468026FC3D45007DF1A8 /* FacebookDataModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookDataModal.swift; sourceTree = "<group>"; };
+		1F9A468426FCA2FF007DF1A8 /* FeedbackDetailModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackDetailModal.swift; sourceTree = "<group>"; };
 		1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlockModal.swift; sourceTree = "<group>"; };
 		1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequest.swift; sourceTree = "<group>"; };
 		1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequestModal.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				1F8961A626F0753D00E08E3C /* BookingModal.swift */,
+				1F9A468426FCA2FF007DF1A8 /* FeedbackDetailModal.swift */,
 			);
 			path = MyBookings;
 			sourceTree = "<group>";
@@ -1252,6 +1255,7 @@
 				7CA24C3826C241B200437C8A /* PreferenceManager.swift in Sources */,
 				1F4CF3F926E9F2DC008B2965 /* HomeListingDetailsVC.swift in Sources */,
 				7C8F1D5E26CE328800135C41 /* AddPaymentTVCell.swift in Sources */,
+				1F9A468526FCA2FF007DF1A8 /* FeedbackDetailModal.swift in Sources */,
 				1F9A468126FC3D45007DF1A8 /* FacebookModal.swift in Sources */,
 				7C52986D26DD04BC00A3606D /* HostNotificationCell.swift in Sources */,
 				7CE0F64226D4D41A00C3AAFB /* SignUpHostVC.swift in Sources */,

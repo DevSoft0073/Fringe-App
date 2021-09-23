@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import Alamofire
 import Foundation
 
 class BookingDetailsRatingVC : BaseVC {
     
+    @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet weak var ratingView: FloatRatingView!
     @IBOutlet weak var txtViewQuery: UITextView!
     
+    var feedBackDat: FeedbackDetailModal?
+    var bookingDetails: BookingModal?
     var golfID = String()
     //------------------------------------------------------
     
@@ -26,6 +30,19 @@ class BookingDetailsRatingVC : BaseVC {
     
     deinit { //same like dealloc in ObjectiveC
         
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Custome
+    
+    func setupUI()  {
+        
+        // set text view data
+        self.txtViewQuery.text = feedBackDat?.review ?? String()
+        
+        // set rating value
+        self.ratingView.rating = Double(feedBackDat?.rating ?? String()) ?? 0.0
     }
     
     func validate() -> Bool {
@@ -58,7 +75,7 @@ class BookingDetailsRatingVC : BaseVC {
                 DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
                     
                     self.popBack(3)
-
+                    
                 }
                 delay {
                     completion?(true)
@@ -87,7 +104,54 @@ class BookingDetailsRatingVC : BaseVC {
             }
         })
     }
-
+    
+    private func performGetFeedbackDetails(completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.golfID: bookingDetails?.golfID ?? String(),
+            
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.getFeedbackDetails, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<FeedbackDetailModal>.self, successBlock: { (response: ResponseModal<FeedbackDetailModal>) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                if response.data?.isRating == "0" {
+                    self.btnSubmit.isHidden = false
+                } else {
+                    self.btnSubmit.isHidden = true
+                    self.ratingView.isUserInteractionEnabled = false
+                    self.txtViewQuery.isUserInteractionEnabled = false
+                }
+                self.feedBackDat = response.data
+                self.setupUI()
+                //
+                delay {
+                    completion?(true)
+                }
+                
+            } else {
+                
+                
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
     
     //------------------------------------------------------
     
@@ -116,7 +180,7 @@ class BookingDetailsRatingVC : BaseVC {
                 }
             }
         }
-
+        
     }
     
     //------------------------------------------------------
@@ -125,6 +189,13 @@ class BookingDetailsRatingVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performGetFeedbackDetails { (flag : Bool) in
+            
+        }
+        
     }
     
     //------------------------------------------------------

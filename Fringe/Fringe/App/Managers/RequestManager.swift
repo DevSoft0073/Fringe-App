@@ -135,6 +135,7 @@ struct Request {
         static let playersBooking = "/GetAllBookingListingByUserid.php"
         static let socialLogin = "/socialLogin.php"
         static let allowNotifAndLoc = "/allowlocation.php"
+        static let getFeedbackDetails = "/GetFeedbackDetail.php"
         static let logout = "/LogOut.php"
     }
     

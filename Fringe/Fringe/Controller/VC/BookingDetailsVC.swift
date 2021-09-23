@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toucan
 import SDWebImage
 import Foundation
 
@@ -36,23 +37,32 @@ class BookingDetailsVC : BaseVC {
         lblRating.text = "5"
         lblRate.text = bookingDetails?.price
         ratingView.rating = Double(bookingDetails?.rating ?? String()) ?? Double()
-//      lblDate.text = "\(stringToDate(string: bookingDetails?.dates ?? String(), dateFormat: "dd-MM-yyyy") ?? )"
-//      lblDate.text = bookingDetails?.dates ?? String()
         let dateValue = bookingDetails?.dates ?? String()
         let dateValu = NumberFormatter().number(from: dateValue)?.doubleValue ?? 0.0
         lblDate.text = convertTimeStampToDate(dateVal: dateValu)
+
+        //image
         imgMain.sd_addActivityIndicator()
         imgMain.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         imgMain.sd_showActivityIndicatorView()
         imgMain.image = getPlaceholderImage()
-        if let image = bookingDetails?.image, image.isEmpty == false {
-            let imgURL = URL(string: image)
-            imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+        if bookingDetails?.golfImages?.count ?? 0 > 0{
+            if let image = bookingDetails?.golfImages?[0], image.isEmpty == false {
+                let imgURL = URL(string: image)
+                imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                    if let serverImage = serverImage {
+                        self.imgMain.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+                    }
+                    self.imgMain.sd_removeActivityIndicator()
+                }
+            } else {
                 self.imgMain.sd_removeActivityIndicator()
             }
         } else {
             self.imgMain.sd_removeActivityIndicator()
+            imgMain.image = UIImage(named: FGImageName.imgPlaceHolder)
         }
+        
     }
     
     //------------------------------------------------------
@@ -72,6 +82,7 @@ class BookingDetailsVC : BaseVC {
     @IBAction func btnSubmit(_ sender: Any) {
         let controller = NavigationManager.shared.bookingDetailsRatingVC
         controller.golfID = bookingDetails?.golfID ?? String()
+        controller.bookingDetails = self.bookingDetails
         push(controller: controller)
     }
     

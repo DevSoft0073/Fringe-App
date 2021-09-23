@@ -73,10 +73,10 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
         
         if sendingDate.isEmpty == true {
             let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM d ,yyyy"
+            formatter.dateFormat = "dd-MM-yyyy"
             sendingDate = formatter.string(from: todayDate)
         }
-        
+//        sendingDate = sendingDate.convertDatetring_TopreferredFormat(currentFormat: "MMM d ,yyyy", toFormat: "dd-MM-yyyy")
         let parameter: [String: Any] = [
             Request.Parameter.golfID: golfDetails?.golfID ?? String(),
             Request.Parameter.dates: sendingDate,
@@ -130,7 +130,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             formatter.dateFormat = "dd-MM-yyyy"
             requestDate = formatter.string(from: todayDate)
             
-            requestDate = sendingDate.convertDatetring_TopreferredFormat(currentFormat: "MMM d ,yyyy", toFormat: "dd-MM-yyyy")
+//            requestDate = sendingDate.convertDatetring_TopreferredFormat(currentFormat: "MMM d ,yyyy", toFormat: "dd-MM-yyyy")
         }
         
         let parameter: [String: Any] = [
@@ -143,7 +143,9 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
         RequestManager.shared.requestPOST(requestMethod: Request.Method.bookingRequest, parameter: parameter,headers: headers, showLoader: false, decodingType: ResponseModal<BookingRequestModal>.self, successBlock: { (response: ResponseModal<BookingRequestModal>) in
             
             LoadingManager.shared.hideLoading()
+            
             print("respnse here",response)
+            
             if response.code == Status.Code.success {
                 
                 completion?(true)
@@ -188,14 +190,16 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     
     func minimumDate(for calendar: FSCalendar) -> Date {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d ,yyyy"
+//        formatter.dateFormat = "MMM d ,yyyy"
+        formatter.dateFormat = "dd-MM-yyyy"
         sendingDate = formatter.string(from: todayDate)
         return todayDate
      }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d ,yyyy"
+//        formatter.dateFormat = "MMM d ,yyyy"
+        formatter.dateFormat = "dd-MM-yyyy"
         sendingDate = formatter.string(from: date)
         
         LoadingManager.shared.showLoading()
