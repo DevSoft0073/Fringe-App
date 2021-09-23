@@ -237,16 +237,19 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
 
     }
     
-    //------------------------------------------------------
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
         
         LoadingManager.shared.showLoading()
         
         self.performGetRequestListing { (flag : Bool) in
             
         }
+    }
+    
+    //------------------------------------------------------
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     

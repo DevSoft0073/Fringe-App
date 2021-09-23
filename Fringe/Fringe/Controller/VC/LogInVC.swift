@@ -10,6 +10,7 @@ import Foundation
 import AppleSignIn
 import FBSDKLoginKit
 import FacebookLogin
+import GoogleSignIn
 import AuthenticationServices
 import IQKeyboardManagerSwift
 
@@ -24,6 +25,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     
     //facebook
+    var fbData = [FbData]()
     let fbManager = LoginManager()
     let permissionEmail = "email"
     
@@ -161,6 +163,58 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
         })
     }    
     
+    func performSocialLogin(_ firstName: String, _ lastName: String, _ socialToken: String, _ email: String , type : String) {
+        
+        let deviceToken = PreferenceManager.shared.deviceToken ?? String()
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.firstName: firstName,
+            Request.Parameter.lastName: lastName,
+            Request.Parameter.email:email,
+            Request.Parameter.socialToken: socialToken,
+            Request.Parameter.deviceToken: deviceToken,
+            Request.Parameter.deviceType: DeviceType.iOS.rawValue,
+            Request.Parameter.type: type,
+            
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.socialLogin, parameter: parameter, headers: [:] ,showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+            
+            if response.code == Status.Code.success {
+                
+                LoadingManager.shared.hideLoading()
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    
+                    PreferenceManager.shared.currentUser = stringUser
+                    PreferenceManager.shared.authToken = response.data?.authorizationToken
+                    PreferenceManager.shared.userId = response.data?.userID
+                    PreferenceManager.shared.loggedUser = true
+                    NavigationManager.shared.setupLandingOnHome()
+                    
+                }
+                                
+            } else {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    self.handleError(code: response.code)
+                    
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
     
     //------------------------------------------------------
     
@@ -257,7 +311,6 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     }
     
     @IBAction func btnGoogleTap(_ sender: Any) {
-        
     }
     
     @IBAction func btnFaceBookTap(_ sender: Any) {
@@ -276,17 +329,20 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                     } else if let dict = response as? [String: Any] {
                         let fbModal = FacebookModal.init(fromDictionary: dict)
                         debugPrint(fbModal.toDictionary())
+                        print(FacebookDataModal(fromDictionary: dict))
                         delay {
                             LoadingManager.shared.showLoading()
                             delayInLoading {
-//                                self.performFacebookLogin(fbModal.firstName, fbModal.lastName, fbModal.facebookId, fbModal.email, fbModal.picture?.data.url ?? String())
+                                self.fbData.append(FbData(firstName: fbModal.firstName, lastName: fbModal.lastName, email: fbModal.email, imgUrl: fbModal.picture?.data.url ?? String()))
+//                                NavigationManager.shared.setupSingUp()
+                                self.performSocialLogin(fbModal.firstName, fbModal.lastName, fbModal.facebookId, fbModal.email, type: "1")
+                                
                             }
                         }
                     }
                 }
             }
         }
-
     }
     
     @IBAction func btnSignUpTap(_ sender: Any) {

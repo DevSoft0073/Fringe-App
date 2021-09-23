@@ -236,6 +236,11 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
+    func setupSingUp() {
+        AppDelegate.shared.window?.rootViewController = signUpVC
+        AppDelegate.shared.window?.makeKeyAndVisible()
+    }
+    
     func setupDetails(detailsData : HomeModal) {
         let controller = NavigationManager.shared.homeListingDetailsVC
         controller.detailsData = detailsData
@@ -246,7 +251,6 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     }
     
     func setupLandingOnHome() {
-        
         tabbarController = landingTC
         AppDelegate.shared.window?.rootViewController = tabbarController
         AppDelegate.shared.window?.makeKeyAndVisible()
@@ -267,7 +271,6 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     }
     
     func setupGuest() {
-        
         AppDelegate.shared.window?.rootViewController = self.homeNC
         AppDelegate.shared.window?.makeKeyAndVisible()
     }

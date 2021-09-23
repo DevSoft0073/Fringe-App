@@ -8,10 +8,14 @@
 import UIKit
 import Alamofire
 import Foundation
+import CoreLocation
 
 class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     
     @IBOutlet weak var tblProfile: UITableView!
+    
+    var allowPush = String()
+    var allowLocation = String()
     
     struct ProfileItems {
         static let accountInformation = LocalizableConstants.Controller.Profile.accountInformation
@@ -86,24 +90,6 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         ]
     }
     
-//    var itemNormal: [ [String:String] ] {
-//        return [
-//            ["name": ProfileItems.accountInformation, "image": ProfileItems.accountInformationIcon],
-//            ["name": ProfileItems.changePassword, "image": ProfileItems.changePasswordIcon],
-//            ["name": ProfileItems.addPayment, "image": ProfileItems.addPaymentIcon],
-//            ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
-//            ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
-//            ["name": ProfileItems.myBookings, "image": ProfileItems.myBookingsIcon],
-//            ["name": PreferenceManager.shared.currentUserModal?.isClubRegistered == true ? ProfileItems.switchToBusiness : ProfileItems.signUpToBusiness, "image": ProfileItems.switchToBusinessIcon],
-////            ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
-//            ["name": ProfileItems.termsOfServices, "image": ProfileItems.termsOfServicesIcon],
-//            ["name": ProfileItems.privacyPolicy, "image": ProfileItems.privacyPolicyIcon],
-//            //            ["name": ProfileItems.cancellationPolicy, "image": ProfileItems.cancellationPolicyIcon],
-//            ["name": ProfileItems.logout, "image": ProfileItems.logoutIcon]
-//        ]
-//    }
-    
-    
     
     var items: [ [String: String] ] {
         if currentUser?.isgolfRegistered == "1" {
@@ -175,15 +161,6 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                 
             } else {
                 
-                delay {
-                    
-                    DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: response.message ?? String()) {
-                        PreferenceManager.shared.userId = nil
-                        PreferenceManager.shared.currentUser = nil
-                        PreferenceManager.shared.authToken = nil
-                        NavigationManager.shared.setupSingIn()
-                    }
-                }
             }
             
         }, failureBlock: { (error: ErrorModal) in
@@ -253,7 +230,160 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             }
 
         })
+    }
+    
+    func chekcAllowLocation() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                print("No access")
+                if let bundle = Bundle.main.bundleIdentifier,
+                   let settings = URL(string: UIApplication.openSettingsURLString + bundle) {
+                    DispatchQueue.main.async {
+                        if UIApplication.shared.canOpenURL(settings) {
+                            UIApplication.shared.open(settings)
+                        }
+                    }
+                }
+                
+            case .authorizedAlways, .authorizedWhenInUse:
+                print("Access")
+                
+            @unknown default:
+                break
+            }
+        } else {
+            print("Location services are not enabled")
+        }
         
+    }
+    
+    func checkAllowPush() {
+        let current = UNUserNotificationCenter.current()
+        
+        current.getNotificationSettings(completionHandler: { (settings) in
+            if settings.authorizationStatus == .notDetermined {
+                if let bundle = Bundle.main.bundleIdentifier,
+                   let settings = URL(string: UIApplication.openSettingsURLString + bundle) {
+                    if UIApplication.shared.canOpenURL(settings) {
+                        UIApplication.shared.open(settings)
+                    }
+                }
+                
+            } else if settings.authorizationStatus == .denied {
+                
+                
+                if let bundle = Bundle.main.bundleIdentifier,
+                   let settings = URL(string: UIApplication.openSettingsURLString + bundle) {
+                    DispatchQueue.main.async {
+                        if UIApplication.shared.canOpenURL(settings) {
+                            UIApplication.shared.open(settings)
+                        }
+                    }
+                }
+                
+            } else if settings.authorizationStatus == .authorized {
+                print("enable")
+            }
+        })
+    }
+    
+    private func performAllowLocation(completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.type: "2" ,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String())
+                    
+                    completion?(true)
+                    
+                }
+                
+            } else {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    //                    self.handleError(code: response.code)
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            completion?(false)
+            
+            delay {
+                //                self.handleError(code: error.code)
+            }
+        })
+    }
+    
+    private func performAllowNotification(completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.type: "1" ,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String())
+                    
+                    completion?(true)
+                    
+                }
+                
+            } else {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    //                    self.handleError(code: response.code)
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            completion?(false)
+            
+            delay {
+                //                self.handleError(code: error.code)
+            }
+        })
     }
     
     //------------------------------------------------------
@@ -274,23 +404,23 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         let image = item["image"]!
         if name == ProfileItems.allowLocation || name == ProfileItems.allowNotification{
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileSwitchCell.self)) as? ProfileSwitchCell{
-                //                if name == ProfileItems.allowLocation {
-                ////                    if currentUser?.allowLocation == "0"
-                //                    {
-                ////                        cell.switchPermission.isOn = true
-                //                    }else{
-                ////                        cell.switchPermission.isOn = false
-                //                    }
-                //                }else if name == ProfileItems.allowNotification {
-                ////                    if currentUser?.allowPush == "0"
-                //                    {
-                ////                        cell.switchPermission.isOn = true
-                //                    }else{
-                ////                        cell.switchPermission.isOn = false
-                //                    }
-                //                }
-                //                cell.switchPermission.addTarget(self, action: #selector(switchBtnPressed(sender:)), for: .valueChanged)
-                //                cell.switchPermission.tag = indexPath.row
+                if name == ProfileItems.allowLocation {
+                    if currentUser?.allowLocation == "0"
+                    {
+                        cell.switchPermission.isOn = true
+                    }else{
+                        cell.switchPermission.isOn = false
+                    }
+                }else if name == ProfileItems.allowNotification {
+                    if currentUser?.allowPush == "0"
+                    {
+                        cell.switchPermission.isOn = true
+                    }else{
+                        cell.switchPermission.isOn = false
+                    }
+                }
+                cell.switchPermission.addTarget(self, action: #selector(switchBtnPressed(sender:)), for: .valueChanged)
+                cell.switchPermission.tag = indexPath.row
                 cell.setup(name: name?.localized())
                 
                 return cell
@@ -307,6 +437,61 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
         
+    }
+    
+    @objc func switchBtnPressed (sender : UISwitch) {
+        if sender.tag == 3{
+            
+            if CLLocationManager.locationServicesEnabled() {
+                switch CLLocationManager.authorizationStatus() {
+                case .notDetermined, .restricted, .denied:
+                    print("No access")
+                    self.chekcAllowLocation()
+                    sender.isOn = false
+                case .authorizedAlways, .authorizedWhenInUse:
+                    
+                    if sender.isOn {
+                        allowLocation = "0"
+                        performAllowLocation { (flag) in
+                        }
+                        
+                    } else{
+                        allowLocation = "1"
+                        performAllowLocation { (flag) in
+                        }
+                    }
+                @unknown default:
+                    break
+                }
+            } else {
+                sender.isOn = false
+                print("Location services are not enabled")
+            }
+            
+        } else {
+            
+            let center = UNUserNotificationCenter.current()
+            center.getNotificationSettings { (settings) in
+                
+                DispatchQueue.main.async {
+                    if(settings.authorizationStatus == .authorized) {
+                        
+                        if sender.isOn {
+                            self.allowPush = "0"
+                            self.performAllowLocation { (flag) in
+                            }
+                        } else{
+                            self.allowPush = "1"
+                            self.performAllowNotification { (flag) in
+                            }
+                        }
+                    } else {
+                        sender.isOn = false
+                        self.checkAllowPush()
+                    }
+                }
+            }
+        }
     }
     
     //------------------------------------------------------
@@ -364,6 +549,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                 let controller = NavigationManager.shared.signUpHostVC
                 push(controller: controller)
             } else {
+                PreferenceManager.shared.curretMode = "2"
                 NavigationManager.shared.setupLandingOnHomeForHost()
 
             }

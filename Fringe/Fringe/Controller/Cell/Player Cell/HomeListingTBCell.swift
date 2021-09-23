@@ -33,16 +33,21 @@ class HomeListingTBCell: UITableViewCell {
         mainImg.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         mainImg.sd_showActivityIndicatorView()
         mainImg.image = getPlaceholderImage()
-        if let image = homeData.image, image.isEmpty == false {
-            let imgURL = URL(string: image)
-            mainImg.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
-                if let serverImage = serverImage {
-                    self.mainImg.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+        if homeData.golfImages?.count ?? 0 > 0{
+            if let image = homeData.golfImages?[0], image.isEmpty == false {
+                let imgURL = URL(string: image)
+                mainImg.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                    if let serverImage = serverImage {
+                        self.mainImg.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+                    }
+                    self.mainImg.sd_removeActivityIndicator()
                 }
+            } else {
                 self.mainImg.sd_removeActivityIndicator()
             }
         } else {
             self.mainImg.sd_removeActivityIndicator()
+            mainImg.image = UIImage(named: FGImageName.imgPlaceHolder)
         }
         
         lblGolfClubName.text = homeData.golfCourseName

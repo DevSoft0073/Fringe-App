@@ -5717,13 +5717,13 @@
                                                         <color key="value" red="0.086262829599999993" green="0.086281977590000003" blue="0.086258627470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleTodayColor">
-                                                        <color key="value" name="appGreen"/>
+                                                        <color key="value" name="appWhite"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="subtitleTodayColor">
                                                         <color key="value" name="appGreen"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                                        <color key="value" name="appWhite"/>
+                                                        <color key="value" name="appGreen"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="todaySelectionColor">
                                                         <color key="value" name="appGreen"/>

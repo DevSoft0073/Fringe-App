@@ -14,7 +14,9 @@ struct HomeModal: Codable , Hashable{
     var status, userID, golfCourseName, location: String?
     var price, homeModalDescription, golfRequest, allowLocation: String?
     var allowNotification, disable, latitude, longitude: String?
-    var createdAt, distance, rating, isFav: String?
+    var createdAt, distance: String?
+    var golfImages: [String]?
+    var rating, isFav: String?
 
     enum CodingKeys: String, CodingKey {
         case golfID = "golf_id"
@@ -30,7 +32,9 @@ struct HomeModal: Codable , Hashable{
         case latitude = "Latitude"
         case longitude = "Longitude"
         case createdAt = "created_at"
-        case distance, rating, isFav
+        case distance
+        case golfImages = "golf_images"
+        case rating, isFav
     }
 }
 
@@ -60,4 +64,3 @@ extension HomeModal {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
-

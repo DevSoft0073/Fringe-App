@@ -6,6 +6,7 @@
 //
 import UIKit
 import Toucan
+import SDWebImage
 import Foundation
 import AppleSignIn
 import GoogleSignIn
@@ -33,6 +34,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     @IBOutlet weak var txtPassword: FGPasswordTextField!
     @IBOutlet weak var txtConfirmPassword: FGPasswordTextField!
     
+    var fbData = [FbData]()
     var iconClick = true
     var iconClick2 = true
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
@@ -81,6 +83,28 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
         txtGolfHandicap.delegate = self
         txtPassword.delegate = self
         txtConfirmPassword.delegate = self
+    }
+    
+    func setupData()  {
+        txtUserName.text = fbData.first?.firstName
+        txtLastName.text = fbData.first?.lastName
+        txtEmail.text = fbData.first?.email
+        
+        //image
+        imgProfile.sd_addActivityIndicator()
+        imgProfile.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+        imgProfile.sd_showActivityIndicatorView()
+        if let image = fbData.first?.imgUrl, image.isEmpty == false {
+            let imgURL = URL(string: image)
+            imgProfile.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                if let serverImage = serverImage {
+                    self.imgProfile.image = Toucan.init(image: serverImage).resizeByCropping(CGSize.init(width: self.imgProfile.bounds.width * 2, height: self.imgProfile.bounds.height * 2)).image
+                }
+                self.imgProfile.sd_removeActivityIndicator()
+            }
+        } else {
+            self.imgProfile.sd_removeActivityIndicator()
+        }
     }
     
     func validate() -> Bool {
@@ -499,8 +523,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
         
         #endif
         
-//        GIDSignIn.sharedInstance.
-        
+        setupData()
     }
     
     //------------------------------------------------------

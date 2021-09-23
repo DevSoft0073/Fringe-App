@@ -88,6 +88,7 @@ struct Request {
         static let idNumber = "id_number"
         static let back = "back"
         static let front = "front"
+        static let socialToken = "token"
         
         //Payment
         static let token = "stripe_token"
@@ -132,6 +133,8 @@ struct Request {
         static let abbBlockDate = "/AddBlockAvalibleDate.php"
         static let acceptReject = "/AcceptRejectBooking.php"
         static let playersBooking = "/GetAllBookingListingByUserid.php"
+        static let socialLogin = "/socialLogin.php"
+        static let allowNotifAndLoc = "/allowlocation.php"
         static let logout = "/LogOut.php"
     }
     

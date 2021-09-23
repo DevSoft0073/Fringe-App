@@ -47,7 +47,7 @@ class HomeListingDetailsVC : BaseVC {
         lblAddress.text = detailsData?.location
         lblPrice.text = detailsData?.price
         lblRating.text = detailsData?.rating
-        lblDetails.text = detailsData?.golfCourseName
+        lblDetails.text = detailsData?.homeModalDescription
         ratingView.rating = Double(detailsData?.rating ?? String()) ?? 0.0
         
         //image
@@ -55,21 +55,23 @@ class HomeListingDetailsVC : BaseVC {
         imgMain.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         imgMain.sd_showActivityIndicatorView()
         imgMain.image = getPlaceholderImage()
-        if let image = detailsData?.image, image.isEmpty == false {
-            let imgURL = URL(string: image)
-            imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
-                if let serverImage = serverImage {
-                    self.imgMain.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+        if detailsData?.golfImages?.count ?? 0 > 0{
+            if let image = detailsData?.golfImages?[0], image.isEmpty == false {
+                let imgURL = URL(string: image)
+                imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                    if let serverImage = serverImage {
+                        self.imgMain.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+                    }
+                    self.imgMain.sd_removeActivityIndicator()
                 }
+            } else {
                 self.imgMain.sd_removeActivityIndicator()
             }
         } else {
             self.imgMain.sd_removeActivityIndicator()
+            imgMain.image = UIImage(named: FGImageName.imgPlaceHolder)
         }
-        
-        if detailsData?.image?.isEmpty == true{
-            self.imgMain.image = UIImage(named: "placeholder-image-1")
-        }
+
         if detailsData?.isFav == "1" {
             self.btnFav.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
         }else{

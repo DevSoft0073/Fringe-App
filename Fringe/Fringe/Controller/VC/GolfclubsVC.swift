@@ -328,18 +328,22 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     }
     
     @objc func showPayView(sender : UIButton) {
-        if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringeConfirmedCell{
-            btnTapped = true
-            let data = items[sender.tag]
-            let controller = NavigationManager.shared.confirmedPayVC
-            controller.detailsData = data
-            controller.isUpdate = {
-                self.isSelected = "0"
-            }
-            push(controller: controller)
-            cell.refundRequestView.isHidden = true
-            tblGolf.reloadData()
-        }
+        let controller = NavigationManager.shared.confirmedPayVC
+        push(controller: controller)
+
+
+//        if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringeConfirmedCell{
+//            btnTapped = true
+//            let data = items[sender.tag]
+//            let controller = NavigationManager.shared.confirmedPayVC
+//            controller.detailsData = data
+//            controller.isUpdate = {
+//                self.isSelected = "0"
+//            }
+//            push(controller: controller)
+//            cell.refundRequestView.isHidden = true
+//            tblGolf.reloadData()
+//        }
     }
     
     @objc func cancelBooking(sender : UIButton) {

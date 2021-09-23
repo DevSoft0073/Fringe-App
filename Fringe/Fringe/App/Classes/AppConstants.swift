@@ -88,6 +88,7 @@ struct FGImageName {
     static let iconCheck = "check"
     static let iconUncheck = "uncheck"
     static let iconPlaceHolder = "placeholder-image"
+    static let imgPlaceHolder = "placeholder-image-1"
     
     static let iconFavouriteSelected = "favourite_sel"
     static let iconGolfSelected = "golf_sel"
@@ -166,7 +167,7 @@ struct FGImageName {
     static let iconFeedback = "feedback"
     static let iconRadio = "radio"
     static let iconRadioUnselect = "radioun"
-    
+
 }
 
 struct FGScreenName {

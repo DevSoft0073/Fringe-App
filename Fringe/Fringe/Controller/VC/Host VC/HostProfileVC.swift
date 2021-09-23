@@ -8,11 +8,14 @@
 import UIKit
 import Foundation
 import Alamofire
+import CoreLocation
 
 class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tblProfile: UITableView!
     
+    var allowPush = String()
+    var allowLocation = String()
     var section = ["","",""]
     
     struct ProfileItems {
@@ -211,6 +214,160 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         
     }
 
+    func chekcAllowLocation() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                print("No access")
+                if let bundle = Bundle.main.bundleIdentifier,
+                   let settings = URL(string: UIApplication.openSettingsURLString + bundle) {
+                    DispatchQueue.main.async {
+                        if UIApplication.shared.canOpenURL(settings) {
+                            UIApplication.shared.open(settings)
+                        }
+                    }
+                }
+                
+            case .authorizedAlways, .authorizedWhenInUse:
+                print("Access")
+                
+            @unknown default:
+                break
+            }
+        } else {
+            print("Location services are not enabled")
+        }
+        
+    }
+    
+    func checkAllowPush() {
+        let current = UNUserNotificationCenter.current()
+        
+        current.getNotificationSettings(completionHandler: { (settings) in
+            if settings.authorizationStatus == .notDetermined {
+                if let bundle = Bundle.main.bundleIdentifier,
+                   let settings = URL(string: UIApplication.openSettingsURLString + bundle) {
+                    if UIApplication.shared.canOpenURL(settings) {
+                        UIApplication.shared.open(settings)
+                    }
+                }
+                
+            } else if settings.authorizationStatus == .denied {
+                
+                
+                if let bundle = Bundle.main.bundleIdentifier,
+                   let settings = URL(string: UIApplication.openSettingsURLString + bundle) {
+                    DispatchQueue.main.async {
+                        if UIApplication.shared.canOpenURL(settings) {
+                            UIApplication.shared.open(settings)
+                        }
+                    }
+                }
+                
+            } else if settings.authorizationStatus == .authorized {
+                print("enable")
+            }
+        })
+    }
+    
+    private func performAllowLocation(completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.type: "2" ,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String())
+                    
+                    completion?(true)
+                    
+                }
+                
+            } else {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    //                    self.handleError(code: response.code)
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            completion?(false)
+            
+            delay {
+                //                self.handleError(code: error.code)
+            }
+        })
+    }
+    
+    private func performAllowNotification(completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.type: "1" ,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String())
+                    
+                    completion?(true)
+                    
+                }
+                
+            } else {
+                
+                LoadingManager.shared.hideLoading()
+                
+                delay {
+                    
+                    //                    self.handleError(code: response.code)
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            completion?(false)
+            
+            delay {
+                //                self.handleError(code: error.code)
+            }
+        })
+    }
+
     
     //------------------------------------------------------
     
@@ -262,7 +419,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
                             cell.switchPermission.isOn = false
                         }
                     }
-                    //                    cell.switchPermission.addTarget(self, action: #selector(switchBtnPressed(sender:)), for: .valueChanged)
+                    cell.switchPermission.addTarget(self, action: #selector(switchBtnPressed(sender:)), for: .valueChanged)
                     cell.switchPermission.tag = indexPath.row
                     cell.setup( name: name?.localized())
                     return cell
@@ -361,7 +518,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
             push(controller: controller)
             
         }else if name == ProfileItems.switchToPlayer{
-            
+            PreferenceManager.shared.curretMode = "1"
             NavigationManager.shared.setupLandingOnHome()
 //            let controller = NavigationManager.shared.signUpHostVC
 //            push(controller: controller)
@@ -400,6 +557,62 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
             }            
         }
     }
+    
+    @objc func switchBtnPressed (sender : UISwitch) {
+        if sender.tag == 3{
+            
+            if CLLocationManager.locationServicesEnabled() {
+                switch CLLocationManager.authorizationStatus() {
+                case .notDetermined, .restricted, .denied:
+                    print("No access")
+                    self.chekcAllowLocation()
+                    sender.isOn = false
+                case .authorizedAlways, .authorizedWhenInUse:
+                    
+                    if sender.isOn {
+                        allowLocation = "0"
+                        performAllowLocation { (flag) in
+                        }
+                        
+                    } else{
+                        allowLocation = "1"
+                        performAllowLocation { (flag) in
+                        }
+                    }
+                @unknown default:
+                    break
+                }
+            } else {
+                sender.isOn = false
+                print("Location services are not enabled")
+            }
+            
+        } else {
+            
+            let center = UNUserNotificationCenter.current()
+            center.getNotificationSettings { (settings) in
+                
+                DispatchQueue.main.async {
+                    if(settings.authorizationStatus == .authorized) {
+                        
+                        if sender.isOn {
+                            self.allowPush = "0"
+                            self.performAllowLocation { (flag) in
+                            }
+                        } else{
+                            self.allowPush = "1"
+                            self.performAllowNotification { (flag) in
+                            }
+                        }
+                    } else {
+                        sender.isOn = false
+                        self.checkAllowPush()
+                    }
+                }
+            }
+        }
+    }
+
     
     //------------------------------------------------------
     
