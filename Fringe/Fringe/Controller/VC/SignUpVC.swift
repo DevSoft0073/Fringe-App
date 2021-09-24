@@ -93,7 +93,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
             
         } else {
             
-            txtUserName.text = currentUser?.userName
+            txtUserName.text = currentUser?.firstName
             txtLastName.text = currentUser?.lastName
             txtEmail.text = currentUser?.email
             

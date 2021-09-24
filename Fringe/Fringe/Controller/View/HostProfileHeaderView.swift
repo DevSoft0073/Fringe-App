@@ -27,7 +27,7 @@ class HostProfileHeaderView: UIView {
         imgProfile.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         imgProfile.sd_showActivityIndicatorView()
         imgProfile.image = getPlaceholderImage()
-        if let image = currentUser?.hostImage, image.isEmpty == false {
+        if let image = currentUser?.image, image.isEmpty == false {
             let imgURL = URL(string: image)
             imgProfile.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
                 if let serverImage = serverImage {

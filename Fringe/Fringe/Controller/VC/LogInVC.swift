@@ -163,7 +163,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
         })
     }    
     
-    func performSocialLogin(_ firstName: String, _ lastName: String, _ socialToken: String, _ email: String , type : String) {
+    func performSocialLogin(_ firstName: String, _ lastName: String, _ socialToken: String, _ email: String , type : String , imgUrl : String) {
         
         let deviceToken = PreferenceManager.shared.deviceToken ?? String()
         
@@ -175,6 +175,9 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
             Request.Parameter.deviceToken: deviceToken,
             Request.Parameter.deviceType: DeviceType.iOS.rawValue,
             Request.Parameter.type: type,
+            Request.Parameter.socialImage: imgUrl,
+            Request.Parameter.lat: PreferenceManager.shared.lat ?? String(),
+            Request.Parameter.long: PreferenceManager.shared.long ?? String(),
             
         ]
         
@@ -189,7 +192,6 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                     if response.data?.isRegistered == "0" {
                         
                         PreferenceManager.shared.currentUser = stringUser
-                        PreferenceManager.shared.loggedUser = true
                         NavigationManager.shared.setupSingUp()
                         
                     } else {
@@ -203,14 +205,14 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                     }
                 }
                                 
-            } else {
+            } else if response.code == Status.Code.newSignUp {
                 
                 LoadingManager.shared.hideLoading()
                 
                 delay {
-                    
-                    self.handleError(code: response.code)
-                    
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
+                        NavigationManager.shared.setupSingUp()
+                    }
                 }
             }
             
@@ -344,7 +346,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                             delayInLoading {
                                 self.fbData.append(FbData(firstName: fbModal.firstName, lastName: fbModal.lastName, email: fbModal.email, imgUrl: fbModal.picture?.data.url ?? String()))
 //                                NavigationManager.shared.setupSingUp()
-                                self.performSocialLogin(fbModal.firstName, fbModal.lastName, fbModal.facebookId, fbModal.email, type: "1")
+                                self.performSocialLogin(fbModal.firstName, fbModal.lastName, fbModal.facebookId, fbModal.email, type: "1", imgUrl: fbModal.picture?.data.url ?? String())
                                 
                             }
                         }
@@ -406,7 +408,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                 LoadingManager.shared.showLoading()
                 
                 delayInLoading {
-                    self.performAppleLogin(userFirstName, userLastName, userIdentifier, userEmail)
+                    self.performSocialLogin(userFirstName, userLastName, userIdentifier, userEmail, type: "3", imgUrl: "")
                 }
             }
             

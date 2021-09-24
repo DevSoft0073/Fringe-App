@@ -32,7 +32,6 @@ class PaymentOptionsVC : BaseVC, UITableViewDataSource , UITableViewDelegate {
         ]
     }
     var items: [ [String: String] ] {
-        
         return itemNormal
     }
     
@@ -90,7 +89,6 @@ class PaymentOptionsVC : BaseVC, UITableViewDataSource , UITableViewDelegate {
         let name = item["name"]
         let image = item["image"]!
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddPaymentTVCell", for: indexPath) as! AddPaymentTVCell
-        
         cell.setup(image: image, name: name?.localized())
         
         return cell

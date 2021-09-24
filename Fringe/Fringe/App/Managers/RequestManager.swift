@@ -39,6 +39,7 @@ struct Request {
         static let long = "longitude"
         static let appleToken = "apple_token"
         static let golfID = "golf_id"
+        static let socialImage = "image"
         
         // chnage password
         static let newPassword = "new_password"
@@ -410,5 +411,6 @@ struct Status {
         static let stripeIssue = 507
         static let alreadyAddedCard = 518
         static let nofoundDat = 503
+        static let newSignUp = 400
     }
 }

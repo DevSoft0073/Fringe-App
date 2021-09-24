@@ -12,7 +12,7 @@ import Foundation
 import CoreLocation
 import FittedSheets
 
-class HomeVC : BaseVC, FGLocationManagerDelegate{
+class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
     
     
     @IBOutlet weak var locationsMap: MKMapView!
@@ -24,6 +24,7 @@ class HomeVC : BaseVC, FGLocationManagerDelegate{
     @IBOutlet weak var lblName: FGSemiboldLabel!
     @IBOutlet weak var imgMain: UIImageView!
     
+    var locationManager: CLLocationManager!
     var manager = FGLocationManager()
     var annotation = MKPointAnnotation()
     
@@ -67,6 +68,11 @@ class HomeVC : BaseVC, FGLocationManagerDelegate{
         
     }
     
+    private func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last! as CLLocation
+        setMarkers(lat: Double(location.coordinate.latitude), Long: Double(location.coordinate.longitude))
+    }
+    
     //------------------------------------------------------
     
     //MARK: Actions
@@ -96,6 +102,16 @@ class HomeVC : BaseVC, FGLocationManagerDelegate{
         manager.startMonitoring()
         setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
         imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
+        
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+        
     }
     
     //------------------------------------------------------
@@ -103,7 +119,11 @@ class HomeVC : BaseVC, FGLocationManagerDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bottomSheetView()
-        setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
+        }
+        
         NavigationManager.shared.isEnabledBottomMenu = true
     }
 }

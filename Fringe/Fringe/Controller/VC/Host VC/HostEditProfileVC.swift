@@ -92,7 +92,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         imgProfile.sd_addActivityIndicator()
         imgProfile.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         imgProfile.sd_showActivityIndicatorView()
-        if let image = currentUserHost?.hostImage, image.isEmpty == false {
+        if let image = currentUserHost?.image, image.isEmpty == false {
             let imgURL = URL(string: image)
             imgProfile.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
                 if let serverImage = serverImage {

@@ -11,6 +11,7 @@ import UIKit
 import Stripe
 import Firebase
 import Alamofire
+import CoreLocation
 import GoogleSignIn
 import FBSDKCoreKit
 import UserNotifications
@@ -18,10 +19,10 @@ import IQKeyboardManagerSwift
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate{
     
     var window: UIWindow?
-    
+    var locationManager: CLLocationManager!
     static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
@@ -184,7 +185,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         StripeAPI.defaultPublishableKey = "sk_test_51JUS7iJ3XoLMRYVne26o0RcRXQtMgliZktPIihg7TRR8rEqcIpa8USR9g6out0i593Vt5cSGmiivcNs0rbbb3fon00Az943rmZ"
         
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+        
         return true
+    }
+    
+    private func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last! as CLLocation
+        PreferenceManager.shared.lat = location.coordinate.latitude
+        PreferenceManager.shared.long = location.coordinate.longitude
     }
     
     func application(_ app: UIApplication,open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

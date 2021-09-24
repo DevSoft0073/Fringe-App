@@ -7,47 +7,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F7C76D60-68AD-4E8A-B114-A835C30DAF41"
+            uuid = "17F8C027-BB08-4B32-BB30-A7EA55BBAB59"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/FavouriteVC.swift"
+            filePath = "Fringe/Controller/VC/SignUpVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "performGetFavStudios(completion:)"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "setupData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96441499-79FE-4D26-9F4A-9A1901B31D15"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fringe/Controller/VC/SignUpVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "setupData()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "F7C76D60-68AD-4E8A-B114-A835C30DAF41 - 10112bc4c0784e2b"
+                  uuid = "96441499-79FE-4D26-9F4A-9A1901B31D15 - 20d745358b89634f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Fringe.FavouriteVC.performGetFavStudios(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  symbolName = "Fringe.SignUpVC.setupData() -&gt; ()"
                   moduleName = "Fringe"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/FavouriteVC.swift"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/SignUpVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "975">
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "2772">
                </Location>
                <Location
-                  uuid = "F7C76D60-68AD-4E8A-B114-A835C30DAF41 - deae3c6638af3cb0"
+                  uuid = "96441499-79FE-4D26-9F4A-9A1901B31D15 - 33b501ff6f878c62"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Fringe.ResponseModal&lt;Swift.Array&lt;Fringe.FavoriteListing&gt;&gt;) -&gt; () in Fringe.FavouriteVC.performGetFavStudios(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.UIImage&gt;, Swift.Optional&lt;Swift.Error&gt;, __C.SDImageCacheType, Swift.Optional&lt;Foundation.URL&gt;) -&gt; () in Fringe.SignUpVC.setupData() -&gt; ()"
                   moduleName = "Fringe"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/FavouriteVC.swift"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/SignUpVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "178">
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "68">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -55,97 +71,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B6B12CD8-8CF9-4DAF-8148-1675B88FD731"
+            uuid = "DC646906-9831-44F3-9F3A-81ADD67DA569"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/FavouriteVC.swift"
+            filePath = "Fringe/Controller/VC/SignUpVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "performGetFavStudios(completion:)"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "setupData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "63FD32C4-E2EF-4BD9-B27F-BF2CF4BF0629"
+            uuid = "28BA2470-EEB7-433F-B36D-95D5AB9D2EC0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/FavouriteVC.swift"
+            filePath = "Fringe/Controller/VC/CheckAvailabilityVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "performGetFavStudios(completion:)"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "performGetRequestListing(completion:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "19977B05-E9AC-41A4-B608-2CB8F12C8DF0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/FavouriteVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "performGetFavStudios(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "81B14CD7-B4DD-43E8-B832-8E1A5B4561D5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/FavouriteVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "performGetFavStudios(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2E8AEDFD-BF57-484B-8886-F9B4A67EFF7A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/LogInVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "performSocialLogin(_:_:_:_:type:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "47832041-7848-4B79-9F8E-4A8AD9E6B79C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/LogInVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "performSocialLogin(_:_:_:_:type:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "28BA2470-EEB7-433F-B36D-95D5AB9D2EC0 - e6f639ea0860299e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fringe.CheckAvailabilityVC.performGetRequestListing(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Fringe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/CheckAvailabilityVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "1568">
+               </Location>
+               <Location
+                  uuid = "28BA2470-EEB7-433F-B36D-95D5AB9D2EC0 - 83fb129ea48f594e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Fringe.ResponseModal&lt;Swift.Array&lt;Fringe.CheckModal&gt;&gt;) -&gt; () in Fringe.CheckAvailabilityVC.performGetRequestListing(completion: Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Fringe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymac/Desktop/Github/Fringe-app-Github/Fringe/Fringe/Controller/VC/CheckAvailabilityVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
