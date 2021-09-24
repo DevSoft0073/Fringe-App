@@ -113,11 +113,6 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
     //MARK: UITableViewDataSource,UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if items.count == 0 {
-            self.tblFavourite.setEmptyMessage("No data found.")
-        } else {
-            self.tblFavourite.restore()
-        }
         return items.count
         
     }

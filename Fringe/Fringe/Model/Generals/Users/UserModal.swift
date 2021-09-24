@@ -10,15 +10,15 @@ import Foundation
 
 // MARK: - UserModal
 struct UserModal: Codable {
-    var userID: String?
-    var image: String?
-    var userName, firstName, lastName, timeZone: String?
-    var isgolfRegistered, dob, gender, mobileNo: String?
-    var hometown, profession, memberCourse, golfHandicap: String?
-    var password, confirmPassword, email, emailVerification, authorizationToken: String?
-    var verificationCode, disable, allowPush, allowLocation: String?
-    var fbToken, googleToken, appleToken, creationAt: String?
-
+    var userID, isRequest, golfID, stripeAccountStatus: String?
+    var image, userName, accountID, customerID: String?
+    var firstName, lastName, timeZone, isgolfRegistered: String?
+    var dob, gender, mobileNo, hometown: String?
+    var profession, memberCourse, golfHandicap, password: String?
+    var confirmPassword, email, emailVerification, verificationCode: String?
+    var disable, allowPush, allowLocation, fbToken: String?
+    var googleToken, appleToken, creationAt, authorizationToken: String?
+    var isRegistered: String?
     
     func toMockUser() -> MockUser {
 //        if studio == "1" {
@@ -33,10 +33,16 @@ struct UserModal: Codable {
         }
     }
     
+
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
+        case isRequest = "is_request"
+        case golfID = "golf_id"
+        case stripeAccountStatus = "stripe_account_status"
         case image
         case userName = "user_name"
+        case accountID = "account_id"
+        case customerID = "customer_id"
         case firstName = "first_name"
         case lastName = "last_name"
         case timeZone = "time_zone"
@@ -59,13 +65,16 @@ struct UserModal: Codable {
         case appleToken = "apple_token"
         case creationAt = "creation_at"
         case authorizationToken = "authorization_token"
+        case isRegistered = "is_registered"
     }
+    
     var isClubRegistered: Bool {
         if isgolfRegistered == "2" {
             return false
         }
         return isgolfRegistered == "1" ? true : false
     }
+    
 }
 
 // MARK: UserModal convenience initializers and mutators

@@ -13,6 +13,7 @@ import IQKeyboardManagerSwift
 
 class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayoutDelegate, InputBarAccessoryViewDelegate{
     
+    @IBOutlet weak var topView: UIView!
     
     var currentUser: UserModal? {
         return PreferenceManager.shared.currentUserModal
@@ -55,6 +56,7 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.topView.addSubview(messagesCollectionView)
     }
     
     //------------------------------------------------------

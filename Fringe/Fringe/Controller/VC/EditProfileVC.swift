@@ -158,7 +158,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
             "Token": PreferenceManager.shared.authToken ?? String(),
            ]
         let parameter: [String: Any] = [
-//            Request.Parameter.userID: currentUser?.userID ?? String(),
+            Request.Parameter.userID: currentUser?.userID ?? String(),
             Request.Parameter.firstName: txtFirstName?.text ?? String(),
             Request.Parameter.lastName: txtLastName.text ?? String(),
             Request.Parameter.dob: txtBirthDate?.text ?? String(),
@@ -169,7 +169,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
             
         ]
         
-        RequestManager.shared.multipartImageRequestForSingleImage(parameter: parameter, headers: headers, profileImagesData: imgData, keyName: "image[]", profileKeyName: "image", urlString: PreferenceManager.shared.userBaseURL + Request.Method.edit) { (response, error) in
+        RequestManager.shared.multipartImageRequestForSingleImage(parameter: parameter, headers: headers, profileImagesData: imgData, keyName: "image", profileKeyName: "image", urlString: PreferenceManager.shared.userBaseURL + Request.Method.edit) { (response, error) in
             
             if error == nil{
                 

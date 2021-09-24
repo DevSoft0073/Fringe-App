@@ -49,7 +49,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
             ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
             ["name": ProfileItems.myBookings, "image": ProfileItems.myBookingsIcon],
-            ["name": PreferenceManager.shared.currentUserModal?.isClubRegistered == true ? ProfileItems.switchToBusiness : ProfileItems.signUpToBusiness, "image": ProfileItems.switchToBusinessIcon],
+//            ["name": PreferenceManager.shared.currentUserModal?.isClubRegistered == true ? ProfileItems.switchToBusiness : ProfileItems.signUpToBusiness, "image": ProfileItems.switchToBusinessIcon],
 //            ["name": ProfileItems.switchToBusiness, "image": ProfileItems.switchToBusinessIcon],
             ["name": ProfileItems.termsOfServices, "image": ProfileItems.termsOfServicesIcon],
             ["name": ProfileItems.privacyPolicy, "image": ProfileItems.privacyPolicyIcon],
@@ -196,8 +196,10 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             if response.code == Status.Code.success {
                 
                 PreferenceManager.shared.loggedUser = false
-                
-                LoadingManager.shared.hideLoading()
+                PreferenceManager.shared.userId = nil
+                PreferenceManager.shared.currentUser = nil
+                PreferenceManager.shared.authToken = nil
+                NavigationManager.shared.setupSingIn()
                 
                 delay {
                     
@@ -206,8 +208,10 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                 }
                 
             } else {
-                
-                LoadingManager.shared.hideLoading()
+                PreferenceManager.shared.userId = nil
+                PreferenceManager.shared.currentUser = nil
+                PreferenceManager.shared.authToken = nil
+                NavigationManager.shared.setupSingIn()
                 
                 delay {
                 }

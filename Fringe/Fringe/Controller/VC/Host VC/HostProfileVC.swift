@@ -177,8 +177,10 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
             if response.code == Status.Code.success {
                 
                 PreferenceManager.shared.loggedUser = false
-                
-                LoadingManager.shared.hideLoading()
+                PreferenceManager.shared.userId = nil
+                PreferenceManager.shared.currentUser = nil
+                PreferenceManager.shared.authToken = nil
+                NavigationManager.shared.setupSingIn()
                 
                 delay {
                     

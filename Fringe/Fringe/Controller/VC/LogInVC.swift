@@ -186,12 +186,21 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                 
                 if let stringUser = try? response.data?.jsonString() {
                     
-                    PreferenceManager.shared.currentUser = stringUser
-                    PreferenceManager.shared.authToken = response.data?.authorizationToken
-                    PreferenceManager.shared.userId = response.data?.userID
-                    PreferenceManager.shared.loggedUser = true
-                    NavigationManager.shared.setupLandingOnHome()
-                    
+                    if response.data?.isRegistered == "0" {
+                        
+                        PreferenceManager.shared.currentUser = stringUser
+                        PreferenceManager.shared.loggedUser = true
+                        NavigationManager.shared.setupSingUp()
+                        
+                    } else {
+                        
+                        PreferenceManager.shared.currentUser = stringUser
+                        PreferenceManager.shared.authToken = response.data?.authorizationToken
+                        PreferenceManager.shared.userId = response.data?.userID
+                        PreferenceManager.shared.loggedUser = true
+                        NavigationManager.shared.setupLandingOnHome()
+                        
+                    }
                 }
                                 
             } else {
@@ -421,7 +430,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtEmail.text = "dharmaniz.guleria@gmail.com"
+        txtEmail.text = "dharmaniz.guleria22@gmail.com"
         txtPassword.text = "Qwerty@123"
         setup()
     }
