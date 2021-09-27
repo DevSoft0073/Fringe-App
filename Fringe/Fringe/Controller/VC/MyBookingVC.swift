@@ -88,11 +88,15 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource, KRPull
                     }
                     self.items.append(contentsOf: response.data ?? [])
                     self.items = self.items.removingDuplicates()
-                    self.lastRequestId = response.data?.first?.id ?? String()
+                    self.lastRequestId = response.data?.last?.id ?? String()
                     self.updateUI()
                 }
-            }
-            else {
+            } else if response.code == Status.Code.notfound {
+                
+//                self.updateUI()
+                
+            } else {
+                
                 
                 completion?(true)
             }
@@ -216,10 +220,11 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource, KRPull
         super.viewDidLoad()
         LoadingManager.shared.showLoading()
         
+        setup()
+        
         performBokkings { (flag : Bool) in
             
         }
-        setup()
        
     }
     

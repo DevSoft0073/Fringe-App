@@ -78,4 +78,3 @@ extension BookingModal {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
-

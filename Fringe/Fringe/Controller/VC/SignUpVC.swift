@@ -101,18 +101,19 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
             imgProfile.sd_addActivityIndicator()
             imgProfile.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
             imgProfile.sd_showActivityIndicatorView()
+            imgProfile.image = getPlaceholderImage()
             if let image = currentUser?.image, image.isEmpty == false {
                 let imgURL = URL(string: image)
                 imgProfile.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
                     if let serverImage = serverImage {
-                        self.imgProfile.image = Toucan.init(image: serverImage).resizeByCropping(CGSize.init(width: self.imgProfile.bounds.width * 2, height: self.imgProfile.bounds.height * 2)).image
+                        self.imgProfile.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: FGColor.appGreen).image
                     }
                     self.imgProfile.sd_removeActivityIndicator()
                 }
+
             } else {
                 self.imgProfile.sd_removeActivityIndicator()
             }
-            
         }
     }
     

@@ -50,12 +50,11 @@ class MyBookingTVCell: UITableViewCell {
             imgMain.image = UIImage(named: FGImageName.imgPlaceHolder)
         }
         
-//        imgMain.sd_setImage(with: URL(string: bookingData.golfImages?[1] ?? String()), placeholderImage: UIImage(named: FGImageName.imgPlaceHolder))
         lblName.text = bookingData.golfCourseName
         lblAddress.text = bookingData.location
         lblRate.text = bookingData.price
-//        lblRating.text = bookingData.
-//        ratingView.rating = Double(homeData.rating ?? String()) ?? Double()
+        lblRating.text = bookingData.rating
+        ratingView.rating = Double(bookingData.rating ?? String()) ?? Double()
     }
     override func layoutSubviews() {
         super.layoutSubviews()
