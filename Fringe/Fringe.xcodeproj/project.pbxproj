@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F02EA152701E609007BA66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F02EA142701E609007BA66E /* GoogleService-Info.plist */; };
 		1F169D3726FDF6AA003C24B4 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F169D3626FDF6AA003C24B4 /* AuthenticationServices.framework */; };
 		1F18387E26F9AF2500A0B663 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18387D26F9AF2500A0B663 /* ChatViewController.swift */; };
 		1F18388026F9B02200A0B663 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18387F26F9B02200A0B663 /* BasicAudioController.swift */; };
@@ -41,7 +42,6 @@
 		1F9ACE0B26F6019800AB2E27 /* PlayerRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */; };
 		1FA73FC026FB0FC3008604AA /* PopUpViewForAddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */; };
 		1FA73FC226FB338F008604AA /* FbData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FC126FB338F008604AA /* FbData.swift */; };
-		1FBACAB126F305070051642D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FBACAB026F305070051642D /* GoogleService-Info.plist */; };
 		1FE9483126E8E68F00961BE2 /* RequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9483026E8E68F00961BE2 /* RequestModal.swift */; };
 		1FF9FF6726F1E12F00006AB0 /* PaymentDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9FF6626F1E12F00006AB0 /* PaymentDataModal.swift */; };
 		1FF9FF6926F1FE1D00006AB0 /* AddCardDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9FF6826F1FE1D00006AB0 /* AddCardDataModal.swift */; };
@@ -202,6 +202,7 @@
 /* Begin PBXFileReference section */
 		08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fringe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6EA47CE18B85558BA94DF3 /* Pods-Fringe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fringe.debug.xcconfig"; path = "Target Support Files/Pods-Fringe/Pods-Fringe.debug.xcconfig"; sourceTree = "<group>"; };
+		1F02EA142701E609007BA66E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/plisttt/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F169D3626FDF6AA003C24B4 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		1F18387D26F9AF2500A0B663 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		1F18387F26F9B02200A0B663 /* BasicAudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
@@ -237,7 +238,6 @@
 		1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequestModal.swift; sourceTree = "<group>"; };
 		1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewForAddAccountVC.swift; sourceTree = "<group>"; };
 		1FA73FC126FB338F008604AA /* FbData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FbData.swift; sourceTree = "<group>"; };
-		1FBACAB026F305070051642D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FE9483026E8E68F00961BE2 /* RequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModal.swift; sourceTree = "<group>"; };
 		1FF82EE426D6642F002B303B /* Fringe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fringe.entitlements; sourceTree = "<group>"; };
 		1FF9FF6626F1E12F00006AB0 /* PaymentDataModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDataModal.swift; sourceTree = "<group>"; };
@@ -759,7 +759,7 @@
 				7CA24C1E26C2403400437C8A /* Controller */,
 				7CA24C1F26C2403E00437C8A /* Resources */,
 				7CA24C0C26C23D9600437C8A /* Info.plist */,
-				1FBACAB026F305070051642D /* GoogleService-Info.plist */,
+				1F02EA142701E609007BA66E /* GoogleService-Info.plist */,
 			);
 			path = Fringe;
 			sourceTree = "<group>";
@@ -1068,7 +1068,7 @@
 				7C52986226DCB3E400A3606D /* HostConfirmedCell.xib in Resources */,
 				7C780FEA26C582C4003F1F12 /* FavouriteTVCell.xib in Resources */,
 				7CE3666026E33310008D231A /* PaymentMethodTVC.xib in Resources */,
-				1FBACAB126F305070051642D /* GoogleService-Info.plist in Resources */,
+				1F02EA152701E609007BA66E /* GoogleService-Info.plist in Resources */,
 				7C5E41B426D8B9B800D63728 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1438,7 +1438,7 @@
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1463,7 +1463,7 @@
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

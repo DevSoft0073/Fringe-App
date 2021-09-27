@@ -35,6 +35,7 @@ class PreferenceManager: NSObject {
     private let keyAuth = "auth"
     private let keyUserDataForHost = "keyUserDataForHost"
     private let currentMode = "currentMode"
+    private let golfID = "golfID"
 
     var deviceToken: String? {
         set {
@@ -182,6 +183,20 @@ class PreferenceManager: NSObject {
         }
         get {
             return userDefault.string(forKey: currentMode)
+        }
+    }
+    
+    var golfId: String? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: golfID)
+            } else {
+                userDefault.removeObject(forKey: golfID)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.string(forKey: golfID)
         }
     }
     

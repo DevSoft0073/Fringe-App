@@ -307,3 +307,4 @@
 "select_date" = "Please select date";
 "reject_resn" = "Please add reject reason.";
 "nodata" = "No data found";
+"no_fav_data" = "No favourite club found.";

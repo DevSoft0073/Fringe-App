@@ -69,7 +69,7 @@ struct UserModal: Codable {
     }
     
     var isClubRegistered: Bool {
-        if isgolfRegistered == "2" {
+        if isgolfRegistered == "0" {
             return false
         }
         return isgolfRegistered == "1" ? true : false

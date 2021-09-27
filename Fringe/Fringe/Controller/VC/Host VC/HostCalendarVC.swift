@@ -119,7 +119,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
         }
 
         let parameter: [String: Any] = [
-            Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
+            Request.Parameter.golfID: PreferenceManager.shared.golfId ?? String(),
             Request.Parameter.dates: sendingDate,
         ]
 
@@ -169,6 +169,15 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
         let controller = NavigationManager.shared.addCalendarPopUpVC
         controller.modalPresentationStyle = .formSheet
         controller.selectedDate = selectedDate
+        controller.updateTblViewData = {
+            
+            DispatchQueue.main.async {
+                self.performGetRequestListing { (flag: Bool) in
+                    self.updateUI()
+                }
+            }
+        }
+
         self.present(controller, animated: true)
     }
     

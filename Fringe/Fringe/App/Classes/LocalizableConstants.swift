@@ -137,6 +137,7 @@ struct LocalizableConstants {
             static let releaseToRefresh = "release_to_refresh"
             static let updating = "updating"
             static let noDataFound = "nodata"
+            static let noFavData = "no_fav_data"
         }
         
         struct NearByGolfClubs {

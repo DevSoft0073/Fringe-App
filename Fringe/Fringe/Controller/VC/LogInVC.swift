@@ -39,6 +39,48 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     
     //------------------------------------------------------
     
+    deinit { //same like dealloc in ObjectiveC
+        
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Custome
+    
+    func setup() {
+        
+        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
+        returnKeyHandler?.delegate = self
+        
+        txtEmail.delegate = self
+        txtPassword.delegate = self
+        //        btnRememberMe.delegate = self
+        
+        
+    }
+    
+    func validate() -> Bool {
+        
+        if ValidationManager.shared.isEmpty(text: txtEmail.text) == true {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterEmail) {
+            }
+            return false
+        }
+        
+        if ValidationManager.shared.isValid(text: txtEmail.text!, for: RegularExpressions.email) == false {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidEmail) {
+            }
+            return false
+        }
+        
+        if ValidationManager.shared.isEmpty(text: txtPassword.text) == true {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterPassword) {
+            }
+            return false
+        }
+        
+        return true
+    }
     
     func performLogin() {
         
@@ -111,57 +153,6 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
             }
         })
     }
-
-    func performAppleLogin(_ firstName: String, _ lastName: String, _ appleId: String, _ email: String) {
-        
-        let deviceToken = PreferenceManager.shared.deviceToken ?? String()
-        
-        let parameter: [String: Any] = [
-            Request.Parameter.firstName: firstName,
-            Request.Parameter.lastName: lastName,
-            Request.Parameter.email:email,
-            Request.Parameter.appleToken: appleId,
-            Request.Parameter.deviceToken: deviceToken,
-            Request.Parameter.deviceType: DeviceType.iOS.rawValue
-        ]
-        
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.aLogin, parameter: parameter, headers: [:] ,showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
-            
-            if response.code == Status.Code.success {
-                
-                LoadingManager.shared.hideLoading()
-                
-                if let stringUser = try? response.data?.jsonString() {
-                    
-                    PreferenceManager.shared.currentUser = stringUser
-                    PreferenceManager.shared.authToken = response.data?.authorizationToken
-                    PreferenceManager.shared.userId = response.data?.userID
-                    PreferenceManager.shared.loggedUser = true
-                    NavigationManager.shared.setupLandingOnHome()
-                    
-                }
-                                
-            } else {
-                
-                LoadingManager.shared.hideLoading()
-                
-                delay {
-                    
-                    self.handleError(code: response.code)
-                    
-                }
-            }
-            
-        }, failureBlock: { (error: ErrorModal) in
-            
-            LoadingManager.shared.hideLoading()
-            
-            delay {
-                
-                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
-            }
-        })
-    }    
     
     func performSocialLogin(_ firstName: String, _ lastName: String, _ socialToken: String, _ email: String , type : String , imgUrl : String) {
         
@@ -188,21 +179,13 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                 LoadingManager.shared.hideLoading()
                 
                 if let stringUser = try? response.data?.jsonString() {
-                    
-                    //                    if response.data?.isRegistered == "0" {
-                    //
-                    //                        PreferenceManager.shared.currentUser = stringUser
-                    //                        let controller = NavigationManager.shared.signUpVC
-                    //                        self.push(controller: controller)
-                    //                    } else {
-                    
+
                     PreferenceManager.shared.currentUser = stringUser
                     PreferenceManager.shared.authToken = response.data?.authorizationToken
                     PreferenceManager.shared.userId = response.data?.userID
                     PreferenceManager.shared.loggedUser = true
                     NavigationManager.shared.setupLandingOnHome()
                     
-                    //                    }
                 }
                 
             } else if response.code == Status.Code.newSignUp {
@@ -232,50 +215,6 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                 DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
             }
         })
-    }
-    
-    //------------------------------------------------------
-    
-    deinit { //same like dealloc in ObjectiveC
-        
-    }
-    
-    //------------------------------------------------------
-    //MARK: Customs
-    
-    func setup() {
-        
-        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
-        returnKeyHandler?.delegate = self
-        
-        txtEmail.delegate = self
-        txtPassword.delegate = self
-        //        btnRememberMe.delegate = self
-        
-        
-    }
-    
-    func validate() -> Bool {
-        
-        if ValidationManager.shared.isEmpty(text: txtEmail.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterEmail) {
-            }
-            return false
-        }
-        
-        if ValidationManager.shared.isValid(text: txtEmail.text!, for: RegularExpressions.email) == false {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidEmail) {
-            }
-            return false
-        }
-        
-        if ValidationManager.shared.isEmpty(text: txtPassword.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterPassword) {
-            }
-            return false
-        }
-        
-        return true
     }
     
     //------------------------------------------------------
@@ -329,6 +268,15 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     }
     
     @IBAction func btnGoogleTap(_ sender: Any) {
+        delay {
+            LoadingManager.shared.showLoading()
+            
+            delayInLoading {
+                GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+                    self.performSocialLogin(user?.profile?.givenName ?? String(), user?.profile?.givenName ?? String(), user?.userID ?? String(), user?.profile?.email ?? String(), type: "2", imgUrl: "\(user?.profile?.imageURL(withDimension: 512) ?? URL(fileURLWithPath: ""))")
+                }
+            }
+        }
     }
     
     @IBAction func btnFaceBookTap(_ sender: Any) {
@@ -354,7 +302,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                                 self.fbData.append(FbData(firstName: fbModal.firstName, lastName: fbModal.lastName, email: fbModal.email, imgUrl: fbModal.picture?.data.url ?? String()))
 //                                NavigationManager.shared.setupSingUp()
                                 self.performSocialLogin(fbModal.firstName, fbModal.lastName, fbModal.facebookId, fbModal.email, type: "1", imgUrl: fbModal.picture?.data.url ?? String())
-                                
+                                self.dismiss(animated: true, completion: nil)
                             }
                         }
                     }
@@ -387,8 +335,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
              return firstName + " " + lastName
              }
              var email: String*/
-            self.performAppleLogin(user.firstName, user.lastName, user.id, user.email)
-        }
+            self.performSocialLogin(user.firstName, user.lastName, user.id, user.email, type: "3", imgUrl: "")        }
     }
     
     func didCompleteAuthorizationWith(error: Error) {

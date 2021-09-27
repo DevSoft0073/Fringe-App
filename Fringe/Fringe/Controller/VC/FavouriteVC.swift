@@ -53,7 +53,7 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
     }
     
     func updateUI() {
-        noDataLbl.text = LocalizableConstants.Controller.Pages.noDataFound.localized()
+        noDataLbl.text = LocalizableConstants.Controller.Pages.noFavData.localized()
         noDataLbl.isHidden = items.count != .zero
         tblFavourite.reloadData()
     }
@@ -88,6 +88,9 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
                 self.updateUI()
                 
             } else {
+                
+                self.updateUI()
+                
                 completion?(true)
             }
 

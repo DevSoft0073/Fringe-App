@@ -63,7 +63,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
         noDataLbl.isHidden = items.count != .zero
         tblAvailability.reloadData()
     }
-        
+    
     func performGetRequestListing(completion:((_ flag: Bool) -> Void)?) {
         
         let headers:HTTPHeaders = [
@@ -76,7 +76,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             formatter.dateFormat = "dd-MM-yyyy"
             sendingDate = formatter.string(from: todayDate)
         }
-//        sendingDate = sendingDate.convertDatetring_TopreferredFormat(currentFormat: "MMM d ,yyyy", toFormat: "dd-MM-yyyy")
+        //        sendingDate = sendingDate.convertDatetring_TopreferredFormat(currentFormat: "MMM d ,yyyy", toFormat: "dd-MM-yyyy")
         let parameter: [String: Any] = [
             Request.Parameter.golfID: golfDetails?.golfID ?? String(),
             Request.Parameter.dates: sendingDate,
@@ -130,7 +130,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             formatter.dateFormat = "dd-MM-yyyy"
             requestDate = formatter.string(from: todayDate)
             
-//            requestDate = sendingDate.convertDatetring_TopreferredFormat(currentFormat: "MMM d ,yyyy", toFormat: "dd-MM-yyyy")
+            //            requestDate = sendingDate.convertDatetring_TopreferredFormat(currentFormat: "MMM d ,yyyy", toFormat: "dd-MM-yyyy")
         }
         
         let parameter: [String: Any] = [
@@ -148,14 +148,16 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             
             if response.code == Status.Code.success {
                 
-                completion?(true)
+                delay {
+                    completion?(true)
+                }
                 
             } else if response.code == Status.Code.alreadyAdded{
                 
                 delay {
                     
                     DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String())
-
+                    
                 }
                 
                 completion?(true)
@@ -190,15 +192,15 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     
     func minimumDate(for calendar: FSCalendar) -> Date {
         let formatter = DateFormatter()
-//        formatter.dateFormat = "MMM d ,yyyy"
+        //        formatter.dateFormat = "MMM d ,yyyy"
         formatter.dateFormat = "dd-MM-yyyy"
         sendingDate = formatter.string(from: todayDate)
         return todayDate
-     }
+    }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
-//        formatter.dateFormat = "MMM d ,yyyy"
+        //        formatter.dateFormat = "MMM d ,yyyy"
         formatter.dateFormat = "dd-MM-yyyy"
         sendingDate = formatter.string(from: date)
         
@@ -217,10 +219,11 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
         
         LoadingManager.shared.showLoading()
         
-        performAddRequest { (flag : Bool) in
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.addRequestSent.localized()) {
-                LoadingManager.shared.hideLoading()
-                NavigationManager.shared.setupLandingOnGOlfVC()
+        delay {
+            self.performAddRequest { (flag : Bool) in
+                DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.addRequestSent.localized()) {
+                    NavigationManager.shared.setupLandingOnGOlfVC()
+                }
             }
         }
     }

@@ -90,7 +90,6 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         ]
     }
     
-    
     var items: [ [String: String] ] {
         if currentUser?.isgolfRegistered == "1" {
             return itemNormal1
@@ -523,74 +522,137 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = items[indexPath.row]
         let name = item["name"]
-        if name == ProfileItems.accountInformation{
+        
+        if currentUser?.isgolfRegistered == "0"{
             
-            let controller = NavigationManager.shared.accountInformationVC
-            controller.textTitle = name?.localized()
-            push(controller: controller)
-            
-        }else if name == ProfileItems.changePassword {
-            
-            let controller = NavigationManager.shared.changePasswordVC
-            controller.textTitle = name?.localized()
-            push(controller: controller)
-            
-        }else if name == ProfileItems.addPayment {
-            
-            let controller = NavigationManager.shared.addPaymentMethodVC
-            push(controller: controller)
-            
-        }else if name == ProfileItems.myBookings{
-            
-            let controller = NavigationManager.shared.myBookingVC
-            push(controller: controller)
-                        
-        }else if name == ProfileItems.switchToBusiness || name == ProfileItems.signUpToBusiness{
-            
-            if currentUser?.isClubRegistered == false {
+            if name == ProfileItems.accountInformation{
+                
+                let controller = NavigationManager.shared.accountInformationVC
+                controller.textTitle = name?.localized()
+                push(controller: controller)
+                
+            }else if name == ProfileItems.changePassword {
+                
+                let controller = NavigationManager.shared.changePasswordVC
+                controller.textTitle = name?.localized()
+                push(controller: controller)
+                
+            }else if name == ProfileItems.addPayment {
+                
+                let controller = NavigationManager.shared.addPaymentMethodVC
+                push(controller: controller)
+                
+            }else if name == ProfileItems.myBookings{
+                
+                let controller = NavigationManager.shared.myBookingVC
+                push(controller: controller)
+                
+            } else if name == ProfileItems.signUpToBusiness{
+                
                 let controller = NavigationManager.shared.signUpHostVC
                 push(controller: controller)
-            } else {
-                PreferenceManager.shared.curretMode = "2"
-                NavigationManager.shared.setupLandingOnHomeForHost()
-
-            }
-            
-        }else if name == ProfileItems.termsOfServices{
-            
-            let controller = NavigationManager.shared.serviceTermsVC
-            push(controller: controller)
-            
-        }else if name == ProfileItems.privacyPolicy{
-            
-            let controller = NavigationManager.shared.privacyVC
-            push(controller: controller)
-            
-        }else if name == ProfileItems.logout {
-            
-            
-            DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: LocalizableConstants.ValidationMessage.confirmLogout.localized()) {
                 
-                //Nothing to handle
+            }else if name == ProfileItems.termsOfServices{
                 
-            } handlerYes: {
+                let controller = NavigationManager.shared.serviceTermsVC
+                push(controller: controller)
                 
-                LoadingManager.shared.showLoading()
+            }else if name == ProfileItems.privacyPolicy{
                 
-                delayInLoading {
+                let controller = NavigationManager.shared.privacyVC
+                push(controller: controller)
+                
+            }else if name == ProfileItems.logout {
+                
+                
+                DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: LocalizableConstants.ValidationMessage.confirmLogout.localized()) {
                     
-                    LoadingManager.shared.hideLoading()
-                    self.performSignOut { (flag: Bool) in
-                        if flag {
-                            PreferenceManager.shared.currentUser = nil
-                            PreferenceManager.shared.loggedUser = false
-                            NavigationManager.shared.setupSingIn()
+                    //Nothing to handle
+                    
+                } handlerYes: {
+                    
+                    LoadingManager.shared.showLoading()
+                    
+                    delayInLoading {
+                        
+                        LoadingManager.shared.hideLoading()
+                        self.performSignOut { (flag: Bool) in
+                            if flag {
+                                PreferenceManager.shared.currentUser = nil
+                                PreferenceManager.shared.loggedUser = false
+                                NavigationManager.shared.setupSingIn()
+                            }
                         }
                     }
                 }
-            }            
+            }
+        } else {
+            if name == ProfileItems.accountInformation{
+                
+                let controller = NavigationManager.shared.accountInformationVC
+                controller.textTitle = name?.localized()
+                push(controller: controller)
+                
+            }else if name == ProfileItems.changePassword {
+                
+                let controller = NavigationManager.shared.changePasswordVC
+                controller.textTitle = name?.localized()
+                push(controller: controller)
+                
+            }else if name == ProfileItems.addPayment {
+                
+                let controller = NavigationManager.shared.addPaymentMethodVC
+                push(controller: controller)
+                
+            }else if name == ProfileItems.myBookings{
+                
+                let controller = NavigationManager.shared.myBookingVC
+                push(controller: controller)
+                
+            } else if name == ProfileItems.switchToBusiness{
+                
+                PreferenceManager.shared.curretMode = "2"
+                NavigationManager.shared.setupLandingOnHomeForHost()
+                
+            }else if name == ProfileItems.termsOfServices{
+                
+                let controller = NavigationManager.shared.serviceTermsVC
+                push(controller: controller)
+                
+            }else if name == ProfileItems.privacyPolicy{
+                
+                let controller = NavigationManager.shared.privacyVC
+                push(controller: controller)
+                
+            }else if name == ProfileItems.logout {
+                
+                
+                DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: LocalizableConstants.ValidationMessage.confirmLogout.localized()) {
+                    
+                    //Nothing to handle
+                    
+                } handlerYes: {
+                    
+                    LoadingManager.shared.showLoading()
+                    
+                    delayInLoading {
+                        
+                        LoadingManager.shared.hideLoading()
+                        self.performSignOut { (flag: Bool) in
+                            if flag {
+                                PreferenceManager.shared.currentUser = nil
+                                PreferenceManager.shared.loggedUser = false
+                                NavigationManager.shared.setupSingIn()
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+        
+        
+
     
     //------------------------------------------------------
     

@@ -89,8 +89,6 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
         
         if PreferenceManager.shared.currentUser == nil {
             
-            
-            
         } else {
             
             txtUserName.text = currentUser?.firstName
@@ -220,7 +218,11 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     //MARK: Sign Up
     
     private func performSignUp() {
-       
+        
+        if selectedImage == nil {
+            let image: UIImage = imgProfile.image ?? UIImage()
+            selectedImage = image
+        }
         let imageData = selectedImage?.jpegData(compressionQuality: 0.2)
         var imgData = [String : Data]()
         imgData["image"] = imageData

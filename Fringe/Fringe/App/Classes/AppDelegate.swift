@@ -17,6 +17,8 @@ import FBSDKCoreKit
 import UserNotifications
 import IQKeyboardManagerSwift
 
+let signInConfig = GIDConfiguration.init(clientID: "929112962841-9qvjehvnruco3u9nfc7l4g27aeqmt3dc.apps.googleusercontent.com")
+
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate{
@@ -168,7 +170,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         registerRemoteNotificaton(application)
         //RealmManager.shared.save(channelDownload: false)
         window?.tintColor = FGColor.appBlack
-        let signInConfig = GIDConfiguration.init(clientID: "61420739781-bmmv00lkgd1ens54q6l8ei7n5iveop4k.apps.googleusercontent.com")
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil {
                 // Show the app's signed-out state.

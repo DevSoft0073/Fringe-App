@@ -240,6 +240,52 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         })
     }
     
+    func performGetUserProfile() {
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.hostProfile, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<HostModal>.self, successBlock: { (response: ResponseModal<HostModal>) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    
+                    PreferenceManager.shared.currentUserHost = stringUser
+                    PreferenceManager.shared.golfId = response.data?.golfID
+                    self.updateUI()
+                }
+                                
+            } else {
+                
+                delay {
+                    
+                    
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
+            }
+            
+        })
+    }
+
+    
     //------------------------------------------------------
     
     //MARK: UITableViewDataSource,UITableViewDelegate
@@ -432,6 +478,8 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.performGetUserProfile()
         
         LoadingManager.shared.showLoading()
         
