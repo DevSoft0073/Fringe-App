@@ -106,6 +106,16 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
                 
             } else {
                 
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: response.message ?? String()) {
+                        PreferenceManager.shared.userId = nil
+                        PreferenceManager.shared.currentUser = nil
+                        PreferenceManager.shared.authToken = nil
+                        NavigationManager.shared.setupSingIn()
+                    }
+                }
+                
                 completion?(true)
             }
             

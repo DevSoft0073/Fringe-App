@@ -23,10 +23,11 @@ class CheckAvailabilityTBCell: UITableViewCell {
     func setup(bookingData : CheckModal) {
         
         lblName.text = bookingData.golfCourseName
-        lblGuestDetails.text = bookingData.golfCourseName
-//        lblRating.text = bookingData.ra
+        lblGuestDetails.text = bookingData.checkModalDescription
+        lblRating.text = bookingData.rating
         lblAddress.text = bookingData.location
         lblRate.text = bookingData.price
+        ratingView.rating = Double(bookingData.rating ?? String()) ?? Double()
     }
     
     //------------------------------------------------------

@@ -8,12 +8,14 @@
 import Foundation
 
 // MARK: - FavoriteListing
-struct FavoriteListing: Codable , Hashable {
-    var golfID, image, status, userID: String?
-    var golfCourseName, location, price, favoriteListingDescription: String?
-    var golfRequest, allowLocation, allowNotification, disable: String?
-    var latitude, longitude, createdAt, rating: String?
-    var isFav, favID: String?
+struct FavoriteListing: Codable , Hashable{
+    var golfID: String?
+    var image: String?
+    var status, userID, golfCourseName, location: String?
+    var price, favoriteListingDescription, golfRequest, allowLocation: String?
+    var allowNotification, disable, latitude, longitude: String?
+    var createdAt, rating, isFav, favID: String?
+    var golfImages: [String]?
 
     enum CodingKeys: String, CodingKey {
         case golfID = "golf_id"
@@ -31,6 +33,7 @@ struct FavoriteListing: Codable , Hashable {
         case createdAt = "created_at"
         case rating, isFav
         case favID = "fav_id"
+        case golfImages = "golf_images"
     }
 }
 

@@ -323,6 +323,10 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: DetailsScreenVC.self)) as! DetailsScreenVC
     }
     
+    public var submitVC: SubmitVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: SubmitVC.self)) as! SubmitVC
+    }    
+    
     public var checkAvailabilityVC: CheckAvailabilityVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: CheckAvailabilityVC.self)) as! CheckAvailabilityVC
     }

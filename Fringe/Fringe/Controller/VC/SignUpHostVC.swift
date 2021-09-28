@@ -142,34 +142,21 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
                 
                 if let data = response {
                     
-                    let status = data["code"] as? Int ?? 0
-                    let messgae = data["message"] as? String ?? ""
+                    let status = data["code"] as? String ?? ""
+                    _ = data["message"] as? String ?? ""
                     let jsonStudio = data["data"] as? [String: Any]
-                    if status == Status.Code.success {
+                    
+                    if status == "200" {
                         print(jsonStudio ?? [:])
                         
                         delay {
-
-                            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: messgae) {
-                                NavigationManager.shared.setupLandingOnHome()
+                            
+                            let controller = NavigationManager.shared.submitVC
+                            controller.modalPresentationStyle = .overFullScreen
+                            self.present(controller, animated: false) {
                             }
-//                            PreferenceManager.shared.currentStudioUser = jsonStudio?.dict2json()
-//                            let controller = NavigationManager.shared.submitVC
-//                            controller.modalPresentationStyle = .overFullScreen
-//                            self.present(controller, animated: false) {
-//
-//                            }
                         }
-                        
-//                    } else if status == Status.Code.stripeIssue{
-//
-//                        delay {
-//
-//                            DisplayAlertManager.shared.displayAlert(animated: true, message: data["message"] as? String ?? "", handlerOK: nil)
-//
-//                        }
-                    }
-                    else {
+                    } else {
                         
                         delay {
                             
@@ -201,14 +188,20 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     //MARK: Actions
     
     @IBAction func btnSubmit(_ sender: Any) {
-        if validate() == false {
-            return
-        }
-        LoadingManager.shared.showLoading()
+//        if validate() == false {
+//            return
+//        }
+//
+        let controller = NavigationManager.shared.submitVC
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .flipHorizontal
+        self.dismiss(animated: true, completion: nil)
         
-        performAddGolfCourse { (flag : Bool) in
-            
-        }
+//        LoadingManager.shared.showLoading()
+//
+//        performAddGolfCourse { (flag : Bool) in
+//
+//        }
     }
     
     @IBAction func btnUploadImg(_ sender: UIButton) {

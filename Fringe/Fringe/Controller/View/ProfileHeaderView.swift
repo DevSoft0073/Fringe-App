@@ -40,14 +40,11 @@ class ProfileHeaderView: UIView {
         }
         
         //firstname
-        lblName.text = currentUser?.userName
-        
-        //firstname
-        lblName.text = currentUser?.userName
+        lblName.text = "\(currentUser?.firstName ?? String())" + "\(currentUser?.lastName ?? String())"
         
         //email
         lblEmail.text = currentUser?.email
-        //
+        
     }
     
     //------------------------------------------------------

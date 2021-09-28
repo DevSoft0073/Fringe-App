@@ -10,7 +10,7 @@ import Foundation
 
 struct ResponseModal<T: Codable>: Codable {
     
-    let code, status: Int?
+    var code, status: Int?
     let message: String?
     var data : T?
 

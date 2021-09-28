@@ -523,7 +523,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         let item = items[indexPath.row]
         let name = item["name"]
         
-        if currentUser?.isgolfRegistered == "0"{
+        if currentUser?.isgolfRegistered == "0" || currentUser?.isgolfRegistered == "2"{
             
             if name == ProfileItems.accountInformation{
                 
@@ -548,9 +548,17 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                 push(controller: controller)
                 
             } else if name == ProfileItems.signUpToBusiness{
-                
-                let controller = NavigationManager.shared.signUpHostVC
-                push(controller: controller)
+                if currentUser?.isgolfRegistered == "2" {
+                    
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: "") {
+                        
+                    }
+                    
+                } else if currentUser?.isgolfRegistered == "0"{
+                    
+                    let controller = NavigationManager.shared.signUpHostVC
+                    push(controller: controller)
+                }
                 
             }else if name == ProfileItems.termsOfServices{
                 

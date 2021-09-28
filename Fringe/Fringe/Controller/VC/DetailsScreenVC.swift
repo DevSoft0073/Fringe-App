@@ -5,6 +5,7 @@
 //  Created by Dharmani Apps on 23/08/21.
 //
 import UIKit
+import Toucan
 import Alamofire
 import SDWebImage
 import Foundation
@@ -20,6 +21,7 @@ class DetailsScreenVC : BaseVC {
     @IBOutlet weak var lblGolfClubName: FGSemiboldLabel!
     @IBOutlet weak var btnHeart: UIButton!
     
+    var isUpdateTBView:(()->Void)?
     var golfCourseDetails: FavoriteListing?
     var detailsData: HomeModal?
     var favUnfav: FavUnfvModal?
@@ -39,60 +41,38 @@ class DetailsScreenVC : BaseVC {
         
     }
     
-    
     //------------------------------------------------------
     
     //MARK: Custome
     
-//    func setup() {
-//        lblGolfClubName.text = detailsData?.golfCourseName
-//        lblGolfClubAddress.text = detailsData?.location
-//        lblRate.text = detailsData?.price
-//        lblRating.text = detailsData?.rating
-//        lblDetails.text = detailsData?.golfCourseName
-//        ratingView.rating = Double(detailsData?.rating ?? String()) ?? 0.0
-//        imgGolfClub.sd_addActivityIndicator()
-//        imgGolfClub.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
-//        imgGolfClub.sd_showActivityIndicatorView()
-//        if let image = detailsData?.image, image.isEmpty == false {
-//            let imgURL = URL(string: image)
-//            imgGolfClub.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
-//                self.imgGolfClub.sd_removeActivityIndicator()
-//            }
-//        } else {
-//            self.imgGolfClub.sd_removeActivityIndicator()
-//        }
-//        if detailsData?.image?.isEmpty == true{
-//            self.imgGolfClub.image = UIImage(named: "placeholder-image-1")
-//        }
-//        if detailsData?.isFav == "1" {
-//            self.btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
-//        }else{
-//            self.btnHeart.setImage(UIImage(named: FGImageName.iconUnFavWhiteHeart), for: .normal)
-//        }
-//    }
-    
     func setup() {
-        lblGolfClubName.text = golfCourseDetails?.golfCourseName
+        lblRate.text = golfCourseDetails?.price
+        lblRating.text = golfCourseDetails?.rating
         lblGolfClubAddress.text = golfCourseDetails?.location
-//        lblRate.text = "5"
-        lblRating.text = "5"
+        lblGolfClubName.text = golfCourseDetails?.golfCourseName
         lblDetails.text = golfCourseDetails?.favoriteListingDescription
-        ratingView.rating = 5.0
+        ratingView.rating = Double(golfCourseDetails?.rating ?? String()) ?? 0.0
+        
         imgGolfClub.sd_addActivityIndicator()
         imgGolfClub.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         imgGolfClub.sd_showActivityIndicatorView()
-        if let image = golfCourseDetails?.image, image.isEmpty == false {
-            let imgURL = URL(string: image)
-            imgGolfClub.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+        if golfCourseDetails?.golfImages?.count ?? 0 > 0 {
+            if let image = golfCourseDetails?.golfImages?[0], image.isEmpty == false {
+                let imgURL = URL(string: image)
+                imgGolfClub.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                    if let serverImage = serverImage {
+                        self.imgGolfClub.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+                    }
+                    self.imgGolfClub.sd_removeActivityIndicator()
+                }
+            } else {
                 self.imgGolfClub.sd_removeActivityIndicator()
             }
         } else {
             self.imgGolfClub.sd_removeActivityIndicator()
+            imgGolfClub.image = UIImage(named: FGImageName.imgPlaceHolder)
         }
-        if golfCourseDetails?.image?.isEmpty == true{
-            self.imgGolfClub.image = UIImage(named: "placeholder-image-1")
-        }
+   
         if golfCourseDetails?.isFav == "1" {
             self.btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)
         }else{
@@ -163,6 +143,7 @@ class DetailsScreenVC : BaseVC {
     }
     
     @IBAction func btnBack(_ sender: Any) {
+        self.isUpdateTBView?()
         self.pop()
     }
     
@@ -171,6 +152,7 @@ class DetailsScreenVC : BaseVC {
     
     @IBAction func btnCheckAvailability(_ sender: Any) {
         let controller = NavigationManager.shared.checkAvailabilityVC
+        controller.golfId = golfCourseDetails?.golfID ?? String()
         push(controller: controller)
     }
     

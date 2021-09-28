@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Toucan
+import SDWebImage
 import Foundation
 
 class ConfirmedPayVC : BaseVC {
@@ -52,6 +54,37 @@ class ConfirmedPayVC : BaseVC {
     //MARK: Custome
     
     func setupData() {
+        
+        lblName.text = detailsData?.golfCourseName
+        lblAddress.text = detailsData?.location
+        lblRating.text = detailsData?.rating ?? "0"
+        ratingView.rating = Double(detailsData?.rating ?? String()) ?? Double()
+        lblDate.text = detailsData?.date
+        
+        //set image
+        
+        imgMain.sd_addActivityIndicator()
+        imgMain.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+        imgMain.sd_showActivityIndicatorView()
+        imgMain.image = getPlaceholderImage()
+        if detailsData?.golfImages?.count ?? 0 > 0{
+            if let image = detailsData?.golfImages?[0], image.isEmpty == false {
+                let imgURL = URL(string: image)
+                imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                    if let serverImage = serverImage {
+                        self.imgMain.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: 0, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+                    }
+                    self.imgMain.sd_removeActivityIndicator()
+                }
+            } else {
+                self.imgMain.sd_removeActivityIndicator()
+            }
+        } else {
+            self.imgMain.sd_removeActivityIndicator()
+            imgMain.image = UIImage(named: FGImageName.imgPlaceHolder)
+        }
+
+        
         lblGuests.text = "\(addGuestVal)"
         lblGolfclubPrice.text = "$\(detailsData?.golfPrice ?? String())"
         guard let price = Int(detailsData?.golfPrice ?? String()) else { return }

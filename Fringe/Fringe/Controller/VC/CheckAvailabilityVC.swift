@@ -18,6 +18,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
     @IBOutlet weak var tblAvailability: UITableView!
     @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     
+    var golfId = String()
     var golfDetails: HomeModal?
     var items: [CheckModal] = []
     var addRequaet: BookingRequestModal?
@@ -78,7 +79,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
         }
         //        sendingDate = sendingDate.convertDatetring_TopreferredFormat(currentFormat: "MMM d ,yyyy", toFormat: "dd-MM-yyyy")
         let parameter: [String: Any] = [
-            Request.Parameter.golfID: golfDetails?.golfID ?? String(),
+            Request.Parameter.golfID: golfDetails?.golfID ?? golfId,
             Request.Parameter.dates: sendingDate,
         ]
         
@@ -125,16 +126,15 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             "Token": PreferenceManager.shared.authToken ?? String(),
         ]
         let deviceTimeZone = TimeZone.current.abbreviation()
+        
         if requestDate.isEmpty == true {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd-MM-yyyy"
             requestDate = formatter.string(from: todayDate)
-            
-            //            requestDate = sendingDate.convertDatetring_TopreferredFormat(currentFormat: "MMM d ,yyyy", toFormat: "dd-MM-yyyy")
         }
         
         let parameter: [String: Any] = [
-            Request.Parameter.golfID: golfDetails?.golfID ?? String(),
+            Request.Parameter.golfID: golfDetails?.golfID ?? golfId,
             Request.Parameter.dates: sendingDate,
             Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
             Request.Parameter.timeZone: deviceTimeZone ?? String(),
@@ -143,9 +143,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
         RequestManager.shared.requestPOST(requestMethod: Request.Method.bookingRequest, parameter: parameter,headers: headers, showLoader: false, decodingType: ResponseModal<BookingRequestModal>.self, successBlock: { (response: ResponseModal<BookingRequestModal>) in
             
             LoadingManager.shared.hideLoading()
-            
-            print("respnse here",response)
-            
+                        
             if response.code == Status.Code.success {
                 
                 delay {

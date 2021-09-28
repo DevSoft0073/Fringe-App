@@ -280,13 +280,13 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
                         cell.refundRequestView.isHidden = true
                         cell.btnPay.isHidden = false
                     }
-//                    if data.paymentStatus == "0" {
-//                        cell.btnPay.setTitle("Pay", for: .normal)
-//                        cell.btnPay.isUserInteractionEnabled = true
-//                    } else {
-//                        cell.btnPay.setTitle("Paid", for: .normal)
-//                        cell.btnPay.isUserInteractionEnabled = false
-//                    }
+                    if data.paymentStatus == "0" {
+                        cell.btnPay.setTitle("Pay", for: .normal)
+                        cell.btnPay.isUserInteractionEnabled = true
+                    } else {
+                        cell.btnPay.setTitle("Paid", for: .normal)
+                        cell.btnPay.isUserInteractionEnabled = false
+                    }
                     cell.setup(bookingData: data)
                     cell.btnRefundRequest.addTarget(self, action: #selector(showRequestView), for: .touchUpInside)
                     return cell
@@ -397,7 +397,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             
         } else if view == segment2 {
             
-            isSelected = "2"
+            isSelected = "1"
 
             LoadingManager.shared.showLoading()
             

@@ -42,7 +42,7 @@
 "your_account_has_been_disable_please_contact_with_admin_for_more_detail" = "Your account has been disable, please contact with admin for more detail.";
 "no_date_blocked_for_this_month" = "No date blocked for this month";
 "no_card" = "No card added";
-"pending_verification" = "Your studio account verification under process, please wait until complete verification";
+"pending_verification" = "Your golf course account verification under process, please wait until complete verification";
 "maximumLimit" = "You can add maximum of 10 images for studio.";
 
 //dilogue buttons
@@ -308,3 +308,4 @@
 "reject_resn" = "Please add reject reason.";
 "nodata" = "No data found";
 "no_fav_data" = "No favourite club found.";
+

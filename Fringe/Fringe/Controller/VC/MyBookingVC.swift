@@ -43,7 +43,7 @@ class MyBookingVC : BaseVC , UITableViewDelegate , UITableViewDataSource, KRPull
        
         let loadMoreView = KRPullLoadView()
         loadMoreView.delegate = self
-        tblBooking.addPullLoadableView(loadMoreView, type: .refresh)
+        tblBooking.addPullLoadableView(loadMoreView, type: .loadMore)
         
         let identifier = String(describing: MyBookingTVCell.self)
 

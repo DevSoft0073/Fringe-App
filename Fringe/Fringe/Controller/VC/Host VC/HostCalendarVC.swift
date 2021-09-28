@@ -114,7 +114,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
 
         if sendingDate.isEmpty == true {
             let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM d ,yyyy"
+            formatter.dateFormat = "dd-MM-yyyy"
             sendingDate = formatter.string(from: todayDate)
         }
 

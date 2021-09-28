@@ -87,8 +87,14 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
                 completion?(true)
                 self.updateUI()
                 
-            } else {
+            } else if response.code == Status.Code.notfound {
                 
+                self.items.removeAll()
+                
+                self.updateUI()
+                
+            } else {
+                                
                 self.updateUI()
                 
                 completion?(true)
@@ -142,6 +148,9 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
         let data = items[indexPath.row]
         let controller = NavigationManager.shared.detailsScreenVC
         controller.golfCourseDetails = data
+        controller.isUpdateTBView = {
+            self.lastRequestId = ""
+        }
         push(controller: controller)
     }
     
@@ -199,18 +208,19 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
         tblFavourite.separatorStyle = .none
         tblFavourite.separatorColor = .clear
         
-        LoadingManager.shared.showLoading()
-
-        self.performGetFavStudios { (flag : Bool) in
-            
-        }
+        
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
+        
+        LoadingManager.shared.showLoading()
+
+        self.performGetFavStudios { (flag : Bool) in
+            
+        }
         NavigationManager.shared.isEnabledBottomMenu = true
     }
     

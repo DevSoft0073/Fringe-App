@@ -8,13 +8,15 @@
 import Foundation
 
 // MARK: - RequestListingModal
-struct RequestListingModal: Codable , Hashable{
+struct RequestListingModal: Codable, Hashable {
     var id, userID, golfID, bookingID: String?
-    var dates, rejectReson, bookedStatus, cancelStatus: String?
-    var paymentStatus, golfPaymentStatus, refundRequest, sessionComplete: String?
-    var paymentPending, amountToBePaid, refundPayment, refundStatus: String?
-    var refundReason, creationAt, golfCourseName, requestListingModalDescription: String?
-    var golfPrice, date, status: String?
+    var dates, rejectReason, bookedStatus, totalGuest: String?
+    var cancelStatus, paymentStatus, golfPaymentStatus, refundRequest: String?
+    var sessionComplete, paymentPending, amountToBePaid, refundPayment: String?
+    var refundStatus, refundReason, creationAt, golfCourseName: String?
+    var requestListingModalDescription, golfPrice, location: String?
+    var golfImages: [String]?
+    var rating, date, status: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -22,8 +24,9 @@ struct RequestListingModal: Codable , Hashable{
         case golfID = "golf_id"
         case bookingID = "booking_id"
         case dates
-        case rejectReson = "reject_reson"
+        case rejectReason = "reject_reason"
         case bookedStatus = "booked_status"
+        case totalGuest
         case cancelStatus = "cancel_status"
         case paymentStatus = "payment_status"
         case golfPaymentStatus = "golf_payment_status"
@@ -37,7 +40,9 @@ struct RequestListingModal: Codable , Hashable{
         case creationAt = "creation_at"
         case golfCourseName = "golf_course_name"
         case requestListingModalDescription = "description"
-        case golfPrice, date, status
+        case golfPrice, location
+        case golfImages = "golf_images"
+        case rating, date, status
     }
 }
 
