@@ -28,9 +28,9 @@ class InboxTVCell: UITableViewCell {
         mainSecondImg.circle()
     }
     
-    func setup(messageGroup: PlayerMessgaeModal) {
+    func setup(messageGroup: MessageGroupModal) {
         
-        //image
+        //own image
         mainFirstImg.sd_addActivityIndicator()
         mainFirstImg.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
         mainFirstImg.sd_showActivityIndicatorView()
@@ -49,8 +49,30 @@ class InboxTVCell: UITableViewCell {
         if messageGroup.image?.isEmpty == true{
             self.mainFirstImg.image = UIImage(named: "icon_placeholder")
         }
+        
+        //sender image
+        mainSecondImg.sd_addActivityIndicator()
+        mainSecondImg.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+        mainSecondImg.sd_showActivityIndicatorView()
+        mainSecondImg.image = getPlaceholderImage()
+        if let image = messageGroup.otheruserImage, image.isEmpty == false {
+            let imgURL = URL(string: image)
+            mainSecondImg.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                if let serverImage = serverImage {
+                    self.mainSecondImg.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+                }
+                self.mainSecondImg.sd_removeActivityIndicator()
+            }
+        } else {
+            self.mainSecondImg.sd_removeActivityIndicator()
+        }
+        if messageGroup.otheruserImage?.isEmpty == true{
+            self.mainSecondImg.image = UIImage(named: "icon_placeholder")
+        }
+        
         lblName.text = "\(messageGroup.firstName ?? String()) " + "\(messageGroup.lastName ?? String())"
-//        lblAddress.text = (messageGroup.email?.isEmpty == false) ? messageGroup.email?.isEmpty : String()
+//        lblAddress.text = (messageGroup.lastmsg?.isEmpty == false) ? messageGroup.lastmsg?.isEmpty : String()
+        lblAddress.text = messageGroup.lastmsg
         
         let dateFromUnix = DateTimeManager.shared.dateFrom(unix: messageGroup.unixDate)
         

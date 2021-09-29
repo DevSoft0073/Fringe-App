@@ -47,8 +47,8 @@
   # Messages
   pod 'MessageKit', '~> 3.6.0' #Swift 4.2
   pod 'MessageInputBar', '~> 0.4.1'
-  pod 'Kingfisher'
-  
+  pod 'Kingfisher', '~> 7.0'  
+
   # Socket
   pod 'Socket.IO-Client-Swift', '~> 15.2.0'
 

@@ -4,21 +4,6 @@
 //
 //  Created by MyMac on 9/29/21.
 //
-// PlayerMessgaeModal.swift
-
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let playerMessgaeModal = try PlayerMessgaeModal(json)
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.playerMessgaeModalTask(with: url) { playerMessgaeModal, response, error in
-//     if let playerMessgaeModal = playerMessgaeModal {
-//       ...
-//     }
-//   }
-//   task.resume()
 
 import Foundation
 
@@ -32,10 +17,13 @@ struct PlayerMessgaeModal: Codable {
     var memberCourse, golfHandicap, password, confirmPassword: String?
     var email, emailVerification, verificationCode, disable: String?
     var allowPush, allowLocation, fbToken, googleToken: String?
-    var appleToken, creationAt: String?
+    var appleToken, creationAt, lastmsg, lastmsgTime: String?
+    var otheruserName: String?
+    var otheruserImage: String?
     
-    var unixDate: Int {
-        return Int(lastName ?? creationAt ?? String()) ?? .zero
+    func toMessageGroupModal() -> MessageGroupModal {
+        let group = MessageGroupModal(userID: userID, isRequest: isRequest, golfID: golfID, stripeAccountStatus: stripeAccountStatus, image: image, userName: userName, accountID: accountID, customerID: customerID, firstName: firstName, lastName: lastName, timeZone: timeZone, isgolfRegistered: isgolfRegistered, dob: dob, gender: gender, mobileNo: mobileNo, hometown: hometown, profession: profession, memberCourse: memberCourse, golfHandicap: golfHandicap, password: password, confirmPassword: confirmPassword, email: email, emailVerification: emailVerification, verificationCode: verificationCode, disable: disable, allowPush: allowPush, allowLocation: allowLocation, fbToken: fbToken, googleToken: googleToken, appleToken: appleToken, creationAt: creationAt, lastmsg: lastmsg, lastmsgTime: lastmsgTime, otheruserName: otheruserName, otheruserImage: otheruserImage)
+        return group
     }
     
     enum CodingKeys: String, CodingKey {
@@ -68,6 +56,10 @@ struct PlayerMessgaeModal: Codable {
         case googleToken = "google_token"
         case appleToken = "apple_token"
         case creationAt = "creation_at"
+        case lastmsg
+        case lastmsgTime = "lastmsg_time"
+        case otheruserName = "otheruser_name"
+        case otheruserImage = "otheruser_image"
     }
 }
 
@@ -97,21 +89,3 @@ extension PlayerMessgaeModal {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
-
-//// MARK: - URLSession response handlers
-//
-//extension URLSession {
-//    fileprivate func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-//        return self.dataTask(with: url) { data, response, error in
-//            guard let data = data, error == nil else {
-//                completionHandler(nil, response, error)
-//                return
-//            }
-//            completionHandler(try? newJSONDecoder().decode(T.self, from: data), response, nil)
-//        }
-//    }
-//
-//    func playerMessgaeModalTask(with url: URL, completionHandler: @escaping (PlayerMessgaeModal?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-//        return self.codableTask(with: url, completionHandler: completionHandler)
-//    }
-//}

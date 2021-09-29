@@ -14,7 +14,26 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tblInbox: UITableView!
     @IBOutlet weak var noDataLbl: FGRegularLabel!
     
-    var messageStudioGroups: [PlayerMessgaeModal] = []
+    var messagePlayerGroups: [PlayerMessgaeModal] = []
+//        didSet {
+//            messagePlayerGroups.forEach { (arg0: PlayerMessgaeModal) in
+//                if messageGroups.contains(where: { (arg1: MessageGroupModal) in
+//                    return arg0.id == arg1.id
+//                }) == false {
+//                    messageGroups.append(arg0.toMessageGroupModal())
+//                } else {
+//                    if let index = messageGroups.firstIndex(where: { (group: MessageGroupModal) in
+//                        return arg0.id == group.id
+//                    }) {
+//                        messageGroups[index] = arg0.toMessageGroupModal()
+//                    }
+//                }
+//                messageGroups.sort { message1, message2 in
+//                    return message1.unixDate > message2.unixDate
+//                }
+//            }
+//        }
+    var messageGroups: [MessageGroupModal] = []
     
     //------------------------------------------------------
     
@@ -63,7 +82,7 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.chatListing, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<[PlayerMessgaeModal]>.self) { (response: ResponseModal<[PlayerMessgaeModal]>) in
             
-            self.messageStudioGroups = response.data ?? []
+            self.messagePlayerGroups = response.data ?? []
             completion?(true)
             
         } failureBlock: { (errorModal: ErrorModal) in
@@ -78,14 +97,14 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return messageStudioGroups.count
+        return messageGroups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InboxTVCell.self)) as? InboxTVCell {
             cell.selectionStyle = .none
-            let data = messageStudioGroups[indexPath.row]
+            let data = messageGroups[indexPath.row]
             cell.setup(messageGroup: data)
             return cell
         }
