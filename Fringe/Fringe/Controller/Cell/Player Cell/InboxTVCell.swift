@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Toucan
+import SDWebImage
 
 class InboxTVCell: UITableViewCell {
 
@@ -18,18 +20,48 @@ class InboxTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
     
         mainFirstImg.circle()
         mainSecondImg.circle()
+    }
+    
+    func setup(messageGroup: PlayerMessgaeModal) {
+        
+        //image
+        mainFirstImg.sd_addActivityIndicator()
+        mainFirstImg.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+        mainFirstImg.sd_showActivityIndicatorView()
+        mainFirstImg.image = getPlaceholderImage()
+        if let image = messageGroup.image, image.isEmpty == false {
+            let imgURL = URL(string: image)
+            mainFirstImg.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                if let serverImage = serverImage {
+                    self.mainFirstImg.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
+                }
+                self.mainFirstImg.sd_removeActivityIndicator()
+            }
+        } else {
+            self.mainFirstImg.sd_removeActivityIndicator()
+        }
+        if messageGroup.image?.isEmpty == true{
+            self.mainFirstImg.image = UIImage(named: "icon_placeholder")
+        }
+        lblName.text = "\(messageGroup.firstName ?? String())" + "\(messageGroup.lastName ?? String())"
+//        lblAddress.text = (messageGroup.email?.isEmpty == false) ? messageGroup.email?.isEmpty : String()
+        
+        let dateFromUnix = DateTimeManager.shared.dateFrom(unix: messageGroup.unixDate)
+        
+        if DateTimeManager.shared.isToday(dateFromUnix)  {
+            lblDate.text = DateTimeManager.shared.dateFrom(unix: messageGroup.unixDate, inFormate: TimeFormate.HH_MM)
+        } else if DateTimeManager.shared.isYesterday(dateFromUnix) {
+            let dateString = String(format: "Yesterday %@", DateTimeManager.shared.dateFrom(unix: messageGroup.unixDate, inFormate: TimeFormate.HH_MM))
+            lblDate.text = dateString
+        } else {
+            lblDate.text = DateTimeManager.shared.dateFrom(unix: messageGroup.unixDate, inFormate: DateFormate.MMM_DD_COM_yyyy_HH_MM)
+        }
     }
     
 }

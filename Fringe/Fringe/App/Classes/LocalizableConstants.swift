@@ -38,6 +38,7 @@ struct LocalizableConstants {
         static let pendingStripeVerification = "pending_verification"
         static let maximumLimit = "add_limit"
         static let invalidCredentials = "invalid_credentials"
+        static let anotherLogin = "anotherLogin"
     }
     
     struct ValidationMessage {

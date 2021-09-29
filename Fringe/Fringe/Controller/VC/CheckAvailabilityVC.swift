@@ -171,7 +171,7 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
             LoadingManager.shared.hideLoading()
             
             delay {
-                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+                DisplayAlertManager.shared.displayAlert(animated: true, message: LocalizableConstants.Error.anotherLogin, handlerOK: nil)
                 PreferenceManager.shared.userId = nil
                 PreferenceManager.shared.currentUser = nil
                 PreferenceManager.shared.authToken = nil

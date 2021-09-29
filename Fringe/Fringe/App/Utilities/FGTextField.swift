@@ -1046,12 +1046,12 @@ class FGSelectDateTextFieldForBooking: FGBaseTextFieldForBBloks, UITextFieldDele
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.dayName)
+        self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.MMM_DD_COM_yyyy)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         selectedDatesssssss = dpDate.date
-        self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.dayName)
+        self.text = DateTimeManager.shared.stringFrom(date: dpDate.date, inFormate: DateFormate.MMM_DD_COM_yyyy)
         
     }
     

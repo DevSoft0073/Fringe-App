@@ -137,6 +137,7 @@ struct Request {
         static let socialLogin = "/socialLogin.php"
         static let allowNotifAndLoc = "/allowlocation.php"
         static let getFeedbackDetails = "/GetFeedbackDetail.php"
+        static let chatListing = "/chatListing.php"
         static let logout = "/LogOut.php"
     }
     

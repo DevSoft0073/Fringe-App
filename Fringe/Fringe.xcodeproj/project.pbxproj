@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F02EA152701E609007BA66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F02EA142701E609007BA66E /* GoogleService-Info.plist */; };
+		1F034D0B270458A200053F20 /* PlayerMessagesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F034D0A270458A200053F20 /* PlayerMessagesModal.swift */; };
 		1F169D3726FDF6AA003C24B4 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F169D3626FDF6AA003C24B4 /* AuthenticationServices.framework */; };
 		1F18387E26F9AF2500A0B663 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18387D26F9AF2500A0B663 /* ChatViewController.swift */; };
 		1F18388026F9B02200A0B663 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18387F26F9B02200A0B663 /* BasicAudioController.swift */; };
@@ -204,6 +205,8 @@
 		08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fringe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6EA47CE18B85558BA94DF3 /* Pods-Fringe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fringe.debug.xcconfig"; path = "Target Support Files/Pods-Fringe/Pods-Fringe.debug.xcconfig"; sourceTree = "<group>"; };
 		1F02EA142701E609007BA66E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/plisttt/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1F034D022704476C00053F20 /* PayPalCheckout.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PayPalCheckout.xcframework; path = Pods/PayPalCheckout/PayPalCheckout.xcframework; sourceTree = "<group>"; };
+		1F034D0A270458A200053F20 /* PlayerMessagesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMessagesModal.swift; sourceTree = "<group>"; };
 		1F169D3626FDF6AA003C24B4 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		1F18387D26F9AF2500A0B663 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		1F18387F26F9B02200A0B663 /* BasicAudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
@@ -416,11 +419,20 @@
 		0AA297AB4A70B4665FE669D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F034D022704476C00053F20 /* PayPalCheckout.xcframework */,
 				1F169D3626FDF6AA003C24B4 /* AuthenticationServices.framework */,
 				1F18388E26F9CAC500A0B663 /* GoogleSignIn.framework */,
 				08FBBE22AE2D2604407A17E1 /* Pods_Fringe.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F034D092704588800053F20 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				1F034D0A270458A200053F20 /* PlayerMessagesModal.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		1F18388126F9B0E700A0B663 /* Data Generation */ = {
@@ -838,6 +850,7 @@
 		7CA24C1826C23F8800437C8A /* Generals */ = {
 			isa = PBXGroup;
 			children = (
+				1F034D092704588800053F20 /* Messages */,
 				1FA73FB526FAFAB8008604AA /* Facebook */,
 				1F9ACE0726F4BA2800AB2E27 /* Player Request */,
 				1F9ACE0426F4798600AB2E27 /* Add Request */,
@@ -1237,6 +1250,7 @@
 				1F9ACE0626F479A600AB2E27 /* AddBlockModal.swift in Sources */,
 				7CA24C2626C2415100437C8A /* LocalizableConstants.swift in Sources */,
 				7CA24C2926C2415C00437C8A /* AppFunctions.swift in Sources */,
+				1F034D0B270458A200053F20 /* PlayerMessagesModal.swift in Sources */,
 				7C8F1D6726CE4BAB00135C41 /* MyBookingTVCell.swift in Sources */,
 				7CA24C3E26C241C300437C8A /* LoadingManager.swift in Sources */,
 				7CE041AB26E090A20036EEA0 /* InboxTVCell.swift in Sources */,

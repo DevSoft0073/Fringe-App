@@ -188,20 +188,20 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     //MARK: Actions
     
     @IBAction func btnSubmit(_ sender: Any) {
-//        if validate() == false {
-//            return
-//        }
-//
-        let controller = NavigationManager.shared.submitVC
-        controller.modalPresentationStyle = .overFullScreen
-        controller.modalTransitionStyle = .flipHorizontal
-        self.dismiss(animated: true, completion: nil)
+        if validate() == false {
+            return
+        }
+
+//        let controller = NavigationManager.shared.submitVC
+//        controller.modalPresentationStyle = .overFullScreen
+//        controller.modalTransitionStyle = .flipHorizontal
+//        self.dismiss(animated: true, completion: nil)
         
-//        LoadingManager.shared.showLoading()
-//
-//        performAddGolfCourse { (flag : Bool) in
-//
-//        }
+        LoadingManager.shared.showLoading()
+
+        performAddGolfCourse { (flag : Bool) in
+
+        }
     }
     
     @IBAction func btnUploadImg(_ sender: UIButton) {

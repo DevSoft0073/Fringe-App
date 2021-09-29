@@ -483,24 +483,24 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
-        guard error == nil else { return }
-        guard let user = user else { return }
-        
-        let emailAddress = user.profile?.email
-        
-        let fullName = user.profile?.name
-        let givenName = user.profile?.givenName
-        let familyName = user.profile?.familyName
-        let profilePicUrl = user.profile?.imageURL(withDimension: 320)
-        
-        //        delay {
-        //
-        //            LoadingManager.shared.showLoading()
-        //
-        //            delayInLoading {
-        //                self.performGoogleSignIn(firstName, lastName, googleId, email, image?.absoluteString ?? String())
-        //            }
-        //        }
+//        guard error == nil else { return }
+//        guard let user = user else { return }
+//
+//        let emailAddress = user.profile?.email
+//
+//        let fullName = user.profile?.name
+//        let givenName = user.profile?.givenName
+//        let familyName = user.profile?.familyName
+//        let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+//
+//        //        delay {
+//        //
+//        //            LoadingManager.shared.showLoading()
+//        //
+//        //            delayInLoading {
+//        //                self.performGoogleSignIn(firstName, lastName, googleId, email, image?.absoluteString ?? String())
+//        //            }
+//        //        }
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

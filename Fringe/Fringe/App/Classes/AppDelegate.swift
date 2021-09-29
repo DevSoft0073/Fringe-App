@@ -14,6 +14,7 @@ import Alamofire
 import CoreLocation
 import GoogleSignIn
 import FBSDKCoreKit
+import PayPalCheckout
 import UserNotifications
 import IQKeyboardManagerSwift
 
@@ -156,6 +157,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         })
     }
     
+    func paypalConfigure(){
+        let config = CheckoutConfig(
+            clientID: "AYsdFF0ak5ao3XUxchpR6OTc_JtPMI0IpElD7YR8xBfQZ_o6IkJYWL7ebsMaoyNcAQ1ZVM2--cYrw1JY",
+            returnUrl: "com.ipa.app://paypalpay",
+            environment: .sandbox
+        )
+        
+        Checkout.set(config: config)
+    }
+    
     //------------------------------------------------------
     
     //MARK: UIApplicationDelegate
@@ -167,6 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         configureNavigationBar()
         chekLoggedUser()
         FirebaseApp.configure()
+        paypalConfigure()
         registerRemoteNotificaton(application)
         //RealmManager.shared.save(channelDownload: false)
         window?.tintColor = FGColor.appBlack

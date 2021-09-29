@@ -37,6 +37,8 @@
   # payment
   pod 'Stripe'
   pod "TimeZoneLocate"
+  pod 'PayPal-iOS-SDK'
+  pod 'PayPalCheckout'
   
   # Firebase
   pod 'Firebase'

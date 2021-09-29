@@ -108,7 +108,7 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
                 
                 delay {
                     
-                    DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: response.message ?? String()) {
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: LocalizableConstants.Error.anotherLogin) {
                         PreferenceManager.shared.userId = nil
                         PreferenceManager.shared.currentUser = nil
                         PreferenceManager.shared.authToken = nil

@@ -266,3 +266,16 @@ extension Double {
         return (self * divisor).rounded() / divisor
     }
 }
+
+func convertDateFormat(inputDate: String) -> String {
+
+     let olDateFormatter = DateFormatter()
+     olDateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+
+     let oldDate = olDateFormatter.date(from: inputDate)
+
+     let convertDateFormatter = DateFormatter()
+     convertDateFormatter.dateFormat = "dd-mm-yyyy"
+
+     return convertDateFormatter.string(from: oldDate!)
+}

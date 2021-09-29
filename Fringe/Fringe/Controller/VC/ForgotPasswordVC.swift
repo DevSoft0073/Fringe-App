@@ -109,7 +109,7 @@ class ForgotPasswordVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
             
             delay {
                 
-                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: LocalizableConstants.Error.anotherLogin) {
                     PreferenceManager.shared.userId = nil
                     PreferenceManager.shared.currentUser = nil
                     PreferenceManager.shared.authToken = nil

@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import Alamofire
 import Foundation
 
 class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tblInbox: UITableView!
     @IBOutlet weak var noDataLbl: FGRegularLabel!
+    
+    var messageStudioGroups: [PlayerMessgaeModal] = []
     
     //------------------------------------------------------
     
@@ -35,16 +38,38 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         tblInbox.delegate = self
         tblInbox.dataSource = self
         navigationItem.title = LocalizableConstants.Controller.Notifications.title.localized()
-        
-//        let loadMoreView = KRPullLoadView()
-//        loadMoreView.delegate = self
-//        tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
+        //
+        //        let loadMoreView = KRPullLoadView()
+        //        loadMoreView.delegate = self
+        //        tblInbox.addPullLoadableView(loadMoreView, type: .refresh)
         
         let identifier = String(describing: InboxTVCell.self)
-
+        
         let nibRequestCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblInbox.register(nibRequestCell, forCellReuseIdentifier: identifier)
         
+    }
+    
+    func updateUI()  {
+        tblInbox.reloadData()
+    }
+    
+    func performGetMessageGroups(isShowLoader: Bool, lastId: String, completion: ((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.chatListing, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<[PlayerMessgaeModal]>.self) { (response: ResponseModal<[PlayerMessgaeModal]>) in
+            
+            self.messageStudioGroups = response.data ?? []
+            completion?(true)
+            
+        } failureBlock: { (errorModal: ErrorModal) in
+            
+            completion?(false)
+        }
     }
     
     //------------------------------------------------------
@@ -53,12 +78,15 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
+        return messageStudioGroups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InboxTVCell.self)) as? InboxTVCell {
+            cell.selectionStyle = .none
+            let data = messageStudioGroups[indexPath.row]
+            cell.setup(messageGroup: data)
             return cell
         }
         return UITableViewCell()
@@ -82,12 +110,29 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         
         setup()
+        
+        
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+//        var isShowLoader: Bool = false
+//        if messageGroups.count == .zero {
+//            isShowLoader = true
+//        }
+//        if isShowLoader {
+//            LoadingManager.shared.showLoading()
+//        }
+        self.performGetMessageGroups(isShowLoader: true, lastId: "") { flag in
+            
+//            if isShowLoader {
+//                LoadingManager.shared.hideLoading()
+//            }
+            self.updateUI()
+        }
     }
     
     //------------------------------------------------------

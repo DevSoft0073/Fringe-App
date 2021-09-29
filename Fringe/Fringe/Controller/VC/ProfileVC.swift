@@ -550,7 +550,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             } else if name == ProfileItems.signUpToBusiness{
                 if currentUser?.isgolfRegistered == "2" {
                     
-                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: "") {
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.Error.pendingStripeVerification) {
                         
                     }
                     

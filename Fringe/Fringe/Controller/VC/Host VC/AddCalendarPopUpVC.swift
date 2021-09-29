@@ -153,7 +153,7 @@ class AddCalendarPopUpVC : BaseVC {
             self.isAddBlock = "0"
             selected = false
             parameter =  [
-                Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
+                Request.Parameter.golfID: PreferenceManager.shared.golfId ?? currentUserHost?.golfID ?? "",
                 Request.Parameter.isBlock: isAddBlock,
                 Request.Parameter.dates: txtCalendar.text ?? selectedDate,
             ]
@@ -163,7 +163,7 @@ class AddCalendarPopUpVC : BaseVC {
             selected = true
             self.isAddBlock = "1"
             parameter =  [
-                Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
+                Request.Parameter.golfID: PreferenceManager.shared.golfId ?? currentUserHost?.golfID ?? "" ,
                 Request.Parameter.isBlock: isAddBlock,
                 Request.Parameter.dates: txtCalendar.text ?? selectedDate,
             ]
@@ -178,12 +178,12 @@ class AddCalendarPopUpVC : BaseVC {
             return
         }
         self.view.endEditing(true)
-       
+               
         if isTapped == 0 {
             parameter =  [
                 Request.Parameter.golfID: currentUserHost?.golfID ?? String(),
                 Request.Parameter.isBlock: isAddBlock,
-                Request.Parameter.dates: txtCalendar.text ?? selectedDate,
+                Request.Parameter.dates: selectedDate,
             ]
         }
         
