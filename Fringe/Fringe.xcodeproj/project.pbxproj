@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F02EA152701E609007BA66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F02EA142701E609007BA66E /* GoogleService-Info.plist */; };
 		1F034D0B270458A200053F20 /* PlayerMessagesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F034D0A270458A200053F20 /* PlayerMessagesModal.swift */; };
+		1F034D0D2704695100053F20 /* MessageGroupModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F034D0C2704695100053F20 /* MessageGroupModal.swift */; };
 		1F169D3726FDF6AA003C24B4 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F169D3626FDF6AA003C24B4 /* AuthenticationServices.framework */; };
 		1F18387E26F9AF2500A0B663 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18387D26F9AF2500A0B663 /* ChatViewController.swift */; };
 		1F18388026F9B02200A0B663 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18387F26F9B02200A0B663 /* BasicAudioController.swift */; };
@@ -207,6 +208,7 @@
 		1F02EA142701E609007BA66E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/plisttt/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F034D022704476C00053F20 /* PayPalCheckout.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PayPalCheckout.xcframework; path = Pods/PayPalCheckout/PayPalCheckout.xcframework; sourceTree = "<group>"; };
 		1F034D0A270458A200053F20 /* PlayerMessagesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMessagesModal.swift; sourceTree = "<group>"; };
+		1F034D0C2704695100053F20 /* MessageGroupModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageGroupModal.swift; sourceTree = "<group>"; };
 		1F169D3626FDF6AA003C24B4 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		1F18387D26F9AF2500A0B663 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		1F18387F26F9B02200A0B663 /* BasicAudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				1F034D0A270458A200053F20 /* PlayerMessagesModal.swift */,
+				1F034D0C2704695100053F20 /* MessageGroupModal.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -1260,6 +1263,7 @@
 				7C780FF126C6491D003F1F12 /* SegmentView.swift in Sources */,
 				7C780F7726C3A6DB003F1F12 /* ESTabBarItem.swift in Sources */,
 				7CDA847926D8FCA00096FA0F /* PrivacyVC.swift in Sources */,
+				1F034D0D2704695100053F20 /* MessageGroupModal.swift in Sources */,
 				7CE041A426DF8F4B0036EEA0 /* HostProfileAddImageCell.swift in Sources */,
 				7C64AAE826E8F04C0024D06B /* PaymentOptionsVC.swift in Sources */,
 				7C52985426DCA8D200A3606D /* HostPendingCell.swift in Sources */,

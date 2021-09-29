@@ -49,7 +49,7 @@ class InboxTVCell: UITableViewCell {
         if messageGroup.image?.isEmpty == true{
             self.mainFirstImg.image = UIImage(named: "icon_placeholder")
         }
-        lblName.text = "\(messageGroup.firstName ?? String())" + "\(messageGroup.lastName ?? String())"
+        lblName.text = "\(messageGroup.firstName ?? String()) " + "\(messageGroup.lastName ?? String())"
 //        lblAddress.text = (messageGroup.email?.isEmpty == false) ? messageGroup.email?.isEmpty : String()
         
         let dateFromUnix = DateTimeManager.shared.dateFrom(unix: messageGroup.unixDate)
