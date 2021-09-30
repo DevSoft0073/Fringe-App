@@ -86,7 +86,6 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource, KRPu
                     self.items.removeAll()
                     self.updateUI()
                 }
-                
                 self.items.append(contentsOf: response.data ?? [])
                 self.items = self.items.removingDuplicates()
                 self.lastRequestId = response.data?.first?.notificationID ?? String()

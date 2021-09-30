@@ -6,8 +6,10 @@
 //
 import UIKit
 import MapKit
+import SDWebImage
 import MessageKit
 import Kingfisher
+import Alamofire
 import InputBarAccessoryView
 import IQKeyboardManagerSwift
 
@@ -15,12 +17,27 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
     
     @IBOutlet weak var topView: UIView!
     
+    var roomId: String = String()
+    var studioId: String = String()
+    var role: String = String()
+    var senderId: String = String()
+    var receiverId: String = String()
+    var lastId: String = String()
+    var debouncer: FGDebouncer?
+    var userID: String = String()
+    
+    var messageGroup: MessageGroupModal? = nil {
+        didSet {
+            roomId = messageGroup?.roomID ?? String()
+        }
+    }
     var currentUser: UserModal? {
         return PreferenceManager.shared.currentUserModal
     }
     var currentStudioUser: HostModal? {
         return PreferenceManager.shared.currentUserModalForHost
     }
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -52,10 +69,91 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
             FGColor.appGreen.withAlphaComponent(0.3), for: .highlighted)
     }
     
+    @objc func performGetMessage(isShowLoader: Bool, lastId: String, completion: ((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.roomID: roomId,
+            Request.Parameter.lastID: lastId,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.getAllMessgaes, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[AddEditMessageModal]>.self) { (response: ResponseModal<[AddEditMessageModal]>) in
+            
+            var mockMessages: [MockMessage] = []
+            response.data?.forEach({ (arg0: AddEditMessageModal) in
+                var message = arg0
+                let currentSender = self.currentUser?.toMockUser() ?? annonymousUser
+                if message.id == currentSender.senderId {
+                    message.name = currentSender.displayName
+                    //                    self.navigationItem.title = self.messageGroup?.name
+                } else {
+                    message.name = self.messageGroup?.firstName
+                }
+                if self.messageList.contains(where: { (exist: MockMessage) in
+                    return exist.messageId == message.id
+                }) == false {
+                    mockMessages.append(message.toMockMessage())
+                }
+            })
+            
+            self.lastId = response.data?.last?.id ?? String()
+            self.messageList.append(contentsOf: mockMessages)
+//            self.imgString = response.data?.first?.image ?? String()
+            
+            self.messageList.sort { (arg0: MockMessage, arg1: MockMessage) in
+                return arg0.sentDate.compare(arg1.sentDate) == .orderedAscending
+            }
+            
+            self.updateUI()
+            
+            completion?(true)
+            
+        } failureBlock: { (errorModal: ErrorModal) in
+            
+            completion?(false)
+        }
+    }
+    
+    func performSendMessage(_ data: [Any], completion: ((_ message: AddEditMessageModal?, _ errorModal: ErrorModal?) -> Void)?) {
+        
+        for component in data {
+            
+            if let inputMessage = component as? String {
+                
+                let headers:HTTPHeaders = [
+                   "content-type": "application/json",
+                    "Token": PreferenceManager.shared.authToken ?? String(),
+                  ]
+                
+                var parameter: [String: Any] = [:]
+                
+                print("chatParam",parameter)
+                
+                RequestManager.shared.requestPOST(requestMethod: Request.Method.sendMsg, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self) { (response: BaseResponseModal) in
+                    
+                    completion?(response.data?.first, nil)
+                    
+                    delay {
+                        self.performClearBadgeCount { (flag : Bool) in
+                        }
+                    }
+                    self.lblNoRecordsFound.isHidden = true
+                    
+                } failureBlock: { (errorModal: ErrorModal) in
+                    
+                    completion?(errorModal)
+                }
+            }
+        }
+    }
+    
     //------------------------------------------------------
     
     //MARK: Actions
-    
     
     @IBAction func btnBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -160,6 +258,8 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
     
     func configureMediaMessageImageView(_ imageView: UIImageView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         if case MessageKind.photo(let media) = message.kind, let imageURL = media.url {
+            //            imageView.sd_setImage(with: imageURL), placeholderImage: UIImage(named: FGImageName.imgPlaceHolder))
+            //            imageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named: ""), options: SDWebImageOptions.continueInBackground, completed: nil)
             imageView.kf.setImage(with: imageURL)
         } else {
             imageView.kf.cancelDownloadTask()

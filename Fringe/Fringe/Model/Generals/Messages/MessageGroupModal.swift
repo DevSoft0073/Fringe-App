@@ -17,12 +17,12 @@ struct MessageGroupModal: Codable {
     var memberCourse, golfHandicap, password, confirmPassword: String?
     var email, emailVerification, verificationCode, disable: String?
     var allowPush, allowLocation, fbToken, googleToken: String?
-    var appleToken, creationAt, lastmsg, lastmsgTime: String?
-    var otheruserName: String?
+    var appleToken, creationAt, lastmsg, lastmsgTime, lastid: String?
+    var otheruserName, roomID: String?
     var otheruserImage: String?
 
     var unixDate: Int {
-        return Int(lastName ?? creationAt ?? String()) ?? .zero
+        return Int(lastmsgTime ?? creationAt ?? String()) ?? .zero
     }
     
     enum CodingKeys: String, CodingKey {
@@ -55,9 +55,10 @@ struct MessageGroupModal: Codable {
         case googleToken = "google_token"
         case appleToken = "apple_token"
         case creationAt = "creation_at"
-        case lastmsg
+        case lastmsg, lastid
         case lastmsgTime = "lastmsg_time"
         case otheruserName = "otheruser_name"
+        case roomID = "room_id"
         case otheruserImage = "otheruser_image"
     }
 }

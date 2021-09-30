@@ -17,12 +17,12 @@ struct PlayerMessgaeModal: Codable {
     var memberCourse, golfHandicap, password, confirmPassword: String?
     var email, emailVerification, verificationCode, disable: String?
     var allowPush, allowLocation, fbToken, googleToken: String?
-    var appleToken, creationAt, lastmsg, lastmsgTime: String?
-    var otheruserName: String?
+    var appleToken, creationAt, lastmsg, lastmsgTime, lastid: String?
+    var otheruserName, roomID: String?
     var otheruserImage: String?
     
     func toMessageGroupModal() -> MessageGroupModal {
-        let group = MessageGroupModal(userID: userID, isRequest: isRequest, golfID: golfID, stripeAccountStatus: stripeAccountStatus, image: image, userName: userName, accountID: accountID, customerID: customerID, firstName: firstName, lastName: lastName, timeZone: timeZone, isgolfRegistered: isgolfRegistered, dob: dob, gender: gender, mobileNo: mobileNo, hometown: hometown, profession: profession, memberCourse: memberCourse, golfHandicap: golfHandicap, password: password, confirmPassword: confirmPassword, email: email, emailVerification: emailVerification, verificationCode: verificationCode, disable: disable, allowPush: allowPush, allowLocation: allowLocation, fbToken: fbToken, googleToken: googleToken, appleToken: appleToken, creationAt: creationAt, lastmsg: lastmsg, lastmsgTime: lastmsgTime, otheruserName: otheruserName, otheruserImage: otheruserImage)
+        let group = MessageGroupModal(userID: userID, isRequest: isRequest, golfID: golfID, stripeAccountStatus: stripeAccountStatus, image: image, userName: userName, accountID: accountID, customerID: customerID, firstName: firstName, lastName: lastName, timeZone: timeZone, isgolfRegistered: isgolfRegistered, dob: dob, gender: gender, mobileNo: mobileNo, hometown: hometown, profession: profession, memberCourse: memberCourse, golfHandicap: golfHandicap, password: password, confirmPassword: confirmPassword, email: email, emailVerification: emailVerification, verificationCode: verificationCode, disable: disable, allowPush: allowPush, allowLocation: allowLocation, fbToken: fbToken, googleToken: googleToken, appleToken: appleToken, creationAt: creationAt, lastmsg: lastmsg, lastmsgTime: lastmsgTime, lastid: lastid, otheruserName: otheruserName, roomID: roomID, otheruserImage: otheruserImage)
         return group
     }
     
@@ -56,9 +56,10 @@ struct PlayerMessgaeModal: Codable {
         case googleToken = "google_token"
         case appleToken = "apple_token"
         case creationAt = "creation_at"
-        case lastmsg
+        case lastmsg, lastid
         case lastmsgTime = "lastmsg_time"
         case otheruserName = "otheruser_name"
+        case roomID = "room_id"
         case otheruserImage = "otheruser_image"
     }
 }

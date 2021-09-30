@@ -18,6 +18,9 @@ enum DeviceType: String {
 
 let emptyJsonString = "{}"
 let annonymousUser = MockUser(senderId: "senderId", displayName: "Mock")
+//let annonymousUser = MockUser(displayName: "Mock")
+
+
 
 struct FGSettings {
     

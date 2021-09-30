@@ -71,7 +71,6 @@ class InboxTVCell: UITableViewCell {
         }
         
         lblName.text = "\(messageGroup.firstName ?? String()) " + "\(messageGroup.lastName ?? String())"
-//        lblAddress.text = (messageGroup.lastmsg?.isEmpty == false) ? messageGroup.lastmsg?.isEmpty : String()
         lblAddress.text = messageGroup.lastmsg
         
         let dateFromUnix = DateTimeManager.shared.dateFrom(unix: messageGroup.unixDate)

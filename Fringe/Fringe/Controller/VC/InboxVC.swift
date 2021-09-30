@@ -14,25 +14,27 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tblInbox: UITableView!
     @IBOutlet weak var noDataLbl: FGRegularLabel!
     
-    var messagePlayerGroups: [PlayerMessgaeModal] = []
-//        didSet {
-//            messagePlayerGroups.forEach { (arg0: PlayerMessgaeModal) in
-//                if messageGroups.contains(where: { (arg1: MessageGroupModal) in
-//                    return arg0.id == arg1.id
-//                }) == false {
-//                    messageGroups.append(arg0.toMessageGroupModal())
-//                } else {
-//                    if let index = messageGroups.firstIndex(where: { (group: MessageGroupModal) in
-//                        return arg0.id == group.id
-//                    }) {
-//                        messageGroups[index] = arg0.toMessageGroupModal()
-//                    }
-//                }
-//                messageGroups.sort { message1, message2 in
-//                    return message1.unixDate > message2.unixDate
-//                }
-//            }
-//        }
+    var messagePlayerGroups: [PlayerMessgaeModal] = [] {
+        didSet {
+            messagePlayerGroups.forEach { (arg0: PlayerMessgaeModal) in
+                if messageGroups.contains(where: { (arg1: MessageGroupModal) in
+                    return arg0.lastid == arg1.lastid
+                }) == false {
+                    messageGroups.append(arg0.toMessageGroupModal())
+                } else {
+                    if let index = messageGroups.firstIndex(where: { (group: MessageGroupModal) in
+                        return arg0.lastid == group.lastid
+                    }) {
+                        messageGroups[index] = arg0.toMessageGroupModal()
+                    }
+                }
+                messageGroups.sort { message1, message2 in
+                    return message1.unixDate > message2.unixDate
+                }
+            }
+        }
+    }
+    
     var messageGroups: [MessageGroupModal] = []
     
     //------------------------------------------------------
@@ -116,7 +118,11 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        let messageGroup = messageGroups[indexPath.row]
         let controller = NavigationManager.shared.chatDetailsVC
+        controller.messageGroup = messageGroup
         push(controller: controller)
     }
     
@@ -138,18 +144,18 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        var isShowLoader: Bool = false
-//        if messageGroups.count == .zero {
-//            isShowLoader = true
-//        }
-//        if isShowLoader {
-//            LoadingManager.shared.showLoading()
-//        }
+        var isShowLoader: Bool = false
+        if messageGroups.count == .zero {
+            isShowLoader = true
+        }
+        if isShowLoader {
+            LoadingManager.shared.showLoading()
+        }
         self.performGetMessageGroups(isShowLoader: true, lastId: "") { flag in
             
-//            if isShowLoader {
-//                LoadingManager.shared.hideLoading()
-//            }
+            if isShowLoader {
+                LoadingManager.shared.hideLoading()
+            }
             self.updateUI()
         }
     }

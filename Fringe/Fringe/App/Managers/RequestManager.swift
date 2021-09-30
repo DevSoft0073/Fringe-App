@@ -97,7 +97,7 @@ struct Request {
         static let totalGuest = "totalGuest"
         
         //Add slot
-        
+        static let roomID = "room_id"
         static let isBlock = "isblock"
         static let type = "type"
        
@@ -138,6 +138,8 @@ struct Request {
         static let allowNotifAndLoc = "/allowlocation.php"
         static let getFeedbackDetails = "/GetFeedbackDetail.php"
         static let chatListing = "/chatListing.php"
+        static let sendMsg = "/sendMsg.php"
+        static let getAllMessgaes = "/getAllMessage.php"
         static let logout = "/LogOut.php"
     }
     
@@ -402,7 +404,7 @@ struct Status {
     
     struct Code {
         
-        static let emailNotVerified = 108
+        static let emailNotVerified = 511
         static let success = 200
         static let unauthorized = 401
         static let notfound = 404
