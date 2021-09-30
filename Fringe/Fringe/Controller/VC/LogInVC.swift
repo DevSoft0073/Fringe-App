@@ -113,21 +113,9 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                     
                     if response.code == Status.Code.emailNotVerified {
                         
-                        DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: LocalizableConstants.SuccessMessage.mailNotVerifiedYet, handlerNo: {
+                        DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.verificationMailSent) {
                             
-                            NavigationManager.shared.setupLandingOnHome()
-                            
-                        }, handlerYes: {
-                            
-                            delay {
-                                                                
-                                delayInLoading {
-                                    
-//                                    self.performResentEmailVerification()
-                                }
-                            }
-                        })
-                        
+                        }
                     }
                         else if response.code == Status.Code.notfound {
                         

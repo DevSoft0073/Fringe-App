@@ -97,9 +97,12 @@ struct Request {
         static let totalGuest = "totalGuest"
         
         //Add slot
-        static let roomID = "room_id"
         static let isBlock = "isblock"
         static let type = "type"
+        
+        //Chat
+        static let roomID = "room_id"
+        static let message = "message"
        
     }
     

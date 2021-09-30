@@ -110,7 +110,6 @@ internal struct MockMessage: MessageType {
     var messageId: String
     var sentDate: Date
     var kind: MessageKind
-    
     var user: MockUser
     
     private init(kind: MessageKind, user: MockUser, messageId: String, date: Date) {

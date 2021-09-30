@@ -167,6 +167,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Checkout.set(config: config)
     }
     
+    func setupSocket() {
+        
+        let socketConnectionStatus = SocketManger.shared.socket.status
+        switch socketConnectionStatus {
+        case .connected:
+            debugPrint("socket connected")
+        case .connecting:
+            debugPrint("socket connecting")
+        case .disconnected:
+            debugPrint("socket disconnected")
+            debugPrint("socket not connected")
+            SocketManger.shared.socket.connect()
+        case .notConnected:
+            debugPrint("socket not connected")
+            SocketManger.shared.socket.connect()
+        }
+    }
+    
     //------------------------------------------------------
     
     //MARK: UIApplicationDelegate
@@ -205,6 +223,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.setupSocket()
         }
         
         return true

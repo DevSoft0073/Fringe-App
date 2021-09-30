@@ -6,10 +6,11 @@
 //
 import UIKit
 import MapKit
-import SDWebImage
-import MessageKit
-import Kingfisher
+import SocketIO
 import Alamofire
+import Kingfisher
+import MessageKit
+import SDWebImage
 import InputBarAccessoryView
 import IQKeyboardManagerSwift
 
@@ -130,22 +131,26 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
                   ]
                 
                 var parameter: [String: Any] = [:]
+                parameter = [
+                    Request.Parameter.roomID: roomId,
+                    Request.Parameter.message: inputMessage,
+                ]
                 
                 print("chatParam",parameter)
                 
-                RequestManager.shared.requestPOST(requestMethod: Request.Method.sendMsg, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self) { (response: BaseResponseModal) in
+                RequestManager.shared.requestPOST(requestMethod: Request.Method.sendMsg, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[AddEditMessageModal]>.self) { (response: ResponseModal<[AddEditMessageModal]>) in
                     
                     completion?(response.data?.first, nil)
                     
-                    delay {
-                        self.performClearBadgeCount { (flag : Bool) in
-                        }
-                    }
-                    self.lblNoRecordsFound.isHidden = true
+//                    delay {
+//                        self.performClearBadgeCount { (flag : Bool) in
+//                        }
+//                    }
+//                    self.lblNoRecordsFound.isHidden = true
                     
                 } failureBlock: { (errorModal: ErrorModal) in
                     
-                    completion?(errorModal)
+                    completion?(nil, errorModal)
                 }
             }
         }
@@ -166,7 +171,7 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
     // MARK: Text Messages
     
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .white : .white
+        return isFromCurrentSender(message: message) ? .white : .black
     }
     
     func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key: Any] {
@@ -175,10 +180,6 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
         default: return MessageLabel.defaultAttributes
         }
     }
-    
-//    func enabledDetectors(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> [DetectorType] {
-//        return [.url, .address, .phoneNumber, .date, .transitInformation, .mention, .hashtag]
-//    }
     
     func enabledDetectors(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> [DetectorType] {
         return [.url, .address, .transitInformation, .mention, .hashtag]
@@ -211,55 +212,25 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
         /*let avatar = SampleData.shared.getAvatarFor(sender: message.sender)
          avatarView.set(avatar: avatar)*/
         
-//        if isFromCurrentSender(message: message) {
-//            if PreferenceManager.shared.curretMode == "1"{
-//                if let imgStringUrl = self.currentUser?.image, let imgUrl = URL(string: imgStringUrl) {
-//                    avatarView.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
-//                    avatarView.sd_addActivityIndicator()
-//                    avatarView.sd_setImage(with: imgUrl, completed: nil)
-//
-//                } else {
-//
-//                        avatarView.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
-//                        avatarView.sd_addActivityIndicator()
-//                        avatarView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: ""),completed: nil)
-//
-//                }
-//            }else{
-//                if let imgStringUrl = self.currentStudioUser?.profileImage, let imgUrl = URL(string: imgStringUrl) {
-//                    avatarView.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
-//                    avatarView.sd_addActivityIndicator()
-//                    avatarView.sd_setImage(with: imgUrl, completed: nil)
-//                } else {
-//
-//                    avatarView.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
-//                    avatarView.sd_addActivityIndicator()
-//                    avatarView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: ""),completed: nil)
-//
-//                }
-//            }
-//
-//        } else {
-//
-//            if let imgStringUrl = self.messageGroup?.image, let imgUrl = URL(string: imgStringUrl) {
-//                avatarView.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
-//                avatarView.sd_addActivityIndicator()
-//                avatarView.sd_setImage(with: imgUrl, completed: nil)
-//
-//            } else {
-//                let imgUrl = URL(string: imgStringgggg)
-//                avatarView.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
-//                avatarView.sd_addActivityIndicator()
-//                avatarView.sd_setImage(with: imgUrl, completed: nil)
-//
-//            }
-//        }
+        if isFromCurrentSender(message: message) {
+            if let imgStringUrl = self.currentUser?.image, let imgUrl = URL(string: imgStringUrl) {
+                avatarView.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+                avatarView.sd_addActivityIndicator()
+                avatarView.sd_setImage(with: imgUrl, completed: nil)
+            }
+        } else {
+            
+            if let imgStringUrl = self.messageGroup?.image, let imgUrl = URL(string: imgStringUrl) {
+                avatarView.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+                avatarView.sd_addActivityIndicator()
+                avatarView.sd_setImage(with: imgUrl, completed: nil)
+                
+            }
+        }
     }
     
     func configureMediaMessageImageView(_ imageView: UIImageView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         if case MessageKind.photo(let media) = message.kind, let imageURL = media.url {
-            //            imageView.sd_setImage(with: imageURL), placeholderImage: UIImage(named: FGImageName.imgPlaceHolder))
-            //            imageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named: ""), options: SDWebImageOptions.continueInBackground, completed: nil)
             imageView.kf.setImage(with: imageURL)
         } else {
             imageView.kf.cancelDownloadTask()
@@ -335,10 +306,10 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
     
     func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
         
-//        let roomId: String = self.roomId
-//        let isTypeing: Int = 1
-//        SocketManger.shared.socket.emit(SocketMessageType.startTyping.rawValue, roomId, isTypeing)
-//        debouncer?.call()
+        let roomId: String = self.roomId
+        let isTypeing: Int = 1
+        SocketManger.shared.socket.emit(SocketMessageType.startTyping.rawValue, roomId, isTypeing)
+        debouncer?.call()
     }
     
     @objc
@@ -364,10 +335,10 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
         inputBar.inputTextView.placeholder = "Sending..."
         
         // Resign first responder for iPad split view
-        //inputBar.inputTextView.resignFirstResponder()
+        inputBar.inputTextView.resignFirstResponder()
         
         /*DispatchQueue.global(qos: .default).async {
-         // fake send request task
+          fake send request task
          sleep(1)
          DispatchQueue.main.async { [weak self] in
          inputBar.sendButton.stopAnimating()
@@ -377,26 +348,26 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
          }
          }*/
         
-//        let roomId: String = self.roomId
-//        let isTypeing: Int = 0
-//        SocketManger.shared.socket.emit(SocketMessageType.startTyping.rawValue, roomId, isTypeing)
-//
-//        performSendMessage(components) { message, error in
-//
-//            DispatchQueue.main.async { [weak self] in
-//
-//                inputBar.sendButton.stopAnimating()
-////                inputBar.inputTextView.placeholder = "Aa"
-//                if let message = message?.toMockMessage() {
-//                    self?.insertMessage(message)
-//                }
-//                self?.messagesCollectionView.scrollToLastItem(animated: true)
-//                print("roomIDChat",roomId)
-//                //send message to socket as well.
-//                let socketData: [String: Any] = (try? message?.jsonString()?.toDictionary() as? [String: Any]) ?? [:]
-//                SocketManger.shared.socket.emit(SocketMessageType.newMessage.rawValue, roomId, socketData)
-//            }
-//        }
+        let roomId: String = self.roomId
+        let isTypeing: Int = 0
+        SocketManger.shared.socket.emit(SocketMessageType.startTyping.rawValue, roomId, isTypeing)
+
+        performSendMessage(components) { message, error in
+
+            DispatchQueue.main.async { [weak self] in
+
+                inputBar.sendButton.stopAnimating()
+//                inputBar.inputTextView.placeholder = "Aa"
+                if let message = message?.toMockMessage() {
+                    self?.insertMessage(message)
+                }
+                self?.messagesCollectionView.scrollToLastItem(animated: true)
+                print("roomIDChat",roomId)
+                //send message to socket as well.
+                let socketData: [String: Any] = (try? message?.jsonString()?.toDictionary() as? [String: Any]) ?? [:]
+                SocketManger.shared.socket.emit(SocketMessageType.newMessage.rawValue, roomId, socketData)
+            }
+        }
     }
     
     /*private func insertMessages(_ data: [Any]) {
@@ -411,6 +382,82 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
      }
      }
      }*/
+    
+    //------------------------------------------------------
+    
+    //MARK: Selector
+    
+    @objc func loadMoreMessages() {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
+            /*SampleData.shared.getMessages(count: 20) { messages in
+             DispatchQueue.main.async {
+             self.messageList.insert(contentsOf: messages, at: 0)
+             self.messagesCollectionView.reloadDataAndKeepOffset()
+             self.refreshControl.endRefreshing()
+             }
+             }*/
+            
+            DispatchQueue.main.async {
+                self.refreshControl.bringSubviewToFront(self.messagesCollectionView)
+                self.refreshControl.beginRefreshing()
+            }
+            
+            self.performGetMessage(isShowLoader: false, lastId: self.lastId) { flag in
+                
+                if flag {
+                    //TODO:
+                }
+                
+                DispatchQueue.main.async {
+                    self.messagesCollectionView.reloadDataAndKeepOffset()
+                    self.refreshControl.endRefreshing()
+                }
+            }
+        }
+    }
+    
+    @objc func chatStatus(_ notification: Notification) {
+        //TODO: Handle online offline users
+    }
+    
+    @objc func newMessage(_ notification: Notification) {
+        
+        DispatchQueue.main.async {
+            if let message = notification.object as? [String: Any], let addEditMessage = try? AddEditMessageModal(message.dict2json()) {
+                self.setTypingIndicatorViewHidden(true, animated: true)
+                let mockMessage = addEditMessage.toMockMessage()
+//                self.lblNoRecordsFound.isHidden = true
+                self.insertMessage(mockMessage)
+                
+                
+            }
+        }
+//        delay {
+//            self.performClearBadgeCount { (flag : Bool) in
+//            }
+//        }
+    }
+    
+    @objc func startTyping(_ notification: Notification) {
+        DispatchQueue.main.async {
+            if let trueIndex = notification.object as? Int {
+                if trueIndex == 1 {
+                    self.setTypingIndicatorViewHidden(false, animated: true)
+                    if self.isLastSectionVisible() == true {
+                        self.messagesCollectionView.scrollToLastItem(animated: true)
+                    }
+                } else {
+                    self.setTypingIndicatorViewHidden(true, animated: false)
+                }
+            }
+        }
+    }
+    
+    @objc func stopTyping(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.setTypingIndicatorViewHidden(true, animated: true)
+        }
+    }
     
     //------------------------------------------------------
     
@@ -431,9 +478,28 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
         self.view.backgroundColor = FGColor.appWhite
         messagesCollectionView.backgroundColor = UIColor.clear
         
-//        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
         
         configureMessageInputBar()
+        
+        performGetMessage(isShowLoader: false, lastId: String()) { flag in
+            if flag {
+                self.messagesCollectionView.scrollToLastItem(animated: false)
+            }
+        }
+        
+        debouncer = FGDebouncer(delay: 0.5, callback: {
+            let isTypeing: Int = 0
+            SocketManger.shared.socket.emit(SocketMessageType.startTyping.rawValue, self.roomId, isTypeing)
+        })
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(chatStatus(_:)), name: NSNotification.Name(SocketMessageType.chatStatus.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(newMessage(_:)), name: NSNotification.Name(SocketMessageType.newMessage.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startTyping(_:)), name: NSNotification.Name(SocketMessageType.startTyping.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopTyping(_:)), name: NSNotification.Name(SocketMessageType.stopTyping.rawValue), object: nil)
+        
+        SocketManger.shared.socket.emit(SocketMessageType.connect.rawValue, self.roomId)
+        
     }
     
     //------------------------------------------------------
@@ -441,6 +507,20 @@ class ChatDetailsVC : ChatViewController, MessagesDisplayDelegate, MessagesLayou
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.topView.addSubview(messagesCollectionView)
+        
+        performGetMessage(isShowLoader: false, lastId: String()) { flag in
+            if flag {
+                self.messagesCollectionView.scrollToLastItem(animated: false)
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        IQKeyboardManager.shared.enable = true
+        let roomId: String = self.roomId
+        let isTypeing: Int = 0
+        SocketManger.shared.socket.emit(SocketMessageType.startTyping.rawValue, roomId, isTypeing)
+        SocketManger.shared.socket.emit(SocketMessageType.leaveChat.rawValue, roomId)
     }
     
     //------------------------------------------------------

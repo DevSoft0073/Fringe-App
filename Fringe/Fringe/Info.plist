@@ -65,6 +65,11 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) wants to access your camera to upload profile picture, upload images of golf course and documents images for account verification.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
