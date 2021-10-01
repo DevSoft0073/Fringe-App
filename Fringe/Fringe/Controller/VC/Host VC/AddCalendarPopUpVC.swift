@@ -201,7 +201,6 @@ class AddCalendarPopUpVC : BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         txtCalendar.tintColor = .clear
-//        txtCalendar.text = selectedDate.convertDatetring_TopreferredFormat(currentFormat: "dd-MM-yyyy", toFormat: "EEEE, MMM d, yyyy")
         txtCalendar.text = selectedDate
         let mytapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         self.view.addGestureRecognizer(mytapGestureRecognizer)

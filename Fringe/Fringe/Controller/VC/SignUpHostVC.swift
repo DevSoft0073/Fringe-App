@@ -263,7 +263,8 @@ class SignUpHostVC : BaseVC, UICollectionViewDelegate , UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if photosInTheCellNow.count >= 10 {
+        if photosInTheCellNow.count >= 5 {
+            DisplayAlertManager.shared.displayAlert(animated: true, message: LocalizableConstants.Error.maximumLimit)
         }else{
             checkPickerVal = false
             self.imagePickerVC?.present(from: view)

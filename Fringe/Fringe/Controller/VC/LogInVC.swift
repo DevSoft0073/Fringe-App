@@ -286,12 +286,10 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                         print(FacebookDataModal(fromDictionary: dict))
                         delay {
                             LoadingManager.shared.showLoading()
-                            delayInLoading {
-                                self.fbData.append(FbData(firstName: fbModal.firstName, lastName: fbModal.lastName, email: fbModal.email, imgUrl: fbModal.picture?.data.url ?? String()))
-//                                NavigationManager.shared.setupSingUp()
-                                self.performSocialLogin(fbModal.firstName, fbModal.lastName, fbModal.facebookId, fbModal.email, type: "1", imgUrl: fbModal.picture?.data.url ?? String())
-                                self.dismiss(animated: true, completion: nil)
-                            }
+                            self.fbData.append(FbData(firstName: fbModal.firstName, lastName: fbModal.lastName, email: fbModal.email, imgUrl: fbModal.picture?.data.url ?? String()))
+                            //                                NavigationManager.shared.setupSingUp()
+                            self.performSocialLogin(fbModal.firstName, fbModal.lastName, fbModal.facebookId, fbModal.email, type: "1", imgUrl: fbModal.picture?.data.url ?? String())
+                            self.dismiss(animated: true, completion: nil)
                         }
                     }
                 }
@@ -374,8 +372,8 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtEmail.text = "dharmaniz.guleria22@gmail.com"
-        txtPassword.text = "Qwerty@123"
+//        txtEmail.text = "dharmaniz.guleria22@gmail.com"
+//        txtPassword.text = "Qwerty@123"
         setup()
     }
     

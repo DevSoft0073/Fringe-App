@@ -11,7 +11,7 @@ import Foundation
 import KRPullLoader
 
 class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentViewDelegate {
-   
+    
     @IBOutlet weak var noDataLbl: FGRegularLabel!
     @IBOutlet weak var segment2: SegmentView!
     @IBOutlet weak var segment1: SegmentView!
@@ -23,7 +23,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     var lastRequestId: String = String()
     var needToshowInfoView: Bool = false
     var btnTapped = true
-   
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -44,29 +44,75 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     
     func setup() {
         
-        tblGolf.dataSource = self
-        tblGolf.delegate = self
-        noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.pending.localized()
-        segment1.btn.setTitle("Pending", for: .normal)
-        segment2.btn.setTitle("Confirmed", for: .normal)
+        if PreferenceManager.shared.comesFromConfirmToPay == "1"{
+            
+            tblGolf.dataSource = self
+            tblGolf.delegate = self
+            noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.pending.localized()
+            segment1.btn.setTitle("Pending", for: .normal)
+            segment2.btn.setTitle("Confirmed", for: .normal)
+            
+            segment1.delegate = self
+            segment2.delegate = self
+            
+            segment1.isSelected = true
+            segment2.isSelected = !segment1.isSelected
+            var identifier = String(describing: FringePendingCell.self)
+            var nibCell = UINib(nibName: identifier, bundle: Bundle.main)
+            tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
+            
+            identifier = String(describing: FringeConfirmedCell.self)
+            nibCell = UINib(nibName: identifier, bundle: Bundle.main)
+            tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
+            
+        } else {
+            
+            tblGolf.dataSource = self
+            tblGolf.delegate = self
+            noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.pending.localized()
+            segment1.btn.setTitle("Pending", for: .normal)
+            segment2.btn.setTitle("Confirmed", for: .normal)
+            
+            segment1.delegate = self
+            segment2.delegate = self
+            
+            segment1.isSelected = false
+            segment2.isSelected = true
+            var identifier = String(describing: FringePendingCell.self)
+            var nibCell = UINib(nibName: identifier, bundle: Bundle.main)
+            tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
+            
+            identifier = String(describing: FringeConfirmedCell.self)
+            nibCell = UINib(nibName: identifier, bundle: Bundle.main)
+            tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
+            
+        }
         
-        segment1.delegate = self
-        segment2.delegate = self
-
-        segment1.isSelected = true
-        segment2.isSelected = !segment1.isSelected
-        
-        var identifier = String(describing: FringePendingCell.self)
-        var nibCell = UINib(nibName: identifier, bundle: Bundle.main)
-        tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
-        
-        identifier = String(describing: FringeConfirmedCell.self)
-        nibCell = UINib(nibName: identifier, bundle: Bundle.main)
-        tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
+        //        tblGolf.dataSource = self
+        //        tblGolf.delegate = self
+        //        noDataLbl.text = LocalizableConstants.Controller.FringeDataForGolfclub.pending.localized()
+        //        segment1.btn.setTitle("Pending", for: .normal)
+        //        segment2.btn.setTitle("Confirmed", for: .normal)
+        //
+        //        segment1.delegate = self
+        //        segment2.delegate = self
+        //
+        //        segment1.isSelected = true
+        //        segment2.isSelected = !segment1.isSelected
+        //
+        //        var identifier = String(describing: FringePendingCell.self)
+        //        var nibCell = UINib(nibName: identifier, bundle: Bundle.main)
+        //        tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
+        //
+        //        identifier = String(describing: FringeConfirmedCell.self)
+        //        nibCell = UINib(nibName: identifier, bundle: Bundle.main)
+        //        tblGolf.register(nibCell, forCellReuseIdentifier: identifier)
         
     }
     
     func updateUI()  {
+        
+        tblGolf.reloadData()
         
         if items.count == 0{
             self.noDataLbl.isHidden = false
@@ -85,8 +131,6 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             noDataLbl.isHidden = items.count != .zero
             
         }
-        
-        tblGolf.reloadData()
     }
     
     func performGetBookingListing(completion:((_ flag: Bool) -> Void)?) {
@@ -133,23 +177,18 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             
             if response.code == Status.Code.success {
                 
-                delay {
-                    
-                    if self.lastRequestId.isEmpty {
-                        self.items.removeAll()
-                        self.updateUI()
-                        
-                    }
-                    
-                    self.items.append(contentsOf: response.data ?? [])
-                    self.items = self.items.removingDuplicates()
-                    self.lastRequestId = response.data?.last?.id ?? String()
+                if self.lastRequestId.isEmpty {
+                    self.items.removeAll()
                     self.updateUI()
+                    
                 }
                 
-            } else if response.code == Status.Code.nofoundDat {
+                self.items.append(contentsOf: response.data ?? [])
+                self.items = self.items.removingDuplicates()
+                self.lastRequestId = response.data?.last?.id ?? String()
+                self.updateUI()
                 
-                self.items.removeAll()
+            } else if response.code == Status.Code.nofoundDat {
                 
                 LoadingManager.shared.hideLoading()
                 
@@ -163,25 +202,22 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             
             LoadingManager.shared.hideLoading()
             
-            delay {
-                
-                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
-                    PreferenceManager.shared.userId = nil
-                    PreferenceManager.shared.currentUser = nil
-                    PreferenceManager.shared.authToken = nil
-                    NavigationManager.shared.setupSingIn()
-                }
-            }
             
+            DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                PreferenceManager.shared.userId = nil
+                PreferenceManager.shared.currentUser = nil
+                PreferenceManager.shared.authToken = nil
+                NavigationManager.shared.setupSingIn()
+            }
         })
     }
     
     private func performRequestCancelation(golfID : String,completion:((_ flag: Bool) -> Void)?) {
-                
+        
         let headers:HTTPHeaders = [
-           "content-type": "application/json",
+            "content-type": "application/json",
             "Token": PreferenceManager.shared.authToken ?? String(),
-          ]
+        ]
         
         let parameterr: [String: Any] = [
             Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
@@ -236,7 +272,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             }
         })
     }
-
+    
     
     //------------------------------------------------------
     
@@ -336,6 +372,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             controller.isUpdate = {
                 self.isSelected = "0"
             }
+            PreferenceManager.shared.comesFromConfirmToPay = "1"
             push(controller: controller)
             cell.refundRequestView.isHidden = true
             tblGolf.reloadData()
@@ -384,10 +421,12 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         self.needToshowInfoView = true
         
         if view == segment1 {
-                    
+            
             isSelected = "0"
             
             LoadingManager.shared.showLoading()
+            
+            PreferenceManager.shared.comesFromConfirmToPay = "1"
             
             self.performGetBookingListing { (flag : Bool) in
                 
@@ -398,7 +437,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         } else if view == segment2 {
             
             isSelected = "1"
-
+            
             LoadingManager.shared.showLoading()
             
             self.performGetBookingListing { (flag : Bool) in
@@ -415,7 +454,6 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     //------------------------------------------------------
@@ -426,7 +464,11 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         noDataLbl.isHidden = false
         
         setup()
-                
+        
+        isSelected = "0"
+        
+        self.lastRequestId = ""
+        
         LoadingManager.shared.showLoading()
         
         self.performGetBookingListing { (flag : Bool) in

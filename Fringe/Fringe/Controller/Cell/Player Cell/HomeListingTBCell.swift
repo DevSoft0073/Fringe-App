@@ -11,6 +11,7 @@ import Toucan
 
 class HomeListingTBCell: UITableViewCell {
     
+    @IBOutlet weak var favUnFavImg: UIImageView!
     @IBOutlet weak var lblPrice: FGMediumLabel!
     @IBOutlet weak var lblRating: FGRegularLabel!
     @IBOutlet weak var ratingView: FloatRatingView!
@@ -48,6 +49,14 @@ class HomeListingTBCell: UITableViewCell {
         } else {
             self.mainImg.sd_removeActivityIndicator()
             mainImg.image = UIImage(named: FGImageName.imgPlaceHolder)
+        }
+        
+        //fav unfav image
+        
+        if homeData.isFav == "1"{
+            favUnFavImg.image = UIImage(named: FGImageName.iconWhiteHeart)
+        } else {
+            favUnFavImg.image = UIImage(named: FGImageName.iconUnFavWhiteHeart)
         }
         
         lblGolfClubName.text = homeData.golfCourseName

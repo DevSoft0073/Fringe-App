@@ -82,6 +82,7 @@ class HostNotificationVC : BaseVC, UITableViewDelegate, UITableViewDataSource, K
             self.isRequesting = false
             
             if response.code == Status.Code.success {
+                
                 if self.lastRequestId.isEmpty {
                     self.items.removeAll()
                     self.setup()
@@ -96,6 +97,7 @@ class HostNotificationVC : BaseVC, UITableViewDelegate, UITableViewDataSource, K
                 completion?(true)
                 
             } else {
+                
                 completion?(true)
             }
             
@@ -198,6 +200,7 @@ class HostNotificationVC : BaseVC, UITableViewDelegate, UITableViewDataSource, K
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
         
         LoadingManager.shared.showLoading()

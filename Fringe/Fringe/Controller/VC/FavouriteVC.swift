@@ -76,7 +76,7 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
             LoadingManager.shared.hideLoading()
 
             self.isRequesting = false
-            print(response)
+            
             if response.code == Status.Code.success {
                 if self.lastRequestId.isEmpty {
                     self.items.removeAll()
@@ -84,18 +84,15 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
                 self.items.append(contentsOf: response.data ?? [])
                 self.items = self.items.removingDuplicates()
                 self.lastRequestId = response.data?.first?.favID ?? String()
-                completion?(true)
                 self.updateUI()
+                completion?(true)
                 
             } else if response.code == Status.Code.notfound {
                 
-                self.items.removeAll()
-                
-                self.updateUI()
+                completion?(true)
                 
             } else {
                                 
-                self.updateUI()
                 
                 completion?(true)
             }

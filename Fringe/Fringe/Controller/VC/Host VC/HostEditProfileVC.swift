@@ -324,8 +324,8 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if photosInTheCellNow.count >= 10 {
-            //            DisplayAlertManager.shared.displayAlert(message: LocalizableConstants.Error.maximumLimit)
+        if photosInTheCellNow.count >= 5 {
+            DisplayAlertManager.shared.displayAlert(animated: true, message: LocalizableConstants.Error.maximumLimit)
         }else{
             checkPickerVal = false
             self.imagePickerVC?.present(from: view)

@@ -125,6 +125,8 @@ class BookingDetailsRatingVC : BaseVC {
                 
                 if response.data?.isRating == "0" {
                     self.btnSubmit.isHidden = false
+                    self.ratingView.isUserInteractionEnabled = true
+                    self.txtViewQuery.isUserInteractionEnabled = true
                 } else {
                     self.btnSubmit.isHidden = true
                     self.ratingView.isUserInteractionEnabled = false

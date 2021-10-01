@@ -232,11 +232,6 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
         super.viewDidLoad()
         self.updateUI()
         
-        noDataLbl.text = "Loading..."
-        
-        self.performGetNearByGolfClubs { (flag : Bool) in
-            
-        }
     }
     
     //------------------------------------------------------
@@ -244,6 +239,13 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setup()
+        
+        noDataLbl.text = "Loading..."
+        
+        self.performGetNearByGolfClubs { (flag : Bool) in
+            
+        }
+        
     }
     
     //------------------------------------------------------

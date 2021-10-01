@@ -45,6 +45,7 @@
 "pending_verification" = "Your golf course account verification under process, please wait until complete verification from admin side.";
 "maximumLimit" = "You can add maximum of 10 images for studio.";
 "anotherLogin" = "Your account has been accessed by other user. Login again.";
+"add_limit" = "You have only add 5 images for golf course.";
 
 //dilogue buttons
 "alert_button_ok" = "Ok";
@@ -304,7 +305,7 @@
 "seleceted_dates_are_already_blocked" = "Selected dates are already blocked";
 "no_data_found" = "No data found";
 "signup_as_host" = "Sign up as host";
-"enter_query" = "Please add your query";
+"enter_query" = "Please add your review";
 "select_date" = "Please select date";
 "reject_resn" = "Please add reject reason.";
 "nodata" = "No data found";

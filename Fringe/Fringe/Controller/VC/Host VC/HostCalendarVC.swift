@@ -79,13 +79,9 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
-        let selectedDate = dateFormatter.string(from: date)
-        self.selectedDate = selectedDate
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM d ,yyyy"
-        sendingDate = formatter.string(from: date)
-        
+        let selectedDateForBooking = dateFormatter.string(from: date)
+        self.selectedDate = selectedDateForBooking
+        self.sendingDate = selectedDateForBooking
         LoadingManager.shared.showLoading()
         
         self.performGetRequestListing { (flag : Bool) in
@@ -168,7 +164,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     @IBAction func btnAdd(_ sender: Any) {
         let controller = NavigationManager.shared.addCalendarPopUpVC
         controller.modalPresentationStyle = .formSheet
-        controller.selectedDate = selectedDate
+        controller.selectedDate = sendingDate
         controller.updateTblViewData = {
             
             DispatchQueue.main.async {

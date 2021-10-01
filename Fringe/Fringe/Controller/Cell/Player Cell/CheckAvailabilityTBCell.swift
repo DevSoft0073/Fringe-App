@@ -21,7 +21,7 @@ class CheckAvailabilityTBCell: UITableViewCell {
     //MARK: Custome
     
     func setup(bookingData : CheckModal) {
-        
+        ratingView.isUserInteractionEnabled = false
         lblName.text = bookingData.golfCourseName
         lblGuestDetails.text = bookingData.checkModalDescription
         lblRating.text = bookingData.rating
