@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LeftCell" id="GfJ-pI-vZo" customClass="LeftCell" customModule="Fringe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GfJ-pI-vZo" id="iVI-Xa-xab">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="6jb-DV-WDF">
+                        <rect key="frame" x="15" y="8" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="6jb-DV-WDF" secondAttribute="height" multiplier="1:1" id="GfN-Zb-Meh"/>
+                            <constraint firstAttribute="height" constant="40" id="xhr-M4-ap8"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="17.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilE-sa-VNz">
+                        <rect key="frame" x="65" y="8" width="189.5" height="58"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text=" gdhgudshg idusgh uidshg disuhg disugh diugh disug hugidh ids sg dsiugh gdhs " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-sX-tFg">
+                                <rect key="frame" x="8" y="2" width="173.5" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="appWhite"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yesterday" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqv-H8-1xW">
+                                <rect key="frame" x="5" y="38" width="174.5" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="AQI-Y7-C1J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
+                                <color key="textColor" name="appWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="appGreen"/>
+                        <constraints>
+                            <constraint firstItem="Dqv-H8-1xW" firstAttribute="leading" secondItem="ilE-sa-VNz" secondAttribute="leading" constant="5" id="5fu-2x-l4s"/>
+                            <constraint firstAttribute="bottom" secondItem="Dqv-H8-1xW" secondAttribute="bottom" constant="5" id="AcN-7I-QGR"/>
+                            <constraint firstItem="Dqv-H8-1xW" firstAttribute="top" secondItem="xkS-sX-tFg" secondAttribute="bottom" id="B22-Q9-59v"/>
+                            <constraint firstAttribute="trailing" secondItem="Dqv-H8-1xW" secondAttribute="trailing" constant="10" id="S7e-N7-tmm"/>
+                            <constraint firstAttribute="trailing" secondItem="xkS-sX-tFg" secondAttribute="trailing" constant="8" id="TzS-Qp-T7U"/>
+                            <constraint firstItem="xkS-sX-tFg" firstAttribute="top" secondItem="ilE-sa-VNz" secondAttribute="top" constant="2" id="VnU-h7-szJ"/>
+                            <constraint firstItem="xkS-sX-tFg" firstAttribute="leading" secondItem="ilE-sa-VNz" secondAttribute="leading" constant="8" id="bYR-tH-G3C"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ilE-sa-VNz" secondAttribute="trailing" constant="60" id="Cmu-PO-d3W"/>
+                    <constraint firstItem="ilE-sa-VNz" firstAttribute="top" secondItem="iVI-Xa-xab" secondAttribute="top" constant="8" id="GDR-8U-Zu0"/>
+                    <constraint firstAttribute="bottom" secondItem="ilE-sa-VNz" secondAttribute="bottom" constant="8" id="Lr9-1h-LDv"/>
+                    <constraint firstItem="6jb-DV-WDF" firstAttribute="leading" secondItem="iVI-Xa-xab" secondAttribute="leading" constant="15" id="m9u-Ne-SH6"/>
+                    <constraint firstItem="6jb-DV-WDF" firstAttribute="top" secondItem="iVI-Xa-xab" secondAttribute="top" constant="8" id="oza-kT-a8z"/>
+                    <constraint firstItem="ilE-sa-VNz" firstAttribute="leading" secondItem="6jb-DV-WDF" secondAttribute="trailing" constant="10" id="skk-06-dZA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="yyL-mo-o2g"/>
+            <connections>
+                <outlet property="imgProfile" destination="6jb-DV-WDF" id="SkT-vJ-C0P"/>
+                <outlet property="lbltime" destination="Dqv-H8-1xW" id="GRy-t6-BNg"/>
+                <outlet property="messageView" destination="ilE-sa-VNz" id="vNW-NA-HJf"/>
+                <outlet property="txtMsgView" destination="xkS-sX-tFg" id="p84-Qw-x1J"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="74"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder-image" width="80" height="80"/>
+        <namedColor name="appGreen">
+            <color red="0.13099999725818634" green="0.30700001120567322" blue="0.15399999916553497" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appWhite">
+            <color red="0.99599999189376831" green="0.99599999189376831" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -304,7 +304,6 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
                     cell.btnAccept.tag = indexPath.row
                     if needToshowInfoView {
                         cell.cancelView.isHidden = true
-                        
                         cell.btnClose.isHidden = true
                         cell.btnMoreInfo.isHidden = false
                     }
@@ -348,7 +347,6 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? HostPendingCell{
             self.needToshowInfoView = false
             cell.cancelView.isHidden = false
-            
             cell.btnClose.isHidden = false
             cell.btnMoreInfo.isHidden = true
             tblBooking.reloadData()
@@ -359,7 +357,6 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? HostPendingCell{
             btnTapped = true
             cell.cancelView.isHidden = true
-            
             cell.btnClose.isHidden = true
             cell.btnMoreInfo.isHidden = false
             tblBooking.reloadData()
@@ -479,6 +476,20 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        if currentUserHost?.stripeAccountStatus == "0" {
+//            let controller = NavigationManager.shared.popUpViewForAddAccountVC
+//            controller.modalPresentationStyle = .overFullScreen
+//            controller.modalTransitionStyle = .flipHorizontal
+//            self.present(controller, animated: true) {
+//            }
+//        }
+    }
+    
+    //------------------------------------------------------
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.performGetUserProfile()
         
         LoadingManager.shared.showLoading()
@@ -489,21 +500,6 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         
         setup()
         
-        if currentUserHost?.stripeAccountStatus == "0" {
-            let controller = NavigationManager.shared.businessHomeRejectionVC
-            controller.modalPresentationStyle = .overFullScreen
-            controller.modalTransitionStyle = .flipHorizontal
-            self.present(controller, animated: true) {
-            }
-        }
-        
-        updateUI()
-    }
-    
-    //------------------------------------------------------
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     //------------------------------------------------------

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - AddEditMessageModal
-struct AddEditMessageModal: Codable {
+struct AddEditMessageModal: Codable, Hashable {
     var id, userID, message, roomID: String?
     var seen, creationAt, name: String?
     var image: String?

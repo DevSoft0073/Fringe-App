@@ -39,7 +39,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     
     private(set) lazy var refreshControl: UIRefreshControl = {
         let control = UIRefreshControl()
-        //control.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
+//        control.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
         control.tintColor = .white
         return control
     }()

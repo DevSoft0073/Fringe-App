@@ -121,8 +121,8 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
         let messageGroup = messageGroups[indexPath.row]
-        let controller = NavigationManager.shared.chatDetailsVC
-        controller.messageGroup = messageGroup
+        let controller = NavigationManager.shared.messageListingVC
+        controller.roomID = messageGroup.roomID ?? String()
         push(controller: controller)
     }
     
@@ -143,7 +143,7 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        NavigationManager.shared.isEnabledBottomMenu = true
         var isShowLoader: Bool = false
         if messageGroups.count == .zero {
             isShowLoader = true

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,7 +39,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="391" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winged Golfclub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCP-7K-zJf" customClass="FGSemiboldLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="127" height="30"/>
+                                                <rect key="frame" x="0.0" y="5" width="386" height="30"/>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -48,6 +48,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="fCP-7K-zJf" firstAttribute="top" secondItem="9Q6-pU-zRO" secondAttribute="top" constant="5" id="AMa-p2-QMc"/>
+                                            <constraint firstAttribute="trailing" secondItem="fCP-7K-zJf" secondAttribute="trailing" constant="5" id="FBN-9V-ltu"/>
                                             <constraint firstAttribute="bottom" secondItem="fCP-7K-zJf" secondAttribute="bottom" constant="5" id="dTJ-TR-F1w"/>
                                             <constraint firstItem="fCP-7K-zJf" firstAttribute="leading" secondItem="9Q6-pU-zRO" secondAttribute="leading" id="lTp-Qk-Ce4"/>
                                             <constraint firstAttribute="height" constant="40" id="zvo-3U-qcl"/>
@@ -57,7 +58,7 @@
                                         <rect key="frame" x="0.0" y="40" width="391" height="35"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AJo-1A-NqM">
-                                                <rect key="frame" x="0.0" y="0.0" width="147" height="35"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="151" height="35"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwi-GE-b8Y">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="35"/>
@@ -78,7 +79,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16 January 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MK4-9B-R3K" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
-                                                        <rect key="frame" x="28" y="0.0" width="119" height="35"/>
+                                                        <rect key="frame" x="28" y="0.0" width="123" height="35"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

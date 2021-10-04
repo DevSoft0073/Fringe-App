@@ -7,32 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D130F4E7-C3D5-463C-A372-52D9743F2E1D"
+            uuid = "65500C52-A685-4A87-B1B0-466E1C8E6A07"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/BookingDetailsVC.swift"
+            filePath = "Fringe/Controller/VC/Host VC/BookingsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "btnSubmit(_:)"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
+            landmarkName = "showHideView(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7EB28B75-8EDA-43C2-B314-18C5E812A99C"
+            uuid = "8BF1E1A0-42BC-46C8-8997-E10E862FB646"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/BookingDetailsVC.swift"
+            filePath = "Fringe/Controller/VC/Host VC/BookingsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "btnSubmit(_:)"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
+            landmarkName = "showViews(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -279,3 +279,44 @@ func convertDateFormat(inputDate: String) -> String {
 
      return convertDateFormatter.string(from: oldDate!)
 }
+
+extension String{
+    func convertDateToStringg()->String{
+        let unixtimeInterval = self
+        let date = Date(timeIntervalSince1970:  unixtimeInterval.doubleValue)
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = .current
+        dateFormatter.locale = NSLocale.current
+        if compareDate(date1: now, date2: date){
+            dateFormatter.dateFormat = "hh:mm a"
+        }else{
+            dateFormatter.dateFormat = "dd MMM yyyy, hh:mm a"
+        }
+        let strDate = dateFormatter.string(from: date)
+        print(strDate,"date")
+        return strDate
+
+    }
+    func compareDate(date1:Date, date2:Date) -> Bool {
+        let order = NSCalendar.current.compare(date1, to: date2, toGranularity: .day)
+        switch order {
+        case .orderedSame:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+extension String {
+    var doubleValue: Double {
+        return (self as NSString).doubleValue
+    }
+    func removeHTMLTag() -> String {
+        let str = self.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
+        let replacedStr  = str.replacingOccurrences(of: "&nbsp;", with: "")
+        return replacedStr
+        
+    }
+}

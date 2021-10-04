@@ -44,7 +44,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     
     func setup() {
         
-        if PreferenceManager.shared.comesFromConfirmToPay == "1"{
+        if PreferenceManager.shared.comesFromConfirmToPay == "0"{
             
             tblGolf.dataSource = self
             tblGolf.delegate = self
@@ -367,12 +367,12 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? FringeConfirmedCell{
             btnTapped = true
             let data = items[sender.tag]
+            PreferenceManager.shared.comesFromConfirmToPay = "1"
             let controller = NavigationManager.shared.confirmedPayVC
             controller.detailsData = data
             controller.isUpdate = {
                 self.isSelected = "0"
             }
-            PreferenceManager.shared.comesFromConfirmToPay = "1"
             push(controller: controller)
             cell.refundRequestView.isHidden = true
             tblGolf.reloadData()
@@ -454,27 +454,32 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        PreferenceManager.shared.comesFromConfirmToPay = "0"
+        
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+                
         noDataLbl.isHidden = false
-        
-        setup()
-        
+                
         isSelected = "0"
         
         self.lastRequestId = ""
         
         LoadingManager.shared.showLoading()
-        
         self.performGetBookingListing { (flag : Bool) in
             
         }
         NavigationManager.shared.isEnabledBottomMenu = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+                
+        setup()
     }
     
     //------------------------------------------------------

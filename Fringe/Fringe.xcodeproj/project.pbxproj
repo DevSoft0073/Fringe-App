@@ -33,6 +33,11 @@
 		1F64699326E5F584007D41DE /* HomeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F64699226E5F584007D41DE /* HomeModal.swift */; };
 		1F72DA0B26D631680073FC7E /* loader_ring.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F72DA0A26D631680073FC7E /* loader_ring.json */; };
 		1F72DA0D26D646000073FC7E /* FGImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA0C26D646000073FC7E /* FGImagePicker.swift */; };
+		1F7D6C6F270B09F900B5FFB4 /* LeftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D6C6D270B09F900B5FFB4 /* LeftCell.swift */; };
+		1F7D6C70270B09F900B5FFB4 /* LeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D6C6E270B09F900B5FFB4 /* LeftCell.xib */; };
+		1F7D6C73270B0A0E00B5FFB4 /* RightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D6C71270B0A0E00B5FFB4 /* RightCell.swift */; };
+		1F7D6C74270B0A0E00B5FFB4 /* RightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D6C72270B0A0E00B5FFB4 /* RightCell.xib */; };
+		1F7D6C76270B108800B5FFB4 /* MessageListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D6C75270B108800B5FFB4 /* MessageListingVC.swift */; };
 		1F8961A526F0700700E08E3C /* BookingRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961A426F0700700E08E3C /* BookingRequestModal.swift */; };
 		1F8961A726F0753D00E08E3C /* BookingModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961A626F0753D00E08E3C /* BookingModal.swift */; };
 		1F8961AA26F0840000E08E3C /* NotificationListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961A926F0840000E08E3C /* NotificationListing.swift */; };
@@ -235,6 +240,11 @@
 		1F64699226E5F584007D41DE /* HomeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModal.swift; sourceTree = "<group>"; };
 		1F72DA0A26D631680073FC7E /* loader_ring.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_ring.json; sourceTree = "<group>"; };
 		1F72DA0C26D646000073FC7E /* FGImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGImagePicker.swift; sourceTree = "<group>"; };
+		1F7D6C6D270B09F900B5FFB4 /* LeftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftCell.swift; sourceTree = "<group>"; };
+		1F7D6C6E270B09F900B5FFB4 /* LeftCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftCell.xib; sourceTree = "<group>"; };
+		1F7D6C71270B0A0E00B5FFB4 /* RightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightCell.swift; sourceTree = "<group>"; };
+		1F7D6C72270B0A0E00B5FFB4 /* RightCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightCell.xib; sourceTree = "<group>"; };
+		1F7D6C75270B108800B5FFB4 /* MessageListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListingVC.swift; sourceTree = "<group>"; };
 		1F8961A426F0700700E08E3C /* BookingRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestModal.swift; sourceTree = "<group>"; };
 		1F8961A626F0753D00E08E3C /* BookingModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingModal.swift; sourceTree = "<group>"; };
 		1F8961A926F0840000E08E3C /* NotificationListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListing.swift; sourceTree = "<group>"; };
@@ -481,6 +491,17 @@
 			path = MyBookings;
 			sourceTree = "<group>";
 		};
+		1F7D6C6C270B09DA00B5FFB4 /* Chat XIB's */ = {
+			isa = PBXGroup;
+			children = (
+				1F7D6C6D270B09F900B5FFB4 /* LeftCell.swift */,
+				1F7D6C6E270B09F900B5FFB4 /* LeftCell.xib */,
+				1F7D6C71270B0A0E00B5FFB4 /* RightCell.swift */,
+				1F7D6C72270B0A0E00B5FFB4 /* RightCell.xib */,
+			);
+			path = "Chat XIB's";
+			sourceTree = "<group>";
+		};
 		1F8961A826F083F000E08E3C /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +655,7 @@
 				7CE041B226E0BBA10036EEA0 /* HostServiceTermsVC.swift */,
 				7C97C91F26E5E14B0090F7C7 /* BusinessAddPaymentMethodVC.swift */,
 				1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */,
+				1F7D6C75270B108800B5FFB4 /* MessageListingVC.swift */,
 			);
 			path = "Host VC";
 			sourceTree = "<group>";
@@ -903,6 +925,7 @@
 		7CA24C1C26C2400100437C8A /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				1F7D6C6C270B09DA00B5FFB4 /* Chat XIB's */,
 				7C52984E26DCA65400A3606D /* Host XIBs */,
 				7C52984C26DCA61900A3606D /* Player XIBs */,
 			);
@@ -1076,10 +1099,12 @@
 				7C52989426DDFD7800A3606D /* CollectionViewCellForShowImages.xib in Resources */,
 				7CE2E85226CB943900AF882A /* ProfileTBCell.xib in Resources */,
 				7C8F1D5F26CE328800135C41 /* AddPaymentTVCell.xib in Resources */,
+				1F7D6C70270B09F900B5FFB4 /* LeftCell.xib in Resources */,
 				7C39F19226C39A7600AAC277 /* Main.storyboard in Resources */,
 				7CD727E026D6149A00AF660D /* PaymentOptionsTBCell.xib in Resources */,
 				7C52986E26DD04BC00A3606D /* HostNotificationCell.xib in Resources */,
 				7CE2E85826CB9A3200AF882A /* ProfileSwitchCell.xib in Resources */,
+				1F7D6C74270B0A0E00B5FFB4 /* RightCell.xib in Resources */,
 				7C39F15B26C3947600AAC277 /* Poppins-Medium.ttf in Resources */,
 				7C52988026DDEF5400A3606D /* HostProfileTBCell.xib in Resources */,
 				7C780FF626C64B68003F1F12 /* FringePendingCell.xib in Resources */,
@@ -1219,6 +1244,7 @@
 				1F18387E26F9AF2500A0B663 /* ChatViewController.swift in Sources */,
 				7CE0419E26DF4CBB0036EEA0 /* ProfileViewForTitle.swift in Sources */,
 				7C780FD326C5330A003F1F12 /* HomeVC.swift in Sources */,
+				1F7D6C76270B108800B5FFB4 /* MessageListingVC.swift in Sources */,
 				7C780F7A26C3A6DB003F1F12 /* ESTabBarItemMoreContentView.swift in Sources */,
 				7C780F8F26C3C105003F1F12 /* SignUpVC.swift in Sources */,
 				7C64AB9426EB1C5B0024D06B /* ClubSearchVC.swift in Sources */,
@@ -1234,6 +1260,7 @@
 				7CD7EB0526D14E0B00BEDDA2 /* BookingDetailsVC.swift in Sources */,
 				7CA24C5C26C2426800437C8A /* ResponseModal.swift in Sources */,
 				7CE0F63F26D4B87B00C3AAFB /* ConfirmedPayVC.swift in Sources */,
+				1F7D6C73270B0A0E00B5FFB4 /* RightCell.swift in Sources */,
 				1F4CF3FD26EA3AA5008B2965 /* HostModal.swift in Sources */,
 				7CE46BF026CCFF07004EC6C7 /* AccountInformationVC.swift in Sources */,
 				1F33172326E37BF500D7D466 /* FGLocationManager.swift in Sources */,
@@ -1313,6 +1340,7 @@
 				7C6D5BDC26D38206007F888C /* AddPaymentVC.swift in Sources */,
 				7CA24C3226C2419D00437C8A /* DateTimeManager.swift in Sources */,
 				7CA24C2F26C2418100437C8A /* AppExtensions.swift in Sources */,
+				1F7D6C6F270B09F900B5FFB4 /* LeftCell.swift in Sources */,
 				7C39F19B26C39F1100AAC277 /* FGCustomCameraView.swift in Sources */,
 				7C52987B26DD0D7E00A3606D /* HostProfileVC.swift in Sources */,
 				7CA24C6326C2427C00437C8A /* JSONAny.swift in Sources */,
@@ -1466,9 +1494,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1478,7 +1506,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fringe.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = fringe_dist_27_aug_2021;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1491,9 +1519,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1503,7 +1531,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fringe.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = fringe_dist_27_aug_2021;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

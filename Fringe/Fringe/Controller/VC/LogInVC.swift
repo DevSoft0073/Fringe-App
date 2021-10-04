@@ -107,28 +107,10 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                     NavigationManager.shared.setupLandingOnHome()
                 }
                 
-            }else{
-                
-                delay {
-                    
-                    if response.code == Status.Code.emailNotVerified {
-                        
-                        DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.verificationMailSent) {
-                            
-                        }
-                    }
-                        else if response.code == Status.Code.notfound {
-                        
-                        DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.Error.invalidCredentials, handlerOK: nil)
+            } else if response.code == Status.Code.wrongCredentials {
 
-                    }
-                    else{
-                        
-                        delay {
-                            
-                            self.handleError(code: response.code)
-                        }
-                    }
+                delay {
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
                 }
             }
             
@@ -261,7 +243,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
             
             delayInLoading {
                 GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
-                    self.performSocialLogin(user?.profile?.givenName ?? String(), user?.profile?.givenName ?? String(), user?.userID ?? String(), user?.profile?.email ?? String(), type: "2", imgUrl: "\(user?.profile?.imageURL(withDimension: 512) ?? URL(fileURLWithPath: ""))")
+                    self.performSocialLogin(user?.profile?.givenName ?? String(), user?.profile?.familyName ?? String(), user?.userID ?? String(), user?.profile?.email ?? String(), type: "2", imgUrl: "\(user?.profile?.imageURL(withDimension: 512) ?? URL(fileURLWithPath: ""))")
                 }
             }
         }

@@ -119,7 +119,7 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bottomSheetView()
-        
+        PreferenceManager.shared.comesFromConfirmToPay = "0"
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             self.setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
         }

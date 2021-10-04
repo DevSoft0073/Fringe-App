@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,7 +42,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="236" height="24"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winged GolfClub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNc-pQ-WoQ" customClass="FGSemiboldLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="0.0" width="146" height="24"/>
+                                                <rect key="frame" x="15" y="0.0" width="216" height="24"/>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -52,6 +52,7 @@
                                         <constraints>
                                             <constraint firstItem="DNc-pQ-WoQ" firstAttribute="centerY" secondItem="Yx6-yA-Cab" secondAttribute="centerY" id="1t8-Qq-dJC"/>
                                             <constraint firstAttribute="height" constant="24" id="Fkx-C8-eOh"/>
+                                            <constraint firstAttribute="trailing" secondItem="DNc-pQ-WoQ" secondAttribute="trailing" constant="5" id="wIp-xV-npH"/>
                                             <constraint firstItem="DNc-pQ-WoQ" firstAttribute="leading" secondItem="Yx6-yA-Cab" secondAttribute="leading" constant="15" id="y3T-ti-tOM"/>
                                         </constraints>
                                     </view>
@@ -118,7 +119,7 @@
                                         <rect key="frame" x="0.0" y="77" width="236" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1052 / per round" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bp8-4X-9Jc" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="1" width="115" height="18.5"/>
+                                                <rect key="frame" x="15" y="1" width="216" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="13"/>
                                                 <color key="textColor" red="0.039207898079999998" green="0.039220668379999997" blue="0.039205111559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -126,6 +127,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="bp8-4X-9Jc" secondAttribute="trailing" constant="5" id="Cfc-XD-69c"/>
                                             <constraint firstAttribute="height" constant="20" id="Jav-o3-IXI"/>
                                             <constraint firstItem="bp8-4X-9Jc" firstAttribute="centerY" secondItem="w4X-s8-fOS" secondAttribute="centerY" id="aQe-Ne-dc0"/>
                                             <constraint firstItem="bp8-4X-9Jc" firstAttribute="leading" secondItem="w4X-s8-fOS" secondAttribute="leading" constant="15" id="oNI-xI-iTD"/>

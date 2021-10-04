@@ -39,7 +39,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="222" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winged GolfClub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cn-5e-Tve" customClass="FGSemiboldLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="-1" width="137.5" height="22.5"/>
+                                                <rect key="frame" x="15" y="-1" width="202" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -48,6 +48,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Fur-K2-oxL"/>
+                                            <constraint firstAttribute="trailing" secondItem="1Cn-5e-Tve" secondAttribute="trailing" constant="5" id="TpV-Qn-INj"/>
                                             <constraint firstItem="1Cn-5e-Tve" firstAttribute="centerY" secondItem="C36-0N-BpJ" secondAttribute="centerY" id="apc-Ue-Wrm"/>
                                             <constraint firstItem="1Cn-5e-Tve" firstAttribute="leading" secondItem="C36-0N-BpJ" secondAttribute="leading" constant="15" id="v1o-lJ-A0c"/>
                                         </constraints>

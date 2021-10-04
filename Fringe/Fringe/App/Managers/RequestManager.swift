@@ -418,5 +418,6 @@ struct Status {
         static let alreadyAddedCard = 518
         static let nofoundDat = 503
         static let newSignUp = 400
+        static let wrongCredentials = 511
     }
 }

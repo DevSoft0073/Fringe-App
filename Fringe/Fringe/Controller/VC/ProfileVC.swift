@@ -675,6 +675,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        PreferenceManager.shared.comesFromConfirmToPay = "0"
         setup()
         self.performGetUserProfile { (flag : Bool) in
         }
