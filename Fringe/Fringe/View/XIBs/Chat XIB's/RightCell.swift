@@ -16,7 +16,7 @@ class RightCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        messageView.layer.cornerRadius = 8
+        messageView.layer.cornerRadius = 12
         if #available(iOS 11, *) {
             messageView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner ,.layerMinXMinYCorner]
         }

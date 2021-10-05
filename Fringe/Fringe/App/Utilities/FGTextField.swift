@@ -237,7 +237,7 @@ class FGMediumTextField: FGBaseTextField {
 }
 
 
-class FGEmailTextField: FGRegularTextField {
+class FGEmailTextField: FGMediumTextField {
     
     var leftEmailView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -280,7 +280,7 @@ class FGEmailTextField: FGRegularTextField {
         setup()
     }
 }
-class FGPasswordTextField: FGRegularTextField {
+class FGPasswordTextField: FGMediumTextField {
     
     var leftPasswordView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -407,7 +407,7 @@ class FGAddressTextField: FGMediumTextField {
         setup()
     }
 }
-class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
+class FGBirthDateTextField: FGMediumTextField, UITextFieldDelegate {
     
     var rightUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: FGImageName.iconCalender))
@@ -503,7 +503,7 @@ class FGBirthDateTextField: FGRegularTextField, UITextFieldDelegate {
         self.delegate = self
     }
 }
-class FGGenderTextField: FGRegularTextField, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class FGGenderTextField: FGMediumTextField, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var rightUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: FGImageName.iconDropDown))
@@ -611,7 +611,7 @@ class FGGenderTextField: FGRegularTextField, UITextFieldDelegate, UIPickerViewDa
         self.delegate = self
     }
 }
-class FGMobileNumberTextField: FGRegularTextField {
+class FGMobileNumberTextField: FGMediumTextField {
     
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -653,7 +653,7 @@ class FGMobileNumberTextField: FGRegularTextField {
         setup()
     }
 }
-class FGCardTypeTextField: FGRegularTextField, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class FGCardTypeTextField: FGMediumTextField, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -764,7 +764,7 @@ class FGCardTypeTextField: FGRegularTextField, UITextFieldDelegate, UIPickerView
         self.delegate = self
     }
 }
-class FGCardNumberTextField: FGRegularTextField {
+class FGCardNumberTextField: FGMediumTextField {
     
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -803,52 +803,7 @@ class FGCardNumberTextField: FGRegularTextField {
         setup()
     }
 }
-class FGAccountNumberTextField: FGRegularTextField {
-    
-    var leftUserView: UIView {
-        let imgView = UIImageView(image: UIImage(named: ""))
-        imgView.contentMode = .scaleAspectFit
-        return imgView
-    }
-    
-    //------------------------------------------------------
-    
-    //MARK: Customs
-    
-    func setup() {
-        
-        leftView = leftUserView
-        
-        self.keyboardType = .numberPad
-        self.autocorrectionType = .no
-        self.autocapitalizationType = .words
-        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appWhite])
-    }
-    
-    //------------------------------------------------------
-    
-    //MARK: Override
-    
-    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 0.2)), size: CGSize(width: CGFloat(padding) * 0, height: bounds.height -  CGFloat(padding * 0.1)))
-    }
-    
-    //------------------------------------------------------
-    
-    //MARK: Init
-    
-    /// common text field layout for inputs
-    ///
-    /// - Parameter aDecoder: aDecoder description
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        setup()
-    }
-}
-
-class FGRoutingNumberTextField: FGRegularTextField {
+class FGAccountNumberTextField: FGMediumTextField {
     
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -893,8 +848,7 @@ class FGRoutingNumberTextField: FGRegularTextField {
     }
 }
 
-
-class FGSSNTextField: FGRegularTextField {
+class FGRoutingNumberTextField: FGMediumTextField {
     
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -939,7 +893,53 @@ class FGSSNTextField: FGRegularTextField {
     }
 }
 
-class FGAccountHolderNameTextField: FGRegularTextField {
+
+class FGSSNTextField: FGMediumTextField {
+    
+    var leftUserView: UIView {
+        let imgView = UIImageView(image: UIImage(named: ""))
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    func setup() {
+        
+        leftView = leftUserView
+        
+        self.keyboardType = .numberPad
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .words
+        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
+                                                        attributes:[NSAttributedString.Key.foregroundColor: FGColor.appWhite])
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Override
+    
+    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 0.2)), size: CGSize(width: CGFloat(padding) * 0, height: bounds.height -  CGFloat(padding * 0.1)))
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: aDecoder description
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+}
+
+class FGAccountHolderNameTextField: FGMediumTextField {
     
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -978,7 +978,7 @@ class FGAccountHolderNameTextField: FGRegularTextField {
         setup()
     }
 }
-class FGSelectDateTextFieldForBooking: FGBaseTextFieldForBBloks, UITextFieldDelegate , SendSelectedDate {
+class FGSelectDateTextFieldForBooking: FGMediumTextField, UITextFieldDelegate , SendSelectedDate {
   
 
     var leftUserView: UIView {
@@ -1074,7 +1074,7 @@ class FGSelectDateTextFieldForBooking: FGBaseTextFieldForBBloks, UITextFieldDele
     }
 }
 
-class FGAddImagesTextField: FGRegularTextField {
+class FGAddImagesTextField: FGMediumTextField {
     
     var leftButton : UIButton {
         let image = UIImage(named: FGImageName.iconUpload)
@@ -1142,7 +1142,7 @@ class FGAddImagesTextField: FGRegularTextField {
     }
 }
 
-class FGAddBackImagesTextField: FGRegularTextField {
+class FGAddBackImagesTextField: FGMediumTextField {
     
     var leftButton : UIButton {
         let image = UIImage(named: FGImageName.iconUpload)
@@ -1211,7 +1211,7 @@ class FGAddBackImagesTextField: FGRegularTextField {
 }
 
 
-class FGPickMonthYear: FGRegularTextField, UITextFieldDelegate , UIPickerViewDelegate , UIPickerViewDataSource {
+class FGPickMonthYear: FGMediumTextField, UITextFieldDelegate , UIPickerViewDelegate , UIPickerViewDataSource {
     
     var rightUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -1361,7 +1361,7 @@ class FGPickMonthYear: FGRegularTextField, UITextFieldDelegate , UIPickerViewDel
         self.delegate = self
     }
 }
-class FGGolfCourseNameTextField: FGRegularTextField {
+class FGGolfCourseNameTextField: FGMediumTextField {
     
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -1406,7 +1406,7 @@ class FGGolfCourseNameTextField: FGRegularTextField {
     }
 }
 
-class FGGolfAddressTextField: FGRegularTextField {
+class FGGolfAddressTextField: FGMediumTextField {
     
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -1450,7 +1450,7 @@ class FGGolfAddressTextField: FGRegularTextField {
         setup()
     }
 }
-class FGGolfCreditsTextField: FGRegularTextField {
+class FGGolfCreditsTextField: FGMediumTextField {
     
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: ""))
@@ -1495,7 +1495,7 @@ class FGGolfCreditsTextField: FGRegularTextField {
     }
 }
 
-class FGGolfHandiCap: FGRegularTextField, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class FGGolfHandiCap: FGMediumTextField, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var rightUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: FGImageName.iconDropDown))

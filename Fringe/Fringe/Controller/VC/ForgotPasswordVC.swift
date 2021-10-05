@@ -48,6 +48,13 @@ class ForgotPasswordVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
             }
             return false
         }
+        
+        if ValidationManager.shared.isValid(text: txtEmail.text!, for: RegularExpressions.email) == false {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidEmail) {
+            }
+            return false
+        }
+        
         return true
     }
     

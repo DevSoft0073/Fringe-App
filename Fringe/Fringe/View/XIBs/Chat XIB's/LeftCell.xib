@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="6jb-DV-WDF">
-                        <rect key="frame" x="15" y="8" width="40" height="40"/>
+                        <rect key="frame" x="15" y="25" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="6jb-DV-WDF" secondAttribute="height" multiplier="1:1" id="GfN-Zb-Meh"/>
                             <constraint firstAttribute="height" constant="40" id="xhr-M4-ap8"/>
@@ -36,44 +36,43 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilE-sa-VNz">
-                        <rect key="frame" x="65" y="8" width="189.5" height="58"/>
+                        <rect key="frame" x="65" y="25" width="189.5" height="41"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text=" gdhgudshg idusgh uidshg disuhg disugh diugh disug hugidh ids sg dsiugh gdhs " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-sX-tFg">
-                                <rect key="frame" x="8" y="2" width="173.5" height="36"/>
+                                <rect key="frame" x="8" y="2" width="173.5" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" name="appWhite"/>
+                                <color key="textColor" name="appDarkBlack"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yesterday" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqv-H8-1xW">
-                                <rect key="frame" x="5" y="38" width="174.5" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="AQI-Y7-C1J"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
-                                <color key="textColor" name="appWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" name="appGreen"/>
+                        <color key="backgroundColor" name="appBackground"/>
                         <constraints>
-                            <constraint firstItem="Dqv-H8-1xW" firstAttribute="leading" secondItem="ilE-sa-VNz" secondAttribute="leading" constant="5" id="5fu-2x-l4s"/>
-                            <constraint firstAttribute="bottom" secondItem="Dqv-H8-1xW" secondAttribute="bottom" constant="5" id="AcN-7I-QGR"/>
-                            <constraint firstItem="Dqv-H8-1xW" firstAttribute="top" secondItem="xkS-sX-tFg" secondAttribute="bottom" id="B22-Q9-59v"/>
-                            <constraint firstAttribute="trailing" secondItem="Dqv-H8-1xW" secondAttribute="trailing" constant="10" id="S7e-N7-tmm"/>
                             <constraint firstAttribute="trailing" secondItem="xkS-sX-tFg" secondAttribute="trailing" constant="8" id="TzS-Qp-T7U"/>
                             <constraint firstItem="xkS-sX-tFg" firstAttribute="top" secondItem="ilE-sa-VNz" secondAttribute="top" constant="2" id="VnU-h7-szJ"/>
                             <constraint firstItem="xkS-sX-tFg" firstAttribute="leading" secondItem="ilE-sa-VNz" secondAttribute="leading" constant="8" id="bYR-tH-G3C"/>
+                            <constraint firstAttribute="bottom" secondItem="xkS-sX-tFg" secondAttribute="bottom" constant="2" id="gnb-bS-XEs"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yesterday" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqv-H8-1xW">
+                        <rect key="frame" x="65" y="8" width="65" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="Z3b-E9-57h"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
+                        <color key="textColor" name="appBorder"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Dqv-H8-1xW" firstAttribute="leading" secondItem="ilE-sa-VNz" secondAttribute="leading" id="8aF-aq-YVc"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ilE-sa-VNz" secondAttribute="trailing" constant="60" id="Cmu-PO-d3W"/>
-                    <constraint firstItem="ilE-sa-VNz" firstAttribute="top" secondItem="iVI-Xa-xab" secondAttribute="top" constant="8" id="GDR-8U-Zu0"/>
                     <constraint firstAttribute="bottom" secondItem="ilE-sa-VNz" secondAttribute="bottom" constant="8" id="Lr9-1h-LDv"/>
+                    <constraint firstItem="ilE-sa-VNz" firstAttribute="top" secondItem="Dqv-H8-1xW" secondAttribute="bottom" constant="2" id="fV1-ng-hfh"/>
+                    <constraint firstItem="6jb-DV-WDF" firstAttribute="top" secondItem="ilE-sa-VNz" secondAttribute="top" id="h0L-GI-wWR"/>
                     <constraint firstItem="6jb-DV-WDF" firstAttribute="leading" secondItem="iVI-Xa-xab" secondAttribute="leading" constant="15" id="m9u-Ne-SH6"/>
-                    <constraint firstItem="6jb-DV-WDF" firstAttribute="top" secondItem="iVI-Xa-xab" secondAttribute="top" constant="8" id="oza-kT-a8z"/>
+                    <constraint firstItem="Dqv-H8-1xW" firstAttribute="top" secondItem="iVI-Xa-xab" secondAttribute="top" constant="8" id="mac-1O-gc6"/>
                     <constraint firstItem="ilE-sa-VNz" firstAttribute="leading" secondItem="6jb-DV-WDF" secondAttribute="trailing" constant="10" id="skk-06-dZA"/>
                 </constraints>
             </tableViewCellContentView>
@@ -84,16 +83,19 @@
                 <outlet property="messageView" destination="ilE-sa-VNz" id="vNW-NA-HJf"/>
                 <outlet property="txtMsgView" destination="xkS-sX-tFg" id="p84-Qw-x1J"/>
             </connections>
-            <point key="canvasLocation" x="139" y="74"/>
+            <point key="canvasLocation" x="137.68115942028987" y="72.991071428571431"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="placeholder-image" width="80" height="80"/>
-        <namedColor name="appGreen">
-            <color red="0.13099999725818634" green="0.30700001120567322" blue="0.15399999916553497" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="appBackground">
+            <color red="0.94499999284744263" green="0.94499999284744263" blue="0.94499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="appWhite">
-            <color red="0.99599999189376831" green="0.99599999189376831" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="appBorder">
+            <color red="0.72899997234344482" green="0.72899997234344482" blue="0.72899997234344482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appDarkBlack">
+            <color red="0.059000000357627869" green="0.059000000357627869" blue="0.063000001013278961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

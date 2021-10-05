@@ -12,9 +12,11 @@ import IQKeyboardManagerSwift
 
 class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tblBottam: NSLayoutConstraint!
+    @IBOutlet weak var bottamConstraint: NSLayoutConstraint!
     @IBOutlet weak var msgViewHeight: NSLayoutConstraint!
     @IBOutlet weak var sendImg: UIImageView!
-    @IBOutlet weak var btnSend: UIButton!
+    @IBOutlet weak var btnSend: LoadingButton!
     @IBOutlet weak var txtSendMsg: UITextView!
     @IBOutlet weak var tblMessage: UITableView!
     
@@ -41,17 +43,16 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     //MARK: Custome
     
     func configureUI(){
-        //        self.nameLbl.text = chatListData?.name ?? ""
+        self.txtSendMsg.delegate = self
         IQKeyboardManager.shared.disabledDistanceHandlingClasses.append(MessageListingVC.self)
         IQKeyboardManager.shared.disabledToolbarClasses = [MessageListingVC.self]
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tblMessage.addGestureRecognizer(tap)
-//        self.profilePic.kf.setImage(with: URL(string: chatListData?.profileImage ?? ""), placeholder:UIImage(named: "logo"))
-//        getInofData(withLoad: true)
+        //        self.profilePic.kf.setImage(with: URL(string: items.first?.image), placeholder:UIImage(named: "logo"))
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             let socketConnectionStatus = SocketManger.shared.socket.status
             switch socketConnectionStatus {
@@ -72,7 +73,6 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
                 self.connectSocketOn()
                 self.newMessageSocketOn()
             }
-            
         }
     }
     
@@ -83,15 +83,41 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    
+    @objc func handleKeyboardNotification(_ notification: Notification) {
+        if let userInfo = notification.userInfo {
+            
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            
+            let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
+            if UIDevice.current.iPhoneX{
+                bottamConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height-view.safeAreaInsets.bottom : 0
+                
+            }else{
+                bottamConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height : 0
+            }
+             //   bottomConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height : 0
+            UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                self.view.layoutIfNeeded()
+                self.scrollToEnd()
+            })
+        }
+    }
+    
     func SendStopMessage(isSend:Bool){
         if isSend{
+            btnSend.loadIndicator(true)
             sendImg.image = nil
             btnSend.setImage(nil, for: .normal)
         }else{
-            sendImg.image = #imageLiteral(resourceName: "send")
+            sendImg.image = #imageLiteral(resourceName: "right_icon")
+        //    sendBtn.setImage(#imageLiteral(resourceName: "send"), for: .normal)
+            btnSend.loadIndicator(false)
         }
     }
+    
     // MARK:- Socket Method(s)
+    
     func connectSocketOn(){
         SocketManger.shared.onConnect {
             SocketManger.shared.socket.emit("ConncetedChat",  self.items.first?.roomID ?? String())
@@ -99,14 +125,16 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
             
         }
     }
+    
     func newMessageSocketOn(){
         SocketManger.shared.handleNewMessage { (message) in
-//            self.msgArr.append(ChatModel(id: message["id"] as? String ?? "", userID: message["userID"] as? String ?? "", roomID: message["roomID"] as? String ?? "", message: message["message"] as? String ?? "", readStatus: message["readStatus"] as? String ?? "", created: message["created"] as? String ?? "", name: message["name"] as? String ?? "", profileImage: message["profileImage"] as? String ?? ""))
+            print(message)
+            //            self.items.append(AddEditMessageModal(id: message[""], userID: <#T##String?#>, message: <#T##String?#>, roomID: <#T##String?#>, seen: <#T##String?#>, creationAt: <#T##String?#>, name: <#T##String?#>, image: <#T##String?#>))
             self.tblMessage.reloadData()
             self.scrollToEnd()
-            //  self.chatSeenMsg()
         }
     }
+    
     func scrollToEnd(){
         if items.count > 0 {
             tblMessage.scrollToRow(at: IndexPath(item:items.count-1, section: 0), at: .bottom, animated: false)
@@ -116,9 +144,9 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     @objc func performGetMessage(lastId: String, completion: ((_ flag: Bool) -> Void)?) {
         
         let headers:HTTPHeaders = [
-           "content-type": "application/json",
+            "content-type": "application/json",
             "Token": PreferenceManager.shared.authToken ?? String(),
-          ]
+        ]
         
         let parameter: [String: Any] = [
             Request.Parameter.roomID: roomID,
@@ -130,6 +158,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
             self.items.append(contentsOf: response.data ?? [])
             self.items = self.items.removingDuplicates()
             self.tblMessage.reloadData()
+            self.scrollToEnd()
             completion?(true)
             
         } failureBlock: { (errorModal: ErrorModal) in
@@ -144,7 +173,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
             "content-type": "application/json",
             "Token": PreferenceManager.shared.authToken ?? String(),
         ]
-        
+        self.SendStopMessage(isSend: true)
         var parameter: [String: Any] = [:]
         parameter = [
             Request.Parameter.roomID: roomID,
@@ -153,16 +182,22 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         
         print("chatParam",parameter)
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.sendMsg, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[AddEditMessageModal]>.self) { (response: ResponseModal<[AddEditMessageModal]>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.sendMsg, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<AddEditMessageModal>.self) { (response: ResponseModal<AddEditMessageModal>) in
+            print(response)
             
-            completion?(response.data?.first, nil)
+            self.SendStopMessage(isSend: false)
             
+            completion?(response.data, nil)
+//            SocketManger.shared.socket.emit("newMessage",self.roomID,response.data as! SocketData)
+            self.items.append(AddEditMessageModal(id: response.data?.id, userID: response.data?.userID, message: response.data?.message, roomID: response.data?.roomID, seen: response.data?.seen, creationAt: response.data?.creationAt, name: response.data?.name, image: response.data?.image))
+            self.tblMessage.reloadData()
+            self.scrollToEnd()
         } failureBlock: { (errorModal: ErrorModal) in
             
             completion?(nil, errorModal)
         }
     }
-
+    
     //------------------------------------------------------
     
     //MARK: UITableview delegate datasource
@@ -194,7 +229,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
             cell.imgProfile.kf.setImage(with: URL(string: items[indexPath.row].image ?? ""), placeholder:UIImage(named: "logo"))
             return cell
         }
-
+        
     }
     
     
@@ -206,7 +241,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         self.pop()
     }
     
-    @IBAction func btnSend(_ sender: Any) {
+    @IBAction func btnSend(_ sender: UIButton) {
         let trimmedString = txtSendMsg.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         if trimmedString != ""{
             self.performSendMessage { message, errorModal in
@@ -226,7 +261,6 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         configureUI()
         NavigationManager.shared.isEnabledBottomMenu = false
         self.performGetMessage(lastId: "") { (flag : Bool) in
-            
         }
     }
     
@@ -237,4 +271,21 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     //------------------------------------------------------
+}
+
+extension MessageListingVC : UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.contentSize.height <= 40 {
+            msgViewHeight.constant = 40
+        }else if textView.contentSize.height <= 100 && textView.contentSize.height > 40 {
+            msgViewHeight.constant = textView.contentSize.height
+        }else{
+            msgViewHeight.constant = 100
+        }
+    }
+}
+extension UIDevice {
+    var iPhoneX: Bool {
+        return UIScreen.main.nativeBounds.height >= 2436
+    }
 }

@@ -62,7 +62,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
         txtGender.delegate = self
         txtEmail.delegate = self
         txtMobileNumber.delegate = self
-        
+        txtEmail.isUserInteractionEnabled = false
     }
     
     func setupData() {

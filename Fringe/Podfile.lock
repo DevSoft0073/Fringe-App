@@ -161,12 +161,13 @@ PODS:
   - Stripe/Stripe3DS2 (21.8.1):
     - StripeCore (= 21.8.1)
   - StripeCore (21.8.1)
+  - SVProgressHUD (2.2.5)
   - TimeZoneLocate (0.5.0)
   - Toucan (1.1.0)
   - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
-  - Alamofire (~> 4.8.1)
+  - Alamofire
   - AppleSignIn
   - AssistantKit (~> 0.6.1)
   - FacebookCore
@@ -191,6 +192,7 @@ DEPENDENCIES:
   - SDWebImage (~> 4.4.5)
   - Socket.IO-Client-Swift (~> 15.2.0)
   - Stripe
+  - SVProgressHUD
   - TimeZoneLocate
   - Toucan
   - "UITextView+Placeholder (~> 1.4.0)"
@@ -240,6 +242,7 @@ SPEC REPOS:
     - Starscream
     - Stripe
     - StripeCore
+    - SVProgressHUD
     - TimeZoneLocate
     - Toucan
     - "UITextView+Placeholder"
@@ -288,10 +291,11 @@ SPEC CHECKSUMS:
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   Stripe: 57c6997c64042a3f5aedae9b76e331942f8b75d2
   StripeCore: a6e50d58119a0c7601773b56f274db2d394dcdac
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TimeZoneLocate: 8536d7435a408ac14b6e0190ffcca2c2bb91aff8
   Toucan: 8f228fabb21521b9658692df9325fe76e71d74b2
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: d69df971f5ff45d9cb18edea073fed391d09b791
+PODFILE CHECKSUM: 5ba658689776934ea8ae7e0d561298333d9a7106
 
 COCOAPODS: 1.10.2

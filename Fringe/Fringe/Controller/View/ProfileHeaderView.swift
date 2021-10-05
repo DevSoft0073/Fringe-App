@@ -40,7 +40,7 @@ class ProfileHeaderView: UIView {
         }
         
         //firstname
-        lblName.text = "\(currentUser?.firstName ?? String())" + "\(currentUser?.lastName ?? String())"
+        lblName.text = "\(currentUser?.firstName ?? String()) " + "\(currentUser?.lastName ?? String())"
         
         //email
         lblEmail.text = currentUser?.email
@@ -52,7 +52,5 @@ class ProfileHeaderView: UIView {
     //MARK: Action
     
     @IBAction func btnEdit(_ sender: Any) {
-        
-        
     }
 }

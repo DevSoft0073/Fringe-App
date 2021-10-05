@@ -66,7 +66,7 @@
 "enter_mobile" = "Please enter mobile number.";
 "enter_valid_mobile" = "Please enter valid mobile number.";
 "enter_home_town" = "Please enter home town.";
-"enter_proffession" = "Please enter your proffession.";
+"enter_proffession" = "Please enter your profession.";
 "enter_member_course" = "Please enter member course.";
 "enter_golf_handicap" = "please enter golf handicap.";
 "enter_email" = "Please enter email address.";
@@ -79,7 +79,7 @@
 "enter_confirm_password" = "Please enter confirm password.";
 "enter_valid_confirm_password" = "Please enter valid confirm password. Password should contain at least 8 characters, with at least 1 letter and 1 special character.";
 "old_new_password_not_same" = "The old and new password must not be the same.";
-"new_retype_password_not_match" = "New passwords and confirm password not match.";
+"new_retype_password_not_match" = "New password and confirm password not match.";
 "enter_name" = "Please enter name.";
 "select_add_request_photo" = "Please select photo which you would like to add into the tracking detection.";
 "enter_studio_name" = "Please enter studio name.";

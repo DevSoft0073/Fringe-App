@@ -83,6 +83,8 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
         txtGolfHandicap.delegate = self
         txtPassword.delegate = self
         txtConfirmPassword.delegate = self
+        txtGender.tintColor = .clear
+        txtBirthDate.tintColor = .clear
     }
     
     func setupData()  {
