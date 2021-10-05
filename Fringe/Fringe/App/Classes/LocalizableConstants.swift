@@ -144,6 +144,7 @@ struct LocalizableConstants {
         struct NearByGolfClubs {
             
             static let noSessionDataFound = "no_near_by_golf_clubs_available"
+            static let noChats = "no_Chats"
         }
         
         struct GolfClubs {

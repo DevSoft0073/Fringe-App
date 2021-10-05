@@ -10,8 +10,9 @@ import Alamofire
 import Kingfisher
 import IQKeyboardManagerSwift
 
-class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
+class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     
+    @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var tblBottam: NSLayoutConstraint!
     @IBOutlet weak var bottamConstraint: NSLayoutConstraint!
     @IBOutlet weak var msgViewHeight: NSLayoutConstraint!
@@ -19,9 +20,13 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var btnSend: LoadingButton!
     @IBOutlet weak var txtSendMsg: UITextView!
     @IBOutlet weak var tblMessage: UITableView!
-    
-    var roomID = String()
     @IBOutlet weak var sendView: UIView!
+    
+    var ownImage = String()
+    var otherUserImg = String()
+    var senderFirstName = String()
+    var senderLastName = String()
+    var roomID = String()
     var items =  [AddEditMessageModal]()
     
     //------------------------------------------------------
@@ -43,16 +48,25 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     //MARK: Custome
     
     func configureUI(){
+        txtSendMsg.leftSpace()
+        lblName.text = "\(senderFirstName) " + "\(senderLastName)"
         self.txtSendMsg.delegate = self
         IQKeyboardManager.shared.disabledDistanceHandlingClasses.append(MessageListingVC.self)
         IQKeyboardManager.shared.disabledToolbarClasses = [MessageListingVC.self]
-        
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tblMessage.addGestureRecognizer(tap)
-        //        self.profilePic.kf.setImage(with: URL(string: items.first?.image), placeholder:UIImage(named: "logo"))
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Configure Socket
+    
+    func configureSocket() {
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             let socketConnectionStatus = SocketManger.shared.socket.status
             switch socketConnectionStatus {
@@ -74,6 +88,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
                 self.newMessageSocketOn()
             }
         }
+        
     }
     
     @objc func dismissKeyboard() {
@@ -96,7 +111,6 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
             }else{
                 bottamConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height : 0
             }
-             //   bottomConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height : 0
             UIView.animate(withDuration: 0.1, animations: { () -> Void in
                 self.view.layoutIfNeeded()
                 self.scrollToEnd()
@@ -104,19 +118,20 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    //------------------------------------------------------
+    
+    //MARK: Socket Method(s)
+    
     func SendStopMessage(isSend:Bool){
         if isSend{
             btnSend.loadIndicator(true)
             sendImg.image = nil
             btnSend.setImage(nil, for: .normal)
         }else{
-            sendImg.image = #imageLiteral(resourceName: "right_icon")
-        //    sendBtn.setImage(#imageLiteral(resourceName: "send"), for: .normal)
+            sendImg.image = UIImage(named: FGImageName.send)
             btnSend.loadIndicator(false)
         }
     }
-    
-    // MARK:- Socket Method(s)
     
     func connectSocketOn(){
         SocketManger.shared.onConnect {
@@ -129,17 +144,25 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     func newMessageSocketOn(){
         SocketManger.shared.handleNewMessage { (message) in
             print(message)
-            //            self.items.append(AddEditMessageModal(id: message[""], userID: <#T##String?#>, message: <#T##String?#>, roomID: <#T##String?#>, seen: <#T##String?#>, creationAt: <#T##String?#>, name: <#T##String?#>, image: <#T##String?#>))
+            self.items.append(AddEditMessageModal(id: message["id"] as? String, userID:  message["user_id"] as? String, message:  message["message"] as? String, roomID:  message["room_id"] as? String, seen:  message["seen"] as? String, creationAt:  message["creation_at"] as? String, name:  message["name"] as? String, image:  message["image"] as? String))
             self.tblMessage.reloadData()
             self.scrollToEnd()
         }
     }
+    
+    //------------------------------------------------------
+    
+    //MARK: Scroll table view to last item
     
     func scrollToEnd(){
         if items.count > 0 {
             tblMessage.scrollToRow(at: IndexPath(item:items.count-1, section: 0), at: .bottom, animated: false)
         }
     }
+    
+    //------------------------------------------------------
+    
+    //MARK: Service call
     
     @objc func performGetMessage(lastId: String, completion: ((_ flag: Bool) -> Void)?) {
         
@@ -183,15 +206,18 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         print("chatParam",parameter)
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.sendMsg, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<AddEditMessageModal>.self) { (response: ResponseModal<AddEditMessageModal>) in
-            print(response)
             
             self.SendStopMessage(isSend: false)
             
-            completion?(response.data, nil)
-//            SocketManger.shared.socket.emit("newMessage",self.roomID,response.data as! SocketData)
+            SocketManger.shared.socket.emit("newMessage",self.roomID,["id":response.data?.id,"user_id":response.data?.userID,"message":response.data?.message,"room_id":response.data?.roomID,"seen":response.data?.seen,"creation_at":response.data?.creationAt,"name":response.data?.name,"image":response.data?.image])
+            
             self.items.append(AddEditMessageModal(id: response.data?.id, userID: response.data?.userID, message: response.data?.message, roomID: response.data?.roomID, seen: response.data?.seen, creationAt: response.data?.creationAt, name: response.data?.name, image: response.data?.image))
+            
             self.tblMessage.reloadData()
             self.scrollToEnd()
+            
+            completion?(response.data, nil)
+                        
         } failureBlock: { (errorModal: ErrorModal) in
             
             completion?(nil, errorModal)
@@ -209,29 +235,47 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let userId = PreferenceManager.shared.userId
+        
         if userId == items[indexPath.row].userID{
             var cell: RightCell! = tableView.dequeueReusableCell(withIdentifier: "RightCell") as? RightCell
             if cell == nil {
                 tableView.register(UINib(nibName: "RightCell", bundle: nil), forCellReuseIdentifier: "RightCell")
                 cell = tableView.dequeueReusableCell(withIdentifier: "RightCell") as? RightCell
             }
-            cell.txtMsgView.text = items[indexPath.row].message
-            cell.lblTime.text = items[indexPath.row].creationAt?.convertDateToStringg()
+            let data = items[indexPath.row]
+            cell.setup(chatData: data)
+            cell.imgProfile.setRounded()
+            cell.imgProfile.kf.setImage(with: URL(string: ownImage), placeholder:UIImage(named: FGImageName.iconPlaceHolder))
             return cell
+            
         }else{
+            
             var cell: LeftCell! = tableView.dequeueReusableCell(withIdentifier: "LeftCell") as? LeftCell
             if cell == nil {
                 tableView.register(UINib(nibName: "LeftCell", bundle: nil), forCellReuseIdentifier: "LeftCell")
                 cell = tableView.dequeueReusableCell(withIdentifier: "LeftCell") as? LeftCell
             }
-            cell.txtMsgView.text = items[indexPath.row].message
-            cell.lbltime.text = items[indexPath.row].creationAt?.convertDateToStringg()
-            cell.imgProfile.kf.setImage(with: URL(string: items[indexPath.row].image ?? ""), placeholder:UIImage(named: "logo"))
+            let data = items[indexPath.row]
+            cell.setup(chatData: data)
+            cell.imgProfile.setRounded()
+            cell.imgProfile.kf.setImage(with: URL(string: otherUserImg), placeholder:UIImage(named: FGImageName.iconPlaceHolder))
             return cell
         }
-        
     }
     
+    //------------------------------------------------------
+    
+    //MARK: UITextview delegate
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.contentSize.height <= 40 {
+            msgViewHeight.constant = 40
+        }else if textView.contentSize.height <= 100 && textView.contentSize.height > 40 {
+            msgViewHeight.constant = textView.contentSize.height
+        }else{
+            msgViewHeight.constant = 100
+        }
+    }
     
     //------------------------------------------------------
     
@@ -259,7 +303,9 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureSocket()
         NavigationManager.shared.isEnabledBottomMenu = false
+        NavigationManager.shared.isEnabledBottomMenuForHost = false
         self.performGetMessage(lastId: "") { (flag : Bool) in
         }
     }
@@ -268,24 +314,12 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false // or true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     //------------------------------------------------------
-}
-
-extension MessageListingVC : UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.contentSize.height <= 40 {
-            msgViewHeight.constant = 40
-        }else if textView.contentSize.height <= 100 && textView.contentSize.height > 40 {
-            msgViewHeight.constant = textView.contentSize.height
-        }else{
-            msgViewHeight.constant = 100
-        }
-    }
-}
-extension UIDevice {
-    var iPhoneX: Bool {
-        return UIScreen.main.nativeBounds.height >= 2436
-    }
 }

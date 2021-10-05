@@ -12,7 +12,7 @@ import Foundation
 class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tblInbox: UITableView!
-    @IBOutlet weak var noDataLbl: FGRegularLabel!
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     
     var messagePlayerGroups: [PlayerMessgaeModal] = [] {
         didSet {
@@ -72,6 +72,8 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     func updateUI()  {
+        noDataLbl.text = LocalizableConstants.Controller.NearByGolfClubs.noChats.localized()
+        noDataLbl.isHidden = messageGroups.count != .zero
         tblInbox.reloadData()
     }
     
@@ -84,7 +86,9 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.chatListing, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<[PlayerMessgaeModal]>.self) { (response: ResponseModal<[PlayerMessgaeModal]>) in
             
-            self.messagePlayerGroups = response.data ?? []
+            self.messagePlayerGroups.removeAll()
+            self.messageGroups = self.messageGroups.removingDuplicates()
+            self.messagePlayerGroups.append(contentsOf: response.data ?? [])
             completion?(true)
             
         } failureBlock: { (errorModal: ErrorModal) in
@@ -123,6 +127,10 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         let messageGroup = messageGroups[indexPath.row]
         let controller = NavigationManager.shared.messageListingVC
         controller.roomID = messageGroup.roomID ?? String()
+        controller.senderFirstName = messageGroup.firstName ?? String()
+        controller.senderLastName = messageGroup.lastName ?? String()
+        controller.otherUserImg = messageGroup.otheruserImage ?? String()
+        controller.ownImage = messageGroup.image ?? String()
         push(controller: controller)
     }
     
@@ -151,6 +159,7 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         if isShowLoader {
             LoadingManager.shared.showLoading()
         }
+        
         self.performGetMessageGroups(isShowLoader: true, lastId: "") { flag in
             
             if isShowLoader {

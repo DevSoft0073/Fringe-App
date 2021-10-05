@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Toucan
+import SDWebImage
 
 class LeftCell: UITableViewCell {
 
@@ -22,4 +24,8 @@ class LeftCell: UITableViewCell {
         }
     }
     
+    func setup(chatData : AddEditMessageModal)  {
+        txtMsgView.text = chatData.message
+        lbltime.text = chatData.creationAt?.convertDateToStringg()
+    }
 }

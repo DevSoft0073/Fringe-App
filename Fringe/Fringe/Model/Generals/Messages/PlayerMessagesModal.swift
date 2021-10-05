@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - PlayerMessgaeModal
-struct PlayerMessgaeModal: Codable {
+struct PlayerMessgaeModal: Codable , Hashable {
     var userID, isRequest, golfID, stripeAccountStatus: String?
     var image: String?
     var userName, accountID, customerID, firstName: String?

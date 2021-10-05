@@ -29,7 +29,7 @@ class ConfirmedPayVC : BaseVC {
     var isUpdate:(()->Void)?
     var detailsData: RequestListingModal?
     var isSelected : Bool = true
-    var addGuestVal: Int = 2 {
+    var addGuestVal: Int = 1 {
         didSet {
             lblGuest.text = "\(addGuestVal)"
         }

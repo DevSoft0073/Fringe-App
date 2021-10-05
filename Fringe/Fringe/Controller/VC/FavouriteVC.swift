@@ -12,7 +12,7 @@ import Foundation
 
 class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLoadViewDelegate{
     
-    @IBOutlet weak var noDataLbl: FGRegularLabel!
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     @IBOutlet weak var tblFavourite: UITableView!
     
     var items: [FavoriteListing] = []

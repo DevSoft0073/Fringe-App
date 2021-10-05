@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - MessageGroupModal
-struct MessageGroupModal: Codable {
+struct MessageGroupModal: Codable, Hashable {
     var userID, isRequest, golfID, stripeAccountStatus: String?
     var image: String?
     var userName, accountID, customerID, firstName: String?

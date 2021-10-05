@@ -52,7 +52,7 @@
                         <color key="textColor" name="appBorder"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="AB8-Fx-1Tz">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="AB8-Fx-1Tz">
                         <rect key="frame" x="264" y="25" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="AB8-Fx-1Tz" secondAttribute="height" multiplier="1:1" id="898-az-Ibh"/>

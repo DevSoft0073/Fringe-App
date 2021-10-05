@@ -110,6 +110,7 @@ struct FGImageName {
     static let icontransparent = "icon_transparent"
     static let iconRight = "right_icon"
     static let iconLeft = "left_icon"
+    static let send = "send"
     
     // Profile
     
