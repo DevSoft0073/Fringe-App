@@ -62,6 +62,7 @@ class HomeListingTBCell: UITableViewCell {
         lblGolfClubName.text = homeData.golfCourseName
         lblAddress.text = homeData.location
         lblPrice.text = "$\(homeData.price ?? String())"
+        ratingView.isUserInteractionEnabled = false
         lblRating.text = homeData.rating
         ratingView.rating = Double(homeData.rating ?? String()) ?? Double()
     }
