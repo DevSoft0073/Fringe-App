@@ -52,7 +52,7 @@ class MyBookingTVCell: UITableViewCell {
         
         lblName.text = bookingData.golfCourseName
         lblAddress.text = bookingData.location
-        lblRate.text = bookingData.price
+        lblRate.text = "$\(bookingData.price ?? String())"
         lblRating.text = bookingData.rating
         ratingView.rating = Double(bookingData.rating ?? String()) ?? Double()
     }

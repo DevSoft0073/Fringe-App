@@ -7,32 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "65500C52-A685-4A87-B1B0-466E1C8E6A07"
+            uuid = "EC73F3B6-7324-46C0-BD45-17BE58CC9B17"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/Host VC/BookingsVC.swift"
+            filePath = "Fringe/Controller/VC/GolfclubsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
-            landmarkName = "showHideView(sender:)"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "setup()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8BF1E1A0-42BC-46C8-8997-E10E862FB646"
+            uuid = "A5A04C46-04F7-4DE5-AE4F-5B94AAA43541"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/Host VC/BookingsVC.swift"
+            filePath = "Fringe/Controller/VC/GolfclubsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "showViews(sender:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "setup()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C22D2BE-7108-46A0-8DB6-FAA5D9EC3B65"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fringe/Controller/VC/Host VC/HostEditProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "performEditStudio()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

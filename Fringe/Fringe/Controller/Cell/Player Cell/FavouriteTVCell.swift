@@ -40,6 +40,6 @@ class FavouriteTVCell: UITableViewCell {
             imgGolf.image = UIImage(named: FGImageName.imgPlaceHolder)
         }
         lblGolfName.text = favouriteData.golfCourseName ?? String()
-        lblGolfAddress.text = favouriteData.favoriteListingDescription ?? String()
+        lblGolfAddress.text = favouriteData.location ?? String()
     }
 }

@@ -127,23 +127,23 @@ class FGBaseTextFieldForBBloks: UITextField {
     fileprivate func setupDefault() {
         
         self.cornerRadius = FGSettings.cornerRadius
-//        self.borderWidth = SCSettings.borderWidth
-//        self.borderColor = SCColor.appWhite
-//        self.shadowColor = FGColor.appWhite
+        //        self.borderWidth = SCSettings.borderWidth
+        //        self.borderColor = SCColor.appWhite
+        //        self.shadowColor = FGColor.appWhite
         self.shadowOffset = CGSize.zero
-//        self.shadowOpacity = SCSettings.shadowOpacity
-//        self.tintColor = SCColor.appWhite
-//        self.textColor = SCColor.appWhite
+        //        self.shadowOpacity = SCSettings.shadowOpacity
+        //        self.tintColor = SCColor.appWhite
+        //        self.textColor = SCColor.appWhite
     }
     
     fileprivate func HighlightLayer() {
-//        self.borderColor = SCColor.appOrange
-//        self.tintColor = SCColor.appOrange
+        //        self.borderColor = SCColor.appOrange
+        //        self.tintColor = SCColor.appOrange
     }
     
     fileprivate func resetLayer() {
-//        self.borderColor = SCColor.appWhite
-//        self.tintColor = SCColor.appWhite
+        //        self.borderColor = SCColor.appWhite
+        //        self.tintColor = SCColor.appWhite
     }
     
     private func setup() {
@@ -169,7 +169,7 @@ class FGBaseTextFieldForBBloks: UITextField {
     }
 }
 class FGProDisplayRegularTextField: FGBaseTextField {
-
+    
     /// common text field layout for inputs
     ///
     /// - Parameter aDecoder: aDecoder description
@@ -181,7 +181,7 @@ class FGProDisplayRegularTextField: FGBaseTextField {
 }
 
 class FGProDisplayBoldTextField: FGBaseTextField {
-
+    
     /// common text field layout for inputs
     ///
     /// - Parameter aDecoder: aDecoder description
@@ -192,7 +192,7 @@ class FGProDisplayBoldTextField: FGBaseTextField {
     }
 }
 class FGProDisplaySemiBoldTextField: FGBaseTextField {
-
+    
     /// common text field layout for inputs
     ///
     /// - Parameter aDecoder: aDecoder description
@@ -979,8 +979,8 @@ class FGAccountHolderNameTextField: FGMediumTextField {
     }
 }
 class FGSelectDateTextFieldForBooking: FGMediumTextField, UITextFieldDelegate , SendSelectedDate {
-  
-
+    
+    
     var leftUserView: UIView {
         let imgView = UIImageView(image: UIImage(named: FGImageName.iconCalender))
         imgView.contentMode = .scaleAspectFit
@@ -1298,10 +1298,10 @@ class FGPickMonthYear: FGMediumTextField, UITextFieldDelegate , UIPickerViewDele
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        //        if selectedMonth == nil && selectedYear == nil{
-        //            selectedMonth = pvOptions.first
-        //            selectedYear = yearArray.first
-        //        }
+        if selectedMonth == nil && selectedYear == nil{
+            selectedMonth = "\(pvOptions.first?.rawValue ?? String())"
+            selectedYear = yearArray.first
+        }
     }
     
     //------------------------------------------------------
@@ -1388,9 +1388,9 @@ class FGGolfCourseNameTextField: FGMediumTextField {
     
     //MARK: Override
     
-//    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-//        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
-//    }
+    //    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+    //        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
+    //    }
     
     //------------------------------------------------------
     
@@ -1433,9 +1433,9 @@ class FGGolfAddressTextField: FGMediumTextField {
     
     //MARK: Override
     
-//    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-//        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
-//    }
+    //    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+    //        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
+    //    }
     
     //------------------------------------------------------
     
@@ -1466,7 +1466,7 @@ class FGGolfCreditsTextField: FGMediumTextField {
         
         leftView = leftUserView
         
-        self.keyboardType = .default
+        self.keyboardType = .numberPad
         self.autocorrectionType = .no
         self.autocapitalizationType = .words
         self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
@@ -1477,9 +1477,9 @@ class FGGolfCreditsTextField: FGMediumTextField {
     
     //MARK: Override
     
-//    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-//        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
-//    }
+    //    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+    //        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
+    //    }
     
     //------------------------------------------------------
     
@@ -1621,6 +1621,34 @@ public enum Months:String,CaseIterable{
     case Dec
     
     var monthIntVal:Int{
+        switch self {
+        case .Jan:
+            return 01
+        case .Feb:
+            return 02
+        case .Mar:
+            return 03
+        case .Apr:
+            return 04
+        case .May:
+            return 05
+        case .Jun:
+            return 06
+        case .Jul:
+            return 07
+        case .Aug:
+            return 08
+        case .Sep:
+            return 09
+        case .Oct:
+            return 10
+        case .Nov:
+            return 11
+        case .Dec:
+            return 12
+        }
+    }
+    var monthStringVal:Int{
         switch self {
         case .Jan:
             return 01

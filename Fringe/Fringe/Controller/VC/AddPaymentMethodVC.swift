@@ -103,10 +103,28 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let controller = NavigationManager.shared.paymentMethodVC
-        controller.isComesFrom = true
-        push(controller: controller)
         
+        let item = items[indexPath.row]
+        let name = item["name"]
+        
+        if name == AddPaymentItems.creditCard {
+            
+            let controller = NavigationManager.shared.paymentMethodVC
+            controller.comesFrom = "0"
+            controller.isComesFrom = true
+            push(controller: controller)
+            
+        } else if name == AddPaymentItems.applePay {
+            
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: "Comming soon....") {
+            }
+            
+        } else if name == AddPaymentItems.payPal {
+            
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: "Comming soon....") {
+            }
+            
+        }
     }
     
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,29 +54,17 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uncheck" translatesAutoresizingMaskIntoConstraints="NO" id="smS-Ce-PVT">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="uncheck" translatesAutoresizingMaskIntoConstraints="NO" id="smS-Ce-PVT">
                                 <rect key="frame" x="304.5" y="25" width="23.5" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBh-MU-oCk">
-                                <rect key="frame" x="292.5" y="13" width="47.5" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="hBh-MU-oCk" secondAttribute="height" multiplier="1:1" id="qi8-bQ-Kdv"/>
-                                </constraints>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94919949486142108" green="0.94919949486142108" blue="0.94919949486142108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hBh-MU-oCk" firstAttribute="centerY" secondItem="gw4-Ua-ehF" secondAttribute="centerY" id="GlV-su-OVl"/>
                             <constraint firstItem="gw4-Ua-ehF" firstAttribute="centerY" secondItem="cZ4-Ck-IZS" secondAttribute="centerY" id="SUf-ux-fLc"/>
                             <constraint firstItem="cZ4-Ck-IZS" firstAttribute="centerY" secondItem="I04-SJ-5cR" secondAttribute="centerY" id="UJh-P2-I95"/>
-                            <constraint firstItem="smS-Ce-PVT" firstAttribute="width" secondItem="hBh-MU-oCk" secondAttribute="width" multiplier="0.5" id="YLc-Ox-AdT"/>
                             <constraint firstItem="cZ4-Ck-IZS" firstAttribute="leading" secondItem="I04-SJ-5cR" secondAttribute="leading" constant="10" id="YTD-PG-u67"/>
-                            <constraint firstItem="smS-Ce-PVT" firstAttribute="centerY" secondItem="hBh-MU-oCk" secondAttribute="centerY" id="bfE-OH-Sou"/>
-                            <constraint firstItem="smS-Ce-PVT" firstAttribute="centerX" secondItem="hBh-MU-oCk" secondAttribute="centerX" id="eqi-4s-TGM"/>
-                            <constraint firstItem="smS-Ce-PVT" firstAttribute="height" secondItem="hBh-MU-oCk" secondAttribute="height" multiplier="0.5" id="q6C-MV-Jt0"/>
                             <constraint firstItem="cZ4-Ck-IZS" firstAttribute="width" secondItem="I04-SJ-5cR" secondAttribute="width" multiplier="0.15" id="rZv-w4-X7x"/>
-                            <constraint firstAttribute="trailing" secondItem="hBh-MU-oCk" secondAttribute="trailing" id="t2E-Db-Y9m"/>
-                            <constraint firstItem="hBh-MU-oCk" firstAttribute="width" secondItem="I04-SJ-5cR" secondAttribute="width" multiplier="0.14" id="u0u-Fv-AlU"/>
                             <constraint firstItem="gw4-Ua-ehF" firstAttribute="leading" secondItem="cZ4-Ck-IZS" secondAttribute="trailing" constant="15" id="xht-YF-leT"/>
                             <constraint firstItem="gw4-Ua-ehF" firstAttribute="width" secondItem="I04-SJ-5cR" secondAttribute="width" multiplier="0.6" id="z2e-sV-V1d"/>
                         </constraints>
@@ -103,7 +91,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cardDetails" destination="OHY-MJ-qSK" id="X8d-ev-R5p"/>
-                <outlet property="checkUncheckBtn" destination="hBh-MU-oCk" id="HwJ-X5-MvJ"/>
                 <outlet property="iconImage" destination="cZ4-Ck-IZS" id="LhJ-fK-6V4"/>
                 <outlet property="nameLbl" destination="Sqk-y4-gPH" id="95k-DW-Axh"/>
                 <outlet property="selectUnselectImg" destination="smS-Ce-PVT" id="Pb7-dz-qbP"/>

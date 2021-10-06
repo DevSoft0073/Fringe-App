@@ -39,7 +39,7 @@ class AccountInformationVC : BaseVC {
     //MARK: Custome
     
     func setupData()  {
-        lblName.text = "\(currentUser?.firstName ?? "")" + "\(currentUser?.lastName ?? "")"
+        lblName.text = "\(currentUser?.firstName ?? "") " + "\(currentUser?.lastName ?? "")"
         lblEmail.text = currentUser?.email
         lblDateOfBirth.text = currentUser?.dob
         lblMobileNumber.text = currentUser?.mobileNo

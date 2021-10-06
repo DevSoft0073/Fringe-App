@@ -67,6 +67,7 @@ struct LocalizableConstants {
         static let rejectResn = "reject_resn"
         
         //change password
+        static let oldPassword = "oldPassword"
         static let enterNewPassword = "enter_new_password"
         static let enterValidNewPassword = "enter_valid_new_password"
         static let enterRetypePassword = "enter_confirm_password"

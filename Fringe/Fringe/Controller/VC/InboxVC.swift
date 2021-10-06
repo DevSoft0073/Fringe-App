@@ -86,9 +86,11 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.chatListing, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<[PlayerMessgaeModal]>.self) { (response: ResponseModal<[PlayerMessgaeModal]>) in
             
+            self.messageGroups.removeAll()
             self.messagePlayerGroups.removeAll()
-            self.messageGroups = self.messageGroups.removingDuplicates()
             self.messagePlayerGroups.append(contentsOf: response.data ?? [])
+            self.messagePlayerGroups = self.messagePlayerGroups.removingDuplicates()
+            self.tblInbox.reloadData()
             completion?(true)
             
         } failureBlock: { (errorModal: ErrorModal) in
@@ -151,6 +153,7 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NavigationManager.shared.isEnabledBottomMenuForHost = true
         NavigationManager.shared.isEnabledBottomMenu = true
         var isShowLoader: Bool = false
         if messageGroups.count == .zero {

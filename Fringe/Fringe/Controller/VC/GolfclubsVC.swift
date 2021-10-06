@@ -75,7 +75,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
             
             segment1.delegate = self
             segment2.delegate = self
-            
+            isSelected = "1"
             segment1.isSelected = false
             segment2.isSelected = true
             var identifier = String(describing: FringePendingCell.self)
@@ -466,11 +466,12 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
                 
         noDataLbl.isHidden = false
                 
-        isSelected = "0"
+//        isSelected = "0"
         
         self.lastRequestId = ""
         
         LoadingManager.shared.showLoading()
+        
         self.performGetBookingListing { (flag : Bool) in
             
         }
@@ -478,7 +479,7 @@ class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentV
     }
     
     override func viewDidAppear(_ animated: Bool) {
-                
+        
         setup()
     }
     

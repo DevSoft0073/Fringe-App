@@ -52,7 +52,7 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
     func validate() -> Bool {
         
         if ValidationManager.shared.isEmpty(text: txtOldPassword.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterPassword) {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.oldPassword) {
             }
             return false
         }
@@ -97,7 +97,7 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
     }
     
     private func performUpdatePassword(completion:((_ flag: Bool) -> Void)?) {
-
+        
         let parameter: [String: Any] = [
             Request.Parameter.userID: currentUser?.userID ?? String(),
             Request.Parameter.oldPassword: txtOldPassword.text ?? String(),
@@ -105,38 +105,41 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.changePassword, parameter: parameter, headers: [:], showLoader: true, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
-
+            
             LoadingManager.shared.hideLoading()
             
             if response.code == Status.Code.success {
-
+                
                 LoadingManager.shared.hideLoading()
                 
                 delay {
-
-                    DisplayAlertManager.shared.displayAlert(animated: true, message: LocalizableConstants.SuccessMessage.passwordChanged) {
+                    
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.SuccessMessage.passwordChanged) {
+                        
                         completion?(true)
+                        
+                        self.pop()
                     }
                 }
-
+                
             } else {
                 
                 LoadingManager.shared.hideLoading()
                 
                 completion?(false)
-
+                
                 delay {
                     DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String())
-//                    self.handleError(code: response.code)
+                    //                    self.handleError(code: response.code)
                 }
             }
-
+            
         }, failureBlock: { (error: ErrorModal) in
-
+            
             LoadingManager.shared.hideLoading()
             
             completion?(false)
-
+            
             delay {
                 
                 DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: LocalizableConstants.Error.anotherLogin) {
@@ -217,7 +220,7 @@ class ChangePasswordVC : BaseVC , UITextViewDelegate , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-       
+        
     }
     
     //------------------------------------------------------

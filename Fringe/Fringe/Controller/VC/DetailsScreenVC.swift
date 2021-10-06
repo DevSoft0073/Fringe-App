@@ -46,7 +46,7 @@ class DetailsScreenVC : BaseVC {
     //MARK: Custome
     
     func setup() {
-        lblRate.text = golfCourseDetails?.price
+        lblRate.text = "$\(golfCourseDetails?.price ?? String())"
         lblRating.text = golfCourseDetails?.rating
         lblGolfClubAddress.text = golfCourseDetails?.location
         lblGolfClubName.text = golfCourseDetails?.golfCourseName

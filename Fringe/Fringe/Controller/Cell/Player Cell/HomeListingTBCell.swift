@@ -61,7 +61,7 @@ class HomeListingTBCell: UITableViewCell {
         
         lblGolfClubName.text = homeData.golfCourseName
         lblAddress.text = homeData.location
-        lblPrice.text = homeData.price
+        lblPrice.text = "$\(homeData.price ?? String())"
         lblRating.text = homeData.rating
         ratingView.rating = Double(homeData.rating ?? String()) ?? Double()
     }

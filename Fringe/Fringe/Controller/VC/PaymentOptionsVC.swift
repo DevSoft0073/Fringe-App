@@ -12,6 +12,8 @@ import Foundation
 class PaymentOptionsVC : BaseVC, UITableViewDataSource , UITableViewDelegate {
     
     @IBOutlet weak var tblPyament: UITableView!
+    @IBOutlet weak var lblTotal: FGMediumLabel!
+    
     var totalGuest = String()
     var totalAmmount = String()
     var detailsData: RequestListingModal?
@@ -58,7 +60,7 @@ class PaymentOptionsVC : BaseVC, UITableViewDataSource , UITableViewDelegate {
         tblPyament.delegate = self
         tblPyament.dataSource = self
         tblPyament.separatorStyle = .none
-        
+        lblTotal.text = "Total Amount Payable \(totalAmmount)"
         let identifier = String(describing: AddPaymentTVCell.self)
         
         let nibRequestCell = UINib(nibName: identifier, bundle: Bundle.main)
@@ -66,7 +68,7 @@ class PaymentOptionsVC : BaseVC, UITableViewDataSource , UITableViewDelegate {
         
     }
     func updateUI() {
-        
+
         tblPyament.reloadData()
     }
     
@@ -100,51 +102,76 @@ class PaymentOptionsVC : BaseVC, UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 0 {
+//        if indexPath.row == 0 {
+//
+//            let controller = NavigationManager.shared.paymentMethodVC
+//            controller.detailsData = detailsData
+//            controller.totalGuest = totalGuest
+//            controller.totalAmmount = totalAmmount
+//            controller.isComesFrom = false
+//            controller.comesFrom = "1"
+//            push(controller: controller)
+//
+//        } else if indexPath.row == 1 {
+//
+//            triggerPayPalCheckout()
+//
+//        } else {
+//
+//        }
+        
+        let item = items[indexPath.row]
+        let name = item["name"]
+        
+        if name == AddPaymentItems.creditCard {
             
             let controller = NavigationManager.shared.paymentMethodVC
             controller.detailsData = detailsData
             controller.totalGuest = totalGuest
             controller.totalAmmount = totalAmmount
             controller.isComesFrom = false
+            controller.comesFrom = "1"
             push(controller: controller)
             
-        } else if indexPath.row == 1 {
+        } else if name == AddPaymentItems.applePay {
             
-            triggerPayPalCheckout()
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: "Comming soon....") {
+            }
             
-        } else {
+        } else if name == AddPaymentItems.payPal {
+            
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: "Comming soon....") {
+            }
             
         }
-        
     }
     
-    func triggerPayPalCheckout() {
-            Checkout.start(
-                createOrder: { createOrderAction in
-
-                    let amount = PurchaseUnit.Amount(currencyCode: .usd, value: "10.00")
-                    let purchaseUnit = PurchaseUnit(amount: amount)
-                    let order = OrderRequest(intent: .authorize, purchaseUnits: [purchaseUnit])
-
-                    createOrderAction.create(order: order)
-
-                }, onApprove: { approval in
-
-                    approval.actions.authorize { (response, error) in
-                        print(response?.data.orderData)
-                    }
-                }, onCancel: {
-
-                    // Optionally use this closure to respond to the user canceling the paysheet
-                }, onError: { error in
-                  print(error)
-                    // Optionally use this closure to respond to the user experiencing an error in
-                    // the payment experience
-                }
-            )
-        }
-    
+//    func triggerPayPalCheckout() {
+//            Checkout.start(
+//                createOrder: { createOrderAction in
+//
+//                    let amount = PurchaseUnit.Amount(currencyCode: .usd, value: "10.00")
+//                    let purchaseUnit = PurchaseUnit(amount: amount)
+//                    let order = OrderRequest(intent: .authorize, purchaseUnits: [purchaseUnit])
+//
+//                    createOrderAction.create(order: order)
+//
+//                }, onApprove: { approval in
+//
+//                    approval.actions.authorize { (response, error) in
+//                        print(response?.data.orderData)
+//                    }
+//                }, onCancel: {
+//
+//                    // Optionally use this closure to respond to the user canceling the paysheet
+//                }, onError: { error in
+//                  print(error)
+//                    // Optionally use this closure to respond to the user experiencing an error in
+//                    // the payment experience
+//                }
+//            )
+//        }
+//
     //------------------------------------------------------
     
     //MARK: UIViewController

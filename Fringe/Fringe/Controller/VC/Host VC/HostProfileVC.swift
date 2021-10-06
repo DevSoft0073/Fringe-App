@@ -21,8 +21,8 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     struct ProfileItems {
         static let accountInformation = LocalizableConstants.Controller.HostProfile.accountInformation
         static let accountInformationIcon = FGImageName.iconAccountInformation
-        static let changePassword = LocalizableConstants.Controller.HostProfile.changePassword
-        static let changePasswordIcon = FGImageName.iconChangePassword
+//        static let changePassword = LocalizableConstants.Controller.HostProfile.changePassword
+//        static let changePasswordIcon = FGImageName.iconChangePassword
         static let addPayment = LocalizableConstants.Controller.HostProfile.paymentMethods
         static let addPaymentIcon = FGImageName.iconPaymentMethods
         static let allowLocation = LocalizableConstants.Controller.HostProfile.allowLocation
@@ -43,7 +43,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     var itemSocials: [ [String:String] ] {
         return [
             ["name": ProfileItems.accountInformation, "image": ProfileItems.accountInformationIcon],
-            ["name": ProfileItems.changePassword, "image": ProfileItems.changePasswordIcon],
+//            ["name": ProfileItems.changePassword, "image": ProfileItems.changePasswordIcon],
             ["name": ProfileItems.addPayment, "image": ProfileItems.addPaymentIcon],
             ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
             ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
@@ -59,7 +59,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     var itemNormal: [ [String:String] ] {
         return [
             ["name": ProfileItems.accountInformation, "image": ProfileItems.accountInformationIcon],
-            ["name": ProfileItems.changePassword, "image": ProfileItems.changePasswordIcon],
+//            ["name": ProfileItems.changePassword, "image": ProfileItems.changePasswordIcon],
             ["name": ProfileItems.addPayment, "image": ProfileItems.addPaymentIcon],
             ["name": ProfileItems.allowLocation, "image": ProfileItems.allowLocationIcon],
             ["name": ProfileItems.allowNotification, "image": ProfileItems.allowNotificationIcon],
@@ -508,13 +508,15 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
             controller.textTitle = name?.localized()
             push(controller: controller)
             
-        }else if name == ProfileItems.changePassword {
-            
-            let controller = NavigationManager.shared.changePasswordVC
-            controller.textTitle = name?.localized()
-            push(controller: controller)
-            
-        }else if name == ProfileItems.addPayment {
+        }
+//        else if name == ProfileItems.changePassword {
+//
+//            let controller = NavigationManager.shared.changePasswordVC
+//            controller.textTitle = name?.localized()
+//            push(controller: controller)
+//            
+//        }
+        else if name == ProfileItems.addPayment {
             
             let controller = NavigationManager.shared.hostAddPaymentMethodVC
             push(controller: controller)

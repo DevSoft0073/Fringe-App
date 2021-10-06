@@ -35,7 +35,7 @@ class BookingDetailsVC : BaseVC {
         lblName.text = bookingDetails?.golfCourseName
         lblAddress.text = bookingDetails?.location
         lblRating.text = "5"
-        lblRate.text = bookingDetails?.price
+        lblRate.text = "$\(bookingDetails?.price ?? String())"
         ratingView.rating = Double(bookingDetails?.rating ?? String()) ?? Double()
         let dateValue = bookingDetails?.dates ?? String()
         let dateValu = NumberFormatter().number(from: dateValue)?.doubleValue ?? 0.0

@@ -99,7 +99,7 @@ class ConfirmedPayVC : BaseVC {
         let serviceFee =  priceDouble * 0.029
         lblServiceTax.text = "\(serviceFee)"
         let occupancyTax = serviceFee + 0.3
-        lblOccupancyTax.text = "\(occupancyTax)"
+        lblOccupancyTax.text = "0.3"
         return occupancyTax.rounded(toPlaces: 2)
     }
     

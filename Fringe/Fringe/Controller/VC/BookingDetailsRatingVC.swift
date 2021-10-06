@@ -9,8 +9,9 @@ import UIKit
 import Alamofire
 import Foundation
 
-class BookingDetailsRatingVC : BaseVC {
+class BookingDetailsRatingVC : BaseVC, FloatRatingViewDelegate {
     
+    @IBOutlet weak var lblRatingTitle: UILabel!
     @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet weak var ratingView: FloatRatingView!
     @IBOutlet weak var txtViewQuery: UITextView!
@@ -187,6 +188,26 @@ class BookingDetailsRatingVC : BaseVC {
     
     //------------------------------------------------------
     
+    //MARK: Rating View
+    
+    func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
+        var rateVal = String()
+        rateVal = String(format: "%.2f", self.ratingView.rating)
+        if rateVal == "1" {
+            lblRatingTitle.text = "Bad!"
+        } else if rateVal == "2" {
+            lblRatingTitle.text = "Bad!"
+        } else if rateVal == "3" {
+            lblRatingTitle.text = "Good!"
+        } else if rateVal == "4" {
+            lblRatingTitle.text = "Good!"
+        } else {
+            lblRatingTitle.text = "Great!"
+        }
+    }
+    
+    //------------------------------------------------------
+    
     //MARK: UIViewController
     
     override func viewDidLoad() {
@@ -208,4 +229,3 @@ class BookingDetailsRatingVC : BaseVC {
     
     //------------------------------------------------------
 }
-

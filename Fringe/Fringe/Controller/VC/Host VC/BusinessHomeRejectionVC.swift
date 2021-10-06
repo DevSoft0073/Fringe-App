@@ -86,7 +86,9 @@ class BusinessHomeRejectionVC : BaseVC {
         
         let parameter: [String: Any] = [
             Request.Parameter.id: requestID,
-            Request.Parameter.type: "0",
+            Request.Parameter.type: "3",
+            Request.Parameter.addReason: reasonTextView.text ?? String(),
+            
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.acceptReject, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
@@ -97,6 +99,9 @@ class BusinessHomeRejectionVC : BaseVC {
                 delay {
                     
                     DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
+                        self.dismiss(animated: true) {
+                            self.updateTblViewData?()
+                        }
                     }
                     
                     completion?(true)
@@ -108,8 +113,9 @@ class BusinessHomeRejectionVC : BaseVC {
                 
                 delay {
                     
-                    // self.handleError(code: response.code)
-                    
+                    DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
+                        
+                    }
                 }
             }
             

@@ -90,6 +90,7 @@ struct Request {
         static let back = "back"
         static let front = "front"
         static let socialToken = "token"
+        static let addReason = "reject_reason"
         
         //Payment
         static let token = "stripe_token"

@@ -9,7 +9,6 @@ import UIKit
 
 class PaymentMethodTVC: UITableViewCell {
 
-    @IBOutlet weak var checkUncheckBtn: UIButton!
     @IBOutlet weak var selectUnselectImg: UIImageView!
     @IBOutlet weak var cardDetails: FGRegularLabel!
     @IBOutlet weak var nameLbl: FGSemiboldLabel!
@@ -23,9 +22,14 @@ class PaymentMethodTVC: UITableViewCell {
     
     //MARK: Custome
     
-    func setup(cardData : PaymentDataModel) {
+    func setup(cardData : PaymentDataModel , comesFromm : String) {
         cardDetails.text = "Card Number Ending with \(cardData.last4 ?? "")"
         nameLbl.text = cardData.cardHolderName
+        if comesFromm == "0" {
+            selectUnselectImg.isHidden = true
+        } else {
+            selectUnselectImg.isHidden = false
+        }
     }
     
     //------------------------------------------------------

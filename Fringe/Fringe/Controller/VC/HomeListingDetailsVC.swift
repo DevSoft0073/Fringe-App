@@ -45,7 +45,7 @@ class HomeListingDetailsVC : BaseVC {
     func setup() {
         lblName.text = detailsData?.golfCourseName
         lblAddress.text = detailsData?.location
-        lblPrice.text = detailsData?.price
+        lblPrice.text = "$\(detailsData?.price ?? String())"
         lblRating.text = detailsData?.rating
         lblDetails.text = detailsData?.homeModalDescription
         ratingView.rating = Double(detailsData?.rating ?? String()) ?? 0.0

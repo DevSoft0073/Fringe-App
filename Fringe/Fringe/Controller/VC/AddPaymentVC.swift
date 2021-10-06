@@ -265,6 +265,7 @@ class AddPaymentVC : BaseVC, UITextFieldDelegate {
         cvvTxtField.delegate = self
         nameOnCardTxtField.delegate = self
         expirationTxtField.delegate = self
+        cardTypeTxtField.tintColor = .clear
     }
     
     //------------------------------------------------------

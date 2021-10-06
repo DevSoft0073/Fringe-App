@@ -52,7 +52,6 @@
 		1FA73FC026FB0FC3008604AA /* PopUpViewForAddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */; };
 		1FA73FC226FB338F008604AA /* FbData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FC126FB338F008604AA /* FbData.swift */; };
 		1FDE06362703469C00EEC191 /* SubmitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE06352703469B00EEC191 /* SubmitVC.swift */; };
-		1FE786B4270C255000BE94B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE786B3270C255000BE94B5 /* NetworkManager.swift */; };
 		1FE786B6270C402100BE94B5 /* LoadingIndicatorManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE786B5270C402100BE94B5 /* LoadingIndicatorManeger.swift */; };
 		1FE9483126E8E68F00961BE2 /* RequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9483026E8E68F00961BE2 /* RequestModal.swift */; };
 		1FF9FF6726F1E12F00006AB0 /* PaymentDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9FF6626F1E12F00006AB0 /* PaymentDataModal.swift */; };
@@ -261,7 +260,6 @@
 		1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewForAddAccountVC.swift; sourceTree = "<group>"; };
 		1FA73FC126FB338F008604AA /* FbData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FbData.swift; sourceTree = "<group>"; };
 		1FDE06352703469B00EEC191 /* SubmitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitVC.swift; sourceTree = "<group>"; };
-		1FE786B3270C255000BE94B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1FE786B5270C402100BE94B5 /* LoadingIndicatorManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorManeger.swift; sourceTree = "<group>"; };
 		1FE9483026E8E68F00961BE2 /* RequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModal.swift; sourceTree = "<group>"; };
 		1FF82EE426D6642F002B303B /* Fringe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fringe.entitlements; sourceTree = "<group>"; };
@@ -848,7 +846,6 @@
 				7CA24C3726C241B200437C8A /* PreferenceManager.swift */,
 				7CA24C4326C241D600437C8A /* RequestManager.swift */,
 				7CA24C3A26C241BA00437C8A /* ValidationManager.swift */,
-				1FE786B3270C255000BE94B5 /* NetworkManager.swift */,
 				1FE786B5270C402100BE94B5 /* LoadingIndicatorManeger.swift */,
 			);
 			path = Managers;
@@ -1318,7 +1315,6 @@
 				7CA24C5326C2424100437C8A /* FGImageView.swift in Sources */,
 				7C94875726CA49AA00870F54 /* FringeConfirmedCell.swift in Sources */,
 				7C97C92026E5E14B0090F7C7 /* BusinessAddPaymentMethodVC.swift in Sources */,
-				1FE786B4270C255000BE94B5 /* NetworkManager.swift in Sources */,
 				7C8F1D5A26CE236B00135C41 /* ChangePasswordVC.swift in Sources */,
 				7C780F8226C3A6FF003F1F12 /* IrregularityContentView.swift in Sources */,
 				7CA24C3826C241B200437C8A /* PreferenceManager.swift in Sources */,

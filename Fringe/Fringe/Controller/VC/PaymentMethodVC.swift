@@ -17,6 +17,7 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var heightContraint: NSLayoutConstraint!
     @IBOutlet weak var tblPayment: UITableView!
     
+    var comesFrom = String()
     var totalGuest = String()
     var totalAmmount = String()
     var detailsData: RequestListingModal?
@@ -210,7 +211,7 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PaymentMethodTVC.self)) as? PaymentMethodTVC {
             let data = items[indexPath.row]
-            cell.setup(cardData: data)
+            cell.setup(cardData: data, comesFromm: comesFrom)
             cell.iconImage.setRounded()
             DispatchQueue.main.async {
                 self.heightContraint.constant = self.tblPayment.contentSize.height
@@ -270,7 +271,6 @@ class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         noDataLbl.isHidden = true
         setup()
-        
         if isComesFrom == true {
             self.addPayBtn.isHidden = true
         } else {
