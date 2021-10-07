@@ -22,6 +22,7 @@
 		1F18A3AD270594E4003F9356 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18A3AC270594E4003F9356 /* SocketManager.swift */; };
 		1F18A3AF2705AAD0003F9356 /* AddEditMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18A3AE2705AAD0003F9356 /* AddEditMessage.swift */; };
 		1F33172326E37BF500D7D466 /* FGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33172226E37BF500D7D466 /* FGLocationManager.swift */; };
+		1F436FCA270EE8A600D839A6 /* NotificationLocationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F436FC9270EE8A600D839A6 /* NotificationLocationModal.swift */; };
 		1F4CF3F926E9F2DC008B2965 /* HomeListingDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */; };
 		1F4CF3FB26E9FE06008B2965 /* CheckModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CF3FA26E9FE06008B2965 /* CheckModal.swift */; };
 		1F4CF3FD26EA3AA5008B2965 /* HostModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CF3FC26EA3AA5008B2965 /* HostModal.swift */; };
@@ -230,6 +231,7 @@
 		1F18A3AC270594E4003F9356 /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		1F18A3AE2705AAD0003F9356 /* AddEditMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditMessage.swift; sourceTree = "<group>"; };
 		1F33172226E37BF500D7D466 /* FGLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGLocationManager.swift; sourceTree = "<group>"; };
+		1F436FC9270EE8A600D839A6 /* NotificationLocationModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLocationModal.swift; sourceTree = "<group>"; };
 		1F4CF3F826E9F2DC008B2965 /* HomeListingDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListingDetailsVC.swift; sourceTree = "<group>"; };
 		1F4CF3FA26E9FE06008B2965 /* CheckModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckModal.swift; sourceTree = "<group>"; };
 		1F4CF3FC26EA3AA5008B2965 /* HostModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostModal.swift; sourceTree = "<group>"; };
@@ -465,6 +467,14 @@
 				1F18388426F9B12100A0B663 /* SampleData.swift */,
 			);
 			path = "Data Generation";
+			sourceTree = "<group>";
+		};
+		1F436FC8270EE88700D839A6 /* Location Notification */ = {
+			isa = PBXGroup;
+			children = (
+				1F436FC9270EE8A600D839A6 /* NotificationLocationModal.swift */,
+			);
+			path = "Location Notification";
 			sourceTree = "<group>";
 		};
 		1F5DF83026E206F100EA7327 /* FavoriteListing */ = {
@@ -884,6 +894,7 @@
 		7CA24C1826C23F8800437C8A /* Generals */ = {
 			isa = PBXGroup;
 			children = (
+				1F436FC8270EE88700D839A6 /* Location Notification */,
 				1F034D092704588800053F20 /* Messages */,
 				1FA73FB526FAFAB8008604AA /* Facebook */,
 				1F9ACE0726F4BA2800AB2E27 /* Player Request */,
@@ -1249,6 +1260,7 @@
 				7CE0419E26DF4CBB0036EEA0 /* ProfileViewForTitle.swift in Sources */,
 				7C780FD326C5330A003F1F12 /* HomeVC.swift in Sources */,
 				1F7D6C76270B108800B5FFB4 /* MessageListingVC.swift in Sources */,
+				1F436FCA270EE8A600D839A6 /* NotificationLocationModal.swift in Sources */,
 				7C780F7A26C3A6DB003F1F12 /* ESTabBarItemMoreContentView.swift in Sources */,
 				7C780F8F26C3C105003F1F12 /* SignUpVC.swift in Sources */,
 				7C64AB9426EB1C5B0024D06B /* ClubSearchVC.swift in Sources */,

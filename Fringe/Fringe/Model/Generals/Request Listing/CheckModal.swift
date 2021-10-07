@@ -5,17 +5,23 @@
 //  Created by MyMac on 9/9/21.
 //
 
+// CheckModal.swift
+
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let checkModal = try CheckModal(json)
+
 import Foundation
 
 // MARK: - CheckModal
-struct CheckModal: Codable, Hashable {
+struct CheckModal: Codable , Hashable{
     var golfID: String?
     var image: String?
     var status, userID, golfCourseName, location: String?
     var price, checkModalDescription, golfRequest, allowLocation: String?
     var allowNotification, disable, latitude, longitude: String?
     var createdAt, date: String?
-    var golfImages: [String]?
     var rating, isFav: String?
 
     enum CodingKeys: String, CodingKey {
@@ -33,7 +39,6 @@ struct CheckModal: Codable, Hashable {
         case longitude = "Longitude"
         case createdAt = "created_at"
         case date
-        case golfImages = "golf_images"
         case rating, isFav
     }
 }
@@ -54,5 +59,13 @@ extension CheckModal {
 
     init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
+    }
+
+    func jsonData() throws -> Data {
+        return try newJSONEncoder().encode(self)
+    }
+
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }

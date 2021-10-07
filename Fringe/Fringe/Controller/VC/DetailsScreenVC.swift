@@ -102,6 +102,10 @@ class DetailsScreenVC : BaseVC {
                     print(stringUser)
                     self.favUnfav = response.data
                     DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? "") {
+                        if response.message == "Removed from favorite list." {
+                            self.isUpdateTBView?()
+                            self.pop()
+                        }
                     }
                     if self.favUnfav?.isFav == "1"{
                         self.btnHeart.setImage(UIImage(named: FGImageName.iconWhiteHeart), for: .normal)

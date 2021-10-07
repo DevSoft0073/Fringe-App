@@ -47,7 +47,7 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
         
         let loadMoreView = KRPullLoadView()
         loadMoreView.delegate = self
-        tblListing.addPullLoadableView(loadMoreView, type: .loadMore)
+        tblListing.addPullLoadableView(loadMoreView, type: .refresh)
         
         
         let identifier = String(describing: HomeListingTBCell.self)

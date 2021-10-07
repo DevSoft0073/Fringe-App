@@ -43,7 +43,6 @@ class HostAccountInformationVC : BaseVC {
         lblAccountEmail.text = currentUserHost?.email
         lblMobileNumber.text = currentUserHost?.mobileNo
         lblAccountAddress.text = currentUserHost?.location
-
     }
     
     //------------------------------------------------------
@@ -66,6 +65,7 @@ class HostAccountInformationVC : BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupData()
         NavigationManager.shared.isEnabledBottomMenuForHost = false
     }
     

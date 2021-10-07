@@ -10,11 +10,13 @@ import SDWebImage
 import Foundation
 import AppleSignIn
 import GoogleSignIn
+import SKCountryPicker
 import IQKeyboardManagerSwift
 import AuthenticationServices
 
 class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     
+    @IBOutlet weak var btnCountryCode: UIButton!
     @IBOutlet weak var btnPassword: UIButton!
     @IBOutlet weak var imgPassword: UIImageView!
     @IBOutlet weak var btnConfirmPassword: UIButton!
@@ -34,6 +36,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     @IBOutlet weak var txtPassword: FGPasswordTextField!
     @IBOutlet weak var txtConfirmPassword: FGPasswordTextField!
     
+    var countryCode = String()
     var fbData = [FbData]()
     var iconClick = true
     var iconClick2 = true
@@ -85,6 +88,14 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
         txtConfirmPassword.delegate = self
         txtGender.tintColor = .clear
         txtBirthDate.tintColor = .clear
+        
+        self.btnCountryCode.contentHorizontalAlignment = .center
+        guard let country = CountryManager.shared.currentCountry else {
+            return
+        }
+        btnCountryCode.setTitle(country.countryCode, for: .highlighted)
+        btnCountryCode.clipsToBounds = true
+        
     }
     
     func setupData()  {
@@ -291,7 +302,9 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
             Request.Parameter.email:email,
             Request.Parameter.appleToken: appleId,
             Request.Parameter.deviceToken: deviceToken,
-            Request.Parameter.deviceType: DeviceType.iOS.rawValue
+            Request.Parameter.deviceType: DeviceType.iOS.rawValue,
+            Request.Parameter.countryCode: countryCode,
+            
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.aLogin, parameter: parameter, headers: [:], showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
@@ -374,7 +387,23 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
     }
     
     @IBAction func btnTermCondition(_ sender: Any) {
+        let controller = NavigationManager.shared.serviceTermsVC
+        push(controller: controller)
     }
+    
+    @IBAction func btnCountryPicker(_ sender: Any) {
+        
+        let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
+            
+            guard let self = self else { return }
+            self.btnCountryCode.setTitle(country.dialingCode, for: .normal)
+            self.countryCode = country.dialingCode ?? String()
+        }
+        
+        countryController.detailColor = UIColor.red
+        
+    }
+    
     
     @IBAction func btnSignUp(_ sender: UIButton) {
         

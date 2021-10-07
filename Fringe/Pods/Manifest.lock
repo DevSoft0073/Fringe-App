@@ -152,6 +152,7 @@ PODS:
   - SDWebImage (4.4.8):
     - SDWebImage/Core (= 4.4.8)
   - SDWebImage/Core (4.4.8)
+  - SKCountryPicker (1.3.2)
   - Socket.IO-Client-Swift (15.2.0):
     - Starscream (~> 3.1)
   - Starscream (3.1.1)
@@ -190,6 +191,7 @@ DEPENDENCIES:
   - PayPalCheckout
   - pop (~> 1.0.12)
   - SDWebImage (~> 4.4.5)
+  - SKCountryPicker
   - Socket.IO-Client-Swift (~> 15.2.0)
   - Stripe
   - SVProgressHUD
@@ -238,6 +240,7 @@ SPEC REPOS:
     - pop
     - PromisesObjC
     - SDWebImage
+    - SKCountryPicker
     - Socket.IO-Client-Swift
     - Starscream
     - Stripe
@@ -287,6 +290,7 @@ SPEC CHECKSUMS:
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
+  SKCountryPicker: ceff8cfffc0ddde2088f2fcc2d01d1ad530c0b03
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   Stripe: 57c6997c64042a3f5aedae9b76e331942f8b75d2
@@ -296,6 +300,6 @@ SPEC CHECKSUMS:
   Toucan: 8f228fabb21521b9658692df9325fe76e71d74b2
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 5ba658689776934ea8ae7e0d561298333d9a7106
+PODFILE CHECKSUM: c8e94aea2110b7033d6cf4f7ce3b2b10c207fba5
 
 COCOAPODS: 1.10.2

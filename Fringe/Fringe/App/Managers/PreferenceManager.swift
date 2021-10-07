@@ -37,6 +37,7 @@ class PreferenceManager: NSObject {
     private let currentMode = "currentMode"
     private let golfID = "golfID"
     private let comesFromPay = "comesFromPay"
+    private let comesFromListing = "comesFromListing"
 
     var deviceToken: String? {
         set {
@@ -215,6 +216,15 @@ class PreferenceManager: NSObject {
         }
     }
 
+    var comesFromHomeListing: Bool {
+        set {
+            userDefault.set(newValue, forKey: comesFromListing)
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.bool(forKey: comesFromListing)
+        }
+    }
     
     //------------------------------------------------------
 }

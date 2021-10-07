@@ -22,6 +22,7 @@ struct Request {
         static let deviceToken = "device_token"
         static let deviceType = "device_type" //ios/android
         static let userID = "user_id"
+        static let countryCode = "Country_code"
         
         // Sign up as player
         
@@ -123,7 +124,7 @@ struct Request {
         static let signUpAsHost = "/signUp_asHost.php"
         static let addRating = "/AddGolfrating.php"
         static let bookingListForPlayer = "/GetHostBookingDetails.php"
-        static let checkRequest = "/CheckAvaliablity.php"
+        static let checkRequest = "/CheckAvaliablity_v2.php"
         static let bookingRequest = "/BookingRequest.php"
         static let cancleRequest = "/Bookingcancel.php"
         static let notification = "/GetNotificationDetails.php"
@@ -139,7 +140,7 @@ struct Request {
         static let acceptReject = "/AcceptRejectBooking.php"
         static let playersBooking = "/GetAllBookingListingByUserid.php"
         static let socialLogin = "/socialLogin.php"
-        static let allowNotifAndLoc = "/allowlocation.php"
+        static let allowNotifAndLoc = "/allowSwitch.php"
         static let getFeedbackDetails = "/GetFeedbackDetail.php"
         static let chatListing = "/chatListing.php"
         static let sendMsg = "/sendMsg.php"
@@ -420,5 +421,6 @@ struct Status {
         static let nofoundDat = 503
         static let newSignUp = 400
         static let wrongCredentials = 511
+        static let blocked = 403
     }
 }

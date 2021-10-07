@@ -166,6 +166,7 @@ struct LocalizableConstants {
             static let awaiting = "awaiting"
             static let moreInfo = "more_info"
             static let payNow = "pay_now"
+            static let calendar = "no_data_available_for_this_date"
         }
         struct FringeDataForGolfclub {
             

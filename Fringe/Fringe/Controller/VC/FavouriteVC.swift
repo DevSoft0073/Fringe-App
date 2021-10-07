@@ -83,11 +83,13 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
                 }
                 self.items.append(contentsOf: response.data ?? [])
                 self.items = self.items.removingDuplicates()
-                self.lastRequestId = response.data?.first?.favID ?? String()
+                self.lastRequestId = response.data?.last?.favID ?? String()
                 self.updateUI()
                 completion?(true)
                 
             } else if response.code == Status.Code.notfound {
+            
+                self.updateUI()
                 
                 completion?(true)
                 
@@ -147,6 +149,7 @@ class FavouriteVC : BaseVC, UITableViewDelegate, UITableViewDataSource, KRPullLo
         controller.golfCourseDetails = data
         controller.isUpdateTBView = {
             self.lastRequestId = ""
+            self.items.removeAll()
         }
         push(controller: controller)
     }

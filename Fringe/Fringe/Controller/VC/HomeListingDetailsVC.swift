@@ -143,6 +143,7 @@ class HomeListingDetailsVC : BaseVC {
     }
     
     @IBAction func btnBack(_ sender: Any) {
+        PreferenceManager.shared.comesFromHomeListing = true
         NavigationManager.shared.setupLandingOnHome()
     }
     

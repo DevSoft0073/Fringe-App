@@ -11,6 +11,7 @@ import Toucan
 
 class HomeListingTBCell: UITableViewCell {
     
+    @IBOutlet weak var btnFav: UIButton!
     @IBOutlet weak var favUnFavImg: UIImageView!
     @IBOutlet weak var lblPrice: FGMediumLabel!
     @IBOutlet weak var lblRating: FGRegularLabel!

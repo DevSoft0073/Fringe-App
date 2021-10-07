@@ -10,6 +10,8 @@ import Foundation
 
 class HostAddPaymentMethodVC : BaseVC {
     
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
+    @IBOutlet weak var paymentView: UIView!
     @IBOutlet weak var imgEdit: UIImageView!
     @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var lblAccountNumber: FGBaseLabel!
@@ -35,10 +37,20 @@ class HostAddPaymentMethodVC : BaseVC {
     //MARK: Custome
     
     func setupUI()  {
-        lblAccountNumber.text = currentUserHost?.accountNumber
-        lblName.text = currentUserHost?.accountHolderName
-        lblRoutingNumber.text = currentUserHost?.routingNumber
-        lblSSN.text = currentUserHost?.ssnLast4
+        
+        if currentUserHost?.accountNumber == " " {
+            noDataLbl.isHidden = false
+            paymentView.isHidden = true
+            
+        } else {
+            
+            noDataLbl.isHidden = true
+            paymentView.isHidden = false
+            lblSSN.text = currentUserHost?.ssnLast4
+            lblAccountNumber.text = currentUserHost?.accountNumber
+            lblName.text = currentUserHost?.accountHolderName
+            lblRoutingNumber.text = currentUserHost?.routingNumber
+        }
     }
     
     //------------------------------------------------------
@@ -72,6 +84,7 @@ class HostAddPaymentMethodVC : BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupUI()
         NavigationManager.shared.isEnabledBottomMenuForHost = false
     }
     

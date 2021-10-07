@@ -217,6 +217,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
                 
             } else if response.code == Status.Code.nofoundDat {
                 
+                LoadingManager.shared.hideLoading()
                 
                 self.items.removeAll()
                 
@@ -299,15 +300,16 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HostPendingCell.self)) as? HostPendingCell{
                 if items.count > 0 {
                     let data = items[indexPath.row]
-                    cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
+                    cell.btnMoreInfo.tag = indexPath.row
                     cell.btnReject.tag = indexPath.row
                     cell.btnAccept.tag = indexPath.row
+                    cell.setup(bookingData: data)
                     if needToshowInfoView {
                         cell.cancelView.isHidden = true
                         cell.btnClose.isHidden = true
                         cell.btnMoreInfo.isHidden = false
                     }
-                    cell.setup(bookingData: data)
+                    cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
                     cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
                     cell.btnReject.addTarget(self, action: #selector(showpopUpView), for: .touchUpInside)
                     cell.btnAccept.addTarget(self, action: #selector(requestAccept), for: .touchUpInside)
@@ -342,7 +344,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     //------------------------------------------------------
     
     //MARK:  TableView cell button Actions
-    
+        
     @objc func showHideView(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? HostPendingCell{
             self.needToshowInfoView = false
@@ -353,6 +355,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             btnTapped = false
         }
     }
+    
     @objc func showViews(sender : UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? HostPendingCell{
             btnTapped = true
@@ -465,9 +468,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             segment1.isSelected = false
             segment2.isSelected = false
         }
-    }
-    
-    
+    }    
     
     //------------------------------------------------------
     
@@ -490,9 +491,13 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.lastRequestId = ""
+        
+        isSelected = "0"
+        
         self.performGetUserProfile()
         
-        LoadingManager.shared.showLoading()
+//        LoadingManager.shared.showLoading()
         
         self.performGetRequestData { (flag : Bool) in
             

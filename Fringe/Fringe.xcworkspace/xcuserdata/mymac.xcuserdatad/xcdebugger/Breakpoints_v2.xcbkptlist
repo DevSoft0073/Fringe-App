@@ -7,48 +7,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EC73F3B6-7324-46C0-BD45-17BE58CC9B17"
+            uuid = "5274710A-572E-4290-8C0B-BE13D9B81CE6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/GolfclubsVC.swift"
+            filePath = "Fringe/Controller/VC/Host VC/HostCalendarVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "setup()"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "performGetRequestListing(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A5A04C46-04F7-4DE5-AE4F-5B94AAA43541"
+            uuid = "EE8D5F11-021F-446D-965C-BEF1B99E0189"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/GolfclubsVC.swift"
+            filePath = "Fringe/Controller/VC/Host VC/HostCalendarVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "setup()"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "performGetRequestListing(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1C22D2BE-7108-46A0-8DB6-FAA5D9EC3B65"
+            uuid = "80868090-63A8-4C01-86CA-006D5532294A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fringe/Controller/VC/Host VC/HostEditProfileVC.swift"
+            filePath = "Fringe/Controller/VC/Host VC/HostCalendarVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "performEditStudio()"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "performGetRequestListing(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "410BF680-1325-4C95-93E8-15C69A7EF3BC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fringe/Controller/VC/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "bottomSheetView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F3799C3D-165A-4DA9-A3B7-EF742803973F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fringe/Controller/VC/Host VC/BookingsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "performGetRequestData(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

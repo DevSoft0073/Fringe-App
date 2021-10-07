@@ -156,6 +156,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
                     PreferenceManager.shared.userId = nil
                     PreferenceManager.shared.currentUser = nil
                     PreferenceManager.shared.authToken = nil
+                    PreferenceManager.shared.curretMode = "1"
                     NavigationManager.shared.setupSingIn()
                 }
             }

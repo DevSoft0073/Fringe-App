@@ -13,7 +13,7 @@ import IQKeyboardManagerSwift
 
 class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullLoadViewDelegate , UISearchBarDelegate ,UITextFieldDelegate, UITextViewDelegate{
     
-    @IBOutlet weak var noDataLbl: FGRegularLabel!
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     @IBOutlet weak var txtSearchFld: FGRegularTextField!
     @IBOutlet weak var tblListing: UITableView!
     
@@ -105,16 +105,18 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
                     
                     self.items.append(contentsOf: response.data ?? [])
                     self.items = self.items.removingDuplicates()
-                    self.lastRequestId = response.data?.first?.golfID ?? String()
+                    self.lastRequestId = response.data?.last?.golfID ?? String()
                     self.updateUI()
                 }
                 
             } else if response.code == Status.Code.notfound {
-                                                
+                
+                completion?(true)
+                
                 self.updateUI()
                 
             } else {
-                                                
+                
                 completion?(true)
             }
             
@@ -173,8 +175,10 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = items[indexPath.row]
-        NavigationManager.shared.setupDetails(detailsData: data)
+        if items.count > 0{
+            let data = items[indexPath.row]
+            NavigationManager.shared.setupDetails(detailsData: data)
+        }
     }
     
     
@@ -222,15 +226,26 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
             return
         }
     }
-//    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if textField == txtSearchFld {
-//            self.performGetNearByStudios { (flag : Bool) in
-//                
-//            }
-//        }
-//        return true
-//    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Text field delegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == txtSearchFld {
+            
+            items.removeAll()
+            
+            self.lastRequestId = ""
+            
+            LoadingManager.shared.showLoading()
+            
+            self.performGetNearByStudios { (flag : Bool) in
+                
+            }
+        }
+        return true
+    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == txtSearchFld {
@@ -245,6 +260,23 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
                 
             }
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == txtSearchFld {
+            
+            items.removeAll()
+            
+            self.lastRequestId = ""
+            
+            delay {
+                
+                self.performGetNearByStudios { (flag : Bool) in
+                    
+                }
+            }
+        }
+        return true
     }
     
     //------------------------------------------------------
@@ -264,6 +296,7 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
+        NavigationManager.shared.isEnabledBottomMenu = false
         super.viewWillAppear(animated)
         setup()
     }

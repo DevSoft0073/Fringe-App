@@ -132,10 +132,22 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
                 completion?(true)
                 self.updateUI()
 
+            } else if response.code == Status.Code.blocked{
+                
+                self.lblHeader.isHidden = true
+                self.items.removeAll()
+                self.updateUI()
+                self.noDataLbl.isHidden = false
+                self.noDataLbl.text = LocalizableConstants.Controller.Fringe.calendar.localized()
+                self.noDataLbl.textColor = FGColor.appGreen
+                completion?(true)
+                
             } else {
                 
                 self.lblHeader.isHidden = true
                 self.items.removeAll()
+                self.noDataLbl.isHidden = false
+                self.noDataLbl.textColor = FGColor.appBlack
                 self.updateUI()
                 completion?(true)
             }

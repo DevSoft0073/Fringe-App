@@ -300,7 +300,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             Request.Parameter.type: "2" ,
         ]
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: NotificationLocationModal.self, successBlock: { (response: NotificationLocationModal) in
             
             LoadingManager.shared.hideLoading()
             
@@ -349,7 +349,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             Request.Parameter.type: "1" ,
         ]
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: NotificationLocationModal.self, successBlock: { (response: NotificationLocationModal) in
             
             LoadingManager.shared.hideLoading()
             
@@ -588,6 +588,8 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                             if flag {
                                 PreferenceManager.shared.currentUser = nil
                                 PreferenceManager.shared.loggedUser = false
+                                PreferenceManager.shared.curretMode = "1"
+                                PreferenceManager.shared.authToken = nil
                                 NavigationManager.shared.setupSingIn()
                             }
                         }

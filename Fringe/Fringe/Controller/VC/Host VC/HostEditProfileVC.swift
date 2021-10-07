@@ -12,19 +12,21 @@ import Alamofire
 import SDWebImage
 import Foundation
 import CoreLocation
+import SKCountryPicker
 import IQKeyboardManagerSwift
 
 class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  ImagePickerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, LocationSearchDelegate {
     
+    
+    @IBOutlet weak var countryCode: FGSemiboldButton!
     @IBOutlet weak var uploadImageCollectionView: UICollectionView!
     @IBOutlet weak var txtMobileNumber: FGMobileNumberTextField!
     @IBOutlet weak var txtEmail: FGEmailTextField!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var txtFirstName: FGUsernameTextField!
-    @IBOutlet weak var txtLastName: FGUsernameTextField!
-    @IBOutlet weak var txtBirthDate: FGBirthDateTextField!
     @IBOutlet weak var txtAddress: FGAddressTextField!
     
+    var countryCodes = String()
     var checkPickerVal = Bool()
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var imagePickerVC: ImagePicker?
@@ -75,14 +77,19 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         returnKeyHandler?.delegate = self
         
         txtFirstName.delegate = self
-        txtLastName.delegate = self
-        txtBirthDate.delegate = self
         txtAddress.delegate = self
         txtEmail.delegate = self
         txtMobileNumber.delegate = self
         
         uploadImageCollectionView.delegate = self
         uploadImageCollectionView.dataSource = self
+        
+        self.countryCode.contentHorizontalAlignment = .center
+        guard let country = CountryManager.shared.currentCountry else {
+            return
+        }
+        countryCode.setTitle(country.countryCode, for: .highlighted)
+        countryCode.clipsToBounds = true
         
     }
     
@@ -106,16 +113,10 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         }
         
         //firstname
-        txtFirstName.text = currentUserHost?.firstName
-        
-        //address
-        txtLastName.text = currentUserHost?.lastName
-        
+        txtFirstName.text = currentUserHost?.golfCourseName
+
         //email
         txtEmail.text = currentUserHost?.email
-        
-        //studio credits
-        txtBirthDate.text = currentUserHost?.dob
         
         //genres
         txtAddress.text = currentUserHost?.location
@@ -155,18 +156,6 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
             }
             return false
         }
-        if ValidationManager.shared.isEmpty(text: txtLastName.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterLastName) {
-            }
-            return false
-        }
-        
-        
-        if ValidationManager.shared.isEmpty(text: txtBirthDate.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.selectBirthDate) {
-            }
-            return false
-        }
         
         if ValidationManager.shared.isEmpty(text: txtAddress.text) == true {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.selectAddress) {
@@ -175,11 +164,6 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         }
         if ValidationManager.shared.isEmpty(text: txtMobileNumber.text) == true {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidMobileNumber) {
-            }
-            return false
-        }
-        if ValidationManager.shared.isEmpty(text: txtEmail.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterEmail) {
             }
             return false
         }
@@ -200,10 +184,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         imgData["image"] = imageData
         let parameter: [String: Any] = [
             Request.Parameter.firstName: txtFirstName?.text ?? String(),
-            Request.Parameter.lastName: txtLastName?.text ?? String(),
             Request.Parameter.homeTown: txtAddress.text ?? String(),
-            Request.Parameter.dob: txtBirthDate.text ?? String(),
-            Request.Parameter.email: txtEmail.text ?? String(),
             Request.Parameter.mobileNumber: txtMobileNumber.text ?? String(),
             Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
         ]
@@ -222,7 +203,8 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
                     LoadingManager.shared.hideLoading()
                     
                     let status = data["code"] as? Int ?? 0
-                    _ = data["studio_detail"] as? [String: Any]
+//                    let data = data["data"] as? [String: Any]
+//                    PreferenceManager.shared.currentUserHost = data?.dict2json()
                     if status == Status.Code.success {
                         delay {
                             
@@ -273,6 +255,18 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
             self.performEditStudio()
         }
     }
+    
+    @IBAction func btnOpenCountry(_ sender: Any) {
+        let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
+            
+            guard let self = self else { return }
+            self.countryCode.setTitle(country.dialingCode, for: .normal)
+            self.countryCodes = country.dialingCode ?? String()
+        }
+        
+        countryController.detailColor = UIColor.red
+    }
+    
     
     //------------------------------------------------------
     

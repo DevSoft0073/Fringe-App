@@ -47,12 +47,25 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
     //MARK: Custome
     
     func bottomSheetView(){
-        let controller = HomeListingVC.instantiate()
-        var sizes = [SheetSize]()
-        sizes.append(.fixed(UIScreen.main.bounds.size.height * 0.5))
-        sizes.append(.marginFromTop(60))
-        let sheetController = SheetViewController(controller: controller, sizes: sizes)
-        self.present(sheetController, animated: true, completion: nil)
+        
+        if PreferenceManager.shared.comesFromHomeListing == true {
+            
+            let controller = HomeListingVC.instantiate()
+            var sizes = [SheetSize]()
+            sizes.append(.fixed(UIScreen.main.bounds.size.height * 0.9))
+            sizes.append(.marginFromTop(60))
+            let sheetController = SheetViewController(controller: controller, sizes: sizes)
+            self.present(sheetController, animated: true, completion: nil)
+            
+        } else {
+            
+            let controller = HomeListingVC.instantiate()
+            var sizes = [SheetSize]()
+            sizes.append(.fixed(UIScreen.main.bounds.size.height * 0.5))
+            sizes.append(.marginFromTop(60))
+            let sheetController = SheetViewController(controller: controller, sizes: sizes)
+            self.present(sheetController, animated: true, completion: nil)
+        }
     }
     
     //------------------------------------------------------
@@ -88,6 +101,7 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
     }
     
     @IBAction func btnPull(_ sender: UIButton) {
+        PreferenceManager.shared.comesFromHomeListing = false
         bottomSheetView()
     }
     
@@ -97,7 +111,6 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         manager.delegate = self
         manager.startMonitoring()
         setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))

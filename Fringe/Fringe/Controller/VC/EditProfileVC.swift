@@ -9,10 +9,13 @@ import Toucan
 import SDWebImage
 import Foundation
 import Alamofire
+import SKCountryPicker
 import IQKeyboardManagerSwift
 
 class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePickerDelegate {
     
+    
+    @IBOutlet weak var countryCode: UIButton!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var txtFirstName: FGUsernameTextField!
     @IBOutlet weak var txtLastName: FGUsernameTextField!
@@ -21,6 +24,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
     @IBOutlet weak var txtGender: FGGenderTextField!
     @IBOutlet weak var txtMobileNumber: FGMobileNumberTextField!
     
+    var countryCodes = String()
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var imagePickerVC: ImagePicker?
     var selectedImage: UIImage? {
@@ -63,6 +67,14 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
         txtEmail.delegate = self
         txtMobileNumber.delegate = self
         txtEmail.isUserInteractionEnabled = false
+        
+        self.countryCode.contentHorizontalAlignment = .center
+        guard let country = CountryManager.shared.currentCountry else {
+            return
+        }
+        countryCode.setTitle(country.countryCode, for: .highlighted)
+        countryCode.clipsToBounds = true
+        
     }
     
     func setupData() {
@@ -138,11 +150,6 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
             }
             return false
         }
-        if ValidationManager.shared.isEmpty(text: txtEmail.text) == true {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterEmail) {
-            }
-            return false
-        }
         
         return true
     }
@@ -164,8 +171,9 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
             Request.Parameter.dob: txtBirthDate?.text ?? String(),
             Request.Parameter.gender: txtGender?.text ?? String(),
             Request.Parameter.homeTown: txtEmail?.text ?? String(),
-            Request.Parameter.profession: txtMobileNumber?.text ?? String(),
+            Request.Parameter.mobileNumber: txtMobileNumber?.text ?? String(),
             Request.Parameter.timeZone: deviceTimeZone ?? String(),
+            Request.Parameter.countryCode: countryCodes,
             
         ]
         
@@ -178,7 +186,7 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
                     LoadingManager.shared.hideLoading()
                     
                     let status = data["code"] as? Int ?? 0
-                    let jsonStudio = data["studio_detail"] as? [String: Any]
+                    let jsonStudio = data["data"] as? [String: Any]
                     if status == Status.Code.success {
                         PreferenceManager.shared.currentUser = jsonStudio?.dict2json()
                         delay {
@@ -227,6 +235,17 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
         
         self.performEditProfile { (flag) in
         }
+    }
+    
+    @IBAction func btnCountryPicker(_ sender: Any) {
+        let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
+            
+            guard let self = self else { return }
+            self.countryCode.setTitle(country.dialingCode, for: .normal)
+            self.countryCodes = country.dialingCode ?? String()
+        }
+        
+        countryController.detailColor = UIColor.red
     }
     
     //------------------------------------------------------

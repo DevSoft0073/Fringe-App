@@ -102,8 +102,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func chekLoggedUser() {
         if PreferenceManager.shared.loggedUser == true {
-            NavigationManager.shared.setupLandingOnHome()
+            
+            PreferenceManager.shared.comesFromHomeListing = false
+            
+            if PreferenceManager.shared.curretMode == "1"{
+                
+                NavigationManager.shared.setupLandingOnHome()
+                
+            } else {
+                
+                NavigationManager.shared.setupLandingOnHomeForHost()
+            }
+            
         } else {
+            
             NavigationManager.shared.setupSingIn()
         }
     }
