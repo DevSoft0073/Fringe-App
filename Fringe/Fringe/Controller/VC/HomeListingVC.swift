@@ -13,8 +13,7 @@ import IQKeyboardManagerSwift
 
 class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullLoadViewDelegate{
     
-    @IBOutlet weak var noDataLbl: FGRegularLabel!
-    @IBOutlet weak var txtSearchFld: FGRegularTextField!
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     @IBOutlet weak var tblListing: UITableView!
     
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
@@ -48,7 +47,6 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
         let loadMoreView = KRPullLoadView()
         loadMoreView.delegate = self
         tblListing.addPullLoadableView(loadMoreView, type: .refresh)
-        
         
         let identifier = String(describing: HomeListingTBCell.self)
         let nibProfileCell = UINib(nibName: identifier, bundle: Bundle.main)
@@ -92,29 +90,21 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
                 delay {
                     
                     if self.lastRequestId.isEmpty {
-                        
                         self.items.removeAll()
                     }
+                    
                     self.items.append(contentsOf: response.data ?? [])
                     self.items = self.items.removingDuplicates()
                     self.lastRequestId = response.data?.last?.golfID ?? String()
                     self.updateUI()
+                    completion?(true)
                 }
             } else if response.code == Status.Code.notfound{
-                
+                        
                 self.updateUI()
+                completion?(true)
                 
             } else {
-                
-                delay {
-                    
-                    DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: LocalizableConstants.Error.anotherLogin) {
-                        PreferenceManager.shared.userId = nil
-                        PreferenceManager.shared.currentUser = nil
-                        PreferenceManager.shared.authToken = nil
-                        NavigationManager.shared.setupSingIn()
-                    }
-                }
                 
                 completion?(true)
             }
@@ -230,16 +220,14 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateUI()
-        
+        setup()
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setup()
-        
+                        
         noDataLbl.text = "Loading..."
         
         self.performGetNearByGolfClubs { (flag : Bool) in

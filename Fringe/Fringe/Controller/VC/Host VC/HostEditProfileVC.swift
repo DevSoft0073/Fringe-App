@@ -83,7 +83,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         
         uploadImageCollectionView.delegate = self
         uploadImageCollectionView.dataSource = self
-        
+        txtEmail.isUserInteractionEnabled = false
         self.countryCode.contentHorizontalAlignment = .center
         guard let country = CountryManager.shared.currentCountry else {
             return
@@ -91,6 +91,11 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         countryCode.setTitle(country.countryCode, for: .highlighted)
         countryCode.clipsToBounds = true
         
+        if currentUserHost?.countryCode == "" {
+            countryCode.setTitle("+1", for: .normal)
+        } else {
+            countryCode.setTitle(currentUserHost?.countryCode, for: .normal)
+        }
     }
     
     func setupData() {
@@ -183,7 +188,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         var imgData = [String : Data]()
         imgData["image"] = imageData
         let parameter: [String: Any] = [
-            Request.Parameter.firstName: txtFirstName?.text ?? String(),
+            Request.Parameter.golfName: txtFirstName?.text ?? String(),
             Request.Parameter.homeTown: txtAddress.text ?? String(),
             Request.Parameter.mobileNumber: txtMobileNumber.text ?? String(),
             Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),

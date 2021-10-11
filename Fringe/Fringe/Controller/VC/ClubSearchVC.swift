@@ -238,6 +238,8 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
             
             self.lastRequestId = ""
             
+            self.view.endEditing(true)
+            
             LoadingManager.shared.showLoading()
             
             self.performGetNearByStudios { (flag : Bool) in
@@ -253,6 +255,8 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
             items.removeAll()
             
             self.lastRequestId = ""
+            
+            self.view.endEditing(true)
             
             LoadingManager.shared.showLoading()
             

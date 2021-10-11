@@ -110,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 NavigationManager.shared.setupLandingOnHome()
                 
             } else {
-                
+                                
                 NavigationManager.shared.setupLandingOnHomeForHost()
             }
             

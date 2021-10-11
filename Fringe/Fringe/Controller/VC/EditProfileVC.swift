@@ -117,6 +117,12 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
         //phone
         txtMobileNumber.text = currentUser?.mobileNo
         
+        //country code
+        if currentUser?.countryCode == "" {
+            countryCode.setTitle("+1", for: .normal)
+        } else {
+            countryCode.setTitle(currentUser?.countryCode, for: .normal)
+        }
     }
 
     

@@ -26,7 +26,7 @@ class CheckAvailabilityTBCell: UITableViewCell {
         lblGuestDetails.text = bookingData.checkModalDescription
         lblRating.text = bookingData.rating
         lblAddress.text = bookingData.location
-        lblRate.text = bookingData.price
+        lblRate.text = "$\(bookingData.price ?? String())"
         ratingView.rating = Double(bookingData.rating ?? String()) ?? Double()
     }
     

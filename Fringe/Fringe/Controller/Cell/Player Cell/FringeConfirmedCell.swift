@@ -27,7 +27,7 @@ class FringeConfirmedCell: UITableViewCell {
     func setup(bookingData : RequestListingModal) {
         
         nameLbl.text = bookingData.golfCourseName
-        golfClubNameLbl.text = bookingData.golfCourseName
+        golfClubNameLbl.text = bookingData.requestListingModalDescription
         dateLbl.text = bookingData.date
         dateLbl.text = bookingData.date
     }

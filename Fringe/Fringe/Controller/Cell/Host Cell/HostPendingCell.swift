@@ -28,7 +28,7 @@ class HostPendingCell: UITableViewCell {
     func setup(bookingData : PlayerRequestModal) {
         
         nameLbl.text = bookingData.golfCourseName
-        golfClubNameLbl.text = bookingData.golfCourseName
+        golfClubNameLbl.text = bookingData.playerRequestModalDescription
         dateLbl.text = bookingData.date
     }
     

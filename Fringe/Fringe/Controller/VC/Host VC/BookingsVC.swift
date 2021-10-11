@@ -11,7 +11,7 @@ import Foundation
 
 class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentViewDelegate {
     
-    @IBOutlet weak var noDataLbl: FGRegularLabel!
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     @IBOutlet weak var segment3: SegmentView!
     @IBOutlet weak var segment2: SegmentView!
     @IBOutlet weak var segment1: SegmentView!
@@ -351,7 +351,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             cell.cancelView.isHidden = false
             cell.btnClose.isHidden = false
             cell.btnMoreInfo.isHidden = true
-            tblBooking.reloadData()
+//            tblBooking.reloadData()
             btnTapped = false
         }
     }
@@ -362,7 +362,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             cell.cancelView.isHidden = true
             cell.btnClose.isHidden = true
             cell.btnMoreInfo.isHidden = false
-            tblBooking.reloadData()
+//            tblBooking.reloadData()
         }
     }
     

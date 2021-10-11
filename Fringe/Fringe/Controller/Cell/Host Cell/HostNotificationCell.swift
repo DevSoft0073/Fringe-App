@@ -37,10 +37,10 @@ class HostNotificationCell: UITableViewCell {
         self.imgGolfer.sd_removeActivityIndicator()
     }
     if notificationData.image == ""{
-        self.imgGolfer.image = UIImage(named: "placeholder-image")
+        self.imgGolfer.image = UIImage(named: FGImageName.iconPlaceHolder)
     }
     lblName.text = notificationData.message
-    lblData.text = notificationData.createdAt
+    lblData.text = notificationData.creationAt
 }
     override func layoutSubviews() {
         super.layoutSubviews()

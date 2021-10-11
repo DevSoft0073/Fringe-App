@@ -553,8 +553,12 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
                     LoadingManager.shared.hideLoading()
                     self.performSignOut { (flag: Bool) in
                         if flag {
+                            PreferenceManager.shared.userId = nil
+                            PreferenceManager.shared.curretMode = "1"
+                            PreferenceManager.shared.authToken = nil
                             PreferenceManager.shared.currentUser = nil
                             PreferenceManager.shared.loggedUser = false
+                            PreferenceManager.shared.currentUserHost = nil
                             NavigationManager.shared.setupSingIn()
                         }
                     }

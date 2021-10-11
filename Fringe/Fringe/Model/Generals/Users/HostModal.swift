@@ -13,7 +13,7 @@ struct HostModal: Codable {
     var image: String?
     var userName, accountID, customerID, firstName: String?
     var lastName, timeZone, isgolfRegistered, dob: String?
-    var gender, mobileNo, hometown, profession: String?
+    var gender, mobileNo, hometown, profession, countryCode: String?
     var memberCourse, golfHandicap, password, confirmPassword: String?
     var email, emailVerification, verificationCode, disable: String?
     var allowPush, allowLocation, fbToken, googleToken: String?
@@ -38,6 +38,7 @@ struct HostModal: Codable {
         case isgolfRegistered = "isgolf_registered"
         case dob, gender
         case mobileNo = "mobile_no"
+        case countryCode = "Country_code"
         case hometown, profession
         case memberCourse = "member_course"
         case golfHandicap = "golf_handicap"

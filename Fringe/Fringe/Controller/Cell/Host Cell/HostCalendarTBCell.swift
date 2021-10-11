@@ -22,7 +22,7 @@ class HostCalendarTBCell: UITableViewCell {
         
         lblGolfClubName.text = bookingData.golfCourseName
         lblAddress.text = bookingData.location
-//        lblRating.text = bookingData.ra
+//        lblRating.text = bookingData.rating
         lblDate.text = bookingData.date
     }
     

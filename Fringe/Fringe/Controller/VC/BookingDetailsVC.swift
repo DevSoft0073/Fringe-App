@@ -12,6 +12,7 @@ import Foundation
 
 class BookingDetailsVC : BaseVC {
     
+    @IBOutlet weak var lblDescription: FGRegularLabel!
     @IBOutlet weak var imgMain: UIImageView!
     @IBOutlet weak var lblName: FGSemiboldLabel!
     @IBOutlet weak var lblAddress: FGMediumLabel!
@@ -34,7 +35,7 @@ class BookingDetailsVC : BaseVC {
     func setup() {
         lblName.text = bookingDetails?.golfCourseName
         lblAddress.text = bookingDetails?.location
-        lblRating.text = "5"
+        lblRating.text = bookingDetails?.rating
         lblRate.text = "$\(bookingDetails?.price ?? String())"
         ratingView.rating = Double(bookingDetails?.rating ?? String()) ?? Double()
         let dateValue = bookingDetails?.dates ?? String()
@@ -63,6 +64,22 @@ class BookingDetailsVC : BaseVC {
             imgMain.image = UIImage(named: FGImageName.imgPlaceHolder)
         }
         
+        //description
+        
+        lblDescription.text = bookingDetails?.bookingModalDescription
+        
+        //status value
+        
+        if bookingDetails?.sessionComplete == "0" {
+            
+            lblStatus.text = "Pending"
+            
+        } else {
+            
+            lblStatus.text = "Complete"
+            
+        }
+        
     }
     
     //------------------------------------------------------
@@ -80,10 +97,23 @@ class BookingDetailsVC : BaseVC {
     }
     
     @IBAction func btnSubmit(_ sender: Any) {
-        let controller = NavigationManager.shared.bookingDetailsRatingVC
-        controller.golfID = bookingDetails?.golfID ?? String()
-        controller.bookingDetails = self.bookingDetails
-        push(controller: controller)
+        
+        if bookingDetails?.sessionComplete == "0" {
+            
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: "You can rate golf club when booking has been complete.") {
+                
+            }
+            
+        } else {
+            
+            let controller = NavigationManager.shared.bookingDetailsRatingVC
+            controller.golfID = bookingDetails?.golfID ?? String()
+            controller.bookingDetails = self.bookingDetails
+            push(controller: controller)
+            
+        }
+        
+       
     }
     
     //------------------------------------------------------
