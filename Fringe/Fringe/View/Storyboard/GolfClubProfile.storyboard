@@ -1385,10 +1385,6 @@
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Yj-th-vyY" customClass="FGSemiboldButton" customModule="Fringe" customModuleProvider="target">
                                                                                 <rect key="frame" x="10" y="6" width="73.5" height="48"/>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain" title="+1">
-                                                                                    <fontDescription key="titleFontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
-                                                                                    <color key="baseForegroundColor" name="appDarkBlack"/>
-                                                                                </buttonConfiguration>
                                                                                 <connections>
                                                                                     <action selector="btnOpenCountry:" destination="gn3-uI-wMl" eventType="touchUpInside" id="deb-Nd-XuY"/>
                                                                                 </connections>
@@ -3181,25 +3177,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGt-hZ-fRC">
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGt-hZ-fRC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G77-C6-Ysl">
-                                <rect key="frame" x="37.5" y="217" width="300" height="233"/>
+                                <rect key="frame" x="37.5" y="208" width="300" height="251"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmO-x8-wEN" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="45.5" width="280" height="102"/>
-                                        <string key="text">Please add your account details to show your golf course on listing for users. You can add account infornation from profile -&gt; Add payment method                </string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please add your account details to show your golf course on listing of users." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmO-x8-wEN" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="30" width="280" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4x-2i-h6f">
-                                        <rect key="frame" x="90" y="167.5" width="120" height="46.5"/>
+                                        <rect key="frame" x="22.5" y="121" width="255" height="45"/>
                                         <color key="backgroundColor" name="appButton"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="HDs-d1-2UC"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
-                                        <state key="normal" title="Okay">
+                                        <state key="normal" title="Go to add payment screen">
                                             <color key="titleColor" name="appWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -3211,17 +3209,38 @@
                                             <action selector="btnOky:" destination="Su4-bb-yH1" eventType="touchUpInside" id="OoJ-kx-gF8"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4U-Ja-TFw">
+                                        <rect key="frame" x="22.5" y="176" width="255" height="45"/>
+                                        <color key="backgroundColor" name="appWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="H5m-1U-zKb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" name="appGreen"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnCancel:" destination="Su4-bb-yH1" eventType="touchUpInside" id="94i-jy-Hn5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="v4U-Ja-TFw" firstAttribute="centerX" secondItem="f4x-2i-h6f" secondAttribute="centerX" id="1vS-vj-WLW"/>
                                     <constraint firstItem="dmO-x8-wEN" firstAttribute="centerX" secondItem="G77-C6-Ysl" secondAttribute="centerX" id="4lO-8o-siV"/>
-                                    <constraint firstItem="f4x-2i-h6f" firstAttribute="top" secondItem="dmO-x8-wEN" secondAttribute="bottom" constant="20" id="CNo-1e-Sr9"/>
+                                    <constraint firstItem="f4x-2i-h6f" firstAttribute="top" secondItem="dmO-x8-wEN" secondAttribute="bottom" constant="30" id="CNo-1e-Sr9"/>
                                     <constraint firstAttribute="trailing" secondItem="dmO-x8-wEN" secondAttribute="trailing" constant="10" id="H5W-5B-N31"/>
-                                    <constraint firstAttribute="bottom" secondItem="f4x-2i-h6f" secondAttribute="bottom" constant="19" id="Kmd-tC-2aT"/>
+                                    <constraint firstItem="v4U-Ja-TFw" firstAttribute="top" secondItem="f4x-2i-h6f" secondAttribute="bottom" constant="10" id="KpJ-ot-U0Y"/>
+                                    <constraint firstItem="v4U-Ja-TFw" firstAttribute="width" secondItem="f4x-2i-h6f" secondAttribute="width" id="QGs-BS-RXj"/>
                                     <constraint firstItem="dmO-x8-wEN" firstAttribute="leading" secondItem="G77-C6-Ysl" secondAttribute="leading" constant="10" id="QgM-xu-eAH"/>
-                                    <constraint firstItem="f4x-2i-h6f" firstAttribute="height" secondItem="G77-C6-Ysl" secondAttribute="height" multiplier="0.2" id="baF-Uv-iOD"/>
-                                    <constraint firstItem="dmO-x8-wEN" firstAttribute="centerY" secondItem="G77-C6-Ysl" secondAttribute="centerY" constant="-20" id="cRB-HE-IZs"/>
-                                    <constraint firstItem="f4x-2i-h6f" firstAttribute="width" secondItem="G77-C6-Ysl" secondAttribute="width" multiplier="0.4" id="ntq-jH-OfL"/>
+                                    <constraint firstAttribute="bottom" secondItem="v4U-Ja-TFw" secondAttribute="bottom" constant="30" id="SR1-HI-4NW"/>
+                                    <constraint firstItem="dmO-x8-wEN" firstAttribute="top" secondItem="G77-C6-Ysl" secondAttribute="top" constant="30" id="jG8-sm-m8p"/>
+                                    <constraint firstItem="f4x-2i-h6f" firstAttribute="width" secondItem="G77-C6-Ysl" secondAttribute="width" multiplier="0.85" id="ntq-jH-OfL"/>
                                     <constraint firstItem="f4x-2i-h6f" firstAttribute="centerX" secondItem="G77-C6-Ysl" secondAttribute="centerX" id="uqr-Uf-vLv"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -3240,7 +3259,6 @@
                             <constraint firstItem="G77-C6-Ysl" firstAttribute="centerY" secondItem="6zM-eU-hFt" secondAttribute="centerY" id="ZEp-xA-tHt"/>
                             <constraint firstItem="mGt-hZ-fRC" firstAttribute="leading" secondItem="pYm-tG-bKJ" secondAttribute="leading" id="ciX-If-Qdw"/>
                             <constraint firstItem="G77-C6-Ysl" firstAttribute="centerX" secondItem="6zM-eU-hFt" secondAttribute="centerX" id="jA2-CQ-ink"/>
-                            <constraint firstItem="G77-C6-Ysl" firstAttribute="height" secondItem="6zM-eU-hFt" secondAttribute="height" multiplier="0.35" id="sHe-gq-NuZ"/>
                             <constraint firstItem="pYm-tG-bKJ" firstAttribute="trailing" secondItem="mGt-hZ-fRC" secondAttribute="trailing" id="vNX-S7-zWJ"/>
                         </constraints>
                     </view>

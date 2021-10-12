@@ -26,6 +26,10 @@ struct PlayerMessgaeModal: Codable , Hashable {
         return group
     }
     
+    var unixDate: Int {
+        return Int(lastmsgTime ?? creationAt ?? String()) ?? .zero
+    }
+    
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
         case isRequest = "is_request"

@@ -8,13 +8,14 @@
 import Foundation
 
 // MARK: - PlayerRequestModal
-struct PlayerRequestModal: Codable , Hashable{
+struct PlayerRequestModal: Codable, Hashable {
     var id, userID, golfID, bookingID: String?
     var dates, rejectReason, bookedStatus, totalGuest: String?
     var cancelStatus, paymentStatus, golfPaymentStatus, refundRequest: String?
     var sessionComplete, paymentPending, amountToBePaid, refundPayment: String?
-    var refundStatus, refundReason, creationAt, golfCourseName: String?
-    var playerRequestModalDescription, date, status: String?
+    var refundStatus, refundReason, creationAt, userName: String?
+    var golfCourseName, playerRequestModalDescription, location, date: String?
+    var status: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -36,9 +37,10 @@ struct PlayerRequestModal: Codable , Hashable{
         case refundStatus = "refund_status"
         case refundReason = "refund_reason"
         case creationAt = "creation_at"
+        case userName = "user_name"
         case golfCourseName = "golf_course_name"
         case playerRequestModalDescription = "description"
-        case date, status
+        case location, date, status
     }
 }
 
@@ -68,3 +70,4 @@ extension PlayerRequestModal {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
+

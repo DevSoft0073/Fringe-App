@@ -286,6 +286,49 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         })
     }
 
+    func performGetBadgeCount(completion:((_ flag: Bool) -> Void)?) {
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+            Request.Parameter.role: PreferenceManager.shared.curretMode ?? String(),
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.badgeCount, parameter: parameter, headers: [:], showLoader: false, decodingType: ResponseModal<BadgeModal>.self, successBlock: { (response: ResponseModal<BadgeModal>) in
+                        
+            self.isRequesting = false
+            
+            if response.code == Status.Code.success {
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    
+                    PreferenceManager.shared.badgeModal = stringUser
+                    
+                }
+                
+            } else {
+                
+                completion?(true)
+            }
+            
+            LoadingManager.shared.hideLoading()
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            self.isRequesting = false
+            
+//            delay {
+//
+//                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+//                    PreferenceManager.shared.userId = nil
+//                    PreferenceManager.shared.currentUser = nil
+//                    PreferenceManager.shared.authToken = nil
+//                    NavigationManager.shared.setupSingIn()
+//                }
+//            }
+        })
+    }
+
     
     //------------------------------------------------------
     
@@ -476,20 +519,21 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if currentUserHost?.stripeAccountStatus == "0" {
-//            let controller = NavigationManager.shared.popUpViewForAddAccountVC
-//            controller.modalPresentationStyle = .overFullScreen
-//            controller.modalTransitionStyle = .flipHorizontal
-//            self.present(controller, animated: true) {
-//            }
-//        }
     }
     
     //------------------------------------------------------
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if currentUserHost?.stripeAccountStatus == "0" {
+            let controller = NavigationManager.shared.popUpViewForAddAccountVC
+            controller.modalPresentationStyle = .overFullScreen
+            controller.modalTransitionStyle = .flipHorizontal
+            self.present(controller, animated: true) {
+                
+            }
+        }
         
         self.lastRequestId = ""
         
@@ -500,6 +544,10 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
 //        LoadingManager.shared.showLoading()
         
         self.performGetRequestData { (flag : Bool) in
+            
+        }
+        
+        self.performGetBadgeCount { (flag : Bool) in
             
         }
         

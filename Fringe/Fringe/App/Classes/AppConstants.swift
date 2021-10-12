@@ -12,8 +12,8 @@ let kAppName : String = Bundle.main.object(forInfoDictionaryKey: "CFBundleDispla
 let kAppBundleIdentifier : String = Bundle.main.bundleIdentifier ?? String()
 
 enum DeviceType: String {
-    case iOS = "iOS"
-    case android = "android"
+    case iOS = "1"
+    case android = "2"
 }
 
 let emptyJsonString = "{}"
@@ -111,6 +111,9 @@ struct FGImageName {
     static let iconRight = "right_icon"
     static let iconLeft = "left_icon"
     static let send = "send"
+    
+    static let notif2 = "notifiy2"
+    static let notif = "notifiy"
     
     // Profile
     

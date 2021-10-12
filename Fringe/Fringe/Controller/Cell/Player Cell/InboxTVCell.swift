@@ -28,7 +28,7 @@ class InboxTVCell: UITableViewCell {
         mainSecondImg.circle()
     }
     
-    func setup(messageGroup: MessageGroupModal) {
+    func setup(messageGroup: PlayerMessgaeModal) {
         
         //own image
         mainFirstImg.sd_addActivityIndicator()

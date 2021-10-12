@@ -38,6 +38,9 @@ class PreferenceManager: NSObject {
     private let golfID = "golfID"
     private let comesFromPay = "comesFromPay"
     private let comesFromListing = "comesFromListing"
+    private let comesFromPopView = "comesFromPopUpView"
+    private let isHostUser = "isHostUser"
+    private let badgeData = "badgeData"
 
     var deviceToken: String? {
         set {
@@ -112,6 +115,31 @@ class PreferenceManager: NSObject {
         get {
             return userDefault.string(forKey: keyUserDataForHost)
         }
+    }
+    
+    var badgeModal: String? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: badgeData)
+            } else {
+                userDefault.removeObject(forKey: badgeData)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.string(forKey: badgeData)
+        }
+    }
+    
+    var badgeModalData: BadgeModal? {
+        if let badgeModal = badgeModal {
+            do {
+                return try BadgeModal(badgeModal)
+            } catch let error {
+                debugPrint(error.localizedDescription)
+            }
+        }
+        return nil
     }
     
     var currentUserModalForHost: HostModal? {
@@ -223,6 +251,30 @@ class PreferenceManager: NSObject {
         }
         get {
             return userDefault.bool(forKey: comesFromListing)
+        }
+    }
+    
+    var comesFromPopUpView: Bool {
+        set {
+            userDefault.set(newValue, forKey: comesFromPopView)
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.bool(forKey: comesFromPopView)
+        }
+    }
+    
+    var isHost: String? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: isHostUser)
+            } else {
+                userDefault.removeObject(forKey: isHostUser)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.string(forKey: isHostUser)
         }
     }
     

@@ -153,6 +153,22 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         v4.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Inbox", image: UIImage(named: FGImageName.iconInboxUnselected), selectedImage: UIImage(named: FGImageName.iconInboxSelected))
         v5.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Profile", image: UIImage(named: FGImageName.iconProfileUnselected), selectedImage: UIImage(named: FGImageName.iconProfileSelected))
         
+        if PreferenceManager.shared.curretMode == "1"{
+            
+            if PreferenceManager.shared.badgeModalData?.getRequestCount == "0"{
+                
+            } else{
+                v2.tabBarItem.badgeValue = PreferenceManager.shared.badgeModalData?.getRequestCount
+            }
+            
+            if PreferenceManager.shared.badgeModalData?.getChatListingCount == "0"{
+                
+            } else{
+                v4.tabBarItem.badgeValue = PreferenceManager.shared.badgeModalData?.getNotificationCount
+            }
+        }
+
+        
         tabBarController.viewControllers = [v1, v2, v3, v4, v5]
         
         return tabBarController
@@ -198,6 +214,29 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         v3.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Inbox", image: UIImage(named: FGImageName.iconInboxUnselected), selectedImage: UIImage(named: FGImageName.iconInboxSelected))
         v4.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Notification", image: UIImage(named: FGImageName.iconNotificationUnselected), selectedImage: UIImage(named: FGImageName.iconNotificationSelected))
         v5.tabBarItem = ESTabBarItem.init(IrregularityBasicContentView(), title: "Profile", image: UIImage(named: FGImageName.iconProfileUnselected), selectedImage: UIImage(named: FGImageName.iconProfileSelected))
+        
+        
+        if PreferenceManager.shared.curretMode == "2"{
+            
+            if PreferenceManager.shared.badgeModalData?.getRequestCount == "0"{
+                
+            } else{
+                v1.tabBarItem.badgeValue = PreferenceManager.shared.badgeModalData?.getRequestCount
+            }
+            
+            
+            if PreferenceManager.shared.badgeModalData?.getChatListingCount == "0"{
+                
+            } else{
+                v3.tabBarItem.badgeValue = PreferenceManager.shared.badgeModalData?.getChatListingCount
+            }
+            
+            if PreferenceManager.shared.badgeModalData?.getNotificationCount == "0"{
+                
+            } else{
+                v4.tabBarItem.badgeValue = PreferenceManager.shared.badgeModalData?.getNotificationCount
+            }
+        }
         
         tabBarControllerForHost.viewControllers = [v1, v2, v3, v4, v5]
         
@@ -273,6 +312,14 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     func setupGuest() {
         AppDelegate.shared.window?.rootViewController = self.homeNC
         AppDelegate.shared.window?.makeKeyAndVisible()
+    }
+    
+    func sendToAccuntDestils() {
+        let controller = NavigationManager.shared.hostAddPaymentMethodVC
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let nav = UINavigationController(rootViewController: controller)
+        nav.navigationBar.isHidden = true
+        appdelegate.window?.rootViewController = nav
     }
     
     //------------------------------------------------------
@@ -387,7 +434,7 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     }
     
     public var popUpViewForAddAccountVC : PopUpViewForAddAccountVC {
-        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PopUpViewForAddAccountVC.self)) as! PopUpViewForAddAccountVC
+        return golfStoryboard.instantiateViewController(withIdentifier: String(describing: PopUpViewForAddAccountVC.self)) as! PopUpViewForAddAccountVC
     }
     
     public var locationSearchVC: LocationSearchVC {

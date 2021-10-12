@@ -11,10 +11,12 @@ import Alamofire
 import Foundation
 import CoreLocation
 import FittedSheets
+import IQKeyboardManagerSwift
 
 class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
     
     
+    @IBOutlet weak var imgNotif: UIImageView!
     @IBOutlet weak var locationsMap: MKMapView!
     @IBOutlet weak var lblPrice: FGMediumLabel!
     @IBOutlet weak var lblRating: FGRegularLabel!
@@ -24,6 +26,10 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
     @IBOutlet weak var lblName: FGSemiboldLabel!
     @IBOutlet weak var imgMain: UIImageView!
     
+    var returnKeyHandler: IQKeyboardReturnKeyHandler?
+    var items: [HomeModal] = []
+    var isRequesting: Bool = false
+    var lastRequestId: String = String()
     var locationManager: CLLocationManager!
     var manager = FGLocationManager()
     var annotation = MKPointAnnotation()
@@ -68,23 +74,150 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
         }
     }
     
+    func performGetNearByGolfClubs(completion:((_ flag: Bool) -> Void)?) {
+        
+        isRequesting = true
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.lastID: lastRequestId,
+            Request.Parameter.lats : PreferenceManager.shared.lat ?? String(),
+            Request.Parameter.longs: PreferenceManager.shared.long ?? String(),
+            Request.Parameter.search: "",
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.home, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[HomeModal]>.self, successBlock: { (response: ResponseModal<[HomeModal]>) in
+                        
+            self.isRequesting = false
+            
+            if response.code == Status.Code.success {
+                
+                delay {
+                    
+                    if self.lastRequestId.isEmpty {
+                        self.items.removeAll()
+                    }
+                    
+                    self.items.append(contentsOf: response.data ?? [])
+                    self.items = self.items.removingDuplicates()
+                    self.lastRequestId = response.data?.last?.golfID ?? String()
+                    
+                    for obj in response.data ?? [] {
+                        self.setMarkers(lat: Double(obj.latitude ?? String()) ?? 0.0, Long: Double(obj.latitude ?? String()) ?? 0.0, clubName:obj.golfCourseName ?? String())
+                    }
+                    
+                    completion?(true)
+                }
+            } else if response.code == Status.Code.notfound{
+                        
+                completion?(true)
+                
+            } else {
+                
+                completion?(true)
+            }
+            
+            LoadingManager.shared.hideLoading()
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            self.isRequesting = false
+            
+            delay {
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
+            }
+        })
+    }
+    
+    func performGetBadgeCount(completion:((_ flag: Bool) -> Void)?) {
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+            Request.Parameter.role: PreferenceManager.shared.curretMode ?? String(),
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.badgeCount, parameter: parameter, headers: [:], showLoader: false, decodingType: ResponseModal<BadgeModal>.self, successBlock: { (response: ResponseModal<BadgeModal>) in
+                        
+            self.isRequesting = false
+            
+            if response.code == Status.Code.success {
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    
+                    PreferenceManager.shared.badgeModal = stringUser
+                    
+                    if response.data?.getNotificationCount == "0" {
+                        
+                        self.imgNotif.image = UIImage(named: FGImageName.notif)
+                        
+                    } else {
+                        
+                        self.imgNotif.image = UIImage(named: FGImageName.notif)
+                        
+                    }
+                    
+                }
+                
+            } else {
+                
+                completion?(true)
+            }
+            
+            LoadingManager.shared.hideLoading()
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            self.isRequesting = false
+            
+//            delay {
+//
+//                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+//                    PreferenceManager.shared.userId = nil
+//                    PreferenceManager.shared.currentUser = nil
+//                    PreferenceManager.shared.authToken = nil
+//                    NavigationManager.shared.setupSingIn()
+//                }
+//            }
+        })
+    }
+    
     //------------------------------------------------------
     
     //MARK: Set marker on mapview
     
-    func setMarkers(lat :Double, Long : Double) {
+    func setMarkers(lat :Double, Long : Double , clubName : String) {
+        
+//        locationsMap.addAnnotation(annotation)
+//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+//        self.locationsMap.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.title = clubName
         let center = CLLocationCoordinate2D(latitude: lat, longitude: Long)
         annotation.coordinate = center
-        locationsMap.addAnnotation(annotation)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.12, longitudeDelta: 0.12))
+//        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: Long)
+        self.locationsMap.addAnnotation(annotation)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.8, longitudeDelta: 0.8))
         self.locationsMap.setRegion(region, animated: true)
         
     }
     
-    private func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last! as CLLocation
-        setMarkers(lat: Double(location.coordinate.latitude), Long: Double(location.coordinate.longitude))
-    }
+//    private func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        let location = locations.last! as CLLocation
+//        setMarkers(lat: Double(location.coordinate.latitude), Long: Double(location.coordinate.longitude))
+//    }
     
     //------------------------------------------------------
     
@@ -113,8 +246,10 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
         super.viewDidLoad()
         manager.delegate = self
         manager.startMonitoring()
-        setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
+//        setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
         imgMain.roundCornersLeft( [.topLeft, .bottomLeft],radius: 16)
+        
+        PreferenceManager.shared.isHost = "0"
         
         if (CLLocationManager.locationServicesEnabled())
         {
@@ -133,9 +268,18 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
         super.viewWillAppear(animated)
         bottomSheetView()
         PreferenceManager.shared.comesFromConfirmToPay = "0"
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            self.setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
+        
+        self.performGetNearByGolfClubs { (flag : Bool) in
+            
         }
+        
+        self.performGetBadgeCount { (flag : Bool) in
+            
+        }
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+//            self.setMarkers(lat: Double(PreferenceManager.shared.lat ?? 0.0), Long: Double(PreferenceManager.shared.long ?? 0.0))
+//        }
         
         NavigationManager.shared.isEnabledBottomMenu = true
     }

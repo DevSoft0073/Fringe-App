@@ -29,11 +29,13 @@ class ConfirmedPayVC : BaseVC {
     var isUpdate:(()->Void)?
     var detailsData: RequestListingModal?
     var isSelected : Bool = true
-    var addGuestVal: Int = 1 {
+    var addGuestVal: Int = 0 {
         didSet {
             lblGuest.text = "\(addGuestVal)"
         }
     }
+    
+    var guestCount = "0"
     
     //------------------------------------------------------
     
@@ -123,9 +125,9 @@ class ConfirmedPayVC : BaseVC {
     }
     
     @IBAction func btnPlus(_ sender: Any) {
-        if lblGuest.text ?? "" >= "4"{
+        if addGuestVal > 4{
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterAddGuestLimit)
-        }else if lblGuest.text ?? "" >= "1" {
+        }else if addGuestVal < 4 {
             addGuestVal  = addGuestVal+1
         }
         lblGuest.text = "\(addGuestVal)"
@@ -133,10 +135,10 @@ class ConfirmedPayVC : BaseVC {
     }
     
     @IBAction func btnMinus(_ sender: Any) {
-        if lblGuest.text == "1" {
+        if addGuestVal < 0 {
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterRemoveGuestLimit)
             
-        }else if lblGuest.text ?? "" >= "1" {
+        }else if addGuestVal > 4 {
             addGuestVal  = addGuestVal-1
         }
         lblGuest.text = "\(addGuestVal)"

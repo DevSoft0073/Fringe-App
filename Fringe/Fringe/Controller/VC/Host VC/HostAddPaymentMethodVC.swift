@@ -58,8 +58,16 @@ class HostAddPaymentMethodVC : BaseVC {
     //MARK: Actions
     
     @IBAction func btnBack(_ sender: Any) {
-        self.pop()
         
+        if PreferenceManager.shared.comesFromPopUpView == true {
+            
+            NavigationManager.shared.setupLandingOnHomeForHost()
+            
+        }else {
+            
+            self.pop()
+            
+        }
     }
     
     @IBAction func btnEdit(_ sender: Any) {
@@ -74,9 +82,9 @@ class HostAddPaymentMethodVC : BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        if currentUserHost?.stripeAccountStatus == "0" {
-            btnEdit.isHidden = false
-            imgEdit.isHidden = false
+        if currentUserHost?.stripeAccountStatus == "1" {
+            btnEdit.isHidden = true
+            imgEdit.isHidden = true
         }
     }
     

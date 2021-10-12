@@ -39,6 +39,7 @@
 		1F7D6C73270B0A0E00B5FFB4 /* RightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D6C71270B0A0E00B5FFB4 /* RightCell.swift */; };
 		1F7D6C74270B0A0E00B5FFB4 /* RightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D6C72270B0A0E00B5FFB4 /* RightCell.xib */; };
 		1F7D6C76270B108800B5FFB4 /* MessageListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D6C75270B108800B5FFB4 /* MessageListingVC.swift */; };
+		1F86C0F927159ABA00B9B844 /* BadgeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86C0F827159ABA00B9B844 /* BadgeModal.swift */; };
 		1F8961A526F0700700E08E3C /* BookingRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961A426F0700700E08E3C /* BookingRequestModal.swift */; };
 		1F8961A726F0753D00E08E3C /* BookingModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961A626F0753D00E08E3C /* BookingModal.swift */; };
 		1F8961AA26F0840000E08E3C /* NotificationListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8961A926F0840000E08E3C /* NotificationListing.swift */; };
@@ -248,6 +249,7 @@
 		1F7D6C71270B0A0E00B5FFB4 /* RightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightCell.swift; sourceTree = "<group>"; };
 		1F7D6C72270B0A0E00B5FFB4 /* RightCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightCell.xib; sourceTree = "<group>"; };
 		1F7D6C75270B108800B5FFB4 /* MessageListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListingVC.swift; sourceTree = "<group>"; };
+		1F86C0F827159ABA00B9B844 /* BadgeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeModal.swift; sourceTree = "<group>"; };
 		1F8961A426F0700700E08E3C /* BookingRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestModal.swift; sourceTree = "<group>"; };
 		1F8961A626F0753D00E08E3C /* BookingModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingModal.swift; sourceTree = "<group>"; };
 		1F8961A926F0840000E08E3C /* NotificationListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListing.swift; sourceTree = "<group>"; };
@@ -512,6 +514,14 @@
 				1F7D6C72270B0A0E00B5FFB4 /* RightCell.xib */,
 			);
 			path = "Chat XIB's";
+			sourceTree = "<group>";
+		};
+		1F86C0F727159A9200B9B844 /* Bagde Modal */ = {
+			isa = PBXGroup;
+			children = (
+				1F86C0F827159ABA00B9B844 /* BadgeModal.swift */,
+			);
+			path = "Bagde Modal";
 			sourceTree = "<group>";
 		};
 		1F8961A826F083F000E08E3C /* Notification */ = {
@@ -894,6 +904,7 @@
 		7CA24C1826C23F8800437C8A /* Generals */ = {
 			isa = PBXGroup;
 			children = (
+				1F86C0F727159A9200B9B844 /* Bagde Modal */,
 				1F436FC8270EE88700D839A6 /* Location Notification */,
 				1F034D092704588800053F20 /* Messages */,
 				1FA73FB526FAFAB8008604AA /* Facebook */,
@@ -1268,6 +1279,7 @@
 				7C2917C326C6746B0091F8A1 /* GolfclubsVC.swift in Sources */,
 				1F72DA0D26D646000073FC7E /* FGImagePicker.swift in Sources */,
 				1F9ACE0B26F6019800AB2E27 /* PlayerRequestModal.swift in Sources */,
+				1F86C0F927159ABA00B9B844 /* BadgeModal.swift in Sources */,
 				7C780FBB26C3F160003F1F12 /* ForgotPasswordVC.swift in Sources */,
 				7CE2E85126CB943900AF882A /* ProfileTBCell.swift in Sources */,
 				7CA24C5E26C2426800437C8A /* BaseResponseModal.swift in Sources */,
@@ -1512,7 +1524,7 @@
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1537,7 +1549,7 @@
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

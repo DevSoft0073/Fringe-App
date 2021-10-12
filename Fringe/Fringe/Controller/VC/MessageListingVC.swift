@@ -88,7 +88,6 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
                 self.newMessageSocketOn()
             }
         }
-        
     }
     
     @objc func dismissKeyboard() {
@@ -173,7 +172,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
         
         let parameter: [String: Any] = [
             Request.Parameter.roomID: roomID,
-            Request.Parameter.lastID: lastId,
+            Request.Parameter.lastID: "",
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.getAllMessgaes, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[AddEditMessageModal]>.self) { (response: ResponseModal<[AddEditMessageModal]>) in

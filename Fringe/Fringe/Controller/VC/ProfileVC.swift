@@ -622,6 +622,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
             } else if name == ProfileItems.switchToBusiness{
                 
                 PreferenceManager.shared.curretMode = "2"
+                PreferenceManager.shared.isHost = "1"
                 NavigationManager.shared.setupLandingOnHomeForHost()
                 
             }else if name == ProfileItems.termsOfServices{

@@ -257,9 +257,7 @@ class ClubSearchVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPullL
             self.lastRequestId = ""
             
             self.view.endEditing(true)
-            
-            LoadingManager.shared.showLoading()
-            
+                        
             self.performGetNearByStudios { (flag : Bool) in
                 
             }

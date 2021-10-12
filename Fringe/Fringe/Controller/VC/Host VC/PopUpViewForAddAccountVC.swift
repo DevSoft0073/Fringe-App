@@ -59,11 +59,14 @@ class PopUpViewForAddAccountVC : BaseVC {
     //MARK: Actions
     
     @IBAction func btnOky(_ sender: UIButton) {
-        self.dismiss(animated: true) {
-            
-        }
+        PreferenceManager.shared.comesFromPopUpView = true
+        NavigationManager.shared.sendToAccuntDestils()
     }
     
+    @IBAction func btnCancel(_ sender: UIButton) {
+        self.dismiss(animated: true) {
+        }
+    }
     
     //------------------------------------------------------
     

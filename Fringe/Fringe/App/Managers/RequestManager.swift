@@ -51,6 +51,7 @@ struct Request {
         static let search = "search"
         static let lats = "Latitude"
         static let longs = "Longitude"
+        static let role = "role"
         
         //sign up as host
         static let golfName = "golf_course_name"
@@ -105,6 +106,7 @@ struct Request {
         //Chat
         static let roomID = "room_id"
         static let message = "message"
+        static let isHost = "is_host"
        
     }
     
@@ -145,6 +147,7 @@ struct Request {
         static let chatListing = "/chatListing.php"
         static let sendMsg = "/sendMsg.php"
         static let getAllMessgaes = "/getAllMessage.php"
+        static let badgeCount = "/Badgescount.php"
         static let logout = "/LogOut.php"
     }
     

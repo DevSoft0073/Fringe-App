@@ -92,7 +92,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
             Request.Parameter.deviceToken: deviceToken,
             Request.Parameter.deviceType: DeviceType.iOS.rawValue,
         ]
-                
+        
         RequestManager.shared.requestPOST(requestMethod: Request.Method.login, parameter: parameter, headers: [:], showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
             
             LoadingManager.shared.hideLoading()
@@ -108,7 +108,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                 }
                 
             } else if response.code == Status.Code.wrongCredentials {
-
+                
                 delay {
                     DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
                 }
@@ -149,7 +149,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
                 LoadingManager.shared.hideLoading()
                 
                 if let stringUser = try? response.data?.jsonString() {
-
+                    
                     PreferenceManager.shared.currentUser = stringUser
                     PreferenceManager.shared.authToken = response.data?.authorizationToken
                     PreferenceManager.shared.userId = response.data?.userID
@@ -204,9 +204,9 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
         }
         
         LoadingManager.shared.showLoading()
-
+        
         performLogin()
-                        
+        
     }
     
     @IBAction func btnEye(_ sender: UIButton) {
@@ -239,12 +239,9 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     
     @IBAction func btnGoogleTap(_ sender: Any) {
         delay {
-            LoadingManager.shared.showLoading()
             
-            delayInLoading {
-                GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
-                    self.performSocialLogin(user?.profile?.givenName ?? String(), user?.profile?.familyName ?? String(), user?.userID ?? String(), user?.profile?.email ?? String(), type: "2", imgUrl: "\(user?.profile?.imageURL(withDimension: 512) ?? URL(fileURLWithPath: ""))")
-                }
+            GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+                self.performSocialLogin(user?.profile?.givenName ?? String(), user?.profile?.familyName ?? String(), user?.userID ?? String(), user?.profile?.email ?? String(), type: "2", imgUrl: "\(user?.profile?.imageURL(withDimension: 512) ?? URL(fileURLWithPath: ""))")
             }
         }
     }
@@ -354,8 +351,8 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        txtEmail.text = "dharmaniz.guleria22@gmail.com"
-//        txtPassword.text = "Qwerty@123"
+        //        txtEmail.text = "dharmaniz.guleria22@gmail.com"
+        //        txtPassword.text = "Qwerty@123"
         setup()
     }
     

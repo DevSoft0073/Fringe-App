@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,18 +22,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HostPendingCell" rowHeight="264" id="KGk-i7-Jjw" customClass="HostPendingCell" customModule="Fringe" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="446" height="264"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HostPendingCell" rowHeight="180" id="KGk-i7-Jjw" customClass="HostPendingCell" customModule="Fringe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="446" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="446" height="264"/>
+                <rect key="frame" x="0.0" y="0.0" width="446" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-A1-ySr">
-                        <rect key="frame" x="16" y="10" width="414" height="244"/>
+                        <rect key="frame" x="16" y="10" width="414" height="160"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-vE-whE">
-                                <rect key="frame" x="16" y="10" width="382" height="224"/>
+                                <rect key="frame" x="16" y="10" width="382" height="140"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7N-gl-Odh">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
@@ -84,16 +84,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lfa-R5-LWH">
-                                        <rect key="frame" x="0.0" y="40" width="382" height="35"/>
+                                        <rect key="frame" x="0.0" y="40" width="382" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IlU-f1-T7J">
-                                                <rect key="frame" x="0.0" y="0.0" width="151" height="35"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="151" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySR-r2-MNJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="35"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="50"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="gJt-YW-PP7">
-                                                                <rect key="frame" x="0.0" y="7.5" width="20" height="20"/>
+                                                                <rect key="frame" x="0.0" y="15" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="gJt-YW-PP7" secondAttribute="height" multiplier="1:1" id="9l8-P6-j5p"/>
                                                                 </constraints>
@@ -108,7 +108,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16 January 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0HO-38-ZUc" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
-                                                        <rect key="frame" x="28" y="0.0" width="123" height="35"/>
+                                                        <rect key="frame" x="28" y="0.0" width="123" height="50"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -123,33 +123,21 @@
                                             <constraint firstAttribute="bottom" secondItem="IlU-f1-T7J" secondAttribute="bottom" id="HXo-sB-WZT"/>
                                             <constraint firstAttribute="bottom" secondItem="IlU-f1-T7J" secondAttribute="bottom" id="Nii-Kf-jOR"/>
                                             <constraint firstItem="IlU-f1-T7J" firstAttribute="top" secondItem="Lfa-R5-LWH" secondAttribute="top" id="PAt-Wi-J3w"/>
+                                            <constraint firstAttribute="height" constant="50" id="QQt-hX-CXB"/>
                                             <constraint firstItem="IlU-f1-T7J" firstAttribute="leading" secondItem="Lfa-R5-LWH" secondAttribute="leading" id="aCT-Zp-SHq"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IlU-f1-T7J" secondAttribute="trailing" id="es1-Qc-Ghv"/>
                                             <constraint firstItem="IlU-f1-T7J" firstAttribute="top" secondItem="Lfa-R5-LWH" secondAttribute="top" id="rGE-Le-2js"/>
-                                            <constraint firstAttribute="height" constant="35" id="zkv-eU-tk7"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPd-QE-ayU">
-                                        <rect key="frame" x="0.0" y="75" width="382" height="149"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamaroneck, Ontarioo,Canada.." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rb-Dy-UtE" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="5" width="382" height="139"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamaroneck, Ontarioo,Canada.." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rb-Dy-UtE" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="90" width="382" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="2rb-Dy-UtE" secondAttribute="trailing" id="CGb-3w-NGQ"/>
-                                            <constraint firstItem="2rb-Dy-UtE" firstAttribute="top" secondItem="hPd-QE-ayU" secondAttribute="top" constant="5" id="Fns-2T-cYL"/>
-                                            <constraint firstAttribute="bottom" secondItem="2rb-Dy-UtE" secondAttribute="bottom" constant="5" id="ePi-Jj-fc6"/>
-                                            <constraint firstItem="2rb-Dy-UtE" firstAttribute="leading" secondItem="hPd-QE-ayU" secondAttribute="leading" id="h4F-sl-EFn"/>
-                                        </constraints>
-                                    </view>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udr-Vu-Bop">
-                                        <rect key="frame" x="0.0" y="224" width="382" height="35"/>
+                                        <rect key="frame" x="0.0" y="140" width="382" height="35"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="ntu-iZ-6Pp">
                                                 <rect key="frame" x="0.0" y="4.5" width="244" height="26"/>
@@ -235,7 +223,7 @@
                 <outlet property="golfClubNameLbl" destination="2rb-Dy-UtE" id="s2v-uZ-hw0"/>
                 <outlet property="nameLbl" destination="X43-W0-6jG" id="Gtf-7X-9LP"/>
             </connections>
-            <point key="canvasLocation" x="62.318840579710148" y="131.25"/>
+            <point key="canvasLocation" x="62.318840579710148" y="103.125"/>
         </tableViewCell>
     </objects>
     <resources>

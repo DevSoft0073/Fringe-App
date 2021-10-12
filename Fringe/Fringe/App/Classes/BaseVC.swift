@@ -19,6 +19,10 @@ class BaseVC : UIViewController, UIGestureRecognizerDelegate {
         return PreferenceManager.shared.currentUserModalForHost
     }
     
+    var currentUserBadge: BadgeModal? {
+        return PreferenceManager.shared.badgeModalData
+    }
+    
     //    var currentStudioUser : StudioUserModal?{
     //        return PreferenceManager.shared.currentStudioUserModal
     //    }

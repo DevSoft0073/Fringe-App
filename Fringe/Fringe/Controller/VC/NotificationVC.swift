@@ -114,6 +114,53 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource, KRPu
         })
     }
     
+    func performGetBadgeCount(completion:((_ flag: Bool) -> Void)?) {
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+            Request.Parameter.role: PreferenceManager.shared.curretMode ?? String(),
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.badgeCount, parameter: parameter, headers: [:], showLoader: false, decodingType: ResponseModal<BadgeModal>.self, successBlock: { (response: ResponseModal<BadgeModal>) in
+                                    
+            if response.code == Status.Code.success {
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    
+                    PreferenceManager.shared.badgeModal = stringUser
+                    
+                    if response.data?.getNotificationCount == "0" {
+                        
+                    } else {
+                        
+                    }
+                    
+                }
+                
+            } else {
+                
+                completion?(true)
+            }
+            
+            LoadingManager.shared.hideLoading()
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+//            delay {
+//
+//                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+//                    PreferenceManager.shared.userId = nil
+//                    PreferenceManager.shared.currentUser = nil
+//                    PreferenceManager.shared.authToken = nil
+//                    NavigationManager.shared.setupSingIn()
+//                }
+//            }
+        })
+    }
+
+    
     //------------------------------------------------------
     
     //MARK: Actions
@@ -215,6 +262,11 @@ class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource, KRPu
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.performGetBadgeCount { (flag : Bool) in
+            
+        }
+        
         NavigationManager.shared.isEnabledBottomMenu = false
         
     }
