@@ -17,7 +17,7 @@ protocol SendSelectedDate {
 
 class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCalendarDelegate, FSCalendarDataSource {
     
-    @IBOutlet weak var noDataLbl: UILabel!
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     @IBOutlet weak var lblHeader: FGMediumLabel!
     @IBOutlet weak var lblNow: FGBaseLabel!
     @IBOutlet weak var myCalendar: FSCalendar!

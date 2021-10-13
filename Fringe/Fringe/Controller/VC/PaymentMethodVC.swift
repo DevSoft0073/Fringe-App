@@ -13,7 +13,7 @@ import IQKeyboardManagerSwift
 class PaymentMethodVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var addPayBtn: FGActiveButton!
-    @IBOutlet weak var noDataLbl: FGRegularLabel!
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     @IBOutlet weak var heightContraint: NSLayoutConstraint!
     @IBOutlet weak var tblPayment: UITableView!
     

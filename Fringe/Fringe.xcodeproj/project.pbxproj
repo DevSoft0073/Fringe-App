@@ -53,6 +53,7 @@
 		1F9ACE0B26F6019800AB2E27 /* PlayerRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */; };
 		1FA73FC026FB0FC3008604AA /* PopUpViewForAddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */; };
 		1FA73FC226FB338F008604AA /* FbData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FC126FB338F008604AA /* FbData.swift */; };
+		1FC9A4552716CC8C000D4CE1 /* SeachLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC9A4542716CC8C000D4CE1 /* SeachLocationVC.swift */; };
 		1FDE06362703469C00EEC191 /* SubmitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE06352703469B00EEC191 /* SubmitVC.swift */; };
 		1FE786B6270C402100BE94B5 /* LoadingIndicatorManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE786B5270C402100BE94B5 /* LoadingIndicatorManeger.swift */; };
 		1FE9483126E8E68F00961BE2 /* RequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9483026E8E68F00961BE2 /* RequestModal.swift */; };
@@ -263,6 +264,7 @@
 		1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequestModal.swift; sourceTree = "<group>"; };
 		1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewForAddAccountVC.swift; sourceTree = "<group>"; };
 		1FA73FC126FB338F008604AA /* FbData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FbData.swift; sourceTree = "<group>"; };
+		1FC9A4542716CC8C000D4CE1 /* SeachLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachLocationVC.swift; sourceTree = "<group>"; };
 		1FDE06352703469B00EEC191 /* SubmitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitVC.swift; sourceTree = "<group>"; };
 		1FE786B5270C402100BE94B5 /* LoadingIndicatorManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorManeger.swift; sourceTree = "<group>"; };
 		1FE9483026E8E68F00961BE2 /* RequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModal.swift; sourceTree = "<group>"; };
@@ -774,6 +776,7 @@
 				7CE0F64126D4D41A00C3AAFB /* SignUpHostVC.swift */,
 				7C780F8E26C3C105003F1F12 /* SignUpVC.swift */,
 				1FDE06352703469B00EEC191 /* SubmitVC.swift */,
+				1FC9A4542716CC8C000D4CE1 /* SeachLocationVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1250,6 +1253,7 @@
 				7CA24C4726C2422500437C8A /* FGButton.swift in Sources */,
 				7C94876326CA972C00870F54 /* ProfileHeaderView.swift in Sources */,
 				7C780FE926C582C4003F1F12 /* FavouriteTVCell.swift in Sources */,
+				1FC9A4552716CC8C000D4CE1 /* SeachLocationVC.swift in Sources */,
 				7C5298A226DE07F600A3606D /* HostAddPaymentMethodVC.swift in Sources */,
 				1F18388D26F9B36800A0B663 /* ChatDetailsVC.swift in Sources */,
 				7CD7EB0B26D14F2A00BEDDA2 /* CheckAvailabilityVC.swift in Sources */,

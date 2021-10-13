@@ -223,11 +223,6 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
     
     //MARK: Actions
     
-    @IBAction func btnSearch(_ sender: UIButton) {
-        let controller = NavigationManager.shared.clubSearchVC
-        push(controller: controller)
-    }
-    
     @IBAction func btnNotificationTap(_ sender: UIButton) {
         let controller = NavigationManager.shared.notificationVC
         push(controller: controller)
@@ -236,6 +231,11 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
     @IBAction func btnPull(_ sender: UIButton) {
         PreferenceManager.shared.comesFromHomeListing = false
         bottomSheetView()
+    }
+    
+    @IBAction func btnSearch(_ sender: Any) {
+        let controller = NavigationManager.shared.seachLocationVC
+        push(controller: controller)
     }
     
     //------------------------------------------------------

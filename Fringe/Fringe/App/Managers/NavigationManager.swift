@@ -341,15 +341,19 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     public var forgotPasswordVC: ForgotPasswordVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: ForgotPasswordVC.self)) as! ForgotPasswordVC
     }
+    
     public var notificationVC: NotificationVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: NotificationVC.self)) as! NotificationVC
     }
+    
     public var editProfileVC: EditProfileVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: EditProfileVC.self)) as! EditProfileVC
     }
+    
     public var accountInformationVC: AccountInformationVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: AccountInformationVC.self)) as! AccountInformationVC
     }
+    
     public var changePasswordVC: ChangePasswordVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: ChangePasswordVC.self)) as! ChangePasswordVC
     }
@@ -389,6 +393,7 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     public var confirmedPayVC: ConfirmedPayVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: ConfirmedPayVC.self)) as! ConfirmedPayVC
     }
+    
     public var searchVC: SearchVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: SearchVC.self)) as! SearchVC
     }
@@ -431,6 +436,10 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
     
     public var paymentSuccessfullyPopUpVC : PaymentSuccessfullyPopUpVC {
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: PaymentSuccessfullyPopUpVC.self)) as! PaymentSuccessfullyPopUpVC
+    }
+    
+    public var seachLocationVC : SeachLocationVC {
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: SeachLocationVC.self)) as! SeachLocationVC
     }
     
     public var popUpViewForAddAccountVC : PopUpViewForAddAccountVC {

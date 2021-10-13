@@ -86,6 +86,7 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.chatListing, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[PlayerMessgaeModal]>.self) { (response: ResponseModal<[PlayerMessgaeModal]>) in
             
+            self.messagePlayerGroups.removeAll()
             self.messagePlayerGroups.append(contentsOf: response.data ?? [])
             self.messagePlayerGroups = self.messagePlayerGroups.removingDuplicates()
             self.updateUI()

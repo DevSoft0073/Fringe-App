@@ -254,6 +254,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ImagePickerDel
             Request.Parameter.password: txtPassword?.text ?? String(),
             Request.Parameter.confirmPassword: txtConfirmPassword?.text ?? String(),
             Request.Parameter.timeZone: deviceTimeZone ?? String(),
+            Request.Parameter.countryCode: countryCode,
             
         ]
         

@@ -12,7 +12,7 @@ import KRPullLoader
 
 class NotificationVC : BaseVC, UITableViewDelegate , UITableViewDataSource, KRPullLoadViewDelegate{
     
-    @IBOutlet weak var noDataLbl: FGRegularLabel!
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     @IBOutlet weak var tblNotification: UITableView!
     
     var items: [NotificationModal] = []

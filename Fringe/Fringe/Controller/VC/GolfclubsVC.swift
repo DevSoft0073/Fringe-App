@@ -12,7 +12,7 @@ import KRPullLoader
 
 class GolfclubsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentViewDelegate {
     
-    @IBOutlet weak var noDataLbl: FGRegularLabel!
+    @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     @IBOutlet weak var segment2: SegmentView!
     @IBOutlet weak var segment1: SegmentView!
     @IBOutlet weak var tblGolf: UITableView!
