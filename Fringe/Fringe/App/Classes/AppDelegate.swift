@@ -206,8 +206,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 if let data = apsData["data"] as? [String:Any]{
                     let type = data["notification_type"]
                     if type as? String ?? "0" == "1" {
-                        print("sendmessages")
+                        if PreferenceManager.shared.curretMode == "1"{
+                            NavigationManager.shared.setupLandingOnChatVC(roomID: data["room_id"] as? String ?? "", image: data["image"] as? String ?? "", otherUserImage: data["otheruserImage"] as? String ?? "", name: data["user_name"] as? String ?? "")
+                        } else {
+                            NavigationManager.shared.setupLandingOnChatVCForHost(roomID: data["room_id"] as? String ?? "", image: data["image"] as? String ?? "", otherUserImage: data["otheruserImage"] as? String ?? "", name: data["user_name"] as? String ?? "")
+                        }
                     } else if type as? String ?? "0" == "2" {
+                        
+                        NavigationManager.shared.setupLandingOnprofileVC()
                         
                     } else if type as? String ?? "0" == "3" {
                         

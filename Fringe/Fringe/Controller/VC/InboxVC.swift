@@ -167,6 +167,7 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
         let messageGroup = messagePlayerGroups[indexPath.row]
+        PreferenceManager.shared.comesFromMessagePush = false
         let controller = NavigationManager.shared.messageListingVC
         controller.roomID = messageGroup.roomID ?? String()
         controller.senderFirstName = messageGroup.firstName ?? String()

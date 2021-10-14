@@ -303,6 +303,51 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
+    func setupLandingOnprofileVC() {
+        
+        tabbarController = landingTC
+        tabbarController?.selectedIndex = 4
+        AppDelegate.shared.window?.rootViewController = tabbarController
+        AppDelegate.shared.window?.makeKeyAndVisible()
+    }
+    
+    func setupLandingOnChatVC(roomID : String , image : String , otherUserImage : String , name : String) {
+        PreferenceManager.shared.comesFromMessagePush = true
+        let controller = NavigationManager.shared.messageListingVC
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let nav = UINavigationController(rootViewController: controller)
+        controller.roomID = roomID
+        controller.ownImage = image
+        controller.otherUserImg = otherUserImage
+        controller.otherUserName = name
+        nav.navigationBar.isHidden = true
+        appdelegate.window?.rootViewController = nav
+        
+//        tabbarController = landingTC
+//        tabbarController?.selectedIndex = 3
+//        AppDelegate.shared.window?.rootViewController = tabbarController
+//        AppDelegate.shared.window?.makeKeyAndVisible()
+    }
+    
+    func setupLandingOnChatVCForHost(roomID : String , image : String , otherUserImage : String , name : String) {
+        
+        PreferenceManager.shared.comesFromMessagePush = true
+        let controller = NavigationManager.shared.messageListingVC
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let nav = UINavigationController(rootViewController: controller)
+        nav.navigationBar.isHidden = true
+        controller.roomID = roomID
+        controller.ownImage = image
+        controller.otherUserImg = otherUserImage
+        controller.otherUserName = name
+        appdelegate.window?.rootViewController = nav
+        
+//        tabbarControllerForHost = landingTCForHost
+//        tabbarControllerForHost?.selectedIndex = 4
+//        AppDelegate.shared.window?.rootViewController = tabbarControllerForHost
+//        AppDelegate.shared.window?.makeKeyAndVisible()
+    }
+    
     func setupLandingOnHomeForHost() {
         tabbarControllerForHost = landingTCForHost
         AppDelegate.shared.window?.rootViewController = tabbarControllerForHost

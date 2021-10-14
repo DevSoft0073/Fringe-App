@@ -26,6 +26,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
     var otherUserImg = String()
     var senderFirstName = String()
     var senderLastName = String()
+    var otherUserName = String()
     var roomID = String()
     var items =  [AddEditMessageModal]()
     
@@ -49,7 +50,13 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
     
     func configureUI(){
         txtSendMsg.leftSpace()
-        lblName.text = "\(senderFirstName) " + "\(senderLastName)"
+        
+        if senderFirstName == "" {
+            lblName.text = otherUserName
+        } else {
+            lblName.text = "\(senderFirstName) " + "\(senderLastName)"
+
+        }
         self.txtSendMsg.delegate = self
         IQKeyboardManager.shared.disabledDistanceHandlingClasses.append(MessageListingVC.self)
         IQKeyboardManager.shared.disabledToolbarClasses = [MessageListingVC.self]
@@ -170,6 +177,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
             "Token": PreferenceManager.shared.authToken ?? String(),
         ]
         
+       
         let parameter: [String: Any] = [
             Request.Parameter.roomID: roomID,
             Request.Parameter.lastID: "",
@@ -281,7 +289,23 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
     //MARK: Action
     
     @IBAction func btnBack(_ sender: Any) {
-        self.pop()
+        
+        if PreferenceManager.shared.comesFromMessagePush == true {
+            
+            if PreferenceManager.shared.curretMode == "1" {
+                
+                NavigationManager.shared.setupLandingOnHome()
+                
+            }else{
+                
+                NavigationManager.shared.setupLandingOnHomeForHost()
+            }
+            
+        } else {
+            
+            self.pop()
+
+        }
     }
     
     @IBAction func btnSend(_ sender: UIButton) {
@@ -301,12 +325,9 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-        configureSocket()
         NavigationManager.shared.isEnabledBottomMenu = false
         NavigationManager.shared.isEnabledBottomMenuForHost = false
-        self.performGetMessage(lastId: "") { (flag : Bool) in
-        }
+       
     }
     
     //------------------------------------------------------
@@ -314,6 +335,10 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false // or true
+        configureUI()
+        configureSocket()
+        self.performGetMessage(lastId: "") { (flag : Bool) in
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

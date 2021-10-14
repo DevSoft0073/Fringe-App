@@ -41,6 +41,7 @@ class PreferenceManager: NSObject {
     private let comesFromPopView = "comesFromPopUpView"
     private let isHostUser = "isHostUser"
     private let badgeData = "badgeData"
+    private let comesFromPush = "comesFromPush"
 
     var deviceToken: String? {
         set {
@@ -275,6 +276,16 @@ class PreferenceManager: NSObject {
         }
         get {
             return userDefault.string(forKey: isHostUser)
+        }
+    }
+    
+    var comesFromMessagePush: Bool {
+        set {
+            userDefault.set(newValue, forKey: comesFromPush)
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.bool(forKey: comesFromPush)
         }
     }
     
