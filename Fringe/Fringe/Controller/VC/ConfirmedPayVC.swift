@@ -85,14 +85,13 @@ class ConfirmedPayVC : BaseVC {
             self.imgMain.sd_removeActivityIndicator()
             imgMain.image = UIImage(named: FGImageName.imgPlaceHolder)
         }
-
         
         lblGuests.text = "\(addGuestVal)"
-        lblGolfclubPrice.text = "$\(detailsData?.golfPrice ?? String())"
         guard let price = Int(detailsData?.golfPrice ?? String()) else { return }
-        let totalPrice = addGuestVal * price
+        let totalPrice = (addGuestVal * price) + price
         var total = serviceCalculation(price: totalPrice)
         total += Double(totalPrice)
+        lblGolfclubPrice.text = "\(totalPrice)"
         lblTotalPrice.text = "$\(total)"
     }
     
@@ -125,9 +124,9 @@ class ConfirmedPayVC : BaseVC {
     }
     
     @IBAction func btnPlus(_ sender: Any) {
-        if addGuestVal > 4{
+        if addGuestVal >= 4{
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterAddGuestLimit)
-        }else if addGuestVal < 4 {
+        }else if addGuestVal <= 4 {
             addGuestVal  = addGuestVal+1
         }
         lblGuest.text = "\(addGuestVal)"
@@ -135,16 +134,16 @@ class ConfirmedPayVC : BaseVC {
     }
     
     @IBAction func btnMinus(_ sender: Any) {
-        if addGuestVal < 0 {
-            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterRemoveGuestLimit)
+        if addGuestVal <= 0 {
+//            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterRemoveGuestLimit)
             
-        }else if addGuestVal > 4 {
+        }else {
             addGuestVal  = addGuestVal-1
         }
         lblGuest.text = "\(addGuestVal)"
         self.setupData()
     }
-    
+//    if addGuestVal > 4
     @IBAction func btnEditDate(_ sender: Any) {
     }
     

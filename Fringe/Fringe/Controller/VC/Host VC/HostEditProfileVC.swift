@@ -129,9 +129,11 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         //phone
         txtMobileNumber.text = currentUserHost?.mobileNo
         
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getVal"), object: nil, userInfo: ["country": self.currentUserHost?.phoneCode ?? "+1"])
-//        print(self.allImages)
-//
+        // country code
+        countryCode.setTitle(currentUserHost?.countryCode, for: .normal)
+        
+        //Show images
+        
         DispatchQueue.global(qos: .background).async {
             for i in self.currentUserHost?.golfImages ?? [] {
                 let image = i
@@ -189,9 +191,10 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         imgData["image"] = imageData
         let parameter: [String: Any] = [
             Request.Parameter.golfName: txtFirstName?.text ?? String(),
-            Request.Parameter.homeTown: txtAddress.text ?? String(),
+            Request.Parameter.location: txtAddress.text ?? String(),
             Request.Parameter.mobileNumber: txtMobileNumber.text ?? String(),
             Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
+            Request.Parameter.countryCode: countryCodes ,
         ]
         var imgDataa = [String : Data]()
         for i in photosInTheCellNow {
@@ -234,6 +237,51 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
             }
         }
     }
+    
+    func performGetUserProfile() {
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.hostProfile, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<HostModal>.self, successBlock: { (response: ResponseModal<HostModal>) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                if let stringUser = try? response.data?.jsonString() {
+                    
+                    PreferenceManager.shared.currentUserHost = stringUser
+                }
+                                
+            } else {
+                
+                delay {
+                    
+                    
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: LocalizableConstants.Error.anotherLogin) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    PreferenceManager.shared.curretMode = "1"
+                    NavigationManager.shared.setupSingIn()
+                }
+            }
+            
+        })
+    }
+
     
     //------------------------------------------------------
     
@@ -383,8 +431,10 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationManager.shared.isEnabledBottomMenuForHost = false
+        performGetUserProfile()
         setup()
         setupData()
+        
     }
     
     //------------------------------------------------------

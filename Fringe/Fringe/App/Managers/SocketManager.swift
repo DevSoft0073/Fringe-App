@@ -130,6 +130,12 @@ import SocketIO
 class SocketManger {
     
     static let shared = SocketManger()
+    
+//coach url
+//http://161.97.91.153:3010
+//Johar Url
+//https://jaohar-uk.herokuapp.com
+    
     let manager = SocketManager(socketURL: URL(string: "https://jaohar-uk.herokuapp.com")!, config: [.log(true), .compress])
     var socket:SocketIOClient!
     init() {

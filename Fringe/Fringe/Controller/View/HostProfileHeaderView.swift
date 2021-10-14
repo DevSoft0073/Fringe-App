@@ -40,7 +40,7 @@ class HostProfileHeaderView: UIView {
         }
         
         //firstname
-        lblName.text = "\(currentUser?.firstName ?? String())" + "\(currentUser?.lastName ?? String())"
+        lblName.text = currentUser?.golfCourseName
         
         //email
         lblEmail.text = currentUser?.email

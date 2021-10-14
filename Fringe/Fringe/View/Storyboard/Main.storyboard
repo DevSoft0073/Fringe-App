@@ -4155,7 +4155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dB-rA-R2Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5326" y="1627"/>
+            <point key="canvasLocation" x="5326" y="1639"/>
         </scene>
         <!--Confirmed PayVC-->
         <scene sceneID="dhY-Jb-0Rw">
@@ -4404,7 +4404,7 @@
                                                                             <action selector="btnMinus:" destination="0bx-Ik-1o4" eventType="touchUpInside" id="BsK-8V-IBK"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vT-Wv-kwl">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vT-Wv-kwl">
                                                                         <rect key="frame" x="34.5" y="0.0" width="31" height="30"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
@@ -6072,8 +6072,9 @@
                                     <constraint firstAttribute="bottom" secondItem="WHN-Rg-Zkh" secondAttribute="bottom" id="w9N-j2-V02"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No slot available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2j-38-vou" customClass="FGSemiboldLabel" customModule="Fringe" customModuleProvider="target">
-                                <rect key="frame" x="115.5" y="321.5" width="144" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2j-38-vou" customClass="FGSemiboldLabel" customModule="Fringe" customModuleProvider="target">
+                                <rect key="frame" x="59.5" y="321.5" width="256" height="24"/>
+                                <string key="text">No slot available for this date.</string>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

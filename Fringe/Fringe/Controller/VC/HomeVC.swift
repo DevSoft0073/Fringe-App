@@ -11,6 +11,7 @@ import Alamofire
 import Foundation
 import CoreLocation
 import FittedSheets
+import SDWebImage
 import IQKeyboardManagerSwift
 
 class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
@@ -74,6 +75,36 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
         }
     }
     
+    func setupData() {
+        
+        lblName.text = items.first?.golfCourseName
+        lblAddress.text = items.first?.location
+        lblPrice.text = "$\(items.first?.price ?? String())"
+        lblRating.text = items.first?.rating
+        ratingView.rating = Double(items.first?.rating ?? String()) ?? 0.0
+        
+        //image
+        
+        imgMain.sd_addActivityIndicator()
+        imgMain.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
+        imgMain.sd_showActivityIndicatorView()
+        imgMain.image = getPlaceholderImage()
+        
+        if items.first?.golfImages?.count ?? 0 > 0{
+            if let image = items.first?.golfImages?[0], image.isEmpty == false {
+                let imgURL = URL(string: image)
+                imgMain.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
+                    self.imgMain.sd_removeActivityIndicator()
+                }
+            } else {
+                self.imgMain.sd_removeActivityIndicator()
+            }
+        } else {
+            self.imgMain.sd_removeActivityIndicator()
+            imgMain.image = UIImage(named: FGImageName.imgPlaceHolder)
+        }
+    }
+    
     func performGetNearByGolfClubs(completion:((_ flag: Bool) -> Void)?) {
         
         isRequesting = true
@@ -105,7 +136,8 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
                     self.items.append(contentsOf: response.data ?? [])
                     self.items = self.items.removingDuplicates()
                     self.lastRequestId = response.data?.last?.golfID ?? String()
-                    
+                    self.setupData()
+
                     for obj in response.data ?? [] {
                         self.setMarkers(lat: Double(obj.latitude ?? String()) ?? 0.0, Long: Double(obj.latitude ?? String()) ?? 0.0, clubName:obj.golfCourseName ?? String())
                     }

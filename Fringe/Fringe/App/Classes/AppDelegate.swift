@@ -197,6 +197,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    func handleRemoteNotification(userInfo: [AnyHashable: Any], completion: @escaping(_ flag: Bool) -> Void ) {
+        debugPrint("handleRemoteNotification:\(userInfo as? [String:Any] ?? [:])")
+        completion(true)
+        if PreferenceManager.shared.currentUser != nil {
+            print(userInfo)
+            if let apsData = userInfo["aps"] as? [String:Any] {
+                if let data = apsData["data"] as? [String:Any]{
+                    let type = data["notification_type"]
+                    if type as? String ?? "0" == "1" {
+                        print("sendmessages")
+                    } else if type as? String ?? "0" == "2" {
+                        
+                    } else if type as? String ?? "0" == "3" {
+                        
+                    } else if type as? String ?? "0" == "4" {
+                        
+                    }
+                }
+            }
+        }
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        handleRemoteNotification(userInfo: response.notification.request.content.userInfo) { (flag) in
+            completionHandler()
+        }
+    }
+    
     //------------------------------------------------------
     
     //MARK: UIApplicationDelegate
@@ -281,7 +314,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        NavigationManager.shared.setupLanding()
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound])
-    }
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//        completionHandler([.alert, .sound])
+//    }
 }
