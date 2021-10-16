@@ -62,8 +62,8 @@
             filePath = "Fringe/App/Classes/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "handleRemoteNotification(userInfo:completion:)"
             landmarkType = "7">
          </BreakpointContent>

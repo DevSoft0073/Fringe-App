@@ -15,6 +15,9 @@ import IQKeyboardManagerSwift
 class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePickerDelegate {
     
     
+    @IBOutlet weak var txtHandicap: FGUsernameTextField!
+    @IBOutlet weak var txtMemberCourse: FGUsernameTextField!
+    @IBOutlet weak var txtProfession: FGUsernameTextField!
     @IBOutlet weak var countryCode: UIButton!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var txtFirstName: FGUsernameTextField!
@@ -117,6 +120,15 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
         //phone
         txtMobileNumber.text = currentUser?.mobileNo
         
+        //profession
+        txtProfession.text = currentUser?.profession
+        
+        //member course
+        txtMemberCourse.text = currentUser?.memberCourse
+        
+        //handicap
+        txtHandicap.text = currentUser?.golfHandicap
+        
         //country code
         if currentUser?.countryCode == "" {
             countryCode.setTitle("+1", for: .normal)
@@ -180,6 +192,9 @@ class EditProfileVC : BaseVC , UITextFieldDelegate, UITextViewDelegate,ImagePick
             Request.Parameter.mobileNumber: txtMobileNumber?.text ?? String(),
             Request.Parameter.timeZone: deviceTimeZone ?? String(),
             Request.Parameter.countryCode: countryCodes,
+            Request.Parameter.profession: txtProfession.text ?? String(),
+            Request.Parameter.memberCourse: txtMemberCourse.text ?? String(),
+            Request.Parameter.golfHandicap: txtHandicap.text ?? String(),
             
         ]
         

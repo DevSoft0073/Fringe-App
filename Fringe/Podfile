@@ -28,6 +28,9 @@
 
   #google sign in
   pod 'GoogleSignIn'
+  pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
+  pod 'GoogleMaps'
 
   #Home Screen pull up
   pod 'FittedSheets'

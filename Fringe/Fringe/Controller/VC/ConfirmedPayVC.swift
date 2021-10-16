@@ -124,9 +124,9 @@ class ConfirmedPayVC : BaseVC {
     }
     
     @IBAction func btnPlus(_ sender: Any) {
-        if addGuestVal >= 4{
+        if addGuestVal >= 3{
             DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterAddGuestLimit)
-        }else if addGuestVal <= 4 {
+        }else if addGuestVal <= 3 {
             addGuestVal  = addGuestVal+1
         }
         lblGuest.text = "\(addGuestVal)"
@@ -143,7 +143,7 @@ class ConfirmedPayVC : BaseVC {
         lblGuest.text = "\(addGuestVal)"
         self.setupData()
     }
-//    if addGuestVal > 4
+    
     @IBAction func btnEditDate(_ sender: Any) {
     }
     

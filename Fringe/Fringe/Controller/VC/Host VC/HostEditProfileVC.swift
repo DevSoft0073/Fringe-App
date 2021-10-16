@@ -18,6 +18,9 @@ import IQKeyboardManagerSwift
 class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  ImagePickerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, LocationSearchDelegate {
     
     
+    @IBOutlet weak var txtHandicap: FGEmailTextField!
+    @IBOutlet weak var txtMemberCourse: FGEmailTextField!
+    @IBOutlet weak var txtProfession: FGEmailTextField!
     @IBOutlet weak var countryCode: FGSemiboldButton!
     @IBOutlet weak var uploadImageCollectionView: UICollectionView!
     @IBOutlet weak var txtMobileNumber: FGMobileNumberTextField!
@@ -132,6 +135,15 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         // country code
         countryCode.setTitle(currentUserHost?.countryCode, for: .normal)
         
+        //profession
+        txtProfession.text = currentUserHost?.profession
+        
+        //member course
+        txtMemberCourse.text = currentUserHost?.memberCourse
+        
+        //handicap
+        txtHandicap.text = currentUserHost?.golfHandicap
+        
         //Show images
         
         DispatchQueue.global(qos: .background).async {
@@ -195,6 +207,9 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
             Request.Parameter.mobileNumber: txtMobileNumber.text ?? String(),
             Request.Parameter.userID: PreferenceManager.shared.userId ?? String(),
             Request.Parameter.countryCode: countryCodes ,
+            Request.Parameter.profession: txtProfession.text ?? String(),
+            Request.Parameter.memberCourse: txtMemberCourse.text ?? String(),
+            Request.Parameter.golfHandicap: txtHandicap.text ?? String(),
         ]
         var imgDataa = [String : Data]()
         for i in photosInTheCellNow {

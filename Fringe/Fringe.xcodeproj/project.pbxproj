@@ -51,6 +51,8 @@
 		1F9ACE0626F479A600AB2E27 /* AddBlockModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */; };
 		1F9ACE0926F4BA3A00AB2E27 /* PlayerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */; };
 		1F9ACE0B26F6019800AB2E27 /* PlayerRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */; };
+		1F9BFE7A271AAFE1001763C5 /* SearchLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BFE78271AAFE1001763C5 /* SearchLocationCell.swift */; };
+		1F9BFE7B271AAFE1001763C5 /* SearchLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9BFE79271AAFE1001763C5 /* SearchLocationCell.xib */; };
 		1FA73FC026FB0FC3008604AA /* PopUpViewForAddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */; };
 		1FA73FC226FB338F008604AA /* FbData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FC126FB338F008604AA /* FbData.swift */; };
 		1FC9A4552716CC8C000D4CE1 /* SeachLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC9A4542716CC8C000D4CE1 /* SeachLocationVC.swift */; };
@@ -262,6 +264,8 @@
 		1F9ACE0526F479A600AB2E27 /* AddBlockModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlockModal.swift; sourceTree = "<group>"; };
 		1F9ACE0826F4BA3A00AB2E27 /* PlayerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequest.swift; sourceTree = "<group>"; };
 		1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequestModal.swift; sourceTree = "<group>"; };
+		1F9BFE78271AAFE1001763C5 /* SearchLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationCell.swift; sourceTree = "<group>"; };
+		1F9BFE79271AAFE1001763C5 /* SearchLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationCell.xib; sourceTree = "<group>"; };
 		1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewForAddAccountVC.swift; sourceTree = "<group>"; };
 		1FA73FC126FB338F008604AA /* FbData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FbData.swift; sourceTree = "<group>"; };
 		1FC9A4542716CC8C000D4CE1 /* SeachLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachLocationVC.swift; sourceTree = "<group>"; };
@@ -600,6 +604,7 @@
 				7CE2E85626CB9A3200AF882A /* ProfileSwitchCell.xib */,
 				7CE2E85026CB943900AF882A /* ProfileTBCell.xib */,
 				7CE0F63626D4A51900C3AAFB /* SearchTBCell.xib */,
+				1F9BFE79271AAFE1001763C5 /* SearchLocationCell.xib */,
 			);
 			path = "Player XIBs";
 			sourceTree = "<group>";
@@ -625,6 +630,7 @@
 		7C52984F26DCA66E00A3606D /* Player Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1F9BFE78271AAFE1001763C5 /* SearchLocationCell.swift */,
 				7C8F1D5C26CE328800135C41 /* AddPaymentTVCell.swift */,
 				7CD7EAFE26D1195700BEDDA2 /* CheckAvailabilityTBCell.swift */,
 				7C780FE726C582C4003F1F12 /* FavouriteTVCell.swift */,
@@ -1054,14 +1060,13 @@
 				7CA24BF926C23D9500437C8A /* Resources */,
 				93CF8CBA167AB4B984E7DCC3 /* [CP] Embed Pods Frameworks */,
 				1FBACAB226F309F20051642D /* ShellScript */,
+				095020B727E7BAC2279C8A2B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Fringe;
-			packageProductDependencies = (
-			);
 			productName = Fringe;
 			productReference = 7CA24BFB26C23D9500437C8A /* Fringe.app */;
 			productType = "com.apple.product-type.application";
@@ -1089,8 +1094,6 @@
 				Base,
 			);
 			mainGroup = 7CA24BF226C23D9500437C8A;
-			packageReferences = (
-			);
 			productRefGroup = 7CA24BFC26C23D9500437C8A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1107,6 +1110,7 @@
 			files = (
 				7CD7EB0126D1195700BEDDA2 /* CheckAvailabilityTBCell.xib in Resources */,
 				7CA24C0B26C23D9600437C8A /* LaunchScreen.storyboard in Resources */,
+				1F9BFE7B271AAFE1001763C5 /* SearchLocationCell.xib in Resources */,
 				7CD7EAF826D116D000BEDDA2 /* CheckAvailabilityHeaderView.xib in Resources */,
 				7C8F1D6826CE4BAB00135C41 /* MyBookingTVCell.xib in Resources */,
 				7C39F15D26C3947600AAC277 /* Poppins-Bold.ttf in Resources */,
@@ -1154,6 +1158,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		095020B727E7BAC2279C8A2B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fringe/Pods-Fringe-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fringe/Pods-Fringe-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fringe/Pods-Fringe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1FBACAB226F309F20051642D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1317,6 +1338,7 @@
 				1F18A3AD270594E4003F9356 /* SocketManager.swift in Sources */,
 				7C780F7C26C3A6DB003F1F12 /* ESTabBarItemContentView.swift in Sources */,
 				7CD7EAFC26D1187E00BEDDA2 /* CheckAvailabilityHeaderView.swift in Sources */,
+				1F9BFE7A271AAFE1001763C5 /* SearchLocationCell.swift in Sources */,
 				1F9ACE0626F479A600AB2E27 /* AddBlockModal.swift in Sources */,
 				7CA24C2626C2415100437C8A /* LocalizableConstants.swift in Sources */,
 				7CA24C2926C2415C00437C8A /* AppFunctions.swift in Sources */,

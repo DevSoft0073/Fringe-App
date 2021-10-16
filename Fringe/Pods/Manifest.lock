@@ -100,6 +100,16 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleMaps (3.1.0):
+    - GoogleMaps/Maps (= 3.1.0)
+  - GoogleMaps/Base (3.1.0)
+  - GoogleMaps/Maps (3.1.0):
+    - GoogleMaps/Base
+  - GooglePlacePicker (3.1.0):
+    - GoogleMaps (= 3.1.0)
+    - GooglePlaces (= 3.1.0)
+  - GooglePlaces (3.1.0):
+    - GoogleMaps/Base (= 3.1.0)
   - GoogleSignIn (6.0.1):
     - AppAuth (~> 1.4)
     - GTMAppAuth (~> 1.0)
@@ -179,6 +189,9 @@ DEPENDENCIES:
   - FittedSheets
   - FSCalendar
   - GCCountryPicker
+  - GoogleMaps
+  - GooglePlacePicker
+  - GooglePlaces
   - GoogleSignIn
   - IQKeyboardManagerSwift (~> 6.5.1)
   - Kingfisher (~> 7.0)
@@ -222,6 +235,9 @@ SPEC REPOS:
     - GCCountryPicker
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GoogleMaps
+    - GooglePlacePicker
+    - GooglePlaces
     - GoogleSignIn
     - GoogleUtilities
     - GTMAppAuth
@@ -272,6 +288,9 @@ SPEC CHECKSUMS:
   GCCountryPicker: b39549253d2daa5dee3414265263d19f7ec39446
   GoogleAppMeasurement: 8d10c1c470fcb0e5143ed74fddd164f0a0384800
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
+  GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
+  GooglePlacePicker: fa975116ac202ac29822c0a79758ea1c4db5a95f
+  GooglePlaces: e874db179f2675c4f3eeda0b686b540273a578b0
   GoogleSignIn: 1b0c4ec33a6fe282f4fa35d8ac64263230ddaf36
   GoogleUtilities: eea970f4a389963963bffe8d8fabe43540678b9c
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
@@ -300,6 +319,6 @@ SPEC CHECKSUMS:
   Toucan: 8f228fabb21521b9658692df9325fe76e71d74b2
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: c8e94aea2110b7033d6cf4f7ce3b2b10c207fba5
+PODFILE CHECKSUM: b32a7e67bde04074df491308bc5ff50ebb47cc58
 
 COCOAPODS: 1.10.2

@@ -274,7 +274,7 @@
 
 "messages" = "Messages";
 
-"enter_add_guest_limit" = "Add guest limit is 4 only";
+"enter_add_guest_limit" = "Add guest limit is 3 only";
 "enter_remove_guest_limit" = "Minimum 1 guest are necessary";
 
 // add payment

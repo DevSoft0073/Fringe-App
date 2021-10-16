@@ -11,6 +11,7 @@ import UIKit
 import Stripe
 import Firebase
 import Alamofire
+import GooglePlaces
 import CoreLocation
 import GoogleSignIn
 import FBSDKCoreKit
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     var window: UIWindow?
     var locationManager: CLLocationManager!
+    
+    let GOOGLE_API_KEY = "AIzaSyBHGK2nRDFJW6FfJWWe1-h-oCEb3dGgw1c"
+    
     static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
@@ -249,7 +253,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()
         paypalConfigure()
         registerRemoteNotificaton(application)
-        //RealmManager.shared.save(channelDownload: false)
+        GMSPlacesClient.provideAPIKey(GOOGLE_API_KEY)
         window?.tintColor = FGColor.appBlack
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil {
