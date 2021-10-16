@@ -22,7 +22,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     var btnTapped = true
     var isSelected = "0"
     var userId = String()
-    var items: [PlayerRequestModal] = []
+    var items: [HostlistingModal] = []
     var requestID = String()
     var isRequesting: Bool = false
     var lastRequestId: String = String()
@@ -192,7 +192,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             ]
         }
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.playersBooking, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[PlayerRequestModal]>.self, successBlock: { (response: ResponseModal<[PlayerRequestModal]>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.playersBooking, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[HostlistingModal]>.self, successBlock: { (response: ResponseModal<[HostlistingModal]>) in
             
             LoadingManager.shared.hideLoading()
             
@@ -208,9 +208,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
                     }
                     
                     self.items.append(contentsOf: response.data ?? [])
-                    self.items = self.items.removingDuplicates()
                     self.lastRequestId = response.data?.last?.id ?? String()
-                    
                     self.updateUI()
                     
                 }
@@ -343,16 +341,17 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
             if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HostPendingCell.self)) as? HostPendingCell{
                 if items.count > 0 {
                     let data = items[indexPath.row]
-                    cell.btnMoreInfo.tag = indexPath.row
+                    cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
+//                    cell.btnMoreInfo.tag = indexPath.row
                     cell.btnReject.tag = indexPath.row
                     cell.btnAccept.tag = indexPath.row
                     cell.setup(bookingData: data)
                     if needToshowInfoView {
                         cell.cancelView.isHidden = true
+                        cell.detailView.isHidden = true
                         cell.btnClose.isHidden = true
                         cell.btnMoreInfo.isHidden = false
                     }
-                    cell.btnMoreInfo.addTarget(self, action: #selector(showHideView), for: .touchUpInside)
                     cell.btnClose.addTarget(self, action: #selector(showViews), for: .touchUpInside)
                     cell.btnReject.addTarget(self, action: #selector(showpopUpView), for: .touchUpInside)
                     cell.btnAccept.addTarget(self, action: #selector(requestAccept), for: .touchUpInside)
@@ -392,9 +391,10 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? HostPendingCell{
             self.needToshowInfoView = false
             cell.cancelView.isHidden = false
+            cell.detailView.isHidden = false
             cell.btnClose.isHidden = false
             cell.btnMoreInfo.isHidden = true
-//            tblBooking.reloadData()
+            self.tblBooking.reloadData()
             btnTapped = false
         }
     }
@@ -403,6 +403,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? HostPendingCell{
             btnTapped = true
             cell.cancelView.isHidden = true
+            cell.detailView.isHidden = true
             cell.btnClose.isHidden = true
             cell.btnMoreInfo.isHidden = false
 //            tblBooking.reloadData()

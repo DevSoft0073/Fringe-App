@@ -53,6 +53,7 @@
 		1F9ACE0B26F6019800AB2E27 /* PlayerRequestModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */; };
 		1F9BFE7A271AAFE1001763C5 /* SearchLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BFE78271AAFE1001763C5 /* SearchLocationCell.swift */; };
 		1F9BFE7B271AAFE1001763C5 /* SearchLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9BFE79271AAFE1001763C5 /* SearchLocationCell.xib */; };
+		1F9BFE7E271AD04B001763C5 /* HostListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BFE7D271AD04B001763C5 /* HostListing.swift */; };
 		1FA73FC026FB0FC3008604AA /* PopUpViewForAddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */; };
 		1FA73FC226FB338F008604AA /* FbData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA73FC126FB338F008604AA /* FbData.swift */; };
 		1FC9A4552716CC8C000D4CE1 /* SeachLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC9A4542716CC8C000D4CE1 /* SeachLocationVC.swift */; };
@@ -266,6 +267,7 @@
 		1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRequestModal.swift; sourceTree = "<group>"; };
 		1F9BFE78271AAFE1001763C5 /* SearchLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationCell.swift; sourceTree = "<group>"; };
 		1F9BFE79271AAFE1001763C5 /* SearchLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationCell.xib; sourceTree = "<group>"; };
+		1F9BFE7D271AD04B001763C5 /* HostListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostListing.swift; sourceTree = "<group>"; };
 		1FA73FBF26FB0FC3008604AA /* PopUpViewForAddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewForAddAccountVC.swift; sourceTree = "<group>"; };
 		1FA73FC126FB338F008604AA /* FbData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FbData.swift; sourceTree = "<group>"; };
 		1FC9A4542716CC8C000D4CE1 /* SeachLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachLocationVC.swift; sourceTree = "<group>"; };
@@ -553,6 +555,14 @@
 				1F9ACE0A26F6019800AB2E27 /* PlayerRequestModal.swift */,
 			);
 			path = "Player Request";
+			sourceTree = "<group>";
+		};
+		1F9BFE7C271AD038001763C5 /* Host Listing */ = {
+			isa = PBXGroup;
+			children = (
+				1F9BFE7D271AD04B001763C5 /* HostListing.swift */,
+			);
+			path = "Host Listing";
 			sourceTree = "<group>";
 		};
 		1FA73FB526FAFAB8008604AA /* Facebook */ = {
@@ -913,6 +923,7 @@
 		7CA24C1826C23F8800437C8A /* Generals */ = {
 			isa = PBXGroup;
 			children = (
+				1F9BFE7C271AD038001763C5 /* Host Listing */,
 				1F86C0F727159A9200B9B844 /* Bagde Modal */,
 				1F436FC8270EE88700D839A6 /* Location Notification */,
 				1F034D092704588800053F20 /* Messages */,
@@ -1368,6 +1379,7 @@
 				7C8F1D5A26CE236B00135C41 /* ChangePasswordVC.swift in Sources */,
 				7C780F8226C3A6FF003F1F12 /* IrregularityContentView.swift in Sources */,
 				7CA24C3826C241B200437C8A /* PreferenceManager.swift in Sources */,
+				1F9BFE7E271AD04B001763C5 /* HostListing.swift in Sources */,
 				1F4CF3F926E9F2DC008B2965 /* HomeListingDetailsVC.swift in Sources */,
 				7C8F1D5E26CE328800135C41 /* AddPaymentTVCell.swift in Sources */,
 				1F9A468526FCA2FF007DF1A8 /* FeedbackDetailModal.swift in Sources */,
@@ -1550,7 +1562,7 @@
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = 5MB386JN9Q;
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1575,8 +1587,8 @@
 				CODE_SIGN_ENTITLEMENTS = Fringe/Fringe.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
-				DEVELOPMENT_TEAM = 5MB386JN9Q;
+				CURRENT_PROJECT_VERSION = 28;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Fringe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

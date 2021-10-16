@@ -9,6 +9,11 @@ import UIKit
 
 class HostPendingCell: UITableViewCell {
 
+    @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var lblMemebr: UILabel!
+    @IBOutlet weak var lblProf: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblMobile: UILabel!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var btnMoreInfo: FGActiveButton!
     @IBOutlet weak var cancelView: UIView!
@@ -25,11 +30,16 @@ class HostPendingCell: UITableViewCell {
     
     //MARK: Custome
     
-    func setup(bookingData : PlayerRequestModal) {
+    func setup(bookingData : HostlistingModal) {
         
-        nameLbl.text = bookingData.userName
-        golfClubNameLbl.text = bookingData.location
+        nameLbl.text = bookingData.userDetails?.userName
+        golfClubNameLbl.text = "Address: \(bookingData.location ?? String())"
+        lblEmail.text = "Email:\(bookingData.userDetails?.email ?? String())"
+        lblMobile.text = "Mobile No. : \(bookingData.userDetails?.mobileNo ?? String())"
+        lblMemebr.text = "Member Course: \(bookingData.userDetails?.memberCourse ?? String())"
+        lblProf.text = "Profession: \(bookingData.userDetails?.profession ?? String())"
         dateLbl.text = bookingData.date
+        
     }
     
     //------------------------------------------------------
