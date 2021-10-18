@@ -297,7 +297,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
           ]
         
         let parameter: [String: Any] = [
-            Request.Parameter.type: "2" ,
+            Request.Parameter.type: "1" ,
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: NotificationLocationModal.self, successBlock: { (response: NotificationLocationModal) in
@@ -346,7 +346,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
           ]
         
         let parameter: [String: Any] = [
-            Request.Parameter.type: "1" ,
+            Request.Parameter.type: "2" ,
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: NotificationLocationModal.self, successBlock: { (response: NotificationLocationModal) in
@@ -452,7 +452,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                 case .authorizedAlways, .authorizedWhenInUse:
                     
                     if sender.isOn {
-                        allowLocation = "0"
+                        allowLocation = "1"
                         performAllowLocation { (flag) in
                         }
                         
@@ -478,11 +478,11 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                     if(settings.authorizationStatus == .authorized) {
                         
                         if sender.isOn {
-                            self.allowPush = "0"
-                            self.performAllowLocation { (flag) in
+                            self.allowPush = "2"
+                            self.performAllowNotification { (flag) in
                             }
                         } else{
-                            self.allowPush = "1"
+                            self.allowPush = "2"
                             self.performAllowNotification { (flag) in
                             }
                         }

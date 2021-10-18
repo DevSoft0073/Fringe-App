@@ -47,7 +47,6 @@ class HostNotificationVC : BaseVC, UITableViewDelegate, UITableViewDataSource, K
         tblNotification.addPullLoadableView(loadMoreView, type: .refresh)
         
         let identifier = String(describing: HostNotificationCell.self)
-        
         let nibRequestCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblNotification.register(nibRequestCell, forCellReuseIdentifier: identifier)
         
@@ -85,14 +84,14 @@ class HostNotificationVC : BaseVC, UITableViewDelegate, UITableViewDataSource, K
                 
                 if self.lastRequestId.isEmpty {
                     self.items.removeAll()
-                    self.setup()
+//                    self.setup()
                     self.updateUI()
                 }
                 
                 self.items.append(contentsOf: response.data ?? [])
                 self.items = self.items.removingDuplicates()
                 self.lastRequestId = response.data?.first?.notificationID ?? String()
-                self.setup()
+//                self.setup()
                 self.updateUI()
                 completion?(true)
                 

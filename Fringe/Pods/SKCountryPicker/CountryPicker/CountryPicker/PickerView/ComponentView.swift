@@ -31,13 +31,13 @@ internal class ComponentView: UIView {
         // Country name label
         countryNameLabel.tag = 102
         countryNameLabel.text = "United State"
-        countryNameLabel.textColor = .black
+        countryNameLabel.textColor = .white
         countryNameLabel.font = UIFont.systemFont(ofSize: 14)
         self.addSubview(countryNameLabel)
         
         // Dialling code label
         diallingCodeLabel.tag = 103
-        diallingCodeLabel.textColor = .darkGray
+        diallingCodeLabel.textColor = .white
         diallingCodeLabel.font = UIFont.systemFont(ofSize: 11)
         self.addSubview(diallingCodeLabel)
         setUp()

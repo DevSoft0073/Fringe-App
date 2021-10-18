@@ -30,7 +30,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     var selectedDateDelegate : SendSelectedDate?
     var todayDate = Date()
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
-
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -96,42 +96,42 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
     func getPreviousMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
     }
-
+    
     func minimumDate(for calendar: FSCalendar) -> Date {
         return todayDate
     }
     
     func performGetRequestListing(completion:((_ flag: Bool) -> Void)?) {
-
+        
         let headers:HTTPHeaders = [
             "content-type": "application/json",
             "Token": PreferenceManager.shared.authToken ?? String(),
         ]
-
+        
         if sendingDate.isEmpty == true {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd-MM-yyyy"
             sendingDate = formatter.string(from: todayDate)
         }
-
+        
         let parameter: [String: Any] = [
             Request.Parameter.golfID: PreferenceManager.shared.golfId ?? String(),
             Request.Parameter.dates: sendingDate,
         ]
-
+        
         RequestManager.shared.requestPOST(requestMethod: Request.Method.checkRequest, parameter: parameter,headers: headers, showLoader: false, decodingType: ResponseModal<[CheckModal]>.self, successBlock: { (response: ResponseModal<[CheckModal]>) in
-
+            
             self.items.removeAll()
             
             LoadingManager.shared.hideLoading()
-
+            
             if response.code == Status.Code.success {
                 self.lblHeader.isHidden = false
                 self.items.append(contentsOf: response.data ?? [])
                 self.items = self.items.removingDuplicates()
                 completion?(true)
                 self.updateUI()
-
+                
             } else if response.code == Status.Code.blocked{
                 
                 self.lblHeader.isHidden = true
@@ -139,7 +139,18 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
                 self.updateUI()
                 self.noDataLbl.isHidden = false
                 self.noDataLbl.text = LocalizableConstants.Controller.Fringe.calendar.localized()
-                self.noDataLbl.textColor = FGColor.appGreen
+                
+                if response.message == "No slot avaliable for this date." {
+                    self.noDataLbl.textColor = .red
+                    self.noDataLbl.text = "Click on + button to unblock day or add Studio Availability."
+                    
+                }else {
+                    self.noDataLbl.textColor = FGColor.appGreen
+                    self.noDataLbl.text = "Click on + button to block day or add Studio Availability."
+
+                    
+                }
+                
                 completion?(true)
                 
             } else {
@@ -147,17 +158,18 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
                 self.lblHeader.isHidden = true
                 self.items.removeAll()
                 self.noDataLbl.isHidden = false
-                self.noDataLbl.textColor = FGColor.appBlack
+                self.noDataLbl.textColor = FGColor.appGreen
+                //                self.noDataLbl.textColor = FGColor.appBlack
                 self.updateUI()
                 completion?(true)
             }
-
+            
         }, failureBlock: { (error: ErrorModal) in
-
+            
             LoadingManager.shared.hideLoading()
-
+            
             delay {
-
+                
                 DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: LocalizableConstants.Error.anotherLogin) {
                     PreferenceManager.shared.userId = nil
                     PreferenceManager.shared.currentUser = nil
@@ -165,7 +177,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
                     NavigationManager.shared.setupSingIn()
                 }
             }
-
+            
         })
     }
     
@@ -177,7 +189,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.badgeCount, parameter: parameter, headers: [:], showLoader: false, decodingType: ResponseModal<BadgeModal>.self, successBlock: { (response: ResponseModal<BadgeModal>) in
-                                    
+            
             if response.code == Status.Code.success {
                 
                 if let stringUser = try? response.data?.jsonString() {
@@ -197,18 +209,18 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
             
             LoadingManager.shared.hideLoading()
             
-//            delay {
-//
-//                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
-//                    PreferenceManager.shared.userId = nil
-//                    PreferenceManager.shared.currentUser = nil
-//                    PreferenceManager.shared.authToken = nil
-//                    NavigationManager.shared.setupSingIn()
-//                }
-//            }
+            //            delay {
+            //
+            //                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: error.localizedDescription) {
+            //                    PreferenceManager.shared.userId = nil
+            //                    PreferenceManager.shared.currentUser = nil
+            //                    PreferenceManager.shared.authToken = nil
+            //                    NavigationManager.shared.setupSingIn()
+            //                }
+            //            }
         })
     }
-
+    
     
     //------------------------------------------------------
     
@@ -226,7 +238,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
                 }
             }
         }
-
+        
         self.present(controller, animated: true)
     }
     
@@ -292,7 +304,7 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
         
         setup()
         self.updateUI()
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

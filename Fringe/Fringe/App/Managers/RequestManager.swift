@@ -419,6 +419,7 @@ struct Status {
         static let sessionExpired = 500
         static let notRegistered = 107
         static let alreadyAdded = 420
+        static let bookedSlot = 304
         static let stripeIssue = 507
         static let alreadyAddedCard = 518
         static let nofoundDat = 503

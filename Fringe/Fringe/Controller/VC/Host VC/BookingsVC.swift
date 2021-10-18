@@ -348,7 +348,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
                     cell.setup(bookingData: data)
                     if needToshowInfoView {
                         cell.cancelView.isHidden = true
-                        cell.detailView.isHidden = true
+//                        cell.detailView.isHidden = true
                         cell.btnClose.isHidden = true
                         cell.btnMoreInfo.isHidden = false
                     }
@@ -391,10 +391,10 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? HostPendingCell{
             self.needToshowInfoView = false
             cell.cancelView.isHidden = false
-            cell.detailView.isHidden = false
+//            cell.detailView.isHidden = false
             cell.btnClose.isHidden = false
             cell.btnMoreInfo.isHidden = true
-            self.tblBooking.reloadData()
+//            self.tblBooking.reloadData()
             btnTapped = false
         }
     }
@@ -403,7 +403,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         if let cell = sender.superview?.superview?.superview?.superview?.superview as? HostPendingCell{
             btnTapped = true
             cell.cancelView.isHidden = true
-            cell.detailView.isHidden = true
+//            cell.detailView.isHidden = true
             cell.btnClose.isHidden = true
             cell.btnMoreInfo.isHidden = false
 //            tblBooking.reloadData()

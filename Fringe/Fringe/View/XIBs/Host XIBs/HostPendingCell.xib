@@ -27,10 +27,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-A1-ySr">
-                        <rect key="frame" x="16" y="10" width="414" height="114.5"/>
+                        <rect key="frame" x="16" y="10" width="414" height="234"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-vE-whE">
-                                <rect key="frame" x="16" y="10" width="382" height="94.5"/>
+                                <rect key="frame" x="16" y="10" width="382" height="214"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7N-gl-Odh">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="35"/>
@@ -127,7 +127,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamaroneck, Ontarioo,Canada.." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rb-Dy-UtE" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="80" width="382" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="80" width="382" height="35"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="akM-vK-1TY"/>
@@ -136,11 +136,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDk-Yz-bbJ">
-                                        <rect key="frame" x="0.0" y="94.5" width="382" height="140"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDk-Yz-bbJ">
+                                        <rect key="frame" x="0.0" y="115" width="382" height="99"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="01j-l0-nLu">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="140"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="99"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile No:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1X-mh-kdI">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
@@ -164,7 +164,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Course" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig6-Gq-XU1">
-                                                        <rect key="frame" x="0.0" y="99" width="382" height="41"/>
+                                                        <rect key="frame" x="0.0" y="99" width="382" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -175,14 +175,14 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="01j-l0-nLu" firstAttribute="top" secondItem="TDk-Yz-bbJ" secondAttribute="top" id="5fT-2g-eC9"/>
-                                            <constraint firstAttribute="height" constant="140" id="Htr-uY-ray"/>
+                                            <constraint firstAttribute="height" constant="140" id="8we-5z-K6h"/>
                                             <constraint firstAttribute="trailing" secondItem="01j-l0-nLu" secondAttribute="trailing" id="jqL-Yj-1zg"/>
                                             <constraint firstAttribute="bottom" secondItem="01j-l0-nLu" secondAttribute="bottom" id="n5q-jA-HWA"/>
                                             <constraint firstItem="01j-l0-nLu" firstAttribute="leading" secondItem="TDk-Yz-bbJ" secondAttribute="leading" id="zXp-QQ-21W"/>
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udr-Vu-Bop">
-                                        <rect key="frame" x="0.0" y="239.5" width="382" height="40"/>
+                                        <rect key="frame" x="0.0" y="219" width="382" height="40"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="ntu-iZ-6Pp">
                                                 <rect key="frame" x="0.0" y="5" width="244" height="30"/>

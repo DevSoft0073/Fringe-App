@@ -7671,6 +7671,9 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETS-fj-nE5">
                                         <rect key="frame" x="80" y="30.5" width="225" height="45"/>
+                                        <connections>
+                                            <action selector="btnLocationSearch:" destination="CGk-GM-ow3" eventType="touchUpInside" id="qcZ-lg-UNJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YlE-uP-QLl">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="90"/>

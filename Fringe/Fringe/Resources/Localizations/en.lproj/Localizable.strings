@@ -303,7 +303,7 @@
 "pending" = "No pending data";
 "no_awating_data_found" = "No awating data";
 "confirmed" = "No confirmed data";
-"no_data_available_for_this_date" = "Click on + button to block day or add Studio Availability.";
+"no_data_available_for_this_date" = "Click on + button to block/unblock day or add Studio Availability.";
 "seleceted_dates_are_already_blocked" = "Selected dates are already blocked";
 "no_data_found" = "No data found";
 "signup_as_host" = "Sign up as host";
@@ -312,6 +312,6 @@
 "reject_resn" = "Please add reject reason.";
 "nodata" = "No data found";
 "no_fav_data" = "No favorite club found.";
-"no_data_available_for_this_date" = "Click on + button to block day or add golf Availability.";
+"no_data_available_for_this_date" = "Click on + button to block/unblock day or add golf Availability.";
 
 

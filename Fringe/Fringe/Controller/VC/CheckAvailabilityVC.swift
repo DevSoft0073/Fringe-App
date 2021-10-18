@@ -160,6 +160,16 @@ class CheckAvailabilityVC : BaseVC, UITableViewDataSource, UITableViewDelegate, 
                 
                 completion?(true)
                 
+            } else if response.code == Status.Code.bookedSlot{
+                
+                delay {
+                    
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String())
+                    
+                }
+                
+                completion?(true)
+                
             } else {
                 
                 completion?(true)

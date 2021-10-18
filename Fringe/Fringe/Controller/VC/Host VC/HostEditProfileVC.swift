@@ -268,6 +268,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
                 if let stringUser = try? response.data?.jsonString() {
                     
                     PreferenceManager.shared.currentUserHost = stringUser
+                    self.setupData()
                 }
                                 
             } else {

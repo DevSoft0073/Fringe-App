@@ -266,9 +266,15 @@ class HomeVC : BaseVC, FGLocationManagerDelegate , CLLocationManagerDelegate{
     }
     
     @IBAction func btnSearch(_ sender: Any) {
-        let controller = NavigationManager.shared.seachLocationVC
+        let controller = NavigationManager.shared.clubSearchVC
         push(controller: controller)
     }
+    
+    @IBAction func btnLocationSearch(_ sender: Any) {
+        let controller = NavigationManager.shared.locationSearchVC
+        push(controller: controller)
+    }
+    
     
     //------------------------------------------------------
     

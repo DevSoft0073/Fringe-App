@@ -108,6 +108,7 @@ open class CountryPickerController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.barStyle = .default
         searchController.searchBar.sizeToFit()
+        searchController.searchBar.backgroundColor = .white
         searchController.searchBar.delegate = self
         
         if #available(iOS 11.0, *) {
