@@ -12,6 +12,7 @@ class HostConfirmedCell: UITableViewCell {
     @IBOutlet weak var golfClubNameLbl: FGMediumLabel!
     @IBOutlet weak var dateLbl: FGRegularLabel!
     @IBOutlet weak var nameLbl: FGSemiboldLabel!
+    @IBOutlet weak var chatBtn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

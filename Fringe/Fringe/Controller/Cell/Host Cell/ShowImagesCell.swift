@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import SDWebImage
 
-class ShowImagesCell: UITableViewCell ,UICollectionViewDelegate , UICollectionViewDataSource{
+class ShowImagesCell: UITableViewCell ,UICollectionViewDelegate , UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     
@@ -40,7 +40,9 @@ class ShowImagesCell: UITableViewCell ,UICollectionViewDelegate , UICollectionVi
         cell.setup(imageUrl: image)
         return cell
     }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: imagesCollectionView.frame.size.height, height: imagesCollectionView.frame.size.height)
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         imagesCollectionView.delegate = self

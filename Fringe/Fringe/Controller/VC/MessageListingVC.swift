@@ -28,7 +28,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
     var senderLastName = String()
     var otherUserName = String()
     var roomID = String()
-    var items =  [AddEditMessageModal]()
+    var items =  [GetAllMessages]()
     
     //------------------------------------------------------
     
@@ -49,6 +49,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
     //MARK: Custome
     
     func configureUI(){
+        
         txtSendMsg.leftSpace()
         
         if senderFirstName == "" {
@@ -150,7 +151,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
     func newMessageSocketOn(){
         SocketManger.shared.handleNewMessage { (message) in
             print(message)
-            self.items.append(AddEditMessageModal(id: message["id"] as? String, userID:  message["user_id"] as? String, message:  message["message"] as? String, roomID:  message["room_id"] as? String, seen:  message["seen"] as? String, creationAt:  message["creation_at"] as? String, name:  message["name"] as? String, image:  message["image"] as? String))
+            self.items.append(GetAllMessages(id: message["id"] as? String, userID:  message["user_id"] as? String, message:  message["message"] as? String, roomID:  message["room_id"] as? String, seen:  message["seen"] as? String, creationAt:  message["creation_at"] as? String, name:  message["name"] as? String, image:  message["image"] as? String))
             self.tblMessage.reloadData()
             self.scrollToEnd()
         }
@@ -183,7 +184,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
             Request.Parameter.lastID: "",
         ]
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.getAllMessgaes, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[AddEditMessageModal]>.self) { (response: ResponseModal<[AddEditMessageModal]>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.getAllChatMessages, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[GetAllMessages]>.self) { (response: ResponseModal<[GetAllMessages]>) in
             
             self.items.append(contentsOf: response.data ?? [])
             self.items = self.items.removingDuplicates()
@@ -218,7 +219,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
             
             SocketManger.shared.socket.emit("newMessage",self.roomID,["id":response.data?.id,"user_id":response.data?.userID,"message":response.data?.message,"room_id":response.data?.roomID,"seen":response.data?.seen,"creation_at":response.data?.creationAt,"name":response.data?.name,"image":response.data?.image])
             
-            self.items.append(AddEditMessageModal(id: response.data?.id, userID: response.data?.userID, message: response.data?.message, roomID: response.data?.roomID, seen: response.data?.seen, creationAt: response.data?.creationAt, name: response.data?.name, image: response.data?.image))
+            self.items.append(GetAllMessages(id: response.data?.id, userID: response.data?.userID, message: response.data?.message, roomID: response.data?.roomID, seen: response.data?.seen, creationAt: response.data?.creationAt, name: response.data?.name, image: response.data?.image))
             
             self.tblMessage.reloadData()
             self.scrollToEnd()
@@ -230,6 +231,36 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
             completion?(nil, errorModal)
         }
     }
+    
+    func performUpdateMessageSeen(completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.roomID: roomID,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.updateCount, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+                                    
+            if response.code == Status.Code.success {
+                
+            } else {
+                
+                completion?(true)
+            }
+            
+            LoadingManager.shared.hideLoading()
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+        })
+    }
+    
     
     //------------------------------------------------------
     
@@ -252,7 +283,7 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
             let data = items[indexPath.row]
             cell.setup(chatData: data)
             cell.imgProfile.setRounded()
-            cell.imgProfile.kf.setImage(with: URL(string: ownImage), placeholder:UIImage(named: FGImageName.iconPlaceHolder))
+            cell.imgProfile.kf.setImage(with: URL(string: currentUser?.image ?? ""), placeholder:UIImage(named: FGImageName.iconPlaceHolder))
             return cell
             
         }else{
@@ -294,14 +325,26 @@ class MessageListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIT
             
             if PreferenceManager.shared.curretMode == "1" {
                 
+                self.performUpdateMessageSeen { (flag : Bool) in
+                    
+                }
+                
                 NavigationManager.shared.setupLandingOnHome()
                 
             }else{
+                
+                self.performUpdateMessageSeen { (flag : Bool) in
+                    
+                }
                 
                 NavigationManager.shared.setupLandingOnHomeForHost()
             }
             
         } else {
+            
+            self.performUpdateMessageSeen { (flag : Bool) in
+                
+            }
             
             self.pop()
 

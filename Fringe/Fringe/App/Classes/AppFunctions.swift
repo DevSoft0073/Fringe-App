@@ -332,3 +332,13 @@ extension UIDevice {
         return UIScreen.main.nativeBounds.height >= 2436
     }
 }
+
+extension UILabel {
+    
+    func setRounded() {
+        let radius = self.frame.width / 2
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true
+        self.clipsToBounds = true
+    }
+}

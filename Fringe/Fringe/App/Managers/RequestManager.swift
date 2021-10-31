@@ -108,6 +108,10 @@ struct Request {
         static let message = "message"
         static let isHost = "is_host"
        
+        //Near by golfs
+        static let range = "range"
+        
+        static let hostID = "host_id"
     }
     
     struct Method {
@@ -149,6 +153,15 @@ struct Request {
         static let getAllMessgaes = "/getAllMessage.php"
         static let badgeCount = "/Badgescount.php"
         static let logout = "/LogOut.php"
+        static let getNearByGolfs = "/GetNeargolf_v2.php"
+        static let getAllChatUsers = "/getAllChatUser.php"
+        
+        
+        static let createRoomForChat = "/createRoomv2.php"
+        static let getAllChats = "/getAllChatUser.php"
+        static let getAllChatMessages = "/getAllChatMessages.php"
+        static let messageUnreadCount = "/getUnreadTotalMessageCount.php"
+        static let updateCount = "/updateMessageSeen.php"
     }
     
 }

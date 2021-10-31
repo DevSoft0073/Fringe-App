@@ -25,8 +25,8 @@ class AddPaymentMethodVC : BaseVC , UITableViewDataSource , UITableViewDelegate 
     var itemNormal: [ [String:String] ] {
         return [
             ["name": AddPaymentItems.creditCard, "image": AddPaymentItems.creditCardIcon],
-            ["name": AddPaymentItems.payPal, "image": AddPaymentItems.payPalIcon],
-            ["name": AddPaymentItems.applePay, "image": AddPaymentItems.applePayIcon],
+//            ["name": AddPaymentItems.payPal, "image": AddPaymentItems.payPalIcon],
+//            ["name": AddPaymentItems.applePay, "image": AddPaymentItems.applePayIcon],
             
         ]
     }

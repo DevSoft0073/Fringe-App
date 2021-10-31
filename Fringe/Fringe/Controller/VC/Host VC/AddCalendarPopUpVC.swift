@@ -170,6 +170,7 @@ class AddCalendarPopUpVC : BaseVC {
             blockDay.setImage(UIImage(named: FGImageName.iconRadio), for: .normal)
             addSlot.setImage(UIImage(named: FGImageName.iconRadioUnselect), for: .normal)
         }
+        print("block parameters---->",parameter)
     }
     
     @IBAction func btnSave(_ sender: Any) {

@@ -141,6 +141,10 @@ class HostCalendarVC : BaseVC, UITableViewDataSource, UITableViewDelegate, FSCal
                 self.noDataLbl.text = LocalizableConstants.Controller.Fringe.calendar.localized()
                 
                 if response.message == "No slot avaliable for this date." {
+                    self.noDataLbl.textColor = FGColor.appGreen
+                    self.noDataLbl.text = "Click on + button to block day or add Studio Availability."
+                    
+                }else if response.message == "This date is blocked." {
                     self.noDataLbl.textColor = .red
                     self.noDataLbl.text = "Click on + button to unblock day or add Studio Availability."
                     

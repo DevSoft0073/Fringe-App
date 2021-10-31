@@ -41,9 +41,12 @@ class HostAddPaymentMethodVC : BaseVC {
         if currentUserHost?.accountNumber == " " {
             noDataLbl.isHidden = false
             paymentView.isHidden = true
+            imgEdit.isHidden = false
+            btnEdit.isUserInteractionEnabled = true
             
         } else {
-            
+            imgEdit.isHidden = true
+            btnEdit.isUserInteractionEnabled = false
             noDataLbl.isHidden = true
             paymentView.isHidden = false
             lblSSN.text = currentUserHost?.ssnLast4

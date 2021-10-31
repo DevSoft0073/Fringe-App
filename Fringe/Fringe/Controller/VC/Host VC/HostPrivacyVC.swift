@@ -34,7 +34,7 @@ class HostPrivacyVC : BaseVC, WKNavigationDelegate {
         privacyWebView.frame = view.bounds
         privacyWebView.navigationDelegate = self
         
-        let url = URL(string: "https://www.dharmani.com/fringe/webservices/Privacy.html")!
+        let url = URL(string: PreferenceManager.shared.userBaseURL + "/Privacy.html")!
         let urlRequest = URLRequest(url: url)
         
         privacyWebView.load(urlRequest)

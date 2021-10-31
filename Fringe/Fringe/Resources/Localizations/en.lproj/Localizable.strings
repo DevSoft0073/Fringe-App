@@ -45,7 +45,7 @@
 "pending_verification" = "Your golf course account verification under process, please wait until complete verification from admin side.";
 "maximumLimit" = "You can add maximum of 10 images for studio.";
 "anotherLogin" = "Your account has been accessed by other user. Login again.";
-"add_limit" = "You have only add 5 images for golf course.";
+"add_limit" = "You can add maximum of  5 images for golf course.";
 
 //dilogue buttons
 "alert_button_ok" = "Ok";

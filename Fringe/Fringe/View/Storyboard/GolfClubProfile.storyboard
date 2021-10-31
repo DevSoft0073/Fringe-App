@@ -1043,7 +1043,7 @@
                             <constraint firstItem="peh-CO-LjG" firstAttribute="top" secondItem="rXg-z5-g7h" secondAttribute="bottom" constant="7.5" id="TkH-lU-4lB"/>
                             <constraint firstItem="rXg-z5-g7h" firstAttribute="height" secondItem="LRw-WV-fOr" secondAttribute="height" multiplier="0.04" id="Wou-hD-i1o"/>
                             <constraint firstItem="rXg-z5-g7h" firstAttribute="centerX" secondItem="bQg-JR-olY" secondAttribute="centerX" id="Xuf-Bi-l32"/>
-                            <constraint firstAttribute="bottom" secondItem="BO2-zl-Kfu" secondAttribute="bottom" id="YYU-5H-jDx"/>
+                            <constraint firstItem="bQg-JR-olY" firstAttribute="bottom" secondItem="BO2-zl-Kfu" secondAttribute="bottom" id="YYU-5H-jDx"/>
                             <constraint firstItem="rXg-z5-g7h" firstAttribute="top" secondItem="LRw-WV-fOr" secondAttribute="top" id="cJA-V1-djB"/>
                             <constraint firstItem="peh-CO-LjG" firstAttribute="leading" secondItem="bQg-JR-olY" secondAttribute="leading" constant="16" id="nNO-pd-VLT"/>
                             <constraint firstItem="bQg-JR-olY" firstAttribute="trailing" secondItem="BO2-zl-Kfu" secondAttribute="trailing" id="s02-gC-b4N"/>
@@ -2172,8 +2172,8 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_icon" translatesAutoresizingMaskIntoConstraints="NO" id="gft-UL-yf0">
                                                 <rect key="frame" x="335" y="7.5" width="22.5" height="22.5"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golfclub Dates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQl-Lu-pdJ" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="295.5" width="147.5" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golfclub Sessions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQl-Lu-pdJ" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="295.5" width="177" height="28"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

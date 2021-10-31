@@ -14,28 +14,8 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tblInbox: UITableView!
     @IBOutlet weak var noDataLbl: FGSemiboldLabel!
     
-    var messagePlayerGroups: [PlayerMessgaeModal] = []
-//    {
-//        didSet {
-//            messagePlayerGroups.forEach { (arg0: PlayerMessgaeModal) in
-//                if messageGroups.contains(where: { (arg1: MessageGroupModal) in
-//                    return arg0.lastid == arg1.lastid
-//                }) == false {
-//                    messageGroups.append(arg0.toMessageGroupModal())
-//                } else {
-//                    if let index = messageGroups.firstIndex(where: { (group: MessageGroupModal) in
-//                        return arg0.lastid == group.lastid
-//                    }) {
-//                        messageGroups[index] = arg0.toMessageGroupModal()
-//                    }
-//                }
-//                messageGroups.sort { message1, message2 in
-//                    return message1.unixDate > message2.unixDate
-//                }
-//            }
-//        }
-//    }
-    
+    var messageCount : MessageUnreadCount?
+    var messagePlayerGroups: [GetAllChatUsers] = []
     var messageGroups: [MessageGroupModal] = []
     
     //------------------------------------------------------
@@ -84,7 +64,7 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
             Request.Parameter.isHost: PreferenceManager.shared.isHost ?? String(),
         ]
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.chatListing, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[PlayerMessgaeModal]>.self) { (response: ResponseModal<[PlayerMessgaeModal]>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.getAllChats, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[GetAllChatUsers]>.self) { (response: ResponseModal<[GetAllChatUsers]>) in
             
             self.messagePlayerGroups.removeAll()
             self.messagePlayerGroups.append(contentsOf: response.data ?? [])
@@ -138,6 +118,31 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         })
     }
 
+    func performMessageUnreadCount(completion:((_ flag: Bool) -> Void)?) {
+        
+        let headers:HTTPHeaders = [
+            "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.messageUnreadCount, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<MessageUnreadCount>.self, successBlock: { (response: ResponseModal<MessageUnreadCount>) in
+                                    
+            if response.code == Status.Code.success {
+                self.messageCount = response.data
+            } else {
+                
+                completion?(true)
+            }
+            
+            LoadingManager.shared.hideLoading()
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+        })
+    }
+
     
     //------------------------------------------------------
     
@@ -154,6 +159,8 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             let data = messagePlayerGroups[indexPath.row]
             cell.setup(messageGroup: data)
+            cell.mainSecondImg.kf.setImage(with: URL(string: currentUser?.image ?? ""), placeholder:UIImage(named: FGImageName.iconPlaceHolder))
+            
             return cell
         }
         return UITableViewCell()
@@ -170,9 +177,9 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         PreferenceManager.shared.comesFromMessagePush = false
         let controller = NavigationManager.shared.messageListingVC
         controller.roomID = messageGroup.roomID ?? String()
-        controller.senderFirstName = messageGroup.firstName ?? String()
-        controller.senderLastName = messageGroup.lastName ?? String()
-        controller.otherUserImg = messageGroup.otheruserImage ?? String()
+//        controller.senderFirstName = messageGroup.firstName ?? String()
+        controller.otherUserName = messageGroup.name ?? String()
+        controller.otherUserImg = messageGroup.image ?? String()
         controller.ownImage = messageGroup.image ?? String()
         push(controller: controller)
     }
@@ -202,6 +209,10 @@ class InboxVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         }
         if isShowLoader {
             LoadingManager.shared.showLoading()
+        }
+        
+        self.performMessageUnreadCount { (flag : Bool) in
+            
         }
         
         self.performGetBadgeCount { (flag : Bool) in

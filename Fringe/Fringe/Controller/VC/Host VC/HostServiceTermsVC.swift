@@ -35,7 +35,7 @@ class HostServiceTermsVC : BaseVC , WKNavigationDelegate{
         serviceWebView.frame = view.bounds
         serviceWebView.navigationDelegate = self
         
-        let url = URL(string: "https://www.dharmani.com/fringe/webservices/terms&conditions.html")!
+        let url = URL(string: PreferenceManager.shared.userBaseURL + "/terms&conditions.html")!
         let urlRequest = URLRequest(url: url)
         
         serviceWebView.load(urlRequest)

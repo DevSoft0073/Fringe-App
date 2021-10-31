@@ -147,6 +147,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         //Show images
         
         DispatchQueue.global(qos: .background).async {
+            print(self.currentUserHost?.golfImages)
             for i in self.currentUserHost?.golfImages ?? [] {
                 let image = i
                 var imgArray = [String]()
@@ -448,7 +449,7 @@ class HostEditProfileVC : BaseVC, UITextFieldDelegate, UITextViewDelegate,  Imag
         NavigationManager.shared.isEnabledBottomMenuForHost = false
         performGetUserProfile()
         setup()
-        setupData()
+      //  setupData()
         
     }
     

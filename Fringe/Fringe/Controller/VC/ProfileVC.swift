@@ -144,11 +144,9 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         RequestManager.shared.requestPOST(requestMethod: Request.Method.profile, parameter: [:], headers: headers, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
             
             LoadingManager.shared.hideLoading()
-            
             if response.code == Status.Code.success {
-                
+                print("pro--->",response)
                 if let stringUser = try? response.data?.jsonString() {
-                    
                     PreferenceManager.shared.currentUser = stringUser
                     self.setup()
                     self.updateUI()
@@ -289,7 +287,7 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
         })
     }
     
-    private func performAllowLocation(completion:((_ flag: Bool) -> Void)?) {
+    private func performAllowLocation(allow: Bool,completion:((_ flag: Bool) -> Void)?) {
         
         let headers:HTTPHeaders = [
            "content-type": "application/json",
@@ -408,16 +406,16 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                 if name == ProfileItems.allowLocation {
                     if currentUser?.allowLocation == "0"
                     {
-                        cell.switchPermission.isOn = true
-                    }else{
                         cell.switchPermission.isOn = false
+                    }else{
+                        cell.switchPermission.isOn = true
                     }
                 }else if name == ProfileItems.allowNotification {
                     if currentUser?.allowPush == "0"
                     {
-                        cell.switchPermission.isOn = true
-                    }else{
                         cell.switchPermission.isOn = false
+                    }else{
+                        cell.switchPermission.isOn = true
                     }
                 }
                 cell.switchPermission.addTarget(self, action: #selector(switchBtnPressed(sender:)), for: .valueChanged)
@@ -453,12 +451,12 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                     
                     if sender.isOn {
                         allowLocation = "1"
-                        performAllowLocation { (flag) in
+                        performAllowLocation(allow: true) { (flag) in
                         }
                         
                     } else{
                         allowLocation = "1"
-                        performAllowLocation { (flag) in
+                        performAllowLocation(allow: false) { (flag) in
                         }
                     }
                 @unknown default:
@@ -591,6 +589,9 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                                 PreferenceManager.shared.curretMode = "1"
                                 PreferenceManager.shared.authToken = nil
                                 NavigationManager.shared.setupSingIn()
+                                PreferenceManager.shared.selectedLat = nil
+                                PreferenceManager.shared.selectedLong = nil
+                                PreferenceManager.shared.selectedCity = nil
                             }
                         }
                     }
@@ -653,6 +654,9 @@ class ProfileVC : BaseVC , UITableViewDataSource , UITableViewDelegate {
                             if flag {
                                 PreferenceManager.shared.currentUser = nil
                                 PreferenceManager.shared.loggedUser = false
+                                PreferenceManager.shared.selectedLat = nil
+                                PreferenceManager.shared.selectedLong = nil
+                                PreferenceManager.shared.selectedCity = nil
                                 NavigationManager.shared.setupSingIn()
                             }
                         }

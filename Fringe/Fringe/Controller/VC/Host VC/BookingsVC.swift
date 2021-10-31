@@ -22,6 +22,7 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     var btnTapped = true
     var isSelected = "0"
     var userId = String()
+    var chatRoomData : CreateRoomModal?
     var items: [HostlistingModal] = []
     var requestID = String()
     var isRequesting: Bool = false
@@ -327,6 +328,57 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
         })
     }
 
+    func performCreateRoom(userID : String , completion:((_ flag: Bool) -> Void)?) {
+
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+
+        let parameter: [String: Any] = [
+            Request.Parameter.hostID: userID ?? String(),
+        ]
+
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.createRoomForChat, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<CreateRoomModal>.self, successBlock: { (response: ResponseModal<CreateRoomModal>) in
+            print(response)
+
+            LoadingManager.shared.hideLoading()
+
+            if response.code == Status.Code.success {
+
+                self.chatRoomData = response.data
+                
+                delay {
+                    let controller = NavigationManager.shared.messageListingVC
+                    controller.roomID = self.chatRoomData?.roomID ?? String()
+                    controller.otherUserName = self.chatRoomData?.name ?? String()
+                    controller.otherUserImg = self.chatRoomData?.image ?? String()
+                    self.push(controller: controller)
+                }
+                
+            } else {
+
+                delay {
+
+                }
+            }
+
+        }, failureBlock: { (error: ErrorModal) in
+
+            LoadingManager.shared.hideLoading()
+
+            delay {
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: LocalizableConstants.Error.anotherLogin) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
+            }
+        })
+    }
+
     
     //------------------------------------------------------
     
@@ -376,6 +428,8 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
                 if items.count > 0 {
                     let data = items[indexPath.row]
                     cell.setup(bookingData: data)
+                    cell.chatBtn.tag = indexPath.row
+                    cell.chatBtn.addTarget(self, action: #selector(chatAction), for: .touchUpInside)
                     return cell
                 }
             }
@@ -449,6 +503,13 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
                     }
                 }
             }
+        }
+    }
+    
+    @objc func chatAction(sender : UIButton) {
+        let data = items[sender.tag]
+        performCreateRoom(userID: data.userDetails?.userID ?? String()) { (flag : Bool) in
+            
         }
     }
     
@@ -527,6 +588,8 @@ class BookingsVC : BaseVC, UITableViewDataSource, UITableViewDelegate, SegmentVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        NavigationManager.shared.isEnabledBottomMenuForHost = true
+
         if currentUserHost?.stripeAccountStatus == "0" {
             let controller = NavigationManager.shared.popUpViewForAddAccountVC
             controller.modalPresentationStyle = .overFullScreen

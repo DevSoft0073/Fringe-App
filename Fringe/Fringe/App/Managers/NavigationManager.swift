@@ -164,7 +164,7 @@ class NavigationManager: NSObject, UITabBarControllerDelegate {
             if PreferenceManager.shared.badgeModalData?.getChatListingCount == "0"{
                 
             } else{
-                v4.tabBarItem.badgeValue = PreferenceManager.shared.badgeModalData?.getNotificationCount
+                v4.tabBarItem.badgeValue = PreferenceManager.shared.badgeModalData?.getChatListingCount
             }
         }
 

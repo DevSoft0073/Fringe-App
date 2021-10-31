@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,37 +50,50 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ESy-Rk-WQ6">
-                        <rect key="frame" x="91.5" y="22" width="208.5" height="39.5"/>
+                        <rect key="frame" x="91.5" y="22" width="183" height="39.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winged Golfclub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWz-BF-kk7" customClass="FGSemiboldLabel" customModule="Fringe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="208.5" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="183" height="21"/>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="15"/>
                                 <color key="textColor" red="0.01176237036" green="0.01176620089" blue="0.011761533100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamaroneck, Ontario, Canada..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4p-t1-hHE" customClass="FGRegularLabel" customModule="Fringe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="21" width="208.5" height="18.5"/>
+                                <rect key="frame" x="0.0" y="21" width="183" height="18.5"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                 <color key="textColor" red="0.4038835764" green="0.40394583340000001" blue="0.40386995669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:35 Am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IT-5P-IZJ" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:35 Am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IT-5P-IZJ" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
                         <rect key="frame" x="284.5" y="24" width="50.5" height="17"/>
                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                         <color key="textColor" red="0.60386711360000001" green="0.603956461" blue="0.6038475633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLd-gW-chh" customClass="FGMediumLabel" customModule="Fringe" customModuleProvider="target">
+                        <rect key="frame" x="315" y="46" width="20" height="20"/>
+                        <color key="backgroundColor" name="appButton"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="DLL-h5-B2c"/>
+                            <constraint firstAttribute="height" constant="20" id="dfr-x8-09G"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                        <color key="textColor" name="appWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="6IT-5P-IZJ" secondAttribute="trailing" constant="10" id="54K-76-td0"/>
+                    <constraint firstItem="6IT-5P-IZJ" firstAttribute="leading" secondItem="ESy-Rk-WQ6" secondAttribute="trailing" constant="10" id="6Md-S6-Ox3"/>
                     <constraint firstItem="sfC-he-NMz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="CtE-vW-u1A"/>
                     <constraint firstItem="sfC-he-NMz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-8" id="FWY-u3-xHG"/>
-                    <constraint firstAttribute="trailing" secondItem="ESy-Rk-WQ6" secondAttribute="trailing" constant="45" id="Id5-fN-Xp6"/>
                     <constraint firstItem="sfC-he-NMz" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.11" id="Ru2-ij-I8C"/>
                     <constraint firstItem="ESy-Rk-WQ6" firstAttribute="centerY" secondItem="iOp-Um-3Tc" secondAttribute="centerY" constant="-6" id="c72-zm-r7J"/>
                     <constraint firstItem="iOp-Um-3Tc" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.12" id="dje-MG-tX9"/>
+                    <constraint firstItem="ZLd-gW-chh" firstAttribute="trailing" secondItem="6IT-5P-IZJ" secondAttribute="trailing" id="eOj-Ck-jtk"/>
+                    <constraint firstItem="ZLd-gW-chh" firstAttribute="top" secondItem="6IT-5P-IZJ" secondAttribute="bottom" constant="5" id="ito-Jt-6la"/>
                     <constraint firstItem="6IT-5P-IZJ" firstAttribute="centerY" secondItem="TWz-BF-kk7" secondAttribute="centerY" id="nxc-1t-zNn"/>
                     <constraint firstItem="ESy-Rk-WQ6" firstAttribute="leading" secondItem="iOp-Um-3Tc" secondAttribute="trailing" constant="20" id="uWf-Ih-d4F"/>
                     <constraint firstItem="iOp-Um-3Tc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="vaX-fg-OAj"/>
@@ -89,6 +103,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lblAddress" destination="y4p-t1-hHE" id="hC8-65-8mw"/>
+                <outlet property="lblCount" destination="ZLd-gW-chh" id="M7g-XD-zmq"/>
                 <outlet property="lblDate" destination="6IT-5P-IZJ" id="rnb-27-FMn"/>
                 <outlet property="lblName" destination="TWz-BF-kk7" id="7Ja-cM-Kz8"/>
                 <outlet property="mainFirstImg" destination="sfC-he-NMz" id="xsM-PJ-mVY"/>
@@ -100,5 +115,11 @@
     <resources>
         <image name="golf_img" width="6000" height="4000"/>
         <image name="pf" width="371" height="381"/>
+        <namedColor name="appButton">
+            <color red="0.13099999725818634" green="0.30700001120567322" blue="0.15399999916553497" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appWhite">
+            <color red="0.99599999189376831" green="0.99599999189376831" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

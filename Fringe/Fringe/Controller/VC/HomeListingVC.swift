@@ -75,13 +75,16 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
         ]
         
         let parameter: [String: Any] = [
-            Request.Parameter.lastID: lastRequestId,
-            Request.Parameter.lats : PreferenceManager.shared.lat ?? String(),
-            Request.Parameter.longs: PreferenceManager.shared.long ?? String(),
-            Request.Parameter.search: "",
+//            Request.Parameter.lastID: lastRequestId,
+            Request.Parameter.lats : PreferenceManager.shared.selectedCity == nil ? (PreferenceManager.shared.lat ?? 0.0) : (PreferenceManager.shared.selectedLat ?? 0.0),
+            Request.Parameter.longs: PreferenceManager.shared.selectedCity == nil ? (PreferenceManager.shared.long ?? 0.0) : (PreferenceManager.shared.selectedLong ?? 0.0),
+//            Request.Parameter.lats : PreferenceManager.shared.lat ?? String(),
+//            Request.Parameter.longs: PreferenceManager.shared.long ?? String(),
+//            Request.Parameter.search: "",
+            Request.Parameter.range: "50",
         ]
-        
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.home, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[HomeModal]>.self, successBlock: { (response: ResponseModal<[HomeModal]>) in
+        print(parameter)
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.getNearByGolfs, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<[HomeModal]>.self, successBlock: { (response: ResponseModal<[HomeModal]>) in
                         
             self.isRequesting = false
             
@@ -89,9 +92,9 @@ class HomeListingVC : BaseVC, UITableViewDataSource, UITableViewDelegate, KRPull
                 
                 delay {
                     
-                    if self.lastRequestId.isEmpty {
+                //    if self.lastRequestId.isEmpty {
                         self.items.removeAll()
-                    }
+               //     }
                     
                     self.items.append(contentsOf: response.data ?? [])
                     self.items = self.items.removingDuplicates()

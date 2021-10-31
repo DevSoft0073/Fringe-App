@@ -42,7 +42,10 @@ class PreferenceManager: NSObject {
     private let isHostUser = "isHostUser"
     private let badgeData = "badgeData"
     private let comesFromPush = "comesFromPush"
-
+    private let keySelectedLat = "selectedLat"
+    private let keySelectedLong = "selectedLong"
+    private let keySelectedCity = "selectedCity"
+    
     var deviceToken: String? {
         set {
             if newValue != nil {
@@ -289,6 +292,46 @@ class PreferenceManager: NSObject {
         }
     }
     
+    var selectedLat: Double? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: keySelectedLat)
+            } else {
+                userDefault.removeObject(forKey: keySelectedLat)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.double(forKey: keySelectedLat)
+        }
+    }
+    
+    var selectedLong: Double? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: keySelectedLong)
+            } else {
+                userDefault.removeObject(forKey: keySelectedLong)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.double(forKey: keySelectedLong)
+        }
+    }
+    var selectedCity: String? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: keySelectedCity)
+            } else {
+                userDefault.removeObject(forKey: keySelectedCity)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.string(forKey: keySelectedCity)
+        }
+    }
     //------------------------------------------------------
 }
 

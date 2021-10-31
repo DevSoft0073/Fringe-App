@@ -22,7 +22,7 @@ class RightCell: UITableViewCell {
         }
     }
     
-    func setup(chatData : AddEditMessageModal)  {
+    func setup(chatData : GetAllMessages)  {
         txtMsgView.text = chatData.message
         lblTime.text = chatData.creationAt?.convertDateToStringg()
     }

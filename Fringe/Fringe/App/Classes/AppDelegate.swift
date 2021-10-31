@@ -18,6 +18,7 @@ import FBSDKCoreKit
 import PayPalCheckout
 import UserNotifications
 import IQKeyboardManagerSwift
+import GoogleMaps
 
 let signInConfig = GIDConfiguration.init(clientID: "929112962841-9qvjehvnruco3u9nfc7l4g27aeqmt3dc.apps.googleusercontent.com")
 
@@ -27,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     var window: UIWindow?
     var locationManager: CLLocationManager!
-    
     let GOOGLE_API_KEY = "AIzaSyBHGK2nRDFJW6FfJWWe1-h-oCEb3dGgw1c"
     
     static var shared: AppDelegate {
@@ -105,6 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func chekLoggedUser() {
+        
         if PreferenceManager.shared.loggedUser == true {
             
             PreferenceManager.shared.comesFromHomeListing = false
@@ -254,6 +255,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         paypalConfigure()
         registerRemoteNotificaton(application)
         GMSPlacesClient.provideAPIKey(GOOGLE_API_KEY)
+        GMSServices.provideAPIKey(GOOGLE_API_KEY)
         window?.tintColor = FGColor.appBlack
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil {
@@ -265,12 +267,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
         // stripe publishable key For live
         
-        //        StripeAPI.defaultPublishableKey = "pk_test_51JUS7iJ3XoLMRYVnKpR01bRRdE11rfnPrp5HJQrC6aUcRZTrY911Vvj5z3QWTACUjt55diQLeresblgaCv2qdGoO00u4MzXpuN"
+        
         
         // stripe publishable key For testing
         
-        StripeAPI.defaultPublishableKey = "sk_test_51JUS7iJ3XoLMRYVne26o0RcRXQtMgliZktPIihg7TRR8rEqcIpa8USR9g6out0i593Vt5cSGmiivcNs0rbbb3fon00Az943rmZ"
-        
+        StripeAPI.defaultPublishableKey = "pk_test_51JUS7iJ3XoLMRYVnKpR01bRRdE11rfnPrp5HJQrC6aUcRZTrY911Vvj5z3QWTACUjt55diQLeresblgaCv2qdGoO00u4MzXpuN"
+      
+//       // StripeAPI.defaultPublishableKey = "sk_test_51JnMWiEUY9QNmfGAcfuzKLKVeP42VKanJAMli6RPtMuFY5rjC3AyaM5EkKGFw0OHzKOxgRK78qVzyS8kJn84TrK400ikDZia8n"
+//
+//        StripeAPI.defaultPublishableKey = "sk_test_51JUS7iJ3XoLMRYVne26o0RcRXQtMgliZktPIihg7TRR8rEqcIpa8USR9g6out0i593Vt5cSGmiivcNs0rbbb3fon00Az943rmZ"
+//
         if (CLLocationManager.locationServicesEnabled())
         {
             locationManager = CLLocationManager()
@@ -327,4 +333,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 //        completionHandler([.alert, .sound])
 //    }
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
 }

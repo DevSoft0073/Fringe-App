@@ -336,7 +336,7 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
         RequestManager.shared.requestPOST(requestMethod: Request.Method.allowNotifAndLoc, parameter: parameter, headers: headers, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
             
             LoadingManager.shared.hideLoading()
-            
+            print(response)
             if response.code == Status.Code.success {
                 
                 LoadingManager.shared.hideLoading()
@@ -449,16 +449,16 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HostProfileSwitchCell.self)) as? HostProfileSwitchCell {
                     
                     if name == ProfileItems.allowLocation {
-                        if currentUser?.allowLocation == "0"{
-                            cell.switchPermission.isOn = true
-                        }else{
+                        if currentUserHost?.allowLocation == "0"{
                             cell.switchPermission.isOn = false
+                        }else{
+                            cell.switchPermission.isOn = true
                         }
                     }else if name == ProfileItems.allowNotification {
-                        if currentUser?.allowPush == "0"{
-                            cell.switchPermission.isOn = true
-                        }else{
+                        if currentUserHost?.allowPush == "0"{
                             cell.switchPermission.isOn = false
+                        }else{
+                            cell.switchPermission.isOn = true
                         }
                     }
                     cell.switchPermission.addTarget(self, action: #selector(switchBtnPressed(sender:)), for: .valueChanged)
@@ -609,8 +609,8 @@ class HostProfileVC : BaseVC, UITableViewDataSource, UITableViewDelegate {
     }
     
     @objc func switchBtnPressed (sender : UISwitch) {
-        if sender.tag == 3{
-            
+        if items[sender.tag]["name"] == ProfileItems.allowLocation{
+  //      if sender.tag == 3{
             if CLLocationManager.locationServicesEnabled() {
                 switch CLLocationManager.authorizationStatus() {
                 case .notDetermined, .restricted, .denied:

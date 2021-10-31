@@ -14,13 +14,13 @@ import GoogleSignIn
 import AuthenticationServices
 import IQKeyboardManagerSwift
 
-class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding, FGLocationManagerDelegate {
     
     
     @IBOutlet weak var eyeIcon: UIImageView!
     @IBOutlet weak var txtEmail: FGEmailTextField!
     @IBOutlet weak var txtPassword: FGPasswordTextField!
-    
+    var manager = FGLocationManager()
     var iconClick = true
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     
@@ -360,7 +360,11 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate, ASAuthorization
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        manager.delegate = self
+        manager.startMonitoring()
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        manager.stopMonitoring()
+    }
     //------------------------------------------------------
 }

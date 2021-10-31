@@ -11,6 +11,7 @@ import SDWebImage
 
 class InboxTVCell: UITableViewCell {
 
+    @IBOutlet weak var lblCount: FGMediumLabel!
     @IBOutlet weak var lblDate: FGMediumLabel!
     @IBOutlet weak var lblAddress: FGRegularLabel!
     @IBOutlet weak var lblName: FGSemiboldLabel!
@@ -28,7 +29,7 @@ class InboxTVCell: UITableViewCell {
         mainSecondImg.circle()
     }
     
-    func setup(messageGroup: PlayerMessgaeModal) {
+    func setup(messageGroup: GetAllChatUsers) {
         
         //own image
         mainFirstImg.sd_addActivityIndicator()
@@ -49,29 +50,8 @@ class InboxTVCell: UITableViewCell {
         if messageGroup.image?.isEmpty == true{
             self.mainFirstImg.image = UIImage(named: "icon_placeholder")
         }
-        
-        //sender image
-        mainSecondImg.sd_addActivityIndicator()
-        mainSecondImg.sd_setIndicatorStyle(UIActivityIndicatorView.Style.medium)
-        mainSecondImg.sd_showActivityIndicatorView()
-        mainSecondImg.image = getPlaceholderImage()
-        if let image = messageGroup.otheruserImage, image.isEmpty == false {
-            let imgURL = URL(string: image)
-            mainSecondImg.sd_setImage(with: imgURL) { ( serverImage: UIImage?, _: Error?, _: SDImageCacheType, _: URL?) in
-                if let serverImage = serverImage {
-                    self.mainSecondImg.image = Toucan.init(image: serverImage).resizeByCropping(FGSettings.profileImageSize).maskWithRoundedRect(cornerRadius: FGSettings.profileImageSize.width/2, borderWidth: FGSettings.profileBorderWidth, borderColor: .clear).image
-                }
-                self.mainSecondImg.sd_removeActivityIndicator()
-            }
-        } else {
-            self.mainSecondImg.sd_removeActivityIndicator()
-        }
-        if messageGroup.otheruserImage?.isEmpty == true{
-            self.mainSecondImg.image = UIImage(named: "icon_placeholder")
-        }
-        
-        lblName.text = "\(messageGroup.firstName ?? String()) " + "\(messageGroup.lastName ?? String())"
-        lblAddress.text = messageGroup.lastmsg
+
+        lblName.text = messageGroup.name
         
         let dateFromUnix = DateTimeManager.shared.dateFrom(unix: messageGroup.unixDate)
         
@@ -83,6 +63,12 @@ class InboxTVCell: UITableViewCell {
         } else {
             lblDate.text = DateTimeManager.shared.dateFrom(unix: messageGroup.unixDate, inFormate: DateFormate.MMM_DD_COM_yyyy_HH_MM)
         }
+        lblCount.setRounded()
+        if messageGroup.messageCount == "0" {
+            lblCount.isHidden = true
+        } else {
+            lblCount.isHidden = false
+            lblCount.text = messageGroup.messageCount ?? ""
+        }
     }
-    
 }

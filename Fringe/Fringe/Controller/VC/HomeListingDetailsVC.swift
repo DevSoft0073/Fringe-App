@@ -21,6 +21,7 @@ class HomeListingDetailsVC : BaseVC {
     @IBOutlet weak var lblName: FGSemiboldLabel!
     @IBOutlet weak var imgMain: UIImageView!
     
+    var chatRoomData : CreateRoomModal?
     var detailsData: HomeModal?
     var favUnfav: FavUnfvModal?
     var check = true
@@ -132,6 +133,58 @@ class HomeListingDetailsVC : BaseVC {
         })
     }
     
+    func performCreateRoom(completion:((_ flag: Bool) -> Void)?) {
+
+        let headers:HTTPHeaders = [
+           "content-type": "application/json",
+            "Token": PreferenceManager.shared.authToken ?? String(),
+          ]
+
+        let parameter: [String: Any] = [
+            Request.Parameter.hostID: detailsData?.golfID ?? String(),
+        ]
+
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.createRoomForChat, parameter: parameter, headers: headers, showLoader: false, decodingType: ResponseModal<CreateRoomModal>.self, successBlock: { (response: ResponseModal<CreateRoomModal>) in
+            print(response)
+
+            LoadingManager.shared.hideLoading()
+
+            if response.code == Status.Code.success {
+
+                self.chatRoomData = response.data
+                
+                delay {
+                    let controller = NavigationManager.shared.messageListingVC
+                    controller.roomID = self.chatRoomData?.roomID ?? String()
+                    controller.otherUserName = self.chatRoomData?.name ?? String()
+                    controller.otherUserImg = self.chatRoomData?.image ?? String()
+                    self.push(controller: controller)
+                }
+                
+            } else {
+
+                delay {
+
+                }
+            }
+
+        }, failureBlock: { (error: ErrorModal) in
+
+            LoadingManager.shared.hideLoading()
+
+            delay {
+                
+                DisplayAlertManager.shared.displayAlert(target: self, animated: false, message: LocalizableConstants.Error.anotherLogin) {
+                    PreferenceManager.shared.userId = nil
+                    PreferenceManager.shared.currentUser = nil
+                    PreferenceManager.shared.authToken = nil
+                    NavigationManager.shared.setupSingIn()
+                }
+            }
+        })
+    }
+
+    
     //------------------------------------------------------
     
     //MARK: Actions
@@ -155,8 +208,10 @@ class HomeListingDetailsVC : BaseVC {
     }
     
     @IBAction func btnChat(_ sender: Any) {
-        
+        performCreateRoom { (flag : Bool) in
+        }
     }
+    
     //------------------------------------------------------
     
     //MARK: UIViewController
